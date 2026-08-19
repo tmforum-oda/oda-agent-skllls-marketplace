@@ -1,0 +1,42 @@
+{
+  "correlationId": "8a1d7f00-245b",
+  "description": "ProductOrderMilestoneEvent illustration",
+  "domain": "Commercial",
+  "eventId": "467c-937d-9afe827e85ee",
+  "eventTime": "2022-09-14T12:14:28.774Z",
+  "eventType": "ProductOrderMilestoneEvent",
+  "priority": "3",
+  "timeOcurred": "2022-09-14T12:14:23.473Z",
+  "title": "ProductOrderMilestoneEvent",
+  "event": {
+    "productOrder": {
+      "href": "http://servername/productOrder/30001",
+      "id": "30001",
+      "@type": "ProductOrder",
+      "@referredtype": "ProductOrderRef",
+      "productOrderMilestone": [
+        {
+          "id": "456-dd-df45",
+          "message": "ready to be submitted",
+          "milestoneDate": "2022-09-14T12:14:23.473Z",
+          "status": "Completed",
+          "@type": "Milestone"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "533",
+    "name": "APP-963",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "200",
+    "name": "APP-893",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProductOrderMilestoneEvent"
+}

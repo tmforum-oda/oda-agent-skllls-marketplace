@@ -1,0 +1,6 @@
+{
+    "contentType": "application/json",
+    "path": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/",
+    "url": "ftp://ftp.mycsp.com/productCatalogManagement/1877.json",
+    "@type": "ImportJob"
+}

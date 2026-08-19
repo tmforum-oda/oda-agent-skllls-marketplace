@@ -1,0 +1,68 @@
+[
+  {
+    "@type": "DocumentSpecification",
+    "@baseType": "EntitySpecification",
+    "href": "https://serverRoot/tmf-api/document/v5/documentSpecification/9b12-789948415bd7",
+    "id": "9b12-789948415bd7",
+    "name": "Standard Paperback Book",
+    "documentType": "paperback",
+    "description": "Specification for a Paperback Book",
+    "lastUpdate": "2021-11-05T11:03:57.693Z",
+    "lifecycleStatus": "published",
+    "version": "1.0.0",
+    "specCharacteristic": [
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "pages",
+        "valueType": "integer",
+        "description": "The number of pages in this paperback book",
+        "configurable": true,
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "extensible": false,
+        "characteristicValueSpecification": [
+          {
+            "@type": "IntegerCharacteristicValueSpecification",
+            "@baseType": "CharacteristicValueSpecification",
+            "unitOfMeasure": "pages",
+            "valueFrom": 1
+          }
+        ]
+      },
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "language",
+        "valueType": "string",
+        "description": "The 2-character ISO 639-1 language code that this book is published in",
+        "configurable": true,
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "extensible": false,
+        "characteristicValueSpecification": [
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "@baseType": "CharacteristicValueSpecification",
+            "regex": "^[a-z]{2}"
+          }
+        ]
+      },
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "isbn-10",
+        "valueType": "string",
+        "description": "The 10-digit ISO 2108 International Standard Book Number (ISBN) of this book",
+        "configurable": true,
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "extensible": false,
+        "characteristicValueSpecification": [
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "@baseType": "CharacteristicValueSpecification",
+            "regex": "^[0-9]{10}"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "searchCriteria": {
+    "bucket": [
+      {
+        "usageType": "voice national",
+        "@type": "Bucket"
+      },
+      {
+        "usageType": "voice international",
+        "@type": "Bucket"
+      },
+      {
+        "usageType": "data",
+        "@type": "Bucket"
+      }
+    ],
+    "@type": "UsageConsumptionReport"
+  },
+  "partyAccount": [
+    {
+      "id": "BI12234",
+      "@type": "PartyAccountRef",
+      "@referredType": "BillingAccount"
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "Agent",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "3426",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/3426",
+        "name": "Bob Smith",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "@type": "QueryUsageConsumption"
+}

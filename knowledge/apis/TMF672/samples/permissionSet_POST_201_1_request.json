@@ -1,0 +1,44 @@
+{
+  "@type": "PermissionSet",
+  "description": "superProfile Granted for user",
+  "validFor": {
+    "startDateTime": "2019-10-01T00:00:00.000Z",
+    "endDateTime": "2019-10-31T23:59:59.000Z"
+  },
+  "granter": {
+    "role": "customer advisor",
+    "@type": "RelatedPartyRefOrPartyRoleRef",
+    "partyOrPartyRole": {
+      "id": "cclt-456745",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "user": {
+    "role": "client",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "cust-745712-A",
+      "name": "Jack Marshall",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "permission": [
+    {
+      "@type": "Permission",
+      "permissionSpecification": {
+        "@type": "PermissionSpecification",
+        "name": "ProductOrder:update",
+        "function": "ProductOrder",
+        "action": "update"
+      },
+      "managedAssetGroup": {
+        "@type": "FilterAssetGroup",
+        "@baseType": "AssetGroup",
+        "entityType": "ProductOrder",
+        "filter": "relatedParty.id=\"cid3366116688\"&relatedParty.@referredType=\"Customer\""
+      }
+    }
+  ]
+}

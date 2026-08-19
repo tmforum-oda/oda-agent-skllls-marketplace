@@ -1,0 +1,38 @@
+{
+    "correlationId": "9b374459-e9b0",
+    "description": "ServiceOperatingStatusChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "40c3-a3a0-2379e9894a7d",
+    "eventTime": "2022-08-25T12:19:28.538Z",
+    "eventType": "ServiceOperatingStatusChangeEvent",
+    "priority": "3",
+    "timeOccurred": "2022-08-25T12:19:25.724Z",
+    "title": "ServiceOperatingStatusChangeEvent",
+    "event": {
+        "service": {
+            "href": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service/5351",
+            "id": "5351",
+            "@type": "Service",
+            "operatingStatus": "degraded",
+            "operatingStatusContextUpdate": {
+                "@type":"ContextUpdate",
+                "lastUpdate":"2022-08-25T12:19:28.538Z",
+                "reason":"No connectivity to customer device."
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "427",
+        "name": "APP-755",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "149",
+        "name": "APP-78",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ServiceOperatingStatusChangeEvent"
+}

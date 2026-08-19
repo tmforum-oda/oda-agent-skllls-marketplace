@@ -1,0 +1,32 @@
+{
+    "correlationId": "c34a42ca-498e",
+    "description": "PartyPrivacyProfileDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4942-89e4-eed1a99f3a40",
+    "eventTime": "2022-08-25T12:20:32.683Z",
+    "eventType": "PartyPrivacyProfileDeleteEvent",
+    "priority": "5",
+    "timeOcurred": "2022-08-25T12:20:26.320Z",
+    "title": "PartyPrivacyProfileDeleteEvent",
+    "event": {
+        "partyPrivacyProfile": {
+            "id": "109",
+            "href": "http://servername/tmf-api/privacyManagement/v5/partyPrivacyProfile/109",
+            "@type" : "PartyPrivacyProfile"
+        }
+    },
+    "reportingSystem": {
+        "id": "665",
+        "name": "APP-224",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "403",
+        "name": "APP-686",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PartyPrivacyProfileDeleteEvent"
+}

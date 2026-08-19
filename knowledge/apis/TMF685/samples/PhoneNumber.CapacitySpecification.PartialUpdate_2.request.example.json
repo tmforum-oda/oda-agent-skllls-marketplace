@@ -1,0 +1,16 @@
+[
+    {
+        "op": "replace",
+        "path": "/name",
+        "value": "Phone Number Range"
+    },
+    {
+        "op": "add",
+        "path": "/validFor",
+        "value":
+        {
+            "startDateTime": "2024-05-13T00:00:00Z", 
+            "endDateTime": "2024-09-20T00:00:00Z"
+        }
+    }
+]

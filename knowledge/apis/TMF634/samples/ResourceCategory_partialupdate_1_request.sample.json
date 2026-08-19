@@ -1,0 +1,8 @@
+{
+    "@type": "ResourceCategory", 
+    "version": "2.0", 
+    "validFor": {
+        "startDateTime": "2022-08-23T00:00:22.920Z", 
+        "endDateTime": "2023-03-25T00:00:22.920Z"
+    }
+}

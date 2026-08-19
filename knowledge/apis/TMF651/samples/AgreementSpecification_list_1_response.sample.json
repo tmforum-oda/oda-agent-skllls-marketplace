@@ -1,0 +1,12 @@
+[
+    {
+        "@type": "AgreementSpecification",
+        "id": "5434", 
+        "name": "General Maintenance"
+    }, 
+    {
+        "@type": "AgreementSpecification",
+        "id": "9080", 
+        "name": "Secret"
+    }
+]

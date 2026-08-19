@@ -1,0 +1,19 @@
+[
+  {
+    "op": "replace",
+    "path": "/contactMedium?contactMedium.id=b2fe04a7f96e479195a47710abcf72be",
+    "value": {
+      "@type": "DigitalIdentityContactMedium",
+      "@baseType": "ContactMedium",
+      "@referredType": "EmailContactMedium",
+      "contactType": "private",
+      "id": "b2fe04a7f96e479195a47710abcf72be",
+      "preferred": true,
+      "validFor": {
+        "startDateTime": "2018-09-21T23:20:50.52Z"
+      },
+      "emailAddress": "neo@matrix.com",
+      "role": "password_reset_email_contact"
+    }
+  }
+]

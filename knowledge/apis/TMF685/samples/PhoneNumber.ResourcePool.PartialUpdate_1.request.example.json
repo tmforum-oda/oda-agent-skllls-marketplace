@@ -1,0 +1,10 @@
+{
+    "@type": "ResourcePool",
+    "name": "Phone Number block for partner 'MyPartner'",
+    "description": "This Pool collects the PhoneNumber resources assigned to the partner 'MyPartner'.",
+    "validFor":
+    {
+        "startDateTime": "2024-05-13T00:00:00Z", 
+        "endDateTime": "2024-09-20T00:00:00Z"
+    }
+}

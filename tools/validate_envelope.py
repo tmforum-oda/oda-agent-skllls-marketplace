@@ -53,9 +53,16 @@ def main():
     args = [a for a in args if a != "--strict"]
     root = args[0] if args else "knowledge"
 
-    paths = sorted(glob.glob(os.path.join(root, "**", "*.md"), recursive=True)) + sorted(
-        glob.glob(os.path.join(root, "**", "*.meta.json"), recursive=True)
-    )
+    # knowledge/index/ holds generated catalogs and static reference docs (id-registry.md) --
+    # never artefact envelopes themselves (spec/spec.md 5.4: "generated, never hand-edited"),
+    # so it's excluded regardless of what root is passed in.
+    index_dir = os.path.normpath(os.path.join(root, "index"))
+    paths = [
+        p
+        for p in sorted(glob.glob(os.path.join(root, "**", "*.md"), recursive=True))
+        + sorted(glob.glob(os.path.join(root, "**", "*.meta.json"), recursive=True))
+        if not os.path.normpath(p).startswith(index_dir + os.sep)
+    ]
 
     hard_failures = 0
     todo_count = 0

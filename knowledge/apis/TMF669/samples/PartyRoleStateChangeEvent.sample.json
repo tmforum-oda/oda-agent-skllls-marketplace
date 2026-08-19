@@ -1,0 +1,81 @@
+{
+    "@type": "PartyRoleStateChangeEvent",
+    "@baseType": "Event",
+    "correlationId": "01424706-45de",
+    "domain": "Commercial",
+    "title": "PartyRoleStateChangeEvent",
+    "description": "PartyRoleStateChangeEvent illustration",
+    "priority": "5",
+    "timeOccurred": "2022-11-24T15:02:27.428Z",
+    "source": {
+        "@type": "ReportingResource",
+        "id": "21",
+        "name": "APP-422",
+        "@referredType": "LogicalResource"
+    },
+    "reportingSystem": {
+        "@type": "ReportingResource",
+        "id": "999",
+        "name": "APP-28",
+        "@referredType": "LogicalResource"
+    },
+    "eventId": "4191-a495-7e5694322a53",
+    "eventTime": "2022-11-24T15:02:28.232Z",
+    "eventType": "PartyRoleStateChangeEvent",
+    "event": {
+        "partyRole": {
+            "@type": "PartyRole",
+            "href": "https:/host:port/tmf-api/partyRoleManagement/v4/partyRole/7321-7c0d",
+            "id": "7321-7c0d",
+            "name": "Mobile catalog administrator",
+            "role": "CatalogAdmin",
+            "engagedParty": {
+                "@type": "PartyRef",
+                "href": "https:/host:port/tmf-api/partyManagement/v2/individual/3b1c-74f1",
+                "id": "3b1c-74f1",
+                "name": "Jean Pontus",
+                "@referredType": "Individual"
+            },
+            "partyRoleSpecification": {
+                    "@type": "PartyRoleSpecificationRef",
+                    "href": "https:/host:port/tmf-api/partyRoleManagement/v4/partyRoleSpecification/5713",
+                    "id": "5713",
+                    "name": "Catalog administrator"
+            },
+            "characteristic": [
+                {
+                    "@type": "StringCharacteristic",
+                    "name": "CatalogDomain",
+                    "valueType": "string",
+                    "value": "mobile catalog"
+                }
+            ],
+            "contactMedium": [
+                {
+                    "@type": "PhoneContactMedium",
+                    "id": "1",
+                    "phoneNumber": "+3311223344"
+                }
+            ],
+            "relatedParty": [
+                {
+                    "@type": "RelatedPartyOrPartyRole",
+                    "role": "manager",
+                    "partyOrPartyRole":
+                        {
+                            "@type": "PartyRef",
+                            "href": "https:/host:port/tmf-api/partyManagement/v4/individual/1a0b-961f",
+                            "id": "1a0b-961f",
+                            "name": "Gustave Flaubert",
+                            "@referredType": "Individual"
+                        }
+                }
+            ],
+            "status": "validated",
+            "validFor": {
+                "startDateTime": "2022-06-24T00:00:00.000Z",
+                "endDateTime": "2024-06-24T00:00:00.000Z"
+            }
+        }
+    }
+}

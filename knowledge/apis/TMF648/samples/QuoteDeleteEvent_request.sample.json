@@ -1,0 +1,32 @@
+{
+  "correlationId": "145d-8hh",
+  "description": "QuoteDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "523",
+  "eventTime": "2021-09-27T07:43:59.059Z",
+  "eventType": "QuoteDeleteEvent",
+  "priority": "3",
+  "timeOccurred": "2021-09-27T07:43:59.059Z",
+  "title": "QuoteDeleteEvent",
+  "event": {
+    "quote": {
+      "id": "9693",
+      "href": "https://host:port/quoteManagement/v5/quote/9693",
+      "@type": "Quote"
+    }
+  },
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "QuoteDeleteEvent"
+}

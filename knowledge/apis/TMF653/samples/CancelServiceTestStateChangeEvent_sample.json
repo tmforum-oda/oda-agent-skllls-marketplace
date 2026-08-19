@@ -1,0 +1,33 @@
+{
+  "correlationId": "SOM-20021",
+  "description": "CancelServiceTestStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "10099",
+  "eventTime": "2021-12-28T01:09:57.059Z",
+  "eventType": "CancelServiceTestStateChangeEvent",
+  "priority": "1",
+  "timeOccurred": "2021-12-28T01:09:57.059Z",
+  "title": "CancelServiceTestStateChangeEvent",
+  "event": {
+    "cancelServiceTest": {
+      "id": "790-fsds5-kjp",
+      "href": "https://host:port/serviceOrdering/v5/cancelServiceTest/790-fsds5-kjp",
+      "state": "done",
+      "@type": "CancelServiceTest"
+    }
+  },
+  "reportingSystem": {
+    "id": "20011",
+    "name": "Service Test Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "20011",
+    "name": "Service Test Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CancelServiceTestStateChangeEvent"
+}

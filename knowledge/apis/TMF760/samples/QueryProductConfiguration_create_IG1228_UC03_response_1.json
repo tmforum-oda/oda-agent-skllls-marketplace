@@ -1,0 +1,639 @@
+{
+    "@type": "QueryProductConfiguration",
+    "href": "https://host:port/tmf-api/productConfiguration/v5/QueryProductConfiguration/1024",
+    "id": "1024",
+    "state": "done",
+    "channel": {
+        "id": "01", 
+        "href": "https://host:port/tmf-api/salesChannelManagement/v5/channel/01", 
+        "name": "Customer portal",
+        "@referredType": "SalesChannel",
+        "@type":  "ChannelRef"
+    },
+    "relatedParty": [
+        {
+            "role": "customer",
+            "@type": "RelatedPartyOrPartyRole",
+            "partyOrPartyRole": {
+                "@type": "PartyRef",
+                "id": "10000008",
+                "href": "https://host:port/partyManagement/v5/party/10000008",
+                "name": "Sandy Smith",
+                "referredType": "Individual"
+            }
+        }
+    ],   
+    "contextCharacteristic": [
+        {
+            "name": "salesModel",
+            "valueType": "string",
+            "value": "B2C",
+            "@type": "StringCharacteristic"
+        }
+    ],
+    "requestProductConfigurationItem": [
+        {
+            "@type":  "QueryProductConfigurationItem",
+            "id": "01",            
+            "productConfiguration": {
+                "@type":  "ProductConfiguration",
+                "productOffering": {
+                    "id": "fc1",
+                    "href": "https://host:port/productCatalogManagement/v5/productOffering/fc1",
+                    "name": "Fiber contract",
+                    "@type": "ProductOfferingRef"
+                },
+                "configurationAction": [
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "add",
+                        "description": "Add new product",
+                        "isSelected": true
+                    }
+                ]
+            }
+        }
+    ],
+    "computedProductConfigurationItem": [
+        {
+            "@type":  "QueryProductConfigurationItem",
+            "id": "02",
+            "state": "approved",
+            "productConfigurationItemRelationship": [
+                {
+                    "@type":  "ProductConfigurationItemRelationship",
+                    "id": "01",
+                    "role": "requestItem"
+                }
+            ],
+            "productConfiguration":  {
+                "@type":  "ProductConfiguration",
+                "id": "02",
+                "isSelectable": true,
+                "isSelected": true,
+                "isVisible": true,
+                "productOffering": {
+                    "id": "fc1",
+                    "href": "https://host:port/productCatalogManagement/v5/productOffering/fc1",
+                    "name": "Fiber contract",
+                    "@type": "ProductOfferingRef"
+                },
+                "configurationAction": [
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "add",
+                        "description": "Add new product",
+                        "isSelected": true
+                    }
+                ],
+                "configurationPrice": [
+                    {
+                        "@type": "ConfigurationPrice",
+                        "name": "Welcome discount 5€ for 10 months",
+                        "priceType": "recurringDiscount",
+                        "productOfferingPrice": {
+                            "id": "popFc1", 
+                            "href": "https://host:port/tmf-api/productCatalogManagement/v5/productOfferingPrice/popFc1", 
+                            "name": "Welcome discount 5€ for 10 months",
+                            "@referredType": "ProductOfferingPrice",
+                            "@type":  "ProductOfferingPrice"
+                        },
+                        "price": {
+                            "taxRate": 22,
+                            "@type": "Price",
+                            "dutyFreeAmount": {
+                                "unit": "EUR",
+                                "value": 5,
+                                "@type": "Money"
+                            },
+                            "taxIncludedAmount": {
+                                "unit": "EUR",
+                                "value": 6.10,
+                                "@type": "Money"
+                            },
+                            "applicationDuration": {
+                                "amount": 10,
+                                "units": "month"
+                            }
+                        }
+                    }
+                ]
+            },        
+
+            "queryProductConfigurationItem": [
+                {
+                    "@type":  "QueryProductConfigurationItem",
+                    "id": "03",
+                    "state": "approved",
+                    "productConfiguration": {
+                        "@type":  "ProductConfiguration",
+                        "id": "03",
+                        "isSelectable": true,
+                        "isSelected": true,
+                        "isVisible": true,
+                        "productOffering": {
+                            "id": "fa1",
+                            "href": "https://host:port/productCatalogManagement/v5/productOffering/fa1",
+                            "name": "Fiber access",
+                            "@type": "ProductOfferingRef"
+                        },
+                        "configurationAction": [
+                            {
+                                "@type":  "ConfigurationAction",
+                                "action": "add",
+                                "description": "Add new product",
+                                "isSelected": true
+                            }
+                        ],
+                        "configurationPrice": [
+                            {
+                                "@type": "ConfigurationPrice",
+                                "name": "Fiber access monthly fee",
+                                "priceType": "recurringCharge",
+                                "productOfferingPrice": {
+                                    "id": "popFc1", 
+                                    "href": "https://host:port/tmf-api/productCatalogManagement/v5/productOfferingPrice/popFa1", 
+                                    "name": "Fiber access monthly fee",
+                                    "@referredType": "ProductOfferingPrice",
+                                    "@type":  "ProductOfferingPrice"
+                                },
+                                "price": {
+                                    "taxRate": 22,
+                                    "@type": "Price",
+                                    "dutyFreeAmount": {
+                                        "unit": "EUR",
+                                        "value": 10,
+                                        "@type": "Money"
+                                    },
+                                    "taxIncludedAmount": {
+                                        "unit": "EUR",
+                                        "value": 12.20,
+                                        "@type": "Money"
+                                    },
+                                    "unitOfMeasure": {
+                                        "amount":"1",
+                                        "units": "month"
+                                    }
+                                }
+                            }
+                        ],
+                        "configurationCharacteristic": [
+                            {
+                                "@type":  "ConfigurationCharacteristic",
+                                "id": "cc1",
+                                "name": "Speed",
+                                "valueType": "string",
+                                "minCardinality": 1,
+                                "maxCardinality": 1,
+                                "isConfigurable": true,
+                                "isVisible": true,
+                                "configurationCharacteristicValue": [
+                                    {
+                                        "@type":  "ConfigurationCharacteristicValue",
+                                        "isSelectable": true,
+                                        "isSelected": true,
+                                        "isVisible": true,
+                                        "characteristicValue": {
+                                            "name": "Speed",
+                                            "value": "100M/100M",
+                                            "@type": "StringCharacteristic"
+                                        } 
+                                    },
+                                    {
+                                        "@type":  "ConfigurationCharacteristicValue",
+                                        "isSelectable": true,
+                                        "isSelected": false,
+                                        "isVisible": true,
+                                        "characteristicValue": {
+                                            "name": "Speed",
+                                            "value": "1G/1G",
+                                            "@type": "StringCharacteristic"
+                                        } 
+                                    }
+                                ]
+                            }                
+                        ]
+                    }                    
+                },
+                {
+                    "@type":  "QueryProductConfigurationItem",
+                    "id": "04",
+                    "state": "approved",                        
+                    "productConfiguration": {
+                        "@type":  "ProductConfiguration",
+                        "id": "04",
+                        "isSelectable": false,
+                        "isSelected": true,
+                        "isVisible": true,
+                        "productOffering": {
+                            "id": "co1",
+                            "href": "https://host:port/productCatalogManagement/v5/productOffering/co1",
+                            "name": "Connectivity",
+                            "@type": "ProductOfferingRef"
+                        },
+                        "configurationAction": [
+                            {
+                                "@type":  "ConfigurationAction",
+                                "action": "add",
+                                "description": "Add new product",
+                                "isSelected": true
+                            }
+                        ]
+                    }                    
+                },
+                {
+                    "@type":  "QueryProductConfigurationItem",
+                    "id": "05",
+                    "state": "approved",                        
+                    "productConfiguration": {
+                        "@type":  "ProductConfiguration",
+                        "id": "05",
+                        "isSelectable": true,
+                        "isSelected": false,
+                        "isVisible": true,
+                        "productOffering": {
+                            "id": "co1",
+                            "href": "https://host:port/productCatalogManagement/v5/productOffering/tv1",
+                            "name": "TV channel",
+                            "@type": "ProductOfferingRef"
+                        },
+                        "configurationAction": [
+                            {
+                                "@type":  "ConfigurationAction",
+                                "action": "add",
+                                "description": "Add new product",
+                                "isSelected": false
+                            }
+                        ],
+                        "configurationCharacteristic": [
+                            {
+                                "@type":  "ConfigurationCharacteristic",
+                                "id": "cc2",
+                                "name": "value",
+                                "valueType": "string",
+                                "minCardinality": 1,
+                                "maxCardinality": 1,
+                                "isConfigurable": true,
+                                "isVisible": true,
+                                "configurationCharacteristicValue": [
+                                    {
+                                        "@type":  "ConfigurationCharacteristicValue",
+                                        "isSelectable": true,
+                                        "isSelected": true,
+                                        "isVisible": true,
+                                        "characteristicValue": {
+                                            "name": "value",
+                                            "value": "Basic",
+                                            "@type": "StringCharacteristic"
+                                        } 
+                                    },
+                                    {
+                                        "@type":  "ConfigurationCharacteristicValue",
+                                        "isSelectable": true,
+                                        "isSelected": false,
+                                        "isVisible": true,
+                                        "characteristicValue": {
+                                            "name": "value",
+                                            "value": "Extra",
+                                            "@type": "StringCharacteristic"
+                                        } 
+                                    }
+                                ]
+                            }                
+                        ],
+                        "configurationPrice": [
+                            {
+                                "@type": "ConfigurationPrice",
+                                "name": "TV channel (basic) monthly fee",
+                                "priceType": "recurringCharge",
+                                "productOfferingPrice": {
+                                    "id": "popFc1", 
+                                    "href": "https://host:port/tmf-api/productCatalogManagement/v5/productOfferingPrice/popTv1", 
+                                    "name": "TV channel (basic) monthly fee",
+                                    "@referredType": "ProductOfferingPrice",
+                                    "@type":  "ProductOfferingPrice"
+                                },
+                                "price": {
+                                    "taxRate": 22,
+                                    "@type": "Price",
+                                    "dutyFreeAmount": {
+                                        "unit": "EUR",
+                                        "value": 5,
+                                        "@type": "Money"
+                                    },
+                                    "taxIncludedAmount": {
+                                        "unit": "EUR",
+                                        "value": 6.10,
+                                        "@type": "Money"
+                                    },
+                                    "unitOfMeasure": {
+                                        "amount":"1",
+                                        "units": "month"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "@type":  "QueryProductConfigurationItem",
+                    "id": "06",
+                    "state": "approved",                        
+                    "productConfiguration": {
+                        "@type":  "ProductConfiguration",
+                        "id": "06",
+                        "isSelectable": true,
+                        "isSelected": false,
+                        "isVisible": true,
+                        "productOffering": {
+                            "id": "box1",
+                            "href": "https://host:port/productCatalogManagement/v5/productOffering/box1",
+                            "name": "Box 1",
+                            "@type": "ProductOfferingRef"
+                        },
+                        "configurationAction": [
+                            {
+                                "@type":  "ConfigurationAction",
+                                "action": "add",
+                                "description": "Add new product",
+                                "isSelected": false
+                            }
+                        ],
+                        "bundledGroupProductOffering": {
+                            "@type":  "BundledGroupProductOffering",
+                            "id": "boxGrp1",
+                            "name": "Box",
+                            "bundledGroupProductOfferingOption": {
+                                "@type":  "BundledGroupProductOfferingOption",
+                                "numberRelOfferLowerLimit": 1,
+                                "numberRelOfferUpperLimit": 1
+                            }
+                        },
+
+                        "configurationPrice": [
+                            {
+                                "@type": "ConfigurationPrice",
+                                "name": "Box 1 monthly fee (standard option)",
+                                "priceType": "recurringCharge",
+                                "productOfferingPrice": {
+                                    "id": "popBox1", 
+                                    "href": "https://host:port/tmf-api/productCatalogManagement/v5/productOfferingPrice/popBox1", 
+                                    "name": "Box 1 monthly fee (standard option)",
+                                    "@referredType": "ProductOfferingPrice",
+                                    "@type":  "ProductOfferingPrice"
+                                },
+                                "price": {
+                                    "taxRate": 22,
+                                    "@type": "Price",
+                                    "dutyFreeAmount": {
+                                        "unit": "EUR",
+                                        "value": 4,
+                                        "@type": "Money"
+                                    },
+                                    "taxIncludedAmount": {
+                                        "unit": "EUR",
+                                        "value": 4.88,
+                                        "@type": "Money"
+                                    },
+                                    "unitOfMeasure": {
+                                        "amount":"1",
+                                        "units": "month"
+                                    }
+                                }
+                            }
+                        ],
+
+                        "configurationCharacteristic": [
+                            {
+                                "@type":  "ConfigurationCharacteristic",
+                                "id": "cc3",
+                                "name": "Color",
+                                "valueType": "string",
+                                "minCardinality": 1,
+                                "maxCardinality": 1,
+                                "isConfigurable": true,
+                                "isVisible": true,
+                                "configurationCharacteristicValue": [
+                                    {
+                                        "@type":  "ConfigurationCharacteristicValue",
+                                        "isSelectable": true,
+                                        "isSelected": true,
+                                        "isVisible": true,
+                                        "characteristicValue": {
+                                            "name": "Color",
+                                            "value": "Strawberry Red",
+                                            "@type": "StringCharacteristic"
+                                        } 
+                                    },
+                                    {
+                                        "@type":  "ConfigurationCharacteristicValue",
+                                        "isSelectable": true,
+                                        "isSelected": false,
+                                        "isVisible": true,
+                                        "characteristicValue": {
+                                            "name": "Color",
+                                            "value": "Apple Green",
+                                            "@type": "StringCharacteristic"
+                                        } 
+                                    }
+                                ]
+                            },
+                            {
+                                "@type":  "ConfigurationCharacteristic",
+                                "id": "cc4",
+                                "name": "Storage",
+                                "valueType": "string",
+                                "minCardinality": 1,
+                                "maxCardinality": 1,
+                                "isConfigurable": true,
+                                "isVisible": true,
+                                "configurationCharacteristicValue": [
+                                    {
+                                        "@type":  "ConfigurationCharacteristicValue",
+                                        "isSelectable": true,
+                                        "isSelected": true,
+                                        "isVisible": true,
+                                        "characteristicValue": {
+                                            "name": "Storage",
+                                            "value": "Standard",
+                                            "@type": "StringCharacteristic"
+                                        } 
+                                    },
+                                    {
+                                        "@type":  "ConfigurationCharacteristicValue",
+                                        "isSelectable": true,
+                                        "isSelected": false,
+                                        "isVisible": true,
+                                        "characteristicValue": {
+                                            "name": "Storage",
+                                            "value": "Maxi",
+                                            "@type": "StringCharacteristic"
+                                        } 
+                                    }
+                                ]
+                            }               
+                        ]
+                    }
+                },
+                {
+                    "@type":  "QueryProductConfigurationItem",
+                    "id": "07",
+                    "state": "approved",                        
+                    "productConfiguration":  {
+                        "@type":  "ProductConfiguration",
+                        "id": "07",
+                        "isSelectable": true,
+                        "isSelected": false,
+                        "isVisible": true,
+                        "productOffering": {
+                            "id": "box2",
+                            "href": "https://host:port/productCatalogManagement/v5/productOffering/box2",
+                            "name": "Box 2",
+                            "@type": "ProductOfferingRef"
+                        },
+                        "configurationAction": [
+                            {
+                                "@type":  "ConfigurationAction",
+                                "action": "add",
+                                "description": "Add new product",
+                                "isSelected": false
+                            }
+                        ],
+                        "bundledGroupProductOffering": {
+                            "@type":  "BundledGroupProductOffering",
+                            "id": "boxGrp1",
+                            "name": "Box",
+                            "bundledGroupProductOfferingOption": {
+                                "@type":  "BundledGroupProductOfferingOption",
+                                "numberRelOfferLowerLimit": 1,
+                                "numberRelOfferUpperLimit": 1
+                            }
+                        },
+                        "configurationPrice": [
+                            {
+                                "@type": "ConfigurationPrice",
+                                "name": "Box 2 monthly fee",
+                                "priceType": "recurringCharge",
+                                "productOfferingPrice": {
+                                    "id": "popBox2", 
+                                    "href": "https://host:port/tmf-api/productCatalogManagement/v5/productOfferingPrice/popBox2", 
+                                    "name": "Box 2 monthly fee",
+                                    "@referredType": "ProductOfferingPrice",
+                                    "@type":  "ProductOfferingPrice"
+                                },
+                                "price": {
+                                    "taxRate": 22,
+                                    "@type": "Price",
+                                    "dutyFreeAmount": {
+                                        "unit": "EUR",
+                                        "value": 7,
+                                        "@type": "Money"
+                                    },
+                                    "taxIncludedAmount": {
+                                        "unit": "EUR",
+                                        "value": 8.54,
+                                        "@type": "Money"
+                                    },
+                                    "unitOfMeasure": {
+                                        "amount":"1",
+                                        "units": "month"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "@type":  "QueryProductConfigurationItem",
+                    "id": "8",
+                    "state": "approved",
+                    "productConfiguration":   {
+                        "@type":  "ProductConfiguration",
+                        "id": "8",
+                        "isSelectable": true,
+                        "isSelected": false,
+                        "isVisible": true,
+                        "productOffering": {
+                            "id": "ship1",
+                            "href": "https://host:port/productCatalogManagement/v5/productOffering/ship1",
+                            "name": "Box shipping",
+                            "@type": "ProductOfferingRef"
+                        },
+                        "configurationAction": [
+                            {
+                                "@type":  "ConfigurationAction",
+                                "action": "add",
+                                "description": "Add new product",
+                                "isSelected": false
+                            }
+                        ],
+                        "configurationCharacteristic": [
+                            {
+                                "@type":  "ConfigurationCharacteristic",
+                                "id": "cc5",
+                                "name": "Shipping",
+                                "valueType": "string",
+                                "minCardinality": 1,
+                                "maxCardinality": 1,
+                                "isConfigurable": true,
+                                "isVisible": true,
+                                "configurationCharacteristicValue": [
+                                    {
+                                        "@type":  "ConfigurationCharacteristicValue",
+                                        "isSelectable": true,
+                                        "isSelected": true,
+                                        "isVisible": true,
+                                        "characteristicValue": {
+                                            "name": "Shipping",
+                                            "value": "Standard",
+                                            "@type": "StringCharacteristic"
+                                        } 
+                                    },
+                                    {
+                                        "@type":  "ConfigurationCharacteristicValue",
+                                        "isSelectable": true,
+                                        "isSelected": false,
+                                        "isVisible": true,
+                                        "characteristicValue": {
+                                            "name": "Shipping",
+                                            "value": "Express",
+                                            "@type": "StringCharacteristic"
+                                        } 
+                                    }
+                                ]
+                            }
+                        ],
+                        "configurationPrice": [
+                            {
+                                "@type": "ConfigurationPrice",
+                                "name": "Standard box shipping",
+                                "priceType": "oneTimeCharge",
+                                "productOfferingPrice": {
+                                    "id": "popShipBox1", 
+                                    "href": "https://host:port/tmf-api/productCatalogManagement/v5/productOfferingPrice/popShipBox1", 
+                                    "name": "Standard box shipping",
+                                    "@referredType": "ProductOfferingPrice",
+                                    "@type":  "ProductOfferingPrice"
+                                },
+                                "price": {
+                                    "taxRate": 22,
+                                    "@type": "Price",
+                                    "dutyFreeAmount": {
+                                        "unit": "EUR",
+                                        "value": 0,
+                                        "@type": "Money"
+                                    },
+                                    "taxIncludedAmount": {
+                                        "unit": "EUR",
+                                        "value": 0,
+                                        "@type": "Money"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }                
+            ]
+        }
+    ]
+}

@@ -1,0 +1,305 @@
+{
+  "id": "ucr0001",
+  "href": "https://serverRoot/tmf-api/usageConsumption/v4/usageConsumptionReport/ucr0001",
+  "name": "Usage consumption report ucr0001",
+  "description": "Usage consumption Report for Kate smartphone",
+  "creationDate": "2018-03-15T15:44:28Z",
+  "product": [
+    {
+      "id": "product1",
+      "href": "https://serverRoot/tmf-api/productInventory/v5/product/product1",
+      "name": "Kate smartphone",
+      "consumptionSummary": [
+        {
+          "counterType": "outOfBucket",
+          "level": "global",
+          "value": {
+            "amount": 20,
+            "units": "USD"
+          },
+          "valueName": "20 USD",
+          "consumptionPeriod": {
+            "startDateTime": "2018-03-01T00:00:00Z",
+            "endDateTime": "2018-03-15T00:00:00Z"
+          },
+          "user": {
+            "role": "user",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+              "id": "usr1",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/usr1",
+              "name": "Kate",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            }
+          },
+          "@type": "ConsumptionSummary"
+        }
+      ],
+      "@type": "UsageConsumptionProductRef"
+    }
+  ],
+  "bucket": [
+    {
+      "id": "bkt001",
+      "href": "https://serverRoot/tmf-api/balanceManagement/v4/bucket/ucr0001",
+      "name": "Main offer - data",
+      "usageType": "data",
+      "isShared": false,
+      "product": [
+        {
+          "id": "product1",
+          "href": "https://serverRoot/tmf-api/productInventory/v5/product/product1",
+          "name": "Kate smartphone",
+          "@type": "ProductRef"
+        }
+      ],
+      "remainingValue": {
+        "amount": 1.8,
+        "units": "Go"
+      },
+      "remainingValueName": "it remains 1.8 Go",
+      "validFor": {
+        "startDateTime": "2018-03-15T00:00:00Z",
+        "endDateTime": "2018-03-30T00:00:00Z"
+      },
+      "bucketCounter": [
+        {
+          "counterType": "used",
+          "level": "global",
+          "value": {
+            "amount": 1.2,
+            "units": "Go"
+          },
+          "valueName": "1.2 Go used",
+          "consumptionPeriod": {
+            "startDateTime": "2018-03-01T00:00:00Z",
+            "endDateTime": "2018-03-15T00:00:00Z"
+          },
+          "user": {
+            "role": "user",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+              "id": "usr1",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/usr1",
+              "name": "Kate",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            }
+          },
+          "@type": "ConsumptionSummary"
+        }
+      ],
+      "@type": "Bucket"
+    },
+    {
+      "id": "bkt002",
+      "href": "https://serverRoot/tmf-api/balanceManagement/v4/bucket/ucr0001",
+      "name": "Main offer - national voice",
+      "usageType": "national voice",
+      "isShared": false,
+      "product": [
+        {
+          "id": "product1",
+          "href": "https://serverRoot/tmf-api/productInventory/v5/product/product1",
+          "name": "Kate smartphone",
+          "@type": "ProductRef"
+        }
+      ],
+      "remainingValue": {
+        "amount": 80,
+        "units": "mins"
+      },
+      "remainingValueName": "it remains 80 minutes",
+      "validFor": {
+        "startDateTime": "2018-03-15T00:00:00Z",
+        "endDateTime": "2018-03-30T00:00:00Z"
+      },
+      "bucketCounter": [
+        {
+          "counterType": "used",
+          "level": "global",
+          "value": {
+            "amount": 40,
+            "units": "mins"
+          },
+          "valueName": "40 mins used",
+          "consumptionPeriod": {
+            "startDateTime": "2018-03-01T00:00:00Z",
+            "endDateTime": "2018-03-15T00:00:00Z"
+          },
+          "user": {
+            "role": "user",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+              "id": "usr1",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/usr1",
+              "name": "Kate",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            }
+          },
+          "@type": "ConsumptionSummary"
+        }
+      ],
+      "@type": "Bucket"
+    },
+    {
+      "id": "bkt003",
+      "href": "https://serverRoot/tmf-api/balanceManagement/v4/bucket/ucr0001",
+      "name": "Main offer - sms",
+      "usageType": "sms",
+      "isShared": false,
+      "product": [
+        {
+          "id": "product1",
+          "href": "https://serverRoot/tmf-api/productInventory/v5/product/product1",
+          "name": "Kate smartphone",
+          "@type": "ProductRef"
+        }
+      ],
+      "remainingValue": {
+        "amount": 95,
+        "units": "sms"
+      },
+      "remainingValueName": "it remains 95 sms",
+      "validFor": {
+        "startDateTime": "2018-03-15T00:00:00Z",
+        "endDateTime": "2018-03-30T00:00:00Z"
+      },
+      "bucketCounter": [
+        {
+          "counterType": "used",
+          "level": "global",
+          "value": {
+            "amount": 25,
+            "units": "sms"
+          },
+          "valueName": "25 sms used",
+          "consumptionPeriod": {
+            "startDateTime": "2018-03-01T00:00:00Z",
+            "endDateTime": "2018-03-15T00:00:00Z"
+          },
+          "user": {
+            "role": "user",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+              "id": "usr1",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/usr1",
+              "name": "Kate",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            }
+          },
+          "@type": "ConsumptionSummary"
+        }
+      ],
+      "@type": "Bucket"
+    },
+    {
+      "id": "bkt004",
+      "href": "https://serverRoot/tmf-api/balanceManagement/v4/bucket/ucr0001",
+      "name": "Option Canada/USA - voice",
+      "usageType": "voice",
+      "isShared": false,
+      "product": [
+        {
+          "id": "product1",
+          "href": "https://serverRoot/tmf-api/productInventory/v5/product/product1",
+          "name": "Kate smartphone",
+          "@type": "ProductRef"
+        }
+      ],
+      "remainingValue": {
+        "amount": 10,
+        "units": "mins"
+      },
+      "remainingValueName": "it remains 10 minutes",
+      "validFor": {
+        "startDateTime": "2018-03-15T00:00:00Z",
+        "endDateTime": "2018-03-30T00:00:00Z"
+      },
+      "bucketCounter": [
+        {
+          "counterType": "used",
+          "level": "global",
+          "value": {
+            "amount": 20,
+            "units": "mins"
+          },
+          "valueName": "20 mins used",
+          "consumptionPeriod": {
+            "startDateTime": "2018-03-01T00:00:00Z",
+            "endDateTime": "2018-03-15T00:00:00Z"
+          },
+          "user": {
+            "role": "user",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+              "id": "usr1",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/usr1",
+              "name": "Kate",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            }
+          },
+          "@type": "ConsumptionSummary"
+        }
+      ],
+      "@type": "Bucket"
+    },
+    {
+      "id": "bkt005",
+      "href": "https://serverRoot/tmf-api/balanceManagement/v4/bucket/ucr0001",
+      "name": "Option Canada/USA - sms",
+      "usageType": "sms",
+      "isShared": false,
+      "product": [
+        {
+          "id": "product1",
+          "href": "https://serverRoot/tmf-api/productInventory/v5/product/product1",
+          "name": "Kate smartphone",
+          "@type": "ProductRef"
+        }
+      ],
+      "remainingValue": {
+        "amount": 0,
+        "units": "sms"
+      },
+      "remainingValueName": "Sms bucket exhausted",
+      "validFor": {
+        "startDateTime": "2018-03-15T00:00:00Z",
+        "endDateTime": "2018-03-30T00:00:00Z"
+      },
+      "bucketCounter": [
+        {
+          "counterType": "used",
+          "level": "global",
+          "value": {
+            "amount": 10,
+            "units": "sms"
+          },
+          "valueName": "10 sms used",
+          "consumptionPeriod": {
+            "startDateTime": "2018-03-01T00:00:00Z",
+            "endDateTime": "2018-03-15T00:00:00Z"
+          },
+          "user": {
+            "role": "user",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+              "id": "usr1",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/usr1",
+              "name": "Kate",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            }
+          },
+          "@type": "ConsumptionSummary"
+        }
+      ],
+      "@type": "Bucket"
+    }
+  ],
+  "@type": "UsageConsumptionReport"
+}

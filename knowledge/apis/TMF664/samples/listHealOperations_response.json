@@ -1,0 +1,40 @@
+[
+  {
+    "@type": "Heal",
+    "id": "heal-001",
+    "href": "/resourceFunctionActivation/v5/heal/heal-001",
+    "name": "Automated Network Repair",
+    "action": "Run automated diagnostic and repair script",
+    "actionType": "script",
+    "startTime": "2026-03-04T12:30:00Z",
+    "resourceFunction": {
+      "@type": "ResourceFunctionRef",
+      "id": "rf-001",
+      "href": "/resourceFunctionActivation/v5/resourceFunction/rf-001",
+      "@referredType": "ResourceFunction"
+    },
+    "cause": "Network device failure detected",
+    "degreeOfHealing": "restoreToStateBeforeFailure",
+    "policy": "Standard network recovery policy v2.0",
+    "state": "inProgress"
+  },
+  {
+    "@type": "Heal",
+    "id": "heal-002",
+    "href": "/resourceFunctionActivation/v5/heal/heal-002",
+    "name": "Manual Service Restoration",
+    "action": "Manually restart affected services",
+    "actionType": "narrative",
+    "startTime": "2026-03-04T13:00:00Z",
+    "resourceFunction": {
+      "@type": "ResourceFunctionRef",
+      "id": "rf-002",
+      "href": "/resourceFunctionActivation/v5/resourceFunction/rf-002",
+      "@referredType": "ResourceFunction"
+    },
+    "cause": "Human error during configuration",
+    "degreeOfHealing": "partial",
+    "policy": "Manual intervention protocol",
+    "state": "done"
+  }
+]

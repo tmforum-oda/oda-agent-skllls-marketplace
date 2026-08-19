@@ -1,0 +1,9 @@
+[
+  {
+    "op": "replace",
+    "path": ".note[?(@.date=='2025-05-13T00:00:00.000Z')]",
+    "value": {
+      "text": "Port 1 configured"
+    }
+  }
+]

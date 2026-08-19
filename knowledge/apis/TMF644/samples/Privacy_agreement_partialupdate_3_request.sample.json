@@ -1,0 +1,9 @@
+{
+  "op": "replace",
+  "path": "/relatedDocument/document?id=1999", 
+  "value": 
+    {
+      "name" : "Agreeemnt document"
+    }
+      
+}

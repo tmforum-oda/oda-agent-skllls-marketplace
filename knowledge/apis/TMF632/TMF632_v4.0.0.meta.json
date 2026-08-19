@@ -1,0 +1,16 @@
+{
+  "id": "TMF632",
+  "type": "api",
+  "name": "party-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "63012f7d5e4d6a3d96bcdb0aacd48e6fee07d62155e42da36e799577c10fd560"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

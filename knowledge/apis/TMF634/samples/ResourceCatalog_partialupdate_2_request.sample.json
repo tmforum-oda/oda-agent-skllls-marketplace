@@ -1,0 +1,19 @@
+[
+    {
+        "op": "replace",
+        "path": "/relatedParty",
+        "relatedParty": [
+            {
+                "role": "Supplier",
+                "@type": "RelatedPartyRefOrPartyRoleRef",
+                "partyOrPartyRole": {
+                    "id": "6001",
+                    "href": "https://mycsp.com:8080/tmf-api/partyRole/v5/supplier/6001",
+                    "name": "John Doe",
+                    "@referredType": "Supplier",
+                    "@type": "PartyRoleRef"
+                }
+            }
+        ]
+    }
+]

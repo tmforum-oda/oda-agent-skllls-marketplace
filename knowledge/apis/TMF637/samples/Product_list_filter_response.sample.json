@@ -1,0 +1,58 @@
+[
+  {
+    "id": "9ffg-ze56-ed51",
+    "href": "https://host:port/productInventory/v5/product/9ffg-ze56-ed51",
+    "status": "suspended",
+    "orderDate": "2019-04-11T14:52:21.823Z",
+    "productOffering": {
+      "id": "sxcv-fg65",
+      "href": "https://host:port/productCatalogManagement/v5/productOffering/sxcv-fg65",
+      "@type": "ProductOfferingRef",
+      "@referredType": "ProductOffering",
+      "name": "TMF 35 Bundle Plan"
+    },
+    "@type": "Product"
+  },
+  {
+    "id": "7412",
+    "href": "https://host:port/productInventory/v5/product/7412",
+    "status": "suspended",
+    "orderDate": "2019-04-18T14:21:31.325Z",
+    "productOffering": {
+      "id": "9d63-r8i9",
+      "href": "https://host:port/productCatalogManagement/v5/productOffering/9d63-r8i9",
+      "@type": "ProductOfferingRef",
+      "@referredType": "ProductOffering",
+      "name": "TMF 45 Bundle Plan"
+    },
+    "@type": "Product"
+  },
+  {
+    "id": "3214",
+    "href": "https://host:port/productInventory/v5/product/3214",
+    "status": "suspended",
+    "orderDate": "2019-04-21T18:08:31.325Z",
+    "productOffering": {
+      "id": "sxcv-fg65",
+      "href": "https://host:port/productCatalogManagement/v5/productOffering/sxcv-fg65",
+      "@type": "ProductOfferingRef",
+      "@referredType": "ProductOffering",
+      "name": "TMF 35 Bundle Plan"
+    },
+    "@type": "Product"
+  },
+  {
+    "id": "6547",
+    "href": "https://host:port/productInventory/v5/product/6547",
+    "status": "suspended",
+    "orderDate": "2019-04-29T10:48:28.325Z",
+    "productOffering": {
+      "id": "3bb2-e896",
+      "href": "https://host:port/productCatalogManagement/v5/productOffering/3bb2-e896",
+      "@type": "ProductOfferingRef",
+      "@referredType": "ProductOffering",
+      "name": "TMF 75 Bundle Plan"
+    },
+    "@type": "Product"
+  }
+]

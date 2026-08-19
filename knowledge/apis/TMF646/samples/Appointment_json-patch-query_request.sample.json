@@ -1,0 +1,15 @@
+[
+  {
+    "op": "replace",
+    "path": "/relatedParty.partyOrPartyRole?id=32",
+    "value": [
+      {
+        "@type": "PartyRef",
+        "href": "https://host:port/tmfapi/partyManagement/v5/individual/56",
+        "id": "56",
+        "name": "Brad Pitt",
+        "@referredType": "Individual"
+      }
+    ]
+  }
+]

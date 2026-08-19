@@ -1,0 +1,101 @@
+{
+    "correlationId": "a0aae29d-94bd",
+    "description": "PartyPrivacyProfileCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4420-b098-1d6acf210c4e",
+    "eventTime": "2022-08-25T12:20:32.668Z",
+    "eventType": "PartyPrivacyProfileCreateEvent",
+    "priority": "3",
+    "timeOcurred": "2022-08-25T12:20:28.408Z",
+    "title": "PartyPrivacyProfileCreateEvent",
+    "event": {
+        "partyPrivacyProfile": 
+        {
+          "id": "109",
+          "href": "https://mycsp.com:8080/tmf-api/privacyManagement/v5/partyPrivacyProfile/109",
+          "creationDate": "2019-09-06T04:54:42.690Z",
+          "description": "Individual Privacy Profile",
+          "name": "individual Consents",
+          "status": "created",
+          "agreedByParty": {
+            "role": "owner",
+            "partyOrPartyRole" : {
+              "id": "9176",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9176",
+              "name": "Sandy Smith",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            },
+            "@type" : "RelatedPartyRefOrPartyRoleRef"
+          },
+          "agreement": {
+            "id": "Agreement_5667789jjhbjklb7878",
+            "href": "https://mycsp.com:8080/tmf-api/agreement/Agreement_5667789jjhbjklb7878",
+            "name": "agreement",
+            "@type": "PartyPrivacyAgreementRef"
+          },
+          "applicableForParty": {
+            "role": "user",
+            "partyOrPartyRole" : {
+              "id": "7889",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/7889",
+              "name": "Smith junior",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            },
+            "@type" : "RelatedPartyRefOrPartyRoleRef"
+          },
+          "partyPrivacyProfileCharacteristic": [
+            {
+              "@type": "PartyPrivacyProfileCharacteristic",
+              "characterisitc": {
+                "id": "43",
+                "name": "emailAddress",
+                "valueType": "string",
+                "value": "Yes",
+                "@type": "StringCharacteristic"
+              },  
+              "privacyUsagePurpose": "ADMIN",
+              "relatedParty": [
+                {
+                  "role": "Vendor",
+                  "partyOrPartyRole" : {
+                    "id": "8632",
+                    "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/8632",
+                    "name": "John Doe",
+                    "@type": "PartyRef",
+                    "@referredType": "Individual"
+                  },
+                  "@type" : "RelatedPartyRefOrPartyRoleRef"
+                }
+              ]
+            }
+          ],
+          "partyPrivacyProfileSpecification": {
+            "id": "103",
+            "href": "https://mycsp.com:8080/tmf-api/privacyManagement/v5/partyPrivacySpecification/103",
+            "name": "Individual Privacy",
+            "@type": "partyPrivacyProfileSpecificationRef"
+          },
+          "validFor": {
+            "endDateTime": "2020-09-09T04:54:42.691Z",
+            "startDateTime": "2019-09-06T04:54:42.691Z"
+          },
+          "@type": "PartyPrivacyProfile"
+      }
+    },
+    "reportingSystem": {
+        "id": "665",
+        "name": "APP-224",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "403",
+        "name": "APP-686",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PartyPrivacyProfileCreateEvent"
+}

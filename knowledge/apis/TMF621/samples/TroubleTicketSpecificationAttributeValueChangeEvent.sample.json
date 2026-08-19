@@ -1,0 +1,33 @@
+{
+  "correlationId": "d107a5f0-9257",
+  "description": "TroubleTicketSpecificationAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "456b-8663-72338e38d4f0",
+  "eventTime": "2022-08-25T12:18:12.181Z",
+  "eventType": "TroubleTicketSpecificationAttributeValueChangeEvent",
+  "priority": "1",
+  "timeOccurred": "2022-08-25T12:18:11.750Z",
+  "title": "TroubleTicketSpecificationAttributeValueChangeEvent",
+  "event": {
+    "troubleTicketSpecification": {
+      "href": "https://host:port/troubleTicketSpecification/v5/troubleTicketSpecification/3180",
+      "id": "3180",
+      "@type": "TroubleTicketSpecification",
+      "lifecycleStatus": "active"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TroubleTicketSpecificationAttributeValueChangeEvent"
+}

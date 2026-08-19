@@ -1,0 +1,17 @@
+[
+    {
+        "@type": "BillCycleSpecification",
+        "id": "9473", 
+        "name": "bimonthly"
+    }, 
+    {
+        "@type": "BillCycleSpecification",
+        "id": "9473", 
+        "name": "monthly"
+    }, 
+    {
+        "@type": "BillCycleSpecification",
+        "id": "9899", 
+        "name": "weekly"
+    }
+]

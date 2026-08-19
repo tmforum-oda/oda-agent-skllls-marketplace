@@ -1,0 +1,33 @@
+{
+    "correlationId": "fe01e099-6931",
+    "description": "SettlementAccountStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "463e-90fc-7f2accb4b802",
+    "eventTime": "2022-08-25T12:23:44.202Z",
+    "eventType": "SettlementAccountStateChangeEvent",
+    "priority": "5",
+    "timeOcurred": "2022-08-25T12:23:40.247Z",
+    "title": "SettlementAccountStateChangeEvent",
+    "event": {
+        "settlementAccount": {
+            "href": "http://servername/SettlementAccount/1041",
+            "id": "1041",
+            "@type": "SettlementAccount",
+            "state": "Active"
+        }
+    },
+    "reportingSystem": {
+        "id": "855",
+        "name": "APP-400",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "92",
+        "name": "APP-105",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "SettlementAccountStateChangeEvent"
+}

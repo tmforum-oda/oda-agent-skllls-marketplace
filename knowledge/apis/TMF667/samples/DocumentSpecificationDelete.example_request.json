@@ -1,0 +1,14 @@
+{
+  "@type": "DocumentSpecificationDeleteEvent",
+  "eventId": "e3dac91d-a035-465f-afc5-d3b603b53ad2",
+  "eventTime": "2024-11-11T10:00:00.000Z",
+  "eventType": "DocumentSpecificationDeleteEvent",
+  "event": {
+    "documentSpecification": {
+      "@type": "DocumentSpecification",
+      "@baseType": "EntitySpecification",
+      "href": "https://serverRoot/tmf-api/document/v5/documentSpecification/9b12-789948415bd7",
+      "id": "9b12-789948415bd7"
+    }
+  }
+}

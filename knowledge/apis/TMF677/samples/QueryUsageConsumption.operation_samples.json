@@ -1,0 +1,48 @@
+{
+	"QueryUsageConsumption": {
+		"list": {
+			"samples": [{
+				"description": "Here's an example of a request for retrieving multiple usage consumption queries made by a specific agent.",
+				"fields": "",
+				"filtering": "",
+				"content-type": "application/json",
+				"response": "$_QueryUsageConsumption_list_1_response"
+			}]
+		},
+		"retrieve": {
+			"samples": [{
+				"description": "Here's an example of a request for retrieving a specific Usage Consumption resource.",
+				"content-type": "application/json",
+				"objectId": "Q1USER11333",
+				"response": "$_QueryUsageConsumption_retrieve_1_response"
+			}]
+		},
+		"create": {
+			"samples": [{
+					"description": "Here's an example of creating a query to multiple usage consumption types",
+					"content-type": "application/json",
+					"request": "$_QueryUsageConsumption_create_1_request",
+					"response": "$_QueryUsageConsumption_create_1_response"
+				},
+				{
+					"description": "Here's an example of creating a query to multiple usage consumption values associated to a specific MSISDN",
+					"content-type": "application/json",
+					"request": "$_QueryUsageConsumption_create_2_request",
+					"response": "$_QueryUsageConsumption_create_2_response"
+				},
+				{
+					"description": "Here's an example of creating a query to a specific service",
+					"content-type": "application/json",
+					"request": "$_QueryUsageConsumption_create_3_request",
+					"response": "$_QueryUsageConsumption_create_3_response"
+				}
+			]
+		},
+		"delete": {
+			"samples": [{
+				"description": "Here's an example of deleting a specific usage consumption query resource.",
+				"objectId": "Q3USER11222"
+			}]
+		}
+	}
+}

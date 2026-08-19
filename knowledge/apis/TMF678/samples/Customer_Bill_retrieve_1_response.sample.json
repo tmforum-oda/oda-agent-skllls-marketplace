@@ -1,0 +1,16 @@
+{
+	"id": "CB-123",
+	"href": "https://server:port/tmf-api/Customer_Bill_Management/v5/customerBill/CB-123",
+	"billingAccount": {
+		"id": "A0815",
+		"href": "http://host:port/tmf-api/Account_Management/v5/billingAccount/A0815",
+		"name": "BA Peter Retep",
+		"@referredType": "BillingAccount",
+		"@type": "BillingAccountRef"
+	},
+	"taxIncludedAmount": {
+		"unit": "EUR",
+		"value": 50.00
+	},
+    "@type":"CustomerBill"
+}

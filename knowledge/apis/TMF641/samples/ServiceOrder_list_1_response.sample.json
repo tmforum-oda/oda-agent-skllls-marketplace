@@ -1,0 +1,26 @@
+[
+  {
+    "id": "6987",
+    "href": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/6987",
+    "expectedCompletionDate": "2020-12-14T14:52:21.823Z",
+    "@type": "ServiceOrder"
+  },
+  {
+    "id": "7412",
+    "href": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/7412",
+    "expectedCompletionDate": "2020-12-14T14:21:31.325Z",
+    "@type": "ServiceOrder"
+  },
+  {
+    "id": "3214",
+    "href": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/3214",
+    "expectedCompletionDate": "2020-12-28T18:08:31.325Z",
+    "@type": "ServiceOrder"
+  },
+  {
+    "id": "6547",
+    "href": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/6547",
+    "expectedCompletionDate": "2020-12-28T10:48:28.325Z",
+    "@type": "ServiceOrder"
+  }
+]

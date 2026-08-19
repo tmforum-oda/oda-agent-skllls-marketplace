@@ -1,0 +1,32 @@
+{
+  "correlationId": "90cfc73d-deb7",
+  "description": "TroubleTicketDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "47d6-9751-40e4f01440c9",
+  "eventTime": "2022-08-25T12:18:12.202Z",
+  "eventType": "TroubleTicketDeleteEvent",
+  "priority": "4",
+  "timeOccurred": "2022-08-25T12:18:07.224Z",
+  "title": "TroubleTicketDeleteEvent",
+  "event": {
+    "troubleTicket": {
+      "id": "3180",
+      "href": "https://host:port/troubleTicket/v5/troubleTicket/3180",
+      "@type": "TroubleTicketRef"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TroubleTicketDeleteEvent"
+}

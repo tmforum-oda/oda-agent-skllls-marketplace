@@ -1,0 +1,52 @@
+{
+  "@type": "PermissionSet",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSet/Prms-jnzgh456",
+  "id": "Prms-jnzgh456",
+  "creationDate": "2019-10-01T00:00:00.000Z",
+  "description": "superProfile Granted for user",
+  "validFor": {
+    "startDateTime": "2019-10-01T00:00:00.000Z",
+    "endDateTime": "2019-10-31T23:59:59.000Z"
+  },
+  "user": {
+    "role": "client",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "cust-745712-A",
+      "href": "https://host:port/partyManagement/v5/party/cust-745712-A",
+      "name": "Jack Marshall",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "granter": {
+    "role": "customer advisor",
+    "@type": "RelatedPartyRefOrPartyRoleRef",
+    "partyOrPartyRole": {
+      "id": "cclt-456745",
+      "href": "https://host:port/partyManagement/v5/party/cclt-456745",
+      "name": "John Baker",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "permission": [
+    {
+      "@type": "Permission",
+      "permissionSpecification": {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-31d5b770",
+        "id": "ps-31d5b770",
+        "name": "ProductOrder:update",
+        "function": "ProductOrder",
+        "action": "update"
+      },
+      "managedAssetGroup": {
+        "@baseType": "AssetGroup",
+        "@type": "JSONPathAssetGroup",
+        "entityType": "ProductOrder",
+        "jsonPath": "filter=productSpecification=='tv-channel'&&productCharacteristic[?(@.name=='tvrating' && @.value=='children']"
+      }
+    }
+  ]
+}

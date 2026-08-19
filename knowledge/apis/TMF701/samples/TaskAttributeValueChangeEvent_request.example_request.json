@@ -1,0 +1,46 @@
+{
+  "id": "evt-002",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-002",
+  "correlationId": "g56Iht-tu69",
+  "eventId": "00013",
+  "eventTime": "2024-04-17T16:42:25-04:00",
+  "eventType": "TaskAttributeValueChangeEvent",
+  "title": "TaskAttributeValueChangeEvent",
+  "description": "TaskAttributeValueChangeEvent illustration",
+  "timeOccurred": "2024-04-18T16:42:25-04:00",
+  "event": {
+    "task": {
+      "id": "4fd-ty56-gg55-2",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/task/4fd-ty56-gg55-2",
+      "relatedParty": [
+        {
+          "role": "Customer",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "9I8-430",
+            "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/9I8-430",
+            "name": "Sara Eskiv",
+            "@referredType": "Individual",
+            "@type": "PartyRef"
+          }
+        }
+      ],
+      "@type": "Task"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TaskAttributeValueChangeEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

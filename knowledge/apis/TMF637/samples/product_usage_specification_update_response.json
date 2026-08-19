@@ -1,0 +1,84 @@
+{
+    "@type": "ProductUsageSpecification",
+    "href": "https://api.csp.com/tmf-api/productUsageManagement/v5/productUsageSpecification/9aa3-3e7737dd5080",
+    "id": "9aa3-3e7737dd5080",
+    "name": "Voice-Call-Specification",
+    "description": "Specification for voice calls usage",
+    "version": "3.2",
+    "specCharacteristic": [
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "originatingCountryCode",
+            "valueType": "string",
+            "description": "country code of the caller",
+            "configurable": true,
+            "minCardinality": 1,
+            "maxCardinality": 1,
+            "isUnique": true
+        },
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "originatingNumber",
+            "valueType": "string",
+            "description": "phone number of the caller",
+            "configurable": true,
+            "minCardinality": 1,
+            "maxCardinality": 1,
+            "isUnique": true
+        },
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "destinationCountryCode",
+            "valueType": "string",
+            "description": "country code of the called party",
+            "configurable": true,
+            "minCardinality": 1,
+            "maxCardinality": 1,
+            "isUnique": true
+        },
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "destinationNumber",
+            "valueType": "string",
+            "description": "phone number of the called party",
+            "configurable": true,
+            "minCardinality": 1,
+            "maxCardinality": 1,
+            "isUnique": true
+        },
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "duration",
+            "valueType": "string",
+            "description": "duration of the call",
+            "configurable": true,
+            "minCardinality": 1,
+            "maxCardinality": 1,
+            "isUnique": true
+        },
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "startDateTime",
+            "valueType": "dateTime",
+            "description": "startdate and starttime of the call",
+            "configurable": true,
+            "minCardinality": 1,
+            "maxCardinality": 1,
+            "isUnique": true
+        },
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "endDateTime",
+            "valueType": "dateTime",
+            "description": "enddate and endtime of the call",
+            "configurable": true,
+            "minCardinality": 1,
+            "maxCardinality": 1,
+            "isUnique": true
+        }
+    ],
+    "validFor": {
+        "startDateTime": "2022-02-20T17:00:00Z",
+        "endDateTime": "2099-01-11T00:00:00Z"
+    }
+}

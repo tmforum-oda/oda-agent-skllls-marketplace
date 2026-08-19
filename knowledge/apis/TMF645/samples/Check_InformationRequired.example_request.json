@@ -1,0 +1,40 @@
+{
+  "correlationId": "d4c8651f-3939",
+  "description": "CheckServiceQualificationInformationRequiredEvent illustration",
+  "domain": "Commercial",
+  "eventId": "45bd-a19f-814d80a49d5e",
+  "eventTime": "2023-08-25T12:20:45.475Z",
+  "eventType": "CheckServiceQualificationInformationRequiredEvent",
+  "priority": "4",
+  "timeOccurred": "2023-08-25T12:20:40.050Z",
+  "title": "CheckServiceQualificationInformationRequiredEvent",
+  "event": {
+    "checkServiceQualification": {
+      "id": "44",
+      "href": "http://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/checkServiceQualification/44",
+      "@type": "CheckServiceQualification"
+    },
+    "informationRequired": {
+      "informationRequiredPath": [
+        {
+          "op": "add",
+          "path": "expectedQualificationDate"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "768",
+    "name": "APP-897",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "276",
+    "name": "APP-819",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CheckServiceQualificationInformationRequiredEvent"
+}

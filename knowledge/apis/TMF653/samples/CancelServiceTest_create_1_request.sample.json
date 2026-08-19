@@ -1,0 +1,10 @@
+{
+  "cancellationReason": "Unfixable Errors",
+  "serviceTest": {
+    "id": "89757",
+    "href": "https://host:port/serviceTestManagement/v5/serviceTest/89757",
+    "@referredType": "ServiceTest",
+    "@type": "ServiceTestRef"
+  },
+  "@type": "CancelServiceTest"
+}

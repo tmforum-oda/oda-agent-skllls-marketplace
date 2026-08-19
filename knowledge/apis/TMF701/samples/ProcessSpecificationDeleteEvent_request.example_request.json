@@ -1,0 +1,33 @@
+{
+  "id": "evt-126",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-126",
+  "correlationId": "90cfc73d-fog9",
+  "description": "ProcessSpecificationDeleteEvent illustration",
+  "eventId": "00052",
+  "eventTime": "2024-04-11T14:52:25-04:00",
+  "eventType": "ProcessSpecificationDeleteEvent",
+  "timeOccurred": "2024-04-11T14:52:21.823Z",
+  "title": "ProcessSpecificationDeleteEvent",
+  "event": {
+    "processSpecification": {
+      "id": "OC54",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/processSpecification/OC54",
+      "@type": "ProcessSpecification"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProcessSpecificationDeleteEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

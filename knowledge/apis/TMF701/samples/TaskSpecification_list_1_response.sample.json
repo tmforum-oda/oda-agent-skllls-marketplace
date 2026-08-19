@@ -1,0 +1,104 @@
+[
+  {
+    "id": "tfs0",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs0",
+    "description": "Check Offer Eligibility",
+    "lastUpdate": "2024-04-30T13:03:57.839Z",
+    "lifecycleStatus": "active",
+    "name": "Eligibility Check",
+    "taskType": "businessRuleTask",
+    "version": "1",
+    "attachment": [
+      {
+        "attachmentType": "TaskDocumentation",
+        "description": "description of the business rules to apply in order to confirm or not the eligibility",
+        "mimeType": "application/pdf",
+        "name": "tfs-2-doc",
+        "url": "http://host/content/dgpp5466-11ff-4dc8-pm55-4366ht7c43hl",
+        "size": {
+          "amount": 2105,
+          "units": "Mb"
+        },
+        "validFor": {
+          "startDateTime": "2024-04-12T23:20:50.52Z"
+        },
+        "@type": "Attachment"
+      }
+    ],
+    "taskSpecificationCharacteristic": [
+      {
+        "modality": "input",
+        "@type": "FlowCharacteristicSpecification",
+        "characteristicSpecification": {
+          "configurable": true,
+          "description": "identification of product offering that the customer wishes to have",
+          "extensible": false,
+          "isUnique": false,
+          "maxCardinality": 1,
+          "minCardinality": 0,
+          "name": "productOfferingRef",
+          "valueType": "object",
+          "@type": "CharacteristicSpecification",
+          "@valueSchemaLocation": "https://www.mycsp.com/tmfapis/productCatalog/v5/schema/productOfferingRef.json"
+        }
+      },
+      {
+        "modality": "output",
+        "@type": "FlowCharacteristicSpecification",
+        "characteristicSpecification": {
+          "configurable": true,
+          "description": "the qualification result of the eligibility check",
+          "extensible": false,
+          "isUnique": false,
+          "maxCardinality": 1,
+          "minCardinality": 1,
+          "name": "qualification result",
+          "valueType": "string",
+          "@type": "CharacteristicSpecification"
+        }
+      }
+    ],
+    "taskSpecificationRelationship": [
+      {
+        "relationshipType": "nextTask",
+        "@type": "TaskSpecificationRelationship",
+        "taskSpecification": {
+          "@referredType": "TaskSpecification",
+          "@type": "TaskSpecificationRef",
+          "id": "tfs1",
+          "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs1",
+          "name": "Initialize ShoppingCart"
+        }
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "designer",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "4cf-mg1",
+          "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/4cf-mg1",
+          "name": "Simon Clement",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      },
+      {
+        "role": "approver",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "fp5-559",
+          "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/fp5-559",
+          "name": "Kate Noman",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      }
+    ],
+    "validFor": {
+      "startDateTime": "2024-12-30T13:03:57.839Z"
+    },
+    "@type": "TaskSpecification",
+    "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/taskSpecification.json"
+  }
+]

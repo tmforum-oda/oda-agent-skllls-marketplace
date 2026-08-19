@@ -1,0 +1,16 @@
+[
+  {
+    "op": "replace",
+    "path": "/relatedParty/partyOrPartyRole/id?relatedParty.role=user",
+    "value": "777"
+  },
+  {
+    "op": "replace",
+    "path": "/productCharacteristic/value?id=Char5",
+    "value": {
+      "@type": "Speed",
+      "volume": 120,
+      "unit": "Mbps"
+    }
+  }
+]

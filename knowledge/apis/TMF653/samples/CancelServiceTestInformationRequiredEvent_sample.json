@@ -1,0 +1,37 @@
+{
+  "correlationId": "SOM-20021",
+  "description": "CancelServiceTestInformationRequiredEvent illustration",
+  "eventId": "10103",
+  "eventTime": "2021-12-28T01:09:57.059Z",
+  "eventType": "CancelServiceTestInformationRequiredEvent",
+  "priority": "1",
+  "timeOccurred": "2021-12-28T01:09:57.059Z",
+  "title": "CancelServiceTestInformationRequiredEvent",
+  "event": {
+    "cancelServiceTest": {
+      "id": "790-fsds5-kjp",
+      "href": "https://host:port/serviceTestManagement/v5/cancelServiceTest/790-fsds5-kjp",
+      "@type": "CancelServiceTest"
+    },
+    "informationRequired": [
+      {
+        "op": "add",
+        "path": "cancellationReason"
+      }
+    ]
+  },
+  "reportingSystem": {
+    "id": "12",
+    "name": "Service Test Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "12",
+    "name": "Service Test Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CancelServiceTestInformationRequiredEvent"
+}

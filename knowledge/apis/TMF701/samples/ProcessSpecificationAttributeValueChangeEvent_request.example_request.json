@@ -1,0 +1,58 @@
+{
+  "id": "evt-125",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-125",
+  "correlationId": "90kl90-Jo5",
+  "description": "ProcessSpecificationAttributeValueChangeEvent illustration",
+  "eventId": "00053",
+  "eventTime": "2024-04-16T16:52:25-04:00",
+  "eventType": "ProcessSpecificationAttributeValueChangeEvent",
+  "timeOccurred": "2024-04-16T16:42:21.823Z",
+  "title": "ProcessSpecificationAttributeValueChangeEvent",
+  "event": {
+    "processSpecification": {
+      "id": "OC54",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/processSpecification/OC54",
+      "name": "orderCapture",
+      "@type": "ProcessSpecification",
+      "relatedParty": [
+        {
+          "role": "designer",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "4cf-mg1",
+            "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/4cf-mg1",
+            "name": "Simon Clement",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          }
+        },
+        {
+          "role": "approver",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "698-4TG",
+            "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/698-4TG",
+            "name": "kevin Thoup",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          }
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProcessSpecificationAttributeValueChangeEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

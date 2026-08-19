@@ -1,0 +1,292 @@
+{
+    "ServiceCatalog": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple service catalogs.",
+                    "filtering": "category.id=7752", 
+                    "content-type": "application/json", 
+                    "response" : "$_ServiceCatalog_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific catalog.",
+                    "content-type": "application/json",
+                    "objectId": "3830",
+                    "response" : "$_ServiceCatalog_retrieve_1_response"
+        		}
+            ]
+        }, 
+        "create": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for creating a specific catalog. In this example the request only passes mandatory attributes.",
+                    "content-type": "application/json",
+                    "request" : "$_ServiceCatalog_create_1_request",
+                    "response" : "$_ServiceCatalog_create_1_response"
+        		}
+            ]
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for patching a catalog. In this example, a new version is set, together with validity period.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "3830",
+                    "request" : "$_ServiceCatalog_partialupdate_1_request",
+                    "response" : "$_ServiceCatalog_partialupdate_1_response"
+        		}
+            ]
+        },
+        "delete":  {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for deleting a catalog.",
+                    "content-type": "application/json",
+                    "objectId": "3830"
+        		}
+            ]
+        }
+    },
+    "ServiceCategory": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple service categories.",
+                    "filtering": "", 
+                    "content-type": "application/json", 
+                    "response" : "$_ServiceCategory_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific category.",
+                    "content-type": "application/json",
+                    "objectId": "1708",
+                    "response" : "$_ServiceCategory_retrieve_1_response"
+        		}
+            ]
+        }, 
+        "create": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for creating a specific category. In this example the request only passes mandatory attributes.",
+                    "content-type": "application/json",
+                    "request" : "$_ServiceCategory_create_1_request",
+                    "response" : "$_ServiceCategory_create_1_response"
+        		}
+            ]
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for patching a category. In this example, a new version is set, together with validity period.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "1708",
+                    "request" : "$_ServiceCategory_partialupdate_1_request",
+                    "response" : "$_ServiceCategory_partialupdate_1_response"
+        		}
+            ]
+        },
+        "delete":  {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for deleting a category.",
+                    "content-type": "application/json",
+                    "objectId": "1708"
+        		}
+            ]
+        }
+    },
+    "ServiceCandidate": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple service categories.",
+                    "filtering": "version=2.1", 
+                    "content-type": "application/json", 
+                    "response" : "$_ServiceCandidate_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific candidate.",
+                    "content-type": "application/json",
+                    "objectId": "4994",
+                    "response" : "$_ServiceCandidate_retrieve_1_response"
+        		}
+            ]
+        }, 
+        "create": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for creating a specific candidate. The request includes the service specification and the category.",
+                    "content-type": "application/json",
+                    "request" : "$_ServiceCandidate_create_1_request",
+                    "response" : "$_ServiceCandidate_create_1_response"
+        		}
+            ]
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for patching a candidate. In this example, a new version is set, together with validity period.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "4994",
+                    "request" : "$_ServiceCandidate_partialupdate_1_request",
+                    "response" : "$_ServiceCandidate_partialupdate_1_response"
+        		}
+            ]
+        },
+        "delete":  {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for deleting a candidate.",
+                    "content-type": "application/json",
+                    "objectId": "4994"
+        		}
+            ]
+        }
+    },
+    "ServiceSpecification": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple service specifications.",
+                    "filtering": "targetServiceSchema.@type=RFS", 
+                    "content-type": "application/json", 
+                    "response" : "$_ServiceSpecification_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific specification.",
+                    "content-type": "application/json",
+                    "objectId": "7655",
+                    "response" : "$_ServiceSpecification_retrieve_1_response"
+        		}
+            ]
+        }, 
+        "create": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for creating a specification.",
+                    "content-type": "application/json",
+                    "request" : "$_ServiceSpecification_create_1_request",
+                    "response" : "$_ServiceSpecification_create_1_response"
+        		}
+            ]
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for patching a specification. In this example, a new version is set, together with validity period.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "7655",
+                    "request" : "$_ServiceSpecification_partialupdate_1_request",
+                    "response" : "$_ServiceSpecification_partialupdate_1_response"
+        		}
+            ]
+        },
+        "delete":  {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for deleting a specification.",
+                    "content-type": "application/json",
+                    "objectId": "7655"
+        		}
+            ]
+        }
+    },
+    "ImportJob": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple import jobs.",
+                    "filtering": "creationDate=2017-08-27", 
+                    "content-type": "application/json", 
+                    "response" : "$_ImportJob_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific import job.",
+                    "content-type": "application/json",
+                    "objectId": "7497",
+                    "response" : "$_ImportJob_retrieve_1_response"
+        		}
+            ]
+        }, 
+        "create": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for creating an import job.",
+                    "content-type": "application/json",
+                    "request" : "$_ImportJob_create_1_request",
+                    "response" : "$_ImportJob_create_1_response"
+        		}
+            ]
+        },
+        "delete":  {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for deleting an import job.",
+                    "content-type": "application/json",
+                    "objectId": "7497"
+        		}
+            ]
+        }
+    },
+    "ExportJob": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple export jobs.",
+                    "filtering": "creationDate=2017-08-27", 
+                    "content-type": "application/json", 
+                    "response" : "$_ExportJob_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific export job.",
+                    "content-type": "application/json",
+                    "objectId": "1866",
+                    "response" : "$_ExportJob_retrieve_1_response"
+        		}
+            ]
+        }, 
+        "create": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for creating an export job.",
+                    "content-type": "application/json",
+                    "request" : "$_ExportJob_create_1_request",
+                    "response" : "$_ExportJob_create_1_response"
+        		}
+            ]
+        },
+        "delete":  {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for deleting an export job.",
+                    "content-type": "application/json",
+                    "objectId": "1866"
+        		}
+            ]
+        }
+    }
+}

@@ -1,0 +1,175 @@
+{
+  "correlationId": "SOM-20011",
+  "description": "ServiceOrderCreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "10007",
+  "eventTime": "2021-12-27T01:06:59.059Z",
+  "eventType": "ServiceOrderCreateEvent",
+  "priority": "1",
+  "timeOcurred": "2021-12-27T01:06:59.059Z",
+  "title": "ServiceOrderCreateEvent",
+  "event": {
+    "serviceOrder": {
+      "id": "42",
+      "href": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/42",
+      "priority": "1",
+      "description": "Service order description",
+      "category": "TMF resource illustration",
+      "state": "acknowledged",
+      "orderDate": "2020-08-27T09:37:40.508Z",
+      "requestedStartDate": "2020-08-31T09:37:40.508Z",
+      "requestedCompletionDate": "2020-08-31T09:37:40.508Z",
+      "expectedCompletionDate": "2020-08-31T09:37:40.508Z",
+      "startDate": "2020-08-31T09:37:40.508Z",
+      "@type": "ServiceOrder",
+      "note": [
+        {
+          "date": "2020-08-27T09:37:40.508Z",
+          "id": "1",
+          "author": "Harvey Poupon",
+          "text": "Some text",
+          "@type": "Note"
+        }
+      ],
+      "relatedParty": [
+        {
+          "role": "requester",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+            "id": "456",
+            "name": "Jean Pontus",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          }
+        }
+      ],
+      "serviceOrderItem": [
+        {
+          "id": "1",
+          "action": "add",
+          "state": "acknowledged",
+          "service": {
+            "@type": "Service",
+            "state": "active",
+            "serviceCharacteristic": [
+              {
+                "id": "452-gh6",
+                "name": "vCPE",
+                "valueType": "object",
+                "value": {
+                  "@type": "VCPE",
+                  "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/VCPE.schema.json",
+                  "vCPE_IP": "193.218.236.21",
+                  "MaxTxRate": 300,
+                  "TransmitPower": "11 dBm",
+                  "maxTream": "OFF"
+                },
+                "@type": "ObjectCharacteristic"
+              }
+            ],
+            "serviceSpecification": {
+              "@type": "ServiceSpecificationRef",
+              "@referredType": "ServiceSpecification",
+              "id": "1212",
+              "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/1212",
+              "name": "vCPE",
+              "version": "1.0.0"
+            }
+          },
+          "@type": "ServiceOrderItem"
+        },
+        {
+          "id": "2",
+          "action": "modify",
+          "state": "InProgress",
+          "service": {
+            "id": "456",
+            "@type": "Service",
+            "href": "http://serverlocation:port/serviceInventoryManagement/v5/service/456",
+            "state": "active",
+            "serviceCharacteristic": [
+              {
+                "id": "452-gh6",
+                "valueType": "string",
+                "name": "InputPort",
+                "value": "456/7",
+                "@type": "StringCharacteristic"
+              }
+            ]
+          },
+          "@type": "ServiceOrderItem"
+        },
+        {
+          "id": "3",
+          "action": "add",
+          "state": "acknowledged",
+          "service": {
+            "state": "active",
+            "@type": "Service",
+            "serviceRelationship": [
+              {
+                "relationshipType": "reliesOn",
+                "service": {
+                  "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/5645",
+                  "id": "5645",
+                  "@type": "ServiceRef",
+                  "@referredType": "Service"
+                },
+                "@type": "ServiceRelationship"
+              }
+            ],
+            "serviceSpecification": {
+              "@type": "ServiceSpecificationRef",
+              "@referredType": "ServiceSpecification",
+              "id": "48",
+              "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/48",
+              "name": "genericDataService48",
+              "version": "2.0.0"
+            },
+            "feature": [
+              {
+                "id": "Feat1",
+                "isEnabled": true,
+                "name": "DataDownload",
+                "@type": "Feature",
+                "featureCharacteritic": [
+                  {
+                    "name": "VolumeCapped",
+                    "id": "444",
+                    "value": true,
+                    "valueType": "boolean",
+                    "@type": "BooleanCharacteristic"
+                  }
+                ]
+              }
+            ]
+          },
+          "@type": "ServiceOrderItem"
+        }
+      ]
+    }
+  },
+  "relatedParty": [
+    {
+      "id": "56d",
+      "role": "Issuer",
+      "@type": "RelatedParty",
+      "@referredType": "Organization"
+    }
+  ],
+  "reportingSystem": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ServiceOrderCreateEvent"
+}

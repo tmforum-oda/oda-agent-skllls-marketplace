@@ -1,0 +1,61 @@
+{
+  "id": "99",
+  "href": "https://serverRoot/tmf-api/appointment/v5/searchTimeSlot/99",
+  "@type": "SearchTimeSlot",
+  "state": "done",
+  "place": {
+    "id": "9979",
+    "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/9979",
+    "name": "San Francisco Bay Area",
+    "@referredType": "GeographicAddress",
+    "@type": "PlaceRef"
+  },
+  "relatedEntity": [
+    {
+      "@type": "RelatedEntity",
+      "role": "interaction",
+      "entity": {
+        "@type": "EntityRef",
+        "@referredType": "TroubleTicket",
+        "id": "789",
+        "name": "Internet connection problem to solve",
+        "href": "https://mycsp.com:8080/tmfapi/troubleTicket/v5/troubleTicket/789"
+      }
+    }
+  ],
+  "requestedTimeSlot": [
+    {
+      "@type": "TimeSlot",
+      "timeWindow": {
+        "startDateTime": "2026-03-28T08:00:00.000Z",
+        "endDateTime": "2026-03-28T12:00:00.000Z"
+      }
+    }
+  ],
+  "availableTimeSlot": [
+    {
+      "@type": "TimeSlot",
+      "id": "28090168-14b9-42ac-a181-7f002fc07280",
+      "timeWindow": {
+        "startDateTime": "2026-03-28T08:00:00.000Z",
+        "endDateTime": "2026-03-28T12:00:00.000Z"
+      }
+    },
+    {
+      "@type": "TimeSlot",
+      "id": "28090168-14b9-42ac-a181-7f002fc07280",
+      "timeWindow": {
+        "startDateTime": "2026-03-29T08:00:00.000Z",
+        "endDateTime": "2026-03-29T12:00:00.000Z"
+      }
+    },
+    {
+      "@type": "TimeSlot",
+      "id": "28090168-14b9-42ac-a181-7f002fc07280",
+      "timeWindow": {
+        "startDateTime": "2026-03-30T08:00:00.000Z",
+        "endDateTime": "2026-03-30T12:00:00.000Z"
+      }
+    }
+  ]
+}

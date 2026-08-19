@@ -1,0 +1,113 @@
+{
+  "@type": "PermissionSet",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permission/Prms-7a0cb197",
+  "id": "7a0cb197",
+  "creationDate": "2023-03-01T16:49:00.000Z",
+  "description": "Customer selfcare admin profile granted by owner to delegate management of customers, products and services entities.",
+  "validFor": {
+    "startDateTime": "2023-03-01T00:00:00.000Z",
+    "endDateTime": "2023-04-01T00:00:00.000Z"
+  },
+  "user": {
+    "role": "client",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "cust-745712-A",
+      "href": "https://host:port/partyManagement/v5/party/cust-745712-A",
+      "name": "Jack Marshall",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "granter": {
+    "role": "customer advisor",
+    "@type": "RelatedPartyRefOrPartyRoleRef",
+    "partyOrPartyRole": {
+      "id": "p7654321",
+      "href": "https://host:port/partyManagement/v5/party/p7654321",
+      "name": "Lynda Owens",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "permission": [
+    {
+      "@type": "Permission",
+      "managedAssetGroup": {
+        "@type": "JSONPathAssetGroup",
+        "@baseType": "AssetGroup",
+        "entityType": "Customer",
+        "jsonPath": "$[status=='Active']"
+      },
+      "permissionSpecificationSet": {
+        "@type": "PermissionSpecificationSetRef",
+        "@referredType": "PermissionSpecificationSet",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-edd9d8a4",
+        "id": "pss-edd9d8a4"
+      }
+    },
+    {
+      "@type": "Permission",
+      "managedAssetGroup": {
+        "@type": "ListAssetGroup",
+        "@baseType": "AssetGroup",
+        "entity": [
+          {
+            "@type": "EntityRef",
+            "href": "https://serverRoot/customerManagement/v5/customer/5.99999.99.99.999999",
+            "id": "5.99999.99.99.999999",
+            "@referredType": "Customer"
+          }
+        ]
+      },
+      "permissionSpecificationSet": {
+        "@type": "PermissionSpecificationSetRef",
+        "@referredType": "PermissionSpecificationSet",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-edd9d8a4",
+        "id": "pss-edd9d8a4"
+      }
+    },
+    {
+      "@type": "Permission",
+      "managedAssetGroup": {
+        "@type": "ListAssetGroup",
+        "@baseType": "AssetGroup",
+        "entity": [
+          {
+            "@type": "EntityRef",
+            "href": "https://serverRoot/productInventory/v5/service/1-44up07",
+            "id": "1-44up07",
+            "@referredType": "Product"
+          }
+        ]
+      },
+      "permissionSpecificationSet": {
+        "@type": "PermissionSpecificationSetRef",
+        "@referredType": "PermissionSpecificationSet",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-edd9d8a4",
+        "id": "pss-edd9d8a4"
+      }
+    },
+    {
+      "@type": "Permission",
+      "managedAssetGroup": {
+        "@type": "ListAssetGroup",
+        "@baseType": "AssetGroup",
+        "entity": [
+          {
+            "@type": "EntityRef",
+            "href": "https://serverRoot/serviceInventory/v5/service/S123456789",
+            "id": "S123456789",
+            "@referredType": "Service"
+          }
+        ]
+      },
+      "permissionSpecificationSet": {
+        "@type": "PermissionSpecificationSetRef",
+        "@referredType": "PermissionSpecificationSet",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-edd9d8a4",
+        "id": "pss-edd9d8a4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "48",
+    "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/checkServiceQualification/48",
+    "description": "check service qualification for IP",
+    "effectiveQualificationDate": "2023-04-11T14:23:33.239Z",
+    "expirationDate": "2023-04-11T14:23:33.239Z",
+    "qualificationResult": "qualified",
+    "@type": "CheckServiceQualification"
+  },
+  {
+    "id": "44",
+    "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/checkServiceQualification/44",
+    "description": "check service qualification illustration",
+    "effectiveQualificationDate": "2023-04-11T15:20:39.239Z",
+    "expirationDate": "2023-04-11T14:23:33.239Z",
+    "qualificationResult": "alternate",
+    "@type": "CheckServiceQualification"
+  },
+  {
+    "id": "41",
+    "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/checkServiceQualification/41",
+    "description": "check service qualification for an UNI access",
+    "effectiveQualificationDate": "2023-04-11T17:10:39.239Z",
+    "expirationDate": "2023-04-11T14:23:33.239Z",
+    "qualificationResult": "qualified",
+    "@type": "CheckServiceQualification"
+  }
+]

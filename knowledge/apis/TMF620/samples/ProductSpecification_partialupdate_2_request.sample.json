@@ -1,0 +1,17 @@
+[
+  {
+    "op": "add",
+    "path": "/relatedParty",
+    "value": {
+        "role": "Technical Expert",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+            "id": "4321",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/partyRole/4321",
+            "name": "Jean Jones",            
+            "@type": "PartyRefOrPartyRoleRef",
+            "@referredType": "PartyRole"
+        }
+    }
+  }
+]

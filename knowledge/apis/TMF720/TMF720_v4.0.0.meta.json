@@ -1,0 +1,16 @@
+{
+  "id": "TMF720",
+  "type": "api",
+  "name": "digital-identity-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF720_Digital_Identity/4.0.0/swagger/TMF720_Digital_Identity_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "6121a6b076227707c42fff3e68e02115f80b8e334aa48de7fca2b88a95e830ed"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

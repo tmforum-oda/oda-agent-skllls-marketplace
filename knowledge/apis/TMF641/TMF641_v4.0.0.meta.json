@@ -1,0 +1,16 @@
+{
+  "id": "TMF641",
+  "type": "api",
+  "name": "service-ordering-management-api",
+  "version": "v4.0.0",
+  "status": "fetch_failed",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF641_Service_Ordering/4.2.0/swagger/TMF641_Service_Ordering_v4.2.0_beta_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "error": "curl failed (22) for https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF641_Service_Ordering/4.2.0/swagger/TMF641_Service_Ordering_v4.2.0_beta_swagger.json: "
+  },
+  "links": {
+    "use_cases": []
+  }
+}

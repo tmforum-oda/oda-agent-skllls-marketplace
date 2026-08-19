@@ -1,0 +1,76 @@
+{
+    "ServiceTest": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving service tests.",
+                    "fields": "id,description,mode,state", 
+                    "filtering": "mode=PROACTIVE&state=Completed", 
+                    "content-type": "application/json", 
+                    "response" : "$_ServiceTest_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific service test.",
+                    "content-type": "application/json",
+                    "objectId": "3112",
+                    "response" : "$_ServiceTest_retrieve_1_response"
+        		}
+            ]
+        }, 
+        "create": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for creating a specific service test. In this example the request only passes mandatory attributes.",
+                    "content-type": "application/json",
+                    "request" : "$_ServiceTest_create_1_request",
+                    "response" : "$_ServiceTest_create_1_response"
+        		}
+            ]
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for patching a service test using application/json. In this example, description is updated.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "3112",
+                    "request" : "$_ServiceTest_partialupdate_1_request",
+                    "response" : "$_ServiceTest_partialupdate_1_response"
+        		},
+                {
+                    "description" : "Here's an example of a request for patching a service test using merge-patch+json. In this example, the name attribute within relatedService is updated.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "3112",
+                    "request" : "$_ServiceTest_partialupdate_2_request",
+                    "response" : "$_ServiceTest_partialupdate_2_response"
+        		},
+                {
+                    "description" : "Here's an example of a request for patching a service test using json-patch+json. In this example, description is updated.",
+                    "content-type": "application/json-patch+json",
+                    "objectId": "3112",
+                    "request" : "$_ServiceTest_partialupdate_3_request",
+                    "response" : "$_ServiceTest_partialupdate_3_response"
+        		},
+                {
+                    "description" : "Here's an example of a request for patching a service test using json-patch-query+json. In this example, the RelatedParty role attribute is updated.",
+                    "content-type": "application/json-patch-query+json",
+                    "objectId": "3112",
+                    "request" : "$_ServiceTest_partialupdate_4_request",
+                    "response" : "$_ServiceTest_partialupdate_4_response"
+        		}
+            ]
+        },
+        "delete":  {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for deleting a service test.",
+                    "content-type": "application/json",
+                    "objectId": "3112"
+        		}
+            ]
+        }
+    }
+}    

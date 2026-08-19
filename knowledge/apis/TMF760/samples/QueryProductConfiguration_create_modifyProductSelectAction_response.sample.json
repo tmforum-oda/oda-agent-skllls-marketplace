@@ -1,0 +1,220 @@
+{
+    "@type": "QueryProductConfiguration",
+    "href": "https://mycsp.com:8080/tmf-api/productConfiguration/v5/CheckProductConfiguration/456",
+    "id": "456",
+    "channel": {
+        "id": "4407", 
+        "href": "https://host:port/tmf-api/salesChannelManagement/v5/channel/4407", 
+        "name": "Assisted Channel",
+        "@referredType": "SalesChannel",
+        "@type":  "ChannelRef"
+    },
+    "relatedParty": [
+        {
+            "role": "prospect",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "@type": "PartyRef",
+                "id": "456",
+                "href": "https://host:port/partyManagement/v5/party/456",
+                "name": "Ross",
+                "@referredType": "Individual"
+            }
+        }
+    ],
+    "contextEntity": { 
+        "id": "3472",
+        "href": "https://host:port/quoteManagement/v5/quote/3472",
+        "name": "March 2019 Order",
+        "@type": "EntityRef",
+        "@referredType": "Quote"
+    },
+    "contextCharacteristic": [
+        {
+            "name": "salesModel",
+            "valueType": "string",
+            "value": "B2C",
+            "@type": "StringCharacteristic"
+        }
+    ],
+    "requestProductConfigurationItem": [
+        {
+            "@type":  "QueryProductConfigurationItem",
+            "id": "01",
+            "contextItem": {
+                "name": "Quote item 01",
+                "itemId": "01",
+                "entityId": "3472",
+                "entityHref": "https://host:port/quoteManagement/v5/quote/3472",
+                "@type": "ItemRef",
+                "@referredType": "QuoteItem"
+
+            },
+            "productConfiguration": {
+                "@type":  "ProductConfiguration",
+                "product": {
+                    "@type":  "Product",
+                    "productOffering": {
+                        "id": "14305",
+                        "href": "https://host:port/productCatalogManagement/v5/productOffering/14305",
+                        "name": "Internet",
+                        "@type": "ProductOfferingRef"
+                    },
+                    "productCharacteristic": [
+                        {
+                            "name": "Bandwidth",
+                            "value": "Fast",
+                            "@type": "StringCharacteristic"
+                        }
+                    ],
+                    "productPrice": [
+                        {
+                            "name": "Fast internet price",
+                            "priceType": "oneTimeCharge",
+                            "productOfferingPrice": {
+                                "id": "1747", 
+                                "href": "https://host:port/tmf-api/productCatalogManagement/v5/productOfferingPrice/1747", 
+                                "name": "Recurring charge for Fast Iternet",
+                                "@referredType": "ProductOfferingPrice",
+                                "@type":  "ProductOfferingPrice"
+                            },
+                            "price": {
+                                "taxRate": 22,
+                                "@type": "Price",
+                                "dutyFreeAmount": {
+                                    "unit": "EUR",
+                                    "value": 100,
+                                    "@type": "Money"
+                                },
+                                "taxIncludedAmount": {
+                                    "unit": "EUR",
+                                    "value": 122,
+                                    "@type": "Money"
+                                }
+                            },
+                            "@type": "ProductPrice"
+                        }
+                    ]
+                },
+                "configurationAction": [
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "terminate",
+                        "description": "Terminate product",
+                        "isSelected": false
+                    },
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "Change bandwith",
+                        "description": "Change bandwith",
+                        "isSelected": true
+                    }
+                ]
+            }
+        }
+    ],
+    "computedProductConfigurationItem": [
+        {
+            "@type":  "QueryProductConfigurationItem",
+            "id": "02",
+            "state": "approved",
+            "productConfigurationItemRelationship": [
+                {
+                    "@type":  "ProductConfigurationItemRelationship",
+                    "id": "01",
+                    "role": "requestItem"
+                }
+            ],
+            "productConfiguration": {
+                "@type":  "ProductConfiguration",
+                "id": "02",
+                "isSelectable": false,
+                "isSelected": true,
+                "isVisible": true,
+                "product": {
+                    "@type":  "ProductRef",
+                    "@referredType": "Product",
+                    "id": "pr1"
+                },
+                "configurationAction": [
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "terminate",
+                        "description": "Terminate product",
+                        "isSelected": false
+                    },
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "Change bandwith",
+                        "description": "Change bandwith",
+                        "isSelected": true
+                    }
+                ],
+                "configurationCharacteristic": [
+                    {
+                        "@type":  "ConfigurationCharacteristic",
+                        "id": "77",
+                        "name": "Bandwidth",
+                        "valueType": "string",
+                        "minCardinality": 1,
+                        "maxCardinality": 1,
+                        "isConfigurable": true,
+                        "isVisible": true,
+                        "configurationCharacteristicValue": [
+                            {
+                                "@type":  "ConfigurationCharacteristicValue",
+                                "isSelectable": true,
+                                "isSelected": true,
+                                "isVisible": true,
+                                "characteristicValue": {
+                                    "name": "Bandwidth",
+                                    "value": "Fast",
+                                    "@type": "StringCharacteristic"
+                                } 
+                            },
+                            {
+                                "@type":  "ConfigurationCharacteristicValue",
+                                "isSelectable": true,
+                                "isSelected": false,
+                                "isVisible": true,
+                                "characteristicValue": {
+                                    "name": "Bandwidth",
+                                    "value": "SuperFast",
+                                    "@type": "StringCharacteristic"
+                                } 
+                            }
+                        ]
+                    }
+                ],
+                "configurationPrice": [
+                    {
+                        "@type": "ConfigurationPrice",
+                        "name": "Fast internet price",
+                        "priceType": "recuringCharge",
+                        "productOfferingPrice": {
+                            "id": "1747", 
+                            "href": "https://host:port/tmf-api/productCatalogManagement/v5/productOfferingPrice/1747", 
+                            "name": "Recurring charge for Fast Iternet",
+                            "@referredType": "ProductOfferingPrice",
+                            "@type":  "ProductOfferingPrice"
+                        },
+                        "price": {
+                            "taxRate": 22,
+                            "@type": "Price",
+                            "dutyFreeAmount": {
+                                "unit": "EUR",
+                                "value": 100,
+                                "@type": "Money"
+                            },
+                            "taxIncludedAmount": {
+                                "unit": "EUR",
+                                "value": 122,
+                                "@type": "Money"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

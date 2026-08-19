@@ -1,0 +1,33 @@
+{
+    "correlationId": "d991dd5c-cb42",
+    "description": "ProductSpecificationStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4768-a3c5-c47b06010b06",
+    "eventTime": "2022-08-25T12:17:59.625Z",
+    "eventType": "ProductSpecificationStateChangeEvent",
+    "priority": "4",
+    "timeOcurred": "2022-08-25T12:17:58.436Z",
+    "title": "ProductSpecificationStateChangeEvent",
+    "event": {
+        "productSpecification": {
+            "href": "http://servername/productSpecification/9881",
+            "id": "9881",
+            "@type": "ProductSpecification",
+            "lifecycleStatus": "Active"
+        }
+    },
+    "reportingSystem": {
+        "id": "868",
+        "name": "APP-394",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "372",
+        "name": "APP-92",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ProductSpecificationStateChangeEvent"
+}

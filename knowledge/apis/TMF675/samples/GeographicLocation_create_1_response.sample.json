@@ -1,0 +1,14 @@
+{
+    "id": "8252cd7c-bd6c",
+    "href": "https://api.company.com/tmf-api/geographicLocation/v5/geographicLocation/8252cd7c-bd6c",
+    "name": "Pavilion",
+    "@baseType": "GeographicLocation",
+    "@type": "GeoJsonPoint",
+    "geoJson": {
+        "type": "Point",
+        "coordinates": [
+            -1.3200867176055908,
+            51.41707412265012
+        ]
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "789-fsds5-kjp",
+  "href": "https://host:port/productOrderingManagement/v5/cancelProductOrder/789-fsds5-kjp",
+  "cancellationReason": "Duplicate order",
+  "creationDate": "2019-04-30T08:13:59.506Z",
+  "requestedCancellationDate": "2021-08-30T09:14:46.145Z",
+  "productOrder": {
+    "id": "45f-98f-ss45",
+    "href": "https://host:port/productOrderingManagement/v5/productOrder/45f-98f-ss45",
+    "@referredType": "ProductOrder",
+    "@type": "ProductOrderRef"
+  },
+  "state": "done",
+  "@type": "CancelProductOrder"
+}

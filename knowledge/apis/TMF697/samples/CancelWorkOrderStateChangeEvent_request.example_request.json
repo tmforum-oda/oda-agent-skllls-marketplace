@@ -1,0 +1,33 @@
+{
+    "correlationId": "35768906-7ccc-4ca3-8892-c2bbd8054009",
+    "description": "CancelWorkOrderStateChangeEvent illustration",
+    "domain": "Service Assurance",
+    "eventId": "965dfda1-06c4-49cb-bcb9-1aa2a93fb2af",
+    "eventTime": "2022-08-25T12:21:36.704Z",
+    "eventType": "CancelWorkOrderStateChangeEvent",
+    "priority": "1",
+    "timeOcurred": "2022-08-25T12:21:32.568Z",
+    "title": "CancelWorkOrderStateChangeEvent",
+    "event": {
+        "cancelWorkOrder": {
+            "id": "cc8e9f41-c351-48ac-8980-548d4a2d59ca",
+            "href": "https://mycsp.com/tmf-api/v5/workOrderManagement/cancelWorkOrder/cc8e9f41-c351-48ac-8980-548d4a2d59ca",
+            "state": "acknowledged",
+            "@type": "CancelWorkOrder"
+        }
+    },
+    "reportingSystem": {
+        "id": "51d61d67-07a4-470f-b27b-b20fdf989e35",
+        "name": "APP-675",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "6a15927f-8feb-4ed0-91d9-b60da1b5a132",
+        "name": "APP-374",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CancelWorkOrderStateChangeEvent"
+}

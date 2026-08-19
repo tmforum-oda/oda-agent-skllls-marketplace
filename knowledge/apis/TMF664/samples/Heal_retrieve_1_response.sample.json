@@ -1,0 +1,18 @@
+{
+  "@type": "Heal",
+  "href": "/resourceFunctionActivation/v5/heal/c6015b3d-64ad-432d-b7a5-9a9fa3430aa4",
+  "id": "c6015b3d-64ad-432d-b7a5-9a9fa3430aa4",
+  "name": "SLA Violation Healing",
+  "action": "healResourceFunction",
+  "actionType": "script",
+  "resourceFunction": {
+    "id": "acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+    "href": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+    "@type": "ResourceFunctionRef",
+    "@referredType": "ResourceFunction"
+  },
+  "cause": "SLA violation",
+  "degreeOfHealing": "restoreToStateBeforeFailure",
+  "state": "inProgress",
+  "startTime": "2019-08-17T13:11:51Z"
+}

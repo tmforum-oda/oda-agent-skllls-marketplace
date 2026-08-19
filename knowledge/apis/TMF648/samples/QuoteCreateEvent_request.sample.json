@@ -1,0 +1,323 @@
+{
+  "correlationId": "126-54f",
+  "id": "ilmJ45",
+  "href": ".../quoteManagement/v5/listener/quoteCreateEvent/ilmJ45",
+  "description": "QuoteCreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "125",
+  "eventTime": "2021-05-13T12:45:14.028Z",
+  "eventType": "QuoteCreateEvent",
+  "priority": "1",
+  "timeOccurred": "2021-05-13T12:45:12.028Z",
+  "title": "QuoteCreateEvent",
+  "event": {
+    "quote": {
+      "id": "12dd-78hg",
+      "href": "https://host:port/quoteManagement/v5/quote/12dd-78hg",
+      "@type": "Quote",
+      "@baseType": "Quote",
+      "@schemaLocation": "https:/host:port/tmfapi/quote.schema.json",
+      "category": "BSBS Quote",
+      "description": "Quote illustration",
+      "effectiveQuoteCompletionDate": "2021-05-14T12:45:12.028Z",
+      "expectedFulfillmentStartDate": "2021-05-13T12:45:12.028Z",
+      "expectedQuoteCompletionDate": "2021-05-14T12:45:12.028Z",
+      "externalId": [
+        {
+          "@type": "ExternalIdentifier",
+          "@baseType": "ExternalIdentifier",
+          "@schemaLocation": "https:/host:port/tmfapi/externalIdentifier.schema.json",
+          "owner": "TMF",
+          "externalIdentifierType": "Quotenumber",
+          "id": "AK1"
+        }
+      ],
+      "instantSyncQuote": false,
+      "creationDate": "2021-05-13T12:45:12.028Z",
+      "requestedQuoteCompletionDate": "2021-05-14T12:45:12.028Z",
+      "version": "1",
+      "agreement": [
+        {
+          "id": "7778-jj56",
+          "href": "https://host:port/agreementManagement/v5/agreement/7778-jj56",
+          "name": "Global Agrrement",
+          "@type": "AgreementRef",
+          "@referredType": "Agreement",
+          "@schemaLocation": "https:/host:port/tmfapi/agreementRef.schema.json"
+        }
+      ],
+      "contactMedium": [
+        {
+          "id": "1",
+          "preferred": true,
+          "emailAddress": "jean.pontus@PerfectCustomer.com",
+          "@type": "EmailContactMedium",
+          "@baseType": "ContactMedium",
+          "@schemaLocation": "https:/host:port/tmfapi/emailContactMedium.schema.json"
+        }
+      ],
+      "note": [
+        {
+          "id": "1",
+          "author": "Jean Pontus",
+          "date": "2021-05-13T12:45:12.028Z",
+          "text": "This is a quote request following today call",
+          "@type": "Note",
+          "@baseType": "Note",
+          "@schemaLocation": "https:/host:port/tmfapi/note.schema.json"
+        }
+      ],
+      "productOfferingQualification": [
+        {
+          "id": "22ds-ty55",
+          "@type": "ProductOfferingQualificationRef",
+          "@referredType": "QueryProductOfferingQualification",
+          "href": "https://host:port/productOfferingQualificationManagement/v5/queryProductOfferingQualification/22ds-ty55"
+        }
+      ],
+      "authorization": [
+        {
+          "name": "Discount validation",
+          "@type": "Authorization",
+          "@baseType": "Authorization",
+          "@schemaLocation": "https:/host:port/tmfapi/authorization.schema.json",
+          "requestedDate": "2021-05-13T12:45:12.028Z",
+          "signatureRepresentation": "Manager approval",
+          "state": "validated",
+          "approver":
+            {
+                "id": "45gh-gh89",
+                "href":"https://host:port/partyManagement/v5/individual/45gh-gh89",
+                "name": "Joe Doe",
+                "@referredType": "Individual",
+                "@type": "PartyRef"
+            }
+        }
+      ],
+      "quoteItem": [
+        {
+          "id": "1",
+          "@type": "QuoteItem",
+          "@baseType": "QuoteItem",
+          "@schemaLocation": "https:/host:port/tmfapi/quoteItem.schema.json",
+          "action": "add",
+          "quantity": 1,
+          "state": "approved",
+          "product": {
+            "@type": "Product",
+            "productCharacteristic": [
+              {
+                "@type": "StringCharacteristic",
+                "@baseType": "Characteristic",
+                "@schemaLocation": "https:/host:port/tmfapi/stringCharacteristic.schema.json",
+                "id": "Char1",
+                "name": "Voice Bundle",
+                "value": "unlimited"
+              },
+              {
+                "@type": "ObjectCharacteristic",
+                "@baseType": "Characteristic",
+                "@schemaLocation": "https:/host:port/tmfapi/objectCharacteristic.schema.json",
+                "id": "Char5",
+                "name": "Data Bundle",
+                "value": {
+                  "volume": 50,
+                  "unit": "Gb/month"
+                }
+              }
+            ],
+            "productSpecification": {
+              "id": "ssp7-ty89",
+              "href": "https://host:port/productCatalogManagement/v5/productSpecification/ssp7-ty89",
+              "name": "TMF Tariff Plan",
+              "@type": "ProductSpecificationRef",
+              "@referredType": "ProductSpecification"
+            }
+          },
+          "productOffering": {
+            "id": "54gg-zza1",
+            "href": "https://host:port/productCatalogManagement/v5/productSpecification/54gg-zza1",
+            "name": "TMF Tariff Plan 25",
+            "@type": "ProductOfferingRef",
+            "@referredType": "ProductOffering"
+          },
+          "quoteItemPrice": [
+            {
+              "description": "Tariff plan 25 fee",
+              "name": "Tariff Plan 25 Tariff",
+              "priceType": "recurring",
+              "recurringChargePeriod": "month",
+              "@type": "QuotePrice",
+              "@baseType": "QuotePrice",
+              "@schemaLocation": "https:/host:port/tmfapi/quotePrice.schema.json",
+              "price": {
+                "@type": "Price",
+                "@baseType": "Price",
+                "@schemaLocation": "https:/host:port/tmfapi/price.schema.json",
+                "taxRate": 16,
+                "dutyFreeAmount": {
+                  "unit": "EUR",
+                  "value": 30
+                },
+                "taxIncludedAmount": {
+                  "unit": "EUR",
+                  "value": 34.8
+                }
+              },
+              "priceAlteration": [
+                {
+                  "applicationDuration": 0,
+                  "description": "Specific Discount for PerfectCustomer company",
+                  "name": "10% off",
+                  "priceType": "recurring",
+                  "priority": 1,
+                  "recurringChargePeriod": "month",
+                  "@type": "PriceAlteration",
+                  "@baseType": "PriceAlteration",
+                  "@schemaLocation": "https:/host:port/tmfapi/priceAlteration.schema.json",
+                  "price": {
+                    "percentage": 10,
+                    "@type": "Price",
+                    "@baseType": "Price",
+                    "@schemaLocation": "https:/host:port/tmfapi/price.schema.json"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "@type": "QuoteItem",
+          "action": "add",
+          "quantity": 10,
+          "state": "approved",
+          "attachment": [
+            {
+              "@type": "Attachment",
+              "@baseType": "Attachment",
+              "@schemaLocation": "https:/host:port/tmfapi/attachment.schema.json",
+              "attachmentType": "brochure",
+              "description": "handset brochure",
+              "mimeType": "pdf",
+              "name": "Handset commercial brochure.pdf",
+              "url": "www.tmf_handset/contentMangement/brochure.pdf",
+              "size": {
+                "amount": 3.7,
+                "units": "Mb"
+              },
+              "validFor": {
+                "startDateTime": "2021-05-13T12:45:12.031Z"
+              }
+            }
+          ],
+          "product": {
+            "@type": "Product",
+            "productSpecification": {
+              "id": "qq45-ytr7",
+              "href": "https://host:port/productCatalogManagement/v5/productSpecification/qq45-ytr7",
+              "name": "Handset",
+              "@type": "ProductSpecificationRef",
+              "@referredType": "ProductSpecification",
+              "version": "1"
+            }
+          },
+          "productOffering": {
+            "id": "z789-78ga",
+            "href": "https://host:port/productCatalogManagement/v5/productOffering/z789-78ga",
+            "name": "TMF handset T9+",
+            "@type": "ProductOfferingRef",
+            "@referredType": "ProductOffering"
+          },
+          "quoteItemPrice": [
+            {
+              "description": "Handset",
+              "name": "Handset Fee",
+              "priceType": "oneTime",
+              "@type": "QuotePrice",
+              "price": {
+                "@type": "Price",
+                "taxRate": 16,
+                "dutyFreeAmount": {
+                  "unit": "EUR",
+                  "value": 350
+                },
+                "taxIncludedAmount": {
+                  "unit": "EUR",
+                  "value": 406
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "relatedParty": [
+        {
+          "role": "Buyer Contact",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "@baseType": "RelatedPartyOrPartyRole",
+          "partyOrPartyRole": {
+            "id": "qsdd-9888",
+            "href":"https://host:port/partyManagement/v5/individual/qsdd-9888",
+            "name": "Jean Pontus",
+            "@referredType": "Individual",
+            "@type": "PartyRef"
+          }
+        },
+        {
+          "role": "Buyer organization",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "@baseType": "RelatedPartyOrPartyRole",
+          "partyOrPartyRole": {
+            "id": "55",
+            "href":"https://host:port/partyManagement/v5/organization/55",
+            "name": "PerfectCustomer",
+            "@referredType": "Organization",
+            "@type": "PartyRef"
+          }
+        },
+        {
+          "role": "Seller Contact",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "@baseType": "RelatedPartyOrPartyRole",
+          "partyOrPartyRole": {
+            "id": "45gh-gh89",
+            "href":"https://host:port/partyManagement/v5/individual/45gh-gh89",
+            "name": "Joe Doe",
+            "@referredType": "Individual",
+            "@type": "PartyRef"
+          }
+        }
+      ],
+      "state": "approved"
+    }
+  },
+  "relatedParty": [
+    {
+      "role": "Issuer",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "56d",
+        "href":"https://host:port/partyManagement/v5/organization/56d",
+        "name":"John",
+        "@referredType": "Organization",
+        "@type": "PartyRef"
+      }
+    }
+  ],
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https:/host:port/tmfapi/event.schema.json",
+  "@type": "QuoteCreateEvent"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "42",
+  "href": "https://serverRoot/tmf-api/party/v5/individual/42",
+  "@type": "Individual",
+  "@baseType": "Party",
+  "givenName": "Jane",
+  "familyName": "Lamborgizzia",
+  "status": "initialized"
+}

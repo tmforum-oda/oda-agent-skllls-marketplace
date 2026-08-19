@@ -1,0 +1,42 @@
+{
+  "id": "839933ec-4c65-4fc2-987b-58ca5ba9cfab",
+  "href": "https://host:port/tmf-api/resourceInventoryManagement/v5/resource/839933ec-4c65-4fc2-987b-58ca5ba9cfab",
+  "name": "MSISDN 491702283968",
+  "description": "This  logical resource describes the MSISDN 491702283968",
+  "startOperatingDate": "2025-09-23T00:00:00.000Z",
+  "resourceVersion": "v1",
+  "value": "491702283968",
+  "administrativeState": "unlocked",
+  "operationalState": "disabled",
+  "usageState": "idle",
+  "allocationStatus": "allocated",
+  "resourceCharacteristic": [
+    {
+      "name": "MSISDN",
+      "value": "491702283968",
+      "valueType": "String",
+      "@type": "StringCharacteristic"
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "Owner",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "href": "https://host:port/tmf-api/partyManagement/v5/individual/fcba712d-0462-40e5-8d81-6a3439980278",
+        "id": "fcba712d-0462-40e5-8d81-6a3439980278",
+        "name": "John Doe",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "resourceSpecification": {
+    "id": "ca344d7e-ea8a-49cd-9a5f-824970439c9e",
+    "href": "https://host:port/tmf-api/resourceCatalogManagement/v5/resourceSpecification/ca344d7e-ea8a-49cd-9a5f-824970439c9e",
+    "@type": "ResourceSpecificationRef",
+    "@referredType": "LogicalResourceSpecification"
+  },
+  "@type": "LogicalResource",
+  "@baseType": "Resource"
+}

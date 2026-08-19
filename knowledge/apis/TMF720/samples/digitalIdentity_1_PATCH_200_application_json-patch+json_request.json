@@ -1,0 +1,17 @@
+[
+  {
+    "op": "replace",
+    "path": "/nickame",
+    "value": "Neo"
+  },
+  {
+    "op": "replace",
+    "path": "/login",
+    "value": "neo1999"
+  },
+  {
+    "op": "replace",
+    "path": "/password",
+    "value": "KB8ppUDg4DqcXtbX2Xb97c4RSqvBPPuH"
+  }
+]

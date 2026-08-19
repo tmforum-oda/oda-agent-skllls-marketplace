@@ -1,0 +1,55 @@
+{
+  "correlationId": "ebd4d46a-e5a8",
+  "description": "ServiceTestCreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4e82-a3cb-de394266dbe5",
+  "eventTime": "2022-08-25T12:21:36.704Z",
+  "eventType": "ServiceTestCreateEvent",
+  "priority": "1",
+  "timeOccurred": "2022-08-25T12:21:32.568Z",
+  "title": "ServiceTestCreateEvent",
+  "event": {
+    "serviceTest": {
+      "href": "https://host:port/serviceTestManagement/v5/serviceTest/89757",
+      "id": "89757",
+      "@type": "ServiceTest",
+      "name": "fixed broadband service test",
+      "description": "Speed Test for FixedBroadband service",
+      "mode": "PROACTIVE",
+      "startDateTime": "2016-03-02T24:00:00.00Z",
+      "endDateTime": "2016-03-02T24:00:00.30Z",
+      "state": "inProgress",
+      "validFor": {
+        "startDateTime": "2016-03-02T24:00:00.00Z",
+        "endDateTime": "2016-04-02T24:00:00.00Z"
+      },
+      "relatedParty": [
+        {
+          "role": "testSupervisor",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "9866",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/Individual/9866",
+            "name": "Sandy Smith",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          }
+        }
+      ],
+      "relatedService": {
+        "href": "https://mycsp.com:8080/tmf-api/serviceManagement/v5/service/21",
+        "id": "21",
+        "@referredType": "Service",
+        "@type": "ServiceRef"
+      },
+      "testSpecification": {
+        "href": "https://mycsp.com:8080/tmf-api/serviceTestManagement/v5/serviceTestSpecification/22",
+        "id": "22",
+        "@referredType": "ServiceTestSpecification",
+        "@type": "ServiceTestSpecificationRef"
+      }
+    }
+  },
+  "@baseType": "Event",
+  "@type": "ServiceTestCreateEvent"
+}

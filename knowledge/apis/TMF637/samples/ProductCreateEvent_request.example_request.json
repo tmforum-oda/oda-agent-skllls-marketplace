@@ -1,0 +1,110 @@
+{
+  "correlationId": "126-54f",
+  "description": "ProductCreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "125",
+  "eventTime": "2021-09-27T07:43:59.059Z",
+  "eventType": "ProductCreateEvent",
+  "priority": "1",
+  "timeOcurred": "2021-09-27T07:43:59.059Z",
+  "title": "ProductCreateEvent",
+  "event": {
+    "product": {
+      "id": "g265-tf85",
+      "href": "https://host:port/productInventory/v5/product/g265-tf85",
+      "description": "This product is an Product Specification instance",
+      "isBundle": false,
+      "isCustomerVisible": false,
+      "name": "Voice Over IP Basic instance for Jean",
+      "creationDate": "2021-04-12T23:59:59.52Z",
+      "status": "created",
+      "@type": "Product",
+      "productCharacteristic": [
+        {
+          "id": "Char1",
+          "name": "FixedIP",
+          "valueType": "boolean",
+          "value": false,
+          "@type": "BooleanCharacteristic"
+        },
+        {
+          "@type": "ObjectCharacteristic",
+          "id": "Char5",
+          "name": "FiberSpeed",
+          "valueType": "object",
+          "value": {
+            "@type": "Speed",
+            "volume": 90,
+            "unit": "Mbps"
+          }
+        }
+      ],
+      "place": [
+        {
+          "role": "installationAddress",
+          "place": {
+            "id": "9912",
+            "href": "https://host:port/geographicAddressManagement/v5/geographicAddress/9912",
+            "@referredType": "GeographicAddress",
+            "@type": "PlaceRef"
+          },
+          "@type": "RelatedPlaceRefOrValue"
+        }
+      ],
+      "realizingService": [
+        {
+          "id": "7854",
+          "href": "https://host:port/serviceInventory/v5/service/7854",
+          "@referredType": "Service",
+          "@type": "ServiceRef"
+        }
+      ],
+      "productSpecification": {
+        "id": "PS-101",
+        "href": "https://host:port/productCatalogManagement/v5/productSpecification/PS-101",
+        "@referredType": "ProductSpecification",
+        "@type": "ProductSpecificationRef",
+        "version": "1"
+      },
+      "relatedParty": [
+        {
+          "role": "User",
+          "partyOrPartyRole": {
+            "id": "45hj-999",
+            "href": "https://host:port/partyManagement/v5/individual/45hj-999",
+            "name": "Louise",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          },
+          "@type": "RelatedPartyOrPartyRole"
+        }
+      ]
+    },
+    "relatedParty": [
+      {
+        "role": "Issuer",
+        "partyOrPartyRole": {
+          "id": "56d",
+          "href": "https://host:port/partyManagement/v5/organization/56d",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyOrPartyRole"
+      }
+    ],
+    "reportingSystem": {
+      "id": "123",
+      "name": "CRM app",
+      "@type": "ReportingResource",
+      "@referredType": "LogicalResource"
+    },
+    "source": {
+      "id": "123",
+      "name": "CRM app",
+      "@type": "ReportingResource",
+      "@referredType": "LogicalResource"
+    }
+  },
+  "@baseType": "Event",
+  "@type": "ProductCreateEvent"
+}

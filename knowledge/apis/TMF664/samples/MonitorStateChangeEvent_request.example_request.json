@@ -1,0 +1,34 @@
+{
+  "@type": "MonitorStateChangeEvent",
+  "id": "evt-mon-003",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-mon-003",
+  "correlationId": "mon-g56Iht",
+  "description": "MonitorStateChangeEvent illustration",
+  "eventId": "00003",
+  "eventTime": "2024-08-25T12:40:26.121Z",
+  "eventType": "MonitorStateChangeEvent",
+  "timeOccurred": "2024-08-25T12:40:25.823Z",
+  "title": "MonitorStateChangeEvent",
+  "event": {
+    "monitor": {
+      "@type": "Monitor",
+      "id": "3bc72846-3516-4504-86ce-63a4954f7c00",
+      "href": "/resourceFunctionActivation/v5/monitor/3bc72846-3516-4504-86ce-63a4954f7c00",
+      "state": "Complete"
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

@@ -1,0 +1,8 @@
+
+[
+    {
+        "op": "replace",
+        "path": "/contactMedium/preferred?city=Paris",
+        "value": true
+    }
+]

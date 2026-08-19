@@ -1,0 +1,26 @@
+[
+  {
+    "id": "tfs99",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs99",
+    "name": "Initialize ShoppingCart",
+    "@type": "TaskSpecification"
+  },
+  {
+    "id": "tfs0",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs0",
+    "name": "Eligibility Check",
+    "@type": "TaskSpecification"
+  },
+  {
+    "id": "tfs1",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs1",
+    "name": "Initialize ShoppingCart",
+    "@type": "TaskSpecification"
+  },
+  {
+    "id": "tfs2",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs2",
+    "name": "Confirm Order",
+    "@type": "TaskSpecification"
+  }
+]

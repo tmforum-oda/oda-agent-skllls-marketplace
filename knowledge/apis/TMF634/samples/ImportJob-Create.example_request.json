@@ -1,0 +1,39 @@
+{
+    "correlationId": "7dd133ee-6c9a",
+    "description": "ExportJobCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4876-8fbb-4d44dc98fd57",
+    "eventTime": "2022-08-25T12:19:03.452Z",
+    "eventType": "ExportJobCreateEvent",
+    "priority": "4",
+    "timeOcurred": "2022-08-25T12:18:59.969Z",
+    "title": "ExportJobCreateEvent",
+    "event": {
+        "importJob": {
+            "id": "5439",
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/5439",
+            "contentType": "application/json",
+            "creationDate": "2018-08-27T00:00:00.000Z",
+            "path": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCatalog/3830",
+            "query": "category.id=7757",
+            "status": "Running",
+            "url": "https://my-platform/daily/job/EHCFD6",
+            "errorLog": "http://my-platform/logging/errors.log",
+            "@type": "ImportJob"
+        }
+    },
+    "reportingSystem": {
+        "id": "335",
+        "name": "APP-179",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "853",
+        "name": "APP-30",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ImportJobCreateEvent"
+}

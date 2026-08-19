@@ -1,0 +1,322 @@
+{
+    "@type": "WorkOrder",
+    "href": "https://mycsp.com/tmf-api/v5/workOrderManagement/workOrder/499722f4-2928-4f41-87f0-7cf11157339d",
+    "id": "499722f4-2928-4f41-87f0-7cf11157339d",
+    "category": "Installation WorkOrder",
+    "description": "Fixed Fibre Broadband Installation",
+    "startDate": "2024-04-22T14:23:06.528Z",
+    "requestedCompletionDate": "2024-04-22T14:23:06.528Z",
+    "requestedStartDate": "2024-04-22T14:23:06.528Z",
+    "state": "inProgress",
+    "stateChangeDate": "2024-04-22T14:23:06.528Z",
+    "priority": "high",
+    "completionDate": "2024-04-22T14:23:06.528Z",
+    "expectedCompletionDate": "2024-04-22T14:23:06.528Z",
+    "place": {
+      "@type": "GeographicSite",
+      "href": "https://mycsp.com/tmf-api/v5/geographicSite/geographiSite/23d34276-c446-4e7d-aaef-921c9c5d16ec",
+      "id": "23d34276-c446-4e7d-aaef-921c9c5d16ec",
+      "relatedParty": [
+        {
+          "role": "SiteResponsible",
+          "partyOrPartyRole": {
+            "id": "68e81bb8-cbc2-4908-81ee-fef70d86ab78",
+            "href": "https://mycsp.com/tmf-api/partyManagement/v5/individual/68e81bb8-cbc2-4908-81ee-fef70d86ab78",
+            "name": "Jane Smith",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          },
+          "@type": "RelatedPartyRefOrPartyRoleRef"
+        }
+      ],
+      "contactMedium": [
+        {
+          "@type": "PhoneContactMedium",
+          "contactMediumIdentifier": "TelephoneNumber",
+          "preferred": true,
+          "validFor": {
+            "startDateTime": "2018-06-12T00:00:00Z",
+            "endDateTime": "2019-01-01T00:00:00Z"
+          },
+          "phoneNumber": "01 09 75 83 51"
+        }
+      ],
+      "siteFeature": [
+        {
+          "id": "981dc298-364c-45a3-b051-e1feab7f4622",
+          "name": "accessRestrictions",
+          "featureCategory": [
+            "restrictions"
+          ],
+          "isEnabled": true,
+          "featureCharacteristic": [
+            {
+              "id": "6b9661d1-2a72-4bf3-8663-86a32df242f2",
+              "name": "Brick Wall",
+              "valueType": "string",
+              "value": true,
+              "@type": "BooleanCharacteristic"
+            }
+          ]
+        },
+        {
+          "id": "6e543d2d-c9db-4f5c-9510-e158610d66af",
+          "name": "hazards",
+          "featureCategory": [
+            "hazards"
+          ],
+          "isEnabled": true,
+          "featureCharacteristic": [
+            {
+              "id": "7acbaa15-0dbf-4fb3-b228-e3b46739a4f4",
+              "name": "Noisy Migration",
+              "valueType": "string",
+              "value": true,
+              "@type": "BooleanCharacteristic"
+            }
+          ]
+        }
+      ]
+    },
+    "relatedParty": [
+      {
+        "@type": "RelatedPartyRef",
+        "href": "https://mycsp.com/tmf-api/partyManagement/v5/organisation/94c14d12-14a5-4c61-a0b1-9f59f7117a5e",
+        "id": "94c14d12-14a5-4c61-a0b1-9f59f7117a5e",
+        "name": "Workforce Engineering Group",
+        "role": "Installation Partner"
+      }
+    ],
+    "appointment": {
+      "@type": "AppointmentRef",
+      "href": "https://mycsp.com/tmf-api/v5/appointmentManagement/appointment/2552dab7-bf70-487a-b78b-914f4d3bba71",
+      "id": "2552dab7-bf70-487a-b78b-914f4d3bba71",
+      "name": "Installation Appointment",
+      "description": "Installation Appointment for Fixed Fibre Broadband"
+    },
+    "relatedProductOrder": [
+      {
+        "@type": "ProductOrderRef",
+        "href": "https://mycsp.com/tmf-api/v5/productOrderingManagement/v5/productOrder/dd57bf9d-2fae-49fd-8247-dcf1a139c683",
+        "id": "dd57bf9d-2fae-49fd-8247-dcf1a139c683",
+        "name": "Fixed Fibre Broadband"
+      }
+    ],
+    "externalIdentifier": [
+      {
+        "@type": "ExternalIdentifier",
+        "owner": "MagentoWorkforceManagement",
+        "id": "b799a9ec-141e-43de-b3b1-06c8c5f0414c"
+      }
+    ],
+    "workOrderItem": [
+      {
+        "@type": "WorkOrderItem",
+        "action": "add",
+        "description": "FTTH Installation",
+        "id": "f231dc85-d583-47fb-94de-26fc0f1509d-f",
+        "completionDate": "2024-04-22T14:23:06.528Z",
+        "state": "acknowledged",
+        "work": {
+          "id": "a833c6f7-b5f8-4e58-8af0-616fba1fba7f",
+          "@type": "WorkRefOrValue",
+          "workType": "CPEInst1",
+          "orderDate": "2024-04-22T14:23:06.528Z",
+          "description": "Cabinet Configuration",
+          "expectedCompletionDate": "2024-04-22T14:23:06.528Z",
+          "name": "FTTH Installation",
+          "workPriority": "high",
+          "workCharacteristic": [
+            {
+              "id": "db1b00d6-acaa-428f-9af6-fd7b337b9f17",
+              "name": "cityCode",
+              "valueType": "string",
+              "value": "MK",
+              "@type": "StringCharacteristic"
+            }
+          ],
+          "place": [
+            {
+              "@type": "RelatedPlaceRefOrValue",
+              "role": "string",
+              "place": {
+                "@type": "GeographicSite",
+                "href": "https://mycsp.com/tmf-api/geographicSiteManagement/v5/geographicSite/ae4b915f-16f5-4f05-a3c7-8c6a99c7d24b",
+                "id": "ae4b915f-16f5-4f05-a3c7-8c6a99c7d24b",
+                "code": "BS-9283",
+                "description": "This is the site for the base station BS-9283",
+                "place": [
+                  {
+                    "@type": "GeographicAddress",
+                    "href": "https://mycsp.com/tmf-api/geographicAddressManagement/v5/geographicAddress/fcdb7157-3df9-4c49-93a6-8a3a248d9a27",
+                    "id": "fcdb7157-3df9-4c49-93a6-8a3a248d9a27",
+                    "city": "New York",
+                    "country": "United Kingdom",
+                    "locality": "Oxford",
+                    "postcode": "OX23 232",
+                    "stateOrProvince": "Oxfordshire",
+                    "streetName": "Broadway",
+                    "streetNr": "123",
+                    "geographicAddressType": "Building"
+                  },
+                  {
+                    "href": "https://mycsp.com/tmf-api/geographicLocationManagement/v5/geographicLocation/0c8563f3-26e6-4673-9f82-9784d3df257d",
+                    "id": "0c8563f3-26e6-4673-9f82-9784d3df257d",
+                    "@type": "GeoJsonPolygon",
+                    "coordinates": [
+                      "12.14",
+                      "12.45",
+                      "34.54",
+                      "65.34"
+                    ],
+                    "type": "Polygon"
+                  }
+                ]
+              }
+            }
+          ],
+          "actualDuration": {
+            "amount": 4,
+            "units": "hour"
+          },
+          "workTimeSlot": {
+            "startDateTime": "2024-04-12T23:20:50.52Z"
+          },
+          "currentDuration": {
+            "amount": 4,
+            "units": "hour"
+          },
+          "note": {
+            "@type": "Note",
+            "id": "afa9-3d90aaa8da0f",
+            "author": "Mr. N. Bene",
+            "date": "2020-11-20T08:00:00Z",
+            "text": "Demand Point Type: SDU"
+          },
+          "scheduledDuration": {
+            "amount": 1,
+            "units": "day"
+          },
+          "relatedWork": [
+            {
+              "@type": "WorkRefOrValue",
+              "href": "https://mycsp.com/tmf-api/v5/workOrderManagement/workOrder/82000258-ecf8-47a6-a7b9-b972475bff5a",
+              "id": "82000258-ecf8-47a6-a7b9-b972475bff5a"
+            }
+          ],
+          "relatedParty": [
+            {
+              "@type": "RelatedPartyRef",
+              "href": "https://mycsp.com/tmf-api/partyManagement/v5/organisation/94c14d12-14a5-4c61-a0b1-9f59f7117a5e",
+              "id": "94c14d12-14a5-4c61-a0b1-9f59f7117a5e",
+              "name": "Workforce Engineering Group",
+              "role": "Installation Partner"
+            }
+          ],
+          "workSpecification": {
+            "@type": "WorkSpecificationRef",
+            "id": "aebb358a-4630-41f7-be2d-1756f13b8b90",
+            "name": "FTTH Installation"
+          },
+          "workforceEmployeeAssignment": [
+            {
+              "@type": "WorkforceEmployeeAssignment",
+              "id": "50e8c30a-77f4-4308-804e-a24b321ff1e1",
+              "skillType": "FTTH Installation Engineer",
+              "state": "acknowledged",
+              "timeSlot": [
+                {
+                  "@type": "TimeSlot",
+                  "validFor": {
+                    "startDateTime": "2024-04-12T23:20:50.52Z",
+                    "endDateTime": "2024-04-12T23:20:50.52Z"
+                  }
+                }
+              ],
+              "workforceEmployee": {
+                "@type": "Individual",
+                "name": "Athelstan Amos",
+                "id":"12231244",
+                "contactMedium":[
+                  {
+                    "@type": "PhoneContactMedium",
+                    "@baseType": "ContactMedium",
+                    "contactType": "private",
+                    "id": "c0181f3d83e144a59162fd6136a98462",
+                    "preferred": true,
+                    "validFor": {
+                       "startDateTime": "2018-09-21T23:20:50.52Z"
+                    },
+                    "verified": true,
+                    "phoneNumber": "+1 202-918-2132"
+                 }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "workOrderRelationship": [
+      {
+        "@type": "OrderRelationship",
+        "href": "https://mycsp.com/tmf-api/v5/workOrderManagement/workOrder/0a848092-9cea-4d64-b582-c8bcb8dd57ca",
+        "id": "0a848092-9cea-4d64-b582-c8bcb8dd57ca",
+        "relationshipType": "reliesOn"
+      }
+    ],
+    "agreement": [
+      {
+        "@type": "AgreementRef",
+        "href": "https://mycsp.com/tmf-api/v5/API",
+        "id": "a99a4a2c-df8b-46d1-ba49-42cbb0623b3c",
+        "name": "Fixed Fibre Broadband Agreement"
+      }
+    ],
+    "billingAccount": {
+      "@type": "BillingAccountRef",
+      "href": "https://mycsp.com/tmf-api/v5/API",
+      "id": "38d8f5f1-6213-4f56-bf2c-81fb48843b3b"
+    },
+    "channel": [
+      {
+        "@type": "RelatedChannel",
+        "role": "Portal",
+        "channel": {
+          "@type": "ChannelRef",
+          "href": "https://mycsp.com/tmf-api/v5/API",
+          "id": "58cd86d0-5e2e-4b5b-8a17-3a7f5723c893",
+          "name": "Portal"
+        }
+      }
+    ],
+    "note": {
+      "@type": "Note",
+      "id": "afa9-3d90aaa8da0f",
+      "author": "Mr. N. Bene",
+      "date": "2020-11-20T08:00:00Z",
+      "text": "This is important"
+    },
+    "orderDate": "2024-04-22T14:23:06.528Z",
+    "orderTotalPrice": [
+      {
+        "@type": "OrderPrice",
+        "description": "Fixed Fibre Broadband Installation",
+        "name": "Installation Fee",
+        "price": {
+          "@type": "Price",
+          "dutyFreeAmount": {
+            "unit": "USD",
+            "value": 99.99
+          },
+          "percentage": 0,
+          "taxIncludedAmount": {
+            "unit": "USD",
+            "value": 99.99
+          },
+          "taxRate": 0
+        },
+        "priceType": "Installation Fee"
+      }
+    ]
+  }

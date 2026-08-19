@@ -1,0 +1,36 @@
+{
+    "correlationId": "494731",
+    "description": "IntentStatusChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "494849",
+    "eventTime": "2024-04-30T15:49:00.000Z",
+    "eventType": "IntentStatusChangeEvent",
+    "priority": "1",
+    "timeOcurred": "2024-04-30T15:49:00.000Z",
+    "title": "IntentStatusChangeEvent",
+    "event": {
+        "intent": {
+            "id": "20071",
+            "href": "https://mycsp.com:8080//tmf-api/intentManagement/v5/intent/20071",
+            "name": "probeIntentExample",
+            "lifecycleStatus": "Active",            
+            "@baseType": "Intent",
+            "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Common/ProbeIntent.schema.json",
+            "@type": "ProbeIntent"
+        }
+    },
+    "reportingSystem": {
+        "id": "458197",
+        "name": "APP-458197",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "458363",
+        "name": "APP-458363",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "IntentStatusChangeEvent"
+}

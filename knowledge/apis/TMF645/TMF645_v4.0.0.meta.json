@@ -1,0 +1,16 @@
+{
+  "id": "TMF645",
+  "type": "api",
+  "name": "service-qualification-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF645_Service_Qualification/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "98d40b92e46222873a6e6501c48c3c86650719b150c05e9cc631963810b74e8f"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

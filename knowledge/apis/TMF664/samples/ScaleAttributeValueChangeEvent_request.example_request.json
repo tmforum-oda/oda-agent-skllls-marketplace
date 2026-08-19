@@ -1,0 +1,37 @@
+{
+  "@type": "ScaleAttributeValueChangeEvent",
+  "id": "evt-scale-002",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-scale-002",
+  "correlationId": "scale-90kl90",
+  "description": "ScaleAttributeValueChangeEvent illustration",
+  "eventId": "00002",
+  "eventTime": "2024-08-25T14:10:25.121Z",
+  "eventType": "ScaleAttributeValueChangeEvent",
+  "timeOccurred": "2024-08-25T14:10:24.823Z",
+  "title": "ScaleAttributeValueChangeEvent",
+  "event": {
+    "scale": {
+      "@type": "Scale",
+      "id": "4a41a328-1cf3-4674-bdd7-c43129fbfa7c",
+      "href": "/resourceFunctionActivation/v5/scale/4a41a328-1cf3-4674-bdd7-c43129fbfa7c",
+      "numberOfSteps": {
+        "amount": 4,
+        "units": "GB"
+      }
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

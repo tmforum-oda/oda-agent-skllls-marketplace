@@ -1,0 +1,5 @@
+{
+  "op": "replace",
+  "path": "/partyPrivacyProfileCharacteristic/characterisitc?id=43", 
+  "value": {"value" : "No"}
+}

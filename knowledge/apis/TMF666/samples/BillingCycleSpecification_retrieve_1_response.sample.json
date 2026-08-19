@@ -1,0 +1,18 @@
+{
+    "@type": "BillCycleSpecification",
+    "billingDateShift": 20, 
+    "billingPeriod": "monthly", 
+    "chargeDateOffset": 10, 
+    "creditDateOffset": 15, 
+    "description": "This billing cycle specification describes the cycle for 20th of the month.", 
+    "frequency": "monthly", 
+    "href": "https://host:port/tmf-api/accountManagement/v5/billingCycleSpecification/4556", 
+    "id": "4556", 
+    "mailingDateOffset": 25, 
+    "name": "Monthly billing", 
+    "paymentDueDateOffset": 30, 
+    "validFor": {
+        "startDateTime": "2018-06-10T00:00:00.000Z", 
+        "endDateTime": "2025-01-10T00:00:00.000Z"
+    }
+}

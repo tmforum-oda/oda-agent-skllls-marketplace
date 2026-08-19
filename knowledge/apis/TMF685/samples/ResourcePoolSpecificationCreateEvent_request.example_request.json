@@ -1,0 +1,75 @@
+{
+    "@type": "ResourcePoolSpecificationCreateEvent",
+    "@baseType": "Event",
+    "correlationId": "e4888f4d-71cd-43a4-a018-dd13f230935c",
+    "description": "ResourcePoolSpecificationCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "3b63e628-0c66-4d57-abbf-2fb6aeb229fd",
+    "eventTime": "2024-09-19T13:55:06.910Z",
+    "eventType": "ResourcePoolSpecificationCreateEvent",
+    "priority": "3",
+    "timeOccurred": "2024-09-19T13:55:03.868Z",
+    "title": "ResourcePoolSpecificationCreateEvent",
+    "event": {
+        "resourcePoolSpecification": {
+            "@type": "ResourcePoolSpecification",
+            "id": "b0e0827c-5693-4e41-8445-22438abb33cb", 
+            "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePoolSpecification/b0e0827c-5693-4e41-8445-22438abb33cb", 
+            "name": "Phone Number pool",
+            "description": "Specifies the details of ResourcePools for Phone Number ranges",
+            "capacitySpecification":
+            [
+                {
+                    "@type": "CapacitySpecificationRef",
+                    "@referredType": "CapacitySpecification",
+                    "id": "3d01344d-4409-4b15-8fcb-b8802314ff9c",
+                    "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/capacitySpecification/3d01344d-4409-4b15-8fcb-b8802314ff9c",
+                    "name": "Phone Number range"
+                }
+            ],
+            "resourceSpecCharacteristic":
+            [
+                {
+                    "@type": "CharacteristicSpecification",
+                    "name": "cc",
+                    "description": "Phone Number Country Code",
+                    "valueType": "string",
+                    "characteristicValueSpecification":
+                    [
+                        {
+                            "@type": "CharacteristicValueSpecification",
+                            "valueType": "string",
+                            "regex": "^[1-9]\\d{0,2}$"
+                        }
+                    ]
+                },
+                {
+                    "@type": "CharacteristicSpecification",
+                    "name": "ndc",
+                    "description": "Phone Number National Destination Code",
+                    "valueType": "string",
+                    "characteristicValueSpecification":
+                    [
+                        {
+                            "@type": "CharacteristicValueSpecification",
+                            "valueType": "string",
+                            "regex": "^[1-9]\\d*?$"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "reportingSystem": {
+        "id": "109",
+        "name": "APP-804",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "8",
+        "name": "APP-307",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    }
+}

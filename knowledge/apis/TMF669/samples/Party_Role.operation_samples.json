@@ -1,0 +1,60 @@
+{
+    "PartyRole": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving PartyRole resources.",
+		    "fields": ["id","name","engagedParty.name"],
+		    "filtering" : "engagedParty.name=GrooveDotCom",
+                    "content-type": "application/json", 
+                    "response" : "$_PartyRole_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description": "Here's an example of a request for retrieving a PartyRole resource",
+                    "content-type": "application/json",
+                    "objectId": "7321-7c0d",  
+                    "response" : "$_PartyRole_retrieve_1_response"
+                }
+            ]
+        }, 
+        "create": {
+            "samples" : [
+		{
+                    "description" : "Here's an example of a request for creating a PartyRole resource. In this example the request passes mandatory and optional attributes.",
+                    "request" : "$_PartyRole_create_1_request",
+                    "response" : "$_PartyRole_create_1_response"
+		} 
+            ]   
+        },
+        "partialupdate": {
+            "samples" : [
+		{
+                    "description" : "Here's an example of a request for patching a PartyRole resource.\nChanging the status to 'prospective' (using json-merge).",
+		    "content-type" : "application/merge-patch+json",
+                    "objectId": "7321-7c0d",  
+                    "request" : "$_PartyRole_partialupdate_1_request",
+                    "response" : "{ Similar JSON as in GET response with status added or changed }"
+		},
+		{
+                    "description" : "Here's an example of a request for patching a PartyRole resource.\nChanging the status to 'prospective' (using json-patch).",
+		    "content-type" : "application/json-patch+json",
+                    "objectId": "7321-7c0d",  
+                    "request" : "$_PartyRole_partialupdate_2_request",
+                    "response" : "{ Similar JSON as in GET response with status added or changed }"
+		}
+            ]   
+           },
+        "delete": {
+	    "samples" : [
+		{
+		    "description": "This operation deletes a PartyRole resource.",
+		    "objectId" : "7321-7c0d"
+		}
+	    ]
+	}
+    }
+}

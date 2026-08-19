@@ -1,0 +1,17 @@
+{
+  "id": "TMFC009",
+  "type": "component",
+  "name": "ServiceQualificationManagement",
+  "version": "1.1.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC009-ServiceQualificationManagement/Specification/TMFC009-ServiceQualificationManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "d9e26d82203a45d5f05e23786eb49e4c9a061053381a2985601c4f3f5210abb6"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

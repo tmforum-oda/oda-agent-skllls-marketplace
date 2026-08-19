@@ -1,0 +1,74 @@
+{
+  "id": "5352",
+  "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/5352",
+  "serviceType": "Cloud",
+  "name": "vCPE serial 1355615",
+  "description": "Instantiation of vCPE",
+  "state": "active",
+  "category": "CFS",
+  "serviceDate" : "2018-01-15T12:26:11.747Z",
+  "startDate": "2018-01-15T12:26:11.747Z",
+  "serviceSpecification": {
+    "id": "1212",
+    "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/1212",
+    "name": "vCPE",
+    "version": "1.0.0",
+    "@type": "ServiceSpecificationRef",
+    "@referredType": "ServiceSpecification"
+  },
+  "serviceRelationship": [
+    {
+      "relationshipType": "DependentOn",
+      "service": {
+        "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/5645",
+        "id": "5645",
+        "@type": "ServiceRef",
+        "@referredType": "Service"
+      },
+      "@type": "ServiceRelationship"
+    }
+  ],
+  "supportingResource": [
+    {
+      "id": "7171",
+      "href": "https://mycsp.com:8080/tmf-api/resourceInventoryManagement/v5/resource/7171",
+      "name": "BNG_MUX",
+      "value": "01 25 65",
+      "@type": "ResourceRef",
+      "@referredType": "VNF"
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "user",
+      "partyOrPartyRole": {
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+        "id": "456",
+        "name": "John Doe",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    }
+  ],
+  "place": [
+    {
+      "role": "InstallationAddress",
+      "place": {
+        "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/2435",
+        "id": "2435",
+        "name": "Customer primary location",
+        "@type": "PlaceRef",
+        "@referredType" : "GeographicAddress"
+      },
+      "@type": "RelatedPlaceRefOrValue"
+    }
+  ],
+  "intent": {
+    "id": "42",
+    "href": "https://mycsp.com:8080//tmf-api/intentManagement/v5/intent/42",
+    "name": "IntentA",
+    "@type": "IntentRef"
+  },
+  "@type": "Service"
+}

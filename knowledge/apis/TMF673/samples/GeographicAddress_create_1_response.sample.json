@@ -1,0 +1,41 @@
+{
+    "id": "2b8cea8f-642d-42e0-bdb2-6f47fabb3f07",
+    "href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/2b8cea8f-642d-42e0-bdb2-6f47fabb3f07",
+    "streetNr": "2",
+    "streetNrSuffix": "B",
+    "streetName": " Libertatii",
+    "streetType": "Strada",
+    "postcode": "100283",
+    "locality": "Ploiesti",
+    "city": "Ploiesti",
+    "stateOrProvince": "Prahova",
+    "country": "Romania",
+    "geographicLocation": {
+      "id": "67301845-ee43-4984-ba3b-b4fba4b98872",
+      "href": "https://host/tmf-api/geographicLocation/v5/geographicLocation/67301845-ee43-4984-ba3b-b4fba4b98872",
+      "@type":"GeographicLocation"
+    },
+    "countryCode": [
+      {
+        "format": "ISO 3166-1 Alpha-2",
+        "value": "RO",
+        "@type": "StandardIdentifier"
+      }
+    ],
+    "externalIdentifier": [
+      {
+        "id": "df882733-6a5d-440a-9a91-d261ba6ac346",
+        "owner": "Master-SBS",
+        "externalIdentifierType": "GeographicAddress",
+        "@type":"ExternalIdentifier"
+      },
+      {
+        "id": "b3444353-14d5-4cf5-acea-bba60964fcfd",
+        "owner": "Secondary-SBS",
+        "externalIdentifierType": "GeographicAddress",
+        "@type":"ExternalIdentifier"
+      }
+    ],
+    "geographicAddressType": "residential",
+    "@type":"GeographicAddress"
+  }

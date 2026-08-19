@@ -1,0 +1,14 @@
+{
+    "id": "18252cd7c-bd6c12472", 
+    "name": "Main Credit Card",
+    "@baseType": "PaymentMethod",
+    "@type": "BankCard",
+    "brand": "AmericanExpress",
+    "cardType": "Credit",
+    "cardNumber": "0000-0000-0000-0000",
+    "expirationDate":"2025-11-20T10:19:46.000Z",
+    "nameOnCard": "A D Oyeniran",
+    "bank": "HSBC Bank",
+    "status": "Active",
+    "statusDate": "2020-07-17T10:12:26.000Z"
+}

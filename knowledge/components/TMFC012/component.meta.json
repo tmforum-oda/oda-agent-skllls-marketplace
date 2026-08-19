@@ -1,0 +1,17 @@
+{
+  "id": "TMFC012",
+  "type": "component",
+  "name": "ResourceInventory",
+  "version": "2.2.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC012-ResourceInventory/Specification/TMFC012-ResourceInventory.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "db15e15d55789566e0c0439f68b36ab9db8dec718ac11ca3cb8d780c638f7699"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

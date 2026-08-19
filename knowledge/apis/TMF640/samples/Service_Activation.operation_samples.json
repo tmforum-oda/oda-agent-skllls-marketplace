@@ -1,0 +1,92 @@
+{
+    "Service": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving services from the network.",
+                    "fields": "id,name,state", 
+                    "filtering": "serviceType=Cloud&state=Active", 
+                    "content-type": "application/json", 
+                    "response" : "$_Service_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific service from the network. The level of detail returned is minimal, according to what might be held in the network.",
+                    "content-type": "application/json",
+                    "objectId": "123-456",
+                    "response" : "$_Service_retrieve_1_response"
+        		}
+            ]
+        }, 
+        "create": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for activating a new service on the network.",
+                    "content-type": "application/json",
+                    "request" : "$_Service_create_1_request",
+                    "response" : "$_Service_create_1_response"
+        		}
+            ]
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for updating a service in the network. In this example, a new state is set.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "123-456",
+                    "request" : "$_Service_partialupdate_2_request",
+                    "response" : "$_Service_partialupdate_2_response"
+                },
+                {
+                    "description" : "Here's an example of a request for updating a service in the network. In this example, a new state is set.",
+                    "content-type": "application/json-patch+json",
+                    "objectId": "123-456",
+                    "request" : "$_Service_partialupdate_1_request",
+                    "response" : "$_Service_partialupdate_1_response"
+        		},
+                {
+                    "description" : "Here's an example of a request for updating a service in the network. In this example, a service characteristic is updated.",
+                    "content-type": "application/json-patch-query+json",
+                    "objectId": "123-456",
+                    "request" : "$_Service_partialupdate_3_request",
+                    "response" : "$_Service_partialupdate_3_response"
+                }
+            ]
+        },
+        "delete":  {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for deactivating a service in the network.",
+                    "content-type": "application/json",
+                    "objectId": "123-456",
+                    "response" : "$_Service_delete_1_response"
+        		}
+            ]
+        }
+    },
+    "Monitor": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving monitors for service activation.",
+                    "filtering": "state=InProgress", 
+                    "content-type": "application/json", 
+                    "response" : "$_Monitor_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific monitor for service activation.",
+                    "content-type": "application/json",
+                    "objectId": "44555",
+                    "response" : "$_Monitor_retrieve_1_response"
+        		}
+            ]
+        }
+    }
+}

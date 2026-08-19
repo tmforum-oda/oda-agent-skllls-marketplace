@@ -1,0 +1,33 @@
+{
+  "correlationId": "f3a34f89-0046",
+  "description": "ImportJobStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4996-b9b1-e533c09a0186",
+  "eventTime": "2022-08-25T12:17:59.636Z",
+  "eventType": "ImportJobStateChangeEvent",
+  "priority": "2",
+  "timeOcurred": "2022-08-25T12:17:55.035Z",
+  "title": "ImportJobStateChangeEvent",
+  "event": {
+    "importJob": {
+        "id": "2341",
+        "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/importJob/2341",
+        "status": "Succeeded",
+        "@type": "ImportJob"
+    }
+  },
+  "reportingSystem": {
+    "id": "868",
+    "name": "APP-394",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "372",
+    "name": "APP-92",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ImportJobStateChangeEvent"
+}

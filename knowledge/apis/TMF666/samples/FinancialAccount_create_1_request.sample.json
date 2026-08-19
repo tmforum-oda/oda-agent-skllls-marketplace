@@ -1,0 +1,17 @@
+{
+    "@type":"FinancialAccount",
+    "name": "Administration account",
+    "relatedParty": [
+        {
+            "role": "employee",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "@referredType" : "Individual",
+                "@type": "PartyRefOrPartyRoleRef",
+                "href": "https://host:port/tmf-api/partyManagement/v5/individual/2186", 
+                "id": "2186", 
+                "name": "Gustave Flaubert"
+            }
+        }
+    ] 
+}

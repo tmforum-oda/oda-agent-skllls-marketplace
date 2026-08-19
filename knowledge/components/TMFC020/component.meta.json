@@ -1,0 +1,17 @@
+{
+  "id": "TMFC020",
+  "type": "component",
+  "name": "DigitalIdentityManagement",
+  "version": "1.1.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC020-DigitalIdentityManagement/Specification/TMFC020-DigitalIdentityManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "0e202a57126bb1a211d07f9404df487ff5566f9ec4bcd4b269b64e05b57883f0"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

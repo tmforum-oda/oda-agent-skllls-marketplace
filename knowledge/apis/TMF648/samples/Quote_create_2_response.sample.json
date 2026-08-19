@@ -1,0 +1,123 @@
+{
+  "href": "https://host:port/quoteManagement/v5/quote/13cd-77fc",
+  "id": "13cd-77fc",
+  "category": "BSBS Quote",
+  "description": "instantSyncQuote Quote illustration",
+  "effectiveQuoteCompletionDate": "2021-05-13T12:45:12.028Z",
+  "expectedFulfillmentStartDate": "2021-05-14T12:45:12.028Z",
+  "state": "inProgress",
+  "instantSyncQuote": true,
+    "quoteItem": [
+    {
+      "id": "1",
+      "action": "add",
+      "quantity": 1,
+      "state": "inProgress",
+      "product": {
+        "@type": "Product",
+          "productCharacteristic": [
+          {
+            "@type": "StringCharacteristic",
+            "name": "Voice Bundle",
+            "value": "unlimited"
+          },
+          {
+            "@type": "ObjectCharacteristic",
+            "id": "Char5",
+            "name": "Data Bundle",
+            "value": {
+              "volume": 50,
+              "unit": "Gb/month"
+            }
+          }
+        ],
+        "productSpecification": {
+          "id": "ssp7-ty89",
+          "href": "https://host:port/productCatalogManagement/v5/productSpecification/ssp7-ty89",
+          "name": "TMF Tariff Plan",
+          "@type":"ProductSpecificationRef",
+          "@referredType":"ProductSpecification"
+        }
+      },
+      "productOffering": {
+        "id": "54gg-zza1",
+        "href": "https://host:port/productCatalogManagement/v5/productSpecification/54gg-zza1",
+        "name": "TMF Tariff Plan 25",
+        "@type":"ProductOfferingRef",
+        "@referredType":"ProductOffering"
+      },
+      "quoteItemPrice": [
+        {
+          "description": "Tariff plan 25 fee",
+          "name": "Tariff Plan 25 Tariff",
+          "priceType": "recurring",
+          "recurringChargePeriod": "month",
+          "price": {
+            "taxRate": 16,
+            "dutyFreeAmount": {
+              "unit": "EUR",
+              "value": 30
+            },
+            "taxIncludedAmount": {
+              "unit": "EUR",
+              "value": 34.8
+            }
+          },
+          "priceAlteration": [
+            {
+              "applicationDuration": 0,
+              "description": "Specific Discount for PerfectCustomer company",
+              "name": "10% off",
+              "priceType": "recurring",
+              "priority": 1,
+              "recurringChargePeriod": "month",
+              "price": {
+                "percentage": 10        
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "Buyer Contact",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "qsdd-9888",
+        "href": "https://host:port/partyManagement/v5/individual/qsdd-9888",
+        "name": "Jean Pontus",
+        "@referredType": "Individual",
+        "@type": "PartyRef"
+      }
+    },
+    {
+      "role": "Buyer organization",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "55",
+        "href": "https://host:port/partyManagement/v5/organization/55",
+        "name": "PerfectCustomer",
+        "@referredType": "Organization",
+        "@type": "PartyRef"
+      } 
+    },
+    {
+      "role": "Seller Contact",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "45gh-gh89",
+        "href": "https://host:port/partyManagement/v5/individual/45gh-gh89",
+        "name": "Joe Doe",
+        "@referredType": "Individual",
+        "@type": "PartyRef"
+      }
+    }
+  ],
+  "validFor": {
+    "endDateTime": "2021-05-13T12:45:12.033Z",
+    "startDateTime": "2021-05-20T12:45:12.033Z"
+  },
+  "@type": "Quote"
+}

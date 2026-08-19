@@ -1,0 +1,5 @@
+{
+        "id": "42", 
+        "href": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/42",
+        "@type": "ServiceOrder"
+}

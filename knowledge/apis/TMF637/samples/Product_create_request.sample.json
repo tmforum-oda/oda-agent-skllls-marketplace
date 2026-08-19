@@ -1,0 +1,69 @@
+  {
+    "description": "This product is an Product Specification instance",
+    "isBundle": false,
+    "isCustomerVisible": false,
+    "name": "Voice Over IP Basic instance for Jean",
+    "status": "created",
+    "@type": "Product",
+    "productCharacteristic": [
+      {
+        "@type": "BooleanCharacteristic",
+        "id": "Char1",
+        "name": "FixedIP",
+        "valueType": "boolean",
+        "value": false
+    },
+    {
+        "@type": "ObjectCharacteristic",
+        "id": "Char5",
+        "name": "FiberSpeed",
+        "valueType": "object",
+        "value": {
+            "@type": "Speed",
+            "volume": 90,
+            "unit": "Mbps"
+        }
+    }    
+    ],
+    "place": [
+      {
+        "role": "installationAddress",
+        "place": {
+          "id": "9912",
+          "href": "https://host:port/geographicAddressManagement/v5/geographicAddress/9912",
+          "@referredType": "GeographicAddress",
+          "@type": "PlaceRef"
+        },
+        "@type": "RelatedPlaceRefOrValue"
+      }
+    ],
+    "realizingService": [
+      {
+        "id": "7854",
+        "href": "https://host:port/serviceInventory/v5/service/7854",
+        "@referredType": "Service",
+        "@type": "ServiceRef"
+      }
+    ],
+    "productSpecification": {
+      "id": "PS-101",
+      "href": "https://host:port/productCatalogManagement/v5/productSpecification/PS-101",
+      "@referredType": "ProductSpecification",
+      "@type": "ProductSpecificationRef",
+      "version": "1"
+    },
+    "relatedParty": [
+      {
+        "role": "User",
+        "partyOrPartyRole": {
+          "id": "45hj-999",
+          "href": "https://host:port/partyManagement/v5/individual/45hj-999",
+          "name": "Louise",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyOrPartyRole"
+      }
+    ]
+  }
+

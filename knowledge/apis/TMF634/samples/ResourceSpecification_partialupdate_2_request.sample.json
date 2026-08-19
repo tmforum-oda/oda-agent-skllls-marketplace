@@ -1,0 +1,11 @@
+[
+    {   "op": "replace",
+        "/path": "lifecycleStatus",
+        "value": "Retired"
+    },
+    {
+        "op": "replace",
+        "/path": "isBundle",
+        "value": "true"
+    }
+]

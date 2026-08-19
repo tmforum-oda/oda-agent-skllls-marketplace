@@ -1,0 +1,49 @@
+{
+    "id": "5351",
+    "href": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/5351",
+    "state": "acknowledged",
+    "description": "Service order description",
+    "category": "TMF resource illustration",
+    "orderDate": "2020-08-27T09:37:40.508Z",
+    "requestedStartDate": "2020-08-31T09:37:40.508Z",
+    "requestedCompletionDate": "2020-08-31T09:37:40.508Z",
+    "expectedCompletionDate": "2020-10-31T09:37:40.508Z",
+    "startDate": "2020-08-31T09:37:40.508Z",
+    "serviceOrderItem": [
+      {
+        "id": "1",
+        "action": "add",
+        "state": "acknowledged",
+        "service": {
+          "@type": "Service",
+          "state": "active",
+          "serviceCharacteristic": [
+            {
+              "id": "452-gh6",
+              "name": "vCPE",
+              "valueType": "object",
+              "value": {
+                "@type": "VCPE",
+                "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/VCPE.schema.json",
+                "vCPE_IP": "193.218.236.21",
+                "MaxTxRate": 300,
+                "TransmitPower": "11 dBm",
+                "maxTream": "OFF"
+              },
+              "@type": "ObjectCharacteristic"
+            }
+          ],
+          "serviceSpecification": {
+            "@type": "ServiceSpecificationRef",
+            "@referredType": "ServiceSpecification",
+            "id": "1212",
+            "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/1212",
+            "name": "vCPE",
+            "version": "1.0.0"
+          }
+        },
+        "@type": "ServiceOrderItem"
+      }
+    ],
+    "@type": "ServiceOrder"
+  }

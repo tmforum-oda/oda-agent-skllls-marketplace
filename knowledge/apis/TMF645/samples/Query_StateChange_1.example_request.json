@@ -1,0 +1,33 @@
+{
+    "correlationId": "95e2f5d5-e67f",
+    "description": "QueryServiceQualificationStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4011-abc1-8a9dfc8ff694",
+    "eventTime": "2022-08-25T12:20:45.501Z",
+    "eventType": "QueryServiceQualificationStateChangeEvent",
+    "priority": "5",
+    "timeOccurred": "2022-08-25T12:20:40.538Z",
+    "title": "QueryServiceQualificationStateChangeEvent",
+    "event": {
+        "queryServiceQualification": {
+            "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/queryServiceQualification/54",
+            "id": "54",
+            "@type": "QueryServiceQualification",
+            "state": "done"
+        }
+    },
+    "reportingSystem": {
+        "id": "768",
+        "name": "APP-897",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "276",
+        "name": "APP-819",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "QueryServiceQualificationStateChangeEvent"
+}

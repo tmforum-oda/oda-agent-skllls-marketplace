@@ -1,0 +1,7 @@
+[
+    {
+        "op": "replace",
+        "path": "/lifecycleStatus?version='1.0'",
+        "value": "Retired"
+    }
+]

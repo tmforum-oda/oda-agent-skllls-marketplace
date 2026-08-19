@@ -1,0 +1,14 @@
+{
+    "id": "8121", 
+    "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCategory/8121", 
+    "name": "Network Logical Resources", 
+    "description": "This resource category groups together logical resources that are implemented in the network", 
+    "@type": "ResourceCategory", 
+    "version": "1.0", 
+    "validFor": {
+        "startDateTime": "2017-08-11T00:00:00.000Z", 
+        "endDateTime": "2018-03-07T00:00:00.000Z"
+    }, 
+    "lifecycleStatus": "Tentative", 
+    "lastUpdate": "2017-08-09T00:00:00.000Z"
+}

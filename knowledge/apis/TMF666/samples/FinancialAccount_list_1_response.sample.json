@@ -1,0 +1,126 @@
+[
+    {
+        "creditLimit": {
+            "unit": "USD",
+            "value": 3500     
+        }, 
+        "description": "This  financial account ...", 
+        "@type": "FinancialAccount",
+        "href": "https://host:port/tmf-api/accountManagement/v5/financialAccount/1041", 
+        "id": "1041", 
+        "lastModified": "2018-06-14T00:00:00.000Z", 
+        "name": "Administration account", 
+        "state": "Active", 
+        "accountType": "Global", 
+        "relatedParty": [
+            {
+                "role": "bill receiver",
+                "@type": "RelatedPartyRefOrPartyRoleRef",
+                "partyOrPartyRole": {
+                    "@referredType" : "Individual",
+                    "@type": "PartyRefOrPartyRoleRef",
+                    "href": "https://host:port/tmf-api/partyManagement/v5/individual/2186", 
+                    "id": "2186", 
+                    "name": "Gustave Flaubert"
+                }
+            }
+        ], 
+        "taxExemption": [
+            {
+                "@type": "TaxExemption",
+                "id": "1",
+                "certificateNumber": "45678909876", 
+                "issuingJurisdiction": "Prefecture", 
+                "reason": "Social", 
+                "taxDefinition": [
+                    {
+                      "@type": "TaxDefinition",
+                      "id": "96",
+                      "name": "Value Added Tax",
+                      "taxType": "federalVat"
+                    }
+                ],
+                "attachment": {
+                    "@type": "Attachment",
+                    "id": "9304357346341236",
+                    "href": "https://host:port/tmf-api/document/v5/attachment/9304357346341236",
+                    "attachmentType": "taxExemptionCertificate",
+                    "name": "TaxExemptionCertificate-54321.pdf",
+                    "description": "Electronic version of the tax exemption certificate",
+                    "mimeType": "application/pdf",
+                    "url": "http://host:port/DocumentManager/666/TaxExemptionCertificate-54321.pdf"
+                },
+                "validFor": {
+                    "startDateTime": "2018-06-13T00:00:00.000Z", 
+                    "endDateTime": "2019-01-10T00:00:00.000Z"
+                }
+            }
+        ], 
+        "contact": [
+            {
+                "@type": "Contact",
+                "contactName": "Ludwig Borgia", 
+                "contactType": "secondary", 
+                "partyRoleType": "CustomerAccountRepresentative", 
+                "validFor": {
+                    "startDateTime": "2018-06-11T00:00:00.000Z", 
+                    "endDateTime": "2019-01-10T00:00:00.000Z"
+                }, 
+                "contactMedium": [
+                    {
+                        "@type": "EmailContactMedium",
+                        "preferred": false, 
+                        "mediumType": "Email", 
+                        "validFor": {
+                            "startDateTime": "2018-06-12T00:00:00.000Z", 
+                            "endDateTime": "2019-01-10T00:00:00.000Z"
+                        }, 
+                        "emailAddress": "alain.delon@best-actor.fr" 
+                    }
+                ], 
+                "relatedParty": {
+                    "role": "employee",
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "partyOrPartyRole": {
+                        "@referredType" : "Individual",
+                        "@type": "PartyRefOrPartyRoleRef",
+                        "href": "https://host:port/tmf-api/partyManagement/v5/individual/2186", 
+                        "id": "2186", 
+                        "name": "Gustave Flaubert"
+                    }
+                }
+            }
+        ], 
+        "accountBalance": [
+            {
+                "@type": "AccountBalance",
+                "amount": {
+                    "unit": "USD",
+                    "value": 50.58 
+                }, 
+                "balanceType": "ReceivableBalance", 
+                "validFor": {
+                    "startDateTime": "2018-06-15T00:00:00.000Z", 
+                    "endDateTime": "2019-01-10T00:00:00.000Z"
+                }
+            }
+        ], 
+        "accountRelationship": [
+            {
+                "@type": "AccountRelationship",
+                "relationshipType": "contains", 
+                "validFor": {
+                    "startDateTime": "2018-06-13T00:00:00.000Z", 
+                    "endDateTime": "2019-01-10T00:00:00.000Z"
+                }, 
+                "account": {
+                    "@referredType":"BillingAccount",
+                    "@type":"AccountRef",
+                    "href": "https://host:port/tmf-api/accountManagement/v5/partyAccount/7688", 
+                    "id": "7688", 
+                    "name": "Travel Account"
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "op": "replace",
+    "path": "/sererity",
+    "value": "Minor"
+  },
+  {
+    "op": "replace",
+    "path": "/note?id=77456",
+    "value": {
+      "author": "Jack Smith",
+      "text": "Please approach me as soon as possible. Thanks in advance"
+    }
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "id": "1203",
+  "href": "https://host:port/shoppingCart/v5/shoppingCart/1203",
+  "@type": "ShoppingCart",
+  "relatedParty": [
+    {
+      "role": "customer",
+      "@type": "RelatedPartyOrPartyRole",
+      "partyOrPartyRole": 
+      { 
+        "id": "9176",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v4/customer/9176",
+        "name": "Jack Smith",
+        "@type": "PartyRoleRef",
+        "@referredType": "Customer"
+      }
+    }
+  ],
+  "creationDate": "2022-08-28T12:02:41.791Z",
+  "lastUpdateDate": "2023-01-28T12:02:41.791Z",
+  "validFor": {
+    "endDateTime": "2023-03-28T12:02:41.791Z",
+    "startDateTime": "2022-08-28T12:02:41.791Z"
+  }
+}

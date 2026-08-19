@@ -1,0 +1,35 @@
+{
+    "id": "5574", 
+    "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCatalog/5574", 
+    "name": "Cloud Resource Catalog", 
+    "description": "This resource catalog points to entities in the area of cloud management", 
+    "@type": "ResourceCatalog",
+    "version": "2.0",
+    "validFor": {
+        "startDateTime": "2022-03-25T00:00:00.000Z",
+        "endDateTime": "2023-09-25T00:00:00.000Z"
+    },
+    "lastUpdate": "2023-03-24T00:00:22.920Z", 
+    "lifecycleStatus": "Active", 
+    "relatedParty": [
+        {
+            "role": "Supplier",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "id": "6001",
+                "href": "https://mycsp.com:8080/tmf-api/partyRole/v5/supplier/6001",
+                "name": "John Doe",
+                "@referredType": "Supplier",
+                "@type": "PartyRoleRef"
+            }
+        }
+    ], 
+    "category": [
+        {
+            "id": "4569", 
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCategory/4569", 
+            "version": "1.0", 
+            "name": "Secure Home"
+        }
+    ]
+}

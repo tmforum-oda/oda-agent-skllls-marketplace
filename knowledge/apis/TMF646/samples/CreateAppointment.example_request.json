@@ -1,0 +1,146 @@
+{
+  "@type": "AppointmentCreateEvent",
+  "correlationId": "1da724c6-17bd",
+  "description": "AppointmentCreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4e6a-95cb-0892c2e596b2",
+  "eventTime": "2026-03-26T08:49:14.288Z",
+  "eventType": "AppointmentCreateEvent",
+  "priority": "5",
+  "title": "AppointmentCreateEvent",
+  "event": {
+    "appointment": {
+      "@type": "Appointment",
+      "href": "https://serverRoot/tmf-api/appointment/v5/appointment/21",
+      "id": "21",
+      "description": "Fix an internet connection problem for a customer",
+      "state": "confirmed",
+      "appointmentType": "repair",
+      "creationDate": "2026-03-28T08:10:00.000Z",
+      "lastUpdate": "2026-03-28T08:10:00.000Z",
+      "attachment": [
+        {
+          "id": "9a65f424-4208-4000-a619-d7826c4360d9",
+          "href": "https://serverRoot/tmf-api/documentManagement/v5/attachment/9a65f424-4208-4000-a619-d7826c4360d9",
+          "@type": "AttachmentRef",
+          "@referredType": "Attachment"
+        },
+        {
+          "id": "2e0c66ef-93b4-458c-9e46-7331e9e56d3e",
+          "@type": "Attachment",
+          "attachmentType": "Document",
+          "mimeType": "application/pdf",
+          "name": "Agreement for intervention",
+          "description": "The customer authorizes the technician to modify his installation",
+          "url": "https://documentManager/85745/customerAgreement325.pdf"
+        }
+      ],
+      "timeSlot": {
+        "@type": "TimeSlot",
+        "id": "16bf91a0-07c9-4ed8-b7c1-7a3f0bf86620",
+        "timeWindow": {
+          "startDateTime": "2026-03-28T08:00:00.000Z",
+          "endDateTime": "2026-03-28T12:00:00.000Z"
+        }
+      },
+      "calendarEntry": {
+        "@type": "CalendarEntry",
+        "id": "bcda82e2-1d30-4045-bcc5-9fa773df21fa"
+      },
+      "place": {
+        "id": "9979",
+        "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/9979",
+        "name": "San Francisco Bay Area",
+        "@referredType": "GeographicAddress",
+        "@type": "PlaceRef"
+      },
+      "contactMedium": [
+        {
+          "@type": "PhoneContactMedium",
+          "preferred": true,
+          "contactType": "homePhone",
+          "phoneNumber": "+33650981065",
+          "validFor": {
+            "startDateTime": "2018-02-01T14:40:43.000Z",
+            "endDateTime": "2028-02-01T15:10:43.000Z"
+          }
+        }
+      ],
+      "relatedParty": [
+        {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "role": "bill receiver",
+          "partyOrPartyRole": {
+            "href": "https://host:port/tmfapi/partyManagement/v5/individual/32",
+            "id": "32",
+            "name": "Angelina Jolie",
+            "@referredType": "Individual",
+            "@type": "PartyRef"
+          }
+        },
+        {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "role": "technician",
+          "partyOrPartyRole": {
+            "href": "https://host:port/tmfapi/partyManagement/v5/individual/56",
+            "id": "56",
+            "name": "Brad Pitt",
+            "@referredType": "Individual",
+            "@type": "PartyRef"
+          }
+        }
+      ],
+      "relatedEntity": [
+        {
+          "@type": "RelatedEntity",
+          "role": "interaction",
+          "entity": {
+            "@type": "EntityRef",
+            "@referredType": "TroubleTicket",
+            "id": "789",
+            "name": "Internet connection problem to solve",
+            "href": "https://mycsp.com:8080/tmfapi/troubleTicket/v5/troubleTicket/789"
+          }
+        },
+        {
+          "@type": "RelatedEntity",
+          "role": "serviceSupport",
+          "entity": {
+            "@type": "EntityRef",
+            "@referredType": "WorkOrder",
+            "id": "465",
+            "name": "Work order generated for technician intervention",
+            "href": "https://mycsp.com:8080/tmfapi/workOrderManagement/v5/WorkOrder/465"
+          }
+        }
+      ],
+      "note": [
+        {
+          "date": "2026-03-28T08:01:00.000Z",
+          "author": "Ludovic Robert",
+          "@type": "Note",
+          "text": "Problem explained to the technician"
+        },
+        {
+          "date": "2026-03-28T08:05:00.000Z",
+          "author": "Ludovic Robert",
+          "@type": "Note",
+          "text": "Work order generated"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "275",
+    "name": "APP-665",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "280",
+    "name": "APP-929",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event"
+}

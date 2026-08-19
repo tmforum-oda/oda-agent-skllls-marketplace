@@ -1,0 +1,9 @@
+{
+   "@type": "DigitalIdentity",
+   "nickname": "Neo",
+   "individualIdentified": {
+      "id": "193c8d6887394ca5b50290685db512ca",
+      "@type": "IndividualRef",
+      "@referredType": "Individual"
+   }
+}

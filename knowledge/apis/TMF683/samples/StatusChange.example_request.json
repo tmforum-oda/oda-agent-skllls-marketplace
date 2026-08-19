@@ -1,0 +1,35 @@
+{
+    "correlationId": "35f7891f-e893",
+    "description": "PartyInteractionStatusChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4975-80c8-6a2143c1038d",
+    "eventTime": "2022-11-28T13:28:06.819Z",
+    "eventType": "PartyInteractionStatusChangeEvent",
+    "priority": "3",
+    "timeOcurred": "2022-11-28T13:28:00.198Z",
+    "title": "PartyInteractionStatusChangeEvent",
+    "event": {
+        "partyInteraction": {
+            "id": "123",
+            "href": "http://servername/partyInteraction/123",
+            "@type": "PartyInteraction",
+            "status": "ongoing",
+            "statusChangeDate": "2019-10-02T11:53:21.789Z"
+            
+                }
+    },
+    "reportingSystem": {
+        "id": "661",
+        "name": "APP-835",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "616",
+        "name": "APP-817",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PartyInteractionStatusChangeEvent"
+}

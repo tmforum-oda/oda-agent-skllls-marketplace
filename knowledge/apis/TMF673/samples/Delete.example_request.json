@@ -1,0 +1,88 @@
+{
+    "correlationId": "9863f9c1-064b",
+    "description": "GeographicAddressDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "49a2-a7b4-543bcbcc3a27",
+    "eventTime": "2023-02-22T11:20:57.373Z",
+    "eventType": "GeographicAddressDeleteEvent",
+    "priority": "4",
+    "timeOcurred": "2023-02-22T11:20:53.297Z",
+    "title": "GeographicAddressDeleteEvent",
+    "event": {
+        "geographicAddress": {
+            "id": "4c6b6fc1-d954-4ad6-adf6-59c275afb541",
+            "href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/4c6b6fc1-d954-4ad6-adf6-59c275afb541",
+            "streetNr": "225",
+            "streetNrSuffix": "B",
+            "streetName": " Strathmore",
+            "streetType": "Terrace",
+            "postcode": "5004",
+            "locality": "Brighton.",
+            "city": "Brighton",
+            "stateOrProvince": "SA",
+            "country": "Australia",
+            "countryCode": [
+                {
+                  "format": "ISO 3166-1 Alpha-2",
+                  "value": "AU",
+                  "@type": "StandardIdentifier"
+                }
+              ],
+              "externalIdentifier": [
+                {
+                  "id": "df882733-6a5d-440a-9a91-d261ba6ac346",
+                  "owner": "ExternalSystem",
+                  "externalIdentifierType": "GeographicAddress",
+                  "@type":"ExternalIdentifier"
+                }
+            ],	
+            "geographicAddressType": "residential",
+            "@type": "GeographicAddress",
+            "geographicLocation": {
+                "id": "67301845-ee43-4984-ba3b-b4fba4b98872",
+                "href": "https://host/tmf-api/geographicLocation/v5/geographicLocation/67301845-ee43-4984-ba3b-b4fba4b98872",
+                "name": "Nice Acropolis",
+              "@type":"GeoJsonPoint"
+            },
+            "geographicSubAddress": [
+              {
+                "id": "1e58c8e7-6869-4c45-8af4-0fffbe8fc677",
+                "href":"https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/4c6b6fc1-d954-4ad6-adf6-59c275afb541/geographicSubAddress/1e58c8e7-6869-4c45-8af4-0fffbe8fc677",
+                "name": "Mimosas",
+                "subUnitType": "flat",
+                "subUnitNumber": "239",
+                "levelType": "floor",
+                "levelNumber": "3",
+                "buildingName": "Catalysts",
+                "@type": "GeographicSubAddress"
+              },
+              {
+                "id": "3c657185-e158-45b4-96f2-72a83eaffd46",
+                "href":"https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/4c6b6fc1-d954-4ad6-adf6-59c275afb541/geographicSubAddress/3c657185-e158-45b4-96f2-72a83eaffd46",
+                "name": "Heaven",
+                "subUnitType": "flat",
+                "subUnitNumber": "007",
+                "levelType": "floor",
+                "levelNumber": "3",
+                "buildingName": "VIP area",
+                "@type": "GeographicSubAddress"
+              }
+            ]
+          }
+          
+    },
+    "reportingSystem": {
+        "id": "ab7cdf06-40ad-4f0e-abb8-69ed8d4b0ba6",
+        "name": "APP-365",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "945a66e1-eb83-4742-bb20-8e13c5aa76e9",
+        "name": "APP-250",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "GeographicAddressDeleteEvent"
+}

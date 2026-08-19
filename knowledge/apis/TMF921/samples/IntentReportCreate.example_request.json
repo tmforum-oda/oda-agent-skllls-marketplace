@@ -1,0 +1,90 @@
+{
+    "correlationId": "41b9fa3e-56c0",
+    "description": "IntentReportCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4f05-8ef6-2fe2b8080d6c",
+    "eventTime": "2023-10-23T00:30:01.00Z",
+    "eventType": "IntentReportCreateEvent",
+    "priority": "3",
+    "timeOcurred": "2023-10-23T00:30:01.00Z",
+    "title": "IntentReportCreateEvent",
+    "event": {
+        "intentReport": {
+            "id": "20021",
+            "href": "https://mycsp.com:8080//tmf-api/intentManagement/v5/intent/20011/intentReport/20021",
+            "creationDate": "2023-10-23T00:30:01.00Z",
+            "description": "An Intent report example",
+            "name": "MyIntent Report",
+            "expression": {        
+                "iri": "https://mycsp.com:8080/tmf-api/rdfs/expression-intentReport-1",
+                "expressionValue": {
+                    "@context": {
+                        "voc": "https://tmforum.org/vocab/intent/v1",
+                        "icm": "http://tio.models.tmforum.org/tio/v3.4.0/IntentCommonModel/",
+                        "imo": "http://tio.models.tmforum.org/tio/v3.4.0/IntentManagmentOntology/"        
+                       },
+                   "@graph": [
+                   {
+                        "@id": "_:k0",
+                        "http://www.w3.org/2006/time#inXSDDateTimeStamp": {
+                           "@type": "xsd:dateTime",
+                           "@value": "'2023-10-23T00:30:01.00Z'"
+                     }
+                   },
+                   {
+                        "@id": "_:k1",
+                        "voc:name": {
+                           "@type": "String",
+                           "@value": "Intent Report"
+                        }
+                   },
+                    {
+                        "@id": "_:k2",
+                        "voc:description": {
+                           "@type": "String",
+                           "@value": "report related to Intent 20011"
+                        }
+                   },
+                   {
+                        "@id": "_:k3",
+                        "icm:target": {
+                           "@type": "Intent",
+                           "@value": "20011"
+                        }
+                   }
+                   ] 
+                },
+                "@baseType": "Expression",
+                "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Common/JsonLdExpression.schema.json",
+                "@type": "JsonLdExpression"
+            },
+            "intent": {
+                "id": "20011",
+                "href": "https://mycsp.com:8080//tmf-api/intentManagement/v5/intent/20011",
+                "name": "EventLiveBroadcast",
+                "@referredType": "Intent",
+                "@type":  "IntentRef"
+            },  
+            "validFor": {
+                "startDateTime": "2023-10-23T00:30:01.00Z",
+                "endDateTime": "2024-10-19T23:30:00.00Z"
+            },    
+            "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Common/IntentReport.schema.json",
+            "@type": "IntentReport"
+        }
+    },
+    "reportingSystem": {
+        "id": "241",
+        "name": "APP-846",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "503",
+        "name": "APP-130",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "IntentReportCreateEvent"
+}

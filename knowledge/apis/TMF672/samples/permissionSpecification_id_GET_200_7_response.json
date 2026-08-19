@@ -1,0 +1,8 @@
+{
+  "@type": "PermissionSpecification",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-b4b3601a",
+  "id": "ps-b4b3601a",
+  "description": "Permission to manage delegated users parental controls.",
+  "function": "manage_parental_controls",
+  "action": "ReadWrite"
+}

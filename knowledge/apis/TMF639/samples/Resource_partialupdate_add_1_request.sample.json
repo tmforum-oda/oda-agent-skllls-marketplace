@@ -1,0 +1,26 @@
+[
+  {
+    "op": "replace",
+    "path": "/administrativeState",
+    "value": "locked"
+  },
+  {
+    "op": "replace",
+    "path": "/description",
+    "value": "This is the Router owned by John Doe."
+  },
+  {
+    "op": "add",
+    "path": "/resourceRelationship",
+    "value": {
+      "relationshipType": "contains",
+      "@type": "ResourceRelationship",
+      "resource": {
+        "id": "3df76e2c-211f-4aea-9843-027ef42449f6",
+        "name": "Port",
+        "@type": "ResourceRef",
+        "@referredType": "PhysicalResource"
+      }
+    }
+  }
+]

@@ -1,0 +1,13 @@
+[
+  {
+    "op": "add",
+    "path": "/place",
+    "value": {
+        "id": "2807", 
+        "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/2807", 
+        "name": "San Francisco Bay Area", 
+        "@referredType": "GeographicAddress",
+        "@type": "PlaceRef"
+    }
+  }
+]

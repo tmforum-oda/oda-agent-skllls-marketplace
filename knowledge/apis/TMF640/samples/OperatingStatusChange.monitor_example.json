@@ -1,0 +1,32 @@
+{
+    "correlationId": "9b374459-e9b0",
+    "description": "MonitorOperatingStatusChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "40c3-a3a0-2379e9894a7d",
+    "eventTime": "2022-08-25T12:19:28.538Z",
+    "eventType": "MonitorOperatingStatusChangeEvent",
+    "priority": "3",
+    "timeOccurred": "2022-08-25T12:19:25.724Z",
+    "title": "MonitorOperatingStatusChangeEvent",
+    "event": {
+        "monitor": {
+            "href": "http://servername/monitor/4035",
+            "id": "4035",
+            "@type": "Monitor"
+        }
+    },
+    "reportingSystem": {
+        "id": "427",
+        "name": "APP-755",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "149",
+        "name": "APP-78",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "MonitorOperatingStatusChangeEvent"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "TMFC002",
+  "type": "component",
+  "name": "ProductOrderCaptureAndValidation",
+  "version": "2.1.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC002-ProductOrderCaptureAndValidation/Specification/TMFC002-ProductOrderCaptureAndValidation.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "38227a5d700320edca525adad29bdc741ee1e74b2c82de17509aad16c9d4432f"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

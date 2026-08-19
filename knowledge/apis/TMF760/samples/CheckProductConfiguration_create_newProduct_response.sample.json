@@ -1,0 +1,197 @@
+{
+    "@type": "CheckProductConfiguration",
+    "href": "https://mycsp.com:8080/tmf-api/productConfiguration/v5/CheckProductConfiguration/456",
+    "id": "456",
+    "state": "done",
+    "channel": {
+        "id": "4407", 
+        "href": "https://host:port/tmf-api/salesChannelManagement/v5/channel/4407", 
+        "name": "Assisted Channel",
+        "@referredType": "SalesChannel",
+        "@type":  "ChannelRef"
+    },
+    "relatedParty": [
+        {
+            "role": "prospect",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "@type": "PartyRef",
+                "id": "456",
+                "href": "https://host:port/partyManagement/v5/party/456",
+                "name": "Ross",
+                "@referredType": "Individual"
+            }
+        }
+    ],
+    "contextEntity": { 
+        "id": "3472",
+        "href": "https://host:port/quoteManagement/v5/quote/3472",
+        "name": "March 2019 Order",
+        "@type": "EntityRef",
+        "@referredType": "Quote"
+    },
+    "contextCharacteristic": [
+        {
+            "name": "salesModel",
+            "valueType": "string",
+            "value": "B2C",
+            "@type": "StringCharacteristic"
+        }
+    ],
+    "checkProductConfigurationItem": [
+        {
+            "@type": "CheckProductConfigurationItem",
+            "id": "01",
+            "state": "approved",
+            "contextItem": {
+                "name": "Quote item 01",
+                "itemId": "01",
+                "entityId": "3472",
+                "entityHref": "https://host:port/quoteManagement/v5/quote/3472",
+                "@type": "ItemRef",
+                "@referredType": "QuoteItem"
+
+            },
+            "productConfiguration": {
+                "@type": "ProductConfiguration",
+                "productOffering": {
+                    "id": "14305",
+                    "href": "https://host:port/productCatalogManagement/v5/productOffering/14305",
+                    "name": "Mobile Handset",
+                    "@type": "ProductOfferingRef"
+                },
+                "configurationAction": [
+                    {
+                        "@type": "ConfigurationAction",
+                        "action": "add",
+                        "description": "Add new product",
+                        "isSelected": true
+                    }
+                ],
+                "configurationTerm": [
+                    {
+                        "@type": "ConfigurationTerm",
+                        "name": "12 month contract",
+                        "isSelectable": true,
+                        "isSelected": false
+                    },
+                    {
+                        "@type": "ConfigurationTerm",
+                        "name": "24 month contract",
+                        "isSelectable": true,
+                        "isSelected": false
+                    }
+                ],
+                "configurationCharacteristic": [
+                    {
+                        "@type": "ConfigurationCharacteristic",
+                        "id": "77",
+                        "name": "Color",
+                        "valueType": "string",
+                        "minCardinality": 1,
+                        "maxCardinality": 1,
+                        "isConfigurable": true,
+                        "isVisible": true,
+                        "configurationCharacteristicValue": [
+                            {
+                                "@type": "ConfigurationCharacteristicValue",
+                                "isSelectable": true,
+                                "isSelected": true,
+                                "isVisible": true,
+                                "characteristicValue": {
+                                    "name": "Color",
+                                    "value": "Blue",
+                                    "@type": "StringCharacteristic"
+                                } 
+                            },
+                            {
+                                "@type": "ConfigurationCharacteristicValue",
+                                "isSelectable": true,
+                                "isSelected": false,
+                                "isVisible": true,
+                                "characteristicValue": {
+                                    "name": "Color",
+                                    "value": "Red",
+                                    "@type": "StringCharacteristic"
+                                } 
+                            }
+                        ]
+                    }
+                ],
+                "configurationPrice": [
+                    {
+                        "@type": "ConfigurationPrice",
+                        "name": "Blue phone price",
+                        "priceType": "oneTimeCharge",
+                        "productOfferingPrice": {
+                            "id": "1747", 
+                            "href": "https://host:port/tmf-api/productCatalogManagement/v5/productOfferingPrice/1747", 
+                            "name": "One time charge for Blue Mobile Handset",
+                            "@referredType": "ProductOfferingPrice",
+                            "@type":  "ProductOfferingPrice"
+                        },
+                        "price": {
+                            "taxRate": 22,
+                            "@type": "Price",
+                            "dutyFreeAmount": {
+                                "unit": "EUR",
+                                "value": 100,
+                                "@type": "Money"
+                            },
+                            "taxIncludedAmount": {
+                                "unit": "EUR",
+                                "value": 122,
+                                "@type": "Money"
+                            }
+                        }
+                    }
+                ],
+                "product": {
+                    "@type":  "Product",
+                    "status": "created",
+                    "productOffering": {
+                        "id": "14305",
+                        "href": "https://host:port/productCatalogManagement/v5/productOffering/14305",
+                        "name": "Mobile Handset",
+                        "@type": "ProductOfferingRef"
+                    },
+                    "productCharacteristic": [
+                        {
+                            "name": "Color",
+                            "value": "Blue",
+                            "@type": "StringCharacteristic"
+                        }
+                    ],
+                    "productPrice": [
+                        {
+                            "name": "Blue phone price",
+                            "priceType": "oneTimeCharge",
+                            "productOfferingPrice": {
+                                "id": "1747", 
+                                "href": "https://host:port/tmf-api/productCatalogManagement/v5/productOfferingPrice/1747", 
+                                "name": "One time charge for Blue Mobile Handset",
+                                "@referredType": "ProductOfferingPrice",
+                                "@type":  "ProductOfferingPrice"
+                            },
+                            "price": {
+                                "taxRate": 22,
+                                "@type": "Price",
+                                "dutyFreeAmount": {
+                                    "unit": "EUR",
+                                    "value": 100,
+                                    "@type": "Money"
+                                },
+                                "taxIncludedAmount": {
+                                    "unit": "EUR",
+                                    "value": 122,
+                                    "@type": "Money"
+                                }
+                            },
+                            "@type": "ProductPrice"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

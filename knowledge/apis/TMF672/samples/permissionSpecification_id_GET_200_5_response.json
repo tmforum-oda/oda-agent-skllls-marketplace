@@ -1,0 +1,8 @@
+{
+  "@type": "PermissionSpecification",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-a99c47c6",
+  "id": "ps-a99c47c6",
+  "description": "Permission to manage users and to add or remove permissions to delegated users.",
+  "function": "user_management",
+  "action": "ReadWrite"
+}

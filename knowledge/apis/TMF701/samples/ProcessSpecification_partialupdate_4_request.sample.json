@@ -1,0 +1,13 @@
+[
+  {
+    "op": "replace",
+    "path": "/relatedParty/partyOrPartyRole?role=approver",
+    "value": {
+      "id": "698-4TG",
+      "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/698-4TG",
+      "name": "kevin Thoup",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  }
+]

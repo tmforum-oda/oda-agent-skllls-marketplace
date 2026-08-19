@@ -1,0 +1,79 @@
+{
+    "@type": "QueryProductConfiguration",
+    "href": "https://mycsp.com:8080/tmf-api/productConfiguration/v5/CheckProductConfiguration/456",
+    "id": "456",
+    "channel": {
+        "id": "4407", 
+        "href": "https://host:port/tmf-api/salesChannelManagement/v5/channel/4407", 
+        "name": "Assisted Channel",
+        "@referredType": "SalesChannel",
+        "@type":  "ChannelRef"
+    },
+    "relatedParty": [
+        {
+            "role": "prospect",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "@type": "PartyRef",
+                "id": "456",
+                "href": "https://host:port/partyManagement/v5/party/456",
+                "name": "Ross",
+                "@referredType": "Individual"
+            }
+        }
+    ],
+    "requestProductConfigurationItem": [
+        {
+            "@type":  "QueryProductConfigurationItem",
+            "id": "01",
+            "productConfiguration": {
+                "@type":  "ProductConfiguration",
+                "product": {
+                    "@type":  "ProductRef",
+                    "@referredType": "Product",
+                    "id": "pr1"
+                }
+            }
+        }
+    ],
+    "computedProductConfigurationItem": [
+        {
+            "@type":  "QueryProductConfigurationItem",
+            "id": "02",
+            "state": "approved",
+            "productConfigurationItemRelationship": [
+                {
+                    "@type":  "ProductConfigurationItemRelationship",
+                    "id": "01",
+                    "role": "requestItem"
+                }
+            ],
+            "productConfiguration": {
+                "@type":  "ProductConfiguration",
+                "id": "02",
+                "isSelectable": false,
+                "isSelected": true,
+                "isVisible": true,
+                "product": {
+                    "@type":  "ProductRef",
+                    "@referredType": "Product",
+                    "id": "pr1"
+                },
+                "configurationAction": [
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "terminate",
+                        "description": "Terminate product",
+                        "isSelected": false
+                    },
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "Change bandwith",
+                        "description": "Change bandwith",
+                        "isSelected": false
+                    }
+                ]
+            }
+        }
+    ]
+}

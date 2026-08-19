@@ -1,0 +1,47 @@
+{
+  "@type": "ScaleCreateEvent",
+  "id": "evt-scale-001",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-scale-001",
+  "correlationId": "scale-726ffbd5",
+  "description": "ScaleCreateEvent illustration",
+  "eventId": "00001",
+  "eventTime": "2024-08-25T14:00:18.121Z",
+  "eventType": "ScaleCreateEvent",
+  "timeOccurred": "2024-08-25T14:00:17.823Z",
+  "title": "ScaleCreateEvent",
+  "event": {
+    "scale": {
+      "@type": "Scale",
+      "id": "4a41a328-1cf3-4674-bdd7-c43129fbfa7c",
+      "href": "/resourceFunctionActivation/v5/scale/4a41a328-1cf3-4674-bdd7-c43129fbfa7c",
+      "name": "Increase Memory",
+      "scaleType": "scaleOut",
+      "aspectId": "Quick Access Memory",
+      "numberOfSteps": {
+        "amount": 2,
+        "units": "GB"
+      },
+      "state": "inProgress",
+      "resourceFunction": {
+        "id": "acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+        "href": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+        "@type": "ResourceFunctionRef",
+        "@referredType": "ResourceFunction"
+      }
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

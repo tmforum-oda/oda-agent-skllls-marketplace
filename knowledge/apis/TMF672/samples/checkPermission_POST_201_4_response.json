@@ -1,0 +1,29 @@
+{
+  "id": "ba522cd932bc43ccb1f308c4bfff8ea3",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/checkPermission/ba522cd932bc43ccb1f308c4bfff8ea3",
+  "@type": "CheckPermission",
+  "state": "inProgress",
+  "permissionSpecification": {
+    "@type": "PermissionSpecification",
+    "name": "ProductOffering:read",
+    "function": "ProductOffering",
+    "action": "read"
+  },
+  "user": {
+    "role": "ProductMarketeer",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "Jane.Doe",
+      "@type": "PartyRoleRef",
+      "@referredType": "PartyRole"
+    }
+  },
+  "entity": [
+    {
+      "id": "7655",
+      "href": "https://serverRoot/productCatalogManagement/v5/productOffering/7655",
+      "@type": "EntityRef",
+      "@referredType": "ProductOffering"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "correlationId": "92751b27-3994-45db-9893-b4b6a525bae8",
+  "description": "GeographicSiteDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "3682a85c-1594-4153-a29e-fe4f94dfbb10",
+  "eventTime": "2024-03-18T07:23:06Z",
+  "eventType": "GeographicSiteDeleteEvent",
+  "priority": "2",
+  "timeOccurred": "2024-03-18T07:23:06Z",
+  "title": "GeographicSiteDeleteEvent",
+  "event": {
+    "geographicSite": {
+      "id": "ae4b915f-16f5-4f05-a3c7-8c6a99c7d24b",
+      "href": "https://mycsp.com/tmf-api/geographicSiteManagement/v5/geographicSite/ae4b915f-16f5-4f05-a3c7-8c6a99c7d24b",
+      "@type": "GeographicSite"
+    }
+  },
+  "reportingSystem": {
+    "id": "2759b03b-5d5c-42be-af24-015de991badf",
+    "name": "APP-746",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "db017150-c573-465a-8c39-47c2f730fe37",
+    "name": "APP-623",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "GeographicSiteDeleteEvent"
+}

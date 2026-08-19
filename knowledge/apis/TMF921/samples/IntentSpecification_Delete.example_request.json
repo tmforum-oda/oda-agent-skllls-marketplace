@@ -1,0 +1,32 @@
+{
+    "correlationId": "8a50c213-2b13",
+    "description": "IntentSpecificationDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4776-b204-ab88b6591aa2",
+    "eventTime": "2023-03-07T08:03:31.774Z",
+    "eventType": "IntentSpecificationDeleteEvent",
+    "priority": "1",
+    "timeOcurred": "2023-03-07T08:03:29.602Z",
+    "title": "IntentSpecificationDeleteEvent",
+    "event": {
+        "intentSpecification": {       
+            "id": "65537",
+            "href": "https://mycsp.com:8080//tmf-api/intentManagement/v5/intent/65537",
+            "@type": "IntentSpecification"                   
+        }
+    },
+    "reportingSystem": {
+        "id": "241",
+        "name": "APP-846",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "503",
+        "name": "APP-130",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "IntentSpecificationDeleteEvent"
+}

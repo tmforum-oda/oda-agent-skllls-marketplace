@@ -1,0 +1,36 @@
+{
+    "correlationId": "d107a5f0-9257",
+    "description": "CategoryAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "456b-8663-72338e38d4f0",
+    "eventTime": "2022-08-25T12:18:12.181Z",
+    "eventType": "CategoryAttributeValueChangeEvent",
+    "priority": "1",
+    "timeOcurred": "2022-08-25T12:18:11.750Z",
+    "title": "CategoryAttributeValueChangeEvent",
+    "event": {
+        "category": {
+            "href": "http://servername/Category/9881",
+            "id": "3180",
+            "@type": "Category",
+            "version": "2.0",
+            "validFor": {
+                "startDateTime": "2020-09-23T16:42:23.0Z"
+            }
+       }
+    },
+    "reportingSystem": {
+        "id": "759",
+        "name": "APP-745",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "705",
+        "name": "APP-317",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CategoryAttributeValueChangeEvent"
+}

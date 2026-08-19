@@ -1,0 +1,31 @@
+{
+    "@type": "PartyRoleDeleteEvent",
+    "@baseType": "Event",
+    "correlationId": "bce0fdb2-384d",
+    "domain": "Commercial",
+    "title": "PartyRoleDeleteEvent",
+    "description": "PartyRoleDeleteEvent illustration",
+    "priority": "1",
+    "timeOccurred": "2022-11-24T15:02:22.999Z",
+    "source": {
+        "@type": "ReportingResource",
+        "id": "21",
+        "name": "APP-422",
+        "@referredType": "LogicalResource"
+    },
+    "reportingSystem": {
+        "@type": "ReportingResource",
+        "id": "999",
+        "name": "APP-28",
+        "@referredType": "LogicalResource"
+    },
+    "eventId": "42b6-85c2-a778ed319692",
+    "eventTime": "2022-11-24T15:02:28.244Z",
+    "eventType": "PartyRoleDeleteEvent",
+    "event": {
+        "partyRole": {
+            "@type": "PartyRole",
+            "id": "7321-7c0d"
+        }
+    }
+}

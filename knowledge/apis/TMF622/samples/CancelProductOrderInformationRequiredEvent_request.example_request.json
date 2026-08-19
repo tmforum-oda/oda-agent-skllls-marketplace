@@ -1,0 +1,45 @@
+{
+    "correlationId": "d5894698-6801",
+    "description": "CancelProductOrderInformationRequiredEvent illustration",
+    "domain": "Commercial",
+    "eventId": "408f-a88f-40f2ebbe8a06",
+    "eventTime": "2022-09-14T12:14:28.790Z",
+    "eventType": "CancelProductOrderInformationRequiredEvent",
+    "priority": "4",
+    "timeOcurred": "2022-09-14T12:14:21.843Z",
+    "title": "CancelProductOrderInformationRequiredEvent",
+    "event": {
+        "cancelProductOrder": {
+            "id": "789-fsds5-kjp",
+            "href": "http://servername/cancelProductOrder/789-fsds5-kjp",
+            "requestedCancellationDate": "2019-04-30T12:56:21.931Z",
+            "productOrder": {
+                "id": "45f-98f-ss45",
+                "href": "https://host:port/productOrderingManagement/v4/productOrder/45f-98f-ss45",
+                "@referredType": "ProductOrder",
+                "@type": "ProductOrderRef"
+            },
+            "state": "acknowledged",
+            "@type": "CancelProductOrder"
+        },
+        "informationRequired":
+              {
+                "op": "add",
+                "path": "cancellationReason"
+              }
+    },
+    "reportingSystem": {
+        "id": "533",
+        "name": "APP-963",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "200",
+        "name": "APP-893",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CancelProductOrderInformationRequiredEvent"
+}

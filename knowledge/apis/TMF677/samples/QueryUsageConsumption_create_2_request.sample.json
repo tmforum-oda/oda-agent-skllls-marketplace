@@ -1,0 +1,13 @@
+{
+	"searchCriteria": {
+		"logicalResource": [{
+			"id": "963161043",
+			"name": "Lara's phone number"
+		}]
+	},
+	"relatedParty": [{
+		"id": "USER11333",
+		"role": "agent",
+		"@referredType": "Individual"
+	}]
+}

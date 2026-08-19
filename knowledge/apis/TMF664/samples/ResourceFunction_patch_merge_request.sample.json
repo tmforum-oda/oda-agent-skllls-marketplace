@@ -1,0 +1,5 @@
+{
+  "@type": "ResourceFunction",
+  "name": "Updated Enterprise Firewall",
+  "description": "This firewall now serves a wider range of enterprise customers."
+}

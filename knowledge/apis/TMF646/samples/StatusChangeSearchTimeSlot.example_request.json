@@ -1,0 +1,32 @@
+{
+  "@type": "SearchTimeSlotStatusChangeEvent",
+  "correlationId": "ea37bbca-4316",
+  "description": "SearchTimeSlotStatusChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4e33-8e7a-3d6ec324d6c0",
+  "eventTime": "2026-03-26T08:49:14.288Z",
+  "eventType": "SearchTimeSlotStatusChangeEvent",
+  "priority": "4",
+  "title": "SearchTimeSlotStatusChangeEvent",
+  "event": {
+    "searchTimeSlot": {
+      "@type": "SearchTimeSlot",
+      "id": "99",
+      "state": "done",
+      "href": "https://serverRoot/tmf-api/appointment/v5/searchTimeSlot/99"
+    }
+  },
+  "reportingSystem": {
+    "id": "275",
+    "name": "APP-665",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "280",
+    "name": "APP-929",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event"
+}

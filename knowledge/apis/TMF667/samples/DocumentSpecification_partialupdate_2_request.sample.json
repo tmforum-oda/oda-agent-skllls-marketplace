@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/name",
+    "value": "Email"
+  },
+  {
+    "op": "replace",
+    "path": "/version",
+    "value": "1.4.5"
+  }
+]

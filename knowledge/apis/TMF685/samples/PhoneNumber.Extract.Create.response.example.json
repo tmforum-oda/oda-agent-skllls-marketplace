@@ -1,0 +1,42 @@
+{
+    "@type": "Extract",
+    "id": "c6a1e831-ef5b-4d09-85a8-594fca73313b",
+    "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePool/c3fef858-b864-4fac-971e-795b1195ded9/extract/c6a1e831-ef5b-4d09-85a8-594fca73313b",
+    "capacityDemand":
+    {
+        "@type": "Capacity",
+        "capacityAmount":
+        {
+            "amount": 2,
+            "units": "number"
+        },
+        "capacityStatus": "planned",
+        "applicableTimePeriod":
+        [
+            {
+                "@type": "ApplicableTimePeriod",
+                "fromToDateTime":
+                {
+                    "startDateTime": "2024-05-13T00:00:00Z", 
+                    "endDateTime": "2024-09-20T00:00:00Z"
+                }
+            }
+        ]
+    },
+    "extractedResource":
+    [
+        {
+            "@type": "ResourceRef",
+            "@referredType": "LogicalResource",
+            "id": "4d179a07-1555-4e5f-a2de-0a51f5dd7e15",
+            "href": "https://{server}:{port}/tmf-api/resourceInventoryManagement/v5/resource/4d179a07-1555-4e5f-a2de-0a51f5dd7e15"
+        },
+        {
+            "@type": "ResourceRef",
+            "@referredType": "LogicalResource",
+            "id": "15dfa8a7-f9db-43a8-8758-9d9df5a76264",
+            "href": "https://{server}:{port}/tmf-api/resourceInventoryManagement/v5/resource/15dfa8a7-f9db-43a8-8758-9d9df5a76264"
+        }
+    ],
+    "state": "inProgress"
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "11",
+    "href": "https://host:port/productOfferingQualification/v5/QueryProductOfferingQualification/11",
+    "state": "done",
+    "expirationDate": "2021-09-03T11:33:54.172Z",
+    "@type": "QueryProductOfferingQualification"
+  },
+  {
+    "id": "12",
+    "href": "https://host:port/productOfferingQualification/v5/QueryProductOfferingQualification/12",
+    "state": "done",
+    "expirationDate": "2021-09-03T14:25:54.172Z",
+    "@type": "QueryProductOfferingQualification"
+  },
+  {
+    "id": "32",
+    "href": "https://host:port/productOfferingQualification/v5/QueryProductOfferingQualification/32",
+    "state": "done",
+    "expirationDate": "2021-09-02T15:25:54.172Z",
+    "@type": "QueryProductOfferingQualification"
+  },
+  {
+    "id": "47",
+    "href": "https://host:port/productOfferingQualification/v5/QueryProductOfferingQualification/47",
+    "state": "done",
+    "expirationDate": "2021-09-03T15:25:54.172Z",
+    "@type": "QueryProductOfferingQualification"
+  }
+]

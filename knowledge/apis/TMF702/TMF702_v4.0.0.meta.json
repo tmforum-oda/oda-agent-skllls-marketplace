@@ -1,0 +1,16 @@
+{
+  "id": "TMF702",
+  "type": "api",
+  "name": "resource-activation-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF702_Resource_Activation/4.0.0/swagger/TMF702_Resource_Activation_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "07277850c03a9e936cee72c973b25fa5631a1527795456a809e98abeaaf7dcb7"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

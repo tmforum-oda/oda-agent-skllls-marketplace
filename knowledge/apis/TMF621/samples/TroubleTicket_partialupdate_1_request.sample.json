@@ -1,0 +1,17 @@
+[
+  {
+    "op": "replace",
+    "path": "/severity",
+    "value": "Minor"
+  },
+  {
+    "op": "add",
+    "path": "/note",
+    "value": {
+      "@type": "Note",
+      "id": "77456",
+      "author": "Jack Smith",
+      "text": "This is quite important, please approach me as soon as possible"
+    }
+  }
+]

@@ -1,0 +1,4 @@
+{
+    "@type": "BillFormat",
+    "description": "Detailed billing containing full phone numbers of calls"
+}

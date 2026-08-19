@@ -1,0 +1,42 @@
+{
+  "@type": "ResourceFunctionCreateEvent",
+  "id": "evt-rf-001",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-rf-001",
+  "correlationId": "726ffbd5-a47f",
+  "description": "ResourceFunctionCreateEvent illustration",
+  "eventId": "00001",
+  "eventTime": "2024-08-25T12:23:18.121Z",
+  "eventType": "ResourceFunctionCreateEvent",
+  "timeOccurred": "2024-08-25T12:23:17.823Z",
+  "title": "ResourceFunctionCreateEvent",
+  "event": {
+    "resourceFunction": {
+      "@type": "ResourceFunction",
+      "id": "acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+      "href": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+      "name": "Medium to Large Enterprise Firewall - Model 134985.3",
+      "description": "This is a type of firewall to be used for our medium to large enterprise customers",
+      "category": "Security",
+      "resourceSpecification": {
+        "@type": "ResourceSpecificationRef",
+        "id": "5fc91de8-88be-4c7c-8b3c-e08ccc53b889",
+        "href": "/resourceCatalog/v5/resourceSpecification/5fc91de8-88be-4c7c-8b3c-e08ccc53b889",
+        "@referredType": "ResourceFunctionSpecification"
+      }
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

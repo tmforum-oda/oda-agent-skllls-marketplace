@@ -1,0 +1,69 @@
+{
+  "@type": "CheckProductOfferingQualification",
+  "channel": {
+    "id": "1",
+    "name": "Web",
+    "@type": "ChannelRef"
+  },
+  "description": "Example for a CheckProductOfferingQualification resource",
+  "note": [
+    {
+      "@type": "Note",
+      "author": "Mr. N. Bene",
+      "date": "2020-11-20T08:00:00Z",
+      "id": "1",
+      "text": "Not for a CheckProductOfferingQualification"
+    }
+  ],
+  "checkProductOfferingQualificationItem": [
+    {
+      "@type": "CheckProductOfferingQualificationItem",
+      "expectedActivationDate": "2021-09-01T14:21:03.352Z",
+      "productOffering": {
+        "id": "DPI123",
+        "name": "International Data Plan - 20 GB",
+        "@type": "ProductOfferingRef"
+      },
+      "action": "add",
+      "id": "1"
+    },
+    {
+      "@type": "CheckProductOfferingQualificationItem",
+      "expectedActivationDate": "2021-09-01T14:21:03.352Z",
+      "productOffering": {
+        "id": "DPI123",
+        "name": "International Data Plan - 40 GB",
+        "@type": "ProductOfferingRef"
+      },
+      "action": "add",
+      "id": "2"
+    },
+    {
+      "@type": "CheckProductOfferingQualificationItem",
+      "expectedActivationDate": "2021-09-01T14:21:03.352Z",
+      "productOffering": {
+        "id": "DPI128",
+        "name": "France Voice Plan - 3 hours",
+        "@type": "ProductOfferingRef"
+      },
+      "action": "add",
+      "id": "3"
+    }
+  ],
+  "provideAlternative": true,
+  "provideResultReason": true,
+  "relatedParty": [
+    {
+      "role": "requester",
+      "partyOrPartyRole": {
+        "id": "45hj-999",
+        "href": "https://host:port/partyManagement/v5/individual/45hj-999",
+        "name": "Louise",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyOrPartyRole"
+    }
+  ],
+  "requestedQualificationCompletionDate": "2021-09-01T14:21:03.354Z"
+}

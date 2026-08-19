@@ -1,0 +1,20 @@
+{
+    "@type":"PartyAccount",
+    "href": "https://host:port/tmf-api/accountManagement/v5/partyAccount/4458", 
+    "id": "4458", 
+    "name": "Travel account", 
+    "relatedParty": [
+        {
+            "role": "owner",
+ 	       "@type": "RelatedPartyRefOrPartyRoleRef",
+ 	       "partyOrPartyRole":
+ 	       {
+     	       "@type": "PartyRefOrPartyRoleRef",
+     	       "@referredType": "Organization",
+                "href": "https://host:port/tmf-api/partyManagement/v5/organization/4665", 
+                "id": "4665", 
+                "name": "John Doe Ltd"
+            }
+        }
+    ]
+}

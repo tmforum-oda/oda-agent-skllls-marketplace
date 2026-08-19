@@ -1,0 +1,170 @@
+{
+   "href": "https://serverRoot/tmf-api/digitalIdentityManagement/v5/digitalIdentity/2391ee4acbc142b1a4b74b4d4ab38152",
+   "id": "2391ee4acbc142b1a4b74b4d4ab38152",
+   "@type": "DigitalIdentity",
+   "nickname": "Neo",
+   "state": "Active",
+   "validFor": {
+      "startDateTime": "2018-09-21T23:20:50.52Z"
+   },
+   "credential": [
+      {
+         "href": "https://serverRoot/tmf-api/digitalIdentityManagement/v5/credential/41af4b86e0b144cb9099b3d4c3ab26ae",
+         "id": "41af4b86e0b144cb9099b3d4c3ab26ae",
+         "@type": "LoginPasswordCredential",
+         "@baseType": "Credential",
+         "state": "Active",
+         "validFor": {
+            "startDateTime": "2018-09-21T23:20:50.52Z"
+         },
+         "trustLevel": "High Trust Level (Level 3)",
+         "relatedContactMedium": [
+            {
+               "@type": "RelatedContactMedium",
+               "role": "credential-login-alias-email",
+               "contactMedium": {
+                  "@type": "EmailContactMedium",
+                  "@baseType": "ContactMedium",
+                  "contactType": "private",
+                  "id": "b2fe04a7f96e479195a47710abcf72be",
+                  "preferred": true,
+                  "validFor": {
+                     "startDateTime": "2018-09-21T23:20:50.52Z"
+                  },
+                  "emailAddress": "neo@matrix.com"
+               },
+               "relationDate": "2018-09-21T23:20:50.52Z"
+            },
+            {
+               "@type": "RelatedContactMedium",
+               "role": "credential-login-alias-phone",
+               "contactMedium": {
+                  "@type": "PhoneContactMedium",
+                  "@baseType": "ContactMedium",
+                  "contactType": "private",
+                  "id": "c0181f3d83e144a59162fd6136a98462",
+                  "preferred": true,
+                  "validFor": {
+                     "startDateTime": "2018-09-21T23:20:50.52Z"
+                  },
+                  "phoneNumber": "+1 202-918-2132"
+               },
+               "relationDate": "2018-09-21T23:20:50.52Z"
+            }
+         ],
+         "login": "neo1999",
+         "creationDate": "2018-09-21T09:13:16-07:00",
+         "lastUpdate": "2018-09-21T23:20:50.52Z"
+      }
+   ],
+   "relatedContactMedium": [
+      {
+         "@type": "RelatedContactMedium",
+         "role": "digital-id-recovery-email",
+         "contactMedium": {
+            "@type": "EmailContactMedium",
+            "@baseType": "ContactMedium",
+            "contactType": "private",
+            "id": "b2fe04a7f96e479195a47710abcf72be",
+            "preferred": true,
+            "validFor": {
+               "startDateTime": "2018-09-21T23:20:50.52Z"
+            },
+            "emailAddress": "neo@matrix.com"
+         },
+         "relationDate": "2018-09-21T23:20:50.52Z"
+      },
+      {
+         "@type": "RelatedContactMedium",
+         "role": "digital-id-recovery-phone",
+         "contactMedium": {
+            "@type": "PhoneContactMedium",
+            "@baseType": "ContactMedium",
+            "contactType": "private",
+            "id": "60703a48038e4fc9a46bf1459aa3590f",
+            "preferred": false,
+            "validFor": {
+               "startDateTime": "2018-09-21T23:20:50.52Z"
+            },
+            "phoneNumber": "+1 202-918-2132"
+         },
+         "relationDate": "2018-09-21T23:20:50.52Z"
+      },
+      {
+         "@type": "RelatedContactMedium",
+         "role": "digital-id-2nd-factor-phone",
+         "contactMedium": {
+            "@type": "PhoneContactMedium",
+            "@baseType": "ContactMedium",
+            "contactType": "private",
+            "id": "c0181f3d83e144a59162fd6136a98462",
+            "preferred": true,
+            "validFor": {
+               "startDateTime": "2018-09-21T23:20:50.52Z"
+            },
+            "phoneNumber": "+1 202-918-2132"
+         },
+         "relationDate": "2018-09-21T23:20:50.52Z"
+      }
+   ],
+   "attachment": [
+      {
+         "@type": "Attachment",
+         "attachmentType": "avatarPicture",
+         "name": "Neo's avatar",
+         "url": "https://i.pravatar.cc/150?u=neo",
+         "mimeType": "image/jpeg",
+         "size": {
+            "amount": 91,
+            "units": "Kb"
+         },
+         "validFor": {
+            "startDateTime": "2018-09-21T23:20:50.52Z"
+         }
+      }
+   ],
+   "partyRoleIdentified": [
+      {
+         "@type": "RelatedSecurityPrincipalRef",
+         "role": "Customer",
+         "securityPrincipalRef": {
+            "href": "https://serverRoot/tmf-api/customerManagement/v5/partyRole/faa43dccaad142289e2b0f0e73e15958",
+            "id": "faa43dccaad142289e2b0f0e73e15958",
+            "@type": "PartyRoleRef",
+            "@referredType": "PartyRole"
+         }
+      }
+   ],
+   "individualIdentified": {
+      "href": "https://serverRoot/tmf-api/partyManagement/v5/individual/193c8d6887394ca5b50290685db512ca",
+      "id": "193c8d6887394ca5b50290685db512ca",
+      "@type": "IndividualRef",
+      "@referredType": "Individual"
+   },
+   "relatedSecurityPrincipal": [
+      {
+         "@type": "RelatedSecurityPrincipalRef",
+         "role": "ServiceProvider",
+         "securityPrincipalRef": {
+            "href": "https://serverRoot/tmf-api/partyManagement/v5/organization/e9b93f395a11453f9b7aa3349e857c24",
+            "id": "e9b93f395a11453f9b7aa3349e857c24",
+            "@type": "OrganizationRef",
+            "@referredType": "Organization",
+            "name": "Acme Inc."
+         }
+      },
+      {
+         "@type": "RelatedSecurityPrincipalRef",
+         "role": "DigitalIdentityProvider",
+         "securityPrincipalRef": {
+            "href": "https://serverRoot/tmf-api/partyManagement/v5/organization/af08cfda572749b0b4a90dfb75dfca51",
+            "id": "af08cfda572749b0b4a90dfb75dfca51",
+            "@type": "OrganizationRef",
+            "@referredType": "Organization",
+            "name": "Auth0"
+         }
+      }
+   ],
+   "creationDate": "2018-09-21T09:13:16-07:00",
+   "lastUpdate": "2018-09-21T23:20:50.52Z"
+}

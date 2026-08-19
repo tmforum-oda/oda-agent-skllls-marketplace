@@ -1,0 +1,31 @@
+{
+  "correlationId": "76225ba6-e7ed",
+  "description": "ServiceTestSpecificationAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "480d-b29d-6ff6b8e0f5bb",
+  "eventTime": "2022-08-25T12:21:36.714Z",
+  "eventType": "ServiceTestSpecificationAttributeValueChangeEvent",
+  "priority": "1",
+  "timeOccurred": "2022-08-25T12:21:36.133Z",
+  "title": "ServiceTestSpecificationAttributeValueChangeEvent",
+  "event": {
+    "serviceTestSpecification": {
+      "@type": "ServiceTestSpecification",
+      "href": "https://mycsp.com:8080/tmf-api/serviceTestManagement/v5/serviceTestSpecification/12",
+      "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Service/ServiceTestSpecification.schema.json",
+      "id": "12",
+      "version": "1.1",
+      "testMeasureDefinition": [
+        {
+          "@type": "TestMeasureDefinition",
+          "capturePeriod": {
+            "amount": 15,
+            "units": "seconds"
+          }
+        }
+      ]
+    }
+  },
+  "@baseType": "Event",
+  "@type": "ServiceTestSpecificationAttributeValueChangeEvent"
+}

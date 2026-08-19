@@ -1,0 +1,6 @@
+{
+    "name": "Virtual Storage Medium", 
+    "description": "This resource candidate makes the virtual storage medium specification available in the cloud catalog", 
+    "version": "2.1",
+    "@type": "ResourceCandidate"
+}

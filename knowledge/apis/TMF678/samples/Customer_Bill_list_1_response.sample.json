@@ -1,0 +1,26 @@
+[
+    {
+        "id": "CB-123",
+        "href": "https://server:port/tmf-api/Customer_Bill_Management/v5/customerBill/CB-123",
+        "@type": "CustomerBill",
+        "billingAccount": {
+            "id": "A0815",
+            "href": "http://host:port/tmf-api/Account_Management/v5/billingAccount/A0815",
+            "name": "BA Peter Retep",
+            "@referredType": "BillingAccount",
+			"@type": "BillingAccountRef"
+        }
+    },
+    {
+        "id": "CB-456",
+        "href": "https://server:port/tmf-api/Customer_Bill_Management/v5/customerBill/CB-456",
+        "@type": "CustomerBill",
+        "billingAccount": {
+            "id": "A4712",
+            "href": "http://host:port/tmf-api/Account_Management/v5/billingAccount/A4712",
+            "name": "BA Claire Erialc",
+            "@referredType": "BillingAccount",
+			"@type": "BillingAccountRef"
+        }
+    }
+]

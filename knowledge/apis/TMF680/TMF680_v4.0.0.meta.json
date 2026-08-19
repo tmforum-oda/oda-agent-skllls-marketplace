@@ -1,0 +1,16 @@
+{
+  "id": "TMF680",
+  "type": "api",
+  "name": "recommendation-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF680_Recommendation/4.0.0/swagger/TMF680_Recommendation_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "9828162436380deb746011d14ed74f64ece4666d01f944ceaa7deb33adca6caa"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

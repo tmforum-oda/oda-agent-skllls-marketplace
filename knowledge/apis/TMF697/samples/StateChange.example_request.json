@@ -1,0 +1,33 @@
+{
+    "correlationId": "f5b717c5-4da9-4687-823e-b44d63f81805",
+    "description": "WorkOrderStateChangeEvent illustration",
+    "domain": "Service Assurance",
+    "eventId": "18bab44e-a3f9-4995-b641-cdda15025387",
+    "eventTime": "2022-08-25T12:21:36.678Z",
+    "eventType": "WorkOrderStateChangeEvent",
+    "priority": "2",
+    "timeOcurred": "2022-08-25T12:21:28.377Z",
+    "title": "WorkOrderStateChangeEvent",
+    "event": {
+        "workOrder": {
+            "@type": "WorkOrder",
+            "href": "https://mycsp.com/tmf-api/v5/workOrderManagement/workOrder/f8ec1c38-4e4d-4378-a693-f95680e51e25",
+            "id": "f8ec1c38-4e4d-4378-a693-f95680e51e25",
+            "state": "completed"
+        }
+    },
+    "reportingSystem": {
+        "id": "49144272-e489-42b0-8710-c060469184ed",
+        "name": "APP-675",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "58ea2313-c057-43ba-910b-36876293c751",
+        "name": "APP-374",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "WorkOrderStateChangeEvent"
+}

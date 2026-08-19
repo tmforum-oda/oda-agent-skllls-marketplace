@@ -1,0 +1,5 @@
+{
+	"id": "PREPAIDOFFER_5GB",
+    "href": "https:/host:port/tmf-api/promotion/v5/promotion/PREPAIDOFFER_5GB",
+	"@type":"Promotion"
+}

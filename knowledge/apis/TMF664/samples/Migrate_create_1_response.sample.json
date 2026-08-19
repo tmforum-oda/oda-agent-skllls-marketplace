@@ -1,0 +1,42 @@
+{
+  "@type": "Migrate",
+  "href": "/resourceFunctionActivation/v5/migrate/afccfc16-a28e-4f3b-81e0-1cf7ba649ef9",
+  "id": "afccfc16-a28e-4f3b-81e0-1cf7ba649ef9",
+  "name": "Migrate Resource Function from NYC to LA",
+  "resourceFunction": {
+    "id": "acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+    "href": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+    "@type": "ResourceFunctionRef",
+    "@referredType": "ResourceFunction"
+  },
+  "state": "inProgress",
+  "cause": "planned",
+  "adminStateModification": "locked",
+  "addConnectionPoint": [
+    {
+      "@type": "ConnectionPointRef",
+      "@referredType": "ConnectionPoint",
+      "id": "95ae4067-72af-4495-905d-b92ec5f9c310",
+      "href": "/resourceInventory/v5/resource/95ae4067-72af-4495-905d-b92ec5f9c310",
+      "name": "CP-LA-1"
+    }
+  ],
+  "removeConnectionPoint": [
+    {
+      "@type": "ConnectionPointRef",
+      "@referredType": "ConnectionPoint",
+      "id": "82a48c39-787b-49b6-b919-4d8d7319c584",
+      "href": "/resourceInventory/v5/resource/82a48c39-787b-49b6-b919-4d8d7319c584",
+      "name": "CP-NYC-1"
+    }
+  ],
+  "priority": 1,
+  "startTime": "2019-08-19T04:00:00Z",
+  "completionMode": "bestEffort",
+  "place": {
+    "@type": "PlaceRef",
+    "id": "72a41352-7a2c-4baa-8df6-cab6845f6369",
+    "href": "/geographicLocation/v5/geographicLocation/72a41352-7a2c-4baa-8df6-cab6845f6369",
+    "@referredType": "GeographicLocation"
+  }
+}

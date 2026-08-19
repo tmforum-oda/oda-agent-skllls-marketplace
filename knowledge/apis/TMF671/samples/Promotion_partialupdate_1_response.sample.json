@@ -1,0 +1,35 @@
+{
+	"id": "CUSTBIRTHDAY",
+    "href": "https:/host:port/tmf-api/promotion/v5/promotion/CUSTBIRTHDAY",
+	"description": "It's your birthday! 50 loyalty points will be added to your account",
+	"lastUpdate": "2000-01-19T00:00:00.000Z",
+	"lifecycleStatus": "retirement",
+	"name": "50 loyalty points just to you",
+	"pattern": [{
+		"@type":"PromotionPattern",
+		"id": "PATTERN_50_LOYALTY POINTS",
+		"action": [{
+			"@type":"PromotionAction",
+			"id": "ACTION_50_LOYALTY POINTS", 
+			"actionType": "10",
+			"actionValue": "50 loyalty points"
+		}],
+		"criteriaGroup": [{
+			"@type":"PromotionCriteriaGroup",
+			"id": "GROUP_50_LOYALTY POINTS",
+			"criteria": [{
+				"@type":"PromotionCriteria",
+				"id": "CRITERIA_50_LOYALTY POINTS",
+				"criteriaOperator": "=",
+				"criteriaParameter": "1.3",
+				"criteriaValue":  "03-09"
+			}]
+		}]
+	}],
+	"promotionType": "Award",
+	"validFor": {
+		"startDateTime": "2020-01-05T12:00:56.982Z",
+		"endDateTime": "9999-12-31T23:59:59.999Z"
+	},
+	"@type":"Promotion"
+}

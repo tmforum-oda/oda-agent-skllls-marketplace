@@ -1,0 +1,71 @@
+{
+    "Promotion": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple Promotion.",
+                    "fields": "",
+                    "filtering": "",
+                    "content-type": "application/json",
+                    "response": "$_Promotion_list_1_response"
+                }
+            ]
+        },
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a specific Promotion.",
+                    "content-type": "application/json",
+                    "objectId": "RETENTIONNETFLIX3M",
+                    "response": "$_Promotion_retrieve_1_response"
+                }
+            ]
+        },
+        "create": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for creating a specific Promotion.",
+                    "content-type": "application/json",
+                    "request": "$_Promotion_create_1_request",
+                    "response": "$_Promotion_create_1_response"
+                }
+            ]
+        },
+        "partialupdate": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for patching a Promotion.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "CUSTBIRTHDAY",
+                    "request": "$_Promotion_partialupdate_1_request",
+                    "response": "$_Promotion_partialupdate_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for patching a Promotion.",
+                    "content-type": "application/json-patch+json",
+                    "objectId": "CUSTBIRTHDAY",
+                    "request": "$_Promotion_partialupdate_2_request",
+                    "response": "$_Promotion_partialupdate_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for patching a Promotion.",
+                    "content-type": "application/json-patch-query+json",
+                    "objectId": "CUSTBIRTHDAY",
+                    "request": "$_Promotion_partialupdate_3_request",
+                    "response": "$_Promotion_partialupdate_1_response"
+                }
+            ]
+        },
+        "delete": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for deleting a Promotion.",
+                    "content-type": "application/json",
+                    "objectId": "PREPAIDOFFER_5GB",
+                    "request": "$_Promotion_delete_1_request",
+                    "response": "$_Promotion_delete_1_response"
+                }
+            ]
+        }
+    }
+}

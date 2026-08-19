@@ -1,0 +1,401 @@
+{
+    "category": "B2C product order",
+    "description": "Product Order illustration sample",
+    "externalId": [
+      {
+        "@type": "ExternalIdentifier",
+        "owner": "TMF",
+        "externalIdentifierType": "POnumber",
+        "id": "456"
+      }
+    ],  
+    "priority": "1",
+    "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+    "requestedStartDate": "2019-05-03T08:13:59.506Z",
+    "channel": [
+      {
+        "role": "Used channel for order capture",
+        "@type": "RelatedChannel",
+          "channel": {
+            "id": "1",
+            "name": "Online channel",
+            "@type": "ChannelRef"
+          }
+      }
+    ],
+    "note": [
+      {
+        "id": "1",
+        "author": "Jean Pontus",
+        "date": "2019-04-30T08:13:59.509Z",
+        "text": "This is a TMF product order illustration",
+        "@type": "Note"
+      }
+    ],
+    "productOrderItem": [
+      {
+        "id": "100",
+        "quantity": 1,
+        "action": "add",
+        "productOffering": {
+          "id": "14277",
+          "name": "TMF25",
+          "@type": "ProductOfferingRef"
+        },
+        "productOrderItemRelationship": [
+          {
+            "id": "110",
+            "relationshipType": "bundles",
+            "@type": "OrderItemRelationship"
+          },
+          {
+              "id": "120",
+              "relationshipType": "bundles",
+              "@type": "OrderItemRelationship"
+          },
+          {
+              "id": "130",
+              "relationshipType": "bundles",
+              "@type": "OrderItemRelationship"
+          }
+        ],
+        "@type": "ProductOrderItem"
+      },
+      {
+          "id": "110",
+          "quantity": 1,
+          "action": "add",
+          "itemPrice": [
+            {
+              "description": "Access Fee",
+              "name": "Access Fee",
+              "@type": "OrderPrice",
+              "priceType": "nonRecurring",
+              "price": {
+                "taxRate": 0,
+                "@type": "Price",
+                "dutyFreeAmount": {
+                  "unit": "EUR",
+                  "value": 0.99
+                },
+                "taxIncludedAmount": {
+                  "unit": "EUR",
+                  "value": 0.99
+  
+                }
+              }
+            }
+          ],
+          "payment": [
+            {
+              "id": "2365",
+              "href": "https://host:port/paymentManagement/v5/cashPayment/2365",
+              "name": "Cash payment for access fee",
+              "@type": "PaymentRef",
+              "@referredType": "CashPayment"
+            }
+          ],
+          "product": {
+            "isBundle": false,
+            "@type": "Product",
+            "productCharacteristic": [
+              {
+                "name": "TEL_MSISDN",
+                "id": "Char6",
+                "@type": "StringCharacteristic",
+                "value": "415 279 7439",
+                "valueType": "string"
+                }
+            ],
+            "productSpecification": {
+              "id": "14307",
+              "name": "Mobile Telephony",
+              "version": "1",
+              "@type": "ProductSpecificationRef"
+            }
+          },
+          "productOffering": {
+            "id": "14305",
+            "name": "TMF Mobile Telephony",
+            "@type": "ProductOfferingRef"
+          },
+          "@type": "ProductOrderItem"
+        },
+        {
+          "id": "120",
+          "quantity": 1,
+          "action": "add", 
+          "billingAccount": {
+              "id": "1513",
+              "@type": "BillingAccountRef"
+            },
+            "itemPrice": [
+              {
+                "description": "Tariff plan monthly fee",
+                "name": "MonthlyFee",
+                "priceType": "recurring",
+                "@type": "OrderPrice",
+                "recurringChargePeriod": "month",
+                "price": {
+                  "taxRate": 0,
+                  "@type": "Price",
+                  "dutyFreeAmount": {
+                    "unit": "EUR",
+                    "value": 20
+                  },
+                  "taxIncludedAmount": {
+                    "unit": "EUR",
+                    "value": 20
+                  }
+                },
+                "priceAlteration": [
+                  {
+                    "applicationDuration": 3,
+                    "description": "20% for first 3 months",
+                    "name": "WelcomeDiscount",
+                    "priceType": "recurring",
+                    "priority": 1,
+                    "recurringChargePeriod": "month",
+                    "@type": "PriceAlteration",
+                    "price": {
+                      "percentage": 20,
+                      "taxRate": 0,
+                      "@type": "Price"
+                    }
+                  }
+                ]
+              }
+            ],
+            "itemTerm": [
+              {
+                "description": "Tariff plan 12 Months commitment",
+                "name": "12Months",
+                "@type": "OrderTerm",
+                "duration": {
+                  "amount": 12,
+                  "units": "month",
+                  "@type": "Duration"
+                }
+              }
+            ],
+          "product": {
+            "isBundle": false,
+            "@type": "Product",
+            "productSpecification": {
+              "id": "14395",
+              "href": "https://host:port/productCatalogManagement/v5/productSpecification/14395",
+              "name": "TMF Tariff plan",
+              "version": "1",
+              "@type": "ProductSpecificationRef"
+            },
+            "intent":{
+                "@type": "Intent",
+                "id": "42",
+                "description": "Intent for ordering live broadcast service for an event",
+                "validFor": {
+                  "startDateTime": "2022-10-23T00:30:00.00Z",
+                  "endDateTime": "2022-10-19T23:30:00.00Z"
+                },
+                "isBundle": true,
+                "version": "1.0.0",
+                "intentSpecification": {
+                  "@type": "IntentSpecificationRef",
+                  "id": "EventLiveBroadcast_IntentSpec",
+                  "name": "EventLiveBroadcastIntentSpec",
+                  "@referredType": "IntentSpecification",
+                  "@href": "/intent/v5/IntentSpecification/EventLiveBroadcast_IntentSpec"
+                },
+                "name": "EventLiveBroadcast",
+                "expression": {
+                  "@type": "JsonLdExpression",
+                  "expressionValue": {
+                    "@context": {
+                      "icm": "http://www.models.tmforum.org/tio/v1.0.0/IntentCommonModel#",
+                      "cat": "http://www.operator.com/Catalog#",
+                      "idan": "http://www.idan-tmforum-catalyst.org/IntentDrivenAutonomousNetworks#",
+                      "xsd": "http://www.w3.org/2001/XMLSchema#",
+                      "t": "http://www.w3.org/2006/time#",
+                      "elb": "http://www.operator.com/Catalog/EventWirelessAccess#",
+                      "app": "http://www.operator.com/Catalog/StreamingApplication#",
+                      "geo": "https://tmforum.org/2020/07/geographicPoint#"
+                    },
+                    "idan:EventLiveBroadcast000001": {
+                      "@type": "icm:Intent",
+                      "icm:intentOwner": "idan:Salesforce",
+                      "icm:hasExpectation": {
+                        "idan:Delivery_service": {
+                          "@type": "icm:DeliveryExpectation",
+                          "icm:target": "_:service",
+                          "icm:params": {
+                            "icm:targetDescription": "cat:EventWirelessAccess"
+                          }
+                        },
+                        "idan:Delivery_app": {
+                          "@type": "icm:DeliveryExpectation",
+                          "icm:target": "_:application",
+                          "icm:params": {
+                            "icm:targetDescription": "cat:StreamingApplication"
+                          }
+                        },
+                        "idan:Property_service": {
+                          "@type": "icm:PropertyExpectation",
+                          "icm:target": "_:service",
+                          "icm:params": {
+                            "elb:serviceQuality": [{
+                              "icm:value": "4KUHD"
+                            }],
+                            "elb:numberOfParticipants": [{
+                              "icm:atMost": "200"
+                            }],
+                            "elb:areaOfService": [{
+                              "geo:geographicPoints": [{
+                                  "geo:longitude": 90,
+                                  "geo:latitude": 44,
+                                  "geo:altitude": 84
+                                },
+                                {
+                                  "geo:longitude": 84,
+                                  "geo:latitude": -12,
+                                  "geo:altitude": 24
+                                },
+                                {
+                                  "geo:longitude": 131,
+                                  "geo:latitude": -36,
+                                  "geo:altitude": 29
+                                },
+                                {
+                                  "geo:longitude": 7,
+                                  "geo:latitude": 81,
+                                  "geo:altitude": -42
+                                }
+                              ]
+                            }]
+                          }
+                        },
+                        "idan:Property_app": {
+                          "@type": "icm:PropertyExpectation",
+                          "icm:target": "_:application",
+                          "icm:params": {
+                            "app:appType": [{
+                                "icm:value": "AWS MediaLive"
+                              },
+                              {
+                                "icm:value": "Facebook Live"
+                              },
+                              {
+                                "icm:value": "YouTube"
+                              }
+                            ]
+                          }
+                        },
+                        "idan:Reporting": {
+                          "@type": "icm:ReportingExpectation",
+                          "icm:target": "idan:EventLiveBroadcast",
+                          "icm:params": {
+                            "icm:reportingInterval": [{
+                              "t:Duration": [{
+                                "t:numbericDuration": 10,
+                                "t:temporalUnit": "unitMinute"
+                              }]
+                            }],
+                            "icm:reportingEvent": [
+                              "icm:StateComplies",
+                              "icm:StateDegrades"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "lastUpdate": "2023-03-09T08:42:33.044Z"
+              }
+          },
+          "productOffering": {
+            "id": "14344",
+            "href": "https://host:port/productCatalogManagement/v5/productOffering/14344",
+            "name": "TMF Tariff Plan",
+            "@type": "ProductOfferingRef"
+          },
+          "productOrderItemRelationship": [
+            {
+              "id": "110",
+              "relationshipType": "reliesOn",
+              "@type": "OrderItemRelationship"
+            }
+          ],
+          "@type": "ProductOrderItem"
+        },      
+        {
+          "id": "130",
+          "quantity": 1,
+          "action": "add",
+          "product": {
+            "isBundle": false,
+            "@type": "Product",
+            "productCharacteristic": [
+              {
+                "name": "CoverageOptions",
+                "id": "Char7",
+                "@type": "StringCharacteristic",
+                "value": "National",
+                "valueType": "string"
+              }
+            ],
+            "productSpecification": {
+              "id": "14353",
+              "href": "https://host:port/productCatalogManagement/v5/productSpecification/14353",
+              "name": "Coverage",
+              "version": "1",
+              "@type": "ProductSpecificationRef"
+            }
+          },
+          "productOffering": {
+            "id": "14354",
+            "href": "https://host:port/productCatalogManagement/v5/productOffering/14354",
+            "name": "Coverage Options",
+            "@type": "ProductOfferingRef"
+          },
+          "productOrderItemRelationship": [
+            {
+              "id": "110",
+              "relationshipType": "reliesOn",
+              "@type": "OrderItemRelationship"
+            }
+          ],
+          "@type": "ProductOrderItem"
+        }
+    ],
+    "relatedParty": [
+      {
+        "role": "Seller",
+        "partyOrPartyRole": {
+          "id": "456-dd-df45",
+          "href": "https://host:port/partyManagement/v5/individual/456-dd-df45",
+          "name": "Joe Doe",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyRefOrPartyRoleRef"
+      },
+      {
+        "role": "Customer",
+        "partyOrPartyRole": {
+          "id": "ff55-hjy4",
+          "href": "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+          "name": "Jean Pontus",
+          "@type": "PartyRoleRef",
+          "@referredType": "Customer"
+        },
+        "@type": "RelatedPartyRefOrPartyRoleRef"
+      }    
+    ],
+    "intentSpecification": {
+      "@type": "IntentSpecificationRef",
+      "id": "EventLiveBroadcast_IntentSpec",
+      "name": "EventLiveBroadcastIntentSpec",
+      "@referredType": "IntentSpecification",
+      "@href": "/intent/v5/IntentSpecification/EventLiveBroadcast_IntentSpec"
+    },
+    "@type": "ProductOrder"
+  }

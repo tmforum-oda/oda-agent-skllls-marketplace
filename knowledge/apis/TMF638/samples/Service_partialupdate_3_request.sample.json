@@ -1,0 +1,8 @@
+[
+    {
+      "op": "replace",
+      "path": "/note/author?note.id=77456",
+      "value": "Mr. N. Bene"
+    }
+  ]
+    

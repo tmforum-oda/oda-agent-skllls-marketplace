@@ -1,0 +1,45 @@
+{
+  "correlationId": "0f874cb9-c70d",
+  "description": "TroubleTicketStatusChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "41cf-ad81-d65ea1c2840c",
+  "eventTime": "2022-08-25T12:18:12.191Z",
+  "eventType": "TroubleTicketStatusChangeEvent",
+  "priority": "5",
+  "timeOccurred": "2022-08-25T12:18:08.202Z",
+  "title": "TroubleTicketStatusChangeEvent",
+  "event": {
+    "troubleTicket": {
+      "id": "3180",
+      "href": "https://host:port/troubleTicket/v5/troubleTicket/3180",
+      "@type": "TroubleTicket",
+      "lastUpdate": "2019-05-31T07:34:45.968Z",
+      "priority": "High",
+      "status": "pending",
+      "statusChangeDate": "2019-05-31T07:34:45.968Z",
+      "statusChangeReason": "Need more information from the customer",
+      "statusChangeHistory": [
+        {
+          "statusChangeDate": "2019-05-31T07:34:45.968Z",
+          "statusChangeReason": "Need more information from the customer",
+          "status": "pending",
+          "@type": "StatusChange"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TroubleTicketStatusChangeEvent"
+}

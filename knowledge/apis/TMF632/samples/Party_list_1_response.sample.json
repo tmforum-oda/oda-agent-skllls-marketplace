@@ -1,0 +1,18 @@
+[
+ {
+   "id": "42",
+   "href": "https://serverRoot/tmf-api/party/v5/individual/42",
+   "@type": "Individual",
+   "@baseType": "Party",
+   "givenName": "Jane",
+   "familyName": "Lamborgizzia"
+ },
+ {
+   "id": "52",
+   "href": "https://serverRoot/tmf-api/party/v5/individual/52",
+   "@type": "Individual",
+   "@baseType": "Party",
+   "givenName": "Paul",
+   "familyName": "Newman"
+ }
+]

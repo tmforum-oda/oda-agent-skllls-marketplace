@@ -1,0 +1,7 @@
+[
+  {
+    "op": "replace",
+    "path": "/isMandatory",
+    "value": false
+  }
+]

@@ -1,0 +1,70 @@
+{
+  "@type": "ResourceOrderStateChangeEvent",
+  "@schemaLocation": "/schema-registry/schema/resourceOrderStateChangeEvent",
+  "href": "/tmf-api/v5/events/stateChange/12345",
+  "id": "12345",
+  "correlationId": "corr67890",
+  "domain": "OrderManagement",
+  "title": "Resource Order State Change",
+  "description": "This event captures changes made to the state of a resource order.",
+  "priority": "medium",
+  "timeOccurred": "2025-01-22T06:41:27Z",
+  "source": {
+    "@type": "System",
+    "@schemaLocation": "/schema-registry/schema/System",
+    "href": "/tmf-api/v5/systems/sourceSystem/source123",
+    "id": "source123",
+    "name": "SourceSystem"
+  },
+  "reportingSystem": {
+    "@type": "System",
+    "@schemaLocation": "/schema-registry/schema/ReportingSystem",
+    "href": "/tmf-api/v5/systems/reportingSystem/report567",
+    "id": "report567",
+    "name": "ReportingSystem"
+  },
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "@schemaLocation": "/schema-registry/schema/RelatedParty",
+      "role": "Customer",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "@schemaLocation": "/schema-registry/schema/Party",
+        "href": "/tmf-api/v5/party/customer789",
+        "id": "customer789",
+        "name": "John Doe",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "analyticCharacteristic": [
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "@schemaLocation": "/schema-registry/schema/Characteristic",
+      "id": "char123",
+      "name": "OrderPriorityChange",
+      "valueType": "string",
+      "value": "High",
+      "characteristicRelationship": [
+        {
+          "@type": "CharacteristicRelationship",
+          "id": "rel456",
+          "relationshipType": "associated"
+        }
+      ]
+    }
+  ],
+  "eventId": "event56789",
+  "eventTime": "2025-01-22T06:41:27Z",
+  "eventType": "StateChange",
+  "event": {
+    "resourceOrder": {
+      "@type": "ResourceOrder",
+      "id": "12345",
+      "href": "/tmf-api/v5/resourceOrder/12345",
+      "state": "acknowledged"
+    }
+  }
+}

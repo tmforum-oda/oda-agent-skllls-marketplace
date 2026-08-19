@@ -1,0 +1,17 @@
+{
+  "id": "TMFC008",
+  "type": "component",
+  "name": "ServiceInventory",
+  "version": "1.2.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC008-ServiceInventory/Specification/TMFC008-ServiceInventory.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "c5b79c6e4726644e9a723b0cdc7be300bf1432020a55602bee835fbde6a80ba1"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

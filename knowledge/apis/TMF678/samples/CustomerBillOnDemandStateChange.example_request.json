@@ -1,0 +1,33 @@
+{
+    "correlationId": "10ca43d6-e2a2",
+    "description": "CustomerBillOnDemandStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4992-97e5-25fa266295e3",
+    "eventTime": "2023-03-05T12:41:39.885Z",
+    "eventType": "CustomerBillOnDemandStateChangeEvent",
+    "priority": "3",
+    "timeOcurred": "2023-03-05T12:41:31.945Z",
+    "title": "CustomerBillOnDemandStateChangeEvent",
+    "event": {
+        "customerBillOnDemand": {
+        	"id": "D123",
+        	"href": "http://server:port/tmf-api/Customer_Bill_Management/v5/customerBillOnDemand/D123",
+        	"state": "done",
+        	"@type": "CustomerBillOnDemand"
+        }
+    },
+    "reportingSystem": {
+        "id": "222",
+        "name": "APP-756",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "233",
+        "name": "APP-628",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CustomerBillOnDemandStateChangeEvent"
+}

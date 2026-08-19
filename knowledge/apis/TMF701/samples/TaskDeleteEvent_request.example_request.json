@@ -1,0 +1,33 @@
+{
+  "id": "evt-003",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-003",
+  "correlationId": "p698jf-ph45",
+  "description": "TaskDeleteEvent illustration",
+  "timeOccurred": "2024-04-18T16:49:25-04:00",
+  "eventId": "00012",
+  "eventTime": "2024-04-18T16:42:25-04:00",
+  "eventType": "TaskDeleteEvent",
+  "title": "TaskDeleteEvent",
+  "event": {
+    "task": {
+      "id": "4fd-ty56-gg55-2",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/task/4fd-ty56-gg55-2",
+      "@type": "Task"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TaskDeleteEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

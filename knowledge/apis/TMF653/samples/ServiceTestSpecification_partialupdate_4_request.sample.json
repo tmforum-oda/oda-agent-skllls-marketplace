@@ -1,0 +1,7 @@
+[
+  {
+    "op": "replace",
+    "path": "/testMeasureDefinition/capturePeriod/amount?testMeasureDefinition.metricName=Flow speed",
+    "value": 10
+  }
+]

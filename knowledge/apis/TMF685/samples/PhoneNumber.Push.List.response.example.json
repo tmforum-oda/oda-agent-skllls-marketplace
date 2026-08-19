@@ -1,0 +1,29 @@
+[
+    {
+        "@type": "Push",
+        "id": "ae63d76e-6d00-45aa-97a6-c8a2b54390e5",
+        "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePool/c3fef858-b864-4fac-971e-795b1195ded9/push/ae63d76e-6d00-45aa-97a6-c8a2b54390e5",
+        "pushedResource":
+        [
+            {
+                "@type": "ResourceRef",
+                "@referredType": "LogicalResource",
+                "id": "4d179a07-1555-4e5f-a2de-0a51f5dd7e15",
+                "href": "https://{server}:{port}/tmf-api/resourceInventoryManagement/v5/resource/4d179a07-1555-4e5f-a2de-0a51f5dd7e15"
+            },
+            {
+                "@type": "ResourceRef",
+                "@referredType": "LogicalResource",
+                "id": "15dfa8a7-f9db-43a8-8758-9d9df5a76264",
+                "href": "https://{server}:{port}/tmf-api/resourceInventoryManagement/v5/resource/15dfa8a7-f9db-43a8-8758-9d9df5a76264"
+            },
+            {
+                "@type": "ResourceRef",
+                "@referredType": "LogicalResource",
+                "id": "195aa8ee-7560-4d97-9b9a-2add1a4e0372",
+                "href": "https://{server}:{port}/tmf-api/resourceInventoryManagement/v5/resource/195aa8ee-7560-4d97-9b9a-2add1a4e0372"
+            }
+        ],
+        "state": "inProgress"
+    }
+]

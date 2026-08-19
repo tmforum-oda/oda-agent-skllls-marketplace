@@ -1,0 +1,44 @@
+[
+    {
+        "id": "10c5f5b5-e408",
+        "href": "https://api.company.com/tmf-api/geographicLocation/v5/geographicLocation/10c5f5b5-e408",
+        "name": "Vodafone House",
+        "@baseType": "GeographicLocation",
+        "@type": "GeoJsonPoint",
+        "geoJson": {
+            "type": "Point",
+            "coordinates": [
+                -1.3197581470012665,
+                51.41671197068097
+            ]
+        }
+    },
+    {
+        "id": "6d8e3c7a-8586", 
+        "href": "https://api.company.com/tmf-api/geographicLocation/v5/geographicLocation/6d8e3c7a-8586",
+        "name": "Babbage House",
+        "@baseType": "GeographicLocation",
+        "@type": "GeoJsonPoint",
+        "geoJson": {
+            "type": "Point",
+            "coordinates": [
+                -1.3200236856937408,
+                51.41484889182162
+            ]
+        }
+    },
+    {
+        "id": "7e73fac4-39c6", 
+        "href": "https://api.company.com/tmf-api/geographicLocation/v5/geographicLocation/7e73fac4-39c6",
+        "name": "Faraday House",
+        "@baseType": "GeographicLocation",
+        "@type": "GeoJsonPoint",
+        "geoJson": {
+            "type": "Point",
+            "coordinates": [
+                -1.3201913237571716,
+                51.41561755173973
+            ]
+        }
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "op": "replace",
+        "path": "/version",
+        "value": "3.3"
+    },
+    {
+        "op": "replace",
+        "path": "/lifecycleStatus",
+        "value": "Launched"
+    }
+]

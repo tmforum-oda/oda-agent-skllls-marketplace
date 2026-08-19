@@ -1,0 +1,17 @@
+{
+  "id": "TMFC007",
+  "type": "component",
+  "name": "ServiceOrderManagement",
+  "version": "2.0.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC007-ServiceOrderManagement/Specification/TMFC007-ServiceOrderManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "dcee930860f72e7b813f74473ebbed2650d8c64a4de4b13e95514b01a72e92a8"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

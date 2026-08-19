@@ -1,0 +1,104 @@
+{
+    "UsageConsumptionReport": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving an usage consumption report for use case 1. The given criteria is the msisdn number 0601010101 used by Kate.",
+                    "filtering": "product.publicIdentifier=33601010101", 
+                    "content-type": "application/json", 
+                    "response" : "$_UsageConsumptionReport_list_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for retrieving an usage consumption report for use case 2. The given criteria is the msisdn number 0603030303 used by Lea.",
+                    "filtering": "product.publicIdentifier=33603030303", 
+                    "content-type": "application/json", 
+                    "response" : "$_UsageConsumptionReport_list_2_response"
+                },
+                {
+                    "description": "Here's an example of a request for retrieving an usage consumption report for use case 2. The given criteria is the user reference usr2.",
+                    "filtering": "relatedParty.id=usr2", 
+                    "content-type": "application/json", 
+                    "response" : "$_UsageConsumptionReport_list_3_response"
+                },
+                {
+                    "description": "Here's an example of a request for retrieving a global usage consumption report for use case 3 . The given criteria is the bucket reference bucket10",
+                    "filtering": "bucket.id=bucket10", 
+                    "content-type": "application/json", 
+                    "response" : "$_UsageConsumptionReport_list_4_response"
+                },
+                {
+                    "description": "Here's an example of a request for retrieving a usage consumption report for Lea user for use case 3 . The given criteria are the bucket reference bucket10 and the user reference usr2",
+                    "filtering": "bucket.id=bucket10&product.user.id=usr2", 
+                    "content-type": "application/json", 
+                    "response" : "$_UsageConsumptionReport_list_5_response"
+                },
+                {
+                    "description": "Here's an example of a request for retrieving a usage consumption report for Lea smartphone for use case 3. The given criteria are the bucket reference bucket10 and the public identifier of the Lea smartphone 3302020202.",
+                    "filtering": "bucket.id=bucket10&product.publicIdentifier=33602020202", 
+                    "content-type": "application/json", 
+                    "response" : "$_UsageConsumptionReport_list_6_response"
+                }
+		
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's a sample of a request for retrieving a usageConsumptionReport resource calculated for the use case 1.",
+                    "content-type": "application/json",
+                    "objectId":"ucr0001",
+                    "response" : "$_UsageConsumptionReport_retrieve_1_response"
+		}
+            ]
+        }, 
+        "create": null,
+        "partialupdate": null,
+        "delete": {
+	    "samples" : [
+		{
+		    "description": "Here's an example of a request for deleting an usage consumption report resource.",
+		    "objectId" : "ucr001"
+		}
+	    ]
+	}
+    },
+
+    
+    "UsageConsumptionReportRequest" : {
+	    "list" : null,
+	    "retrieve": {
+	    "samples" : [
+		  {
+		    "description" : "Here's an example of a request for retrieving an usage consumption report request completed corresponding to use case 1.",
+		    "objectId" : "uccrreq001",
+            "content-type": "application/json",
+            "response" : "$_UsageConsumptionReportRequest_retrieve_1_response"
+		  }
+	     ]
+	    },
+        "create": {
+	    "samples" : [
+		{
+		    "description" : "Here's an example of a request for requesting an usage consumption report for use case 1 : given criteria is the msisdn number 0601010101 used by one user Kate.",
+		    "request" : "$_UsageConsumptionReportRequest_create_1_request",
+		    "response" : "$_UsageConsumptionReportRequest_create_1_response"
+		},
+		{
+		    "description" : "Here's an example of a request for requesting an usage consumption report for use case 2 : given criteria is the user reference usr2.",
+		    "request" : "$_UsageConsumptionReportRequest_create_2_request",
+		    "response" : "$_UsageConsumptionReportRequest_create_2_response"
+		}
+		
+	    ]
+	},
+        "partialupdate": null,
+	"delete" : {
+	    "samples" : [
+		{
+		    "description" : "Here's an example of a request for deleting an usage consumption report request resource.",
+		    "objectId" : "uccrreq001"
+		}
+	    ] 
+	}
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "@type": "QueryProductConfiguration",
+    "instantSync": true,
+    "channel": {
+        "id": "01", 
+        "href": "https://host:port/tmf-api/salesChannelManagement/v5/channel/01", 
+        "name": "Customer portal",
+        "@referredType": "SalesChannel",
+        "@type":  "ChannelRef"
+    },
+    "relatedParty": [
+        {
+            "role": "customer",
+            "@type": "RelatedPartyOrPartyRole",
+            "partyOrPartyRole": {
+                "@type": "PartyRef",
+                "id": "10000008",
+                "href": "https://host:port/partyManagement/v5/party/10000008",
+                "name": "Sandy Smith",
+                "referredType": "Individual"
+            }
+        }
+    ],    
+    "contextCharacteristic": [
+        {
+            "name": "salesModel",
+            "valueType": "string",
+            "value": "B2C",
+            "@type": "StringCharacteristic"
+        }
+    ],
+    "requestProductConfigurationItem": [
+        {
+            "@type":  "QueryProductConfigurationItem",
+            "id": "01",            
+            "productConfiguration": {
+                "@type":  "ProductConfiguration",
+                "productOffering": {
+                    "id": "fc1",
+                    "href": "https://host:port/productCatalogManagement/v5/productOffering/fc1",
+                    "name": "Fiber contract",
+                    "@type": "ProductOfferingRef"
+                },
+                "configurationAction": [
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "add",
+                        "description": "Add new product",
+                        "isSelected": true
+                    }
+                ]
+            }
+        }
+    ]
+}

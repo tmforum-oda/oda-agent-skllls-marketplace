@@ -1,0 +1,13 @@
+{
+  "@type": "AttachmentDeleteEvent",
+  "eventId": "e3dac91d-a035-465f-afc5-d3c603b53ad2",
+  "eventTime": "2024-11-10T16:30:00.000Z",
+  "eventType": "AttachmentDeleteEvent",
+  "event": {
+    "attachment": {
+      "@type": "Attachment",
+      "href": "https://serverRoot/tmf-api/document/v5/attachment/1492026921",
+      "id": "1492026921"
+    }
+  }
+}

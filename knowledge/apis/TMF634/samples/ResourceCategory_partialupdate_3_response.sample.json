@@ -1,0 +1,63 @@
+{
+    "id": "8121", 
+    "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCategory/8121", 
+    "name": "Network Logical Resources", 
+    "description": "This resource category groups together logical resources that are implemented in the network",
+    "@type": "ResourceCategory", 
+    "version": "1.0", 
+    "validFor": {
+        "startDateTime": "2022-08-23T00:00:22.920Z", 
+        "endDateTime": "2023-03-25T00:00:22.920Z"
+    }, 
+    "lifecycleStatus": "Retired", 
+    "lastUpdate": "2023-03-24T00:00:22.920Z", 
+    "isRoot": true, 
+    "relatedParty": [
+        {
+            "role": "Employee", 
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "id": "4434", 
+                "href": "https://mycsp.com:8080/tmf-api/partyRole/v5/employee/4434", 
+                "name": "Jimmy Doe",
+                "@referredType": "Employee",
+                "@type": "PartyRoleRef"
+            }
+        }
+    ], 
+    "category": [
+        {
+            "id": "5982", 
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCategory/5982", 
+            "version": "3.2", 
+            "name": "IoT",
+            "@type": "ResourceCategoryRef"
+        }
+    ], 
+    "resourceCandidate": [
+        {
+            "id": "5298", 
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCandidate/5298", 
+            "version": "1.0", 
+            "name": "Elastic Storage",
+            "@type": "ResourceCandidateRef"
+        },
+        {
+            "id": "7479", 
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCandidate/7479", 
+            "version": "3.2", 
+            "name": "Virtual Storage Medium",
+            "@type": "ResourceCandidateRef"
+        }
+    ],
+    "resourceSpecification": [
+        {
+            "id": "42", 
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceSpecification/42", 
+            "version": "3.0", 
+            "name": "Virtual Storage Medium",
+            "@type": "ResourceSpecificationRef",
+            "@referredType": "ResourceSpecification"
+        }
+    ]
+}

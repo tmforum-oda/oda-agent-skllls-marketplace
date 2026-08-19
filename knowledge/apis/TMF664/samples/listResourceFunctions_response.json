@@ -1,0 +1,76 @@
+[
+  {
+    "@type": "ResourceFunction",
+    "id": "acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+    "href": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+    "name": "Medium to Large Enterprise Firewall - Model 134985.3",
+    "description": "This is a type of firewall to be used for our medium to large enterprise customers",
+    "category": "Security",
+    "resourceSpecification": {
+      "@type": "ResourceSpecificationRef",
+      "id": "5fc91de8-88be-4c7c-8b3c-e08ccc53b889",
+      "href": "/resourceCatalog/v5/resourceSpecification/5fc91de8-88be-4c7c-8b3c-e08ccc53b889",
+      "@referredType": "ResourceFunctionSpecification"
+    },
+    "resourceCharacteristic": [
+      {
+        "@type": "StringCharacteristic",
+        "@baseType": "Characteristic",
+        "name": "OperatingSystem",
+        "value": "Linux"
+      },
+      {
+        "@type": "NumberCharacteristic",
+        "@baseType": "Characteristic",
+        "name": "MaxTraffic",
+        "value": 1000
+      }
+    ],
+    "connectionPoint": [
+      {
+        "id": "82a48c39-787b-49b6-b919-4d8d7319c584",
+        "href": "/resourceInventory/v5/resource/82a48c39-787b-49b6-b919-4d8d7319c584",
+        "@type": "ConnectionPointRef",
+        "@referredType": "Endpoint",
+        "name": "CP1.1"
+      }
+    ]
+  },
+  {
+    "@type": "ResourceFunction",
+    "id": "resource-function-002",
+    "href": "/resourceFunctionActivation/v5/resourceFunction/resource-function-002",
+    "name": "Small Office Router - Model XYZ",
+    "description": "Router for small office/home office environments",
+    "category": "Network",
+    "resourceSpecification": {
+      "@type": "ResourceSpecificationRef",
+      "id": "router-spec-001",
+      "href": "/resourceCatalog/v5/resourceSpecification/router-spec-001",
+      "@referredType": "ResourceFunctionSpecification"
+    },
+    "resourceCharacteristic": [
+      {
+        "@type": "StringCharacteristic",
+        "@baseType": "Characteristic",
+        "name": "OperatingSystem",
+        "value": "RouterOS"
+      },
+      {
+        "@type": "NumberCharacteristic",
+        "@baseType": "Characteristic",
+        "name": "MaxBandwidth",
+        "value": 100
+      }
+    ],
+    "connectionPoint": [
+      {
+        "id": "router-cp-001",
+        "href": "/resourceInventory/v5/resource/router-cp-001",
+        "@type": "ConnectionPointRef",
+        "@referredType": "Endpoint",
+        "name": "WAN Port"
+      }
+    ]
+  }
+]

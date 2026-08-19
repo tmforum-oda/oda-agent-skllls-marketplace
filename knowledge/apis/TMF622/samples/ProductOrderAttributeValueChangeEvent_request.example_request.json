@@ -1,0 +1,56 @@
+{
+    "correlationId": "8a1d7f00-245b",
+    "description": "ProductOrderAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "467c-937d-9afe827e85ee",
+    "eventTime": "2022-09-14T12:14:28.774Z",
+    "eventType": "ProductOrderAttributeValueChangeEvent",
+    "priority": "3",
+    "timeOcurred": "2022-09-14T12:14:23.473Z",
+    "title": "ProductOrderAttributeValueChangeEvent",
+    "event": {
+        "productOrder": {
+            "href": "http://servername/productOrder/30001",
+            "id": "30001",
+            "@type": "ProductOrder",
+            "relatedParty": [
+                {
+                  "role": "Seller",
+                  "partyOrPartyRole": {
+                    "id": "456-dd-df45",
+                    "href": "https://host:port/partyManagement/v5/individual/456-dd-df45",
+                    "name": "Joe Doe",
+                    "@type": "PartyRef",
+                    "@referredType": "Individual"
+                  },
+                  "@type": "RelatedPartyRefOrPartyRoleRef"
+                },
+                {
+                  "role": "Customer",
+                  "partyOrPartyRole": {
+                    "id": "ff55-hjy4",
+                    "href": "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+                    "name": "Jean Pontus",
+                    "@type": "PartyRoleRef",
+                    "@referredType": "Customer"
+                  },
+                  "@type": "RelatedPartyRefOrPartyRoleRef"
+                }    
+              ]
+        }
+    },
+    "reportingSystem": {
+        "id": "533",
+        "name": "APP-963",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "200",
+        "name": "APP-893",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ProductOrderAttributeValueChangeEvent"
+}

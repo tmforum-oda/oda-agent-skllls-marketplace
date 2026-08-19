@@ -1,0 +1,56 @@
+{
+    "name": "Virtual Storage Medium", 
+    "description": "This resource specification defines the virtual storage medium", 
+    "@type": "ResourceSpecification", 
+    "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Resource/ResourceSpecification.schema.json", 
+    "version": "1.0", 
+    "validFor": {
+        "startDateTime": "2017-08-12T00:00:00.000Z", 
+        "endDateTime": "2018-03-07T00:00:00.000Z"
+    }, 
+    "isBundle": false,
+    "category": "Cloud resource",
+    "attachment": [
+        {
+            "id": "25552",
+            "href": "https://mycsp.com:8080/tmf-api/document/v5/attachment/25552",
+            "name": "Configuration Instructions",
+            "mimeType": "application/pdf",
+            "url": "https://mycsp.com:7070/docloader?docnum=9567457677", 
+            "@type": "Attachment"
+        }
+    ],
+    "relatedParty": [
+        {
+            "role": "Supplier", 
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "id": "5858",
+                "href": "https://mycsp.com:8080/tmf-api/partyRole/v5/supplier/5858", 
+                "name": "Gustave Flaubert",
+                "@referredType": "Supplier",
+                "@type": "PartyRoleRef"
+            }
+        }
+    ],
+    "resourceSpecRelationship": [
+        {
+            "id": "556788",
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceSpecification/556788",
+            "name": "Underlying Physical Disk",
+            "relationshipType": "dependency", 
+            "@type": "ResourceSpecificationRelationship"
+        }
+    ],
+    "targetResourceSchema": {
+        "@type": "VirtualStorage",
+        "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Resource/VirtualStorage.schema.json"
+    },
+    "intentSpecification": {
+		"@type": "IntentSpecificationRef",
+		"id": "EventLiveBroadcast_IntentSpec",
+		"href": "https://mycsp.com:8080/tmf-api/intent/v5/intentSpecification/EventLiveBroadcast_IntentSpec",
+		"name": "EventLiveBroadcastIntentSpec",
+		"@referredType": "IntentSpecification"
+	}
+}

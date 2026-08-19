@@ -1,0 +1,136 @@
+{
+  "@type": "GeographicSite",
+  "href": "https://mycsp.com/tmf-api/geographicSiteManagement/v5/geographicSite/ae4b915f-16f5-4f05-a3c7-8c6a99c7d24b",
+  "id": "ae4b915f-16f5-4f05-a3c7-8c6a99c7d24b",
+  "name": "BS-9999",
+  "externalIdentifier": [
+    {
+      "@type": "ExternalIdentifier",
+      "owner": "Address Management System",
+      "externalIdentifierType": "Address",
+      "id": "f76bc43c-53d5-4222-8ac3-f1a3e5b7d3ab"
+    }
+  ],
+  "creationDate": "2024-03-15T07:44:40.056Z",
+  "description": "This is the site for the base station BS-9999",
+  "status": "active",
+  "siteCategory": "owned-store",
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "role": "Owner",
+      "partyOrPartyRole": {
+        "href": "https://mycsp.com/tmf-api/partyManagement/v5/individual/da7f6b47-cd08-45a8-926b-d5824a5980e3",
+        "id": "da7f6b47-cd08-45a8-926b-d5824a5980e3",
+        "name": "TelcoEngineering",
+        "@type": "PartyRef",
+        "@referredType": "Organization"
+      }
+    }
+  ],
+  "calendar": [
+    {
+      "@type": "CalendarPeriod",
+      "day": "weekdays",
+      "timeZone": "+00:00",
+      "hourPeriod": [
+        {
+          "startHour": "09:00",
+          "endHour": "18:00"
+        }
+      ],
+      "status": "open"
+    }
+  ],
+  "relatedAddress": [
+    {
+      "role": "service-address",
+      "address": {
+        "id": "fcdb7157-3df9-4c49-93a6-8a3a248d9a27",
+        "href": "https://mycsp.com/tmf-api/geographicAddressManagement/v5/geographicAddress/fcdb7157-3df9-4c49-93a6-8a3a248d9a27",
+        "@type": "GeographicAddressRef",
+        "@referredType": "GeographicAddress"
+      },
+      "@type": "RelatedGeographicAddressRef"
+    }
+  ],
+  "siteFeature": [
+    {
+      "id": "f9f06997-5a8c-4079-9c84-afdd154c3fcf",
+      "name": "Out Of Hours Access",
+      "@type": "GeographicSiteFeature",
+      "featureCategory": [
+        "OutOfHoursAccess"
+      ],
+      "isEnabled": true,
+      "featureCharacteristic": [
+        {
+          "@type": "StringCharacteristic",
+          "id": "4b69fcbb-6d89-4de3-8f90-fd12a567ddfc",
+          "name": "Description",
+          "value": "For out-of-hours weekday access please report to the reception to gain access to the site."
+        }
+      ],
+      "validFor": [
+        {
+          "@type": "CalendarPeriod",
+          "day": "weekdays",
+          "timeZone": "+00:00",
+          "hourPeriod": [
+            {
+              "startHour": "18:00",
+              "endHour": "09:00"
+            }
+          ],
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "d31a8f92-b8e7-4c82-8042-997ff5b64e30",
+      "name": "Survey Information",
+      "@type": "GeographicSiteFeature",
+      "featureCategory": [
+        "GeographicSiteFeature"
+      ],
+      "featureCharacteristic": [
+        {
+          "@type": "StringCharacteristic",
+          "id": "4b69fcbb-6d89-4de3-8f90-fd12a567ddfc",
+          "name": "Site Survey Reports",
+          "value": "Information on underground and overhead utilities (e.g., gas lines, electrical cables) to avoid interference during installation."
+        }
+      ],
+      "attachment": [
+        {
+          "href": "https://mycsp.com/tmf-api/documentManagement/v5/attachment/bc4d58a3-549c-4082-98de-d1dc9b1066a4",
+          "id": "bc4d58a3-549c-4082-98de-d1dc9b1066a4",
+          "@referredType": "Attachment",
+          "@type": "AttachmentRef"
+        }
+      ],
+      "note": [
+        {
+          "@type": "Note",
+          "id": "8921d8e6-6570-4260-bba8-e66cbba4b49b",
+          "author": "Mr. N. Bene",
+          "date": "2024-03-16T08:00:00Z",
+          "text": "Site Survey received from TechSurvey&Co"
+        }
+      ],
+      "relatedParty": [
+        {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "role": "SurveyPartner",
+          "partyOrPartyRole": {
+            "href": "https://mycsp.com/tmf-api/partyManagement/v5/organization/1b3cc700-36cf-404c-85d5-c9f1c3c8fd99",
+            "id": "1b3cc700-36cf-404c-85d5-c9f1c3c8fd99",
+            "name": "TechSurvey&Co",
+            "@type": "PartyRef",
+            "@referredType": "Organization"
+          }
+        }
+      ]
+    }
+  ]
+}

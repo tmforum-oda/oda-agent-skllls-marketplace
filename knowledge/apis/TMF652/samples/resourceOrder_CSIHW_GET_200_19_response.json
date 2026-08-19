@@ -1,0 +1,515 @@
+{
+  "@type": "ResourceOrder",
+  "href": "https://host:port/tmf-api/resourceOrdering/v5/resourceOrder/12345",
+  "id": "12345",
+  "@schemaLocation": "/schema-registry/schema/ResourceOrder",
+  "creationDate": "2025-01-22T06:41:23Z",
+  "externalId": [
+    {
+      "@type": "ExternalIdentifier",
+      "id": "EXT00001",
+      "owner": "ExternalSystem",
+      "externalIdentifierType": "OrderReference"
+    }
+  ],
+  "name": "New Network Deployment Order",
+  "description": "This order pertains to the deployment of a new network infrastructure.",
+  "priority": 1,
+  "orderType": "Deployment",
+  "category": "Infrastructure",
+  "requestedStartDate": "2025-01-22T06:41:23Z",
+  "requestedCompletionDate": "2025-02-15T06:41:23Z",
+  "expectedCompletionDate": "2025-02-12T06:41:23Z",
+  "note": [
+    {
+      "@type": "Note",
+      "id": "NOTE001",
+      "author": "John Doe",
+      "date": "2025-01-22T06:41:23Z",
+      "text": "Order created and acknowledged by the operations team."
+    }
+  ],
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "@schemaLocation": "/schema-registry/schema/RelatedParty",
+      "role": "Service Provider",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "@schemaLocation": "/schema-registry/schema/Party",
+        "href": "/tmf-api/v5/party/party123",
+        "id": "party123",
+        "name": "Service Provider Organization",
+        "@referredType": "Organization"
+      }
+    }
+  ],
+  "state": "acknowledged",
+  "orderItem": [
+    {
+      "@type": "ResourceOrderItem",
+      "orderItemRelationship": [
+        {
+          "@type": "ResourceOrderItemRelationship",
+          "@schemaLocation": "/schema-registry/schema/ResourceOrderItemRelationship",
+          "relationshipType": "dependency",
+          "orderItem": {
+            "@type": "ResourceOrderItemRef",
+            "@schemaLocation": "/schema-registry/schema/ResourceOrderItemRef",
+            "itemId": "ITEM56789",
+            "resourceOrderId": "ORDER12345",
+            "resourceOrderHref": "/tmf-api/v5/resourceOrder/ORDER12345",
+            "@referredType": "ResourceOrderItem"
+          }
+        }
+      ],
+      "quantity": 1,
+      "appointment": {
+        "@type": "AppointmentRef",
+        "@schemaLocation": "/schema-registry/schema/AppointmentRef",
+        "href": "/tmf-api/v5/appointment/67890",
+        "id": "67890",
+        "name": "Site Installation Appointment",
+        "@referredType": "Appointment",
+        "description": "Appointment for the installation of network infrastructure at the customer site."
+      },
+      "action": "add",
+      "id": "12345",
+      "resource": {
+        "@type": "PhysicalResource",
+        "@baseType": "Resource",
+        "@schemaLocation": "/schema-registry/schema/Resource",
+        "href": "/tmf-api/v5/resource/98765",
+        "id": "98765",
+        "category": "Network Element",
+        "description": "Fiber Optic Cable connecting two locations for high-speed data transmission.",
+        "name": "Fiber Optic Cable - Main Line",
+        "endOperatingDate": "2025-01-22T06:41:23Z",
+        "administrativeState": "locked",
+        "operationalState": "enabled",
+        "usageState": "idle",
+        "validFor": {
+          "startDateTime": "2025-01-22T06:41:23Z",
+          "endDateTime": "2025-02-25T06:41:23Z"
+        },
+        "note": [
+          {
+            "@type": "Note",
+            "id": "12345",
+            "author": "John Doe",
+            "date": "2025-01-22T06:41:23Z",
+            "text": "This resource order was created to address a high-priority customer request for infrastructure upgrade."
+          }
+        ],
+        "resourceOrderItem": [
+          {
+            "@type": "RelatedResourceOrderItem",
+            "@schemaLocation": "/schema-registry/schema/RelatedResourceOrderItem",
+            "resourceOrderHref": "/tmf-api/v5/resourceOrder/RO12345",
+            "resourceOrderId": "RO12345",
+            "itemAction": "add",
+            "itemId": "ITEM67890",
+            "role": "primary",
+            "@referredType": "ResourceOrderItem"
+          }
+        ],
+        "place": [
+          {
+            "@type": "RelatedPlaceRef",
+            "@schemaLocation": "/schema-registry/schema/RelatedPlaceRef",
+            "role": "installation",
+            "place": {
+              "@type": "PlaceRef",
+              "@schemaLocation": "/schema-registry/schema/PlaceRef",
+              "href": "/tmf-api/v5/place/98765",
+              "id": "98765",
+              "name": "Customer Site - Location 1",
+              "@referredType": "GeographicalLocation"
+            }
+          }
+        ],
+        "relatedParty": [
+          {
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "@schemaLocation": "/schema-registry/schema/RelatedPartyRefOrPartyRoleRef",
+            "role": "Service Provider",
+            "partyOrPartyRole": {
+              "@type": "PartyRef",
+              "@schemaLocation": "/schema-registry/schema/PartyRef",
+              "href": "/tmf-api/v5/party/98765",
+              "id": "98765",
+              "name": "ABC Telecom Services",
+              "@referredType": "Organization"
+            }
+          }
+        ],
+        "supportingResource": [
+          {
+            "@type": "PhysicalResource",
+            "@baseType": "Resource",
+            "@schemaLocation": "/schema-registry/schema/Resource",
+            "href": "/tmf-api/v5/resource/54321",
+            "id": "54321",
+            "category": "Networking Equipment",
+            "description": "Router used to manage network traffic between different segments of the network.",
+            "name": "Main Router - Data Center",
+            "endOperatingDate": "2025-01-22T06:41:23Z",
+            "administrativeState": "locked",
+            "operationalState": "enabled",
+            "usageState": "idle",
+            "validFor": {
+              "startDateTime": "2025-01-22T06:41:23Z",
+              "endDateTime": "2025-01-22T06:41:23Z"
+            },
+            "note": [
+              {
+                "@type": "Note",
+                "id": "12345",
+                "author": "John Doe",
+                "date": "2025-01-22T06:41:23Z",
+                "text": "This resource order was created to address a high-priority customer request for infrastructure upgrade."
+              }
+            ],
+            "resourceOrderItem": [
+              {
+                "@type": "RelatedResourceOrderItem",
+                "@schemaLocation": "/schema-registry/schema/RelatedResourceOrderItem",
+                "resourceOrderHref": "/tmf-api/v5/resourceOrder/RO12345",
+                "resourceOrderId": "RO12345",
+                "itemAction": "add",
+                "itemId": "ITEM67890",
+                "role": "primary",
+                "@referredType": "ResourceOrderItem"
+              }
+            ],
+            "place": [
+              {
+                "@type": "RelatedPlaceRef",
+                "@schemaLocation": "/schema-registry/schema/RelatedPlaceRef",
+                "role": "installation",
+                "place": {
+                  "@type": "PlaceRef",
+                  "@schemaLocation": "/schema-registry/schema/PlaceRef",
+                  "href": "/tmf-api/v5/place/98765",
+                  "id": "98765",
+                  "name": "Customer Site - Location 1",
+                  "@referredType": "GeographicalLocation"
+                }
+              }
+            ],
+            "relatedParty": [
+              {
+                "@type": "RelatedPartyRefOrPartyRoleRef",
+                "@schemaLocation": "/schema-registry/schema/RelatedPartyRefOrPartyRoleRef",
+                "role": "Service Provider",
+                "partyOrPartyRole": {
+                  "@type": "PartyRef",
+                  "@schemaLocation": "/schema-registry/schema/PartyRef",
+                  "href": "/tmf-api/v5/party/98765",
+                  "id": "98765",
+                  "name": "ABC Telecom Services",
+                  "@referredType": "Party"
+                }
+              }
+            ],
+            "resourceRelationship": [
+              {
+                "@type": "ResourceRelationship",
+                "@schemaLocation": "/schema-registry/schema/ResourceRelationship",
+                "resourceRelationshipCharacteristic": [
+                  {
+                    "@type": "IntegerCharacteristic",
+                    "@baseType": "Characteristic",
+                    "@schemaLocation": "/schema-registry/schema/Characteristic",
+                    "id": "12345",
+                    "name": "Performance Level",
+                    "valueType": "Integer",
+                    "value": 5,
+                    "characteristicRelationship": [
+                      {
+                        "@type": "CharacteristicRelationship",
+                        "@schemaLocation": "/schema-registry/schema/CharacteristicRelationship",
+                        "id": "123",
+                        "relationshipType": "isRelatedTo"
+                      }
+                    ]
+                  }
+                ],
+                "resource": {
+                  "@type": "ResourceRef",
+                  "@referredType": "Resource",
+                  "id": "56789",
+                  "@schemaLocation": "/schema-registry/schema/Resource",
+                  "href": "/tmf-api/v5/resource/56789",
+                  "name": "Network Equipment"
+                },
+                "relationshipType": "dependsOn"
+              }
+            ],
+            "resourceCharacteristic": [
+              {
+                "@type": "IntegerCharacteristic",
+                "@baseType": "Characteristic",
+                "@schemaLocation": "/schema-registry/schema/Characteristic",
+                "id": "12345",
+                "name": "Processing Speed",
+                "valueType": "Integer",
+                "value": 1000,
+                "characteristicRelationship": [
+                  {
+                    "@type": "CharacteristicRelationship",
+                    "@schemaLocation": "/schema-registry/schema/CharacteristicRelationship",
+                    "id": "12345",
+                    "relationshipType": "affects"
+                  }
+                ]
+              }
+            ],
+            "attachment": [
+              {
+                "@type": "AttachmentRef",
+                "@schemaLocation": "/schema-registry/schema/AttachmentRef",
+                "href": "/tmf-api/v5/attachment/12345",
+                "id": "12345",
+                "name": "Network Upgrade Plan",
+                "@referredType": "TechnicalDocumentation",
+                "description": "Detailed documentation for the upcoming network upgrade project.",
+                "url": "http://example.com/documents/network-upgrade"
+              }
+            ],
+            "resourceSpecification": {
+              "@type": "ResourceSpecificationRef",
+              "@schemaLocation": "/schema-registry/schema/ResourceSpecificationRef",
+              "href": "/tmf-api/v5/specification/12345",
+              "id": "12345",
+              "name": "High-Speed Router",
+              "@referredType": "ResourceSpecification",
+              "version": "1.0"
+            },
+            "startOperatingDate": "2025-01-22T06:41:23Z",
+            "resourceVersion": "2.0",
+            "activationFeature": [
+              {
+                "@type": "Feature",
+                "@schemaLocation": "/schema-registry/schema/Feature",
+                "isBundle": true,
+                "featureRelationship": [
+                  {
+                    "@type": "FeatureRelationship",
+                    "@schemaLocation": "/schema-registry/schema/FeatureRelationship",
+                    "href": "/tmf-api/v5/feature/12345",
+                    "id": "12345",
+                    "name": "Advanced Security",
+                    "relationshipType": "excluded",
+                    "validFor": {
+                      "startDateTime": "2025-01-22T06:41:23Z",
+                      "endDateTime": "2025-01-22T06:41:23Z"
+                    }
+                  }
+                ],
+                "featureCharacteristic": [
+                  {
+                    "@type": "IntegerCharacteristic",
+                    "@baseType": "Characteristic",
+                    "@schemaLocation": "/schema-registry/schema/Characteristic",
+                    "id": "12345",
+                    "name": "Firewall Strength",
+                    "valueType": "Integer",
+                    "value": 5,
+                    "characteristicRelationship": [
+                      {
+                        "@type": "CharacteristicRelationship",
+                        "@schemaLocation": "/schema-registry/schema/CharacteristicRelationship",
+                        "id": "12345",
+                        "relationshipType": "enhances"
+                      }
+                    ]
+                  }
+                ],
+                "policyConstraint": [
+                  {
+                    "@type": "PolicyRef",
+                    "@schemaLocation": "/schema-registry/schema/PolicyRef",
+                    "href": "/tmf-api/v5/policy/12345",
+                    "id": "12345",
+                    "name": "Service Level Agreement",
+                    "@referredType": "ServicePolicy",
+                    "version": "1.0"
+                  }
+                ],
+                "isEnabled": true,
+                "id": "12345",
+                "name": "Firewall Protection"
+              }
+            ],
+            "intent": {
+              "@type": "IntentRef",
+              "@schemaLocation": "/schema-registry/schema/IntentRef",
+              "href": "/tmf-api/v5/intent/12345",
+              "id": "12345",
+              "name": "Security Enhancement",
+              "@referredType": "Intent"
+            },
+            "externalIdentifier": [
+              {
+                "@type": "ExternalIdentifier",
+                "@schemaLocation": "/schema-registry/schema/ExternalIdentifier",
+                "owner": "SecurityInc",
+                "externalIdentifierType": "OrderReference",
+                "id": "12345"
+              }
+            ]
+          }
+        ],
+        "resourceRelationship": [
+          {
+            "@type": "ResourceRelationship",
+            "@schemaLocation": "/schema-registry/schema/ResourceRelationship",
+            "resourceRelationshipCharacteristic": [
+              {
+                "@type": "IntegerCharacteristic",
+                "@baseType": "Characteristic",
+                "@schemaLocation": "/schema-registry/schema/Characteristic",
+                "id": "12345",
+                "name": "Bandwidth",
+                "valueType": "Integer",
+                "value": 1000,
+                "characteristicRelationship": [
+                  {
+                    "@type": "CharacteristicRelationship",
+                    "@schemaLocation": "/schema-registry/schema/CharacteristicRelationship",
+                    "id": "12345",
+                    "relationshipType": "dependent"
+                  }
+                ]
+              }
+            ],
+            "resource": {
+              "@type": "ResourceRef",
+              "id": "87654",
+              "@referredType": "Resource",
+              "@schemaLocation": "/schema-registry/schema/Resource",
+              "href": "/tmf-api/v5/resource/87654",
+              "name": "Server 01"
+            },
+            "relationshipType": "dependent"
+          }
+        ],
+        "resourceCharacteristic": [
+          {
+            "@type": "IntegerCharacteristic",
+            "@baseType": "Characteristic",
+            "@schemaLocation": "/schema-registry/schema/Characteristic",
+            "id": "CH123456",
+            "name": "Storage Capacity",
+            "valueType": "integer",
+            "value": 5000,
+            "characteristicRelationship": [
+              {
+                "@type": "CharacteristicRelationship",
+                "@schemaLocation": "/schema-registry/schema/CharacteristicRelationship",
+                "id": "CHREL7890",
+                "relationshipType": "dependent"
+              }
+            ]
+          }
+        ],
+        "attachment": [
+          {
+            "@type": "AttachmentRef",
+            "@schemaLocation": "/schema-registry/schema/Attachment",
+            "href": "/tmf-api/v5/attachment/ATT98765",
+            "id": "ATT98765",
+            "name": "Product Specification",
+            "@referredType": "Attachment",
+            "description": "Detailed product specification document.",
+            "url": "http://example.com/downloads/product-spec"
+          }
+        ],
+        "resourceSpecification": {
+          "@type": "ResourceSpecificationRef",
+          "@schemaLocation": "/schema-registry/schema/ResourceSpecification",
+          "href": "/tmf-api/v5/specification/SPEC54321",
+          "id": "SPEC54321",
+          "name": "Enterprise Storage",
+          "@referredType": "ResourceSpecification",
+          "version": "2.1"
+        },
+        "startOperatingDate": "2025-01-22T06:41:23Z",
+        "resourceVersion": "3.0",
+        "activationFeature": [
+          {
+            "@type": "Feature",
+            "@schemaLocation": "/schema-registry/schema/Feature",
+            "isBundle": false,
+            "featureRelationship": [
+              {
+                "@type": "FeatureRelationship",
+                "@schemaLocation": "/schema-registry/schema/FeatureRelationship",
+                "href": "/tmf-api/v5/feature/12345",
+                "id": "12345",
+                "name": "Network Upgrade",
+                "relationshipType": "excluded",
+                "validFor": {
+                  "startDateTime": "2025-01-22T06:41:23Z",
+                  "endDateTime": "2025-01-22T06:41:23Z"
+                }
+              }
+            ],
+            "featureCharacteristic": [
+              {
+                "@type": "IntegerCharacteristic",
+                "@baseType": "Characteristic",
+                "@schemaLocation": "/schema-registry/schema/Characteristic",
+                "id": "45678",
+                "name": "Speed",
+                "valueType": "Integer",
+                "value": 1000,
+                "characteristicRelationship": [
+                  {
+                    "@type": "CharacteristicRelationship",
+                    "@schemaLocation": "/schema-registry/schema/CharacteristicRelationship",
+                    "id": "34567",
+                    "relationshipType": "associated"
+                  }
+                ]
+              }
+            ],
+            "policyConstraint": [
+              {
+                "@type": "PolicyRef",
+                "@schemaLocation": "/schema-registry/schema/PolicyRef",
+                "href": "/tmf-api/v5/policy/12345",
+                "id": "12345",
+                "name": "Data Retention Policy",
+                "@referredType": "DataPolicy",
+                "version": "1.0"
+              }
+            ],
+            "isEnabled": false,
+            "id": "23456",
+            "name": "Service Bundle"
+          }
+        ],
+        "intent": {
+          "@type": "IntentRef",
+          "@schemaLocation": "/schema-registry/schema/IntentRef",
+          "href": "/tmf-api/v5/intent/INT1001",
+          "id": "INT1001",
+          "name": "Upgrade Service",
+          "@referredType": "ServiceUpgrade"
+        },
+        "externalIdentifier": [
+          {
+            "@type": "ExternalIdentifier",
+            "@schemaLocation": "/schema-registry/schema/ExternalIdentifier",
+            "owner": "XYZ Corp",
+            "externalIdentifierType": "ProjectID",
+            "id": "EXT45678"
+          }
+        ]
+      },
+      "state": "acknowledged"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "TMF639",
+  "type": "api",
+  "name": "resource-inventory-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "ec000fbcd157aa650d7816f87eab8e42343f3385301d9a64241f73ef08d47d32"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

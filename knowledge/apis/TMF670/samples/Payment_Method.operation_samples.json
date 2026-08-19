@@ -1,0 +1,57 @@
+{
+    "PaymentMethod": {
+        "list": {
+            "samples": [
+                {
+                    "description": "An example request to retrieve a list of Payment Method.",
+                    "content-type": "application/json",
+                    "response": "$_PaymentMethod_list_1_response"
+                }
+            ]
+        },
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "An example request to retrieve a specific Payment Method: The Visa Credit BankCard from Barclays Bank Inc which has an id of \"10c5f5b5-e47177\".",
+                    "content-type": "application/json",
+                    "objectId": "10c5f5b5-e47177",
+                    "response": "$_PaymentMethod_retrieve_1_response"
+                },
+                {
+                    "description": "An example request to retrieve a specific Payment Method: The MasterCard Credit BankCard from UBA Bank which has an id of \"10c5f5b5-e47175733\".",
+                    "content-type": "application/json",
+                    "objectId": "10c5f5b5-e47175733",
+                    "response": "$_PaymentMethod_retrieve_2_response"
+                }		
+            ]
+        }, 
+        "create": {
+         "samples": [
+            {
+                "description" : "An example request to create a PaymentMethod to describe an AmericanExpress BankCard from HSBC Bank - the resulting PaymentMethod is 18252cd7c-bd6c12472.",
+                "request": "$_PaymentMethod_create_1_request",
+                "response": "$_PaymentMethod_create_1_response"
+            }
+         ]   
+        },
+        "partialupdate": {
+            "samples": [
+               {
+                   "description" : "An example request to update the PaymentMethod which has an id of \"18252cd7c-bd6c12472\" (the Main Credit Card) - The full updated response is returned.",
+                   "content-type": "application/json-patch+json",
+                   "request": "$_PaymentMethod_partialupdate_1_request",
+                   "objectId": "18252cd7c-bd6c12472",
+                   "response": "$_PaymentMethod_partialupdate_1_response"
+               }
+               ]   
+           },
+        "delete": {
+	        "samples": [
+		        {
+		             "description": "An example request to delete the PaymentMethod that describes the AmericanExpress BankCard from HSBC Bank.",
+		             "objectId": "18252cd7c-bd6c12472"
+	        	}
+	       ]
+    	}
+    }
+}

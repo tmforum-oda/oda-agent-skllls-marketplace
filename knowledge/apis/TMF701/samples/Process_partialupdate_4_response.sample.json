@@ -1,0 +1,92 @@
+{
+  "id": "4fd-ty56-gg55",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/process/4fd-ty56-gg55",
+  "@type": "Process",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/process.json",
+  "creationDate": "2024-04-11T14:52:21.823Z",
+  "state": "active",
+  "processSpecification": {
+    "id": "OC54",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/processSpecification/OC54",
+    "name": "orderCapture",
+    "version": "1",
+    "@type": "ProcessSpecificationRef",
+    "@referredType": "ProcessSpecification"
+  },
+  "channel": {
+    "id": "1",
+    "href": "https://www.mycsp.com/tmfapis/channel/1",
+    "name": "TMFWebStore",
+    "@type": "ChannelRef",
+    "@referredType": "Channel"
+  },
+  "relatedParty": [
+    {
+      "role": "Customer",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "9I8-430",
+        "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/9I8-430",
+        "name": "Sara Eskiv",
+        "@referredType": "Individual",
+        "@type": "PartyRef"
+      }
+    }
+  ],
+  "processCharacteristic": [
+    {
+      "modality": "input",
+      "@type": "FlowCharacteristic",
+      "characteristic": {
+        "valueType": "object",
+        "name": "Offer name",
+        "@type": "ObjectCharacteristic",
+        "value": {
+          "name": "productOfferingRef",
+          "id": "TMFMobile20",
+          "href": "https://www.mycsp.com/tmfapis/productCatalog/v5/productOffering/TMFMobile20",
+          "@type": "ProductOfferingRef",
+          "@referredType": "ProductOffering"
+        }
+      }
+    }
+  ],
+  "task": [
+    {
+      "id": "4fd-ty56-gg55-2",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/task/4fd-ty56-gg55-2",
+      "@type": "TaskRef",
+      "@referredType": "Task"
+    },
+    {
+      "id": "4fd-ty56-gg55-3",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/task/4fd-ty56-gg55-3",
+      "@type": "TaskRef",
+      "@referredType": "Task"
+    },
+    {
+      "id": "4fd-ty56-gg55-4",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/task/4fd-ty56-gg55-4",
+      "@type": "TaskRef",
+      "@referredType": "Task"
+    },
+    {
+      "id": "4fd-ty56-gg55-5",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/task/4fd-ty56-gg55-5",
+      "@type": "TaskRef",
+      "@referredType": "Task"
+    }
+  ],
+  "relatedEntity": [
+    {
+      "role": "created shopping Cart",
+      "@type": "RelatedEntity",
+      "entity": {
+        "id": "T65-POAFR556",
+        "href": "https://www.mycsp.com/tmfapis/shoppingCartManagement/v5/shoppingCart/T65-POAFR556",
+        "@referredType": "ShoppingCart",
+        "@type": "EntityRef"
+      }
+    }
+  ]
+}

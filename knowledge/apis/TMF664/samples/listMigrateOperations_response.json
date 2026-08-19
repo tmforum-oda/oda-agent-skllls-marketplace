@@ -1,0 +1,62 @@
+[
+  {
+    "@type": "Migrate",
+    "href": "/resourceFunctionActivation/v5/migrate/migrate-001",
+    "id": "migrate-001",
+    "name": "Move Web Server to New Data Center",
+    "resourceFunction": {
+      "@type": "ResourceFunctionRef",
+      "@referredType": "ResourceFunction",
+      "id": "rf-003",
+      "href": "/resourceFunctionActivation/v5/resourceFunction/rf-003"
+    },
+    "cause": "Data center relocation",
+    "adminStateModification": "locked",
+    "removeConnectionPoint": [
+      {
+        "@type": "ConnectionPointRef",
+        "@referredType": "ConnectionPoint",
+        "id": "cp-old-01",
+        "href": "/resourceInventory/v5/resource/cp-old-01",
+        "name": "Old_CP_1"
+      }
+    ],
+    "addConnectionPoint": [
+      {
+        "@type": "ConnectionPointRef",
+        "@referredType": "ConnectionPoint",
+        "id": "cp-new-01",
+        "href": "/resourceInventory/v5/resource/cp-new-01",
+        "name": "New_CP_1"
+      }
+    ],
+    "priority": 2,
+    "startTime": "2026-03-05T00:00:00Z",
+    "completionMode": "atomic",
+    "place": {
+      "@type": "PlaceRef",
+      "id": "loc-new-dc",
+      "@referredType": "GeographicLocation",
+      "href": "/geographicLocation/v5/geographicLocation/loc-new-dc"
+    },
+    "state": "acknowledged"
+  },
+  {
+    "@type": "Migrate",
+    "id": "migrate-002",
+    "href": "/resourceFunctionActivation/v5/migrate/migrate-002",
+    "name": "Upgrade Database Host",
+    "resourceFunction": {
+      "@type": "ResourceFunctionRef",
+      "@referredType": "ResourceFunction",
+      "id": "rf-004",
+      "href": "/resourceFunctionActivation/v5/resourceFunction/rf-004"
+    },
+    "cause": "Hardware refresh",
+    "adminStateModification": "unlocked",
+    "priority": 1,
+    "startTime": "2026-03-06T00:00:00Z",
+    "completionMode": "bestEffort",
+    "state": "inProgress"
+  }
+]

@@ -1,0 +1,104 @@
+{
+  "@type": "PermissionSet",
+  "description": "Customer selfcare admin profile granted by owner to delegate management of customers, products and services entities.",
+  "validFor": {
+    "startDateTime": "2023-03-01T00:00:00.000Z",
+    "endDateTime": "2023-04-01T00:00:00.000Z"
+  },
+  "user": {
+    "role": "family member",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "cclt-456745",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "granter": {
+    "role": "customer advisor",
+    "@type": "RelatedPartyRefOrPartyRoleRef",
+    "partyOrPartyRole": {
+      "id": "p7654321",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "permission": [
+    {
+      "@type": "Permission",
+      "managedAssetGroup": {
+        "@type": "ListAssetGroup",
+        "@baseType": "AssetGroup",
+        "entity": [
+          {
+            "@type": "EntityRef",
+            "id": "C123456789",
+            "@referredType": "Customer"
+          }
+        ]
+      },
+      "permissionSpecificationSet": {
+        "@type": "PermissionSpecificationSetRef",
+        "@referredType": "PermissionSpecificationSet",
+        "id": "pss-edd9d8a4"
+      }
+    },
+    {
+      "@type": "Permission",
+      "managedAssetGroup": {
+        "@type": "ListAssetGroup",
+        "@baseType": "AssetGroup",
+        "entity": [
+          {
+            "@type": "EntityRef",
+            "id": "5.99999.99.99.999999",
+            "@referredType": "Customer"
+          }
+        ]
+      },
+      "permissionSpecificationSet": {
+        "@type": "PermissionSpecificationSetRef",
+        "@referredType": "PermissionSpecificationSet",
+        "id": "pss-edd9d8a4"
+      }
+    },
+    {
+      "@type": "Permission",
+      "managedAssetGroup": {
+        "@type": "ListAssetGroup",
+        "@baseType": "AssetGroup",
+        "entity": [
+          {
+            "@type": "EntityRef",
+            "id": "1-44up07",
+            "@referredType": "Product"
+          }
+        ]
+      },
+      "permissionSpecificationSet": {
+        "@type": "PermissionSpecificationSetRef",
+        "@referredType": "PermissionSpecificationSet",
+        "id": "pss-edd9d8a4"
+      }
+    },
+    {
+      "@type": "Permission",
+      "managedAssetGroup": {
+        "@type": "ListAssetGroup",
+        "@baseType": "AssetGroup",
+        "entity": [
+          {
+            "@type": "EntityRef",
+            "id": "S123456789",
+            "@referredType": "Service"
+          }
+        ]
+      },
+      "permissionSpecificationSet": {
+        "@type": "PermissionSpecificationSetRef",
+        "@referredType": "PermissionSpecificationSet",
+        "id": "pss-edd9d8a4"
+      }
+    }
+  ]
+}

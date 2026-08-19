@@ -1,0 +1,14 @@
+[
+  {
+    "op": "replace",
+    "path": "/name",
+    "value": "Zelda as paperback"
+  },
+  {
+    "op": "replace",
+    "path": "/validFor",
+    "value": {
+      "startDateTime": "2023-11-05T10:15:26.007Z"
+    }
+  }
+]

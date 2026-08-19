@@ -1,0 +1,14 @@
+[
+    {
+        "@type": "SettlementAccount",
+        "id": "442", 
+        "href": "https://host:port/tmf-api/accountManagement/v5/settlementAccount/442", 
+        "name": "API Usage Account"
+    }, 
+    {
+        "@type": "SettlementAccount",
+        "id": "443", 
+        "href": "https://host:port/tmf-api/accountManagement/v5/settlementAccount/443", 
+        "name": "Storage Usage Account"
+    }
+]

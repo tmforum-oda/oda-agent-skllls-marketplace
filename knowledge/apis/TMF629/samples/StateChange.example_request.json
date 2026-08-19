@@ -1,0 +1,15 @@
+{
+    "@type": "CustomerStateChangeEvent",
+    "priority": "high",
+    "eventId": "b14f7023-e982-4c02-a0c1-9790ee991659",
+    "eventTime": "2023-06-14T12:15:59.969746+02:00",
+    "eventType": "CustomerStateChangeEvent",
+    "event": {
+        "customer": {
+            "@type": "Customer",
+            "href": "https://host:port/tmf-api/customerManagement/v5/customer/1140",
+            "id": "1140",
+            "status": "CreditCheckDone"
+        }
+    }
+}

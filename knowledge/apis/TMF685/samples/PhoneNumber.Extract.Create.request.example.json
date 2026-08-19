@@ -1,0 +1,24 @@
+{
+    "@type": "Extract",
+    "capacityDemand":
+    {
+        "@type": "Capacity",
+        "capacityAmount":
+        {
+            "amount": 2,
+            "units": "number"
+        },
+        "capacityStatus": "planned",
+        "applicableTimePeriod":
+        [
+            {
+                "@type": "ApplicableTimePeriod",
+                "fromToDateTime":
+                {
+                    "startDateTime": "2024-05-13T00:00:00Z", 
+                    "endDateTime": "2024-09-20T00:00:00Z"
+                }
+            }
+        ]
+    }
+}

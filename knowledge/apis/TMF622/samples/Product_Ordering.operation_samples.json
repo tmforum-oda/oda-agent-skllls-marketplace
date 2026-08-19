@@ -1,0 +1,101 @@
+{
+    "ProductOrder": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a list of product order(s). The given criteria is the category (B2C) and state (held).",
+                    "filtering": "fields=id,href,expectedCompletionDate&category=B2C&state=held", 
+                    "content-type": "application/json",
+                    "response": "$_ProductOrder_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a product order for use case 1. The given criteria is the product order id 30001.",
+                    "content-type": "application/json",
+                    "objectId": "30001",
+                    "response": "$_ProductOrder_retrieve_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for retrieving a product order for use case 2. The given criteria is the product order id 3774.",
+                    "content-type": "application/json",
+                    "objectId": "3774",
+                    "response": "$_ProductOrder_retrieve_2_response"
+                }		
+            ]
+        }, 
+        "create": {
+         "samples": [
+            {
+                "description" : "Here's an example of a request for creating a product order for use case 1 - the resulting product order is 30001.",
+                "request": "$_ProductOrder_create_1_request",
+                "response": "$_ProductOrder_create_1_response"
+            },
+            {
+                "description" : "Here's an example of a request for ordering a product described via schema and not using characteristic",
+                "request": "$_ProductOrder_create_2_request",
+                "response": "$_ProductOrder_create_2_response"
+            }
+         ]   
+        },
+        "partialupdate": {
+            "samples": [
+               {
+                   "description" : "Here's an example of a request for updating a product order for use case 1 - Change value for billing account id. Assumptions: the product order state allow this on the fly modification - the full resource representation is sent in PATCH response",
+                   "content-type": "application/json-patch+json",
+                   "request": "$_ProductOrder_partialupdate_1_request",
+                   "objectId": "30001",
+                   "response": "$_ProductOrder_partialupdate_1_response"
+               },
+               {
+                    "description" : "Here's an example of a request for updating a product order for use case 1 - Change value for billing account id. Assumptions: the product order state allow this on the fly modification - the full resource representation is sent in PATCH response",
+                    "content-type": "application/merge-patch+json",
+                    "request": "$_ProductOrder_partialupdate_2_request",
+                    "objectId": "30001",
+                    "response": "$_ProductOrder_partialupdate_1_response"
+                }
+            ]   
+           },
+        "delete": {
+	        "samples": [
+		        {
+		             "description": "Here's an example of a request for deleting a product order.",
+		             "objectId": "3774"
+	        	}
+	       ]
+    	}
+    },
+    "CancelProductOrder": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a list of product order cancel request(s). The given criteria is the cancel request state (done).",
+                    "filtering": "fields=id,productOrder.id,productOrder.href&state=done", 
+                    "content-type": "application/json", 
+                    "response": "$_CancelProductOrder_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's an example of a cancel product order request retrieval. The given criteria is the product order request cancel id 789-fsds5-kjp.",
+                    "content-type": "application/json", 
+                    "objectId": "789-fsds5-kjp",
+                    "response": "$_CancelProductOrder_Retrieve_1_response"
+                }		
+            ]
+        }, 
+        "create": {
+         "samples": [
+            {
+                "description" : "Here's an example of a request for cancel a product order  - the resulting product order cancellation request is 789-fsds5-kjp.",
+                "request": "$_CancelProductOrder_create_1_request",
+                "response": "$_CancelProductOrder_create_1_response"
+            } 
+         ]   
+        }
+    }
+}

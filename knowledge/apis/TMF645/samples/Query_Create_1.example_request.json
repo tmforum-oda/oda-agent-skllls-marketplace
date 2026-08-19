@@ -1,0 +1,118 @@
+{
+    "correlationId": "b122fa39-7242",
+    "description": "QueryServiceQualificationCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4d6e-98cf-a085d0121f61",
+    "eventTime": "2022-08-25T12:20:45.491Z",
+    "eventType": "QueryServiceQualificationCreateEvent",
+    "priority": "5",
+    "timeOccurred": "2022-08-25T12:20:44.232Z",
+    "title": "QueryServiceQualificationCreateEvent",
+    "event": {
+        "queryServiceQualification": {
+            "id": "54",
+            "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/queryServiceQualification/54",
+            "description": "Query Service Qualification Illustration - 2 serviceSpec available at this place for this category",
+            "effectiveQualificationDate": "2020-04-13T13:51:41.218Z",
+            "estimatedResponseDate": "2020-04-13T14:00:00.218Z",
+            "expectedQualificationDate": "2020-04-13T13:51:41.218Z",
+            "expirationDate": "2020-04-15T13:51:41.218Z",
+            "externalIdentifier": [
+                {
+                  "id": "CSQ1",
+                  "@type": "ExternalIdentifier"
+                }
+              ],
+            "instantSyncQualification": true,
+            "queryServiceQualificationDate": "2020-04-13T13:51:41.218Z",
+            "relatedParty": [
+                {
+                  "role": "Buyer contact",
+                  "@type": "RelatedPartyRefOrPartyRoleRef",
+                  "partyOrPartyRole": {
+                    "id": "456",
+                    "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+                    "name": "Jean Pontus",
+                    "@type": "PartyRef",
+                    "@referredType": "Individual"
+                  }
+                }
+              ],
+            "searchCriteria": {
+                "id": "1",
+                "category": {
+                    "id": "1",
+                    "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/category/1",
+                    "name": "Fiber Access",
+                    "@type": "ServiceCategoryRef",
+                    "@referredType": "ServiceCategory"
+                },
+                "service": {
+                    "place": [
+                        {
+                          "@type": "RelatedPlaceRefOrValue",
+                          "role": "Installation place",
+                          "place": {
+                            "@type": "PlaceRef",
+                            "@referredType": "GeographicSite",
+                            "id": "11",
+                            "href": "http://mycsp.com:8080/tmf-api/geographicSiteManagement/v5/geographicSite/11",
+                            "name": "Jean Pontus home"
+                          }
+                        }
+                      ],
+                      "@type": "Service"
+                },
+                "@type": "ServiceQualificationItem"
+            },
+            "serviceQualificationItem": [
+                {
+                    "id": "1",
+                    "expirationDate": "2023-04-24T19:20:39.239Z",
+                    "service": {
+                        "serviceSpecification": {
+                            "id": "78",
+                            "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/78",
+                            "name": "X-Fiber Service",
+                            "@type": "ServiceSpecificationRef",
+                            "@referredType": "ServiceSpecification"
+                        },
+                        "@type": "Service"
+                    },
+                    "@type": "ServiceQualificationItem"
+                },
+                {
+                    "id": "2",
+                    "expirationDate": "2023-04-24T19:20:39.239Z",
+                    "service": {
+                        "serviceSpecification": {
+                            "id": "87",
+                            "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/87",
+                            "name": "Standard Fiber Service",
+                            "@type": "ServiceSpecificationRef",
+                            "@referredType": "ServiceSpecification"
+                        },
+                        "@type": "Service"
+                    },
+                    "@type": "ServiceQualificationItem"
+                }
+            ],
+            "state": "done",
+            "@type": "QueryServiceQualification"
+        }
+    },
+    "reportingSystem": {
+        "id": "768",
+        "name": "APP-897",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "276",
+        "name": "APP-819",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "QueryServiceQualificationCreateEvent"
+}

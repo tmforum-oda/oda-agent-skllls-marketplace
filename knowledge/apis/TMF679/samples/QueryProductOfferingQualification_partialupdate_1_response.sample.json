@@ -1,0 +1,71 @@
+{
+  "href": "https://host:port/productOfferingQualification/v5/QueryProductOfferingQualification/14",
+  "id": "14",
+  "@type": "QueryProductOfferingQualification",
+  "description": "Example for an inProgress QueryProductOfferingQualification resource",
+  "expectedQualificationCompletionDate": "2021-09-06T15:51:12.570Z",
+  "qualifiedProductOfferingItem": [
+    {
+      "@type": "QueryProductOfferingQualificationItem",
+      "product": {
+        "id": "1",
+        "@type": "Product",
+        "productSpecification": {
+          "id": "dfg-56d",
+          "href": "https://host:port/productCatalogManagement/v5/productSpecification/dfg-56d",
+          "version": "v2",
+          "name": "UNI specification"
+        },
+        "productCharacteristic": [
+          {
+            "@type": "ObjectCharacteristic",
+            "id": "UNI_Characteristic",
+            "name": "UNI order configuration",
+            "valueType": "UNISpec JSON descriptor",
+            "value": {
+              "@valueSchemaLocation": "https://github.com/..UNISpec.json",
+              "@type": "UNIJsonSpecification",
+              "physicalLayer": "100BASE-T",
+              "synchronousModeEnabled": true,
+              "numberOfLinks": 1,
+              "tokenShareEnabled": true,
+              "uniResiliency": "NONE",
+              "maxServiceFrameSize": 1256
+            }
+          }
+        ],
+        "place": [
+          {
+            "role": "INSTALL_LOCATION",
+            "place": {
+              "streetType": "rue",
+              "streetName": "Pellisier",
+              "streetNr": "14",
+              "city": "Paris",
+              "postcode": "75004",
+              "country": "France",
+              "@type": "GeographicAddress"
+            },
+            "@type": "RelatedPlaceRefOrValue"
+          }
+        ]
+      }
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "requester",
+      "partyOrPartyRole": {
+        "id": "45hj-999",
+        "href": "https://host:port/partyManagement/v5/individual/45hj-999",
+        "name": "Louise",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyOrPartyRole"
+    }
+  ],
+  "requestedQualificationCompletionDate": "2021-09-06T15:51:12.570Z",
+  "state": "inProgress",
+  "creationDate": "2021-08-31T15:51:12.570Z"
+}

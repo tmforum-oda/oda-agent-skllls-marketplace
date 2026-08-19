@@ -1,0 +1,28 @@
+{
+  "relatedParty": [
+    {
+      "role": "designer",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "4cf-mg1",
+        "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/4cf-mg1",
+        "name": "Simon Clement",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    {
+      "role": "approver",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "698-4TG",
+        "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/698-4TG",
+        "name": "kevin Thoup",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "name": "orderCapture",
+  "@type": "ProcessSpecification"
+}

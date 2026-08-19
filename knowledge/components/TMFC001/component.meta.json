@@ -1,0 +1,17 @@
+{
+  "id": "TMFC001",
+  "type": "component",
+  "name": "ProductCatalogManagement",
+  "version": "2.1.2",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC001-ProductCatalogManagement/Specification/TMFC001-ProductCatalogManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "1c1bbfe8a9e62984f8647ef3730a47cd8857bf550d7ead8d9f46db528429c228"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

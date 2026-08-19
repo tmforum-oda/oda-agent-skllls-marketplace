@@ -1,0 +1,97 @@
+{
+  "href": "https://mycsp.com:8080/tmf-api/serviceTestManagement/v5/serviceTest/89757",
+  "id": "89757",
+  "name": "fixed broadband service test",
+  "description": "Speed Test for Fixed Broadband service",
+  "mode": "PROACTIVE",
+  "startDateTime": "2016-03-02T24:00:00.00Z",
+  "endDateTime": "2016-03-02T24:00:00.30Z",
+  "state": "completed",
+  "validFor": {
+    "startDateTime": "2016-03-02T24:00:00.00Z",
+    "endDateTime": "2016-04-02T24:00:00.00Z"
+  },
+  "relatedParty": [
+    {
+      "role": "testSupervisor",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "9866",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/Individual/9866",
+        "name": "Sandy Smith",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "relatedService": {
+    "href": "https://mycsp.com:8080/tmf-api/serviceManagement/v5/service/21",
+    "id": "21",
+    "@referredType": "Service",
+    "@type": "ServiceRef"
+  },
+  "testSpecification": {
+    "href": "https://mycsp.com:8080/tmf-api/serviceTestManagement/v5/serviceTestSpecification/22",
+    "id": "22",
+    "@referredType": "ServiceTestSpecification",
+    "@type": "ServiceTestSpecificationRef"
+  },
+  "characteristic": [
+    {
+      "id": "1",
+      "@type": "BooleanCharacteristic",
+      "name": "restart",
+      "valueType": "boolean",
+      "value": true
+    }
+  ],
+  "testMeasure": [
+    {
+      "@type": "TestMeasure",
+      "accuracy": 0.001,
+      "captureDateTime": "2016-03-02T11:12:00.00Z",
+      "testMeasureDefinitionId": "10",
+      "captureMethod": "automatic capture by instrument",
+      "metricDescription": "This is the flow speed in a service",
+      "metricName": "Flow speed",
+      "unitOfMeasure": "bits per second",
+      "value": {
+        "id": "3",
+        "name": "Flow speed",
+        "valueType": "number",
+        "value": 3000,
+        "@type": "NumberCharacteristic"
+      },
+      "ruleViolation": [
+        {
+          "@type": "MeasureThresholdRuleViolation",
+          "conformanceTargetUpper": "2500",
+          "conformanceComparatorUpper": "greater than ",
+          "description": "This speed is greater than the target upper",
+          "name": "tooMuchTraffic",
+          "numberOfAllowedCrossing": 0,
+          "thresholdRuleSeverity": "1",
+          "appliedConsequence": [
+            {
+              "@type": "AppliedConsequence",
+              "appliedAction": "sendWarning",
+              "description": "send a warning to the system",
+              "name": "sendWarning",
+              "repeatAction": false
+            },
+            {
+              "@type": "AppliedConsequence",
+              "appliedAction": "generateReport",
+              "description": "generate a warning report",
+              "name": "generateReport",
+              "repeatAction": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "@type": "ServiceTest",
+  "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Service/ServiceTest.schema.json",
+  "@baseType": "ServiceTest"
+}

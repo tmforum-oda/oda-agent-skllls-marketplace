@@ -1,0 +1,32 @@
+{
+  "correlationId": "b3727ad0-1140",
+  "description": "CheckServiceQualificationDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4c58-840e-790e0657230f",
+  "eventTime": "2023-03-05T12:41:51.932Z",
+  "eventType": "CheckServiceQualificationDeleteEvent",
+  "priority": "4",
+  "timeOccurred": "2023-03-05T12:41:46.084Z",
+  "title": "CheckServiceQualificationDeleteEvent",
+  "event": {
+    "checkServiceQualification": {
+      "id": "44",
+      "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/checkServiceQualification/44",
+      "@type": "CheckServiceQualification"
+    }
+  },
+  "reportingSystem": {
+    "id": "954",
+    "name": "APP-190",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "441",
+    "name": "APP-643",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CheckServiceQualificationDeleteEvent"
+}

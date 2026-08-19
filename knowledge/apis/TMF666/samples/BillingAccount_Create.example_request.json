@@ -1,0 +1,213 @@
+{
+    "correlationId": "0510f131-c102",
+    "description": "BillingAccountCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "46a2-b923-aa337ca92912",
+    "eventTime": "2022-08-25T12:23:44.181Z",
+    "eventType": "BillingAccountCreateEvent",
+    "priority": "5",
+    "timeOcurred": "2022-08-25T12:23:37.884Z",
+    "title": "BillingAccountCreateEvent",
+    "event": {
+        "billingAccount": {
+            "@type":"BillingAccount",
+            "paymentStatus": "In Arrears", 
+            "creditLimit": {
+                "unit": "USD",
+                "value": 10000     
+            }, 
+            "description": "This  billing account ...", 
+            "href": "https://host:port/tmf-api/accountManagement/v5/billingAccount/5430", 
+            "id": "5430", 
+            "lastModified": "2018-06-14T00:00:00.000Z", 
+            "name": "Home Account", 
+            "state": "Inactive", 
+            "accountType": "Business", 
+            "billStructure": {
+                "@type": "BillStructure",
+                "presentationMedia": [
+                    {
+                        "@type": "BillPresentationMedia",
+                        "href": "https://host:port/tmf-api/accountManagement/v5/billPresentationMedia/9968", 
+                        "id": "9968", 
+                        "name": "Post Mail"
+                    }
+                ], 
+                "format": {
+                    "@type": "BillFormat",
+                    "href": "https://host:port/tmf-api/accountManagement/v5/billFormat/3555", 
+                    "id": "3555", 
+                    "name": "Detailed invoice"
+                }, 
+                "cycleSpecification": {
+                    "@type": "BillingCycleSpecification",
+                    "dateShift": 54, 
+                    "frequency": "monthly", 
+                    "href": "https://host:port/tmf-api/accountManagement/v5/billingCycleSpecification/3828", 
+                    "id": "3828", 
+                    "name": "Annual billing"
+                }
+            }, 
+            "paymentPlan": [
+                {
+                    "@type": "PaymentPlan",
+                    "numberOfPayments": 4, 
+                    "paymentFrequency": "monthly", 
+                    "priority": 1, 
+                    "status": "Effective", 
+                    "totalAmount": {
+                        "unit": "USD",
+                        "value": 100.0
+                    }, 
+                    "paymentType": "regular", 
+                    "validFor": {
+                        "startDateTime": "2018-06-11T00:00:00.000Z", 
+                        "endDateTime": "2019-01-10T00:00:00.000Z"
+                    }, 
+                    "paymentMethod": {
+                        "@type": "PaymentMethodRef",
+                        "href": "https://host:port/tmf-api/paymentMethods/v5/paymentMethod/2452", 
+                        "id": "2452", 
+                        "name": "professional payment"
+                    }
+                }
+            ], 
+            "financialAccount": {
+        	    "@referredType": "FinancialAccount",
+        	    "@type": "FinancialAccountRef",
+                "href": "https://host:port/tmf-api/accountManagement/v5/financialAccount/2063", 
+                "id": "2063", 
+                "name": "Partnership account"
+            }, 
+            "defaultPaymentMethod": {
+                "@type": "PaymentMethodRef",
+                "href": "https://host:port/tmf-api/paymentMethods/v5/paymentMethod/3537", 
+                "id": "3537", 
+                "name": "family payment"
+            }, 
+            "relatedParty": [
+                {
+                    "role": "service provider",
+            	    "@type": "RelatedPartyRefOrPartyRoleRef",
+            	    "partyOrPartyRole": {
+                	    "@type": "PartyRefOrPartyRoleRef",
+                	    "@referredType": "Organization",
+                        "href": "https://host:port/tmf-api/partyManagement/v5/party/6838", 
+                        "id": "6838", 
+                        "name": "Richard Cole"
+                    }
+                }
+            ], 
+            "taxExemption": [
+                {
+                    "@type": "TaxExemption",
+                    "id": "1",
+                    "certificateNumber": "9665432345", 
+                    "issuingJurisdiction": "USA", 
+                    "reason": "Embassy", 
+                    "taxDefinition": [
+                        {
+                          "@type": "TaxDefinition",
+                          "id": "96",
+                          "name": "Value Added Tax",
+                          "taxType": "federalVat"
+                        }
+                    ],
+                      "attachment": {
+                        "@type": "Attachment",
+                        "id": "88888834534552",
+                        "href": "https://host:port/tmf-api/document/v5/attachment/88888834534552",
+                        "attachmentType": "taxExemptionCertificate",
+                        "name": "TaxExemptionCertificate-888.pdf",
+                        "description": "Electronic version of the tax exemption certificate",
+                        "mimeType": "application/pdf",
+                        "url": "http://host:port/DocumentManager/666/TaxExemptionCertificate-888.pdf"
+                      },
+                    "validFor": {
+                        "startDateTime": "2018-06-17T00:00:00.000Z", 
+                        "endDateTime": "2019-01-10T00:00:00.000Z"
+                    }
+                }
+            ], 
+            "contact": [
+                {
+                    "@type": "Contact",
+                    "contactName": "Rachel Douglas",
+                    "contactType": "secondary", 
+                    "partyRoleType": "Vendor", 
+                    "validFor": {
+                        "startDateTime": "2018-06-17T00:00:00.000Z", 
+                        "endDateTime": "2019-01-10T00:00:00.000Z"
+                    }, 
+                    "contactMedium": [
+                        {
+                            "@type": "GeographicAddressContactMedium",
+                            "preferred": true, 
+                            "mediumType": "PostalAddress", 
+                            "validFor": {
+                                "startDateTime": "2018-06-14T00:00:00.000Z", 
+                                "endDateTime": "2019-01-10T00:00:00.000Z"
+                            }, 
+                            "city": "Paris", 
+                            "country": "France", 
+                            "postCode": "75014", 
+                            "street1": "15 Rue des Canards"
+                        }
+                    ], 
+                    "relatedParty": {
+                		"@type": "Organization",
+                        "href": "https://host:port/tmf-api/partyManagement/v5/party/9947", 
+                        "id": "9947", 
+                        "name": "Richard Cole", 
+                        "role": "owner"
+                    }
+                }
+            ], 
+            "accountBalance": [
+                {
+                    "@type": "AccountBalance",
+                    "amount": {
+                        "unit": "USD",
+                        "value": 58.33 
+                    }, 
+                    "balanceType": "ReceivableBalance", 
+                    "validFor": {
+                        "startDateTime": "2018-06-10T00:00:00.000Z", 
+                        "endDateTime": "2019-01-10T00:00:00.000Z"
+                    }
+                }
+            ], 
+            "accountRelationship": [
+                {
+                    "@type": "AccountRelationship",
+                    "relationshipType": "contains", 
+                    "validFor": {
+                        "startDateTime": "2018-06-13T00:00:00.000Z", 
+                        "endDateTime": "2019-01-10T00:00:00.000Z"
+                    }, 
+                    "account": {
+                		"@referredType":"BillingAccount",
+                		"@type":"AccountRef",
+                        "href": "https://host:port/tmf-api/accountManagement/v5/billingAccount/9327", 
+                        "id": "9327", 
+                        "name": "Paradise Account"
+                    }
+                }
+            ]
+        }
+    },
+    "reportingSystem": {
+        "id": "855",
+        "name": "APP-400",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "92",
+        "name": "APP-105",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "BillingAccountCreateEvent"
+}

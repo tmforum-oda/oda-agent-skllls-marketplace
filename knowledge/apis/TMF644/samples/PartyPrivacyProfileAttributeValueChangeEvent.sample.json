@@ -1,0 +1,56 @@
+{
+    "correlationId": "05ec39be-04b6",
+    "description": "PartyPrivacyProfileAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4010-b413-c5c9159fc79d",
+    "eventTime": "2022-08-25T12:20:32.675Z",
+    "eventType": "PartyPrivacyProfileAttributeValueChangeEvent",
+    "priority": "3",
+    "timeOcurred": "2022-08-25T12:20:32.016Z",
+    "title": "PartyPrivacyProfileAttributeValueChangeEvent",
+    "event": {
+        "partyPrivacyProfile": 
+        {
+          "id": "109",
+          "href": "https://mycsp.com:8080/tmf-api/privacyManagement/v5/partyPrivacyProfile/109",
+          "@type" : "PartyPrivacyProfile",
+          "partyPrivacyProfileCharacteristic": [
+            {
+              "@type":"partyPrivacyProfileCharacteristic",
+              "characterisitc": {
+                "id": "43",
+                "name": "emailAddress",
+                "valueType": "string",
+                "value": "Yes",
+                "@type": "StringCharacteristic"
+              },        
+              "privacyUsagePurpose": "ADMIN",
+              "relatedParty": [
+                {
+                  "id": "8632",
+                  "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/8632",
+                  "name": "John Doe",
+                  "role": "Vendor",
+                  "@referredType": "Individual",
+                  "@type":"PartyRef"
+                }
+              ]
+            }
+          ]
+        }
+    },
+    "reportingSystem": {
+        "id": "665",
+        "name": "APP-224",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "403",
+        "name": "APP-686",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PartyPrivacyProfileAttributeValueChangeEvent"
+}

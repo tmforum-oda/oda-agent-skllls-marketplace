@@ -1,0 +1,200 @@
+[
+    {
+        "id": "44555",
+        "href": "https://mycsp.com:8080/tmf-api/serviceActivationAndConfiguration/v5/monitor/44555",
+        "state": "Completed",
+        "request": {
+            "method": "POST",
+            "to": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service",
+            "body": {
+                "state": "active",
+                "@type": "Service",
+                "serviceSpecification": {
+                    "id": "conferenceBridgeEquipment",
+                    "href": " .../serviceCatalog/v5/serviceSpecification/conferenceBridgeEquipment",
+                    "@type": "ServiceSpecificationRef"
+                },
+                "serviceCharacteristic": [
+                {
+                    "name": "numberOfVc500Units",
+                    "value": "1",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "numberOfVc100Units",
+                    "value": "2",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "routerType",
+                    "value": "CiscoASR1000",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "powerSupply",
+                    "value": "UK",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                }
+                ]
+            },
+            "header": [
+                {
+                    "name": "locale",
+                    "value": "en-us"
+                }
+            ]
+        },
+        "response": {
+            "statusCode": "201",
+            "body": {
+                "id": "123-456",
+                "href": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service/123-456",
+                "state": "active",
+                "serviceDate":"020-04-01T12:15:39.434Z",
+                "@type": "Service",
+                "serviceSpecification": {
+                    "id": "conferenceBridgeEquipment",
+                    "href": " .../serviceCatalog/v5/serviceSpecification/conferenceBridgeEquipment",
+                    "@type": "ServiceSpecificationRef"
+                },
+                "serviceCharacteristic": [
+                {
+                    "name": "numberOfVc500Units",
+                    "value": "1",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "numberOfVc100Units",
+                    "value": "2",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "routerType",
+                    "value": "CiscoASR1000",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "powerSupply",
+                    "value": "UK",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                }
+                ]
+            },
+            "header": [
+                {
+                    "name": "locale",
+                    "value": "en-us"
+                }
+            ]
+        },
+        "sourceHref": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service/123-456",
+        "@type": "Monitor"
+    },
+    {
+        "id": "78523",
+        "href": "https://mycsp.com:8080/tmf-api/serviceActivationAndConfiguration/v5/monitor/78523",
+        "state": "Completed",
+        "request": {
+            "method": "POST",
+            "to": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service",
+            "body": {
+                "state": "active",
+                "@type": "Service",
+                "serviceSpecification": {
+                    "id": "conferenceBridgeEquipment",
+                    "href": " .../serviceCatalog/v5/serviceSpecification/conferenceBridgeEquipment",
+                    "@type": "ServiceSpecificationRef"
+                },
+                "serviceCharacteristic": [
+                {
+                    "name": "numberOfVc500Units",
+                    "value": "1",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "numberOfVc100Units",
+                    "value": "2",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "routerType",
+                    "value": "CiscoASR1000",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "powerSupply",
+                    "value": "UK",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                }
+                ]
+            },
+            "header": [
+                {
+                    "name": "locale",
+                    "value": "en-us"
+                }
+            ]
+        },
+        "response": {
+            "statusCode": "201",
+            "body": {
+                "id": "123-999",
+                "href": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service/123-999",
+                "state": "active",
+                "serviceDate":"020-04-01T12:15:39.434Z",
+                "@type": "Service",
+                "serviceSpecification": {
+                    "id": "conferenceBridgeEquipment",
+                    "href": " .../serviceCatalog/v5/serviceSpecification/conferenceBridgeEquipment",
+                    "@type": "ServiceSpecificationRef"
+                },
+                "serviceCharacteristic": [
+                {
+                    "name": "numberOfVc500Units",
+                    "value": "2",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "numberOfVc100Units",
+                    "value": "6",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "routerType",
+                    "value": "CiscoASR1000",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                },
+                {
+                    "name": "powerSupply",
+                    "value": "UK",
+                    "valueType": "string",
+                    "@type": "StringCharacteristic"
+                }
+                ]
+            },
+            "header": [
+                {
+                    "name": "locale",
+                    "value": "en-us"
+                }
+            ]
+        },
+        "sourceHref": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service/123-999",
+        "@type": "Monitor"
+    }
+]

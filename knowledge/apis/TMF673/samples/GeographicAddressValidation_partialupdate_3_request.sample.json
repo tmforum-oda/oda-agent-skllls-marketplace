@@ -1,0 +1,12 @@
+[
+	{
+	  "op": "test",
+	  "path": "$.provideAlternative",
+	  "value": "false"
+	},
+	{
+	  "op": "replace",
+	  "path": "$.provideAlternative",
+	  "value": "true"
+	}
+  ]

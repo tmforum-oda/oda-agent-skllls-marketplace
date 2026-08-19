@@ -1,0 +1,8 @@
+[
+    {
+        "op": "replace",
+        "path": "/version?lifecycleStatus='Active'",
+        "value": "3.3"
+    }
+    
+]

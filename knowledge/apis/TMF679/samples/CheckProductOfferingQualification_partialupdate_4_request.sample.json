@@ -1,0 +1,17 @@
+[
+  {
+    "op": "add",
+    "path": "/CheckProductOfferingQualificationItem/product/place?CheckProductOfferingQualificationItem.id=1",
+    "value": {
+      "role": "Coverage",
+      "place": {
+        "id": "BEL",
+        "href": "https://host:port/geographicLocationManagement/v5/geographicLocation/BEL",
+        "name": "Belgium",
+        "@referredType": "GeographicLocation",
+        "@type": "PlaceRef"
+      },
+      "@type": "RelatedPlaceRefOrValue"
+    }
+  }
+]

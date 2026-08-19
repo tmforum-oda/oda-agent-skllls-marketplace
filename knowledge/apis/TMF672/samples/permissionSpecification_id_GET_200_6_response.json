@@ -1,0 +1,8 @@
+{
+  "@type": "PermissionSpecification",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-5ea0f3cc",
+  "id": "ps-5ea0f3cc",
+  "description": "Permission to buy products in OTT apps.",
+  "function": "impulse_buy",
+  "action": "Enabled"
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "OC54",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/processSpecification/OC54",
+    "description": "Description of the order capture process for all channels",
+    "lastUpdate": "2024-12-30T09:42:25.747Z",
+    "name": "orderCapture",
+    "version": "1",
+    "@type": "ProcessSpecification"
+  },
+  {
+    "id": "OC55",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/processSpecification/OC55",
+    "description": "Description of the order completion process for all channels",
+    "lastUpdate": "2024-12-30T09:42:25.747Z",
+    "name": "orderCompletion",
+    "version": "1.4",
+    "@type": "ProcessSpecification"
+  },
+  {
+    "id": "OC56",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/processSpecification/OC56",
+    "description": "Description of the welcome process for all channels",
+    "lastUpdate": "2024-12-30T09:42:25.747Z",
+    "name": "welcome",
+    "version": "7.2",
+    "@type": "ProcessSpecification"
+  }
+]

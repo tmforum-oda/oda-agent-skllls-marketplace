@@ -1,0 +1,34 @@
+{
+  "id": "evt-129",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-129",
+  "eventId": "00002",
+  "eventType": "ProcessStateChangeEvent",
+  "correlationId": "g56Iht-pi33",
+  "eventTime": "2024-04-18T16:42:26-04:00",
+  "description": "ProcessStateChangeEvent illustration",
+  "timeOccurred": "2024-04-18T16:42:25-04:00",
+  "title": "ProcessStateChangeEvent",
+  "event": {
+    "process": {
+      "id": "4fd-ty56-gg55",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/process/4fd-ty56-gg55",
+      "@type": "Process",
+      "state": "terminated"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProcessStateChangeEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}
