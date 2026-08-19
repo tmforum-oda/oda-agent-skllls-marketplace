@@ -1,4 +1,10 @@
-"""tools/fetch_component.py -- ODA Component ID -> cached spec (spec/spec.md 5.2, 5.2.1).
+"""Reads: knowledge/index/component-folder-map.json (rebuilt from GitHub if
+missing or via --refresh-map).
+Writes: knowledge/index/component-folder-map.json;
+knowledge/components/{TMFCxxx}/component.yaml + .meta.json.
+Track: automated (spec.md 6.2) -- public, unauthenticated, safe to schedule.
+
+tools/fetch_component.py -- ODA Component ID -> cached spec (spec/spec.md 5.2, 5.2.1).
 
 Two steps:
   1. List the tmforum-rand/TMForum-ODA-Ready-for-publication tree once at the

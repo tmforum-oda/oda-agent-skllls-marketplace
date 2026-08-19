@@ -1,4 +1,10 @@
-"""tools/refresh_report.py -- diff the just-regenerated knowledge/index/*.json
+"""Reads: knowledge/index/*.json (current, on disk) and
+git HEAD:knowledge/index/*.json (previous committed version).
+Writes: CHANGELOG.md (appends an entry; creates the file on first use).
+Track: shared -- run after either refresh track, or both, at the very end
+of a refresh cycle (spec.md 6.1 step 6).
+
+tools/refresh_report.py -- diff the just-regenerated knowledge/index/*.json
 against the last git-committed version and append a human-readable entry to
 CHANGELOG.md (spec/spec.md 6.1 step 6, tasks.md 5.2).
 

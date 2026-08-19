@@ -1,4 +1,9 @@
-"""tools/docx2md.py -- TM Forum use-case DOCX -> knowledge/use-cases/<ID>/<ID>.md
+"""Reads: references/use-cases/{ID}/{ID}_v{version}.docx.
+Writes: knowledge/use-cases/{ID}/{ID}.md, knowledge/use-cases/{ID}/media/*.
+Track: assisted (spec.md 6.1) -- the source DOCX requires a logged-in TM
+Forum member session to download.
+
+tools/docx2md.py -- TM Forum use-case DOCX -> knowledge/use-cases/<ID>/<ID>.md
 
 Reaches into the <w:sdt> content control that wraps the entire body in TM
 Forum's use-case template (python-docx's flat .paragraphs/.tables API sees

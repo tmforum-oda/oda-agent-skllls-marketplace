@@ -1,4 +1,9 @@
-"""tools/extract_usecase_list.py -- IG1228 chapter 1 ("List of Use Cases") ->
+"""Reads: references/ig1228/IG1228_*.pdf.
+Writes: knowledge/index/usecase-list.json.
+Track: assisted (spec.md 6.1) -- the source PDF requires a logged-in TM
+Forum member session to download.
+
+tools/extract_usecase_list.py -- IG1228 chapter 1 ("List of Use Cases") ->
 knowledge/index/usecase-list.json: every TMFSxxx identifier the current
 IG1228 knows about, with its title, its status *in IG1228* (not the same
 as a document's own maturity/approval_status envelope field -- this is

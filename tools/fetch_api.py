@@ -1,4 +1,8 @@
-"""tools/fetch_api.py -- cache the OpenAPI/Swagger specs a cached component
+"""Reads: knowledge/components/*/component.yaml.
+Writes: knowledge/apis/{TMFxxx}/{TMFxxx}_v{version}.json + .meta.json.
+Track: automated (spec.md 6.2) -- public, unauthenticated, safe to schedule.
+
+tools/fetch_api.py -- cache the OpenAPI/Swagger specs a cached component
 declares it exposes or depends on (spec/spec.md 5.3, 5.3.1).
 
 No separate id->URL lookup needed, unlike components (5.2.1): the URL is

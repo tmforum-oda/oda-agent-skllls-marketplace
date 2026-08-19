@@ -1,4 +1,9 @@
-"""tools/extract_usecase_matrix.py -- IG1228 chapter 2 ("Components identified
+"""Reads: references/ig1228/IG1228_*.pdf.
+Writes: knowledge/index/usecase-component-matrix.json.
+Track: assisted (spec.md 6.1) -- the source PDF requires a logged-in TM
+Forum member session to download.
+
+tools/extract_usecase_matrix.py -- IG1228 chapter 2 ("Components identified
 per use-case") -> knowledge/index/usecase-component-matrix.json (spec/spec.md
 5.4). Re-implements, as a real script, the pdfplumber extraction of this table
 done by hand once during the research phase.

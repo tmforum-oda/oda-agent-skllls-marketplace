@@ -1,4 +1,9 @@
-"""tools/validate_envelope.py -- check every artefact under knowledge/** carries the
+"""Reads: every artefact under knowledge/** (frontmatter and *.meta.json).
+Writes: nothing -- exit code and stdout only.
+Track: shared -- gating check run at the end of both refresh tracks (and
+as the last step of build_index.py).
+
+tools/validate_envelope.py -- check every artefact under knowledge/** carries the
 five universal envelope fields (spec/spec.md 5.0: id, type, name, version, status),
 regardless of artefact type. Run as the last step of every conversion/fetch script and
 again in build_index.py (spec/tasks.md 0.7, 3.2), so a malformed envelope fails loudly

@@ -1,4 +1,11 @@
-"""tools/add_usecase_metadata.py -- fill in the catalog-page envelope fields
+"""Reads: knowledge/use-cases/{ID}/{ID}.md (frontmatter docx2md.py already
+wrote); catalog-page field values supplied on the command line.
+Writes: knowledge/use-cases/{ID}/{ID}.md (fills in the catalog-page-only
+frontmatter fields).
+Track: assisted (spec.md 6.1) -- the source catalog page requires a
+logged-in TM Forum member session to read.
+
+tools/add_usecase_metadata.py -- fill in the catalog-page envelope fields
 tools/docx2md.py can't derive from the DOCX alone (spec/spec.md 5.1, tasks.md 0.6).
 
 docx2md.py owns the body Markdown and everything parseable straight out of the

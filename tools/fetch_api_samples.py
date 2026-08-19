@@ -1,4 +1,12 @@
-"""tools/fetch_api_samples.py -- OPTIONAL enrichment (spec/spec.md 5.3.1, tasks.md 2.6).
+"""Reads: knowledge/apis/*/*.meta.json (to know which APIs are already
+cached); knowledge/index/api-samples-folder-map.json.
+Writes: knowledge/index/api-samples-folder-map.json;
+knowledge/apis/{TMFxxx}/samples/*.
+Track: automated (spec.md 6.2, 5.3.1) -- optional, best-effort; needs a
+tmforum-rand-authorized GitHub token and fails closed (skip, not error)
+without one. Never required -- see below.
+
+tools/fetch_api_samples.py -- OPTIONAL enrichment (spec/spec.md 5.3.1, tasks.md 2.6).
 
 Pulls documentation/operation-samples/ and documentation/notification-samples/
 from the *authoring* repo, tmforum-rand/OAS_Open_API_And_Data_Model, into

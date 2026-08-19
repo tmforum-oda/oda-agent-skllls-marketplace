@@ -1,4 +1,10 @@
-"""tools/build_index.py -- regenerate knowledge/index/{use-cases,components,apis}.json
+"""Reads: every knowledge/use-cases/**/*.md frontmatter block; every
+knowledge/{components,apis}/**/*.meta.json.
+Writes: knowledge/index/{use-cases,components,apis}.json.
+Track: shared -- run at the end of either refresh track (or both) to
+regenerate the corpus-wide index; gates on validate_envelope.py.
+
+tools/build_index.py -- regenerate knowledge/index/{use-cases,components,apis}.json
 from every artefact's envelope (spec/spec.md 5.4).
 
 Walks the envelope the same way regardless of artefact type -- frontmatter for

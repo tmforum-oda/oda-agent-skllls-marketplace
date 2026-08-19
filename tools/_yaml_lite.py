@@ -1,4 +1,9 @@
-"""Shared, dependency-free YAML frontmatter read/write for tools/*.py.
+"""Reads: nothing itself -- library of frontmatter parse/emit functions.
+Writes: nothing itself -- library of frontmatter parse/emit functions.
+Track: n/a -- shared helper imported by docx2md.py, add_usecase_metadata.py,
+build_index.py, and fetch_component.py (both tracks).
+
+Shared, dependency-free YAML frontmatter read/write for tools/*.py.
 
 Writing uses a minimal, deterministic emitter (not PyYAML's dump) so every
 tool that touches a knowledge artefact's frontmatter produces byte-identical

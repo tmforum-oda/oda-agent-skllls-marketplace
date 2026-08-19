@@ -1,4 +1,9 @@
-"""Shared HTTP fetch helper for tools/*.py -- shells out to curl rather than
+"""Reads: nothing local -- network I/O only.
+Writes: nothing local -- network I/O only.
+Track: n/a -- shared HTTP helper imported by fetch_component.py/fetch_api.py
+(automated track, spec.md 6.2).
+
+Shared HTTP fetch helper for tools/*.py -- shells out to curl rather than
 Python's own ssl/requests stack, which fails local certificate verification
 on at least one dev machine this repo has been built on (an environment
 quirk, not a project concern -- curl verifies the exact same public
