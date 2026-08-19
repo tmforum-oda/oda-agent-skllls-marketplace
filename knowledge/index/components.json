@@ -10,7 +10,15 @@
     "meta_path": "knowledge/components/TMFC001/component.meta.json",
     "used_by": [
       "TMFS002",
+      "TMFS003",
+      "TMFS004",
+      "TMFS005",
+      "TMFS008",
       "TMFS009",
+      "TMFS012",
+      "TMFS016",
+      "TMFS018",
+      "TMFS028",
       "TMFS030"
     ]
   },
@@ -24,7 +32,14 @@
     "path": "knowledge/components/TMFC002/component.yaml",
     "meta_path": "knowledge/components/TMFC002/component.meta.json",
     "used_by": [
+      "TMFS003",
+      "TMFS004",
+      "TMFS008",
       "TMFS009",
+      "TMFS012",
+      "TMFS016",
+      "TMFS018",
+      "TMFS028",
       "TMFS030"
     ]
   },
@@ -38,6 +53,11 @@
     "path": "knowledge/components/TMFC003/component.yaml",
     "meta_path": "knowledge/components/TMFC003/component.meta.json",
     "used_by": [
+      "TMFS004",
+      "TMFS008",
+      "TMFS012",
+      "TMFS016",
+      "TMFS028",
       "TMFS030"
     ]
   },
@@ -51,7 +71,14 @@
     "path": "knowledge/components/TMFC005/component.yaml",
     "meta_path": "knowledge/components/TMFC005/component.meta.json",
     "used_by": [
+      "TMFS003",
+      "TMFS004",
+      "TMFS005",
+      "TMFS008",
       "TMFS009",
+      "TMFS016",
+      "TMFS018",
+      "TMFS028",
       "TMFS030"
     ]
   },
@@ -65,6 +92,10 @@
     "path": "knowledge/components/TMFC006/component.yaml",
     "meta_path": "knowledge/components/TMFC006/component.meta.json",
     "used_by": [
+      "TMFS004",
+      "TMFS008",
+      "TMFS012",
+      "TMFS028",
       "TMFS030"
     ]
   },
@@ -78,6 +109,10 @@
     "path": "knowledge/components/TMFC007/component.yaml",
     "meta_path": "knowledge/components/TMFC007/component.meta.json",
     "used_by": [
+      "TMFS004",
+      "TMFS008",
+      "TMFS012",
+      "TMFS028",
       "TMFS030"
     ]
   },
@@ -91,7 +126,10 @@
     "path": "knowledge/components/TMFC008/component.yaml",
     "meta_path": "knowledge/components/TMFC008/component.meta.json",
     "used_by": [
-      "TMFS009"
+      "TMFS004",
+      "TMFS008",
+      "TMFS009",
+      "TMFS028"
     ]
   },
   {
@@ -105,7 +143,27 @@
     "meta_path": "knowledge/components/TMFC009/component.meta.json",
     "used_by": [
       "TMFS002",
+      "TMFS003",
+      "TMFS004",
+      "TMFS008",
+      "TMFS018",
+      "TMFS028",
       "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC010",
+    "type": "component",
+    "name": "ResourceCatalogManagement",
+    "version": "1.3.2",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC010-ResourceCatalogManagement/Specification/TMFC010-ResourceCatalogManagement.yaml",
+    "path": "knowledge/components/TMFC010/component.yaml",
+    "meta_path": "knowledge/components/TMFC010/component.meta.json",
+    "used_by": [
+      "TMFS004",
+      "TMFS008",
+      "TMFS028"
     ]
   },
   {
@@ -118,6 +176,9 @@
     "path": "knowledge/components/TMFC011/component.yaml",
     "meta_path": "knowledge/components/TMFC011/component.meta.json",
     "used_by": [
+      "TMFS004",
+      "TMFS008",
+      "TMFS028",
       "TMFS030"
     ]
   },
@@ -131,6 +192,9 @@
     "path": "knowledge/components/TMFC012/component.yaml",
     "meta_path": "knowledge/components/TMFC012/component.meta.json",
     "used_by": [
+      "TMFS004",
+      "TMFS008",
+      "TMFS028",
       "TMFS030"
     ]
   },
@@ -157,6 +221,10 @@
     "path": "knowledge/components/TMFC014/component.yaml",
     "meta_path": "knowledge/components/TMFC014/component.meta.json",
     "used_by": [
+      "TMFS003",
+      "TMFS012",
+      "TMFS016",
+      "TMFS018",
       "TMFS030"
     ]
   },
@@ -170,6 +238,7 @@
     "path": null,
     "meta_path": "knowledge/components/TMFC015/component.meta.json",
     "used_by": [
+      "TMFS005",
       "TMFS009"
     ]
   },
@@ -183,7 +252,8 @@
     "path": "knowledge/components/TMFC020/component.yaml",
     "meta_path": "knowledge/components/TMFC020/component.meta.json",
     "used_by": [
-      "TMFS001"
+      "TMFS001",
+      "TMFS016"
     ]
   },
   {
@@ -211,6 +281,10 @@
     "used_by": [
       "TMFS001",
       "TMFS002",
+      "TMFS003",
+      "TMFS004",
+      "TMFS006",
+      "TMFS016",
       "TMFS031"
     ]
   },
@@ -224,6 +298,8 @@
     "path": "knowledge/components/TMFC024/component.yaml",
     "meta_path": "knowledge/components/TMFC024/component.meta.json",
     "used_by": [
+      "TMFS003",
+      "TMFS005",
       "TMFS030"
     ]
   },
@@ -238,6 +314,9 @@
     "meta_path": "knowledge/components/TMFC027/component.meta.json",
     "used_by": [
       "TMFS002",
+      "TMFS003",
+      "TMFS016",
+      "TMFS018",
       "TMFS030"
     ]
   },
@@ -252,8 +331,67 @@
     "meta_path": "knowledge/components/TMFC028/component.meta.json",
     "used_by": [
       "TMFS001",
+      "TMFS003",
+      "TMFS004",
+      "TMFS005",
+      "TMFS006",
+      "TMFS016",
       "TMFS030",
       "TMFS031"
+    ]
+  },
+  {
+    "id": "TMFC030",
+    "type": "component",
+    "name": "BillGenerationManagement",
+    "version": "2.0.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC030-BillGeneration/Specification/TMFC030-BillGeneration.yaml",
+    "path": "knowledge/components/TMFC030/component.yaml",
+    "meta_path": "knowledge/components/TMFC030/component.meta.json",
+    "used_by": [
+      "TMFS005"
+    ]
+  },
+  {
+    "id": "TMFC031",
+    "type": "component",
+    "name": "BillCalculation",
+    "version": "3.0.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC031-BillCalculation/Specification/TMFC031-BillCalculation.yaml",
+    "path": "knowledge/components/TMFC031/component.yaml",
+    "meta_path": "knowledge/components/TMFC031/component.meta.json",
+    "used_by": [
+      "TMFS005"
+    ]
+  },
+  {
+    "id": "TMFC032",
+    "type": "component",
+    "name": "TMFC032",
+    "version": "none",
+    "status": "not_yet_specified",
+    "source_origin": null,
+    "path": null,
+    "meta_path": "knowledge/components/TMFC032/component.meta.json",
+    "used_by": [
+      "TMFS003",
+      "TMFS004",
+      "TMFS008"
+    ]
+  },
+  {
+    "id": "TMFC033",
+    "type": "component",
+    "name": "TMFC033",
+    "version": "none",
+    "status": "not_yet_specified",
+    "source_origin": null,
+    "path": null,
+    "meta_path": "knowledge/components/TMFC033/component.meta.json",
+    "used_by": [
+      "TMFS020"
     ]
   },
   {
@@ -267,7 +405,23 @@
     "meta_path": "knowledge/components/TMFC035/component.meta.json",
     "used_by": [
       "TMFS001",
+      "TMFS005",
+      "TMFS006",
+      "TMFS016",
       "TMFS031"
+    ]
+  },
+  {
+    "id": "TMFC036",
+    "type": "component",
+    "name": "LeadAndOpportunityManagement",
+    "version": "1.2.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC036-LeadAndOpportunityManagement/Specification/TMFC036-LeadAndOpportunityManagement.yaml",
+    "path": "knowledge/components/TMFC036/component.yaml",
+    "meta_path": "knowledge/components/TMFC036/component.meta.json",
+    "used_by": [
+      "TMFS020"
     ]
   },
   {
@@ -280,6 +434,8 @@
     "path": "knowledge/components/TMFC039/component.yaml",
     "meta_path": "knowledge/components/TMFC039/component.meta.json",
     "used_by": [
+      "TMFS019A",
+      "TMFS020",
       "TMFS030"
     ]
   },
@@ -293,6 +449,7 @@
     "path": "knowledge/components/TMFC040/component.yaml",
     "meta_path": "knowledge/components/TMFC040/component.meta.json",
     "used_by": [
+      "TMFS005",
       "TMFS009"
     ]
   },
@@ -306,7 +463,36 @@
     "path": "knowledge/components/TMFC050/component.yaml",
     "meta_path": "knowledge/components/TMFC050/component.meta.json",
     "used_by": [
-      "TMFS002"
+      "TMFS002",
+      "TMFS016",
+      "TMFS020"
+    ]
+  },
+  {
+    "id": "TMFC051",
+    "type": "component",
+    "name": "TMFC051",
+    "version": "none",
+    "status": "not_yet_specified",
+    "source_origin": null,
+    "path": null,
+    "meta_path": "knowledge/components/TMFC051/component.meta.json",
+    "used_by": [
+      "TMFS006"
+    ]
+  },
+  {
+    "id": "TMFC062",
+    "type": "component",
+    "name": "ResourceConfigurationandActivation",
+    "version": "1.0.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC062-ResourceConfigurationandActivation/Specification/TMFC062-ResourceConfigurationandActivation.yaml",
+    "path": "knowledge/components/TMFC062/component.yaml",
+    "meta_path": "knowledge/components/TMFC062/component.meta.json",
+    "used_by": [
+      "TMFS008",
+      "TMFS025"
     ]
   }
 ]

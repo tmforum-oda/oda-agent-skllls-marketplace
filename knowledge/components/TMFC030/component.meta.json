@@ -1,0 +1,17 @@
+{
+  "id": "TMFC030",
+  "type": "component",
+  "name": "BillGenerationManagement",
+  "version": "2.0.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC030-BillGeneration/Specification/TMFC030-BillGeneration.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "b6f1e9a2f0f1bb348268ae81fbe4a2d6162808c02b4e1592043751429bbcc75e"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

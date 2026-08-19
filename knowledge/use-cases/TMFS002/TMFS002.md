@@ -9,7 +9,7 @@ source:
   license: RAND
   retrieved: 2026-08-19
   sha256: 8f38dfcf7295b434b700a693544dc16c29393fc537f585efaa477bd7736da918
-  raw_path: references/use-cases/TMFS002/TMFS002_v3.1.2.docx
+  raw_path: ../references/use-cases/TMFS002/TMFS002_v3.1.2.docx
 links:
   components:
     - id: TMFC001

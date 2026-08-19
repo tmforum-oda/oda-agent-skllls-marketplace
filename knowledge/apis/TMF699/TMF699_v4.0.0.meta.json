@@ -1,0 +1,16 @@
+{
+  "id": "TMF699",
+  "type": "api",
+  "name": "sales-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF699_Sales/4.0.0/swagger/TMF699_Sales_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "fc83bd86d604159a8b1984fa6adfac949c682b6d4d0684f110a6921f5a225c66"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

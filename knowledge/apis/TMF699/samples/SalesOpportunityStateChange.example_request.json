@@ -1,0 +1,36 @@
+{
+  "correlationId": "401decc1-aaabc",
+  "description": "SalesOpportunityStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "400c-819d-482968d09308",
+  "eventTime": "2022-08-25T12:27:45.939Z",
+  "eventType": "SalesOpportunityStateChangeEvent",
+  "priority": "4",
+  "timeOccurred": "2022-08-25T12:27:45.198Z",
+  "title": "SalesOpportunityStateChangeEvent",
+  "event": {
+    "salesOpportunity": {
+      "href": "https://serverRoot/tmf-api/salesManagement/v5/salesOpportunity/12345",
+      "id": "12345",
+      "name": "GoBank account",
+      "status": "accepted",
+      "statusChangeDate": "2024-01-25T15:53:29.961Z",
+      "statusChangeReason": "SalesOpportunity accepted by marketing team",
+      "@type": "SalesOpportunity"
+    }
+  },
+  "reportingSystem": {
+    "id": "87",
+    "name": "APP-467",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "175",
+    "name": "APP-488",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "SalesOpportunityStateChangeEvent"
+}

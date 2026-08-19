@@ -216,6 +216,7 @@ seen_first_heading = False
 drop_until_level = None  # None = keep everything; int = we're inside a dropped subtree at this level
 in_references = False
 ref_block = None  # "sid" | "components" | "apis" | None, while in_references
+title_candidate = None  # best guess at the name line while scanning the title block, see below
 
 # The References section is NOT uniformly formatted across TM Forum use cases -- confirmed
 # by checking all six pilot documents (spec/spec.md 5.1.1 assumed it was; it isn't). The three
@@ -279,9 +280,27 @@ for kind, el in flatten(body):
             if level is not None and strip_md(text):
                 seen_first_heading = True
             else:
-                m = re.match(r"^Use Case:\s*(.+)$", strip_md(text))
+                title_text = strip_md(text)
+                m = re.match(r"^Use Case:\s*(.+)$", title_text)
+                if not m:
+                    # Introductory Guide / Guidebook / newer Use-Case cover pages don't use the
+                    # "Use Case: <name>" phrasing at all -- some put "<ID> <name>" on one line
+                    # (TMFS004), others put the name on its own line with the bare ID appearing
+                    # separately, further down (TMFS006/010/019A/019B). Cover-page boilerplate like
+                    # "TM Forum Introductory Guide" sits between them, so track the most recent
+                    # non-boilerplate line as a candidate and commit it once the bare-ID line is
+                    # actually reached -- that's the one part of this shape that's unambiguous.
+                    m = re.match(rf"^{re.escape(ID)}\s+(.+)$", title_text)
                 if m and envelope["name"] is None:
                     envelope["name"] = m.group(1)
+                elif envelope["name"] is None and title_text:
+                    # TMFS019A/TMFS019B are this repo's own split of a single TM Forum identifier
+                    # (spec/tasks.md 4.2) -- the DOCX itself only ever says the bare "TMFS019".
+                    if title_text in (ID, re.sub(r"[A-Z]$", "", ID)):
+                        if title_candidate:
+                            envelope["name"] = title_candidate
+                    elif not title_text.startswith("TM Forum "):
+                        title_candidate = title_text
                 continue
 
         if level is not None:
@@ -302,36 +321,47 @@ for kind, el in flatten(body):
 
         if drop_until_level is not None:
             if in_references:
-                plain = strip_md(text)
-                low = plain.lower()
-                if not is_list:
-                    # a header line ("SID: ...", "ODA components:", "List of involved Open APIs:",
-                    # but also things we don't model like "TMF documents:" or "External Reference" --
-                    # keyword-classify by substring, not exact match, since header phrasing varies
-                    # (see the comment above COMPONENT_ID_RE); blank lines don't reset the block.
-                    if plain:
-                        if low.startswith("sid:") or low == "sid":
-                            ref_block = "sid"
-                        elif "component" in low:
-                            ref_block = "components"
-                        elif "open api" in low:
-                            ref_block = "apis"
-                        else:
-                            ref_block = None  # unrecognized header -- don't misattribute its bullets
-                elif ref_block == "sid":
-                    extension["sid_references"].append(plain)
-                elif ref_block == "components":
-                    entry = parse_component_bullet(plain)
-                    if entry:
-                        envelope["links"]["components"].append(entry)
-                    else:
-                        unparsed_refs.append(("component", plain))
-                elif ref_block == "apis":
-                    entry = parse_api_bullet(plain)
-                    if entry:
-                        envelope["links"]["apis"].append(entry)
-                    else:
-                        unparsed_refs.append(("api", plain))
+                raw_plain = strip_md(text)
+                # A single list-numbered paragraph can itself bundle several entries via manual
+                # line breaks (w:br) instead of separate list items (confirmed in TMFS028) --
+                # python-docx flattens w:br to "\n" in run.text, so without this split the first
+                # ID's "rest" swallows every following line (including other IDs) into one `name`,
+                # producing a multi-line YAML scalar that breaks the frontmatter parser outright.
+                for plain in (raw_plain.split("\n") if "\n" in raw_plain else [raw_plain]):
+                    plain = plain.strip()
+                    low = plain.lower()
+                    # Primary: search every (sub-)line in the References subtree for a component/API
+                    # ID, regardless of list status or which (if any) sub-header it falls under.
+                    # Confirmed necessary against the full 32-use-case set (Phase 4), not just the
+                    # six-doc pilot -- header phrasing varies far more than "ODA components:" /
+                    # "Open APIs:": some templates use "TMF references" or "The following documents
+                    # are referenced..." as the header, and some format "ODA Components:" itself as a
+                    # list bullet rather than plain prose (TMFS008) -- either way, the old
+                    # header-keyword-then-bullet state machine silently dropped every real TMFC/TMF
+                    # entry underneath. Matching the ID pattern directly, independent of header
+                    # recognition, is what the "search-based, not strict-format" principle above
+                    # (COMPONENT_ID_RE) already called for.
+                    if COMPONENT_ID_RE.search(plain):
+                        envelope["links"]["components"].append(parse_component_bullet(plain))
+                    elif API_ID_RE.search(plain):
+                        envelope["links"]["apis"].append(parse_api_bullet(plain))
+                    elif not is_list:
+                        # a header/narrative line -- keyword-classify by substring (phrasing varies)
+                        # so a *list* bullet with no ID of its own can still be surfaced as
+                        # "unparsed" below rather than silently dropped; blank lines don't reset it.
+                        if plain:
+                            if low.startswith("sid:") or low == "sid":
+                                ref_block = "sid"
+                            elif "component" in low:
+                                ref_block = "components"
+                            elif "open api" in low or "apis" in low:
+                                ref_block = "apis"
+                            else:
+                                ref_block = None  # unrecognized header -- don't misattribute bullets
+                    elif ref_block == "sid":
+                        extension["sid_references"].append(plain)
+                    elif ref_block in ("components", "apis") and plain:
+                        unparsed_refs.append(("component" if ref_block == "components" else "api", plain))
             continue  # dropped, whether or not it was a References line
 
         md = paragraph_markdown(text, style_id, is_list)

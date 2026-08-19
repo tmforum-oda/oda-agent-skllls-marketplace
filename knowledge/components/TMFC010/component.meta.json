@@ -1,0 +1,17 @@
+{
+  "id": "TMFC010",
+  "type": "component",
+  "name": "ResourceCatalogManagement",
+  "version": "1.3.2",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC010-ResourceCatalogManagement/Specification/TMFC010-ResourceCatalogManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "85dbf73df642dc2276facb73f5553c78defeeaa80a177ab4bf2e6835818a909a"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

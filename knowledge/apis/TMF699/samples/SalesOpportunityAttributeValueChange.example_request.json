@@ -1,0 +1,41 @@
+{
+    "correlationId": "caf9c6f7-301f",
+    "description": "SalesOpportunityAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4488-8183-c9ba372e72aa",
+    "eventTime": "2022-08-25T12:27:45.928Z",
+    "eventType": "SalesOpportunityAttributeValueChangeEvent",
+    "priority": "4",
+    "timeOccurred": "2022-08-25T12:27:44.485Z",
+    "title": "SalesOpportunityAttributeValueChangeEvent",
+    "event": {
+        "salesOpportunity": {
+            "href": "https://serverRoot/tmf-api/salesManagement/v5/salesOpportunity/123",
+            "id": "123",
+            "@type": "SalesOpportunity",
+            "name": "GoBank account",
+            "marketingCampaign": {
+                "id": "21",
+                "href": "https://serverRoot/tmf-api/marketingManagement/v5/marketingCampaign/21",
+                "name": "January 2012 campaign for Orange Bank",
+                "@type":"MarketingCampaignRef",
+                "@referredType":"MarketingCampaign"
+
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "87",
+        "name": "APP-467",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "175",
+        "name": "APP-488",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "SalesOpportunityAttributeValueChangeEvent"
+}

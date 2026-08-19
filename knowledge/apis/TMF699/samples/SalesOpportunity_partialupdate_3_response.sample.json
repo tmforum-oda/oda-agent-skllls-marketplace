@@ -1,0 +1,7 @@
+{
+  "id": "12345",
+  "href": "https://serverRoot/tmf-api/salesManagement/v5/salesOpportunity/12345",
+  "@type": "SalesOpportunity",
+  "name": "GoBank account",
+  "status": "pending"
+}

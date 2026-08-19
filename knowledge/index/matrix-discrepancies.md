@@ -42,11 +42,56 @@ three, consistent with the broader pattern already established in the research p
 is Beta/Member Evaluated, not yet fully settled, and single-field drift between a use case's
 own content and the corpus index is exactly what "not yet GA" looks like in practice.
 
+## Phase 4: cross-check against the full 24-use-case corpus
+
+Repeating the same cross-check after Phase 4 (all `Available` identifiers, not just the six
+pilot docs) turns up disagreement far more often than not: 14 of 24 use cases differ from the
+matrix, only 8 agree exactly (TMFS001, 002, 006, 008, 012, 028, 031, plus TMFS029 which
+"agrees" only in the sense already explained above). TMFS019A/019B aren't in the matrix at
+all — expected, since IG1228 v31.0.0's chapter 2 only knows the pre-split TMFS019, not this
+repo's own Part I/Part II identifiers (spec/tasks.md 4.2).
+
+| Use case | Own-only (matrix missing) | Matrix-only (doc missing) |
+|---|---|---|
+| TMFS003 | TMFC024 | — |
+| TMFS004 | TMFC009 | — |
+| TMFS005 | TMFC028, 035 | — |
+| TMFS009 | TMFC001, 002, 005, 008 | — |
+| TMFS010 | — | TMFC001, 003, 006, 007, 009, 027 |
+| TMFS011 | — | TMFC005, 007, 008, 010, 011, 012, 016, 062 |
+| TMFS014 | — | TMFC001, 002, 003, 005–012 (all 11) |
+| TMFS016 | TMFC003 | TMFC009 |
+| TMFS018 | — | TMFC012 |
+| TMFS020 | TMFC033, 036, 050 | TMFC001, 020, 023, 028, 035 |
+| TMFS021 | — | TMFC002, 003, 005, 006, 007, 020 |
+| TMFS025 | — | TMFC010, 011, 012 |
+| TMFS026 | — | TMFC001, 002, 003, 008, 028, 035, 039 |
+| TMFS030 | TMFC006 | — |
+
+Two recognizable patterns, not one:
+
+**"Matrix-only" cases (TMFS010, 011, 014, 018, 021, 025, 026) are mostly the same shape as
+TMFS029 above** — the document's own References section has zero or few component entries
+(TMFS014 has none at all; docx2md.py's Phase 4.2 fix confirmed these really are near-empty,
+not a parser miss), while IG1228's corpus-level table credits it with several. Complementary
+sourcing doing exactly what §5.4 designed it to do, at higher volume than the pilot six
+suggested.
+
+**"Own-only" cases (TMFS003/004/005/009/016/020/030) are documents whose References section
+names components the matrix hasn't caught up to** — the mirror image of TMFS009's pilot-phase
+finding, now confirmed as a systemic pattern rather than a one-off: IG1228's chapter 2 lags
+behind individual documents' own edits more often than it leads.
+
+**TMFS020 is the one case with real disagreement in both directions** — 3 components only in
+its own text, 5 only in the matrix — worth a human second look if anyone is relying on this
+use case's component list specifically, since neither source is clearly the fuller one here.
+
 ## What this means for consumers of `knowledge/`
 
 A skill answering "what components does TMFS009 touch" gets a *different, real* answer
-depending on which source it reads. Until this is reconciled at the source (which isn't this
-repo's job — it's TM Forum's own chapter 2 vs. individual document maintenance process), a
-skill that needs completeness should read **both** `links.components` and the matrix and take
-the union, not either alone — and should say so if it's citing the union, since neither
-source alone is the full picture for TMFS009/029/030.
+depending on which source it reads — and per the Phase 4 numbers above, that's true for the
+*majority* of use cases in this corpus, not an edge case. Until this is reconciled at the
+source (which isn't this repo's job — it's TM Forum's own chapter 2 vs. individual document
+maintenance process), a skill that needs completeness should read **both**
+`links.components` and the matrix and take the union, not either alone — and should say so if
+it's citing the union, since neither source alone is the full picture for most of this corpus.
