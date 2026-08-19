@@ -1,0 +1,605 @@
+[
+  {
+    "id": "TMF620",
+    "type": "api",
+    "name": "product-catalog-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json",
+    "path": "knowledge/apis/TMF620/TMF620_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF620/TMF620_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS002",
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF621",
+    "type": "api",
+    "name": "trouble-ticket-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF621_Trouble_Ticket/4.0.0/swagger/TMF621_Trouble_Ticket_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF621/TMF621_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF621/TMF621_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS031"
+    ]
+  },
+  {
+    "id": "TMF622",
+    "type": "api",
+    "name": "product-ordering-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF622/TMF622_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF622/TMF622_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF629",
+    "type": "api",
+    "name": "customer-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF629_Customer/4.0.0/swagger/TMF629_Customer_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF629/TMF629_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF629/TMF629_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF632",
+    "type": "api",
+    "name": "party-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF632/TMF632_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF632/TMF632_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS001",
+      "TMFS030",
+      "TMFS031"
+    ]
+  },
+  {
+    "id": "TMF633",
+    "type": "api",
+    "name": "service-catalog-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF633/TMF633_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF633/TMF633_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF634",
+    "type": "api",
+    "name": "resource-catalog-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json",
+    "path": "knowledge/apis/TMF634/TMF634_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF634/TMF634_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF635",
+    "type": "api",
+    "name": "usage-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF635_Usage/4.0.0/swagger/TMF635_Usage_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF635/TMF635_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF635/TMF635_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF637",
+    "type": "api",
+    "name": "product-inventory-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF637/TMF637_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF637/TMF637_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF638",
+    "type": "api",
+    "name": "service-inventory-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF638/TMF638_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF638/TMF638_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF639",
+    "type": "api",
+    "name": "resource-inventory-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF639/TMF639_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF639/TMF639_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF640",
+    "type": "api",
+    "name": "service-activation-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF640_Service_Activation/4.0.0/swagger/TMF640_Service_Activation_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF640/TMF640_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF640/TMF640_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF641",
+    "type": "api",
+    "name": "service-ordering-management-api",
+    "version": "v4.0.0",
+    "status": "fetch_failed",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF641_Service_Ordering/4.2.0/swagger/TMF641_Service_Ordering_v4.2.0_beta_swagger.json",
+    "path": null,
+    "meta_path": "knowledge/apis/TMF641/TMF641_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF644",
+    "type": "api",
+    "name": "privacy-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF644_Privacy/4.0.0/swagger/TMF644_Privacy_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF644/TMF644_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF644/TMF644_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS001"
+    ]
+  },
+  {
+    "id": "TMF645",
+    "type": "api",
+    "name": "service-qualification-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF645_Service_Qualification/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF645/TMF645_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF645/TMF645_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS002",
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF646",
+    "type": "api",
+    "name": "appointment-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF646_Appointment/4.0.0/swagger/TMF646_Appointment_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF646/TMF646_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF646/TMF646_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF648",
+    "type": "api",
+    "name": "quote-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF648_Quote/4.0.0/swagger/TMF648_Quote_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF648/TMF648_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF648/TMF648_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF651",
+    "type": "api",
+    "name": "agreement-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF651/TMF651_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF651/TMF651_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF652",
+    "type": "api",
+    "name": "resource-order-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF652_Resource_Order/4.0.0/swagger/TMF652_Resource_Order_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF652/TMF652_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF652/TMF652_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF653",
+    "type": "api",
+    "name": "service-test-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF653_Service_Test/4.2.0/swagger/TMF653_Service_Test_Management_API_v4.2.0_swagger.json",
+    "path": "knowledge/apis/TMF653/TMF653_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF653/TMF653_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF657",
+    "type": "api",
+    "name": "service-quality-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF657_Service_Quality_Management/4.0.0/swagger/TMF657_Service_Quality_Management_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF657/TMF657_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF657/TMF657_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF662",
+    "type": "api",
+    "name": "entity-catalog-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF662_Entity_Catalog/4.0.0/swagger/TMF662_Entity_Catalog_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF662/TMF662_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF662/TMF662_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF663",
+    "type": "api",
+    "name": "shopping-cart-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF663_Shopping_Cart/4.0.0/swagger/TMF663_Shopping_Cart_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF663/TMF663_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF663/TMF663_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF664",
+    "type": "api",
+    "name": "resource-function-activation-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF664_Resource_Function_Activation/4.0.0/swagger/TMF664_Resource_Function_Activation_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF664/TMF664_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF664/TMF664_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF666",
+    "type": "api",
+    "name": "account-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF666/TMF666_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF666/TMF666_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF667",
+    "type": "api",
+    "name": "document-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF667/TMF667_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF667/TMF667_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF669",
+    "type": "api",
+    "name": "party-role-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF669/TMF669_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF669/TMF669_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS001",
+      "TMFS031"
+    ]
+  },
+  {
+    "id": "TMF670",
+    "type": "api",
+    "name": "payment-method-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF670_Payment_Method/4.0.0/swagger/TMF670_Payment_Method_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF670/TMF670_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF670/TMF670_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF671",
+    "type": "api",
+    "name": "promotion-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF671_Promotion/4.0.0/swagger/TMF671_Promotion_Management_API_v4.0.0_beta_swagger.json",
+    "path": "knowledge/apis/TMF671/TMF671_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF671/TMF671_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF672",
+    "type": "api",
+    "name": "user-role-permission-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF672/TMF672_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF672/TMF672_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS001"
+    ]
+  },
+  {
+    "id": "TMF673",
+    "type": "api",
+    "name": "geographic-address-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF673/TMF673_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF673/TMF673_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF674",
+    "type": "api",
+    "name": "geographic-site-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF674/TMF674_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF674/TMF674_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF675",
+    "type": "api",
+    "name": "geographic-location-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json",
+    "path": "knowledge/apis/TMF675/TMF675_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF675/TMF675_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF676",
+    "type": "api",
+    "name": "payment-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF676_Payment/4.0.0/swagger/TMF676_Payment_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF676/TMF676_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF676/TMF676_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF677",
+    "type": "api",
+    "name": "usage-consumption-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF677_Usage_Consumption/4.0.0/swagger/TMF677_Usage_Consumption_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF677/TMF677_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF677/TMF677_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF678",
+    "type": "api",
+    "name": "customer-bill-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/4.0.0/swagger/TMF678_Customer_Bill_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF678/TMF678_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF678/TMF678_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF679",
+    "type": "api",
+    "name": "product-offering-qualification-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF679_Product_Offering_Qualification/4.0.0/swagger/TMF679_Product_Offering_Qualification_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF679/TMF679_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF679/TMF679_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS002",
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF680",
+    "type": "api",
+    "name": "recommendation-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF680_Recommendation/4.0.0/swagger/TMF680_Recommendation_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF680/TMF680_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF680/TMF680_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS002"
+    ]
+  },
+  {
+    "id": "TMF681",
+    "type": "api",
+    "name": "communication-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF681/TMF681_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF681/TMF681_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF683",
+    "type": "api",
+    "name": "party-interaction-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json",
+    "path": "knowledge/apis/TMF683/TMF683_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF683/TMF683_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS001",
+      "TMFS031"
+    ]
+  },
+  {
+    "id": "TMF685",
+    "type": "api",
+    "name": "resource-pool-management-api",
+    "version": "v5.0.0",
+    "status": "v5",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF685_Resource_Pool/5.0.0/swagger/TMF685-Resource_Pool_Management-v5.0.0.oas.yaml",
+    "path": "knowledge/apis/TMF685/TMF685_v5.0.0.json",
+    "meta_path": "knowledge/apis/TMF685/TMF685_v5.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF687",
+    "type": "api",
+    "name": "stock-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF687_Stock/4.0.0/swagger/TMF687_Stock_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF687/TMF687_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF687/TMF687_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF688",
+    "type": "api",
+    "name": "event-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json",
+    "path": "knowledge/apis/TMF688/TMF688_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF688/TMF688_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS001"
+    ]
+  },
+  {
+    "id": "TMF697",
+    "type": "api",
+    "name": "work-order-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF697_Work_Order/4.0.0/swagger/TMF697_Work_Order_Management_API_v4.0.0_beta_swagger.json",
+    "path": "knowledge/apis/TMF697/TMF697_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF697/TMF697_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF701",
+    "type": "api",
+    "name": "process-flow-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json",
+    "path": "knowledge/apis/TMF701/TMF701_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF701/TMF701_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS001",
+      "TMFS002",
+      "TMFS031"
+    ]
+  },
+  {
+    "id": "TMF702",
+    "type": "api",
+    "name": "resource-activation-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF702_Resource_Activation/4.0.0/swagger/TMF702_Resource_Activation_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF702/TMF702_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF702/TMF702_v4.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF716",
+    "type": "api",
+    "name": "resource-reservation",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF716_Resource_Reservation/4.0.0/swagger/TMF716_ResourceReservation_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF716/TMF716_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF716/TMF716_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMF720",
+    "type": "api",
+    "name": "digital-identity-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF720_Digital_Identity/4.0.0/swagger/TMF720_Digital_Identity_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF720/TMF720_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF720/TMF720_v4.0.0.meta.json",
+    "used_by": [
+      "TMFS001"
+    ]
+  },
+  {
+    "id": "TMF760",
+    "type": "api",
+    "name": "product-configuration-management-api",
+    "version": "v5.0.0",
+    "status": "v5",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF760_Product_Configuration/5.0.0/swagger/TMF760-ProductConfiguration-v5.0.0.oas.yaml",
+    "path": "knowledge/apis/TMF760/TMF760_v5.0.0.json",
+    "meta_path": "knowledge/apis/TMF760/TMF760_v5.0.0.meta.json",
+    "used_by": []
+  },
+  {
+    "id": "TMF921",
+    "type": "api",
+    "name": "intent-management-api",
+    "version": "v4.0.0",
+    "status": "v4",
+    "source_origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF921_Intent/4.0.0/swagger/TMF921_Intent_Management_API_v4.0.0_swagger.json",
+    "path": "knowledge/apis/TMF921/TMF921_v4.0.0.json",
+    "meta_path": "knowledge/apis/TMF921/TMF921_v4.0.0.meta.json",
+    "used_by": []
+  }
+]

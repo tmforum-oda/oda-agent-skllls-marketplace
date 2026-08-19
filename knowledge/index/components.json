@@ -1,0 +1,312 @@
+[
+  {
+    "id": "TMFC001",
+    "type": "component",
+    "name": "ProductCatalogManagement",
+    "version": "2.1.2",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC001-ProductCatalogManagement/Specification/TMFC001-ProductCatalogManagement.yaml",
+    "path": "knowledge/components/TMFC001/component.yaml",
+    "meta_path": "knowledge/components/TMFC001/component.meta.json",
+    "used_by": [
+      "TMFS002",
+      "TMFS009",
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC002",
+    "type": "component",
+    "name": "ProductOrderCaptureAndValidation",
+    "version": "2.1.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC002-ProductOrderCaptureAndValidation/Specification/TMFC002-ProductOrderCaptureAndValidation.yaml",
+    "path": "knowledge/components/TMFC002/component.yaml",
+    "meta_path": "knowledge/components/TMFC002/component.meta.json",
+    "used_by": [
+      "TMFS009",
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC003",
+    "type": "component",
+    "name": "ProductOrderDeliveryOrchestrationAndManagement",
+    "version": "1.1.1",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/Specification/TMFC003-ProductOrderDeliveryOrchestrationAndManagement.yaml",
+    "path": "knowledge/components/TMFC003/component.yaml",
+    "meta_path": "knowledge/components/TMFC003/component.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC005",
+    "type": "component",
+    "name": "ProductInventory",
+    "version": "1.0.4",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC005-ProductInventory/Specification/TMFC005-ProductInventory.yaml",
+    "path": "knowledge/components/TMFC005/component.yaml",
+    "meta_path": "knowledge/components/TMFC005/component.meta.json",
+    "used_by": [
+      "TMFS009",
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC006",
+    "type": "component",
+    "name": "ServiceCatalogManagement",
+    "version": "1.2.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC006-ServiceCatalogManagement/Specification/TMFC006-ServiceCatalogManagement.yaml",
+    "path": "knowledge/components/TMFC006/component.yaml",
+    "meta_path": "knowledge/components/TMFC006/component.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC007",
+    "type": "component",
+    "name": "ServiceOrderManagement",
+    "version": "2.0.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC007-ServiceOrderManagement/Specification/TMFC007-ServiceOrderManagement.yaml",
+    "path": "knowledge/components/TMFC007/component.yaml",
+    "meta_path": "knowledge/components/TMFC007/component.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC008",
+    "type": "component",
+    "name": "ServiceInventory",
+    "version": "1.2.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC008-ServiceInventory/Specification/TMFC008-ServiceInventory.yaml",
+    "path": "knowledge/components/TMFC008/component.yaml",
+    "meta_path": "knowledge/components/TMFC008/component.meta.json",
+    "used_by": [
+      "TMFS009"
+    ]
+  },
+  {
+    "id": "TMFC009",
+    "type": "component",
+    "name": "ServiceQualificationManagement",
+    "version": "1.1.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC009-ServiceQualificationManagement/Specification/TMFC009-ServiceQualificationManagement.yaml",
+    "path": "knowledge/components/TMFC009/component.yaml",
+    "meta_path": "knowledge/components/TMFC009/component.meta.json",
+    "used_by": [
+      "TMFS002",
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC011",
+    "type": "component",
+    "name": "ResourceOrderManagement",
+    "version": "1.2.0",
+    "status": "Pre-production",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC011-ResourceOrderManagement/Specification/TMFC011-ResourceOrderManagement.yaml",
+    "path": "knowledge/components/TMFC011/component.yaml",
+    "meta_path": "knowledge/components/TMFC011/component.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC012",
+    "type": "component",
+    "name": "ResourceInventory",
+    "version": "2.2.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC012-ResourceInventory/Specification/TMFC012-ResourceInventory.yaml",
+    "path": "knowledge/components/TMFC012/component.yaml",
+    "meta_path": "knowledge/components/TMFC012/component.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC013",
+    "type": "component",
+    "name": "TMFC013",
+    "version": "none",
+    "status": "not_yet_specified",
+    "source_origin": null,
+    "path": null,
+    "meta_path": "knowledge/components/TMFC013/component.meta.json",
+    "used_by": [
+      "TMFS009"
+    ]
+  },
+  {
+    "id": "TMFC014",
+    "type": "component",
+    "name": "LocationManagement",
+    "version": "1.2.1",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC014-LocationManagement/Specification/TMFC014-LocationManagement.yaml",
+    "path": "knowledge/components/TMFC014/component.yaml",
+    "meta_path": "knowledge/components/TMFC014/component.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC015",
+    "type": "component",
+    "name": "TMFC015",
+    "version": "none",
+    "status": "not_yet_specified",
+    "source_origin": null,
+    "path": null,
+    "meta_path": "knowledge/components/TMFC015/component.meta.json",
+    "used_by": [
+      "TMFS009"
+    ]
+  },
+  {
+    "id": "TMFC020",
+    "type": "component",
+    "name": "DigitalIdentityManagement",
+    "version": "1.1.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC020-DigitalIdentityManagement/Specification/TMFC020-DigitalIdentityManagement.yaml",
+    "path": "knowledge/components/TMFC020/component.yaml",
+    "meta_path": "knowledge/components/TMFC020/component.meta.json",
+    "used_by": [
+      "TMFS001"
+    ]
+  },
+  {
+    "id": "TMFC022",
+    "type": "component",
+    "name": "PartyPrivacyManagement",
+    "version": "1.1.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC022-PartyPrivacyManagement/Specification/TMFC022-PartyPrivacyManagement.yaml",
+    "path": "knowledge/components/TMFC022/component.yaml",
+    "meta_path": "knowledge/components/TMFC022/component.meta.json",
+    "used_by": [
+      "TMFS001"
+    ]
+  },
+  {
+    "id": "TMFC023",
+    "type": "component",
+    "name": "PartyInteractionManagement",
+    "version": "1.1.2",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC023-PartyInteractionManagement/Specification/TMFC023-PartyInteractionManagement.yaml",
+    "path": "knowledge/components/TMFC023/component.yaml",
+    "meta_path": "knowledge/components/TMFC023/component.meta.json",
+    "used_by": [
+      "TMFS001",
+      "TMFS002",
+      "TMFS031"
+    ]
+  },
+  {
+    "id": "TMFC024",
+    "type": "component",
+    "name": "BillingAccountManagement",
+    "version": "2.1.1",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC024-BillingAccountManagement/Specification/TMFC024-BillingAccountManagement.yaml",
+    "path": "knowledge/components/TMFC024/component.yaml",
+    "meta_path": "knowledge/components/TMFC024/component.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC027",
+    "type": "component",
+    "name": "ProductConfigurator",
+    "version": "2.1.1",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC027-ProductConfigurator/Specification/TMFC027-ProductConfigurator.yaml",
+    "path": "knowledge/components/TMFC027/component.yaml",
+    "meta_path": "knowledge/components/TMFC027/component.meta.json",
+    "used_by": [
+      "TMFS002",
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC028",
+    "type": "component",
+    "name": "PartyManagement",
+    "version": "2.1.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC028-PartyManagement/Specification/TMFC028-PartyManagement.yaml",
+    "path": "knowledge/components/TMFC028/component.yaml",
+    "meta_path": "knowledge/components/TMFC028/component.meta.json",
+    "used_by": [
+      "TMFS001",
+      "TMFS030",
+      "TMFS031"
+    ]
+  },
+  {
+    "id": "TMFC035",
+    "type": "component",
+    "name": "PermissionsManagement",
+    "version": "1.1.1",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC035-PermissionsManagement/Specification/TMFC035-PermissionsManagement.yaml",
+    "path": "knowledge/components/TMFC035/component.yaml",
+    "meta_path": "knowledge/components/TMFC035/component.meta.json",
+    "used_by": [
+      "TMFS001",
+      "TMFS031"
+    ]
+  },
+  {
+    "id": "TMFC039",
+    "type": "component",
+    "name": "AgreementManagement",
+    "version": "1.1.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC039-AgreementManagement/Specification/TMFC039-AgreementManagement.yaml",
+    "path": "knowledge/components/TMFC039/component.yaml",
+    "meta_path": "knowledge/components/TMFC039/component.meta.json",
+    "used_by": [
+      "TMFS030"
+    ]
+  },
+  {
+    "id": "TMFC040",
+    "type": "component",
+    "name": "ProductUsageManagement",
+    "version": "1.1.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC040-ProductUsageManagement/Specification/TMFC040-ProductUsageManagement.yaml",
+    "path": "knowledge/components/TMFC040/component.yaml",
+    "meta_path": "knowledge/components/TMFC040/component.meta.json",
+    "used_by": [
+      "TMFS009"
+    ]
+  },
+  {
+    "id": "TMFC050",
+    "type": "component",
+    "name": "ProductRecommendationManagement",
+    "version": "1.0.0",
+    "status": "specified",
+    "source_origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC050-ProductRecommendation/Specification/TMFC050-ProductRecommendation.yaml",
+    "path": "knowledge/components/TMFC050/component.yaml",
+    "meta_path": "knowledge/components/TMFC050/component.meta.json",
+    "used_by": [
+      "TMFS002"
+    ]
+  }
+]

@@ -1,0 +1,156 @@
+[
+  {
+    "id": "TMFS001",
+    "type": "use-case",
+    "name": "New Party \u2013 Create your accounts",
+    "version": "5.0.5",
+    "status": "GA - TM Forum Approved",
+    "maturity": "GA",
+    "approval_status": "TM Forum Approved",
+    "release_status": "Production",
+    "components": [
+      "TMFC020",
+      "TMFC022",
+      "TMFC023",
+      "TMFC028",
+      "TMFC035"
+    ],
+    "apis": [
+      "TMF632",
+      "TMF644",
+      "TMF669",
+      "TMF672",
+      "TMF683",
+      "TMF688",
+      "TMF701",
+      "TMF720"
+    ],
+    "path": "knowledge/use-cases/TMFS001/TMFS001.md"
+  },
+  {
+    "id": "TMFS002",
+    "type": "use-case",
+    "name": "Browse B2C Catalogue and Check Fiber Technical Eligibility",
+    "version": "3.1.2",
+    "status": "GA - TM Forum Approved",
+    "maturity": "GA",
+    "approval_status": "TM Forum Approved",
+    "release_status": "Production",
+    "components": [
+      "TMFC001",
+      "TMFC009",
+      "TMFC023",
+      "TMFC027",
+      "TMFC050"
+    ],
+    "apis": [
+      "TMF620",
+      "TMF645",
+      "TMF679",
+      "TMF680",
+      "TMF701"
+    ],
+    "path": "knowledge/use-cases/TMFS002/TMFS002.md"
+  },
+  {
+    "id": "TMFS009",
+    "type": "use-case",
+    "name": "Usage and Balance Management",
+    "version": "6.1.0",
+    "status": "GA - TM Forum Approved",
+    "maturity": "GA",
+    "approval_status": "TM Forum Approved",
+    "release_status": "Production",
+    "components": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC005",
+      "TMFC008",
+      "TMFC013",
+      "TMFC015",
+      "TMFC040"
+    ],
+    "apis": [
+      "TMF654"
+    ],
+    "path": "knowledge/use-cases/TMFS009/TMFS009.md"
+  },
+  {
+    "id": "TMFS029",
+    "type": "use-case",
+    "name": "Cross Domain Health & Probable Cause Analysis - Fiber Fault/Break",
+    "version": "1.0.2",
+    "status": "Beta - Member Evaluated",
+    "maturity": "Beta",
+    "approval_status": "Member Evaluated",
+    "release_status": "Pre-production",
+    "components": [],
+    "apis": [],
+    "path": "knowledge/use-cases/TMFS029/TMFS029.md"
+  },
+  {
+    "id": "TMFS030",
+    "type": "use-case",
+    "name": "Satellite Direct-to-Device \u2013 Wholesaling Non-Terrestrial Networks capacity to Mobile Network Operators",
+    "version": "1.1.0",
+    "status": "Beta - Member Evaluated",
+    "maturity": "Beta",
+    "approval_status": "Member Evaluated",
+    "release_status": "Pre-production",
+    "components": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC003",
+      "TMFC005",
+      "TMFC006",
+      "TMFC007",
+      "TMFC009",
+      "TMFC011",
+      "TMFC012",
+      "TMFC014",
+      "TMFC024",
+      "TMFC027",
+      "TMFC028",
+      "TMFC039"
+    ],
+    "apis": [
+      "TMF620",
+      "TMF622",
+      "TMF632",
+      "TMF637",
+      "TMF641",
+      "TMF645",
+      "TMF648",
+      "TMF651",
+      "TMF666",
+      "TMF673",
+      "TMF675",
+      "TMF679",
+      "TMF716"
+    ],
+    "path": "knowledge/use-cases/TMFS030/TMFS030.md"
+  },
+  {
+    "id": "TMFS031",
+    "type": "use-case",
+    "name": "Problem Management",
+    "version": "1.0.0",
+    "status": "Alpha - Member Evaluated",
+    "maturity": "Alpha",
+    "approval_status": "Member Evaluated",
+    "release_status": "Pre-production",
+    "components": [
+      "TMFC023",
+      "TMFC028",
+      "TMFC035"
+    ],
+    "apis": [
+      "TMF621",
+      "TMF632",
+      "TMF669",
+      "TMF683",
+      "TMF701"
+    ],
+    "path": "knowledge/use-cases/TMFS031/TMFS031.md"
+  }
+]

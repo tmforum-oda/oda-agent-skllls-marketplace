@@ -319,10 +319,10 @@ Not built as part of this spec, but the layout is validated against them — if 
 
 ## 9. Success criteria for the v1 pilot
 
-- [ ] All ~32 TMFSxxx identifiers IG1228 v31.0.0 lists as `Available` exist under `knowledge/use-cases/`, with the 6 already-converted docs re-homed into the new layout.
-- [ ] Every component and API named in any pilot use case's References section has either a cached spec under `knowledge/components/` or `knowledge/apis/`, or an explicit `not_yet_specified` meta record.
-- [ ] `knowledge/index/*.json` regenerates byte-identical on a second run with no input changes (idempotence, principle 7).
-- [ ] `knowledge/index/usecase-component-matrix.json` cross-checked against at least 3 use cases' own frontmatter, with any disagreement logged, not silently dropped.
+- [ ] All ~32 TMFSxxx identifiers IG1228 v31.0.0 lists as `Available` exist under `knowledge/use-cases/`, with the 6 already-converted docs re-homed into the new layout. *(Phase 4 — the six pilot docs are re-homed and done; full-corpus scaling is still ahead.)*
+- [x] Every component and API named in any pilot use case's References section has either a cached spec under `knowledge/components/` or `knowledge/apis/`, or an explicit `not_yet_specified`/`fetch_failed` meta record. *(23/23 components, 50/50 API versions — Phase 2.)*
+- [x] `knowledge/index/*.json` regenerates byte-identical on a second run with no input changes (idempotence, principle 7). *(Verified for `build_index.py` and `extract_usecase_matrix.py` both — Phase 3.4.)*
+- [x] `knowledge/index/usecase-component-matrix.json` cross-checked against at least 3 use cases' own frontmatter, with any disagreement logged, not silently dropped. *(All 6 checked, not just 3; 3 disagreements logged in `knowledge/index/matrix-discrepancies.md` — Phase 3.3.)*
 - [ ] The assisted and automated refresh tracks (§6) are each exercised at least once end-to-end, including a `CHANGELOG.md` entry produced by `refresh_report.py`.
 - [ ] At least one pilot skill from §8 runs end-to-end against `knowledge/` and produces a correct, citation-backed output for a use case it wasn't specifically tuned on.
 

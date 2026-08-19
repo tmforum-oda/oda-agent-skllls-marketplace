@@ -1,0 +1,769 @@
+{
+  "generated_from": "IG1228 v31.0.0, chapter 2 (\"Components identified per use-case\")",
+  "source_pdf": "references/ig1228/IG1228_How_to_use_ODA_Using_Open_APIs_to_Realize_UseCases_v31.0.0.pdf",
+  "use_cases": {
+    "TMFS001": [
+      "TMFC020",
+      "TMFC022",
+      "TMFC023",
+      "TMFC028",
+      "TMFC035"
+    ],
+    "TMFS002": [
+      "TMFC001",
+      "TMFC009",
+      "TMFC023",
+      "TMFC027",
+      "TMFC050"
+    ],
+    "TMFS003": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC005",
+      "TMFC009",
+      "TMFC014",
+      "TMFC023",
+      "TMFC027",
+      "TMFC028",
+      "TMFC032"
+    ],
+    "TMFS004": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC003",
+      "TMFC005",
+      "TMFC006",
+      "TMFC007",
+      "TMFC008",
+      "TMFC010",
+      "TMFC011",
+      "TMFC012",
+      "TMFC023",
+      "TMFC028",
+      "TMFC032"
+    ],
+    "TMFS005": [
+      "TMFC001",
+      "TMFC005",
+      "TMFC015",
+      "TMFC024",
+      "TMFC030",
+      "TMFC031",
+      "TMFC040"
+    ],
+    "TMFS006": [
+      "TMFC023",
+      "TMFC028",
+      "TMFC035",
+      "TMFC051"
+    ],
+    "TMFS007": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC003",
+      "TMFC005",
+      "TMFC006",
+      "TMFC007",
+      "TMFC008",
+      "TMFC009",
+      "TMFC011",
+      "TMFC014",
+      "TMFC027",
+      "TMFC033"
+    ],
+    "TMFS008": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC003",
+      "TMFC005",
+      "TMFC006",
+      "TMFC007",
+      "TMFC008",
+      "TMFC009",
+      "TMFC010",
+      "TMFC011",
+      "TMFC012",
+      "TMFC032",
+      "TMFC062"
+    ],
+    "TMFS009": [
+      "TMFC013",
+      "TMFC015",
+      "TMFC040"
+    ],
+    "TMFS010": [
+      "TMFC001",
+      "TMFC003",
+      "TMFC006",
+      "TMFC007",
+      "TMFC009",
+      "TMFC027"
+    ],
+    "TMFS011": [
+      "TMFC005",
+      "TMFC007",
+      "TMFC008",
+      "TMFC010",
+      "TMFC011",
+      "TMFC012",
+      "TMFC016",
+      "TMFC062"
+    ],
+    "TMFS012": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC003",
+      "TMFC006",
+      "TMFC007",
+      "TMFC014"
+    ],
+    "TMFS014": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC003",
+      "TMFC005",
+      "TMFC006",
+      "TMFC007",
+      "TMFC008",
+      "TMFC009",
+      "TMFC010",
+      "TMFC011",
+      "TMFC012"
+    ],
+    "TMFS016": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC005",
+      "TMFC009",
+      "TMFC014",
+      "TMFC020",
+      "TMFC023",
+      "TMFC027",
+      "TMFC028",
+      "TMFC035",
+      "TMFC050"
+    ],
+    "TMFS018": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC005",
+      "TMFC009",
+      "TMFC012",
+      "TMFC014",
+      "TMFC027"
+    ],
+    "TMFS019": [
+      "TMFC001",
+      "TMFC027",
+      "TMFC039"
+    ],
+    "TMFS020": [
+      "TMFC001",
+      "TMFC020",
+      "TMFC023",
+      "TMFC028",
+      "TMFC035",
+      "TMFC039"
+    ],
+    "TMFS021": [
+      "TMFC002",
+      "TMFC003",
+      "TMFC005",
+      "TMFC006",
+      "TMFC007",
+      "TMFC020"
+    ],
+    "TMFS025": [
+      "TMFC010",
+      "TMFC011",
+      "TMFC012",
+      "TMFC062"
+    ],
+    "TMFS026": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC003",
+      "TMFC008",
+      "TMFC028",
+      "TMFC035",
+      "TMFC039"
+    ],
+    "TMFS028": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC003",
+      "TMFC005",
+      "TMFC006",
+      "TMFC007",
+      "TMFC008",
+      "TMFC009",
+      "TMFC010",
+      "TMFC011",
+      "TMFC012"
+    ],
+    "TMFS029": [
+      "TMFC053",
+      "TMFC061"
+    ],
+    "TMFS030": [
+      "TMFC001",
+      "TMFC002",
+      "TMFC003",
+      "TMFC005",
+      "TMFC007",
+      "TMFC009",
+      "TMFC011",
+      "TMFC012",
+      "TMFC014",
+      "TMFC024",
+      "TMFC027",
+      "TMFC028",
+      "TMFC039"
+    ],
+    "TMFS031": [
+      "TMFC023",
+      "TMFC028",
+      "TMFC035"
+    ]
+  },
+  "components": {
+    "TMFC001": {
+      "name": "Product Catalog Management",
+      "functional_block": "Core Commerce Mgt",
+      "status": "Specified",
+      "used_by": [
+        "TMFS002",
+        "TMFS003",
+        "TMFS004",
+        "TMFS005",
+        "TMFS007",
+        "TMFS008",
+        "TMFS010",
+        "TMFS012",
+        "TMFS014",
+        "TMFS016",
+        "TMFS018",
+        "TMFS019",
+        "TMFS020",
+        "TMFS026",
+        "TMFS028",
+        "TMFS030"
+      ]
+    },
+    "TMFC002": {
+      "name": "Product Order Capture & Validation",
+      "functional_block": "Core Commerce Mgt",
+      "status": "Specified",
+      "used_by": [
+        "TMFS003",
+        "TMFS004",
+        "TMFS007",
+        "TMFS008",
+        "TMFS012",
+        "TMFS014",
+        "TMFS016",
+        "TMFS018",
+        "TMFS021",
+        "TMFS026",
+        "TMFS028",
+        "TMFS030"
+      ]
+    },
+    "TMFC003": {
+      "name": "Product Order Delivery Orchestratio n and Mgt",
+      "functional_block": "Core Commerce Mgt",
+      "status": "Specified",
+      "used_by": [
+        "TMFS004",
+        "TMFS007",
+        "TMFS008",
+        "TMFS010",
+        "TMFS012",
+        "TMFS014",
+        "TMFS021",
+        "TMFS026",
+        "TMFS028",
+        "TMFS030"
+      ]
+    },
+    "TMFC005": {
+      "name": "Product Inventory",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS003",
+        "TMFS004",
+        "TMFS005",
+        "TMFS007",
+        "TMFS008",
+        "TMFS011",
+        "TMFS014",
+        "TMFS016",
+        "TMFS018",
+        "TMFS021",
+        "TMFS028",
+        "TMFS030"
+      ]
+    },
+    "TMFC006": {
+      "name": "Service Catalog Management",
+      "functional_block": "Production",
+      "status": "Specified",
+      "used_by": [
+        "TMFS004",
+        "TMFS007",
+        "TMFS008",
+        "TMFS010",
+        "TMFS012",
+        "TMFS014",
+        "TMFS021",
+        "TMFS028"
+      ]
+    },
+    "TMFC007": {
+      "name": "Service Order Management",
+      "functional_block": "Production",
+      "status": "Specified",
+      "used_by": [
+        "TMFS004",
+        "TMFS007",
+        "TMFS008",
+        "TMFS010",
+        "TMFS011",
+        "TMFS012",
+        "TMFS014",
+        "TMFS021",
+        "TMFS028",
+        "TMFS030"
+      ]
+    },
+    "TMFC008": {
+      "name": "Service Inventory",
+      "functional_block": "Production",
+      "status": "Specified",
+      "used_by": [
+        "TMFS004",
+        "TMFS007",
+        "TMFS008",
+        "TMFS011",
+        "TMFS014",
+        "TMFS026",
+        "TMFS028"
+      ]
+    },
+    "TMFC009": {
+      "name": "Service Qualification Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS002",
+        "TMFS003",
+        "TMFS007",
+        "TMFS008",
+        "TMFS010",
+        "TMFS014",
+        "TMFS016",
+        "TMFS018",
+        "TMFS028",
+        "TMFS030"
+      ]
+    },
+    "TMFC010": {
+      "name": "Resource Catalog Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS004",
+        "TMFS008",
+        "TMFS011",
+        "TMFS014",
+        "TMFS025",
+        "TMFS028"
+      ]
+    },
+    "TMFC011": {
+      "name": "Resource Order Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS004",
+        "TMFS007",
+        "TMFS008",
+        "TMFS011",
+        "TMFS014",
+        "TMFS025",
+        "TMFS028",
+        "TMFS030"
+      ]
+    },
+    "TMFC012": {
+      "name": "Resource Inventory",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS004",
+        "TMFS008",
+        "TMFS011",
+        "TMFS014",
+        "TMFS018",
+        "TMFS025",
+        "TMFS028",
+        "TMFS030"
+      ]
+    },
+    "TMFC013": {
+      "name": "Service Balance Management",
+      "functional_block": null,
+      "status": "Planned",
+      "used_by": [
+        "TMFS009"
+      ]
+    },
+    "TMFC014": {
+      "name": "Location Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS003",
+        "TMFS007",
+        "TMFS012",
+        "TMFS016",
+        "TMFS018",
+        "TMFS030"
+      ]
+    },
+    "TMFC015": {
+      "name": "Service Usage Management",
+      "functional_block": null,
+      "status": "Planned",
+      "used_by": [
+        "TMFS005",
+        "TMFS009"
+      ]
+    },
+    "TMFC016": {
+      "name": "Resource Usage Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": [
+        "TMFS011"
+      ]
+    },
+    "TMFC020": {
+      "name": "Digital Identity Management",
+      "functional_block": "Party Management",
+      "status": "Specified",
+      "used_by": [
+        "TMFS001",
+        "TMFS016",
+        "TMFS020",
+        "TMFS021"
+      ]
+    },
+    "TMFC022": {
+      "name": "Party Privacy Management",
+      "functional_block": "Party Management",
+      "status": "Specified",
+      "used_by": [
+        "TMFS001"
+      ]
+    },
+    "TMFC023": {
+      "name": "Party Interaction Management",
+      "functional_block": "Party Management",
+      "status": "Specified",
+      "used_by": [
+        "TMFS001",
+        "TMFS002",
+        "TMFS003",
+        "TMFS004",
+        "TMFS006",
+        "TMFS016",
+        "TMFS020",
+        "TMFS031"
+      ]
+    },
+    "TMFC024": {
+      "name": "Billing Account Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS005",
+        "TMFS030"
+      ]
+    },
+    "TMFC025": {
+      "name": "Billing Inquiries Management",
+      "functional_block": null,
+      "status": "Planned",
+      "used_by": []
+    },
+    "TMFC026": {
+      "name": "Debt Collection Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": []
+    },
+    "TMFC027": {
+      "name": "Product Configurator",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS002",
+        "TMFS003",
+        "TMFS007",
+        "TMFS010",
+        "TMFS016",
+        "TMFS018",
+        "TMFS019",
+        "TMFS030"
+      ]
+    },
+    "TMFC028": {
+      "name": "Party Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS001",
+        "TMFS003",
+        "TMFS004",
+        "TMFS006",
+        "TMFS016",
+        "TMFS020",
+        "TMFS026",
+        "TMFS030",
+        "TMFS031"
+      ]
+    },
+    "TMFC029": {
+      "name": "Payment Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": []
+    },
+    "TMFC030": {
+      "name": "Bill Generation Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS005"
+      ]
+    },
+    "TMFC031": {
+      "name": "Bill Calculation",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS005"
+      ]
+    },
+    "TMFC032": {
+      "name": "Supply Chain Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": [
+        "TMFS003",
+        "TMFS004",
+        "TMFS008"
+      ]
+    },
+    "TMFC033": {
+      "name": "Purchase Management",
+      "functional_block": null,
+      "status": "Planned",
+      "used_by": [
+        "TMFS007"
+      ]
+    },
+    "TMFC035": {
+      "name": "Permissions Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS001",
+        "TMFS006",
+        "TMFS016",
+        "TMFS020",
+        "TMFS026",
+        "TMFS031"
+      ]
+    },
+    "TMFC036": {
+      "name": "Lead and Opportunity Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": []
+    },
+    "TMFC037": {
+      "name": "Service Performance Management",
+      "functional_block": "Intelligence Management",
+      "status": "Prototype",
+      "used_by": []
+    },
+    "TMFC038": {
+      "name": "Resource Performance Management",
+      "functional_block": "Intelligence Management",
+      "status": "Prototype",
+      "used_by": []
+    },
+    "TMFC039": {
+      "name": "Agreement Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS019",
+        "TMFS020",
+        "TMFS026",
+        "TMFS030"
+      ]
+    },
+    "TMFC040": {
+      "name": "Product Usage Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": [
+        "TMFS005",
+        "TMFS009"
+      ]
+    },
+    "TMFC041": {
+      "name": "Anomaly Management",
+      "functional_block": "Intelligence Management",
+      "status": "Prototype",
+      "used_by": []
+    },
+    "TMFC043": {
+      "name": "Fault Manag ement",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": []
+    },
+    "TMFC044": {
+      "name": "Strategic Resource Planning",
+      "functional_block": null,
+      "status": "Prototype",
+      "used_by": []
+    },
+    "TMFC045": {
+      "name": "Resource Discovery and Reconciliatio n",
+      "functional_block": null,
+      "status": "Prototype",
+      "used_by": []
+    },
+    "TMFC046": {
+      "name": "Workforce Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": []
+    },
+    "TMFC047": {
+      "name": "Party Problem Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": []
+    },
+    "TMFC048": {
+      "name": "Sales Strategy and Planning",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": []
+    },
+    "TMFC049": {
+      "name": "Marketing Communicat ions",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": []
+    },
+    "TMFC050": {
+      "name": "Product Recommend ation Management",
+      "functional_block": "Intelligence Management",
+      "status": "Specified",
+      "used_by": [
+        "TMFS002",
+        "TMFS016"
+      ]
+    },
+    "TMFC051": {
+      "name": "Document Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": [
+        "TMFS006"
+      ]
+    },
+    "TMFC052": {
+      "name": "IT and Network Infrastructur e Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": []
+    },
+    "TMFC053": {
+      "name": "Service Quality Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": [
+        "TMFS029"
+      ]
+    },
+    "TMFC054": {
+      "name": "Product Test Management",
+      "functional_block": null,
+      "status": "Prototype",
+      "used_by": []
+    },
+    "TMFC055": {
+      "name": "Service Test Management",
+      "functional_block": null,
+      "status": "Specified",
+      "used_by": []
+    },
+    "TMFC056": {
+      "name": "Resource Test Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": []
+    },
+    "TMFC057": {
+      "name": "Campaign Management",
+      "functional_block": "Intelligence Management",
+      "status": "Future",
+      "used_by": []
+    },
+    "TMFC058": {
+      "name": "Product / Sales Performance Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": []
+    },
+    "TMFC059": {
+      "name": "Commission Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": []
+    },
+    "TMFC060": {
+      "name": "Knowledge Management",
+      "functional_block": null,
+      "status": "Future",
+      "used_by": []
+    },
+    "TMFC061": {
+      "name": "Work Order Management",
+      "functional_block": null,
+      "status": "Prototype",
+      "used_by": [
+        "TMFS029"
+      ]
+    },
+    "TMFC062": {
+      "name": "Resource Configuratio n and Activation",
+      "functional_block": null,
+      "status": "Planned",
+      "used_by": [
+        "TMFS008",
+        "TMFS011",
+        "TMFS025"
+      ]
+    }
+  }
+}
