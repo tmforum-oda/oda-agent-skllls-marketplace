@@ -1,0 +1,11 @@
+# references/ and knowledge/ ARE committed — see spec/spec.md §10 for the decision
+# (regenerating knowledge/ from a fresh clone shouldn't require re-authenticating
+# to a member-gated TM Forum session just to get raw/ back).
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+*.tmp
