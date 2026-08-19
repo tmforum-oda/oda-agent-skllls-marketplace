@@ -74,14 +74,29 @@ def version_tag(version):
     return "v" + version.lstrip("vV")
 
 
+def read_meta(meta_path):
+    if not os.path.exists(meta_path):
+        return None
+    with open(meta_path, encoding="utf-8") as f:
+        return json.load(f)
+
+
 def fetch_one(api_id, name, url, version):
     tag = version_tag(version)
     out_dir = os.path.join(KNOWLEDGE_DIR, "apis", api_id)
     os.makedirs(out_dir, exist_ok=True)
     json_path = os.path.join(out_dir, f"{api_id}_{tag}.json")
     meta_path = os.path.join(out_dir, f"{api_id}_{tag}.meta.json")
+    old_meta = read_meta(meta_path)
 
     raw = _http.get_bytes(url)
+    new_sha = hashlib.sha256(raw).hexdigest()
+    if old_meta and old_meta.get("status") != "fetch_failed" and old_meta.get("source", {}).get("sha256") == new_sha:
+        # Same reasoning as fetch_component.py's fetch_one(): byte-identical content
+        # shouldn't dirty the file just because `retrieved` would otherwise bump to
+        # today (spec.md 6.2, task 5.3's idempotence check).
+        return f"{tag} (unchanged)"
+
     with open(json_path, "wb") as f:
         f.write(raw)
 
@@ -96,7 +111,7 @@ def fetch_one(api_id, name, url, version):
             "origin": url,
             "license": "RAND",
             "retrieved": _dt.date.today().isoformat(),
-            "sha256": hashlib.sha256(raw).hexdigest(),
+            "sha256": new_sha,
         },
         "links": {"use_cases": []},
     }
@@ -111,9 +126,18 @@ def write_fetch_failed(api_id, name, tag, url, error):
     retry away -- record it as a visible fact in the data layer, the same way
     fetch_component.py's not_yet_specified does, not just a line in a log
     that scrolls away (spec/spec.md 5.2's "no silent gaps" principle applies
-    here too, and the analogous file to component.meta.json's precedent)."""
+    here too, and the analogous file to component.meta.json's precedent).
+
+    Skips the write if it's already recording fetch_failed for this exact
+    url -- same still-broken fact as last run, and the curl error text can
+    vary run to run for the same underlying failure, so rewriting it would
+    dirty the file for no informational gain (task 5.3's idempotence check)."""
     out_dir = os.path.join(KNOWLEDGE_DIR, "apis", api_id)
     os.makedirs(out_dir, exist_ok=True)
+    meta_path = os.path.join(out_dir, f"{api_id}_{tag}.meta.json")
+    old_meta = read_meta(meta_path)
+    if old_meta and old_meta.get("status") == "fetch_failed" and old_meta.get("source", {}).get("origin") == url:
+        return
     envelope = {
         "id": api_id,
         "type": "api",
@@ -123,7 +147,7 @@ def write_fetch_failed(api_id, name, tag, url, error):
         "source": {"origin": url, "license": "RAND", "retrieved": _dt.date.today().isoformat(), "error": error},
         "links": {"use_cases": []},
     }
-    with open(os.path.join(out_dir, f"{api_id}_{tag}.meta.json"), "w", encoding="utf-8") as f:
+    with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(envelope, f, indent=2)
 
 
@@ -142,9 +166,9 @@ def main():
             if key in seen:
                 continue
             try:
-                fetch_one(api_id, name, url, version)
+                status = fetch_one(api_id, name, url, version)
                 seen[key] = "ok"
-                print(f"{api_id} {tag}: ok")
+                print(f"{api_id} {tag}: {status}")
             except _http.FetchError as e:
                 write_fetch_failed(api_id, name, tag, url, str(e))
                 seen[key] = "failed"

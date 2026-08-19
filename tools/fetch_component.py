@@ -28,6 +28,7 @@ Usage:
 import datetime as _dt
 import glob
 import hashlib
+import json
 import os
 import sys
 
@@ -53,8 +54,6 @@ def build_folder_map():
             comp_id, _, _short = name.partition("-")
             folder_map[comp_id] = name
     os.makedirs(os.path.dirname(MAP_PATH), exist_ok=True)
-    import json
-
     with open(MAP_PATH, "w", encoding="utf-8") as f:
         json.dump(folder_map, f, indent=2, sort_keys=True)
     print(f"component-folder-map.json: {len(folder_map)} components")
@@ -64,9 +63,14 @@ def build_folder_map():
 def load_folder_map():
     if not os.path.exists(MAP_PATH):
         return build_folder_map()
-    import json
-
     with open(MAP_PATH, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def read_meta(meta_path):
+    if not os.path.exists(meta_path):
+        return None
+    with open(meta_path, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -75,14 +79,27 @@ def fetch_one(comp_id, folder_map):
     os.makedirs(out_dir, exist_ok=True)
     yaml_path = os.path.join(out_dir, "component.yaml")
     meta_path = os.path.join(out_dir, "component.meta.json")
+    old_meta = read_meta(meta_path)
 
     folder = folder_map.get(comp_id)
     if folder is None:
+        if old_meta and old_meta.get("status") == "not_yet_specified":
+            return "not_yet_specified (unchanged)"
         write_not_yet_specified(comp_id, meta_path)
         return "not_yet_specified"
 
     url = f"https://raw.githubusercontent.com/{REPO}/{TAG}/{folder}/Specification/{folder}.yaml"
     raw = _http.get_bytes(url)
+    new_sha = hashlib.sha256(raw).hexdigest()
+    if old_meta and old_meta.get("source", {}).get("sha256") == new_sha:
+        # Content is byte-identical to what's already cached -- spec.md 6.2 says this
+        # track "only rewrite[s] files that actually changed"; bumping `retrieved` to
+        # today on unchanged bytes would make every refresh cycle dirty every file,
+        # defeating task 5.3's "confirm zero files rewritten" check. Fetching was still
+        # necessary to know that (no ETag/conditional-GET support in _http.py), but the
+        # write itself is skipped.
+        return f"{old_meta['status']} (unchanged)"
+
     with open(yaml_path, "wb") as f:
         f.write(raw)
 
@@ -120,8 +137,6 @@ def write_not_yet_specified(comp_id, meta_path):
 
 
 def write_json(path, obj):
-    import json
-
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, indent=2)
 
