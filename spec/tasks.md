@@ -1,0 +1,73 @@
+# ODA Knowledge Base — Build Tasks
+
+Companion to [`spec.md`](./spec.md). Tasks are grouped into phases; within a phase they're roughly sequential, across phases mostly not — Phase 2 (linking) and Phase 4 (scaling) can run in parallel once Phase 0/1 land. Check off as completed; leave notes inline where a task surfaces a decision rather than just landing one.
+
+**Starting state, for context:** six use cases (TMFS001, 002, 009, 029, 030, 031) already exist as DOCX + converted Markdown + extracted media under `references/`, using the old flat `TMFSxxx_media/` sibling-folder layout, filenames carrying the full title instead of just the ID, and no frontmatter. The converter script (`docx2md.py`, reads a `<w:sdt>`-wrapped Word body, handles headings/lists/hyperlinks/tables/inline images including images nested in table cells) already works and is parameterized (`src.docx out.md media_dir_name`) — it currently lives outside the repo in a scratch location and needs to move in as part of Phase 0.
+
+---
+
+## Phase 0 — Foundations
+
+- [ ] **0.1** Create the directory skeleton from spec.md §4: `knowledge/{use-cases,components,apis,etom,sid,index}/`, `tools/`, `skills/`. Add `.gitkeep` to `etom/` and `sid/` (reserved, empty).
+- [ ] **0.2** Decide and record the git question from spec.md §10 (commit `references/` raw binaries or gitignore them). If gitignored, document how a fresh clone bootstraps `references/` (re-run the assisted download runbook).
+- [ ] **0.3** `git init` the repo if not already (currently not a git repo) and make an initial commit of `spec/` before touching anything else, so the plan itself has version history from day one.
+- [ ] **0.4** Move `docx2md.py` into `tools/docx2md.py`. Update it to:
+  - **strip** the fixed set of boilerplate sections listed in spec.md §5.1.1 (`Notice`, `Table of Contents`, `References`, `Administrative Appendix` and its `Document History`/`Version History`/`Release History`/`Acknowledgments` children, plus the title block) by heading-name match — this is a fixed list, not a heuristic;
+  - emit the **universal envelope** (spec.md §5.0) for the fields derivable straight from the DOCX (`id`, `version`, `name`, `source.raw_path`, `source.sha256`), and the use-case extension field `sid_references` (parsed from the References section *before* it's dropped from the body — parse then discard, don't discard then try to reconstruct);
+  - leave `status`, `maturity`, `approval_status`, `release_status`, dates, `source.origin`, `source.license`, and `links.components`/`links.apis` as explicit stubs/TODOs — these need the catalog page (§1.3) and the component/API IDs+versions parsed from the References section (§1.4/2.5).
+- [ ] **0.5** Write `knowledge/index/id-registry.md` (spec.md §4.1 table) — a static file, not generated.
+- [ ] **0.6** Decide the frontmatter/body split precisely: does `docx2md.py` write the full envelope directly, or does a separate small script stitch catalog-page metadata onto the converter's output? Recommendation: keep `docx2md.py` focused on DOCX→body Markdown + envelope fields it can derive alone (0.4); add a second small script (`tools/add_usecase_metadata.py`) that takes the catalog-page fields (`status`, `maturity`, `approval_status`, `release_status`, dates, `source.origin` — collected once per document, since the catalog page requires the same login as the download) and merges them into the existing frontmatter without disturbing what's already there. Document the chosen approach in a comment at the top of both scripts.
+- [ ] **0.7** Write a small frontmatter validator (`tools/validate_envelope.py`) that checks every file under `knowledge/**` has the five universal envelope fields (`id`, `type`, `name`, `version`, `status`) present and non-empty, regardless of artefact type — run it as the last step of every conversion/fetch script and again in `build_index.py`, so a malformed envelope fails loudly at creation time rather than silently breaking an index lookup later.
+
+## Phase 1 — Migrate the six pilot use cases into the new layout
+
+- [ ] **1.1** For each of TMFS001, 002, 009, 029, 030, 031: move the raw DOCX to `references/use-cases/TMFSxxx/TMFSxxx_v{version}.docx` (PDF alongside if kept, per 0.2).
+- [ ] **1.2** Re-run `tools/docx2md.py` against the moved DOCX, writing `knowledge/use-cases/TMFSxxx/TMFSxxx.md` and `knowledge/use-cases/TMFSxxx/media/`.
+- [ ] **1.3** For each of the six, fill in the catalog-page fields (`status`, `maturity`, `approval_status`, `release_status`, `team_approved`, `published`, `source.origin`, `source.license`, `source.retrieved`) from the values already captured during the research phase (see spec.md §6.3's table — TMFS001/002/009 = GA/TM Forum Approved, TMFS029/030 = Beta/Member Evaluated, TMFS031 = Alpha/Member Evaluated) via `tools/add_usecase_metadata.py`.
+- [ ] **1.4** Parse each document's "References" section (SID / ODA components / Open APIs lists) into `links.components`, `links.apis`, `sid_references` (if not already done by 0.4's parse-then-discard step). This can be done by hand for the pilot six to validate the schema before automating it in 2.5.
+- [ ] **1.5** Confirm the boilerplate-stripping rule (spec.md §5.1.1) actually fired: spot-check that no migrated `TMFSxxx.md` contains the words "Copyright", "AS IS", "IPR Policy", or an "Acknowledgments" heading. Delete the old flat files/folders under `references/` once the six are confirmed migrated and readable (`knowledge/use-cases/TMFSxxx/TMFSxxx.md` opens cleanly, images render, no boilerplate).
+- [ ] **1.6** Sanity check: diff the *substantive* body text (Introduction through Conclusion/Appendix) of one migrated file (e.g. TMFS001) against the version produced earlier in `references/` to confirm the stripping/frontmatter-adding step removed only the sections listed in §5.1.1 and didn't mangle anything else.
+
+## Phase 2 — Linking: component and API specs
+
+- [ ] **2.1** Write `tools/fetch_component.py`, step one: fetch `https://api.github.com/repos/tmforum-rand/TMForum-ODA-Ready-for-publication/contents/?ref=v1.0.0`, split each folder name on its first `-` to build `{id: folder_name}`, write `knowledge/index/component-folder-map.json` (spec.md §5.2.1 — this is the same data `tmforum-oda/reference-example-components`'s `create-oda-component` skill keeps hand-maintained in `references/component-list.md`; we generate it instead).
+- [ ] **2.2** `fetch_component.py`, step two: given a `TMFCxxx` id, look up its folder name in the map from 2.1, fetch `{folder}/Specification/{folder}.yaml`, write `knowledge/components/TMFCxxx/component.yaml` + a `component.meta.json` envelope (spec.md §5.2) with `status` in IG1242 vocabulary. Handle the "not yet Specified" case (write the meta envelope only, no yaml) — cross-check against IG1242's status if available, otherwise treat a 404 from the spec repo as the signal.
+- [ ] **2.3** Write `tools/fetch_api.py`: read `coreFunction.{dependentAPIs,exposedAPIs}[].specification[].url` out of an already-cached `component.yaml` (spec.md §5.3.1 — the URL needs no separate lookup, it's already in the component spec) and fetch each into `knowledge/apis/TMFxxx/TMFxxx_v{version}.json` + sibling `.meta.json` envelope.
+- [ ] **2.4** Run 2.1–2.3 against every component/API named in the six pilot use cases' `links.components`/`links.apis` (from task 1.4). Confirm every reference resolves to either a cached file or an explicit not-yet-specified meta record — no silent gaps.
+- [ ] **2.5** Automate task 1.4 for future use cases: a small parser (`tools/parse_references.py` or folded into `docx2md.py`) that recognizes the "References" section pattern (`SID:` line, `ODA components:` bulleted list of `TMFCxxx Name vX.Y.Z`, `Open APIs:` bulleted list of `TMFxxx Name vN`) already confirmed consistent across all six pilot documents, and emits `links.components` / `links.apis` / `sid_references` directly (this is also the parse step 0.4 needs to run *before* discarding the References section from the body). Validate it reproduces the hand-built 1.4 output exactly before relying on it.
+- [ ] **2.6** *(Optional, do only if a `tmforum-rand`-authorized GitHub token is actually available — confirm with `gh api repos/tmforum-rand/OAS_Open_API_And_Data_Model` first)* Write `tools/fetch_api_samples.py`: for each cached API, pull `documentation/operation-samples/` and `documentation/notification-samples/` from `tmforum-rand/OAS_Open_API_And_Data_Model` into `knowledge/apis/TMFxxx/samples/` (spec.md §5.3.1). Must fail closed (skip, log, move on) when access isn't available — never block the rest of the pipeline on this.
+
+## Phase 3 — Index and catalog generation
+
+- [ ] **3.1** Write `tools/extract_usecase_matrix.py`: re-implement (as a proper script, not an ad-hoc analysis) the `pdfplumber` extraction of IG1228 chapter 2's use-case × component table already done once during research — output `knowledge/index/usecase-component-matrix.json`.
+- [ ] **3.2** Write `tools/build_index.py`: walk every artefact's envelope (frontmatter for `knowledge/use-cases/**/*.md`, `*.meta.json` for `knowledge/components/**` and `knowledge/apis/**` — same reader code path either way, per spec.md §5.0/§5.4), emit `use-cases.json`, `components.json`, `apis.json` with reverse `links.use_cases` computed from every use case's forward `links.components`/`links.apis`. Run `tools/validate_envelope.py` (task 0.7) over the corpus as the final step.
+- [ ] **3.3** Cross-check task: for at least 3 of the six pilot use cases, confirm `usecase-component-matrix.json` (from IG1228, coarse yes/no) agrees with that use case's own `links.components` (from its References section, precise with versions). Log disagreements in `knowledge/index/matrix-discrepancies.md` rather than silently reconciling them — per spec.md §5.4, a disagreement is signal.
+- [ ] **3.4** Confirm idempotence: run `build_index.py` twice with no input changes, diff the output — must be byte-identical (spec.md principle 7, success criterion in §9).
+
+## Phase 4 — Scale to the full IG1228 use-case set
+
+- [ ] **4.1** From the current IG1228 (v31.0.0 or whatever's current by the time this runs), extract the full "List of Use Cases" table (chapter 1) — reuse/extend `extract_usecase_matrix.py` or a sibling script — to get the complete TMFSxxx → {title, status-in-IG1228} list (~32 identifiers, minus reserved/skipped numbers like TMFS013/TMFS015 per the research findings).
+- [ ] **4.2** For each `Available` identifier not already in `knowledge/use-cases/` (i.e. everything beyond the pilot six), run the assisted download runbook (spec.md §6.1 steps 1–3) and Phase 1's conversion steps (1.2–1.4).
+- [ ] **4.3** Re-run Phase 2 (2.1–2.3) against the full set to fetch every newly-referenced component/API.
+- [ ] **4.4** Re-run Phase 3 (3.1–3.4) to regenerate indexes against the complete corpus.
+- [ ] **4.5** Update spec.md §9's success criteria checklist with the actual final count (some `planned`/reserved identifiers will genuinely have nothing to convert — confirm the gap is expected, not a missed download).
+
+## Phase 5 — Refresh pipeline
+
+- [ ] **5.1** Write the assisted-track runbook (spec.md §6.1) as an actual step-by-step doc — `spec/refresh-runbook.md` — precise enough that someone other than the original builder can execute it without re-deriving the TM Forum search-URL trick (`tmforum.org/?s=TMFSxxx&post_type=product`, sorted newest-first, prefer Production over Pre-production) from scratch.
+- [ ] **5.2** Write `tools/refresh_report.py`: diff the newly-regenerated `knowledge/index/*.json` against the last git-committed version, produce a human-readable summary (new use cases, version bumps, maturity transitions — explicitly calling out `Beta → GA` and similar per spec.md §6.3) and append it to `CHANGELOG.md`.
+- [ ] **5.3** Dry-run the automated track (§6.2): re-run `fetch_component.py`/`fetch_api.py` across the full `components.json`/`apis.json` id list with no expected changes, confirm zero files rewritten (sha256 match) and the script runs unattended without prompting.
+- [ ] **5.4** Simulate one full refresh cycle: pick one already-converted use case, treat it as if a new version had just been published (bump a field, or genuinely re-check TM Forum for a real version bump if one has happened since Phase 4), run the full assisted + automated + index + report pipeline, confirm the `CHANGELOG.md` entry correctly describes the change.
+- [ ] **5.5** Schedule reminder: since the cadence is ~4–8 weeks and the assisted track needs a human, decide where the "check IG1228 for a new version" reminder lives (calendar reminder, scheduled task prompt, etc.) — this is a process decision, not a script.
+
+## Phase 6 — Pilot skill(s)
+
+- [ ] **6.1** Build `skills/check-usecase-maturity/SKILL.md` — the simplest possible skill (spec.md §8.1), reading only frontmatter. Use it to validate the frontmatter schema is sufficient with zero prose-parsing before building anything more ambitious.
+- [ ] **6.2** Build one of the two remaining "real" pilot skills from spec.md §8 — recommend `generate-test-cases-from-usecase` (§8.3), since it exercises the most of the layout: use-case body, frontmatter component/API links, and cached API schemas together. Mirror `oda-canvas`'s existing `write-bdd-feature` conventions where they overlap.
+- [ ] **6.3** Run the chosen skill against a use case it wasn't specifically tuned on (not TMFS001 — pick one converted in Phase 4) and confirm the output correctly cites real component/API IDs rather than inventing plausible-sounding ones. This is the check on spec.md §9's last success criterion.
+
+## Phase 7 — Documentation
+
+- [ ] **7.1** Write a root `README.md`: what this repo is, the `references/` vs `knowledge/` split, how to run a refresh, where the ID registry lives, link to `spec/spec.md`.
+- [ ] **7.2** Add a short doc comment at the top of every `tools/*.py` script (what it reads, what it writes, whether it's part of the assisted or automated refresh track).
+- [ ] **7.3** Revisit spec.md §10's open questions now that Phase 0–6 have forced real answers; update the spec in place rather than leaving it stale.
