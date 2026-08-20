@@ -1,0 +1,42 @@
+@startuml
+title Step 2 - Build the Internet Line of Product screen
+
+actor person
+participant "EngagementManagement" as EM
+participant "PartyInteractionManagement" as PIM
+participant "ProductCatalogManagement" as PCM
+participant "ProductRecommendationManagement" as PRM
+participant "ProductConfigurator" as PC
+
+person -> EM : 10 select a category
+activate EM
+
+alt catalog browsing
+    note over PCM : Alternatively following API could be used
+    EM -> PCM : 11 **TMF620 Product Catalog Mgt** GET /productOffering\n(Category=x&SaleChannel=..)
+    activate PCM
+    PCM --> EM : 12 **TMF620** 200 OK\nlist of productOffering
+    deactivate PCM
+else eligible catalog browsing
+    EM -> PC : 13 **TMF679 Product Offering Qualification** POST /productOfferingQualification\n(Category=x&commercial criteria)
+    activate PC
+    PC --> EM : 14 **TMF679** 201 Created\nlist of eligible productOffering
+    deactivate PC
+else product recommendations (SoI)
+    EM -> PRM : 15 **TMF680 RecommendationMgt** POST /queryProductRecommendation\n(Category=x&SaleChannel=..)
+    activate PRM
+    PRM --> EM : 16 **TMF680** 200 OK\nlist of recommended product
+    deactivate PRM
+end
+
+note over EM, PCM : Catalog provided information about technical eligibility check requirement
+
+EM -> PCM : 17 TMF620 Product Catalog Mgt GET /productSpecification\n(productSpecificationId=..)
+activate PCM
+PCM --> EM : 18 **TMF620** 200 OK\nlist of productSpecification
+deactivate PCM
+
+EM -> EM : 19 display information
+deactivate EM
+
+@enduml

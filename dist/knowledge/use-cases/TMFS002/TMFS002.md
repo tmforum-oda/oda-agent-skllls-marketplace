@@ -77,7 +77,8 @@ These 2 options are possible and consistent with ODA architecture and decoupling
 
 # Description
 
-![](media/image01.png)
+![](media/catalogue-browsing-eligibility-ui-mockup.png)
+*([text description](media/catalogue-browsing-eligibility-ui-mockup.text-description.md))*
 
 - Step 1
 
@@ -127,7 +128,8 @@ This view presents 3 examples of contract level Product Offerings commercializin
 
 - The Fiber Access product specification is based on a CFS specification - this link will be used for the technical eligibility test, that is configured as mandatory for this product specification as the Fiber Network is not available in all locations.
 
-![](media/image02.png)
+![](media/product-catalog-view-fiber-offers.png)
+*([text description](media/product-catalog-view-fiber-offers.text-description.md))*
 
 # Sequence diagrams
 
@@ -135,7 +137,8 @@ This view presents 3 examples of contract level Product Offerings commercializin
 
 ** **
 
-![](media/image03.png)
+![](media/catalogue-start-screen-sequence.png)
+*([PlantUML source](media/catalogue-start-screen-sequence.puml))*
 
 ## Step 2 - Build the Internet Line of Product screen
 
@@ -149,7 +152,8 @@ The front-end can use 3 ways of identifying the product offerings of this Line o
 
 When the list of product offerings is available, the front-end also query the Product Catalog at Product Specification level to identify if a technical eligibility test is needed, according to catalog parameters.
 
-![](media/image04.png)
+![](media/line-of-product-screen-sequence.png)
+*([PlantUML source](media/line-of-product-screen-sequence.puml))*
 ** **
 
 Note: TMF679 Product Offering Qualification API V4 is used in the previous diagram. With the V5 of this API now available we should rather have at this step a POST /**Query**ProductOfferingQualification.
@@ -162,7 +166,8 @@ The test is configurated with the CFS specification identifier associated to the
 
 As the test is OK, the list of proposed Fiber contracts remains the same, and John Smith can choose one of them to start an order capture process (continued in TMFS003).
 
-![](media/image05.png)
+![](media/fiber-eligibility-test-sequence.png)
+*([PlantUML source](media/fiber-eligibility-test-sequence.puml))*
 
 # Conclusion
 
