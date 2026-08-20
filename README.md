@@ -8,8 +8,7 @@ whether a document is safe to build against.
 
 The full design rationale lives in [`spec/spec.md`](spec/spec.md); build
 history and the reasoning behind every real bug/decision found along the
-way is in [`spec/tasks.md`](spec/tasks.md). This file is the map, not the
-explanation — read those two for *why* the repo looks like this.
+way is in [`spec/tasks.md`](spec/tasks.md). 
 
 ## Layout
 
@@ -21,9 +20,8 @@ tools/        the conversion/fetch/index pipeline that produces knowledge/ from 
 spec/         spec.md (design), tasks.md (build log), refresh-runbook.md (assisted-track checklist)
 ```
 
-**`references/` vs `knowledge/`** is the one split everything else follows
-(spec.md principle 3). `references/` is committed too, not gitignored —
-it holds TM Forum member-gated content (IG1228, the `TMFSxxx` use-case
+**`references/` contains the source artefacts and  `knowledge/`** contains the agent-friendly view
+(spec.md principle 3). `references/` holds TM Forum member-gated content (IG1228, the `TMFSxxx` use-case
 DOCX files) that a fresh clone has no other way to reproduce without a
 TM Forum login; see spec.md §10 for the full reasoning. `knowledge/` is
 regeneratable from `references/` plus the public GitHub/S3 sources —

@@ -1,0 +1,41 @@
+@startuml
+title Product Catalog Management - Step 3 - Product Offering Price creation
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+actor Marketer
+participant "EngagementManagement" as EM #purple
+participant "ProductCatalogManagement" as PCM <<blackbox>>
+participant "EventManager" as EventMgr #grey
+
+group Product Offering Price creation
+
+    Marketer -> EM : 80 Need to create new product offering price
+    EM -> PCM : 81 **TMF701 Process Flow** POST /processFlow\n(CreatePOP, productOfferingType=POPCharge)
+    activate PCM
+    PCM --> EM : 82 **TMF701** 201 Created\n(process#, Provide POP information (name, description, price, priceType))
+
+    Marketer -> EM : 83 This will be 10€ recurrent fee for 'Internet monthly charge'
+    EM -> PCM : 84 **TMF701 Process Flow** PATCH /processFlow/id14/taskFlow/id1\n(recurring, 10€, 'Internet monthly charge')
+    PCM --> EM : 85 **TMF701** 200 OK (process#, NextTasks: ProvidePricingLogic,\nValidateCreation(status))
+
+    alt Pricing logic management
+        note over PCM : To be completed later once we achieved design for Policy API!
+    end
+
+    Marketer -> EM : 86 product offering price ok for me and should be available
+    EM -> PCM : 87 **TMF701 Process Flow** PATCH /processFlow/id14/taskFlow/id2\n(pop creation completed, available)
+
+    PCM -> PCM : 88 **TMF620 Product Catalog Management**\nPOST /productOfferingPrice(all data, available)\nas a result ProductOfferingPrice #c45 is created
+
+    PCM -> EventMgr : 89 **TMF688 Event Management**\nPOST /productOfferingPriceCreateEvent\n(POP #c45, state=available)
+
+    PCM --> EM : 90 **TMF701** 200 OK\n(process# completed, List of available actions:\nCreate ProductOffering, Manage ProductOffering\nRetrieve Notification, Create POP, Manage POP\nTest PO, Launch PO)
+    deactivate PCM
+
+end
+
+@enduml

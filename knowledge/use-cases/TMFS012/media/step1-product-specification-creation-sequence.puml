@@ -1,0 +1,72 @@
+@startuml
+title Product Catalog Management - Step 1 - Product Specification creation
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+actor TechnicalExpert
+participant "EngagementManagement" as EM #purple
+participant "ProductCatalogManagement" as PCM <<blackbox>>
+participant "ServiceCatalogManagement" as SCM #blue
+participant "EventManager" as EventMgr #grey
+
+alt
+
+    SCM -> EventMgr : 1 **TMF688 Event Management**\nPOST /serviceSpecificationStateChangeEvent\n(CFSSpec.id96, state=active)
+
+    EventMgr -> PCM : 2 **TMF688 Event Management**\nPOST /listener/serviceSpecificationStateChange\n(CFSSpec.id96, state=active)
+    note right of PCM : A new serviceSpecification id96 for landline Access L2 is active
+
+    PCM -> PCM : 3 register notification for CFSSpec.id96
+
+end
+
+TechnicalExpert -> EM : 4 admin is connecting to catalog app
+EM -> PCM : 5 **TMF701 Process Flow** POST /processFlow\n(WelcomeCatalog, TechnicalExpert)
+activate PCM
+PCM --> EM : 6 **TMF701** 201 Created\n(processFlow.id1, List of available actions:\nCreate ProductSpec, Manage ProductSpec, Retrieve Notification)
+
+TechnicalExpert -> EM : 7 what's new?
+EM -> PCM : 8 **TMF701 Process Flow** PATCH /processFlow/id1/taskFlow/id4\n(Request list of latest notification)
+PCM --> EM : 9 **TMF701** 200 OK\n(List of notification (new CFS Spec id96 available))
+
+EM -> SCM : 10 **TMF633 Service Catalog Management** GET /serviceSpecification/id96
+activate SCM
+SCM --> EM : 11 **TMF633** 200 OK\n(serviceSpecification id96 representation)
+deactivate SCM
+note right of EM : Yes ! This is the right CFS SPec to craft productSpec LandlineAccess L2
+
+TechnicalExpert -> EM : 12 Need to create new 'Fiber Access' product specification
+EM -> PCM : 13 **TMF701 Process Flow** POST /processFlow\n(CreateProductSpec, CFSSpec.id96)
+PCM --> EM : 14 **TMF701** 201 Created\n(processFlow.id2, taskFlow.id1, Provide for the ProductSpec:\n'Identity' data, Product Relationship,\ncharacteristicSpecification(&value),\nOperationSpecification, UsageSpecification)
+
+TechnicalExpert -> EM : 15 Provide name, brand, description, etc...
+EM -> PCM : 16 **TMF701 Process Flow** PATCH /processFlow/id2/taskFlow/id1\n(name, brand, description, etc...)
+PCM --> EM : 17 **TMF701** 200 OK\n(nextTask taskFlow.id2, Provide for the ProductSpec\nProduct Relationship,\ncharacteristicSpecification(&value),\nOperationSpecification, UsageSpecification)
+
+TechnicalExpert -> EM : 18 Let's see support CFSSpec for characteristicSpec design
+EM -> SCM : 19 **TMF633 Service Catalog Management** GET /serviceSpecification/id96
+activate SCM
+SCM --> EM : 20 **TMF633** 200 OK\n(ServiceSpecification CFSSpec.id96 representation)
+deactivate SCM
+
+TechnicalExpert -> EM : 21 Provide characteristicSpec/value from CFSSpec ones
+EM -> PCM : 22 **TMF701 Process Flow** PATCH processFlow/id2/taskFlow/id2\n(characteristicSpec/value)
+PCM -> PCM : 23 Check consistence with\nserviceSpecification.characteristicSpec/value
+PCM --> EM : 24 **TMF701** 200 OK\n(nextTask taskFlow.id3, Provide for the ProductSpec\nProduct Relationship,\nOperationSpecification,\nUsageSpecification)
+
+note over EM, PCM : Same for ProductRelationship, operationSpecification & usageSpecification
+
+PCM --> EM : 25 **TMF701** 200 OK\n(nextTask taskFlow.id8, Validate ProductSpec creation)
+
+TechnicalExpert -> EM : 26 I valid this 'Fiber Access' ProductSpec creation
+EM -> PCM : 27 **TMF701 Process Flow** PATCH /processFlow/id1/taskFlow/id8\n(ValidateCreation, true)
+
+PCM -> PCM : 28 **TMF620 Product Catalog Management**\nPOST /productSpecification(all data, state=designed)\nas a result ProductSpecification #56 is created
+
+PCM -> EventMgr : 29 **TMF688 Event Management**\nPOST /productSpecificationCreateEvent\n(ProductSpecification #56, state=designed)
+deactivate PCM
+
+@enduml

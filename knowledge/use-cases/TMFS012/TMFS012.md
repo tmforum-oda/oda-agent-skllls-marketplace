@@ -126,7 +126,8 @@ As this use case includes manual tasks and front-end interactions, we choose to 
 
 This macro process represents the end to end use case and the steps described by sequence diagrams in chapter 5.
 
-![](media/image01.png)
+![](media/macro-process-flow-diagram.png)
+*([text description](media/macro-process-flow-diagram.text-description.md))*
 
 # Information View
 
@@ -136,15 +137,18 @@ As lifecycles are not provided in SID or in TMF620 Product Catalog Management AP
 
 ### Product Specification Lifecycle
 
-![](media/image02.png)
+![](media/product-specification-lifecycle-state-diagram.png)
+*([text description](media/product-specification-lifecycle-state-diagram.text-description.md))*
 
 ### Product Offering Lifecycle
 
-![](media/image03.png)
+![](media/product-offering-lifecycle-state-diagram.png)
+*([text description](media/product-offering-lifecycle-state-diagram.text-description.md))*
 
 ### Product Offering Price Lifecycle
 
-![](media/image04.png)
+![](media/product-offering-price-lifecycle-state-diagram.png)
+*([text description](media/product-offering-price-lifecycle-state-diagram.text-description.md))*
 
 # Sequence diagrams
 
@@ -176,7 +180,8 @@ All these scenarios are valid from an API perspective, but the choice is depende
 
 Note: We could illustrate other ways of synchronisation between the service catalog and the product catalog. As an example the receip of the event published by the service catalog could automatically trigger in the Product Catalog the creation of a new Product Specification with all the characteristics and values, operations and usages described at CFS specification level. Then restrictions could be introduced by an actor in charge of Product design.
 
-![](media/image05.png)
+![](media/step1-product-specification-creation-sequence.png)
+*([PlantUML source](media/step1-product-specification-creation-sequence.puml))*
 
 ## Step 2 : Create a new Product Offering to market the Product Specification
 
@@ -184,13 +189,15 @@ Now that the Product Specification is ready, the marketer is able to create a ne
 
 As for the Product Specification creation, we illustrate a process-guided creation:
 
-![](media/image06.png)
+![](media/step2-product-offering-creation-sequence.png)
+*([PlantUML source](media/step2-product-offering-creation-sequence.puml))*
 
 ## Step 3 : Create a Product Offering Price for recurrent charge
 
 The creation of the Product Offering Price to define recurrent fees is the next step.
 
-![](media/image07.png)
+![](media/step3-product-offering-price-creation-sequence.png)
+*([PlantUML source](media/step3-product-offering-price-creation-sequence.puml))*
 
 ## Step 4 : Link the Product Offering Price to the Product Offering
 
@@ -200,7 +207,8 @@ As the Product Offering is still "inDesign" state, it is possible to directly up
 
 After this operation, the description of the Product Offering is completed so the marketer validate its design, and its state becomes "Designed"
 
-![](media/image08.png)
+![](media/step4-product-offering-price-link-sequence.png)
+*([PlantUML source](media/step4-product-offering-price-link-sequence.puml))*
 
 ## Step 5 : Product Offering testing
 
@@ -212,13 +220,15 @@ As assumption, we consider that all tests related to the provisionning, activati
 
 To be addedd: Test recurrent charge inclusion in billing & bill invoice production → This part will be described for production in future TMSF005.
 
-![](media/image09.png)
+![](media/step5-product-offering-test-sequence.png)
+*([PlantUML source](media/step5-product-offering-test-sequence.puml))*
 
 ## Step 6 : New Product Specification & Product Offering 'activation'
 
 Once the test is successful, the Product Specification and the Product Offering can be shifted to state "active"
 
-![](media/image10.png)
+![](media/step6-shift-to-active-sequence.png)
+*([PlantUML source](media/step6-shift-to-active-sequence.puml))*
 
 ## Step 7 : Marketing launch
 
@@ -228,7 +238,8 @@ In this example, we have a soft launch of the Product Offering in a couple of sh
 
 As a result the Product Offering state is updated to "Launched"
 
-![](media/image11.png)
+![](media/step7-marketing-launch-sequence.png)
+*([PlantUML source](media/step7-marketing-launch-sequence.puml))*
 
 # Conclusion
 

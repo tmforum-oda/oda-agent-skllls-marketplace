@@ -1,0 +1,38 @@
+@startuml
+title Product Catalog Management - Step 5 - Product Offering test
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+actor Marketer
+participant "EngagementManagement" as EM #purple
+participant "ProductCatalogManagement" as PCM <<blackbox>>
+
+box "Testing IT components" #D0D0D0
+  participant "ProductOrder\nCapture&Validation" as POCV <<blackbox>>
+  participant "ProductOrderDelivery\nOrchestration&Management" as PODOM <<blackbox>>
+  participant "ServiceOrder\nManagement" as SOM #blue
+end box
+
+note over PCM, POCV : As assumption the tests are done on testing environnement. We run UC 3 & 4. Minimum detail provided on this flow.
+
+group Product testing before validation
+
+    Marketer -> PCM : 110 Launch test process (TMF701)
+    EM -> POCV : 111 **TMF701 Process Flow** POST /processFlow\n(OrderCapture)
+    note right of POCV : see flow in UC3
+
+    POCV -> PODOM : 112 trigger delivery
+    note right of PODOM : see flow in UC4
+
+    Marketer -> PCM : 113 Check test delivery
+    EM -> SOM : 114 **TMF641 Service Order Management** GET /serviceOrder/?serviceSpecification=CFSSpec.id96
+    SOM --> EM : 115 **TMF641** 200 OK\nService Order representation
+
+    Marketer -> PCM : 116 Look good - test OK
+
+end
+
+@enduml

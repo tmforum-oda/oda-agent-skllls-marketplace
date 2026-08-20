@@ -1,0 +1,61 @@
+@startuml
+title Product Catalog Management - Step 2 - Product Offering creation
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+actor Marketer
+participant "EngagementManagement" as EM #purple
+participant "ProductCatalogManagement" as PCM <<blackbox>>
+participant "EventManager" as EventMgr #grey
+
+Marketer -> EM : 50 marketer is connecting to catalog app
+EM -> PCM : 51 **TMF701 Process Flow** POST /processFlow\n(WelcomeCatalog, marketer)
+activate PCM
+PCM --> EM : 52 **TMF701** 201 Created\n(List of available actions: Create ProductOffering, Manage ProductOffering\nRetrieve Notification, Create POP, Manage POP\nTest PO, Launch PO)
+
+group Product Offering creation
+
+    Marketer -> EM : 53 Need to create new product offering for 'Fiber Access'
+    EM -> PCM : 54 **TMF701 Process Flow** POST /processFlow\n(Create ProductOffering, productOfferingType=atomicProductOffering)
+    PCM --> EM : 55 **TMF701** 201 Created\n(process.id12, Provide support ProductSpecification taskFlow.id1)
+
+    Marketer -> EM : 56 provide filters to retrieve product Specification
+    EM -> PCM : 57 **TMF620 Product Catalog Management** GET /productSpecification\n(filters + state)
+    PCM --> EM : 58 **TMF620** 200 OK\n(List of ProductSpecification)
+
+    Marketer -> EM : 59 Pick a ProductSpecification (PS#56)
+    EM -> PCM : 60 **TMF701 Process Flow** PATCH /processFlow/id12/taskFlow/id1\n(PS#56)
+    PCM --> EM : 61 **TMF701** 200 OK\n(next task id2 Provide ProductOffering identity data)
+    note over PCM : ProductOffering identity data are for example name, description, channel, market segment
+
+    Marketer -> EM : 62 Provide name, ProductOffering identity data
+    EM -> PCM : 63 **TMF701 ProcessFlow** PATCH /processFlow/id12/taskFlow/id2\n(ProductOffering identity data)
+    PCM --> EM : 64 **TMF701** 200 OK\n(NextTasks: OperationSpecification, ProductOfferingTerm,\nAssociationToProductPrice, ValidateCreation,\nCancel)
+
+    Marketer -> EM : 65 I need to check ProductSpecification operations
+    EM -> PCM : 66 **TMF620 Product Catalog** GET /productOperation/id56
+    PCM --> EM : 67 **TMF620** 200 OK\n(ProductOperation PS#56 representation)
+
+    Marketer -> EM : 68 Provide OperationSpecification from ProductSpec PS#9
+    EM -> PCM : 69 **TMF701 Process Flow** PATCH /processFlow/id12/taskFlow/id3\n(operationSpec/value)
+    PCM -> PCM : 70 Check consistence with\nProductSpecification.operationSpec/value
+    PCM --> EM : 71 **TMF701** 200 OK\n(process#, NextTasks: ProductOfferingTerm,\nAssociationToProductPrice, ValidateCreation, Cancel)
+
+    note over PCM : Same for ProductOfferingTerm
+
+    Marketer -> EM : 72 I valid this 'Fiber Access' ProductOffering creation
+    EM -> PCM : 73 **TMF701 Process Flow** PATCH /processFlow/id12/taskFlow/id4\n(ValidateCreation, true)
+
+    PCM -> PCM : 74 **TMF620 Product Catalog**\nPOST /productOffering(all data, inDesign)\nas a result ProductOffering #569 is created
+
+    PCM -> EventMgr : 75 **TMF688 Event Management**\nPOST /productOfferingCreateEvent\n(ProductOffering #569, state=inDesign)
+
+    PCM --> EM : 76 **TMF701** 200 OK\n(process# completed, List of available actions:\nCreate ProductOffering, Manage ProductOffering\nRetrieve Notification, Create POP, Manage POP\nTest PO, Launch PO)
+    deactivate PCM
+
+end
+
+@enduml

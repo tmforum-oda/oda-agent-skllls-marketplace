@@ -1,0 +1,40 @@
+@startuml
+title Product Catalog Management - Step 7 - Product Offering marketing launch
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+actor Marketer
+participant "EngagementManagement" as EM #purple
+participant "ProductCatalogManagement" as PCM <<blackbox>>
+participant "LocationManagement" as LM #blue
+participant "EventManager" as EventMgr #grey
+
+Marketer -> EM : 140 marketer is connecting to catalog app
+EM -> PCM : 141 **TMF701 Process Flow** POST /processFlow\n(WelcomeCatalog, marketer)
+activate PCM
+PCM --> EM : 142 **TMF701** 201 Created\n(List of available actions: CreateProductOffering,\nManageProductOffering, RetrieveNotification,\nCreatePOP, ManagePOP, Test PO, Launch PO)
+
+Marketer -> EM : 143 I will launch the offer on few shops
+EM -> LM : 144 **TMF674 Geographic Site Management**\nGET /geographicSite/?@type=shop&place.city=Lyon&place.@type=GeographicAddress
+LM --> EM : 145 **TMF674** 200 OK\n(GeographicSite 45, 8, 96 representations)
+
+group Launch Product offering
+
+    Marketer -> EM : 146 Launch ProductOffering #569 for few shops
+    EM -> PCM : 147 **TMF Process Flow** POST /processFlow\n(ManageProductOffering, PO#569,\nstate launched, channel=shop, place=[45,8,96])
+
+    PCM -> PCM : 148 Check state change consistency for PO/PS/POP
+
+    PCM -> PCM : 149 **TMF620 Product Catalog Management**\nPATCH /productOffering.id569\n(state launched, channel, place)
+
+    PCM --> EM : 150 **TMF620** 200 OK\n(ProductOffering #569 shifts to launched)
+
+    PCM -> EventMgr : 151 **TMF688 Event Management**\nPOST /productOfferingStateChangeEvent\n(PO #569, state = launched)
+
+end
+deactivate PCM
+
+@enduml
