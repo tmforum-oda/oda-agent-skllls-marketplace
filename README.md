@@ -85,12 +85,30 @@ finding that a newly-changed use case is very likely pre-GA.
 ## Skills
 
 Built against `knowledge/`, read-only, no network calls needed at
-skill-run time (spec.md §8):
+skill-run time. Two audiences: **consumers** build a product using ODA;
+**contributors** extend ODA itself.
 
-- [`skills/check-usecase-maturity/`](skills/check-usecase-maturity/SKILL.md) — given a `TMFSxxx` id, a plain-language "is this safe to build against" verdict from frontmatter alone.
-- [`skills/generate-test-cases-from-usecase/`](skills/generate-test-cases-from-usecase/SKILL.md) — given a `TMFSxxx` id, drafts BDD/Gherkin test scenarios grounded in the use case's real linked components/APIs and their cached schemas, citing every id back to its exact source.
-- [`skills/assess-change-impact/`](skills/assess-change-impact/SKILL.md) — given a `TMFCxxx`/`TMFxxx` id, lists every use case that depends on it (via the index's reverse links) and a maturity-weighted migration risk report.
-- [`skills/harvest-gaps-from-lessons-learned/`](skills/harvest-gaps-from-lessons-learned/SKILL.md) — mines every use case's "Lessons learned" section for capability gaps TM Forum's own authors already flagged, consolidated in [`knowledge/index/gaps-backlog.md`](knowledge/index/gaps-backlog.md).
+**Consumers**
+
+| Skill | Given | Produces |
+|---|---|---|
+| [`check-usecase-maturity`](skills/check-usecase-maturity/SKILL.md) | a `TMFSxxx` id | a plain-language "is this safe to build against" verdict from frontmatter alone |
+| [`recommend-oda-components-for-requirement`](skills/recommend-oda-components-for-requirement/SKILL.md) | a plain-language requirement | the closest matching use case(s) and a starting component/API architecture |
+| [`generate-test-cases-from-usecase`](skills/generate-test-cases-from-usecase/SKILL.md) | a `TMFSxxx` id | BDD/Gherkin test scenarios grounded in the use case's real linked components/APIs and cached schemas |
+| [`generate-api-mocks-from-usecase`](skills/generate-api-mocks-from-usecase/SKILL.md) | a `TMFSxxx` id | mock/fixture payloads for its linked APIs, from cached schemas and real sample payloads |
+| [`draft-architecture-diagram-from-usecase`](skills/draft-architecture-diagram-from-usecase/SKILL.md) | a `TMFSxxx` id | a Mermaid diagram redrawn from the use case's own sequence diagrams |
+| [`assess-change-impact`](skills/assess-change-impact/SKILL.md) | a `TMFCxxx`/`TMFxxx` id + proposed change | every use case that depends on it (index reverse links) and a maturity-weighted migration risk report |
+| [`audit-implementation-against-usecase`](skills/audit-implementation-against-usecase/SKILL.md) | a `TMFSxxx` id + an existing implementation | a drift report against what the use case actually specifies |
+
+**Contributors**
+
+| Skill | Given | Produces |
+|---|---|---|
+| [`harvest-gaps-from-lessons-learned`](skills/harvest-gaps-from-lessons-learned/SKILL.md) | the whole corpus | capability gaps TM Forum's own authors already flagged, consolidated in [`knowledge/index/gaps-backlog.md`](knowledge/index/gaps-backlog.md) |
+| [`propose-matrix-correction`](skills/propose-matrix-correction/SKILL.md) | a `matrix-discrepancies.md` entry | a specific, submittable correction for the next IG1228 revision |
+| [`draft-new-usecase-from-scenario`](skills/draft-new-usecase-from-scenario/SKILL.md) | a business scenario | a new use-case document in this corpus's own structure |
+| [`propose-component-or-api-extension`](skills/propose-component-or-api-extension/SKILL.md) | a capability gap | a draft component skeleton (real IG1242 shape) or API schema extension |
+| [`lint-usecase-draft`](skills/lint-usecase-draft/SKILL.md) | a draft use-case document | a pre-submission check against known conversion-breaking document shapes |
 
 Using these skills from another repository? See [`CONSUMING.md`](CONSUMING.md) —
 covers both a sparse clone (lighter, git-native) and installing
