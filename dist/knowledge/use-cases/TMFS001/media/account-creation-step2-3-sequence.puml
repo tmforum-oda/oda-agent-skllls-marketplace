@@ -1,0 +1,68 @@
+@startuml
+title "New Account" creation - Step 2 and 3
+
+actor person
+participant "EngagementManagement" as EM
+participant "PartyInteractionMgt" as PIM
+participant "PartyManagement" as PM
+participant "PartyRoles\n&PermissionsMgt" as PRPM
+participant "DigitalIdentityMgt" as DIM
+participant "EventMgt" as Event
+
+== Creation of initialized Party ==
+
+person -> EM : 20 Enter required information
+activate EM
+
+EM -> PM : 21 **TMF701 Process Flow** PATCH /processFlow.id2, taskFlow.id2.1\n(sessionId1, firstName, lastName, contactMedium)
+activate PM
+
+PM -> PM : 22 check data
+PM -> PM : 23 **TMF632 Party Management** POST /individual\n(givenName, familyName, contactMedium)\n"party creation" -> party.id1 created
+PM -> Event : 24 **TMF688 Event** POST /individualCreateEvent\n(sessionId1, party.id1)\n"individual creation (optional event)"
+PM -> PM : 25 Identify Process Flow Specification to launch\nand ODA component in charge\nand create taskFlow.id2.4
+
+note over PM, PRPM : Automatic Process can be launched directly
+
+PM -> PRPM : 26 **TMF701 Process Flow** POST /processFlow\n(sessionId1, party.id1,\nprocessFlowSpecification=create_new_partyRole, role portal user)
+activate PRPM
+
+PRPM -> PRPM : 27 **TMF669 PartyRole Management** POST /partyRole\n(partyRoleSpecification=portal_user, party.id1)\n"new party role" -> partyRole.id1
+PRPM -> PRPM : 28 **TMF672 User Roles and Permissions** POST /permission\n(party.id1, partyRole.id1, default permissions for portal user)
+PRPM --> PM : 29 **TMF701** 201 Created\n(partyRole.id1)
+deactivate PRPM
+
+PM -> PM : 30 Identify Process Flow Specification to launch\nand ODA component in charge\nand create taskFlow.id2.5
+
+alt Party Mgt directly launches Digital Identity Mgt
+    PM -> DIM : 31 **TMF701 Process Flow** POST /processFlow\n(sessionId1, party.id1,\nprocessFlowSpecification=create_new_digital_identity\ncallback when digital identity created (processFlow.id2, taskFlow.id2.5))
+    activate DIM
+    DIM -> DIM : 32 Identify Task Flow Specification to launch\nand create taskFlow.id4.1
+    DIM --> PM : 33 **TMF701** 201 Created\n(sessionId1, processFlow.id4, taskFlow.id4.1,\ntask information required: ?login/pwd creation request\n(security level compliance for pwd))
+    PM --> EM : 34 **TMF701** 200 OK\n(sessionId1, callback when information filled (processFlow.id4, taskFlow.id4.1),\ntask information required: ?login/pwd creation request\n(security level compliance for pwd))
+else Engagement Mgt launches Digital Identity Mgt
+    PM --> EM : 35 **TMF701** 200 OK\n(sessionId1, party.id1, newProcess(processFlowSpecification=create_new_digital_identity)\ncallback when digital identity created (processFlow.id2, taskFlow.id2.5))
+    EM -> DIM : 36 **TMF701 Process Flow** POST /processFlow\n(sessionId1, party.id1\nprocessFlowSpecification=create_new_digital_identity)
+    DIM -> DIM : 37 Identify Task Flow Specification to launch\nand create taskFlow.id4.1
+    DIM --> EM : 38 **TMF701** 201 Created\n(sessionId1, processFlow.id4, taskFlow.id4.1,\ntask information required: ?login/pwd creation request\n(security level compliance for pwd))
+end
+deactivate PM
+
+EM -> EM : 39 Display required information
+person -> EM : 40 Enter required information
+EM -> DIM : 41 **TMF701 Process Flow** PATCH /processFlow.id4, taskFlow.id4.1\n(sessionId1, login/password)
+DIM -> DIM : 42 **TMF720 Digital Identity** POST /digitalIdentity\n(login, password, party.id1)\n"digitalIdentity creation" -> digitalIdentity.id1 created
+
+alt if Digital Identity Mgt launched by Party Mgt
+    DIM --> PM : 43 **TMF701 Process Flow** PATCH /processFlow.id2, taskFlow.id2.5\n(digitalIdentity.id1)\n"digital identity created"
+    activate PM
+    PM --> DIM : 44 **TMF701** 200 OK
+    deactivate PM
+else if Digital Identity Mgt launched by Engagement Mgt
+    DIM --> EM : 45 **TMF701** 200 OK\n(sessionId1, party.id1, digitalIdentity.id1, "digital identity created")
+    EM -> PM : 46 **TMF701 Process Flow** PATCH /processFlow.id2, taskFlow.id2.5\n(digitalIdentity.id1, "digital identity created")
+end
+deactivate DIM
+deactivate EM
+
+@enduml

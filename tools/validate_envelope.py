@@ -62,11 +62,15 @@ def main():
     # never artefact envelopes themselves (spec/spec.md 5.4: "generated, never hand-edited"),
     # so it's excluded regardless of what root is passed in.
     index_dir = os.path.normpath(os.path.join(root, "index"))
+    # *.text-description.md (spec/spec.md 12, Phase 10) are sidecar image annotations under a
+    # use case's own media/ folder, not standalone artefacts -- they describe one image, not a
+    # thing with its own id/type/version/status. Excluded by suffix, not by directory, since
+    # media/ is a normal subdirectory of a real artefact folder, not a category to blanket-skip.
     paths = [
         p
         for p in sorted(glob.glob(os.path.join(root, "**", "*.md"), recursive=True))
         + sorted(glob.glob(os.path.join(root, "**", "*.meta.json"), recursive=True))
-        if not os.path.normpath(p).startswith(index_dir + os.sep)
+        if not os.path.normpath(p).startswith(index_dir + os.sep) and not p.endswith(".text-description.md")
     ]
 
     hard_failures = 0

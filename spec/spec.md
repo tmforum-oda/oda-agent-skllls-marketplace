@@ -363,3 +363,74 @@ A different audience from §11.1: someone drafting a new use case, or proposing 
 ### Considered and deliberately left out
 
 An "API version migration guide" skill (diff two cached versions of the same API, draft upgrade notes) was considered and dropped: `fetch_api.py`'s design supports multiple versions of one API coexisting side by side (§10), but as of this writing no API in the live corpus actually has two versions cached yet — the idea would be speculative rather than grounded in real data, unlike everything kept above. Worth revisiting once a real case exists, not before.
+
+## 12. Media processing (experimental — Phase 10)
+
+### Why
+
+Every use case's `# Sequence diagrams` section (and several other sections
+— Information View, Appendix architecture overviews) embeds its real
+content as images under `knowledge/use-cases/{ID}/media/imageNN.png`
+(`docx2md.py` extracts these verbatim from the source DOCX; §5.1). A
+skill that needs to know what a diagram actually shows has to read the
+image with a multimodal call every time it's needed —
+`generate-test-cases-from-usecase` and `draft-architecture-diagram-from-usecase`
+both already do this, and it works, but it's a real cost paid on every
+single invocation, for content that doesn't change between runs. A
+sequence diagram redrawn once as PlantUML source is plain text: cheap to
+read, greppable, diffable in a meaningful way (unlike a binary PNG diff),
+and reusable by every skill and every future invocation without a fresh
+vision read.
+
+### Scope of the experiment
+
+Deliberately narrow, per the explicit instruction that started this
+phase: **TMFS001 only**, one use case's `media/` folder, processed image
+by image, before deciding whether this generalizes. This is not assumed
+to be a mechanical, deterministic transform the way `docx2md.py`'s
+extraction is — classifying an image and reverse-engineering a sequence
+diagram into PlantUML requires actual visual judgment, so unlike every
+other `tools/*.py` script in this repo, this cannot start as a
+deterministic Python tool. It starts as an agent-driven, per-image
+process; whether and how to formalize it into a repeatable tool is an
+open question the experiment itself needs to answer, not a decision made
+up front.
+
+### Per-image process
+
+For each image in `knowledge/use-cases/{ID}/media/`:
+
+1. **Analyze and classify** — read the image directly (multimodal), and
+   the surrounding body text for context (which section it's in, what
+   the prose around it says it depicts). Classify as either a **UML
+   sequence diagram** or **other** (architecture/block diagram, data/
+   class model view, screenshot, etc.).
+2. **Rename descriptively** — replace the generic `imageNN.{png,jpeg}`
+   with a name describing what the image actually shows (e.g.
+   `account-creation-overview-sequence.png`). Every `![](media/imageNN...)`
+   reference in the use case's own `{ID}.md` body must be updated to the
+   new filename in the same pass — a rename that leaves the body's own
+   references pointing at a now-missing file is a regression, not a
+   naming improvement.
+3. **Sequence diagrams** → reverse-engineer a `.puml` (PlantUML) file
+   with the same base name, sibling to the (renamed) image in the same
+   `media/` folder.
+4. **Everything else** → a sibling `{base-name}.text-description.md`
+   with a text description derived from the image. (One file per image,
+   named to match that image — not one shared `text-description.md` per
+   folder, since a folder can hold several non-diagram images and a
+   single shared filename would silently overwrite one description with
+   the next. A deliberate, small deviation from the literal instruction,
+   made to avoid an obvious collision — worth confirming this reading is
+   right during review, exactly the kind of thing this experiment exists
+   to surface.)
+
+### What "done" looks like for this experiment
+
+Not a finished pipeline — a first real pass against TMFS001, kept as-is
+(not treated as disposable/regeneratable the way `knowledge/`'s other
+generated content is, since there's no deterministic script that could
+regenerate it yet), plus a written account of what worked, what didn't,
+and what should change before this is either extended to more use cases
+or turned into a repeatable tool. See `tasks.md` Phase 10 for the actual
+run and findings.

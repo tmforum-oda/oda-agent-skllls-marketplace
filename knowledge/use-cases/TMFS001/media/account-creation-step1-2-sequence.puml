@@ -1,0 +1,54 @@
+@startuml
+title "New Account" creation - Step 1 and 2
+
+actor person
+participant "EngagementManagement" as EM
+participant "PartyInteractionMgt" as PIM
+participant "PartyManagement" as PM
+
+== new Interaction from engagement management ==
+
+person -> EM : 1 "Launch Service Provider website or apps"
+activate EM
+
+EM -> PIM : 2 **TMF701 Process Flow** POST /processFlow\n(processFlowSpecification=welcome_process, sessionId1)\n"new session started for welcome process"
+activate PIM
+
+PIM -> PIM : 3 **TMF683 Party Interaction** POST /partyInteraction\n(interactionDate, relatedChannel)\n"new interaction" -> interation.id1 created
+PIM -> PIM : 4 Identify available actions
+
+PIM --> EM : 5 **TMF701** 201 Created\n(processFlow.id1, taskFlow.id1.1, sessionId1,\navailable actions: Identify yourself, Create your Account,\nBrowse B2C Catalogue, Read News)
+deactivate PIM
+
+EM -> EM : 6 Display available actions
+EM --> person : (available actions shown)
+
+person -> EM : 7 Choose Create your Account
+
+EM -> PIM : 8 **TMF701 Process Flow** PATCH /processFlow.id1, taskFlow.id1.1\n(sessionId1, Create your Account chosen)
+activate PIM
+
+PIM -> PIM : 9 **TMF683 Party Interaction** PATCH /partyInteraction/id1\n(new interactionItem for Create your Account)
+PIM -> PIM : 10 Identify Process Flow Specification to launch\nand ODA component in charge\nand create taskFlow.id1.3
+
+alt Party Interaction Mgt launches Party Mgt
+    PIM -> PM : 11 **TMF701 Process Flow** POST /processFlow\n(sessionId1, processFlowSpecification=create_initialized_party,\ncallback when party fully created (processFlow.id1, taskFlow.id1.3))
+    activate PM
+    PM -> PM : 12 Identify Task Flow Specification to launch\nand create taskFlow.id2.1
+    PM --> PIM : 13 **TMF701** 201 Created\n(processFlow.id2, taskFlow.id2.1,\ntask information required: ?firstName, ?lastName, ?contactMedium)
+    deactivate PM
+    PIM --> EM : 14 **TMF701** 200 OK\n(sessionId1, callback when information filled (processFlow.id2, taskFlow.id2.1),\ntask information required: ?firstName, ?lastName, ?contactMedium)
+else Engagement Mgt launches Party Mgt
+    PIM --> EM : 15 **TMF701** 200 OK\n(sessionId1, newProcess(processFlowSpecification=create_initialized_party)\ncallback when party fully created (processFlow.id1, taskFlow.id1.3))
+    EM -> PM : 16 **TMF701 Process Flow** POST /processFlow\n(sessionId1, processFlowSpecification=create_initialized_party)
+    activate PM
+    PM -> PM : 17 Identify Task Flow Specification to launch\nand create taskFlow.id2.1
+    PM --> EM : 18 **TMF701** 201 Created\n(processFlow.id2, taskFlow.id2.1,\ntask information required: ?firstName, ?lastName, ?contactMedium)
+    deactivate PM
+end
+deactivate PIM
+
+EM -> person : 19 "Display required information"
+deactivate EM
+
+@enduml

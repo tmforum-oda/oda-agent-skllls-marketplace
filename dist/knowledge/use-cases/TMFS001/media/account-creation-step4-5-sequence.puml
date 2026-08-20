@@ -1,0 +1,53 @@
+@startuml
+title "New Account" creation - Step 4 and 5
+
+actor person
+participant "EngagementManagement" as EM
+participant "PartyInteractionMgt" as PIM
+participant "PartyManagement" as PM
+participant "PartyPrivacyMgt" as PPM
+
+== Party Privacy Profile Management ==
+
+activate EM
+activate PM
+
+PM -> PM : 50 Identify Process Flow Specification to launch\nand ODA component in charge\nand create taskFlow.id2.6
+
+note over PM, PPM : Alternative Party Mgt directly launches Party Privacy Mgt not possible
+
+PM --> EM : 51 **TMF701** 200 OK\n(sessionId1, party.id1,\nnewProcess(processFlowSpecification=create_new_privacy_profile)\ncallback when privacy profile created (processFlow.id2, taskFlow.id2.6))
+deactivate PM
+
+EM -> PPM : 52 **TMF701 Process Flow** POST /processFlow\n(sessionId1, party.id1\nprocessFlowSpecification=create_new_privacy_profile)
+activate PPM
+
+PPM -> PPM : 53 **TMF644 Party Privacy Management** POST /partyPrivacyProfile\n(party.id1)\n"default partyPrivacyProfile creation" -> partyPrivacyProfile.id1 initiated
+PPM -> PPM : 54 Identify Task Flow Specification to launch\nand create taskFlow.id5.2
+PPM --> EM : 55 **TMF701** 201 Created\n(sessionId1, processFlow.id5, taskFlow.id5.2, partyPrivacyProfile.id1\ntask information required: ?approval)
+
+EM -> EM : 56 Display required information
+person -> EM : 57 Enter required information
+
+EM -> PPM : 58 **TMF701 Process Flow** PATCH /processFlow.id5, taskFlow.id5.2\n(sessionId1, partyPrivacyProfile.id1, partyPrivacyProfileValues, approval)
+PPM -> PPM : 59 **TMF644 Party Privacy Management** PATCH /partyPrivacyProfile\n(partyPrivacyProfile.id1, partyPrivacyProfileValues, approval)\n"partyPrivacyProfile update and approval" -> partyPrivacyProfile.id1 validated
+PPM --> EM : 60 **TMF701** 200 OK\n(sessionId1, party.id1, partyPrivacyProfile.id1, "privacy profile validated")
+deactivate PPM
+
+EM -> PM : 61 **TMF701 Process Flow** PATCH /processFlow.id2, taskFlow.id2.6\n(partyPrivacyProfile.id1, "privacy profile created and validated")
+activate PM
+PM -> PM : 62 Process completed
+PM --> EM : 63 **TMF701** 200 OK\n(sessionId1, party.id1, partyRole.id1, digitalIdentity.id1, partyPrivacyProfile.id1,\n"initialized party fully created")
+deactivate PM
+
+EM -> PIM : 64 **TMF701 Process Flow** PATCH /processFlow.id1, taskFlow.id1.3\n(sessionId1, party.id1, partyRole.id1, digitalIdentity.id1, partyPrivacyProfile.id1,\n"initialized party fully created")
+activate PIM
+PIM -> PIM : 65 **TMF683 Party Interaction** PATCH /partyInteraction/id1\n(interactionItem.id, party.id1, partyRole.id1, digitalIdentity.id1,\npartyPrivacyProfile.id1, Create your Account done)
+PIM -> PIM : 66 Identify available actions
+PIM --> EM : 67 **TMF701** 200 OK\ncallback when action choosen (processFlow.id1, taskFlow.id1.5)\navailable actions: Disconnect, Start Order, Browse B2C Catalogue, Read News
+deactivate PIM
+
+EM -> EM : 68 Display available actions
+deactivate EM
+
+@enduml
