@@ -9,11 +9,10 @@ description: Given a TM Forum ODA use-case id (TMFSxxx), reads its sequence-diag
 
 BDD-style Gherkin scenarios for a TMFSxxx use case's interaction flow,
 citing the real ODA component and Open API IDs the use case actually
-depends on — never a plausible-sounding invented one. This is the check
-this skill is validated against (spec.md §9's last success criterion):
-every `TMFCxxx`/`TMFxxx` id in the output must trace back to something
-actually present in the source use case's own frontmatter or a cached API
-schema, not something that merely sounds right for the scenario.
+depends on — never a plausible-sounding invented one. Every `TMFCxxx`/
+`TMFxxx` id in the output must trace back to something actually present
+in the source use case's own frontmatter or a cached API schema, not
+something that merely sounds right for the scenario.
 
 This mirrors `oda-canvas`'s `write-bdd-feature` skill's Gherkin
 conventions (tags, `Given`/`When`/`Then` structure, Scenario Outline +
@@ -39,9 +38,9 @@ knowledge/use-cases/{ID}/{ID}.md
 ```
 
 Read the `# Description` and `# Sequence diagrams` sections (heading
-wording varies slightly across documents — look for both). **Found while
-building this skill, worth knowing up front**: the actual interaction
-steps usually live in embedded diagram images, not in text. `docx2md.py`
+wording varies slightly across documents — look for both). **Worth
+knowing up front**: the actual interaction steps usually live in embedded
+diagram images, not in text. `docx2md.py`
 extracts each document's original diagrams as real image files under
 `knowledge/use-cases/{ID}/media/imageNN.png` (or `.jpeg`), referenced
 inline as `![](media/imageNN.png)`. Don't treat these as decorative and
@@ -80,16 +79,14 @@ Interaction Management APIs", "the Product Catalog") — match it against
 `links.components`/`links.apis` by name to get the real id. **If a
 capability named in the body has no matching entry in frontmatter, say so
 explicitly in the output rather than inventing a plausible `TMFCxxx`/
-`TMFxxx` id for it** — this is the single most important rule this whole
-skill exists to enforce (spec.md §9, §8's design principle 5, "links are
-data, not prose"). A wrong-but-plausible id is worse than an honest gap.
+`TMFxxx` id for it.** A wrong-but-plausible id is worse than an honest
+gap; links are data, not prose — never resolved from how a name sounds.
 
-Two gotchas found while validating this skill against TMFS020, worth
-knowing before you hit them yourself:
+Two gotchas to know before you hit them:
 
 - **Frontmatter isn't exhaustive of a document's own real ids.**
   `docx2md.py` only extracts `links.components`/`links.apis` from a
-  document's dedicated References section (task 4.2). TMFS020's own body
+  document's dedicated References section. TMFS020's own body
   text, under "Main ODA Components involved in this process" beneath its
   Sequence Diagrams heading, names `TMFC001`, `TMFC002`, and `TMFC023` in
   plain text — real, correctly-formed TM Forum ids that never made it into
@@ -172,14 +169,12 @@ Feature: {ID}-F{feature-number} {Feature Title}
 - This repo has no `feature-definition-and-test-kit`-style directory of
   its own (that's an `oda-canvas`-specific test harness) — **don't write
   the `.feature` file into `knowledge/`**, which is generated,
-  regeneratable output per spec.md principle 3. Return the feature file
-  content to the caller; where they save it is their decision, not this
-  skill's.
+  regeneratable output. Return the feature file content to the caller;
+  where they save it is their decision, not this skill's.
 
 ## Sources footer — required on every output
 
-End every generated feature file with a citation block, since this is
-exactly what task 6.3 checks:
+End every generated feature file with a citation block:
 
 ```gherkin
 # Sources:
@@ -205,8 +200,8 @@ the scenario — go back to Step 2.
   test-kit phrasing onto a business scenario would misrepresent what's
   being tested.
 - Does not write output files into this repository — `knowledge/` is
-  skills-read-only generated content (spec.md principle 3); this skill's
-  output is a deliverable for the caller to place wherever their own test
-  suite lives.
+  skills-read-only generated content; this skill's output is a
+  deliverable for the caller to place wherever their own test suite
+  lives.
 - Does not skip Step 0 — a maturity caveat belongs on every output, not
   just GA ones.

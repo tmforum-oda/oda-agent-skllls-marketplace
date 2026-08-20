@@ -8,14 +8,10 @@ description: Given a TM Forum ODA component (TMFCxxx) or Open API (TMFxxx) id an
 ## What this skill answers
 
 "If we change TMFC020 (or TMF632, or a specific version of it), which use
-cases break, and how risky is that?" This is deliberately the second
-simplest skill against this repo's `${CLAUDE_PLUGIN_ROOT}/knowledge/` layout (spec.md §11.1),
-after `check-usecase-maturity`: it's pure reverse-link traversal over data
-`tools/build_index.py` already computed, plus a maturity cross-check — no
-document-body reading, no judgment calls about what a use case's prose
-means. It exists to prove the index alone already carries enough signal
-for impact analysis, the same way `check-usecase-maturity` proved
-frontmatter alone was enough for a maturity verdict.
+cases break, and how risky is that?" A pure reverse-link traversal over
+data `tools/build_index.py` already computes, plus a maturity cross-check
+— no document-body reading, no judgment calls about what a use case's
+prose means.
 
 ## Step 1 — Identify the id type and look it up
 
@@ -32,9 +28,8 @@ ${CLAUDE_PLUGIN_ROOT}/knowledge/index/apis.json         -- one row per (id, vers
 per `TMFCxxx`, so there's no ambiguity to resolve.
 
 **APIs are not** — `apis.json` can have multiple rows for the same `id`
-at different `version`s (the corpus doesn't currently have a case of this
-in practice, per spec.md §11's closing note, but `fetch_api.py` supports
-it and a future refresh could add one). If the proposed change is
+at different `version`s, since `fetch_api.py` allows multiple versions of
+one API to be cached side by side. If the proposed change is
 version-specific ("deprecating v4 in favor of v5"), match on **both**
 `id` and `version` and report only that version's `used_by` — merging
 across versions would overstate the blast radius of a version-specific
@@ -50,18 +45,17 @@ directly rather than proceeding as if it had one.
 
 Every row in `components.json`/`apis.json` carries a `used_by` field —
 sorted `TMFSxxx` ids, computed once by `build_index.py` from every use
-case's own `links.components`/`links.apis` forward links (spec.md §5.4).
-This is the entire "which use cases depend on this" answer — no need to
-grep the corpus.
+case's own `links.components`/`links.apis` forward links. This is the
+entire "which use cases depend on this" answer — no need to grep the
+corpus.
 
 **One real caveat, worth stating in the output, not just knowing
 privately**: `used_by` is only as complete as the frontmatter it's built
 from, and frontmatter is not always exhaustive of a use case's real
 dependencies — `docx2md.py`'s extraction is scoped to a document's own
-References section (spec.md §10's open question, found via TMFS020 in
-Phase 6.3). A component/API a use case names only in body prose (like
-TMFS020's own `TMFC001`/`002`/`023`) won't show up in `used_by` at all.
-Also cross-check `${CLAUDE_PLUGIN_ROOT}/knowledge/index/usecase-component-matrix.json` and
+References section. A component/API a use case names only in body prose
+(like TMFS020's own `TMFC001`/`002`/`023`) won't show up in `used_by` at
+all. Also cross-check `${CLAUDE_PLUGIN_ROOT}/knowledge/index/usecase-component-matrix.json` and
 `${CLAUDE_PLUGIN_ROOT}/knowledge/index/matrix-discrepancies.md` for the same id — if the id is
 one of the matrix-only entries there, the real blast radius is larger
 than `used_by` alone suggests. Say so in the report rather than silently

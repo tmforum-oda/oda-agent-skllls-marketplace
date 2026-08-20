@@ -7,12 +7,9 @@ description: Given a TM Forum ODA use-case id (TMFSxxx), reads its cached frontm
 
 ## What this skill answers
 
-"Is TMFSxxx safe to build against right now?" — a plain-language verdict, not
-a raw dump of frontmatter fields. This is deliberately the simplest skill
-against this repo's `${CLAUDE_PLUGIN_ROOT}/knowledge/` layout (spec.md §8.1): it reads only YAML
-frontmatter, zero document-body prose parsing, to prove the frontmatter
-schema alone carries enough signal to answer the maturity question before
-any more ambitious skill is built on top of it.
+"Is TMFSxxx safe to build against right now?" — a plain-language verdict,
+not a raw dump of frontmatter fields. Reads only YAML frontmatter, zero
+document-body prose parsing.
 
 ## Where the data lives
 
@@ -46,16 +43,14 @@ caller wants to know why it isn't there.
 
 ## Decision table
 
-Do not treat `maturity: GA` alone as "safe." **The single most important
-finding behind this skill existing** (spec.md §6.3): TM Forum's own catalog
+Do not treat `maturity: GA` alone as "safe." TM Forum's own catalog
 listing marks every `Available` document identically, whether it's a
-year-stable GA spec or a first-draft Alpha — and even within this repo's own
-24-use-case corpus, `GA` maturity and `TM Forum Approved` approval do NOT
-always travel together. `TMFS008` and `TMFS019A` are both `maturity: GA` but
-only `approval_status: Team Approved`, not `TM Forum Approved` — confirmed
-against the live corpus while building this skill, not a hypothetical edge
-case. Read both fields, always; never shortcut to a verdict from `maturity`
-alone.
+year-stable GA spec or a first-draft Alpha — and `GA` maturity and `TM
+Forum Approved` approval do NOT always travel together. `TMFS008` and
+`TMFS019A` are both `maturity: GA` but only `approval_status: Team
+Approved`, not `TM Forum Approved` — a real, current example in this
+corpus, not a hypothetical edge case. Read both fields, always; never
+shortcut to a verdict from `maturity` alone.
 
 | `maturity` | `approval_status` | Verdict |
 |---|---|---|
@@ -95,6 +90,5 @@ interpretation if they want to.
   follow-on skill, not built yet: cross-check a use case's linked
   components/APIs for their own status too.)
 - Does not query TM Forum's website — everything it needs is already in
-  `${CLAUDE_PLUGIN_ROOT}/knowledge/`, per this repo's provenance principle (spec.md principle 4):
-  "a skill must be able to answer 'is this safe to build against?' without
-  a network call."
+  `${CLAUDE_PLUGIN_ROOT}/knowledge/`; a skill must be able to answer "is this safe to build
+  against?" without a network call.
