@@ -1,0 +1,48 @@
+@startuml
+title HSS activation fallout - Order fallout analysis
+
+participant "Fallout\nManagement" as FM #lightgrey
+participant "Event\nManagement" as Event #grey
+participant "Resource Order Management" as ROM #blue
+participant "Resource Inventory" as RI #blue
+participant "Service Inventory" as SI #blue
+participant "Product Inventory" as PI
+participant "Resource Usage\nMagement" as RUM #blue
+
+note left of FM : continued from\nchapter 5.1.1.2
+
+FM -> FM : 1 Update fallout\n(state='Processing/Analysing')
+
+FM -> Event : 2 **TMF688 Event Management**\nPOST event falloutStateChange (falloutId, state="Processing/Analysing")
+activate Event
+Event --> FM : 3 **TMF688** 201 Created
+deactivate Event
+
+FM -> ROM : 4 **TMF652 Resource Order Management**\nGET /resourceOrder (id)
+activate ROM
+ROM --> FM : 5 **TMF652** 200 OK\n(resourceOrder, MSISDN)
+deactivate ROM
+
+FM -> RI : 6 **TMF639 Resource Inventory Management**\nGET /resource (msisdn)
+activate RI
+RI --> FM : 7 **TMF639** 204 No Content\n"No resources found"
+deactivate RI
+
+FM -> SI : 8 **TMF638 Service Inventory Management**\nGET /service (msisdn)
+activate SI
+SI --> FM : 9 **TMF638** 204 No Content\n"No services found"
+deactivate SI
+
+FM -> PI : 10 **TMF637 Product Inventory Management**\nGET /product (number)
+activate PI
+PI --> FM : 11 **TMF637** 204 No Content\n"No products found"
+deactivate PI
+
+FM -> RUM : 12 **TMF635 Usage Management**\nGET /usage (msisdn)
+activate RUM
+RUM --> FM : 13 **TMF635** 204 No Content\n"No usages found"
+deactivate RUM
+
+note left of FM : continued in\nchapter 5.1.1.4
+
+@enduml

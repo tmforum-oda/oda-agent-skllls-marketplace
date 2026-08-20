@@ -1,0 +1,29 @@
+@startuml
+title HSS activation fallout - Order fallout creation
+
+participant "Fallout\nManagement" as FM #lightgrey
+participant "Event\nManagement" as Event #grey
+participant "Resource Order\nManagement" as ROM #blue
+
+note right of ROM : continued from\nchapter 5.1.1.1
+
+ROM -> Event : 1 **TMF688 Event Management**\nPOST event resourceOrderException
+activate Event
+Event --> ROM : 2 **TMF688** 201 Created
+
+Event -> FM : 3 **TMF688 Event Management**\nPOST listener/resourceOrderException
+activate FM
+FM --> Event : 4 **TMF688** 201 Created
+deactivate Event
+
+FM -> FM : 5 Create fallout
+
+FM -> Event : 6 **TMF688 Event Management**\nPOST event falloutCreate (falloutId, state="Created")
+activate Event
+Event --> FM : 7 **TMF688** 201 Created
+deactivate Event
+deactivate FM
+
+note left of FM : continued in\nchapter 5.1.1.3
+
+@enduml

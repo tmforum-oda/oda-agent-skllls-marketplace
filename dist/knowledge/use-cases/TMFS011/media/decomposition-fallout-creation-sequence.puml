@@ -1,0 +1,26 @@
+@startuml
+title Service order decomposition fallout - Order fallout creation
+
+participant "Event\nManagement" as Event #grey
+participant "Fallout\nManagement" as FM #lightgrey
+
+note left of Event : continued from\nchapter 5.2.1.1
+
+Event -> FM : 1 **TMF688 Event Management**\nPOST listener/serviceOrderException
+activate FM
+FM --> Event : 2 **TMF688** 201 Created
+
+FM -> FM : 3 Create fallout
+
+FM -> Event : 4 **TMF688 Event Management**\nPOST event falloutCreate (falloutId, state="Created")
+Event --> FM : 5 **TMF688** 201 Created
+
+FM -> FM : 6 Update fallout\n(state="Processing/Analysing")
+
+FM -> Event : 7 **TMF688 Event Management**\nPOST event falloutStateChange (falloutId, "Processing/Analysing")
+Event --> FM : 8 **TMF688** 201 Created
+deactivate FM
+
+note right of FM : continuation in\nchapter 5.2.1.4
+
+@enduml

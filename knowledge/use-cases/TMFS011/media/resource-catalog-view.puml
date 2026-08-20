@@ -1,0 +1,53 @@
+@startuml
+title Figure 10: Resource catalog
+
+class "[Logical Resource]\nHSS Subscriber Profile" as HSSProfile {
+  subscriberProfile
+}
+class "[Logical Resource]\nVMS Profile" as VMSProfile {
+  vmsProfile
+}
+class "[API Resource]\nHSS API" as HSSAPI {
+  endpoint
+  protocol
+}
+class "[API Resource]\nVMS API" as VMSAPI {
+  endpoint
+  protocol
+}
+class "[Logical Resource]\nPCRF Profile" as PCRFProfile {
+  policy
+}
+class "[API Resource]\nPCRF API" as PCRFAPI {
+  endpoint
+  protocol
+}
+class "[Compound Resource]\nSIM Card" as CompoundSIMCard
+class "[Physical Resource]\nPhysical SIM" as PhysicalSIM {
+  iccid
+}
+class "[Logical Resource]\nSIM Profile" as SIMProfile {
+  type
+  imsi
+  puk
+}
+class "[Logical Resource]\nNumber" as Number {
+  msisdn
+}
+
+VMSProfile --> HSSProfile : requires
+HSSProfile --> HSSAPI : "uses configured"
+VMSProfile --> VMSAPI : "uses configured"
+
+CompoundSIMCard --> PhysicalSIM : "is composed of"
+CompoundSIMCard --> SIMProfile : "is composed of"
+
+HSSProfile --> SIMProfile : requires
+PCRFProfile --> SIMProfile : requires
+PCRFProfile --> PCRFAPI : "uses configured"
+
+PCRFProfile --> Number : requires
+VMSProfile --> Number : requires
+HSSProfile --> Number : requires
+
+@enduml

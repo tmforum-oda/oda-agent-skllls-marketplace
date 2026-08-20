@@ -1,0 +1,57 @@
+@startuml
+title HSS activation fallout - Order fallout completion (unsuccessful resolution)
+
+participant "Resource Inventory" as RI #blue
+participant "Resource Order\nManagement" as ROM #blue
+participant "Event\nManagement" as Event #grey
+participant "Fallout\nManagement" as FM #lightgrey
+participant "Resource Activation\nand Configuration" as RAC #blue
+participant "HSS"
+
+note right of FM : continued from\nchapter 5.1.1.3
+
+FM -> FM : 1 Update fallout\n(state='Processing/Resolving')
+
+FM -> Event : 2 **TMF688 Event Management**\nPOST event falloutStateChange\n(falloutId, state="Processing/Resolving")
+activate Event
+Event --> FM : 3 **TMF688** 201 Created
+deactivate Event
+
+FM -> RAC : 4 **TMF702 Resource Activation Management**\nDELETE /resource (HSS subscriber profile)
+activate RAC
+RAC --> FM : 5 **TMF702** 202 Accepted (HSS subscriber profile, monitorRef)
+
+RAC -> HSS : 6 **HSS API** (Remove HSS subscriber)
+activate HSS
+HSS --> RAC : 7 //<color:red>HSS API call error response</color>//
+deactivate HSS
+
+FM -> RAC : 8 **TMF702 Resource Activation Management**\nGET /monitor (monitorRef)
+RAC --> FM : 9 **TMF702** 200 OK (monitorState="InError")
+deactivate RAC
+
+FM -> FM : 10 Update fallout\n(state="Completed", result="not_resolved")
+
+FM -> Event : 11 **TMF688 Event Management**\nPOST event falloutStateChange\n(falloutId, state="Completed", result="not_resolved")
+activate Event
+Event --> FM : 12 **TMF688** 201 Created
+deactivate Event
+
+FM -> ROM : 13 **TMF652 Resource Order Management**\nPATCH resourceOrder\n(resourceOrderId, resourceOrderItemId, falloutResult="not_resolved")
+activate ROM
+ROM --> FM : 14 **TMF652** 200 OK
+
+ROM -> ROM : 15 update resourceOrderItem\nand resourceOrder (state="Cancelled")
+
+ROM -> Event : 16 **TMF688 Event Management**\nPOST event resourceOrderStateChange\n(resourceOrderItemState="Cancelled",\nresourceOrderState="Cancelled")
+activate Event
+Event --> ROM : 17 **TMF688** 201 Created
+deactivate Event
+
+ROM -> RI : 18 **TMF639 Resource Inventory Management**\nDELETE /resource (HSS subscriber profile)
+activate RI
+RI --> ROM : 19 **TMF639** 204 No Content
+deactivate RI
+deactivate ROM
+
+@enduml

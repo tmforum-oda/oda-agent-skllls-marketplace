@@ -1,0 +1,29 @@
+@startuml
+title HSS activation fallout - Order fallout detection
+
+participant "Event Management" as Event #grey
+participant "Resource Order\nManagement" as ROM #blue
+participant "Resource Activation\nand Configuration" as RAC #blue
+participant "HSS"
+
+ROM -> RAC : 1 **TMF702 Resource Activation Management**\nPOST /resource\n"HSS subscriber profile creation"
+activate RAC
+RAC --> ROM : 2 **TMF702** 202 Accepted (HSS subscriber profile, monitorRef)
+
+RAC -> HSS : 3 **HSS API**\n"HSS subscriber profile"
+activate HSS
+HSS --> RAC : 4 //<color:red>HSS API call error response</color>//
+deactivate HSS
+
+ROM -> RAC : 5 **TMF702 Resource Activation Management**\nGET /monitor (monitorRef)
+RAC --> ROM : 6 **TMF702** 200 OK\n"monitorState='InError'"
+deactivate RAC
+
+ROM -> ROM : 7 update HSS subscriber profile\nresourceOrderItem and resourceOrder (state="Held")
+
+ROM -> Event : 8 **TMF688 Event Management**\nPOST event resourceOrderStateChange\n(resourceOrderItemState="Held",\nresourceOrderState="Held")
+activate Event
+Event --> ROM : 9 **TMF688** 201 Created
+deactivate Event
+
+@enduml

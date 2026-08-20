@@ -1,0 +1,45 @@
+@startuml
+title Service order decomposition fallout - Order fallout resolution
+
+participant "Service Order\nManagement" as SOM #blue
+participant "Event\nManagement" as Event #grey
+participant "Fallout\nManagement" as FM #lightgrey
+actor "Operator" as Operator
+participant "Resource Catalog\nManagement" as RCM #blue
+
+note right of FM : continued from\nchapter 5.2.1.2
+
+FM -> FM : 1 Update fallout (state="Held")
+
+FM -> Event : 2 **TMF688 Event Management**\nPOST event falloutStateChange\n(falloutId, state="Held")
+activate Event
+Event --> FM : 3 **TMF688** 201 Created
+deactivate Event
+
+group Fallout resolution assignment
+
+    Operator -> FM : 4 Fallout resolution assignment
+    Operator -> Operator : 5 Fallout manual analysis
+
+    Operator -> RCM : 6 **TMF634 Resource Catalog Management**\nPATCH /resourceSpecification\n"msisdn characteristic valueType to String"
+    activate RCM
+    RCM --> Operator : 7 **TMF634** 200 OK
+    deactivate RCM
+
+    Operator -> FM : 8 Select action: continue
+
+end
+
+FM -> FM : 9 Update fallout\n(state="Completed", result="resolved")
+
+FM -> Event : 10 **TMF688 Event Management**\nPOST event falloutStateChange\n(falloutId, state="Completed", result="resolved")
+activate Event
+Event --> FM : 11 **TMF688** 201 Created
+deactivate Event
+
+FM -> SOM : 12 **TMF641 Service Order Management**\nPATCH resourceOrder\n(resourceOrderId, resourceOrderItemId, falloutResult="resolved")
+activate SOM
+SOM --> FM : 13 **TMF641** 200 OK
+deactivate SOM
+
+@enduml

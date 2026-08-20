@@ -1,0 +1,36 @@
+@startuml
+title HSS activation fallout - Order fallout resolution (manual, successful)
+
+participant "Resource Order\nManagement" as ROM #blue
+participant "Event\nManagement" as Event #grey
+participant "Fallout\nManagement" as FM #lightgrey
+actor "Operator" as Operator
+
+note right of FM : continued from\nchapter 5.1.1.3
+
+FM -> FM : 1 Update fallout\n(state="Held")
+
+FM -> Event : 2 **TMF688 Event Management**\nPOST event falloutStateChange (falloutId, state="Held")
+activate Event
+Event --> FM : 3 **TMF688** 201 Created
+deactivate Event
+
+Operator -> FM : 4 Manual analysis
+note right of FM : Offline actions
+Operator -> FM : 5 Select action : retry
+
+FM -> FM : 6 Update fallout\n(state="Completed", result="resolved")
+
+FM -> Event : 7 **TMF688 Event Management**\nPOST event falloutStateChange (falloutId, state="Completed", result="resolved")
+activate Event
+Event --> FM : 8 **TMF688** 201 Created
+deactivate Event
+
+FM -> ROM : 9 **TMF652 Resource Order Management**\nPATCH resourceOrder\n(resourceOrderId, resourceOrderItemId, falloutResult="resolved")
+activate ROM
+ROM --> FM : 10 **TMF652** 200 OK
+deactivate ROM
+
+note right of FM : continued in\nchapter 5.1.1.4
+
+@enduml

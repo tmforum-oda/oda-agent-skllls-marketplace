@@ -185,13 +185,15 @@ To elaborate that treatment in this use case we are considering the following as
 
 An order management process consists, at its most detailed level, as sequences of activities. A fallout process is initiated if the "main" process cannot complete an activity because a (specified) exception occurred. Not every exception might initiate a fallout management process. The concept of fallout embeds the possibility of a resolution (see also lifecycle below). If such resolution is considered to be impossible by the component or if the component considers the exception to be temporary, a fallout process might be unnecessary. The fallout process could be managed by the software component that implements the activity or by a different component. This subject is addressed in chapters 3.2 and 3.3.
 
-![](media/image01.png)
+![](media/primary-fallout-process-diagram.png)
+*([text description](media/primary-fallout-process-diagram.text-description.md))*
 
 Figure 1: (Primary) fallout process
 
 We assume that the order management will communicate the occurrence of the exception by raising a specific event. In the case of service orders, the serviceOrderExceptionEvent (as specified in [AP-2873](https://projects.tmforum.org/jira/browse/AP-2873?src=confmacro) - Add event for serviceOrderErrorMEssage ** in progress **) with a ServiceOrderErrorMessage sub-resource payload could be a candidate. Similar events should be made available at product order and resource order level. This is further discussed in chapter 3.2 and 3.3.
 
-![](media/image02.png)
+![](media/secondary-fallout-process-diagram.png)
+*([text description](media/secondary-fallout-process-diagram.text-description.md))*
 
 Figure 2: (Secondary) fallout process
 
@@ -211,7 +213,8 @@ The subscriber has been wrongly created during a data migration process, or has 
 
 Before examining the fallout situation, it is useful to visualize the happy paths, as illustrated in use case 008.
 
-![](media/image03.png)
+![](media/happy-path-state-diagram.png)
+*([text description](media/happy-path-state-diagram.text-description.md))*
 
 Figure 3: Happy path
 
@@ -227,7 +230,8 @@ Use case 008 has also implemented some "consistence" rules (term employed by TMF
 
 The following shows the path when a fallout is raised during completion of the HSS subscriber profile order item:
 
-![](media/image04.png)
+![](media/fallout-path-with-resolution-state-diagram.png)
+*([text description](media/fallout-path-with-resolution-state-diagram.text-description.md))*
 
 Figure 4: Fallout path with resolution
 
@@ -249,7 +253,8 @@ This consistence rule is used in the sequence diagrams below.
 
 The following shows the path when the fallout cannot be resolved (the state change events are not depicted, they follow figure 7):
 
-![](media/image05.png)
+![](media/fallout-path-without-resolution-state-diagram.png)
+*([text description](media/fallout-path-without-resolution-state-diagram.text-description.md))*
 
 Figure 5: Fallout path without resolution
 
@@ -277,7 +282,8 @@ This failure raises a service order exception and a fallout. The analysis of the
 
 The following depicts the path when a fallout is raised during the decomposition of the Mobile Line order item into the main resource order:
 
-![](media/image06.png)
+![](media/decomposition-fallout-path-state-diagram.png)
+*([text description](media/decomposition-fallout-path-state-diagram.text-description.md))*
 
 Figure 6: Fallout path with resolution
 
@@ -287,7 +293,8 @@ Figure 6: Fallout path with resolution
 
 We make the assumption that a fallout management process follows the lifecycle proposed in the next figure. The lifecycle state is however not sufficient for order management to resume execution of the order processing. E.g., the fallout management process could be completed with various results (successful resolution of the fallout or failure to resolve the fallout).
 
-![](media/image07.png)
+![](media/fallout-lifecycle-state-diagram.png)
+*([text description](media/fallout-lifecycle-state-diagram.text-description.md))*
 
 Figure 7: Order fallout lifecycle
 
@@ -309,7 +316,8 @@ The catalog proposed for this use case is a mobile offer based on a simplificati
 
 The following diagram depicts in detail the product catalog configuration:
 
-![](media/image08.png)
+![](media/product-catalog-view.png)
+*([PlantUML source](media/product-catalog-view.puml))*
 
 Figure 8: Product catalog
 
@@ -321,11 +329,13 @@ As we can see in the diagram, the mobile bundle is made up of the following elem
 
 - A SIM card product, required by the mobile line product.
 
-![](media/image09.png)
+![](media/service-resource-catalog-view.png)
+*([PlantUML source](media/service-resource-catalog-view.puml))*
 
 Figure 9: Service and resource catalog
 
-![](media/image10.png)
+![](media/resource-catalog-view.png)
+*([PlantUML source](media/resource-catalog-view.puml))*
 
 Figure 10: Resource catalog
 
@@ -333,7 +343,8 @@ Figure 10: Resource catalog
 
 The following order structure represents a product order based on the catalog configuration presented in the previous section. The product order would be decomposed in one resource order to supply the physical equipment, and one service order for mobile services. Each CFS of the mobile service order is decomposed in an RFS, which in turn would launch a resource order.
 
-![](media/image11.png)
+![](media/order-structure-view.png)
+*([PlantUML source](media/order-structure-view.puml))*
 
 Figure 11: Order structure
 
@@ -347,7 +358,8 @@ Figure 11: Order structure
 
 The sequence diagram starts before the HSS subscriber profile is activated. The related resource order item is in state "inProgress". The interested reader can refer to IG1228 UC008 for details on the sequences prior to the fallout (in particular figure 6.4.2.1 of UC008).
 
-![](media/image12.png)
+![](media/hss-fallout-detection-sequence.png)
+*([PlantUML source](media/hss-fallout-detection-sequence.puml))*
 
 Notes:
 
@@ -375,7 +387,8 @@ Even for this simple case, the analysis involves a range of production component
 
 The next issue concerns the interaction between the order management and fallout management components. We use the resourceOrderException event to signal the occurrence of the exception. Such event does not yet exist. Its introduction is contemplated for the service domain (see [AP-2873](https://projects.tmforum.org/jira/browse/AP-2873?src=confmacro) - Add event for serviceOrderErrorMEssage ** in progress **). The alignment between TMF641 (Service Order Management) and TMF652 (Resource Order Management API) will extend the event to the resource domain (see [AP-4078](https://projects.tmforum.org/jira/browse/AP-4078?src=confmacro) - Improve resourceorder with jeopardy, errorMessage and milestone ** open **). This exception uses the resourceOrderErrorMessage to communicate the details of the exception to external systems. TMF641 links the existence of the OrderErrorMessage to an error that causes a status change in the order. Though this is also the case here (the resource order (item) transitioned to "Held"), this condition might need to be relaxed i.e. an error and related message might not necessarily entail an order (item) status change.
 
-![](media/image13.png)
+![](media/hss-fallout-creation-sequence.png)
+*([PlantUML source](media/hss-fallout-creation-sequence.puml))*
 
 In the above (as well as in the remainder of this use case), we rely exclusively on events (using the Event Management API TMF688) with payloads specified in TMF652 (for the resource order error message). On the basis of the information contained in the resourceOrderErrorMessage, the Fallout Management component decides on the process to be carried out. This could be as simple as mapping an error code to an instance of a process library. The decision process could also involve complex mechanisms and support differentiation by suppliers of a Fallout Management component. The information model of the resourceOrderErrorMessage (by analogy with the serviceOrderErrorMessage) certainly supports a simple mapping. More complex decisions might require an extension of this information model.
 
@@ -387,7 +400,8 @@ In the remainder we distinguish between the fallout analysis and fallout resolut
 
 In this particular scenario, the fallout analysis sequence diagram would be as follows:
 
-![](media/image14.png)
+![](media/hss-fallout-analysis-sequence.png)
+*([PlantUML source](media/hss-fallout-analysis-sequence.puml))*
 
 It follows the analysis described in chapter 5.1.1.1. The Fallout Management component tries to determine whether the MSISDN is associated with a resource, service, product or usage event:
 
@@ -399,7 +413,8 @@ It follows the analysis described in chapter 5.1.1.1. The Fallout Management com
 
 #### Order fallout resolution
 
-![](media/image15.png)
+![](media/hss-fallout-resolution-sequence.png)
+*([PlantUML source](media/hss-fallout-resolution-sequence.puml))*
 
 Notes:
 
@@ -425,7 +440,8 @@ The types of checks performed are identical to the one of chapter 5.1.1.3. Howev
 
 #### Order fallout resolution
 
-![](media/image16.png)
+![](media/hss-fallout-manual-resolution-sequence.png)
+*([PlantUML source](media/hss-fallout-manual-resolution-sequence.puml))*
 
 Notes:
 
@@ -435,7 +451,8 @@ Notes:
 
 - The operator will log on to the fallout management component and perform a manual analysis of the information provided. An example of such a dashboard is shown below. This analysis might be followed by actions performed offline (i.e. outside the sequence diagram) on specific systems. After those actions, the order manager selects a possible action in the dashboard. In this example, we illustrate a "retry" option.
 
-![](media/image17.png)
+![](media/fallout-tracking-tool-mockup.png)
+*([text description](media/fallout-tracking-tool-mockup.text-description.md))*
 
 - The "retry" option will trigger the conclusion of the fallout treatment, which will reach the completed status with the result "resolved".
 
@@ -457,7 +474,8 @@ This sequence diagram is identical to the one of chapter 5.1.1.3. 
 
 #### Order fallout completion
 
-![](media/image18.png)
+![](media/hss-fallout-completion-unsuccessful-sequence.png)
+*([PlantUML source](media/hss-fallout-completion-unsuccessful-sequence.puml))*
 
 From this point onwards, the process diverges from the use case 008. Resources need to be rolled back (see below) and the cancellation of the resource order flows to SOM and modifies the downstream sequences in use case 008. The latter is out of scope of this use case.
 
@@ -465,7 +483,8 @@ From this point onwards, the process diverges from the use case 008. Resources n
 
 An extra step is required if the fallout cannot be resolved and the resource order is cancelled, namely the rollback of the resources that have already been configured as a result of completed resource order items that are part of the resource order.
 
-![](media/image19.png)
+![](media/hss-fallout-rollback-sequence.png)
+*([PlantUML source](media/hss-fallout-rollback-sequence.puml))*
 
 Notes:
 
@@ -479,7 +498,8 @@ Notes:
 
 #### Order fallout detection
 
-![](media/image20.png)
+![](media/decomposition-fallout-detection-sequence.png)
+*([PlantUML source](media/decomposition-fallout-detection-sequence.puml))*
 
 Notes:
 
@@ -491,7 +511,8 @@ Notes:
 
 #### Order fallout creation
 
-![](media/image21.png)
+![](media/decomposition-fallout-creation-sequence.png)
+*([PlantUML source](media/decomposition-fallout-creation-sequence.puml))*
 
 Notes:
 
@@ -505,7 +526,8 @@ Analysing the information received through the exception raised by the Service O
 
 #### Order fallout resolution
 
-![](media/image22.png)
+![](media/decomposition-fallout-resolution-sequence.png)
+*([PlantUML source](media/decomposition-fallout-resolution-sequence.puml))*
 
 The fallout management process continues after deciding that there is no automatic resolution available for this failure. Therefore, fallout reaches the ‘Held’ status:
 

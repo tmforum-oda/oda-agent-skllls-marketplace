@@ -1,0 +1,101 @@
+@startuml
+title Figure 9: Service and resource catalog
+
+legend
+  Dark green = Product Specification / light green = Product Specification Characteristic
+  Orange = Service Specification / light orange = Service Specification Characteristic
+  Olive = Resource Specification / pale yellow = Resource Specification Characteristic
+  Orange dashed = Service Usage Specification
+end legend
+
+class "SIM Card" as SIMCard <<ProductSpecification>>
+class "Voice Mail" as VoiceMail <<ProductSpecification>> {
+  mailboxSize
+}
+class "Mobile Line" as MobileLine <<ProductSpecification>> {
+  number
+  usageLimit
+}
+class "Recurring Bundle" as RecurringBundle <<ProductSpecification>> {
+  money
+}
+
+MobileLine --> SIMCard : requires
+VoiceMail --> MobileLine : requires
+RecurringBundle --> MobileLine : requires
+
+class "[Compound Resource]\nSIM Card" as CR_SIMCard {
+  iccid
+  formFactor
+}
+SIMCard --> CR_SIMCard : uses
+
+class "[Network Service CFS]\nVoice Mail" as CFS_VoiceMail {
+  mailboxSize
+}
+class "[Network Service CFS]\nMobile Line" as CFS_MobileLine {
+  msisdn
+  usageLimit
+}
+class "[Network Service  CFS]\nRecurring bundle" as CFS_RecurringBundle {
+  megas
+  messages
+  seconds
+  expirationDate
+}
+
+VoiceMail --> CFS_VoiceMail : restricts
+MobileLine --> CFS_MobileLine : restricts
+RecurringBundle --> CFS_RecurringBundle : restricts
+
+CFS_VoiceMail --> CFS_MobileLine : requires
+CFS_RecurringBundle --> CFS_MobileLine : requires
+
+class "National Voice" as US_NationalVoice <<ServiceUsageSpecification>>
+class "SMS" as US_SMS <<ServiceUsageSpecification>>
+class "Data" as US_Data <<ServiceUsageSpecification>>
+class "MMS" as US_MMS <<ServiceUsageSpecification>>
+class "Internation Voice" as US_InternationVoice <<ServiceUsageSpecification>>
+
+CFS_RecurringBundle --> US_NationalVoice : concerns
+CFS_RecurringBundle --> US_SMS : concerns
+CFS_RecurringBundle --> US_Data : concerns
+CFS_RecurringBundle --> US_MMS : concerns
+CFS_RecurringBundle --> US_InternationVoice : concerns
+
+CFS_MobileLine ..> US_NationalVoice : "describes usage of"
+
+class "[Network Service RFS]\nVoice Mail" as RFS_VoiceMail
+class "[Network Service RFS]\n4G enabled Mobile Line" as RFS_MobileLine
+class "[Network Service  RFS]\nUsage Bucket" as RFS_UsageBucket
+
+CFS_VoiceMail --> RFS_VoiceMail : "is realized by"
+CFS_MobileLine --> RFS_MobileLine : "is realized by"
+CFS_RecurringBundle --> RFS_UsageBucket : "is realized by"
+
+class "[Logical Resource]\nVMS Profile" as LR_VMSProfile {
+  vmsProfile
+}
+class "[Logical Resource]\nSIM profile" as LR_SIMProfile {
+  type
+  imsi
+  puk
+}
+class "[Logical Resource]\nHSS Subscriber Profile" as LR_HSSProfile {
+  subscriberProfile
+}
+class "[Logical Resource]\nNumber" as LR_Number {
+  msisdn
+}
+class "[Logical Resource]\nPCRF Profile" as LR_PCRFProfile {
+  policy
+}
+
+RFS_VoiceMail --> LR_VMSProfile : uses
+RFS_MobileLine --> LR_SIMProfile : uses
+RFS_MobileLine --> LR_HSSProfile : uses
+RFS_MobileLine --> LR_Number : uses
+RFS_UsageBucket --> LR_Number : uses
+RFS_UsageBucket --> LR_PCRFProfile : uses
+
+@enduml
