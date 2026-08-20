@@ -1,0 +1,130 @@
+@startuml
+title Service Qualification & Feasibility Check
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+participant "Product Order\nOrchestration &\nManagement" as POOM <<blackbox>>
+participant "Product Catalog\nManagement" as PCM <<blackbox>>
+participant "Event Mgt" as EventMgt #grey
+participant "Service Qualification\nManagement" as SQM #blue
+participant "Service Catalog\nManagement" as SCM #blue
+participant "Service Order\nManagement" as SOM #blue
+participant "Service Inventory" as SI #blue
+participant "Resource Order\nManagement" as ROM #blue
+
+== Step 6-8 ==
+
+POOM -> PCM : 1 **TMF620 Product Catalog Management**\nGET /productSpecification
+activate PCM
+PCM --> POOM : 2 **TMF620** 200 productSpecification details, CFSSpecification,\nresourceSpecification, //translationRules//
+deactivate PCM
+
+POOM -> SOM : 3 **TMF641 Service Ordering**\nPOST /serviceOrder (CFSSpecification)
+activate SOM
+
+== CSMF Responsibility ==
+
+note over SOM : CSMF receives the CFS Order and CFS Specification\nfor Business Slice and Service Profile
+
+SOM -> SOM : 4 validate CFS order\n(state="acknowledged")
+SOM --> POOM : 5 **TMF641** 201 serviceOrder (state="acknowledged")
+
+POOM -> POOM : 6 link productOrderItems and CFSOrderItems
+
+note over SOM : CSMF starts execution of the CFS Order
+SOM -> SOM : 7 start execution of CFSOrder
+
+group execute CFSOrder orchestration sequence
+
+    SOM -> SOM : 8 update CFSOrderItem (state="inProgress")
+
+    SOM -> EventMgt : 9 **TMF688 Event Management**\nPOST event serviceOrderStateChange\n(serviceOrderItemState="inProgress")
+    activate EventMgt
+    EventMgt --> POOM : 10 **TMF688 Event Management**\nPOST listener/serviceOrderStateChange\n(serviceOrderItemState="inProgress")
+    deactivate EventMgt
+
+    note over SOM : CSMF initiates Service Qualification\nChecks Business Slice (type) eligibility\nat given location (address)for given party profile
+
+    SOM -> SQM : 11 **TMF645 Service Qualification**\nPOST /serviceQualification (CFSSpecification)
+    SQM --> SOM : 12 **TMF645** 201 serviceQualification
+
+    note over SOM
+      CSMF initiates Business Slice CFS feasibility check
+      Feasibility of the Business slice is checked
+      for available/reusable Service alternatives
+      Additionally for Service Profile CFS, verifies
+      feasibility (Quantitative Analysis)
+    end note
+
+    note over SOM : CSMF translates the Service Profile CFS Charecteristics\nto the corresponding Service Profile RFS requirements\nneeded for Network Slice RFS processing
+
+    SOM -> SI : 13 **TMF638 Service Inventory Management**\nPOST /service (CFS) (state="feasibilityChecked")
+    SI --> SOM : 14 **TMF638** 201 CFS
+
+    note over SOM : CSMF deomposes CFS to corresponding RFS
+
+    SOM -> SCM : 15 **TMF633 Service Catalog Management**\nGET /serviceSpecification (CFSSpecification)
+    activate SCM
+    SCM --> SOM : 16 **TMF633** 200 RFS Specification
+    deactivate SCM
+
+    SOM -> SOM : 17 decide between RFS alternatives
+
+end
+
+== NSMF Responsibility ==
+
+note over SOM : NSMF initiates RFS feasibility check
+
+SOM -> SI : 18 **TMF638 Service Inventory Management**\nPOST /service (Slice RFS, Service Profile RFS) (state="feasibilityChecked")
+
+note over SOM : NSMF : Qualitative and Quantitative feasibility of Network Slice RFS and Service Profile RFS is checked
+
+SI --> SOM : 19 **TMF638** 201 RFS
+
+note over SOM : NSMF decomposes Network Slice RFS\nto Slice Subnet RFS (RAN/Core/Transport)
+
+SOM -> SCM : 20 **TMF633 Service Catalog Management**\nGET /serviceSpecification (RFS Specification)
+activate SCM
+SCM --> SOM : 21 **TMF633** 200 RFS Specification
+deactivate SCM
+
+SOM -> SOM : 22 decide between RFS alternatives
+
+note over SOM : NSMF translates the Service Profile RFS Charecteristics\nto the corresponding Slice Profile requirements\nneeded for Network Slice Subnet RFS processing
+
+== NSSMF Responsibility ==
+
+note over SOM : NSSMF initiates RFS feasibility check
+
+SOM -> SI : 23 **TMF638 Service Inventory Management**\nPOST /service (Slice RFS, Slice Profile RFS) (state="feasibilityChecked")
+
+note over SOM : NSSMF : Qualitative and Quantitative feasibility of Network Slice Subnet  RFS and Slice Profile RFS is checked
+
+SI --> SOM : 24 **TMF638** 201 RFS
+
+SOM -> SCM : 25 **TMF633 Service Catalog Management**\nGET /serviceSpecification (RFS Specification)
+activate SCM
+SCM --> SOM : 26 **TMF633** 200 resourceSpecification
+deactivate SCM
+
+note over SOM : NSSMF corresponding to each domain\nprepares resource order items
+SOM -> SOM : 27 build **resourceOrderItems**
+
+note over SOM : NSSMF initiates resource order fulfilment
+
+SOM -> ROM : 28 **TMF652 Resource Ordering Management**\nPOST /resourceOrder
+activate ROM
+ROM -> ROM : 29 validate resourceOrder
+ROM --> SOM : 30 **TMF652** 201 resourceOrder (state="acknowledged")
+
+ROM -> ROM : 31 start execution of\nresourceOrder
+deactivate ROM
+
+SOM -> SOM : 32 link serviceOrderItem and **resourceOrderItems**
+deactivate SOM
+
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+title Customer Order Processing
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+participant "Product Order\nCapture &\nValidation" as POCV <<blackbox>>
+participant "Event Mgt" as EventMgt #grey
+participant "Product Catalog" as ProductCatalog <<blackbox>>
+participant "Product Order\nOrchestration &\nManagement" as POOM <<blackbox>>
+participant "Product Inventory" as ProductInventory <<blackbox>>
+
+== Step 1-5 ==
+
+group Step 1 : Customer Order Received
+    note over POCV : Customer Order Processing Started
+end
+
+activate POCV
+POCV -> POCV : 1 Decompose Customer Order
+
+group for each productOrderItem
+
+    POCV -> ProductCatalog : 2 **TMF 620 Product Catalog Management**\nGET /productSpecification
+    ProductCatalog --> POCV : 3 **TMF 620** 200 productSpecification details
+
+    POCV -> POCV : 4 Validate Product Order
+
+end
+
+POCV -> EventMgt : 5 **TMF688 Event Management**\nPOST event productOrderStateChange\n(state="accepted")
+activate EventMgt
+EventMgt --> POOM : 6 **TMF688 Event Management**\nPOST listener/productOrderStateChange\n(state="accepted")
+deactivate EventMgt
+activate POOM
+
+POOM -> POOM : 7 start execution of **productOrderItems**
+POOM -> POOM : 8 update **productOrderItems**\n(state="inProgress)
+
+POOM -> POCV : 9 **TMF620 Product Catalog Management**\nPATCH /productOrder\n(product-specification-level **order items**\nstate="inProgress")
+deactivate POCV
+
+POOM -> ProductInventory : 10 **TMF637 Product Inventory Management**\nPATCH /product\n(product-specification-level **order items**\nstate="Pending Active")
+activate ProductInventory
+deactivate ProductInventory
+deactivate POOM
+
+@enduml

@@ -1,0 +1,66 @@
+@startuml
+title NFV Operation
+
+participant "Service Order\nManagement" as SOM #blue
+participant "Service Catalog\nManagement" as SCM #blue
+participant "Service Inventory" as SI #blue
+participant "Event Mgt" as EventMgt #grey
+participant "Resource Order\nManagement" as ROM #blue
+participant "Resource Catalog\nManagement" as RCM #blue
+participant "Resource Inventory" as RI #blue
+participant "NFV Orchestrator" as NFVO
+participant "5G Network Function" as NF5G #lightblue
+
+opt If NSSI to be created contain virtualization part
+
+    ROM -> NFVO : 15 **ETSI SOL005 Os-Ma-nfvo Reference Point**/nPOST .../subscriptions (NsdmSubscriptionRequest)
+    activate NFVO
+
+    opt If Testing the notification endpoint
+        NFVO -> ROM : 16 **ETSI SOL005** GET <<Callback URI>>
+        ROM -> NFVO : 17 **ETSI SOL005** 204 No Content
+    end
+
+    NFVO -> NFVO : 18 Create subscription resource
+    NFVO --> ROM : 19 **ETSI SOL005** 201 Created (NsdmSubscription)
+
+    ROM -> NFVO : 20 **ETSI SOL005 Os-Ma-nfvo Reference Point**\nPOST /ns_instances(CreateNsRequest)
+
+    NFVO -> NFVO : 21 Created NS instance resource
+    NFVO --> ROM : 22 **ETSI SOL005** 201 Created(NsInstanse)
+    NFVO --> ROM : 23 **ETSI SOL005** Send NsIdentifierCreationNotification
+
+    ROM -> RI : 24 **TMF639 Resource Inventory Management**\nPOST /resource\n(resourceStatus="planning")
+    activate RI
+    RI --> ROM : 25 **TMF639** 204 (No content)
+    deactivate RI
+
+    ROM -> NFVO : 26 **ETSI SOL005s-Ma-nfvo Reference Point**\nPOST /ns_instances/{nsInstanceId}/instantiate
+
+    NFVO -> NFVO : 27 NS Instantiation
+    NFVO --> ROM : 28 **ETSI SOL005** 202 Accepted ()
+    NFVO --> ROM : 29 **ETSI SOL005** Send NsLcmOperationOccurrenceNotification(start)
+    deactivate NFVO
+
+    ROM -> RI : 30 **TMF639 Resource Inventory Management**\nPATCH /resource\n(resourceStatus="available")
+    activate RI
+    RI --> ROM : 31 204 (No Content)
+    deactivate RI
+
+    ROM -> NFVO : 32 **ETSI SOL005 s-Ma-nfvo Reference Point**\nGET /ns_instances/{nsInstanceId}
+    activate NFVO
+    NFVO --> ROM : 33 **ETSI SOL005** 200 (NSInstance - Refer ETSI NFV SOL005, Clause 6.5.2.10 )
+    deactivate NFVO
+
+    ROM -> ROM : 34 Extract VNF Instances from NSInstance
+
+    opt for each VNF Instance - Update Resource Inventory
+        ROM -> RI : 35 **TMF639 Resource Inventory Management**\nPOST /resource (VNFInstance - Refer to ETSI NFV SOL005 , Clause 6.5.3.57)\n(resourceStatus ="standby" )
+        activate RI
+        RI --> ROM : 36 204
+        deactivate RI
+    end
+
+end
+
+@enduml

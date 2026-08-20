@@ -1,0 +1,62 @@
+@startuml
+title Step 9+ : NSSMF allocatNSSI operation for each domain (5G Core, Transport and RAN)
+
+participant "Service Order\nManagement" as SOM #blue
+participant "Service Catalog\nManagement" as SCM #blue
+participant "Service Inventory" as SI #blue
+participant "Event Mgt" as EventMgt #grey
+participant "Resource Order\nManagement" as ROM #blue
+
+SOM -> SOM : 1 <<3GPP>> allocateNSSI (SliceProfile with attribute list)
+
+SOM -> SI : 2 **TMF638 Service Inventory Management**\nGET /service
+activate SI
+SI --> SOM : 3 **TMF638** 201 RFS (Slice Profile RFS, Slice RFS, Slice Subnet RFS)
+deactivate SI
+
+SOM -> SCM : 4 **TMF633 Service Catalog Management**\nGET /serviceSpecification (RFS Specification)
+activate SCM
+SCM --> SOM : 5 **TMF633** 200 RFS Specification
+deactivate SCM
+
+note over SOM
+  a.Qualitative design based on functional and performance requirements as per slice profile
+  b.Quantitative design - Topology, Placement, and Resource Allocation Requirements
+end note
+
+SOM -> SI : 6 **TMF638 Service Inventory Management**\nPATCH /service\n(state="designed")
+activate SI
+SI --> SOM : 7 **TMF638** 201 RFS
+deactivate SI
+
+note over SOM : Network Slice Subnet RFS state marked as designed
+
+ref over SOM
+  modifyNSSI procedure
+end ref
+
+SOM -> SOM : 8 Create NSSI
+
+SOM -> SI : 9 **TMF638 Service Inventory Management**\nPOST /service\n(state="reserved")
+activate SI
+SI --> SOM : 10 **TMF638** 201 RFS
+deactivate SI
+
+note over SOM
+  a. prepare dependencies
+  b. prepare onnectivity demands
+  c. prepare service automation workflow
+end note
+
+SOM -> SOM : 11 Prepare resourceOrderItems
+
+SOM -> ROM : 12 **TMF652 Resource Order Management**\nPOST /resourceOrder
+activate ROM
+ROM -> ROM : 13 validate resourceOrder
+ROM --> SOM : 14 **TMF652** 201 resourceOrder (state="acknowledged")
+deactivate ROM
+
+note over ROM : Refer to "NSSI Level NFV Operation - For Virtualized Network Functions" diagram 5.5.2.2
+note over SOM : Refer to "NSSI Constituent Provisioning" diagram 5.5.2.3
+
+@enduml

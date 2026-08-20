@@ -1,0 +1,79 @@
+@startuml
+title Step 9+ (Network slice related service & resource order items) - NSMF Responsibility
+
+participant "Service Order\nManagement" as SOM #blue
+participant "Service Catalog\nManagement" as SCM #blue
+participant "Service Inventory" as SI #blue
+
+note over SOM : Receives Service order\nfor Network Slice RFS with\nService Profile reference
+
+== NSMF Responsibility ==
+
+SOM -> SOM : 1 Decompose Network Slice Order
+
+note over SOM : Derive Service Profile parameters\nand Network slice specific\nrequirements
+
+SOM -> SI : 2 **TMF638 Service Inventory Management**\nPOST /service\n(state="active")
+activate SI
+SI --> SOM : 3 **TMF638** 200 RFS (Service Profile)
+deactivate SI
+
+SOM -> SCM : 4 **TMF633 Service Catalog Management**\nGET /resourceSpecification
+activate SCM
+SCM --> SOM : 5 **TMF633** 200 Network Slice RFS Specifications, Service Profile RFS Specification
+deactivate SCM
+
+note over SOM : Get all the Network slice instances\nmatching the Service Profile
+
+SOM -> SI : 6 **TMF638 Service Inventory Management**\nGET /service\nfilter by Service Profile association, state="active"
+activate SI
+SI --> SOM : 7 **TMF638** 201 RFS (Network Slice RFS Instance)
+deactivate SI
+
+SOM -> SCM : 8 **TMF633 Service Catalog Management**\nGET /resourceSpecification
+activate SCM
+SCM --> SOM : 9 **TMF633** 200 Network Slice Subnet RFS Specifications, Slice Subnet Profile RFS Specification
+deactivate SCM
+
+note over SOM : Derive Slice Profile parameters and\nSlice Subnet related requirements
+
+SOM -> SI : 10 **TMF638 Service Inventory Management**\nPOST /service\n(state="active")
+activate SI
+SI --> SOM : 11 **TMF638** 200 RFS (Slice Profile)
+deactivate SI
+
+note over SOM : Check RFS alternatives
+
+note over SOM : Carry out qualitative and quantitative design.\nQualitative & Quantitative design based on Service Profile parameters
+
+SOM -> SI : 12 **TMF638 Service Inventory Management**\nPATCH /service\n(state="designed")
+activate SI
+SI --> SOM : 13 **TMF638** 201 RFS
+deactivate SI
+
+alt If New Slice Instance Required
+
+    opt for each NSS associated with NSI
+        note over SOM : **AllocateNSSI** on NSSMF
+        SOM -> SOM : 14 <<3GPP>>AllocateNSSI
+    end
+
+else If Existing Slice is Reused
+
+    opt If Modification of NSI parameters required
+        SOM -> SOM : 15 <<3GPP>>ModifyNSI Operation
+
+        SOM -> SI : 16 **TMF638 Service Inventory Management**\nPATCH /service\n(state="designed")
+        activate SI
+        SI --> SOM : 17 **TMF638** 201 RFS
+        deactivate SI
+    end
+
+    opt for each NSS associated with NSI
+        note over SOM : **modifyNSSI** on NSSMF
+        SOM -> SOM : 18 <<3GPP>>ModifyNSSI Operation
+    end
+
+end
+
+@enduml

@@ -161,13 +161,15 @@ Extended/Optional Offerings:
 
 - Hosted Edge - optional Edge network to be hosted on the customer premise to support the communication service. In the drone operator scenario this can be a hosted edge where the edge application and other drone control applications may be deployed
 
-![](media/image01.png)
+![](media/5g-slice-catalog-view.png)
+*([PlantUML source](media/5g-slice-catalog-view.puml))*
 
 Figure 3.1.1: Catalog view of the 5G Network Slice Management 
 
 ## Order Structure
 
-![](media/image02.png)
+![](media/order-structure-view.png)
+*([PlantUML source](media/order-structure-view.puml))*
 
 Figure 3.2.1: Example of Order Structure
 
@@ -177,7 +179,8 @@ Note: This diagram depicts an example of an Order Structure with a limited list 
 
 ## High Level Flow 
 
-![](media/image03.png)
+![](media/end-to-end-high-level-flow-diagram.png)
+*([text description](media/end-to-end-high-level-flow-diagram.text-description.md))*
 
 Figure 4.1.1: End to End High Level Flow
 
@@ -185,37 +188,44 @@ Note: Operations like serviceability/feasibility not shown. Above picture shows 
 
 ## Steps 1-5 : Customer Order processing 
 
-![](media/image04.png)
+![](media/customer-order-processing-sequence.png)
+*([PlantUML source](media/customer-order-processing-sequence.puml))*
 
 ## Steps 6-8 : Service Qualification & Feasibility Check
 
-![](media/image05.png)
+![](media/service-qualification-feasibility-sequence.png)
+*([PlantUML source](media/service-qualification-feasibility-sequence.puml))*
 
 ## Steps 8-9 : Detail for each Resource Order
 
 Note: For the 5G Slice provisioning it may be necessary to cross check the slice profile information corresponding to different domains for optimizing the configurations. For example provisioning the resources for core network domain it may be necessary for the Quantitative and Qualitative analysis algorithm to cross check the slice profile corresponding to core slice subent with slice profile for the RAN and Transport domain. It is assumed that implementation specific strategies are used in such cases for example a local copy of profile is stored locally at the resource provisioning layer (while ensuring consistency) for performance and efficiency, but these strategies are beyond the scope of this use case .     
 
-![](media/image06.png)
+![](media/resource-order-detail-sequence.png)
+*([PlantUML source](media/resource-order-detail-sequence.puml))*
 
 ## Steps 9+: Network slice related service & resource order items
 
 ### NSMF Responsibility
 
-![](media/image07.png)
+![](media/nsmf-responsibility-sequence.png)
+*([PlantUML source](media/nsmf-responsibility-sequence.puml))*
 
 ### NSSMF Responsibility
 
 #### NSSI Allocation
 
-![](media/image08.png)
+![](media/nssi-allocation-sequence.png)
+*([PlantUML source](media/nssi-allocation-sequence.puml))*
 
 #### NSSI Level NFV Operation - For Virtualized Network Functions 
 
-![](media/image09.png)
+![](media/nssi-level-nfv-operation-sequence.png)
+*([PlantUML source](media/nssi-level-nfv-operation-sequence.puml))*
 
 #### NSSI Constituent Provisioning 
 
-![](media/image10.png)
+![](media/nssi-constituent-provisioning-sequence.png)
+*([PlantUML source](media/nssi-constituent-provisioning-sequence.puml))*
 
 # Conclusion
 
