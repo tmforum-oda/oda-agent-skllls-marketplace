@@ -2,7 +2,7 @@
 
 A machine-readable, provenance-tracked knowledge base built from TM Forum's
 Open Digital Architecture (ODA) — use cases (`TMFSxxx`), ODA Components
-(`TMFCxxx`), and Open APIs (`TMFxxx`) — organized so that Claude Agent
+(`TMFCxxx`), and Open APIs (`TMFxxx`) — organized so that Agent
 Skills can query it directly, without re-parsing DOCX/PDF or guessing
 whether a document is safe to build against.
 
@@ -16,7 +16,7 @@ explanation — read those two for *why* the repo looks like this.
 ```
 references/   raw downloaded input -- DOCX/PDF, unmodified, for provenance and re-conversion
 knowledge/    generated, agent-facing corpus -- what skills actually read
-skills/       Claude Agent Skills built against knowledge/
+skills/       Agent Skills built against knowledge/
 tools/        the conversion/fetch/index pipeline that produces knowledge/ from references/
 spec/         spec.md (design), tasks.md (build log), refresh-runbook.md (assisted-track checklist)
 ```
@@ -88,6 +88,10 @@ skill-run time (spec.md §8):
 
 - [`skills/check-usecase-maturity/`](skills/check-usecase-maturity/SKILL.md) — given a `TMFSxxx` id, a plain-language "is this safe to build against" verdict from frontmatter alone.
 - [`skills/generate-test-cases-from-usecase/`](skills/generate-test-cases-from-usecase/SKILL.md) — given a `TMFSxxx` id, drafts BDD/Gherkin test scenarios grounded in the use case's real linked components/APIs and their cached schemas, citing every id back to its exact source.
+
+Using these skills from another repository? See [`CONSUMING.md`](CONSUMING.md) —
+`skills/` needs `knowledge/` alongside it as a sibling, and a sparse
+partial clone gets you both without `references/`'s DOCX/PDF weight.
 
 ## Tools
 
