@@ -89,7 +89,8 @@ John, an agent working for a CSP (Communications Service Provider) agency, will 
 
 - **Validate and Attach Document:** Finally, John will validate the legal document provided by Marie and attach it to Bob's party record as proof of guardianship.
 
-![](media/image01.png)
+![](media/legal-guardian-screen-flow-mockup.png)
+*([text description](media/legal-guardian-screen-flow-mockup.text-description.md))*
 
 **BPMN Diagram :**
 
@@ -99,7 +100,8 @@ John, an agent working for a CSP (Communications Service Provider) agency, will 
 
 This data model outlines the parties, roles, and permissions involved in the "legal guardian" configuration use case before the "legal guardian" is set up. It serves as a foundation for modeling the changes introduced by the "legal guardian" configuration.
 
-![](media/image02.png)
+![](media/as-is-party-roles-permissions-view.png)
+*([PlantUML source](media/as-is-party-roles-permissions-view.puml))*
 
 ## View Data Model after Guardianship operation: 
 
@@ -107,27 +109,32 @@ This data model outlines the parties, roles, and permissions involved in the "le
 
 This data model segment focuses on the interaction initiated by Marie, where she contacts John, an employee of the operator, to request her configuration as Bob's legal guardian. She provides the court judgment as supporting documentation.
 
-![](media/image03.png)
+![](media/guardian-communication-interaction-view.png)
+*([PlantUML source](media/guardian-communication-interaction-view.puml))*
 
 ### SID representation :"Bob Party Role & Permissions" :
 
 This section of the data model demonstates the impact on Bob's party role and permissions following his placement under Marie's guardianship. As a result of this change, Bob assumes a new role as a "Protected Customer" with restricted permissions.
 
-![](media/image04.png)
+![](media/bob-party-role-permissions-view.png)
+*([PlantUML source](media/bob-party-role-permissions-view.puml))*
 
 ###  SID representation : " Marie Party Role & Permissions ":
 
 This segment of the data model depicts the representation of Marie's new party role as Bob's legal guardian and the permissions associated with this role.
 
-![](media/image05.png)
+![](media/marie-party-role-permissions-view.png)
+*([PlantUML source](media/marie-party-role-permissions-view.puml))*
 
 # Sequence diagrams
 
 Part 1: Search tutoree &Legal Guardian:
 
-![](media/image06.png)
+![](media/search-tutoree-legal-guardian-part1-sequence.png)
+*([PlantUML source](media/search-tutoree-legal-guardian-part1-sequence.puml))*
 
-![](media/image07.png)
+![](media/grant-legal-guardianship-part2-sequence.png)
+*([PlantUML source](media/grant-legal-guardianship-part2-sequence.puml))*
 
 # Conclusion
 

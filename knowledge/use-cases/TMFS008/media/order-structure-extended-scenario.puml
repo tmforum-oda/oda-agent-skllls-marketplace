@@ -1,0 +1,74 @@
+@startuml
+title Figure 7: Order structure for extended scenario
+
+package "Product Order" #E2F0D9 {
+  class "*User Equipment" as PO_UserEquipment <<add>>
+  class "*eSIM" as PO_eSIM <<add>>
+  class "Mobile Line" as PO_MobileLine <<add>>
+  class "Voice Mail" as PO_VoiceMail <<add>>
+  class "Recurring Package" as PO_RecurringPackage <<add>>
+  class "Extra Data Package" as PO_ExtraDataPackage <<add>>
+
+  PO_eSIM --> PO_MobileLine : Requires
+  PO_VoiceMail --> PO_MobileLine : Requires
+  PO_RecurringPackage --> PO_MobileLine : Requires
+  PO_ExtraDataPackage --> PO_MobileLine : Requires
+}
+
+class "*[Physical Resource]\nUser Equipment" as RES_UserEquipment <<add>>
+PO_UserEquipment --> RES_UserEquipment
+
+package "Service Order (CFS)" #FFE0B2 {
+  class "*[Network Service CFS]\neSIM Template" as CFS_eSIMTemplate <<add>>
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine <<add>>
+  class "[Network Service CFS]\nVoice Mail" as CFS_VoiceMail <<add>>
+  class "[Network Service CFS]\nRecurring Package" as CFS_RecurringPackage <<add>>
+  class "[Network Service CFS]\nData Package" as CFS_DataPackage <<add>>
+
+  CFS_MobileLine --> CFS_eSIMTemplate : Requires
+  CFS_VoiceMail --> CFS_MobileLine : Requires
+  CFS_RecurringPackage --> CFS_MobileLine : Requires
+  CFS_DataPackage --> CFS_MobileLine : Requires
+}
+
+PO_eSIM --> CFS_eSIMTemplate
+PO_MobileLine --> CFS_MobileLine
+PO_VoiceMail --> CFS_VoiceMail
+PO_RecurringPackage --> CFS_RecurringPackage
+PO_ExtraDataPackage --> CFS_DataPackage
+
+package "Resource Order (RFS) - Internal SOM Decomposition" #FFF6E0;line.dotted {
+  class "*[Network Service RFS]\neSIM Templat" as RFS_eSIMTemplat <<add>>
+  class "*[Network Service RFS]\n5G Mobile Line" as RFS_5GMobileLine <<add>>
+  class "[Network Service RFS]\nVoice Mail" as RFS_VoiceMail <<add>>
+  class "[Network Service RFS]\nUnified Package (Recurring)" as RFS_UnifiedPackage1 <<add>>
+  class "[Network Service RFS]\nUnified Package (Data)" as RFS_UnifiedPackage2 <<add>>
+}
+
+CFS_eSIMTemplate --> RFS_eSIMTemplat
+CFS_MobileLine --> RFS_5GMobileLine
+CFS_VoiceMail --> RFS_VoiceMail
+CFS_RecurringPackage --> RFS_UnifiedPackage1
+CFS_DataPackage --> RFS_UnifiedPackage2
+
+class "*[Logical Resource]\neSIM Profile" as LR_eSIMProfile <<add>>
+class "*[Logical Resource]\nPCF Profile" as LR_PCFProfile <<add>>
+class "[Logical Resource]\nNumber" as LR_Number <<modify>>
+class "[Logical Resource]\nLogical SIM" as LR_LogicalSIM <<modify>>
+class "*[Logical Resource]\nUDM/UDR Subscriber Profile" as LR_UDMProfile <<add>>
+class "*[Logical Resource]\nOCS Profile" as LR_OCSProfile <<add>>
+class "[Logical Resource]\nVMS Profile" as LR_VMSProfile <<add>>
+class "*[Logical Resource]\nPCF Profile" as LR_PCFProfile1 <<modify>>
+class "[Logical Resource]\nPCF Profile" as LR_PCFProfile2 <<modify>>
+
+RFS_eSIMTemplat --> LR_eSIMProfile
+RFS_5GMobileLine --> LR_PCFProfile
+RFS_5GMobileLine --> LR_Number
+RFS_5GMobileLine --> LR_LogicalSIM
+RFS_5GMobileLine --> LR_UDMProfile
+RFS_5GMobileLine --> LR_OCSProfile
+RFS_VoiceMail --> LR_VMSProfile
+RFS_UnifiedPackage1 --> LR_PCFProfile1
+RFS_UnifiedPackage2 --> LR_PCFProfile2
+
+@enduml

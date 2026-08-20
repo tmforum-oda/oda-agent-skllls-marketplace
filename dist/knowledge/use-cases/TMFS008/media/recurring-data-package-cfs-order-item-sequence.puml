@@ -1,0 +1,51 @@
+@startuml
+title Figure 20: Recurring Package &amp; Data Package CFS Order Item Processing
+
+participant "Resource Inventory" as RI #blue
+participant "Resource Order\nManagement" as ROM #blue
+participant "Event Management" as Event #grey
+participant "Resource Activation\n&amp; Configuration" as RAC #blue
+participant "Resource Catalog\nManagement" as RCM #blue
+participant "PCF"
+
+== Step 3 (Recurring and Data Package) ==
+
+ROM -> RCM : 1 **TMF634 Resource Catalog Management**\nGET /resourceSpecification
+RCM --> ROM : 2 **TMF634** 200 PCF profile specification
+
+ROM -> RI : 3 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 4 **TMF639** 200 Logical SIM card, Number
+
+ROM -> RI : 5 **TMF639 Resource Inventory Management**\nPOST /resource\n(PCF profile, resourceStatus="standby")
+RI --> ROM : 6 **TMF639** 201 PCF profile
+
+ROM -> RAC : 7 **TMF702 Resource Activation**\nPOST /resource (PCF profile)
+activate RAC
+RAC --> ROM : 8 **TMF702** 201 PCF profile
+
+RAC -> RCM : 9 **TMF634 Resource Catalog Management** GET /resourceSpecification (PCF API)
+RCM --> RAC : 10 **TMF634** 200 PCF API specification
+
+ROM -> RI : 11 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 12 **TMF639** 200 API endpoint
+
+RAC -> PCF : 13 **PCF API call** (PCF profile)
+activate PCF
+PCF --> RAC : 14 **PCF API call** response
+deactivate PCF
+
+RAC -> Event : 15 **TMF688 Event Management**\nPOST event resourceStateChange\n(state="available")
+deactivate RAC
+activate Event
+Event -> ROM : 16 **TMF688 Event Management**\nPOST listener/resourceStateChange\n(state="available")
+deactivate Event
+
+ROM -> RI : 17 **TMF639 Resource Inventory Management**\nPATCH /resource\n(PCRF profile, resourceStatus="available")
+RI --> ROM : 18 **TMF639** 204
+
+ROM -> RI : 19 **TMF639 Resource Inventory Management** PATCH /resource\n(Logical SIM card, Number)
+RI --> ROM : 20 **TMF639** 204
+
+ROM -> ROM : 21 update resourceOrderItem (state="completed")
+
+@enduml

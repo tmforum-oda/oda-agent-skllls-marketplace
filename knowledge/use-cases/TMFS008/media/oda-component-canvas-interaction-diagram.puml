@@ -1,0 +1,38 @@
+@startuml
+title Figure 23: ODA Component diagram
+
+package "CSP Canvas" {
+  class "Product Order Capture & Validation\n(TMFC002)" as POCV
+  class "Product Order Delivery Orchestration & Mgmt\n(TMFC003)" as PODOM
+  class "Product Catalog Mgmt\n(TMFC001)" as PCM
+  class "Product Inventory Mgmt\n(TMFC005)" as PIM
+  class "Service Order Mgmt\n(TMFC007)" as SOM
+  class "Service Qualification Mgmt\n(TMFC009)" as SQM
+  class "Service Catalog Mgmt\n(TMFC006)" as SCM
+  class "Service Inventory Mgmt\n(TMFC008)" as SIM
+  class "Resource Order Mgmt\n(TMFC011)" as ROM
+  class "Resource Catalog Mgmt\n(TMFC010)" as RCM
+  class "Resource Inventory Mgmt\n(TMFC012)" as RIM
+  class "Resource Configuration & Activation Mgmt\n(TMFC062)" as RCAM
+
+  POCV --> PODOM : TMF622
+  PODOM --> PCM : TMF620
+  PODOM --> PIM : TMF637
+  PODOM --> SOM : TMF641
+  PODOM --> ROM : TMF652
+  SOM --> SQM : TMF645
+  SOM --> SCM : TMF633
+  SOM --> SIM : TMF638
+  SOM --> ROM : TMF652
+  ROM --> RCM : TMF634
+  ROM --> RIM : "TMF639/TMF685"
+  ROM --> RCAM : TMF702
+}
+
+package "Logistic Partner" {
+  class "Supply Chain Mgmt\n(TMFC032)" as SCPM
+}
+
+ROM --> SCPM : TMF700
+
+@enduml

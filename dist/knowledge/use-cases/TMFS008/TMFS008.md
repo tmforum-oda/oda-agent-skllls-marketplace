@@ -150,7 +150,8 @@ The following additional assumptions are made:
 
 The use case starts once a valid product order has been raised. The starting point is similar to that of TMFS004. The use case will subsequently move the service and resource orders through the order lifecycle as defined in the relevant Open API specifications. The first version of the use case considers the happy path "Acknowledged → In Progress → Completed", which is common to the 2 types of orders (and specified in TMF641 and TMF652). State changes of related orders in different domains have dependencies, as shown in the following diagram.
 
-![](media/image01.png)
+![](media/order-state-dependencies-diagram.png)
+*([text description](media/order-state-dependencies-diagram.text-description.md))*
 
 **Figure 1: Order state changes and use case steps**
 
@@ -228,7 +229,8 @@ These offers are linked with product specifications, which will drive the produc
 
 To model the usage available to the customer, we are using the ProductUsageSpecification entity, along with bucket product specifications, described in the latest versions of the SID model. However, it is not supported by any API yet; this aspect is addressed as part of the sequence diagrams.
 
-![](media/image02.png)
+![](media/product-catalog-view.png)
+*([PlantUML source](media/product-catalog-view.puml))*
 
 **Figure 2: Product catalog**
 
@@ -242,7 +244,8 @@ Service and resource catalog view
 
 The product specifications described above can be linked with resource specifications of the resource catalog or customer-facing service specifications of the service catalog. The following figure represents those relationships, as well as the configuration of the service catalog:
 
-![](media/image03.png)
+![](media/service-resource-catalog-view.png)
+*([PlantUML source](media/service-resource-catalog-view.puml))*
 
 **Figure 3:** **Service and resource catalog**
 
@@ -270,7 +273,8 @@ The logical resources that represent profiles are provided by network resources.
 
 It is not strictly necessary that the network resources, like HSS (UDM/UDR) and PCRF (PCF), are fully represented as resource specifications in the resource catalog, because most of their characteristics are static elements outside the scope of customer order management processes.
 
-![](media/image04.png)
+![](media/resource-catalog-relationships-view.png)
+*([PlantUML source](media/resource-catalog-relationships-view.puml))*
 
 **Figure 4: Resource catalog relationships view**
 
@@ -306,7 +310,8 @@ As regards the decomposition of the orders into ordered items, the proposed orde
 
 Order structure for Base Scenario 
 
-![](media/image05.png)
+![](media/order-structure-base-scenario.png)
+*([PlantUML source](media/order-structure-base-scenario.puml))*
 
 **Figure 5: Order structure for base scenario**
 
@@ -320,17 +325,20 @@ The Logical SIM and Number resource order item actions consist of status "modify
 
 This catalog configuration and order structure lead to the following orchestrations between order items at the various layers.
 
-![](media/image06.png)
+![](media/base-scenario-orchestration-diagram.png)
+*([text description](media/base-scenario-orchestration-diagram.text-description.md))*
 
 **Figure 6: Base scenario orchestration**
 
  Order structure for Extended Scenario 
 
-![](media/image07.png)
+![](media/order-structure-extended-scenario.png)
+*([PlantUML source](media/order-structure-extended-scenario.puml))*
 
 **Figure 7: Order structure for extended scenario**
 
-![](media/image08.png)
+![](media/extended-scenario-orchestration-diagram.png)
+*([text description](media/extended-scenario-orchestration-diagram.text-description.md))*
 
 **Figure 8: Extended scenario orchestration**
 
@@ -344,7 +352,8 @@ Step 0: Product order handling aspects
 
 The following shows the preliminaries at the product-order level that lead to the creation of the service and resource orders that are within the scope of the use case.
 
-![](media/image09.png)
+![](media/step0-product-order-preliminaries-sequence.png)
+*([PlantUML source](media/step0-product-order-preliminaries-sequence.puml))*
 
 **Figure 9: Preliminaries**
 
@@ -368,7 +377,8 @@ Step 1: Tangible product delivery
 
 The following deals with the handling of the resource orders that directly fulfil a product order, namely SIM card (base scenario) and User Equipment (extended scenario). Step 1 involves the supply chain management of the CSP and its partners.
 
-![](media/image10.png)
+![](media/step1-tangible-product-delivery-sequence.png)
+*([PlantUML source](media/step1-tangible-product-delivery-sequence.puml))*
 
 **Figure 10: Sequence diagram for step 1 (both scenarios)**
 
@@ -384,7 +394,8 @@ Notes:
 
 - This use case implements TMF652 to manage the delivery of the product-related resources. A similar scenario is considered by IG1228's use case 004. In the latter, the TMF700 interface is called directly from the Product Order Delivery Orchestration & Management component— the approach proposed here considers delegating the coordination of those calls to the Resource Order Management component. Both implementations are not entirely satisfactory, and section 4.4.1 of use case TMFS004 sets out some of the issues. This point will likely lead to updates of the above in subsequent versions of IG1228, as the discussion on the Supply Chain Management component and related APIs matures.
 
-![](media/image11.png)
+![](media/step1-sim-card-completion-sequence.png)
+*([PlantUML source](media/step1-sim-card-completion-sequence.puml))*
 
 **Figure 11: Base Scenario - Completion of the resource order (item) related to the SIM card product**
 
@@ -406,7 +417,8 @@ Base Scenario Notes:
 
 - For the SIM card status values, the resourceStatus field of TMF639 is used. The SIM card status is set to "standby" before activation by the subscriber.
 
-![](media/image12.png)
+![](media/step1-user-equipment-completion-sequence.png)
+*([PlantUML source](media/step1-user-equipment-completion-sequence.puml))*
 
 **Figure 12: Extended Scenario - Completion of the resource order (item) related to the User Equipment product**
 
@@ -426,7 +438,8 @@ Step 2: Service & related resource order initiation
 
 The orchestration at the CFS level (according to the diagrams in chapter 4) is reflected in the following:
 
-![](media/image13.png)
+![](media/step2-service-resource-order-initiation-sequence.png)
+*([PlantUML source](media/step2-service-resource-order-initiation-sequence.puml))*
 
 **Figure 13: Sequence diagram for step 2**
 
@@ -444,7 +457,8 @@ Step 3: Common sequences
 
 The following sequences are generic to the base and extended scenarios.
 
-![](media/image14.png)
+![](media/step3-resource-order-completion-sequence.png)
+*([PlantUML source](media/step3-resource-order-completion-sequence.puml))*
 
 **Figure 14: Step 3 sequence diagram for a resource order**
 
@@ -456,7 +470,8 @@ Notes:
 
 Step 3: CFS Order Processing for Base Scenario
 
-![](media/image15.png)
+![](media/step3-hss-profile-completion-sequence.png)
+*([PlantUML source](media/step3-hss-profile-completion-sequence.puml))*
 
 **Figure 15: Completion of the HSS subscriber profile resource order item**
 
@@ -472,17 +487,20 @@ Notes:
 
 The completion of the Bucket and Voice mail-related resource order items follows the same pattern. They do not introduce new insights or requirements with respect to the involved components (without prejudice to what is said above about separation between order management and activation).
 
-![](media/image16.png)
+![](media/step3-bucket-rfs-completion-sequence.png)
+*([PlantUML source](media/step3-bucket-rfs-completion-sequence.puml))*
 
 **Figure 16: Completion of the resource order item related to the Bucket RFS**
 
-![](media/image17.png)
+![](media/step3-voice-mail-rfs-completion-sequence.png)
+*([PlantUML source](media/step3-voice-mail-rfs-completion-sequence.puml))*
 
 **Figure 17: Completion of the resource order item related to the Voice Mail RFS**
 
 Step 3: CFS Order Processing for Extended Scenario
 
-![](media/image18.png)
+![](media/esim-profile-cfs-order-item-sequence.png)
+*([PlantUML source](media/esim-profile-cfs-order-item-sequence.puml))*
 
 **Figure 18: eSIM Profile CFS Order Item Processing **
 
@@ -512,7 +530,8 @@ Note : 
 
 - The resource status in the diagram follows the recommended states as per the GSMA SGP.22 Specification (as maintained by SM-DP+), which can be mapped to the Resource Inventory level state (available, standby, etc.) 
 
-![](media/image19.png)
+![](media/5g-mobile-line-cfs-order-item-sequence.png)
+*([PlantUML source](media/5g-mobile-line-cfs-order-item-sequence.puml))*
 
 **Figure 19: 5G Mobile Line CFS Order Item Processing **
 
@@ -528,7 +547,8 @@ Note : 
 
 - It is the implementation decision to choose between an existing OCS functionality deployed by the Operator, or the 3GPP-recommended Converged Charging Function (CHF). In the case of OCS, a corresponding OCS profile should be created, and similarly, a profile will be created for CHF as recommended by 3GPP. (Given the complexity of OCS/CHF discussion (ODA or network component), it is delayed until the next Sprint. 
 
-![](media/image20.png)
+![](media/recurring-data-package-cfs-order-item-sequence.png)
+*([PlantUML source](media/recurring-data-package-cfs-order-item-sequence.puml))*
 
 **Figure 20: ** **Recurring Package & Data Package CFS Order Item Processing**
 
@@ -538,7 +558,8 @@ Notes:
 
 - Further, the Logical SIM and Number, PCF profile details, and the required associations are modified through the PATCH operation on the Resource Inventory.
 
-![](media/image21.png)
+![](media/logical-sim-number-completion-sequence.png)
+*([PlantUML source](media/logical-sim-number-completion-sequence.puml))*
 
 **Figure 21: Completion of the Logical SIM & Number resource order items**
 
@@ -606,13 +627,15 @@ Following the previously established criteria, the diagram below illustrates the
 
 In this diagram, we will see how the components TMFC003 Product Order Delivery Orchestration & Management, TMFC007 Service Order Management, TMFC008 Service Inventory, and TMFC006 Service Catalog interact through events to launch and execute the initial steps of a service order. All message traffic is managed by the Event Management platform component via the TMF688 Event Management API:
 
-![](media/image22.png)
+![](media/service-order-initiation-eda-sequence.png)
+*([PlantUML source](media/service-order-initiation-eda-sequence.puml))*
 
 **Figure 22: Service order initiation using asynchronous APIs**
 
 ## ODA Component & Canvas Interaction Diagram
 
-![](media/image23.png)
+![](media/oda-component-canvas-interaction-diagram.png)
+*([PlantUML source](media/oda-component-canvas-interaction-diagram.puml))*
 
 **Figure 23: ODA Component diagram**
 

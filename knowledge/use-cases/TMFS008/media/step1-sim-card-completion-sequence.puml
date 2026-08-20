@@ -1,0 +1,71 @@
+@startuml
+title Figure 11: Base Scenario - Completion of the resource order (item) related to the SIM card product
+
+participant "Product Order\nDelivery & Orchestration\nManagement" as PODOM
+participant "Event Management" as Event #grey
+
+box "Logistic Partner"
+  participant "Supply Chain\nManagement" as SCM #blue
+end box
+
+box "Internal Supply Chain"
+  participant "Resource Order\nManagement" as ROM #blue
+  participant "Resource Inventory" as RI #blue
+  participant "Resource Catalog\nManagement" as RCM #blue
+end box
+
+== Step 1 (SIM Card) ==
+
+ROM -> RCM : 1 **TMF634 Resource Catalog Management**\nGET /resourceSpecification
+activate RCM
+RCM --> ROM : 2 **TMF634** 200 OK (resourceSpecChar)
+deactivate RCM
+
+ROM -> ROM : 3 **TMF685 Resource Pool Management**\nPOST /resourcePoolManagement/AvailabilityCheck\n(resourcePool=SIM Card)
+ROM --> ROM : 4 **TMF685** 201 Created (available resources)
+ROM -> ROM : 5 select SIM Card resource
+
+ROM -> RI : 6 **TMF639 Resource Inventory Management**\nGET /resource
+activate RI
+RI --> ROM : 7 **TMF639** 200 OK (SIM Card)
+
+ROM -> RI : 8 **TMF639 Resource Inventory Management**\nPATCH /resource\n(SIM card, resourceStatus="reserved")
+RI --> ROM : 9 **TMF639** 204 No Contect
+deactivate RI
+
+ROM -> ROM : 10 update resourceOrderItem (SIM card attributes)
+
+ROM -> Event : 11 **TMF688 Event Management**\nPOST event resourceOrderAttributeValueChange\n(SIM card)
+activate Event
+Event -> PODOM : 12 **TMF688 Event Management**\nPOST listener/resourceOrderAttributeValueChange\n(SIM card)
+deactivate Event
+
+group variant 1 only
+
+    ROM -> SCM : 13 //**TMF700 Shipping Order Management**//\n//POST /shippingOrder//\n//(SIM card)//
+    activate SCM
+    SCM --> ROM : 14 //**TMF700** 201 Created (shippingOrder)//
+
+    note over SCM, ROM
+      Actual shipment process is not shown.
+      UC004 has some details.
+    end note
+
+    SCM -> Event : 15 //**TMF688 Event Management**//\n//POST event shippingOrderStateChange//
+    activate Event
+    Event -> ROM : 16 //**TMF688 Event Management**//\n//POST listener/shippingOrderStateChange//
+    deactivate Event
+    deactivate SCM
+
+end
+
+ROM -> RI : 17 **TMF639 Resource Inventory Management**\nPATCH /resource\n(SIM card, resourceStatus="standby")
+activate RI
+RI --> ROM : 18 **TMF639** 204 No Content
+deactivate RI
+
+ROM -> ROM : 19 update resourceOrderItem (state="completed")
+
+note over ROM : continued in\nfigure 10
+
+@enduml

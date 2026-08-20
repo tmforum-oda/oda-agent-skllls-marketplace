@@ -1,0 +1,61 @@
+@startuml
+title Step 1: Tangible product delivery (both scenarios)
+
+participant "Product Order\nCapture &\nValidation" as POCV
+participant "Product Inventory" as PI
+participant "Product Catalog\nManagement" as PCM
+participant "Product Order\nDelivery & Orchestration\nManagement" as PODOM
+participant "Event Management" as Event #grey
+participant "Resource Order\nManagement" as ROM #blue
+
+== Step 1 ==
+
+PODOM -> PCM : 1 **TMF620 Product Catalog Management**\nGET /productSpecification
+activate PCM
+PCM --> PODOM : 2 **TMF620** 200 OK\nproductSpecification details, CFSSpecification,\nresourceSpecification, //translationRules//
+deactivate PCM
+
+PODOM -> ROM : 3 **TMF652 Resource Order Management**\nPOST /resourceOrder (resourceSpecification)
+activate ROM
+
+ROM -> ROM : 4 validate resourceOrder\n(state="acknowledged")
+ROM --> PODOM : 5 **TMF652** 201 Created\nresourceOrder (state="acknowledged")
+
+PODOM -> PODOM : 6 link productOrderItem and resourceOrderItem
+
+ROM -> ROM : 7 start execution of\nproduct related resourceOrder
+ROM -> ROM : 8 update resourceOrderItem\n(state="inProgress")
+
+ROM -> Event : 9 **TMF688 Event Management**\nPOST event resourceOrderStateChange\n(resourceOrderItemState="inProgress")
+activate Event
+Event -> PODOM : 10 **TMF688 Event Management**\nPOST listener/resourceOrderStateChange\n(resourceOrderItemState="inProgress")
+deactivate Event
+
+note over ROM
+  **Product related resource order**
+  **completion sequence**
+  Base Scenario:
+  SIM card order item (figure 11)
+
+  Extended Scenario:
+  User equipment order item (figure 12)
+end note
+
+ROM -> Event : 11 **TMF688 Event Management**\nPOST event resourceOrderStateChange\n(resourceOrderItemState="completed")
+deactivate ROM
+activate Event
+Event -> PODOM : 12 **TMF688 Event Management**\nPOST listener/resourceOrderStateChange\n(resourceOrderItemState="completed")
+deactivate Event
+
+PODOM -> Event : 13 **TMF688 Event Management**\nPOST event productOrderStateChange\n(state="inProgress")
+activate Event
+Event -> POCV : 14 **TMF688 Event Management**\nPOST listener/productOrderStateChange\n(state="inProgress")
+deactivate Event
+
+PODOM -> PI : 15 **TMF637 Product Inventory Management**\nPATCH /product\n(product-specification-level order item, state="Active")
+activate PI
+deactivate PI
+
+note over PODOM : continued in figure 13 (step 2)
+
+@enduml

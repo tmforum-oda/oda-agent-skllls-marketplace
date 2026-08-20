@@ -1,0 +1,58 @@
+@startuml
+title Resource Order Item (User Equipment) Processing
+
+participant "Product Order\nDelivery & Orchestration\nManagement" as PODOM
+participant "Event Management" as Event #grey
+
+box "Logistic Partner"
+  participant "Supply Chain\nManagement" as SCM #blue
+end box
+
+box "Internal Supply Chain"
+  participant "Resource Order\nManagement" as ROM #blue
+  participant "Resource Inventory" as RI #blue
+  participant "Resource Catalog\nManagement" as RCM #blue
+end box
+
+== Step 1 (User Equipment) ==
+
+ROM -> RCM : 1 **TMF634 Resource Catalog Management**\nGET /resourceSpecification
+activate RCM
+RCM --> ROM : 2 **TMF634** 200 OK (ResourceSpecChar)
+deactivate RCM
+
+ROM -> RI : 3 **TMF639 Resource Inventory Management**\nGET /resource
+activate RI
+RI --> ROM : 4 **TMF639** 200 OK (User Equipment, IMEI,EID,SKU)
+deactivate RI
+
+ROM -> Event : 5 **TMF688 Event Management**\nPOST event resourceOrderAttributeValueChange\n(User Equipment)
+activate Event
+Event -> PODOM : 6 **TMF688 Event Management**\nPOST listener/resourceOrderAttributeValueChange\n(User Equipment)
+deactivate Event
+
+ROM -> SCM : 7 **TMF700 Shipping Order Management**\n//POST /shippingOrder// (User Equipment)
+activate SCM
+SCM --> ROM : 8 //**TMF700** 201 Created (shippingOrder)//
+
+note over SCM, ROM
+  Actual shipment process is not shown.
+  UC004 has some details.
+end note
+
+SCM -> Event : 9 //**TMF688 Event Management**//\n//POST event shippingOrderStateChange//
+activate Event
+Event -> ROM : 10 //**TMF688 Event Management**//\n//POST listener/shippingOrderStateChange//
+deactivate Event
+deactivate SCM
+
+ROM -> RI : 11 **TMF639 Resource Inventory Management**\nPATCH /resource (User Equipment, resourceStatus="standby")
+activate RI
+RI --> ROM : 12 **TMF639** 204 No Content
+deactivate RI
+
+ROM -> ROM : 13 update resourceOrder (state="completed")
+
+note over ROM : continued in\nfigure 10
+
+@enduml

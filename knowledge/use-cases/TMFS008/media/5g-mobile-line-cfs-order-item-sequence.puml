@@ -1,0 +1,93 @@
+@startuml
+title 5G Mobile Line CFS Order Item Processing
+
+participant "Resource Inventory" as RI #blue
+participant "Resource Order\nManagement" as ROM #blue
+participant "Event Management" as Event #grey
+participant "Resource Catalog\nManagement" as RCM #blue
+participant "Resource Activation\n&amp; Configuration" as RAC #blue
+participant "PCF"
+participant "UDM/UDR" as UDMUDR
+participant "OCS/CHF" as OCSCHF
+
+== Step 3 (5G Mobile Line) ==
+
+ROM -> RCM : 1 **TMF634 Resource Catalog Management**\nGET /resourceSpecification
+RCM --> ROM : 2 **TMF634** 200 UDM/UDR subscriber profile, Logical SIM, Number specifications, PCF Profile, OCS Profile
+
+ROM -> RI : 3 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 4 **TMF639** 200 Logical SIM, Number
+
+ROM -> RI : 5 **TMF639 Resource Inventory Management**\nPOST /resource\n(UDM/UDR subscriber profile, resourceStatus="standby")
+RI --> ROM : 6 **TMF639** 201 UDM/UDR subscriber profile
+
+ROM -> RI : 7 **TMF639 Resource Inventory Management**\nPOST /resource\n(PCF profile, resourceStatus="standby")
+RI --> ROM : 8 **TMF639** 201 PCF profile
+
+ROM -> RI : 9 **TMF639 Resource Inventory Management**\nPOST /resource\n(OCS profile, resourceStatus="standby")
+RI --> ROM : 10 **TMF639** 201 OCS profile
+
+ROM -> RAC : 11 **TMF702 Resource Activation**\nPOST /resource (UDM/UDR subscriber profile)
+activate RAC
+RAC --> ROM : 12 **TMF702** 201 UDM/UDR subscriber profile
+
+ROM -> RAC : 13 **TMF702 Resource Activation**\nPOST /resource (PCF profile)
+RAC --> ROM : 14 **TMF702** 201 PCF profile
+
+ROM -> RAC : 15 **TMF702 Resource Activation**  POST /resource (OCS profile)
+RAC --> ROM : 16 **TMF702** 201 OCS profile
+
+RAC -> RCM : 17 **TMF634 Resource Catalog Management**\nGET /resourceSpecification (UDM/UDR API)
+RCM --> RAC : 18 **TMF634** 200 UDM/UDR API specification
+
+RAC -> RCM : 19 **TMF634 Resource Catalog Management**\nGET /resourceSpecification (PCF API)
+RCM --> RAC : 20 **TMF634** 200 PCF API specification
+
+RAC -> RCM : 21 **TMF634 Resource Catalog Management**\nGET /resourceSpecification (OCS API)
+RCM --> RAC : 22 **TMF634** 200 OCS API specification
+
+ROM -> RI : 23 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 24 **TMF639** 200 API endpoint (UDM/UDR)
+
+RAC -> UDMUDR : 25 **UDM/UDR API call**\n(UDM/UDR subscriber profile)
+activate UDMUDR
+UDMUDR --> RAC : 26 **UDM/UDR API** call response
+deactivate UDMUDR
+
+ROM -> RI : 27 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 28 **TMF639** 200 API endpoint (PCF)
+
+RAC -> PCF : 29 **PCF API call**\n(PCF profile)
+activate PCF
+PCF --> RAC : 30 **PCF API call** response
+deactivate PCF
+
+ROM -> RI : 31 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 32 **TMF639** 200 API endpoint (OCS)
+
+RAC -> OCSCHF : 33 **OCS API call**\n(OCS profile)
+activate OCSCHF
+OCSCHF --> RAC : 34 **OCS API call** response
+deactivate OCSCHF
+
+RAC -> Event : 35 **TMF688 Event Management**\nPOST event resourceStateChange (UDM/UDR subscriber profile, PCF, OCS)\n(state="available")
+deactivate RAC
+activate Event
+Event -> ROM : 36 **TMF688 Event Management**\nPOST listener/resourceStateChange\n(state="available")
+deactivate Event
+
+ROM -> RI : 37 **TMF639 Resource Inventory Management**\nPATCH /resource\n(UDM/UDR subscriber profile, resourceStatus="available")
+RI --> ROM : 38 **TMF639** 204
+
+ROM -> RI : 39 **TMF639 Resource Inventory Management**\nPATCH /resource\n(PCF profile, resourceStatus="available")
+RI --> ROM : 40 **TMF639** 204
+
+ROM -> RI : 41 **TMF639 Resource Inventory Management**\nPATCH /resource\n(OCS profile, resourceStatus="available")
+RI --> ROM : 42 **TMF639** 204
+
+ROM -> RI : 43 **TMF639 Resource Inventory Management**\nPATCH /resource (Logical SIM , Number)
+RI --> ROM : 44 **TMF639** 204
+
+ROM -> ROM : 45 update resourceOrderItems (state="completed")
+
+@enduml

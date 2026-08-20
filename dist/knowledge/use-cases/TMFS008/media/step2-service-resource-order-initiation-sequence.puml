@@ -1,0 +1,75 @@
+@startuml
+title Step 2: Service &amp; related resource order initiation
+
+participant "Product Order\nDelivery & Orchestration\nManagement" as PODOM
+participant "Event Management" as Event #grey
+participant "Service Qualification\nManagement" as SQM #blue
+participant "Service Catalog\nManagement" as SCM2 #blue
+participant "Service Order\nManagement" as SOM #blue
+participant "Service Inventory" as SI #blue
+participant "Resource Order\nManagement" as ROM #blue
+
+== Step 2 ==
+
+PODOM -> SOM : 1 **TMF641 Service Ordering Management**\nPOST /serviceOrder\n(CFSSpecification)
+activate SOM
+SOM -> SOM : 2 validate CFS order\n(state="acknowledged")
+SOM --> PODOM : 3 **TMF641** 201 Created (serviceOrder, state="acknowledged")
+
+PODOM -> PODOM : 4 link productOrderItems and CFSOrderItems
+
+SOM -> SOM : 5 start execution of CFSOrder
+
+group execute CFSOrder orchestration sequence
+
+    SOM -> SOM : 6 update CFSOrderItem (state="inProgress")
+
+    SOM -> Event : 7 **TMF688 Event Management**\nPOST event serviceOrderStateChange\n(serviceOrderItemState="inProgress")
+    activate Event
+    Event -> PODOM : 8 **TMF688 Event Management**\nPOST listener/serviceOrderStateChange\n(serviceOrderItemState="inProgress")
+    deactivate Event
+
+    SOM -> SQM : 9 **TMF645 Service Qualification Management**\nPOST /checkServiceQualification (CFSSpecification)
+    activate SQM
+    SQM --> SOM : 10 **TMF645** 201 Created (checkServiceQualification)
+    deactivate SQM
+
+    SOM -> SI : 11 **TMF638 Service Inventory Management**\nPOST /service (state="feasibilityChecked")
+    activate SI
+    SI --> SOM : 12 **TMF638** 201 Created (CFS)
+    deactivate SI
+
+    SOM -> SCM2 : 13 **TMF633 Service Catalog Management**\nGET /serviceSpecification (CFSSpecification)
+    activate SCM2
+    SCM2 --> SOM : 14 **TMF633** 200 OK (RFSSpecification)
+    deactivate SCM2
+
+    SOM -> SOM : 15 decide between RFS alternatives
+
+    SOM -> SI : 16 **TMF638 Service Inventory Management**\nPOST /service (state="feasibilityChecked")
+    activate SI
+    SI --> SOM : 17 **TMF638** 201 Created (RFS)
+    deactivate SI
+
+    SOM -> SCM2 : 18 **TMF633 Service Catalog Management**\nGET /serviceSpecification (RFSSpecification)
+    activate SCM2
+    SCM2 --> SOM : 19 **TMF633** 200 OK (resourceSpecification)
+    deactivate SCM2
+
+    SOM -> SOM : 20 build **resourceOrderItems**
+
+    SOM -> ROM : 21 **TMF652 Resource Order Management**\nPOST /resourceOrder
+    activate ROM
+    ROM -> ROM : 22 validate resourceOrder
+    ROM --> SOM : 23 **TMF652** 201 Created (resourceOrder, state="acknowledged")
+
+    ROM -> ROM : 24 start execution of\nresourceOrder
+    note right of ROM : continuation in figure 14
+    deactivate ROM
+
+    SOM -> SOM : 25 link serviceOrderItem and **resourceOrderItems**
+
+end
+deactivate SOM
+
+@enduml

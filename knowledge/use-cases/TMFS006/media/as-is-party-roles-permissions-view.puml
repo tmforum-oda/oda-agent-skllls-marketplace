@@ -1,0 +1,83 @@
+@startuml
+title As-Is Data Model View
+
+package "TMFC028 Party Mgt" #white {
+  class "John\n:Party / Individual" as John
+  class "Lambda\n:Party /Organization" as Lambda
+  class "Bob\n:Party / Individual" as Bob
+  class "Marie\n:Party / Individual" as Marie
+}
+
+package "TMFC035 Party Roles & Permissions Mgt" #white {
+  class "Service Provider Employee\n:PartyRole" as SPEmployeeRole
+  class "Service Provider\n:PartyRole" as SPRole
+  class "Customer\n:PartyRole" as CustomerRole {
+    StartDate = 23/07/2021
+  }
+
+  class "Service Provider\n:PartyRoleSpec" as SPRoleSpec {
+    ID = PrSpec_003
+    IsLegalEntity = True
+  }
+  class "Customer\n:PartyRoleSpec" as CustomerRoleSpec {
+    ID = PrSpec_002
+    status = Active
+    ValidFor = 01/01/2030
+  }
+
+  SPEmployeeRole --> SPRole : "/ played towards"
+  SPRoleSpec --> SPRole : describes
+  CustomerRoleSpec --> CustomerRole : describes
+  CustomerRole --> SPRole : "played towards"
+
+  class "Customer Permissions\n:PermissionSpecSet" as PermissionSpecSet {
+    ID: PermSpec_002
+  }
+  CustomerRoleSpec --> PermissionSpecSet : managedby
+
+  class "Manage Billing Account\n:ImplicitPermissionSpec" as ManageBillingAccountSpec
+  class "Initiate Bill Dispute\n:ImplicitPermissionSpec" as InitiateBillDisputeSpec
+  class "Initiate Trouble Ticket\n:ImplicitPermissionSpec" as InitiateTroubleTicketSpec
+  class "Manage Contract\n:ImplicitPermissionSpec" as ManageContractSpec
+
+  PermissionSpecSet --> ManageBillingAccountSpec : groups
+  PermissionSpecSet --> InitiateBillDisputeSpec : groups
+  PermissionSpecSet --> InitiateTroubleTicketSpec : groups
+  PermissionSpecSet --> ManageContractSpec : groups
+
+  class "Manage Bob's Billing Account\n:ImplicitPermission" as ManageBobsBillingAccount
+  class "Initiate Bill Dispute\n:ImplicitPermission" as InitiateBillDispute
+  class "Initiate Trouble Ticket\n:ImplicitPermission" as InitiateTroubleTicket
+  class "Manage Contract\n:ImplicitPermission" as ManageContract
+
+  ManageBillingAccountSpec --> ManageBobsBillingAccount : contains
+  InitiateBillDisputeSpec --> InitiateBillDispute : contains
+  InitiateTroubleTicketSpec --> InitiateTroubleTicket : contains
+  ManageContractSpec --> ManageContract : contains
+
+  class "Customer Permissions\n:PermissionSet" as PermissionSet {
+    ID: PermSpec_0022
+  }
+  PermissionSet --> ManageBobsBillingAccount : Instantiates
+  PermissionSet --> InitiateBillDispute : Instantiates
+  PermissionSet --> InitiateTroubleTicket : Instantiates
+  PermissionSet --> ManageContract : Instantiates
+}
+
+John --> SPEmployeeRole : plays
+Lambda --> SPRole : plays
+Bob --> CustomerRole : plays
+
+class "Bob Billing Acount\n:CustomerBillingAccount" as BobBillingAccount {
+  CreditLimit : 20000 euro
+}
+class "Bob Contract\n:product" as BobContract
+
+ManageBobsBillingAccount --> BobBillingAccount : GrantsPrivilegesOn
+InitiateBillDispute --> BobBillingAccount : GrantsPrivilegesOn
+InitiateTroubleTicket --> BobContract : GrantsPrivilesOn
+ManageContract --> BobContract : GrantsPrivilegesOn
+
+CustomerRole --> PermissionSet : GrantsPrivilegesOn
+
+@enduml

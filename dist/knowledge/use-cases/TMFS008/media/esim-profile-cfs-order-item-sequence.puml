@@ -1,0 +1,46 @@
+@startuml
+title eSIM Profile CFS Order Item Processing
+
+participant "Resource Inventory" as RI #blue
+participant "Resource Order\nManagement" as ROM #blue
+participant "Resource Catalog\nManagement" as RCM #blue
+participant "SM-DP+" as SMDP
+
+== Step 3 (eSIM Profile) ==
+
+ROM -> RCM : 1 **TMF634 Resource Catalog Management**\nGET /resourceSpecification
+RCM --> ROM : 2 **TMF634** 200 eSIM Profile Template
+
+ROM -> RI : 3 **TMF639 Resource Inventory Management**\nGET /resource (User Equipment)
+RI --> ROM : 4 **TMF639** 200 User Equipment (EID , IMEI)
+
+ROM -> RI : 5 **TMF639 Resource Inventory Management**\nPOST /resource eSIM Profile
+RI --> ROM : 6 **TMF639** 204 Resource created eSIM Profile
+
+ROM -> ROM : 7 Update eSIM Profile resource (resourceStatus="Available")
+ROM -> ROM : 8 Determine Profile Type for (EID, IMEI)
+
+ROM -> RCM : 9 **(Optional)TMF634 Resource Catalog Management**\nGET /resourceSpecification (SM-DP+ API, Profile Type)
+RCM --> ROM : 10 **TMF634** (Optional) 200 SM-DP+ API specification
+
+ROM -> SMDP : 11 **SM-DP+ API call**\nDownloadOrder (Profile Type, EID)
+activate SMDP
+SMDP -> SMDP : 12 Reserve ICCID
+SMDP --> ROM : 13 **SM-DP+ API call** response (ICCID)
+deactivate SMDP
+
+ROM -> ROM : 14 Update eSIM Profile resource (resourceStatus="Linked")
+
+ROM -> SMDP : 15 **SM-DP+ API call**\nConfirmOrder (ICCID, EID)
+activate SMDP
+SMDP -> SMDP : 16 Generate MatchingID
+SMDP --> ROM : 17 **SM-DP+ API call** response (MatchingID, SM-DP+ Address)
+deactivate SMDP
+
+ROM -> RI : 18 **TMF639 Resource Inventory Management**\nPATCH /resource eSIM Profile(Matching ID, ICCID, EID, SM-DP+ Address)
+RI --> ROM : 19 **TMF639** 204 Resource updated eSIM Profile(Matching ID, ICCID, EID, SM-DP+ Address)
+
+ROM -> ROM : 20 Update eSIM Profile resource (resourceStatus="Released")
+ROM -> ROM : 21 update resourceOrderItems (state="completed")
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+title View Data Model after Guardianship operation - Focus on Communication Interaction
+
+package "TMFC023 Party Interaction Mgt" #white {
+  class "2021/10/11\n:CommunicationInteraction" as Interaction
+  class "Add Legal Guardian\n:CommunicationInteractionItem" as InteractionItem
+  Interaction --> InteractionItem : contains
+}
+
+package "TMFC028 Party Mgt" #white {
+  class "John\n:Party /Individual" as John
+  class "Lambda\n:Party /Organization" as Lambda
+  class "Marie\n:Party /Individual" as Marie
+}
+
+package "TMFC035 Party Roles & Permissions Mgt" #white {
+  class "Service Provider Employee\n:PartyRole" as SPEmployeeRole
+  class "Service Provider\n:PartyRole" as SPRole
+  SPEmployeeRole --> SPRole : "/ played towards"
+}
+
+Interaction --> John : realizes
+Interaction --> Marie : initiated 
+
+John --> SPEmployeeRole : plays
+Lambda --> SPRole : plays
+
+@enduml

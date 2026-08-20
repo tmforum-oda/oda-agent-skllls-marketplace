@@ -1,0 +1,186 @@
+@startuml
+title Figure 3: Service and resource catalog
+
+legend
+  Dark green = Product Specification / light green = its Characteristic
+  Orange = Service Specification (CFS/RFS) / light orange = its Characteristic
+  Olive = Resource Specification / pale yellow = its Characteristic
+  Orange dashed = Service Usage Specification
+end legend
+
+package "Product Specifications" #white {
+  class "Mobile Line" as PS_MobileLine {
+    Number, Roaming Options, Barring Options
+  }
+  class "Voice Mail" as PS_VoiceMail {
+    mailboxSize
+  }
+  class "*User Equipment" as PS_UserEquipment
+  class "*eSIM" as PS_eSIM
+  class "Physical SIM" as PS_PhysicalSIM
+  class "*One-Time Package" as PS_OneTimePackage
+  class "Recurring Package" as PS_RecurringPackage
+  class "Extra National Package" as PS_ExtraNationalPackage
+  class "Extra SMS Package" as PS_ExtraSMSPackage
+  class "*Extra International Package" as PS_ExtraInternationalPackage
+  class "Extra Data Package" as PS_ExtraDataPackage
+  class "*Vanity Lines" as PS_VanityLines
+  class "*VAS" as PS_VAS
+
+  PS_VoiceMail --> PS_MobileLine : requires
+  PS_UserEquipment --> PS_MobileLine : requires
+  PS_eSIM --> PS_MobileLine : uses
+  PS_PhysicalSIM --> PS_MobileLine : requires
+  PS_OneTimePackage --> PS_MobileLine : requires
+  PS_RecurringPackage --> PS_MobileLine : requires
+  PS_ExtraNationalPackage --> PS_MobileLine : requires
+  PS_ExtraSMSPackage --> PS_MobileLine : requires
+  PS_ExtraInternationalPackage --> PS_MobileLine : requires
+  PS_ExtraDataPackage --> PS_MobileLine : requires
+  PS_VanityLines --> PS_MobileLine : requires
+  PS_VAS --> PS_MobileLine : requires
+  PS_eSIM --> PS_PhysicalSIM : OR
+}
+
+package "Network Service CFS" #FFE0B2 {
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine {
+    Number, Roaming Options, Barring Options
+  }
+  class "[Network Service CFS]\nVoice Mail" as CFS_VoiceMail {
+    mailboxSize
+  }
+  class "[Network Service CFS]\n*One-Time Package" as CFS_OneTimePackage
+  class "[Network Service CFS]\nRecurring Package" as CFS_RecurringPackage
+  class "[Network Service CFS]\nExtra National Package" as CFS_ExtraNationalPackage
+  class "[Network Service CFS]\nExtra SMS Package" as CFS_ExtraSMSPackage
+  class "[Network Service CFS]\n*International Package" as CFS_ExtraInternationalPackage
+  class "[Network Service CFS]\nData Package" as CFS_ExtraDataPackage
+  class "[Network Service CFS]\n*Vanity Lines" as CFS_VanityLines
+  class "[Network Service CFS]\n*VAS" as CFS_VAS
+
+  PS_MobileLine --> CFS_MobileLine : restricts
+  PS_VoiceMail --> CFS_VoiceMail : restricts
+  PS_OneTimePackage --> CFS_OneTimePackage : restricts
+  PS_RecurringPackage --> CFS_RecurringPackage : restricts
+  PS_ExtraNationalPackage --> CFS_ExtraNationalPackage : restricts
+  PS_ExtraSMSPackage --> CFS_ExtraSMSPackage : restricts
+  PS_ExtraInternationalPackage --> CFS_ExtraInternationalPackage : restricts
+  PS_ExtraDataPackage --> CFS_ExtraDataPackage : restricts
+  PS_VanityLines --> CFS_VanityLines : restricts
+  PS_VAS --> CFS_VAS : restricts
+
+  CFS_VoiceMail --> CFS_MobileLine : requires
+  CFS_OneTimePackage --> CFS_MobileLine : requires
+  CFS_RecurringPackage --> CFS_MobileLine : requires
+  CFS_ExtraNationalPackage --> CFS_MobileLine : requires
+  CFS_ExtraSMSPackage --> CFS_MobileLine : requires
+  CFS_ExtraInternationalPackage --> CFS_MobileLine : requires
+  CFS_ExtraDataPackage --> CFS_MobileLine : requires
+}
+
+package "Service Usage Specifications" #FFE0B2 {
+  class "National Voice" as SUS_NationalVoice
+  class "SMS" as SUS_SMS
+  class "Internation Voice" as SUS_InternationalVoice
+  class "Data" as SUS_Data
+}
+
+CFS_MobileLine ..> SUS_NationalVoice : "describes usage of"
+CFS_ExtraNationalPackage --> SUS_NationalVoice : concerns
+CFS_ExtraSMSPackage --> SUS_SMS : concerns
+CFS_ExtraInternationalPackage --> SUS_InternationalVoice : concerns
+CFS_ExtraDataPackage --> SUS_Data : concerns
+CFS_RecurringPackage --> SUS_Data : concerns
+
+package "Network Service RFS" #FFE0B2 {
+  class "[Network Service RFS]\nVoice Mail" as RFS_VoiceMail
+  class "[Network Service RFS]\n4G Mobile Line" as RFS_4GMobileLine {
+    profile
+  }
+  class "[Network Service RFS]\n5G Mobile Line" as RFS_5GMobileLine {
+    profile
+  }
+  class "[Network Service RFS]\nUnified Package" as RFS_UnifiedPackage
+  class "[Network Service RFS]\n*Vanity Lines" as RFS_VanityLines
+  class "[Network Service RFS]\n*VAS" as RFS_VAS
+
+  CFS_VoiceMail --> RFS_VoiceMail : "is realized by"
+  CFS_MobileLine --> RFS_4GMobileLine : "is realized by"
+  CFS_MobileLine --> RFS_5GMobileLine : "is realized by"
+  RFS_4GMobileLine --> RFS_5GMobileLine : OR
+  CFS_OneTimePackage --> RFS_UnifiedPackage : "is realized by"
+  CFS_RecurringPackage --> RFS_UnifiedPackage : "is realized by"
+  CFS_ExtraNationalPackage --> RFS_UnifiedPackage : "is realized by"
+  CFS_ExtraSMSPackage --> RFS_UnifiedPackage : "is realized by"
+  CFS_ExtraInternationalPackage --> RFS_UnifiedPackage : "is realized by"
+  CFS_ExtraDataPackage --> RFS_UnifiedPackage : "is realized by"
+  CFS_VanityLines --> RFS_VanityLines : "is realized by"
+  CFS_VAS --> RFS_VAS : "is realized by"
+}
+
+package "4G Resources" #D4D400 {
+  class "[Logical Resource]\n4G Logical SIM" as LR_4GLogicalSIM {
+    type, imsi, puk
+  }
+  class "[Logical Resource]\nHSS Subscriber Profile" as LR_HSSProfile {
+    subscriberProfile
+  }
+  class "[Logical Resource]\nPCRF Profile" as LR_PCRFProfile {
+    voiceProfile, dataProfile
+  }
+}
+
+package "5G Resources" #D4D400 {
+  class "[Logical Resource]\n*5G Logical SIM" as LR_5GLogicalSIM {
+    type, supi, puk, gpsi
+  }
+  class "[Logical Resource]\n*UDM/UDR Profile" as LR_UDMProfile {
+    subscriberProfile, supi, gpsi
+  }
+  class "[Logical Resource]\n*PCF Profile" as LR_PCFProfile {
+    plmnid, pei, dnn
+  }
+}
+
+RFS_4GMobileLine --> LR_4GLogicalSIM : uses
+RFS_4GMobileLine --> LR_HSSProfile : uses
+RFS_5GMobileLine --> LR_5GLogicalSIM : uses
+RFS_5GMobileLine --> LR_UDMProfile : uses
+RFS_UnifiedPackage --> LR_PCRFProfile : uses
+RFS_UnifiedPackage --> LR_PCFProfile : uses
+
+package "Common Resources" #D4D400 {
+  class "[Compound Resource]\nSIM Card" as CR_SIMCard
+  class "[Physical Resource]\n*User Equipment" as PR_UserEquipment
+  class "[Logical Resource]\n*eSIM Profile" as LR_eSIMProfile
+  class "[Logical Resource]\nNumber" as LR_Number {
+    msisdn
+  }
+  class "[Logical Resource]\nLogical SIM" as LR_LogicalSIM
+  class "[Physical Resource]\nPhysical SIM" as PR_PhysicalSIM {
+    iccid, formFactor
+  }
+  class "[Logical Resource]\nVMS Profile" as LR_VMSProfile {
+    vmsProfile
+  }
+  class "[Logical Resource]\nMeans of profile Download" as LR_MeansOfProfileDownload {
+    iccid, matchingIDeid
+  }
+  class "[Logical Resource]\n*OCS Profile" as LR_OCSProfile {
+    ocsProfile
+  }
+
+  CR_SIMCard --> LR_LogicalSIM : uses
+  CR_SIMCard --> PR_PhysicalSIM : uses
+  LR_eSIMProfile --> LR_MeansOfProfileDownload : uses
+  LR_Number --> LR_OCSProfile : uses
+}
+
+RFS_VoiceMail --> LR_VMSProfile : uses
+PS_eSIM --> LR_eSIMProfile : uses
+PS_PhysicalSIM --> CR_SIMCard : "is realized by"
+PS_UserEquipment --> PR_UserEquipment : "is realized by"
+RFS_4GMobileLine --> LR_Number : uses
+RFS_5GMobileLine --> LR_Number : uses
+
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+title Figure 14: Step 3 sequence diagram for a resource order
+
+participant "Product Order\nCapture & Validation\nManagement" as POCV
+participant "Product Inventory" as PI
+participant "Product Order\nDelivery & Orchestration\nManagement" as PODOM
+participant "Service Inventory" as SI #blue
+participant "Service Order\nManagement" as SOM #blue
+participant "Event Management" as Event #grey
+participant "Resource Order\nManagement" as ROM #blue
+
+== Step 3 (For each resource order) ==
+
+group run through ResourceOrder orchestration
+
+    ROM -> Event : 1 **TMF688 Event Management**\nPOST event resourceOrderStateChange\n(resourceOrderItemState="inProgress")
+    activate Event
+    Event -> SOM : 2 **TMF688 Event Management**\nPOST listener/resourceOrderStateChange\n(resourceOrderItemState="inProgress")
+    deactivate Event
+
+    note right of ROM : Resource order item\nspecific steps (figures in 15 and 17)
+
+    ROM -> Event : 3 **TMF688 Event Management**\nPOST event resourceOrderStateChange\n(resourceOrderItemState="completed")
+    activate Event
+    Event -> SOM : 4 **TMF688 Event Management**\nPOST listener/resourceOrderStateChange\n(resourceOrderItemState="completed")
+    deactivate Event
+
+end
+
+SOM -> SOM : 5 update CFSOrderItem (state="completed")
+
+SOM -> SI : 6 **TMF638 Service Inventory Management**\nPATCH /service\n(state="active")
+activate SI
+SI --> SOM : 7 **TMF638** 200 OK (RFS)
+
+SOM -> SI : 8 **TMF638 Service Inventory Management**\nPATCH /service\n(state="active")
+SI --> SOM : 9 **TMF638** 200 OK (CFS)
+deactivate SI
+
+SOM -> Event : 10 **TMF688 Event Management**\nPOST event serviceOrderStateChange\n(serviceOrderItemState="completed")
+activate Event
+Event -> PODOM : 11 **TMF688 Event Management**\nPOST listener/serviceOrderStateChange\n(serviceOrderItemState="completed")
+deactivate Event
+
+PODOM -> Event : 12 **TMF688 Event Management**\nPOST event productOrderStateChange\n(productOrderState="completed")
+activate Event
+Event -> POCV : 13 **TMF688 Event Management**\nPOST listener/productOrderStateChange\n(productOrderState="completed")
+deactivate Event
+
+PODOM -> PI : 14 **TMF637 Product Inventory Management**\nPATCH /product\n(product-specification-level order item\nstate="Active")
+activate PI
+deactivate PI
+
+@enduml
