@@ -1,0 +1,134 @@
+@startuml
+title Sequence diagram
+
+actor User
+participant "Engagement" as Engagement #purple
+participant "Party Interaction" as PartyInteraction #red
+participant "Product Configurator" as ProductConfigurator
+participant "Product Order Capture" as ProductOrderCapture
+participant "Product Catalog" as ProductCatalog
+participant "Product Inventory" as ProductInventory
+participant "Location" as Location
+
+== QUOTE CONFIGURATION - COMPUTE QUOTE ITEMS ==
+
+User -> Engagement : 42. Selected Main Offering to Configure\n(SASE Contract)
+Engagement -> PartyInteraction : 43. **TMF701 Process Flow**\nPATCH processFlow/1/taskFlow/1.3\n(characteristic(interactionItem.id=1,reason="**Configure Main Offering**",\nproductOffering="SASE Contract"))
+activate PartyInteraction
+
+note over PartyInteraction
+  task 3 completed
+  task 4 "Configure Quote"
+  update interaction item
+  (**TMF683 Party Interaction**)
+  hold
+end note
+
+PartyInteraction -> ProductOrderCapture : 44. **TMF701 Process Flow**\nPOST /processFlow (processFlowSpecification=ConfigureQuote,\nchannel="B2B eCommerce Portal",\nrelatedParty(id,name="Alice&Bob",role="B2B Customer"),\ncharacteristic(quoteItem="**SASE Contract**" (.,productCharacteristic,productOfferingPriceRef,\nplace=[Country,Region],.)))\ncallback when information provided (processFlow.id=1,taskFlow.id=1.4)
+activate ProductOrderCapture
+
+note over ProductOrderCapture
+  task 1 "Initialize Quotation"
+  **TMF 648 Quote**
+  create Quote (Initial Root Quote Item Configuration)
+  completed
+  task 2 "Compute Quote Items and Allowed Actions", active
+end note
+
+ProductOrderCapture -> ProductConfigurator : 45. **TMF760 Product Configuration**\nPOST /queryProductConfiguration\n(.,contextEntity = quote id,requestProductConfigurationItem(..product(\nplace=[Country,Region],productOffering.id,..))\n//Request for SASE Root Quote Item Configuration//
+activate ProductConfigurator
+
+ProductConfigurator -> ProductCatalog : 46. **TMF620 Product Catalog Mgt**\nGET /productOffering/{id}
+activate ProductCatalog
+ProductCatalog --> ProductConfigurator : 47. **TMF620** OK\n(productOffering with characteristics, pricing policy)
+deactivate ProductCatalog
+
+ProductConfigurator -> ProductConfigurator : 48. Identify Possible Product Dependencies,\nBuild a check for Regions with existing Underlay Connectivity
+
+ProductConfigurator -> ProductInventory : 49. **TMF637 Product Inventory**\nGET /product?partyID=AliceBob.id&place=[regions]&product="Subscriber Underlay Connectivity Service"
+activate ProductInventory
+ProductInventory --> ProductConfigurator : 50. **TMF637** 200 OK (list of products and related location references (places with Regions))
+deactivate ProductInventory
+
+loop for each site of a customer
+
+    ProductConfigurator -> Location : 51. **TMF674 Geographic Site** GET /geographicSite/{id}
+    activate Location
+    Location --> ProductConfigurator : 52. **TMF674 Geographic Site** 200 OK (siteFeature.name, place geographic address ref)
+
+    ProductConfigurator -> Location : 53. **TMF673 Geographic Address** GET /geographicAddress/{id}
+    Location --> ProductConfigurator : 54. **TMF673 Geographic Address** 200 OK (site address)
+    deactivate Location
+
+end
+
+ProductConfigurator -> ProductConfigurator : 55. Buld Product Configuration (Characteristics, Prices and Child Offerings to display),\nlist of actions (specify #of Actors,.., pick Child offerings)
+ProductConfigurator -> ProductConfigurator : 56. List of Child Offerings that might be selected and configured defined\nStart Computation of Child Offerings
+
+loop for each defined Child offering
+
+    ProductConfigurator -> ProductCatalog : 57. **TMF620 Product Catalog Mgt**\nGET /productOffering/{id}
+    activate ProductCatalog
+    ProductCatalog --> ProductConfigurator : 58. **TMF620** 200 OK\n(productOffering with characteristics, pricing policy)
+    deactivate ProductCatalog
+
+    ProductConfigurator -> ProductConfigurator : 59. Identify Possible Product Dependencies,\nIdentify offerings that need existing locations
+    ProductConfigurator -> ProductConfigurator : 60. Read cache of obtained Subscriber Underlay Connectivity products\nto build list of locations (places with addresses)
+
+end
+
+loop for each defined Child offering
+
+    alt where subscriber underlay connectivity availablity check is needed\n(Actor Access Connection, SASE Edge Appliance)
+
+        ProductConfigurator -> ProductConfigurator : 61. Build Product Configuration, allowed actions\n(provide location, list of locations to choose from)
+
+    else where subscriber underlay connectivity availability check is not needed (DNS, FWaaS, ZTNA)
+
+        ProductConfigurator -> ProductConfigurator : 62. Build Product Configuration, allowed actions\n(provide #of Actors)
+
+    end
+
+end
+
+ProductConfigurator --> ProductOrderCapture : 63. **TMF760 Product Configuration**\n200 OK\n(queryProductConfiguration.id, contextEntity = quote id,  State=Done\n[computedProductConfigurationItem(Configured Quote Item, Allowed actions)])\n//Combined Response for all Quote Items//
+deactivate ProductConfigurator
+
+note over ProductOrderCapture
+  task 2 "Compute Quote Items and Allowed Actions"
+  (Prices to be displayed,
+  Characteristis values to be set defined,
+  List of Child offerings that are selectable defined)
+  completed
+  task 3 "Complete Quote Items",
+  Get Root Item Characteristic values, Selected Child offerings
+  Get Child Characteristic values [and Locations] from Customer"
+  hold
+end note
+
+ProductOrderCapture --> PartyInteraction : 64. **TMF701 Process Flow**\n201 Created (processFlow.id=3,state=active,\n"Computed/Configured Quote Items, list of locations, Allowed actions"\ncallback when information provided(processFlow.id=3,taskFlow.id=3.3))\n//TaskTask Flow Information Required:\nRoot Quote Item characteristic values,\nSelected Child Quote Items and thier characteristic values (including locations)//
+deactivate ProductOrderCapture
+
+PartyInteraction --> Engagement : 65. **TMF701 Process Flow**\n200 OK\n"Computed/Configured Quote Items, list of locations, Allowed actions"\ncallback when information provided(processFlow.id=3,taskFlow.id=3.3))\n//TaskTask Flow Information Required:\nRoot Quote Item characteristic values,\nSelected Child Quote Items and thier characteristic values (including locations)//
+deactivate PartyInteraction
+
+Engagement -> Engagement : 66. Build UI for Root and Child Offerings,\nallowed configuration actions\nand next Offerings
+
+Engagement --> User : 67. Present Offerings and actions\n(specify #of Actors,.., pick Child offerings,\nspecify locations and set values for Childs)
+
+Engagement --> User : Screen Flow (6)
+
+loop for every entered OFF-NET location
+
+    Engagement -> Location : 68. **TMF673 Geographic Address** POST /geographicAddressValidation (submittedGeographicAddress)
+    activate Location
+    Engagement --> User : Screen Flow (7)
+    Location --> Engagement : 69. **TMF673 Geographic Address** 201 Created (validationResult=success)
+    deactivate Location
+    Engagement --> User : Screen Flow (7)
+
+end
+
+Engagement --> User : Screen Flow (8-13)
+
+@enduml

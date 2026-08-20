@@ -1,0 +1,70 @@
+@startuml
+title Sequence diagram
+
+actor User
+participant "Engagement" as Engagement #purple
+participant "Party Interaction" as PartyInteraction #red
+participant "Product Configurator" as ProductConfigurator
+participant "Recommendation" as Recommendation
+participant "Product Catalog" as ProductCatalog
+participant "Product Inventory" as ProductInventory
+
+== USER SETS ELIGIBILITY PARAMETETRS, VIEWS ELIGIBLE AND RECOMMENDED OFFERINGS WITH PRICES ==
+
+User -> Engagement : 20. Choose\n"Select Main Offer to Configure"
+Engagement -> ProductCatalog : 21. **TMF620 Product Catalog**\nGET /productCategory
+activate ProductCatalog
+ProductCatalog --> Engagement : 22. 200 OK\nlist of productCategory\n//B2B_offerings among the list//
+deactivate ProductCatalog
+
+note over Engagement : select B2B catgogy\nas customer is B2B
+
+Engagement -> Engagement : 23. Display Quote Welcome,\nRequest Country, Regions
+Engagement --> User : 24. Present data
+
+User -> Engagement : 25. Selected Country, Regions
+
+alt Present Only Eligible Offerings
+
+    Engagement -> ProductConfigurator : 26. **TMF679 Product Offering Qualification**\nPOST /queryProductOfferingQualification\n(Place=Country, List of Regions,channel="B2B eCommerce Portal",\ncategory=B2B_offerings,\nrelatedParty(id,name="Alice&Bob",role="B2B Customer")
+    activate ProductConfigurator
+
+    ProductConfigurator -> ProductCatalog : 27. **TMF620 Product Catalog Mgt**\nGET\n/productOffering?place=[country,region]&channel="B2B eCommerce Portal"&category="B2B_offerings"
+    activate ProductCatalog
+    ProductCatalog --> ProductConfigurator : 28. **TMF620** OK\n(filtered by country, regions, channel and categiry eligible offerings,\npolicies/rules applied to ProductOfferings, ProductOfferingPrices:\ne.g.restrict the availability of a product offering due to commercial considerations,\nproduct offering price as condition dependent price)
+    deactivate ProductCatalog
+
+    ProductConfigurator -> ProductConfigurator : 29. Filter eligible offerings (SASE Contract is among those offerings),\nCalculate prices
+
+    ProductConfigurator --> Engagement : 30. **TMF679 Product Offering Qualification**\n200 OK (list of qualifiedProductOfferingItems)\n//SASE Contract is among those offerings//
+    deactivate ProductConfigurator
+
+    Engagement -> Engagement : 31. Display Eligible Offerings\n(SASE Contract is among those offerings)
+    Engagement --> User : 32. Present Eligible Offerings
+
+else Present Recommended Offerings
+
+    Engagement -> Recommendation : 33. **TMF680 Recommendation**\nPOST /queryProductRecommendation\n(Place=Country, List of Regions,channel="B2B eCommerce Portal",category=B2B_offerings,\nrelatedParty(id,name="Alice&Bob",role="B2B Customer")
+    activate Recommendation
+
+    Recommendation -> ProductCatalog : 34. **TMF620 Product Catalog Mgt**\nGET\n/productOffering?place=[country,region]&\nchannel="B2B eCommerce Portal"&\ncategory="B2B_offerings"
+    activate ProductCatalog
+    ProductCatalog --> Recommendation : 35. **TMF620** OK\n(filtered by country, regions, channel and categiry eligible offerings,\npolicies/rules applied to ProductOfferings, ProductOfferingPrices:\ne.g.restrict the availability of a product offering\ndue to commercial considerations,\nproduct offering price as condition dependent price)
+    deactivate ProductCatalog
+
+    Recommendation -> ProductInventory : 36. **TMF637 Product Inventory**\nGET /product?partyID=AliceBob.id&place=[country,regions]
+    activate ProductInventory
+    ProductInventory --> Recommendation : 37. **TMF637** 200 OK (list of products (here connectivity products))
+    deactivate ProductInventory
+
+    Recommendation -> Recommendation : 38. Build a list of recommendations\n(SASE Contract offering **has Priority 1**)
+
+    Recommendation --> Engagement : 39. **TMF679 Recommendation**\n200 OK (list of recommendationItems)\n//SASE Contract offering **has Priority 1**//
+    deactivate Recommendation
+
+    Engagement -> Engagement : 40. Display Recommended Offerings\n(SASE Contract offering is a top offering)
+    Engagement --> User : 41. Present Recommended Offerings
+
+end
+
+@enduml

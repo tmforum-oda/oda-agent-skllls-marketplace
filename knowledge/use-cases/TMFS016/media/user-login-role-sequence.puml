@@ -1,0 +1,102 @@
+@startuml
+title Sequence diagram
+
+actor User
+participant "Engagement" as Engagement #purple
+participant "Party Interaction" as PartyInteraction #red
+participant "Digital Identity" as DigitalIdentity #red
+participant "Party" as Party #red
+participant "Party Roles&Permissions" as PartyRoles #red
+
+== USER LOGS IN; User Data and Role obtained ==
+
+User -> Engagement : 1. Access Quotation Page
+Engagement -> PartyInteraction : 2. **TMF701 Process Flow**\nPOST /processFlow (processFlowSpecification=Quote_PageWelcome,\nchannel="B2B eCommerce Portal")
+activate PartyInteraction
+
+note over PartyInteraction
+  task 1 "Initial Step selection by user":
+  create new Interaction id
+  (**TMF683 Party Interaction**)
+  return configured list of Actions:
+  Sign In, Sign Out,
+  Redirect to main portal
+end note
+
+PartyInteraction --> Engagement : 3. **TMF701 Process Flow**\n201 Created (processFlow.id=1,\nprocessFlowSpecification=Quote_PageWelcome,state=active,taskflow.id=1.1,\n//Identify Yourself, Create Your Account, Redirect to main portal//)
+
+Engagement -> Engagement : 4. Display Choice for user
+
+User -> Engagement : 5. Selected: Sign In
+Engagement -> PartyInteraction : 6. **TMF701 Process Flow**\nPATCH processFlow/1/taskFlow/1.1\n(characteristic("Sign In selected"))
+
+note over PartyInteraction
+  task 1 "Initial Step selection by user":
+  update Interaction item
+  (**TMF683 Party Interaction**)
+  completed
+  task 2 "Trigger Collect User Data and Role", active
+end note
+
+PartyInteraction -> DigitalIdentity : 7. **TMF701 Process Flow**\nPOST /processFlow\n(processFlowSpecification=CollectUserDataAndRole,\ncallback when information provided(processFlow.id=1,taskFlow.id=1.2))
+activate DigitalIdentity
+
+note over DigitalIdentity : task 1 "Check Credential", hold
+
+DigitalIdentity --> PartyInteraction : 8. **TMF701 Process Flow**\n201 Created (processFlow.id=2,state=active,taskFlow.id=2.1,state=hold\n//TaskTask Flow Information Required: login, password//)
+
+PartyInteraction --> Engagement : 9. 200 OK (callback when information provided(processFlow.id=2,taskFlow.id=2.1\n//TaskTask Flow Information Required: login, password//))
+
+Engagement --> User : 10. Redirect to Login page
+
+User -> Engagement : 11. Submit login form
+Engagement -> PartyInteraction : 12. **TMF701 Process Flow**\nPATCH processFlow/2/taskFlow/2.1\n(characteristic(login, password))
+PartyInteraction -> DigitalIdentity
+
+note over DigitalIdentity
+  task 1 "Check Credential"
+  check credential and get DI.id
+  (**TMF720 Digital Identity**)
+  task 2 "Get Digital Identity"
+  get DI record, PartyRole.id, IndividualIdentified.id
+  (**TMF720 Digital Identity**)
+  opt: task 3 "Get Individual"
+  get Individual record
+end note
+
+opt
+
+    DigitalIdentity -> Party : 13. **TMF632 Party Mgt** GET /individual/{id}
+    activate Party
+    Party --> DigitalIdentity : 14. **TMF632** 200 OK (Individual)
+    deactivate Party
+
+end
+
+note over DigitalIdentity : task 4 "Get Party Role"\nget Party record
+
+DigitalIdentity -> PartyRoles : 15. **TMF669 Party Role Mgt** GET /partyRole/{id}
+activate PartyRoles
+PartyRoles --> DigitalIdentity : 16. **TMF669** 200 OK (partyRole(id,name="Alice&Bob",role="B2B Customer"))
+deactivate PartyRoles
+
+note over DigitalIdentity : task 4 "Get Party Role", completed
+
+DigitalIdentity -> PartyInteraction : 17. **TMF701 Process Flow**\nPATCH processFlow/1/taskFlow/1.2\n(characteristic(partyRole(id,name="Alice&Bob",role="B2B Customer")))
+deactivate DigitalIdentity
+
+note over PartyInteraction : task 2 completed
+
+note over PartyInteraction
+  task 3 "User Identified. Select Next Action"
+  update interaction item
+  (**TMF683 Party Interaction**)
+  hold
+end note
+
+PartyInteraction --> Engagement : 18. **TMF701 Process Flow**\n200 OK\n(characteristic(partyRole(id,name="Alice&Bob",role="B2B Customer"))\ncallback when information provided(processFlow.id=1,taskFlow.id=1.3\n//TaskTask Flow Information Required:\nSelect Main Offer to Configure, Sign Out, Main Page))//
+deactivate PartyInteraction
+
+Engagement --> User : 19. Present Selection
+
+@enduml

@@ -1,0 +1,186 @@
+@startuml
+title SASE Contract Product Catalog view
+
+legend
+  Blue = Product Offering / light blue = Product Offering Characterstic
+  Green = Product Specification / light green = Product Specification Characteristic
+  Orange = CFS / light orange = CFS Characterstic
+end legend
+
+class "SASE Contract" as SASEContract <<ProductOffering>> {
+  Discount on all offerings:10% if Term=2Y, 17% if Trem=3Y
+}
+class "# of Actor" as SASEContractActorCount
+SASEContract --> SASEContractActorCount
+
+class "If Actor <=20 - Silver plan" as SilverPlanRule
+class "If 20<Actor<=40 - Gold plan" as GoldPlanRule
+class "If Actor>40 - Platinum plan" as PlatinumPlanRule
+SASEContract --> SilverPlanRule
+SASEContract --> GoldPlanRule
+SASEContract --> PlatinumPlanRule
+
+class "SASE Edge Agent\n(on-premise) SW" as SASEEdgeAgentOffering <<ProductOffering>>
+class "SASE Edge Appliance\nwith Agent SW" as SASEEdgeApplianceOffering <<ProductOffering>>
+class "Actor Access Connection" as ActorAccessConnectionOffering <<ProductOffering>>
+class "ZTNA Coporate" as ZTNACorporateOffering <<ProductOffering>>
+class "ZTNA CloudApps" as ZTNACloudAppsOffering <<ProductOffering>>
+class "DNS Security" as DNSSecurityOffering <<ProductOffering>>
+class "FWaaS" as FWaaSOffering <<ProductOffering>>
+
+SASEContract --> SASEEdgeAgentOffering : "Min 0"
+SASEContract --> SASEEdgeApplianceOffering : "Min 0"
+SASEContract --> ActorAccessConnectionOffering : "Min 1"
+SASEContract --> ZTNACorporateOffering : "Min 1, Max 1"
+SASEContract --> ZTNACloudAppsOffering : "Min 0, Max 1"
+SASEContract --> DNSSecurityOffering : "Min 1, Max 1"
+SASEContract --> FWaaSOffering : "Min 0, Max 1"
+SASEContract ..> DNSSecurityOffering : Propagates
+
+class "Agent Access Plan = f(BW, Region)" as AgentAccessPlanChar
+class "Subscriber Underlay\nConnectivity (type,\nplace, BW)" as SubscriberUnderlayChar1
+SASEEdgeAgentOffering --> AgentAccessPlanChar
+SASEEdgeAgentOffering --> SubscriberUnderlayChar1
+
+class "Agent Access Plan =\nf(BW, Region)" as AgentAccessPlanChar2
+class "Rental = 65 per\nAppliance/month" as RentalChar
+class "Subscriber Underlay\nConnectivity (type,\nplace, BW)" as SubscriberUnderlayChar2
+SASEEdgeApplianceOffering --> AgentAccessPlanChar2
+SASEEdgeApplianceOffering --> RentalChar
+SASEEdgeApplianceOffering --> SubscriberUnderlayChar2
+
+class "Actor Access Plan = f(BW,\nRegion)" as ActorAccessPlanChar
+class "Subscriber Underlay\nConnectivity (type, place,\nBW)" as SubscriberUnderlayChar3
+ActorAccessConnectionOffering --> ActorAccessPlanChar
+ActorAccessConnectionOffering --> SubscriberUnderlayChar3
+
+class "# of Actor" as ZTNACorpActorCount
+class "ZTNA Plan" as ZTNACorpPlan
+ZTNACorporateOffering --> ZTNACorpActorCount
+ZTNACorporateOffering --> ZTNACorpPlan
+ActorAccessConnectionOffering ..> ZTNACorpActorCount : Propagates
+
+class "# of Actor" as ZTNACloudActorCount
+class "ZTNA Plan" as ZTNACloudPlan
+ZTNACloudAppsOffering --> ZTNACloudActorCount
+ZTNACloudAppsOffering --> ZTNACloudPlan
+
+class "# of Actor" as DNSActorCount
+class "Plan" as DNSPlan
+DNSSecurityOffering --> DNSActorCount
+DNSSecurityOffering --> DNSPlan
+
+class "# of Actor" as FWaaSActorCount
+class "Plan" as FWaaSPlan
+FWaaSOffering --> FWaaSActorCount
+FWaaSOffering --> FWaaSPlan
+
+class "SASE Edge\nAgent SW" as SASEEdgeAgentSpec <<ProductSpecification>>
+class "SASE Edge\nAppliance" as SASEEdgeApplianceSpec <<ProductSpecification>>
+SASEEdgeAgentOffering --> SASEEdgeAgentSpec : "Max 1, Max 1"
+SASEEdgeApplianceOffering --> SASEEdgeApplianceSpec : "Min 1, Max 1"
+SASEEdgeApplianceOffering --> SASEEdgeAgentSpec : "Min 1, Max 1"
+
+class "Actor Access\nConnection Specification" as ActorAccessConnectionSpec <<ProductSpecification>>
+ActorAccessConnectionOffering --> ActorAccessConnectionSpec
+
+class "ZTNA Specification" as ZTNASpec <<ProductSpecification>>
+ZTNACorporateOffering --> ZTNASpec
+ZTNACloudAppsOffering --> ZTNASpec
+
+class "DPF" as DPFOffering <<ProductOffering>>
+class "DNF" as DNFOffering <<ProductOffering>>
+class "PDNS" as PDNSOffering <<ProductOffering>>
+DNSSecurityOffering --> DPFOffering : "Min 1, Max 1"
+DNSSecurityOffering --> DNFOffering : "Min 1, Max 1"
+DNSSecurityOffering --> PDNSOffering : "Min 1, Max 1"
+
+class "Re-Encryption (Middle Box\nSecurity Function)" as MBSFOffering <<ProductOffering>>
+class "IP Port and Protocol Filtering" as IPFOffering <<ProductOffering>>
+class "Malware Detection and\nRemoval" as MDRoffering <<ProductOffering>>
+FWaaSOffering --> MBSFOffering : "Min 1, Max 1"
+FWaaSOffering --> IPFOffering : "Min 1, Max 1"
+FWaaSOffering --> MDRoffering : "Min 1, Max 1"
+
+class "DPF Specification" as DPFSpec <<ProductSpecification>>
+class "DNF Specification" as DNFSpec <<ProductSpecification>>
+class "PDNS\nSpecification" as PDNSSpec <<ProductSpecification>>
+class "MBSF\nSpecification" as MBSFSpec <<ProductSpecification>>
+class "IPF Specification" as IPFSpec <<ProductSpecification>>
+class "MD+R\nSpecification" as MDRSpec <<ProductSpecification>>
+DPFOffering --> DPFSpec
+DNFOffering --> DNFSpec
+PDNSOffering --> PDNSSpec
+MBSFOffering --> MBSFSpec
+IPFOffering --> IPFSpec
+MDRoffering --> MDRSpec
+
+class "SASE EdgeAgent SW" as SASEEdgeAgentCFSSpec <<ProductSpecification>> {
+  SASE UNI
+  License
+  Subscriber Underlay Connectivity\n(type, place, BW)
+  Place
+}
+class "SASE Edge Appliance" as SASEEdgeApplianceCFSSpec <<ProductSpecification>> {
+  Place
+}
+SASEEdgeAgentSpec --> SASEEdgeAgentCFSSpec
+SASEEdgeApplianceSpec --> SASEEdgeApplianceCFSSpec
+
+class "Actor Access\nConnection Specification" as ActorAccessConnectionCFSSpec <<ProductSpecification>> {
+  Place
+  Subscriber Underlay Connectivity\n(type, place, BW)
+}
+ActorAccessConnectionSpec --> ActorAccessConnectionCFSSpec
+
+class "ZTNA Specification" as ZTNACFSSpec <<ProductSpecification>> {
+  SASE Policies
+}
+ZTNASpec --> ZTNACFSSpec
+
+class "SASE Edge SW" as SASEEdgeSWCFS {
+  SASE UNI
+  License
+}
+class "SASE Edge Appliance" as SASEEdgeApplianceCFS {
+  Place
+}
+class "Connectivity Service" as ConnectivityServiceCFS {
+  Bandwidth
+  Place
+  SASE UNI
+}
+class "ZTNA Service" as ZTNAServiceCFS {
+  SASE Policies
+}
+class "DPF Specification" as DPFCFS {
+  Sec Policy
+}
+class "DNF Specification" as DNFCFS {
+  Sec Policy
+}
+class "PDNS Specification" as PDNSCFS {
+  Sec Policy
+}
+class "MBSF Specification" as MBSFCFS {
+  Sec Policy
+}
+class "IPF Specification" as IPFCFS {
+  Sec Policy
+}
+class "MD+R Specification" as MDRCFS {
+  Sec Policy
+}
+
+SASEEdgeAgentCFSSpec --> SASEEdgeSWCFS
+SASEEdgeApplianceCFSSpec --> SASEEdgeApplianceCFS
+ActorAccessConnectionCFSSpec --> ConnectivityServiceCFS
+ZTNACFSSpec --> ZTNAServiceCFS
+DPFSpec --> DPFCFS
+DNFSpec --> DNFCFS
+PDNSSpec --> PDNSCFS
+MBSFSpec --> MBSFCFS
+IPFSpec --> IPFCFS
+MDRSpec --> MDRCFS
+
+@enduml

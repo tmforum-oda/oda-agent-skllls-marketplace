@@ -235,7 +235,8 @@ For the sake of easier readability illustrative simplified SASE product catalog 
 
 In that context simplified SASE service architecture diagram looks as follows
 
-![](media/image01.png)
+![](media/sase-service-architecture-diagram.png)
+*([text description](media/sase-service-architecture-diagram.text-description.md))*
 
 Actor is granted access and is monitored according to the multiple SASE policies. Actor could be
 
@@ -377,51 +378,63 @@ Offering Constraints
 
 4. The portal prompts to provide Country and Regions where the new product is planned to be used. It narrows the list of available offerings and helps to apply correct pricing
 
-![](media/image02.png)
+![](media/customer-journey-signin-region-mockup.png)
+*([text description](media/customer-journey-signin-region-mockup.text-description.md))*
 
 5. The system runs in the back-end eligibility checks and/or recommendations lookup applying collected information about the customer, country and region list he provided. It returns result to the portal that renders the result placing SASE offering on the first place. The user selects SASE offering and proceeds
 
-![](media/image03.png)
+![](media/customer-journey-catalog-selection-mockup.png)
+*([text description](media/customer-journey-catalog-selection-mockup.text-description.md))*
 
 6. Before rendering this screen the system queried the inventory and location management functionality to collect the data about all locations the customer is having within specified regions. By this time the system has built in the backend the structure of the offerings, what information is required to be configured and what are the constraints for configuration values and selections. First, the system prompts to fill the root offering characteristics. Depending on the number of Actors user enters the portal switches the radio button below Silver/Gold/Platinum plan for the user to be informed of expected charges. User enters desired number (35), contract term and proceeds.
 
-![](media/image04.png)
+![](media/customer-journey-base-subscription-mockup.png)
+*([text description](media/customer-journey-base-subscription-mockup.text-description.md))*
 
 7. Note: the system has collected already inventory information about existing locations. The system prompts the user to pick-up one of the existing (On-Net) location or, alternatively, provide Off-Net location connected with 3rd party operator. When rendering the screen the system reads addresses and names of the sites related to the locations. The user ticks desired locations out of existing and adds Off-Net locations by typing site name and address.
 
-![](media/image05.png)
+![](media/customer-journey-locations-mockup.png)
+*([text description](media/customer-journey-locations-mockup.text-description.md))*
 
 8. First the system prompts the user to select locations that will be used for the access by a group of Actors through SASE Agent. The name of location is a selection from drop-down list of locations collected at previous dialog screen. User selects whether he needs an appliance together with SASE Agent software or not (in a later case, customer would use its own appliance). Also, user selects the bandwidth he expects to consumer at the selected location. The bandwidth values are limited to the ones defined in the price plan. The displayed monthly recurrent charge depends on several conditions: selected plan (Silver, Platinum, Gold), Region of location and selected bandwidth. Once user is done he proceeds further.
 
-![](media/image06.png)
+![](media/customer-journey-group-access-mockup.png)
+*([text description](media/customer-journey-group-access-mockup.text-description.md))*
 
 9. The system prompts the user to configure access for individual Actors who will be using Actor access connection. The user pick-ups remaining locations from the drop-down list and sets expected consumption bandwidth. The displayed monthly recurrent charge similarly to Group Access configuration depends on selected plan (Silver, Platinum, Gold), Region of location and selected bandwidth. Once user is done he proceeds further.
 
-![](media/image07.png)
+![](media/customer-journey-individual-access-mockup.png)
+*([text description](media/customer-journey-individual-access-mockup.text-description.md))*
 
 10. Next Add-ons subscriptions are started to be configured. Corporate ZTNA is configured as mandatory with no additional fee and will be provided to all Actors of the Customer. Cloud Apps ZTNA is an optional capability and can be selected for up to total number of Actors specified by the user (35).
 
-![](media/image08.png)
+![](media/customer-journey-ztna-addon-mockup.png)
+*([text description](media/customer-journey-ztna-addon-mockup.text-description.md))*
 
 11. DNS security is a pre-selected option provided to all Actors. The displayed monthly recurrent charge corresponds to the price plan selected by the user (Gold)
 
-![](media/image09.png)
+![](media/customer-journey-dns-security-mockup.png)
+*([text description](media/customer-journey-dns-security-mockup.text-description.md))*
 
 12. Firewall as a Service is a selectable option and can be taken for various number of Actors (up to the total number of Actors of the customer). The user may see the charging fees per plan. User decides to go with 15 Actors that correspond to a Silver price plan of FWaaS.
 
-![](media/image10.png)
+![](media/customer-journey-fwaas-mockup.png)
+*([text description](media/customer-journey-fwaas-mockup.text-description.md))*
 
 13. Once the last Add-on has been configured the system prompts the user to review the configuration before it will be submitted for a qualification checks and approval. The user reviews and submits the configuration. The system performs validations, qualification and approval. 
 
-![](media/image11.png)
+![](media/customer-journey-review-configuration-mockup.png)
+*([text description](media/customer-journey-review-configuration-mockup.text-description.md))*
 
 14. Once approval is done the system display the approved quote with a final price and information about discount. The user reviews the quote and accepts it for the order.
 
-![](media/image12.png)
+![](media/customer-journey-final-quote-mockup.png)
+*([text description](media/customer-journey-final-quote-mockup.text-description.md))*
 
 # Information View
 
-![](media/image13.png)
+![](media/sase-contract-catalog-view.png)
+*([PlantUML source](media/sase-contract-catalog-view.puml))*
 
 SASE is a strongly identity centric service. All Actors (User, Application, Device) must be identified, authenticated and authorized to access and use SASE according to their roles and permissions (for more details refer to [MEF 118 MEF 118.1 Zero Trust Framework for MEF Services](https://www.mef.net/resources/mef-118-1-zero-trust-framework-for-mef-services/)).  SASE provides access to digital resources in a digital realm and Actors' Identities are Digital Identities.
 
@@ -497,7 +510,8 @@ Digital Identity first starts check credential task for which it queries user cr
 Digital Identity reports back to Party Interaction collected information.
 As user identified Party Interaction triggers the next task prompting user to select main offering to configure. The selection options as well as user data are sent to Engagement Management.
 
-![](media/image14.png)
+![](media/user-login-role-sequence.png)
+*([PlantUML source](media/user-login-role-sequence.puml))*
 
 ## Sequence Diagram #2 (User sets remaining eligibility parameters, views presented eligible offerings)
 
@@ -510,7 +524,8 @@ Based on that parameters Product Configurator collects information from Product 
 
 Having this list, Engagement Management present these offerings for the user
 
-![](media/image15.png)
+![](media/eligibility-offerings-sequence.png)
+*([PlantUML source](media/eligibility-offerings-sequence.puml))*
 
 ##  Sequence Diagram #3 (Quote Configuration. Quote Items computation)
 
@@ -534,7 +549,8 @@ Party Interaction forwards this request (responses) to Engagement Management pro
 
 Engagement Management build GUI representation to collect all required choices and settings from the user.
 
-![](media/image16.png)
+![](media/quote-configuration-computation-sequence.png)
+*([PlantUML source](media/quote-configuration-computation-sequence.puml))*
 
 ## Sequence Diagram #4 (Quote Configuration. Complete Configuration and Accept)
 
@@ -554,7 +570,8 @@ Product Order Capture and Validation updates the Quote with the state "Approved"
 
 User Accepts the Quote, Product Order Capture and Validation updates the Quote with the state "Accepted" and responses back to Party Interaction with the fully configured Quote.
 
-![](media/image17.png)
+![](media/quote-configuration-complete-accept-sequence.png)
+*([PlantUML source](media/quote-configuration-complete-accept-sequence.puml))*
 
 # Conclusion
 

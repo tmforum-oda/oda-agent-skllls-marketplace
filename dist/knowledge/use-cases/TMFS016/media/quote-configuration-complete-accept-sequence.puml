@@ -1,0 +1,133 @@
+@startuml
+title Sequence diagram
+
+actor User
+participant "Engagement" as Engagement #purple
+participant "Party Interaction" as PartyInteraction #red
+participant "Product Configurator" as ProductConfigurator
+participant "Product Order Capture" as ProductOrderCapture
+participant "Product Catalog" as ProductCatalog
+participant "Product Inventory" as ProductInventory
+participant "Service Qualification" as ServiceQualification #blue
+participant "Location" as Location
+
+== QUOTE CONFIGURATION - COMPLETE CONFIGURATION AND ACCEPT ==
+
+User -> Engagement : 70. Root Item characteristic values\n(List of Regions, #ofActors,..),\nChild Items Selected\n(SASE Edge Appliances,SW ,Actor Access Connecton,\nDNS Sec, FWaaS, ZTNA)\nChild Characteristic values\n(Chosen Locations, Characteristics values\nincluding number of Actors)
+
+Engagement -> ProductOrderCapture : 71. **TMF701 Process Flow**\nPATCH /processFlow/3/taskFlow/3.3\n(characteristic("Root Item characteristic values, List of Selected Child Items and their characteristic values"))
+activate ProductOrderCapture
+
+ProductOrderCapture -> ProductConfigurator : 72. **TMF760 Product Configuration**\nPOST /queryProductConfiguration\n(.,contextEntity = quote id,requestProductConfigurationItem[productCharacteristic(\nnumber of Actors, place=[Country,Region],,.)])\n//Combined Request for all Quote Items//
+activate ProductConfigurator
+
+ProductConfigurator -> ProductConfigurator : 73. Compute Root Item Configuration for chosen number of Actors
+
+loop for each selected Child offering
+
+    alt for Actor Access Connection, SASE Edge Appliance
+
+        opt for Off-Net entered locations
+
+            ProductConfigurator -> Location : 74. **TMF673 Geographic Address** POST /geographicAddressValidation (submittedGeographicAddress)
+            activate Location
+            Location --> ProductConfigurator : 75. **TMF673 Geographic Address** 201 Created (validationResult=success)
+            deactivate Location
+
+        end
+
+        ProductConfigurator -> ProductConfigurator : 76. Compute Product Configuration for chosen locations
+
+    else for DNS, FWaaS, ZTNA
+
+        ProductConfigurator -> ProductConfigurator : 77. Compute Product Configuration for chosen number of Actors
+
+    end
+
+end
+
+ProductConfigurator --> ProductOrderCapture : 78. **TMF760 Product Configuration**\n200 OK\n(queryProductConfiguration.id, contextEntity = quote id,  State=Done\n[computedProductConfigurationItem(Fully Configured Quote Item)])\n//Combined Response for all Quote Items//
+deactivate ProductConfigurator
+
+note over ProductOrderCapture
+  task 3
+  **TMF 648 Quote**
+  update Quote (Quote Items Configuration)
+  completed
+  task 4 "check Service Qualification (Subscriber Underlay Connectivity)", active
+end note
+
+ProductOrderCapture -> ServiceQualification : 79. **TMF645 Service Qulification**\nPOST checkServiceQualification\n(serviceQualificationItem\n[service="Subscriber Underlay Connectivity", place,\nserviceCharacteristic="ON-NET"])
+activate ServiceQualification
+
+note over ServiceQualification : perform checkServiceQualification procedure\nfor all ON-NET locations
+
+ServiceQualification --> ProductOrderCapture : 80. **TMF645 Service Qulification**\n201 Created (serviceQualificationItem\n[service="Subscriber Underlay Connectivity", place,\nqualificationResult=qualified])
+deactivate ServiceQualification
+
+note over ProductOrderCapture
+  task 4
+  **TMF 648 Quote**
+  update Quote (Quote Items Configuration)
+  completed
+  task 5 "Finalize Quote, Get Quote Acceptance", active
+end note
+
+opt total quote, final price re-calculation
+
+    ProductOrderCapture -> ProductConfigurator : 81. **TMF760 Product Configuration**\nPOST /queryProductConfiguration\n(contextEntity = quote id,  State=Done\n[requestProductConfigurationItem(Fully Configured Quote Item)])\n//Combined Response for all Quote Items//
+    activate ProductConfigurator
+
+    ProductConfigurator -> ProductConfigurator : 82. Re-calculate final price (e.g. apply discount)
+
+    ProductConfigurator --> ProductOrderCapture : 83. **TMF760 Product Configuration**\n200 OK\n(queryProductConfiguration.id, contextEntity = quote id,  State=Done\n[computedProductConfigurationItem(Fully Configured Quote Item)])\n//Combined Response for all Quote Items//
+    deactivate ProductConfigurator
+
+end
+
+ProductOrderCapture -> ProductConfigurator : 84. **TMF760 Product Configuration**\nPOST checkProductConfiguration (Fully Configured Quote)\n//Combined Request for all Quote Items//
+activate ProductConfigurator
+
+ProductConfigurator -> ProductConfigurator : 85. Check, Validate, Approve
+
+ProductConfigurator --> ProductOrderCapture : 86. **TMF760 Product Configuration**\n200 OK\n([checkProductConfigurationItem(State=Approved)])
+deactivate ProductConfigurator
+
+note over ProductOrderCapture
+  task 5
+  **TMF648 Quote**
+  update Quote (State=**Approved**)
+  Get Acceptance
+  hold
+end note
+
+ProductOrderCapture --> Engagement : 87. **TMF701 Process Flow**\n200 OK\n("Computed/Configured Quote Items, Allowed actions"\ncallback when information provided(processFlow.id=4,taskFlow.id=4.5\n//TaskTask Flow Information Required: Quote Accepted?))//
+deactivate ProductOrderCapture
+
+Engagement --> User : 88. Present Acceptance page for Quote
+
+User -> Engagement : 89. Accept Quote
+
+Engagement -> ProductOrderCapture : 90. **TMF701 Process Flow**\nPATCH /processFlow/3/taskFlow/3.4\n(characteristic("Quote Accepted"))
+activate ProductOrderCapture
+
+note over ProductOrderCapture
+  task 5
+  **TMF648 Quote**
+  update Quote (State=**Accepted**)
+  completed
+end note
+
+ProductOrderCapture -> PartyInteraction : 91. **TMF701 Process Flow**\nPATCH /processFlow/1/taskFlow/1.4\n(characteristic("Configured and Accepted Quote"))
+deactivate ProductOrderCapture
+activate PartyInteraction
+
+note over PartyInteraction
+  task 5,
+  **TMF683 Party Interaction**
+  update interaction item
+  completed
+end note
+deactivate PartyInteraction
+
+@enduml
