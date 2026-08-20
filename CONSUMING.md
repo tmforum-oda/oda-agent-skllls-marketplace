@@ -91,20 +91,43 @@ already at the repo's own top level, chosen so the plugin has zero
 dependency on any project-specific clone or directory layout.
 
 ```
-/plugin marketplace add https://github.vodafone.com/Innovation-Network/tm-forum-sdlc.git
-/plugin install tm-forum-oda@tm-forum-oda-marketplace
+claude plugin marketplace add https://github.vodafone.com/Innovation-Network/tm-forum-sdlc.git --sparse .claude-plugin dist
+claude plugin install tm-forum-oda@tm-forum-oda-marketplace
 ```
+
+(`/plugin marketplace add ...` and `/plugin install ...` slash commands
+exist too, for inside an interactive session — the commands above are the
+`claude plugin` CLI form, which is what was actually tested for this
+`--sparse` flag; whether the slash-command form also accepts `--sparse`
+wasn't checked, so use the CLI form above if you want the scoping
+confirmed below.)
+
+**The `--sparse .claude-plugin dist` matters — don't drop it.** Adding
+the marketplace requires cloning the repository the marketplace lives in
+(to read `.claude-plugin/marketplace.json` and resolve the plugin's
+`source: ./dist` path), and that clone is a *separate* thing from the
+actual installed plugin. Without `--sparse`, that clone pulls the
+**entire repo** — including `references/`, the raw TM Forum member-gated
+DOCX/PDF this repo deliberately never redistributes (spec.md §10), plus
+`tools/` and `spec/` — into `~/.claude/plugins/marketplaces/...` on every
+consumer's machine, even though only `dist/` ever actually gets used.
+`--sparse .claude-plugin dist` limits that clone to just what the
+marketplace needs to read plus the plugin content itself.
 
 Skills install namespaced: `/tm-forum-oda:check-usecase-maturity` and
 `/tm-forum-oda:generate-test-cases-from-usecase`.
 
-**Verified for real** (not just from the docs): loaded `dist/` via
-`claude --plugin-dir` from a directory with no `knowledge/` of its own
-anywhere nearby, invoked both skills, and got correct answers grounded in
-the bundled data — confirming `${CLAUDE_PLUGIN_ROOT}` actually resolves
-regardless of the caller's working directory, which is the entire point
-of packaging it this way. See `spec/tasks.md` Phase 8.3 for the full
-verification record.
+**Verified for real** (not just from the docs, both times): first loaded
+`dist/` via `claude --plugin-dir` from a directory with no `knowledge/`
+anywhere nearby and confirmed both skills resolve `${CLAUDE_PLUGIN_ROOT}`
+correctly. Separately — found by actually inspecting
+`~/.claude/plugins/marketplaces/.../` after a real
+`/plugin marketplace add` — confirmed the unscoped command really does
+pull the whole repo, then re-verified `--sparse .claude-plugin dist`
+fixes it (marketplace clone drops to no `references/`/`tools/`/`spec/`
+at all) and that both skills still work correctly through a full
+`marketplace add` → `install` → invoke cycle afterward. See
+`spec/tasks.md` Phase 8.3/8.4 for the full verification record.
 
 **Staying up to date**: reinstall or update the plugin through whatever
 mechanism your Claude Code version provides (`/plugin` commands) —
