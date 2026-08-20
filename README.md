@@ -117,6 +117,16 @@ covers both a sparse clone (lighter, git-native) and installing
 [`dist/`](dist/) as a Claude Code plugin (heavier — bundles `knowledge/`
 inside the plugin — but zero manual clone/update management).
 
+**Repo maintenance**
+
+One skill writes to `knowledge/` instead of just reading it, and is
+deliberately excluded from `dist/` — a consumer building against this
+corpus has no use for a skill that edits it:
+
+| Skill | Given | Produces |
+|---|---|---|
+| [`process-usecase-media`](skills/process-usecase-media/SKILL.md) | a `TMFSxxx` id | renames each of its raw extracted images descriptively, reverse-engineers UML sequence diagrams into PlantUML, and writes a text description for everything else — see spec.md §12 |
+
 ## Tools
 
 Every script in `tools/` opens with a `Reads:`/`Writes:`/`Track:` header

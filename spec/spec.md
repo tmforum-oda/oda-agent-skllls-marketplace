@@ -382,23 +382,36 @@ read, greppable, diffable in a meaningful way (unlike a binary PNG diff),
 and reusable by every skill and every future invocation without a fresh
 vision read.
 
-### Scope of the experiment
+### Scope
 
-Deliberately narrow, per the explicit instruction that started this
-phase: **TMFS001 only**, one use case's `media/` folder, processed image
-by image, before deciding whether this generalizes. This is not assumed
-to be a mechanical, deterministic transform the way `docx2md.py`'s
-extraction is — classifying an image and reverse-engineering a sequence
-diagram into PlantUML requires actual visual judgment, so unlike every
-other `tools/*.py` script in this repo, this cannot start as a
-deterministic Python tool. It starts as an agent-driven, per-image
-process; whether and how to formalize it into a repeatable tool is an
-open question the experiment itself needs to answer, not a decision made
-up front.
+First run, per the explicit instruction that started this phase, was
+**TMFS001 only** — one use case's `media/` folder, processed image by
+image, before deciding whether this generalizes. It did: the shape held
+up, and the repeatable mechanism is now `skills/process-usecase-media/`
+(§8-style skill, but a different category from every other skill in this
+repo — see below). Classifying an image and reverse-engineering a
+sequence diagram into PlantUML both require actual visual judgment, so
+unlike every other `tools/*.py` script in this repo, this could never
+become a deterministic Python tool — it's a skill an agent runs, not a
+script that runs itself.
+
+**This is the one skill in this repo that writes to `knowledge/`.** Every
+other skill (§8, §11) is deliberately read-only against `knowledge/` —
+that's what makes them safe to distribute to a consumer who has no
+business editing this repo's own corpus. `process-usecase-media` is the
+opposite: it's a maintenance tool for extending this repo's own
+`media/` enrichment, and it's excluded from `tools/build_plugin.py`'s
+`dist/` build for exactly that reason (a marker set,
+`INTERNAL_ONLY_SKILLS`, in the script itself) — it stays in `skills/`
+and in this repo's own git history, but never ships in the distributable
+plugin.
 
 ### Per-image process
 
-For each image in `knowledge/use-cases/{ID}/media/`:
+For each image in `knowledge/use-cases/{ID}/media/` not already
+descriptively named (the generic `imageNN.{png,jpeg}` pattern
+`docx2md.py` extracts with marks an image as not yet processed — an
+already-renamed image is skipped, which is what makes a re-run safe):
 
 1. **Analyze and classify** — read the image directly (multimodal), and
    the surrounding body text for context (which section it's in, what
@@ -414,23 +427,30 @@ For each image in `knowledge/use-cases/{ID}/media/`:
    naming improvement.
 3. **Sequence diagrams** → reverse-engineer a `.puml` (PlantUML) file
    with the same base name, sibling to the (renamed) image in the same
-   `media/` folder.
+   `media/` folder — verified by actually rendering it to a scratch
+   location outside `media/` and comparing against the source, never
+   rendered in place (doing so once, during the first TMFS001 pass,
+   silently overwrote a renamed original with a freshly-rendered copy;
+   recovered byte-for-byte from git history, and the skill's own
+   instructions now call this out explicitly as the one mistake with
+   real, hard-to-notice consequences).
 4. **Everything else** → a sibling `{base-name}.text-description.md`
-   with a text description derived from the image. (One file per image,
-   named to match that image — not one shared `text-description.md` per
-   folder, since a folder can hold several non-diagram images and a
-   single shared filename would silently overwrite one description with
-   the next. A deliberate, small deviation from the literal instruction,
-   made to avoid an obvious collision — worth confirming this reading is
-   right during review, exactly the kind of thing this experiment exists
-   to surface.)
+   with a text description derived from the image and the body text that
+   introduces it. One file per image, named to match that image — not
+   one shared `text-description.md` per folder, confirmed necessary since
+   a folder routinely holds several non-diagram images that would
+   otherwise collide on one shared filename.
+5. **Link the enrichment from the document body** — immediately after
+   each image's own `![]()` reference, add a real markdown link to its
+   new sibling file (`*([PlantUML source](media/....puml))*` /
+   `*([text description](media/....text-description.md))*`), not a
+   plain-text mention — so the enrichment is actually discoverable and
+   navigable from the document a reader already has open.
 
-### What "done" looks like for this experiment
+### Status
 
-Not a finished pipeline — a first real pass against TMFS001, kept as-is
-(not treated as disposable/regeneratable the way `knowledge/`'s other
-generated content is, since there's no deterministic script that could
-regenerate it yet), plus a written account of what worked, what didn't,
-and what should change before this is either extended to more use cases
-or turned into a repeatable tool. See `tasks.md` Phase 10 for the actual
-run and findings.
+Formalized as a skill and confirmed working (see `tasks.md` Phase 10 for
+the TMFS001 run and the two real bugs found and fixed while verifying
+it). Not yet run against any use case beyond TMFS001 — extending further
+is a separate decision, not assumed just because the mechanism now
+exists.

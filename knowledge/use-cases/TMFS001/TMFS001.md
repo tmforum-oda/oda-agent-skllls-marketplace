@@ -100,7 +100,7 @@ This use case also includes the validation of a default privacy profile, to clar
 # Description
 
 ![](media/account-creation-ui-mockup.png)
-*(text description: `media/account-creation-ui-mockup.text-description.md`)*
+*([text description](media/account-creation-ui-mockup.text-description.md))*
 
 - Step 1
 
@@ -149,12 +149,12 @@ Note: In a next version it is planned to add:
 Based on the Party Role specifications and the Permission specifications, at the end of the use case, the information created will be:
 
 ![](media/sid-information-view-party-account.png)
-*(text description: `media/sid-information-view-party-account.text-description.md`)*
+*([text description](media/sid-information-view-party-account.text-description.md))*
 
 Based on the Party Privacy Profile Type defined for the Portal User Party Role specification, at the end of the use case the information related to privacy management will be:
 
 ![](media/sid-information-view-privacy-profile.png)
-*(text description: `media/sid-information-view-privacy-profile.text-description.md`)*
+*([text description](media/sid-information-view-privacy-profile.text-description.md))*
 
 # Sequence Diagrams
 
@@ -177,7 +177,7 @@ This approach illustrates a very common implementation of Frontend - Backend art
 Note: This approach has not been updated to describe Step 4 and Party Privacy Profile management.
 
 ![](media/account-creation-approach-a-sequence.png)
-*(PlantUML source: `media/account-creation-approach-a-sequence.puml`)*
+*([PlantUML source](media/account-creation-approach-a-sequence.puml))*
 
 ## Approach B (SoR steers the process)
 
@@ -211,7 +211,7 @@ In case of an entirely automated process, that is to say without any manual task
 In this first sequence diagram we illustrate how, according to the choice made by the Frontend user, Party Interaction Management can identify the related process, managed here by Party Management, and trigger it directly or requesting the Frontend to trigger it.
 
 ![](media/account-creation-step1-2-sequence.png)
-*(PlantUML source: `media/account-creation-step1-2-sequence.puml`)*
+*([PlantUML source](media/account-creation-step1-2-sequence.puml))*
 
 Note: as a reminder, the different codes that can be used as answer to an API call are
 
@@ -232,7 +232,7 @@ In this diagram, we illustrate how Party Management, responsible of the main pro
 - at the end of the Digital Identity Management sub-process, the return to Party Management main process will depend on the way the sub-process was launched (second alternative illustrated).
 
 ![](media/account-creation-step2-3-sequence.png)
-*(PlantUML source: `media/account-creation-step2-3-sequence.puml`)*
+*([PlantUML source](media/account-creation-step2-3-sequence.puml))*
 
 In the previous diagrams, each time a process or sub-process needs to be triggered in a new component, we illustrated 2 alternatives:
 
@@ -247,7 +247,7 @@ Only alternative 2 in the previous steps permits to Party Management to continue
 So only alternative 2 is described in the following steps.
 
 ![](media/account-creation-step4-5-sequence.png)
-*(PlantUML source: `media/account-creation-step4-5-sequence.puml`)*
+*([PlantUML source](media/account-creation-step4-5-sequence.puml))*
 
 # Conclusion
 
@@ -287,8 +287,8 @@ Decoupling Systems of Engagement (SoE) from System of Records (SoR) in current i
 
 | Approach description | Architecture overview |
 | --- | --- |
-| Approach A: SoE steers the process | <br>![](media/architecture-approach-a-soe-steers.jpeg)<br>*(text description: `media/architecture-approach-a-soe-steers.text-description.md`)* |
-| Approach B: SoR steer the process | <br>![](media/architecture-approach-b-sor-steers.jpeg)<br>*(text description: `media/architecture-approach-b-sor-steers.text-description.md`)* |
+| Approach A: SoE steers the process | <br>![](media/architecture-approach-a-soe-steers.jpeg)<br>*([text description](media/architecture-approach-a-soe-steers.text-description.md))* |
+| Approach B: SoR steer the process | <br>![](media/architecture-approach-b-sor-steers.jpeg)<br>*([text description](media/architecture-approach-b-sor-steers.text-description.md))* |
 
 ## Relationship to BFF pattern
 
@@ -301,7 +301,7 @@ Both applications, on customer device and BFF, are parts of the ODA Engagement d
 In approach A to process management the BFF is usually the place where the process is managed.
 
 ![](media/architecture-bff-pattern.jpeg)
-*(text description: `media/architecture-bff-pattern.text-description.md`)*
+*([text description](media/architecture-bff-pattern.text-description.md))*
 
 ## Approach A : SoE steers the process
 

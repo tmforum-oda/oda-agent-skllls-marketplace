@@ -52,6 +52,15 @@ SKILLS_SRC = os.path.join(REPO_ROOT, "skills")
 KNOWLEDGE_SRC = os.path.join(REPO_ROOT, "knowledge")
 DIST_DIR = os.path.join(REPO_ROOT, "dist")
 
+# Repo-maintenance skills that write to knowledge/ (spec.md 12) -- a different
+# category from every other skill here, which only ever reads knowledge/. Not for
+# external distribution: a consumer installing the plugin to build against this
+# corpus has no use for a skill that edits it, and shipping one invites someone
+# running it against a knowledge/ they don't actually maintain (e.g. a sparse
+# clone with no way to push changes back). Stays in skills/ -- and in this repo's
+# own git history -- just never copied into dist/.
+INTERNAL_ONLY_SKILLS = {"process-usecase-media"}
+
 PLUGIN_MANIFEST = {
     "name": "tm-forum-oda",
     "version": "1.0.0",
@@ -66,7 +75,7 @@ def rewrite_knowledge_paths(text):
 
 def copy_skills():
     dst = os.path.join(DIST_DIR, "skills")
-    shutil.copytree(SKILLS_SRC, dst)
+    shutil.copytree(SKILLS_SRC, dst, ignore=lambda _dir, names: INTERNAL_ONLY_SKILLS & set(names))
     rewritten = 0
     for root, _, files in os.walk(dst):
         for name in files:
