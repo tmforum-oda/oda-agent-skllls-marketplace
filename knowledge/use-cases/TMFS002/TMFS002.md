@@ -129,7 +129,7 @@ This view presents 3 examples of contract level Product Offerings commercializin
 - The Fiber Access product specification is based on a CFS specification - this link will be used for the technical eligibility test, that is configured as mandatory for this product specification as the Fiber Network is not available in all locations.
 
 ![](media/product-catalog-view-fiber-offers.png)
-*([text description](media/product-catalog-view-fiber-offers.text-description.md))*
+*([PlantUML source](media/product-catalog-view-fiber-offers.puml))*
 
 # Sequence diagrams
 

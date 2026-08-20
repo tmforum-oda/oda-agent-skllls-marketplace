@@ -1,6 +1,6 @@
 # architecture-bff-pattern.jpeg
 
-**Type:** Architecture/block diagram, not a sequence diagram.
+**Type:** Architecture/block diagram.
 **Source context:** `## Relationship to BFF pattern` (under `# Appendix`)
 — illustrates the backend-for-frontend concept referenced throughout
 the use case's sequence diagrams (the "EngagementManagement BFF"

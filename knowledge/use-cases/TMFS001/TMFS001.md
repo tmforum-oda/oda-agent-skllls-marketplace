@@ -149,12 +149,12 @@ Note: In a next version it is planned to add:
 Based on the Party Role specifications and the Permission specifications, at the end of the use case, the information created will be:
 
 ![](media/sid-information-view-party-account.png)
-*([text description](media/sid-information-view-party-account.text-description.md))*
+*([PlantUML source](media/sid-information-view-party-account.puml))*
 
 Based on the Party Privacy Profile Type defined for the Portal User Party Role specification, at the end of the use case the information related to privacy management will be:
 
 ![](media/sid-information-view-privacy-profile.png)
-*([text description](media/sid-information-view-privacy-profile.text-description.md))*
+*([PlantUML source](media/sid-information-view-privacy-profile.puml))*
 
 # Sequence Diagrams
 

@@ -1,6 +1,6 @@
 # catalogue-browsing-eligibility-ui-mockup.png
 
-**Type:** UI wireframe/mockup (not a UML diagram).
+**Type:** UI wireframe/mockup.
 **Source context:** `# Description` section, illustrating the 4 steps
 narrated in the surrounding text.
 

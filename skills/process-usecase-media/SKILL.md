@@ -1,6 +1,6 @@
 ---
 name: process-usecase-media
-description: Given a TMFSxxx use-case id, processes every image in its knowledge/use-cases/{ID}/media/ folder in turn -- classifies it, renames it descriptively, reverse-engineers UML sequence diagrams into PlantUML .puml files, and writes a text-description.md for every other image -- updating the use case's own document body to match. Use this to enrich a use case's raw extracted images into agent-friendly formats. Unlike other skills here, this one writes to knowledge/, not just reads it.
+description: Given a TMFSxxx use-case id, processes every image in its knowledge/use-cases/{ID}/media/ folder in turn -- classifies it, renames it descriptively, reverse-engineers UML sequence diagrams and information/data-model diagrams into PlantUML .puml files, and writes a text-description.md for everything else -- updating the use case's own document body to match. Use this to enrich a use case's raw extracted images into agent-friendly formats. Unlike other skills here, this one writes to knowledge/, not just reads it.
 ---
 
 # Process Use-Case Media — Skill Instructions
@@ -12,8 +12,9 @@ A use case's real diagram content sits in raw images under
 the document body. Reading an image costs a multimodal call every time a
 skill needs to understand it. This skill pays that cost once per image,
 converting each into a plain-text form another skill (or agent) can read
-cheaply and repeatedly afterward: PlantUML source for a UML sequence
-diagram, a written description for anything else.
+cheaply and repeatedly afterward: PlantUML source for anything with
+structured entities and relationships (a sequence diagram, an
+information/data model view), a written description for anything else.
 
 **This skill modifies files under `knowledge/`** — every other skill in
 this repo is read-only against `knowledge/`; this one renames images,
@@ -45,9 +46,12 @@ often decisive for classification and always useful for naming.
 Classify as one of:
 - **UML sequence diagram** — actors/participants with lifelines,
   numbered or ordered messages between them, activation bars.
-- **Other** — architecture/block diagrams, data/information model views
-  (entity-relationship style), UI wireframes/mockups, or anything else
-  that isn't a sequence diagram.
+- **Information/data model view** — labeled entities (classes, objects,
+  or SID/catalog-style boxes) connected by labeled relationships, with or
+  without attributes/example values — an entity-relationship diagram in
+  substance, whatever notation the source actually uses.
+- **Other** — architecture/block diagrams, UI wireframes/mockups, or
+  anything else that isn't one of the two structured types above.
 
 ## Step 3 — Rename descriptively and update every reference
 
@@ -60,13 +64,19 @@ is a regression. Verify afterward: no `media/imageNN` pattern remains
 anywhere in the body, and every `media/` reference in the body resolves
 to a file that actually exists on disk.
 
-## Step 4 — Sequence diagrams: reverse-engineer to PlantUML
+## Step 4 — Sequence diagrams and information/data model views: reverse-engineer to PlantUML
 
 Write a `.puml` file with the same base name, sibling to the renamed
-image, transcribing every participant, message (in order, keeping any
-numbering the source diagram uses), activation bar, and combined
-fragment (`alt`/`else`/loop) faithfully — this is a redraw of what the
-image shows, not a summary or a simplified approximation.
+image — a `sequenceDiagram`-style `.puml` for a sequence diagram, a
+`class`-style `.puml` for an information/data model view (entities as
+`class` blocks, grouped into `package`s where the source groups them,
+e.g. by owning ODA component; attributes and concrete example values
+kept as class members; labeled relationships as arrows carrying the
+source diagram's own relationship label — `has`, `defines`, `describes`,
+`instantiates`, whatever the image actually says). Either way, this is a
+redraw of exactly what the image shows — every participant, every
+message in order, every entity, every labeled relationship — not a
+summary or a simplified approximation.
 
 **Verify by actually rendering it, not by trusting the transcription by
 eye.** If a PlantUML renderer is available, render the `.puml` to a
@@ -76,9 +86,10 @@ filename and silently overwrites it. Recovering an overwritten original
 means restoring it byte-for-byte from git history and confirming via
 checksum before continuing; treat that as a real failure to avoid, not a
 routine recovery step. Compare the render against the source image
-(participants, message order, fragment structure) before treating the
-`.puml` as done — a `.puml` that merely compiles without error hasn't
-been verified, only checked for syntax.
+(participants/entities present, message order or relationship labels,
+grouping structure) before treating the `.puml` as done — a `.puml` that
+merely compiles without error hasn't been verified, only checked for
+syntax.
 
 ## Step 5 — Everything else: write a text description
 
@@ -91,7 +102,9 @@ surrounding body text that introduces it: state the image's type, the
 section it appears in, and what it actually shows in enough detail that
 a reader who trusts the description doesn't need to open the image —
 call out labeled entities, relationships, and any real example data the
-diagram uses, not just a one-line summary.
+diagram uses, not just a one-line summary. State what the image *is*,
+not what it *isn't* — "UI wireframe/mockup," not "UI wireframe/mockup,
+not a UML diagram."
 
 These files are sidecar annotations, not standalone artefacts — they
 don't need the five-field envelope every other file under `knowledge/`
@@ -114,6 +127,10 @@ plain-text mention:
 *([text description](media/account-creation-ui-mockup.text-description.md))*
 ```
 
+The same `[PlantUML source](...)` link form is used whether the `.puml`
+is a sequence diagram or a class diagram — the link doesn't need to say
+which.
+
 For an image inside a table cell, use `<br>` before the link the same
 way the source document already uses `<br>` before the image itself,
 keeping both on one logical table-cell line.
@@ -124,3 +141,4 @@ keeping both on one logical table-cell line.
 - Does not touch an already-processed image (Step 1) — safe to re-run, not a full reprocessing pass every time.
 - Does not treat a `.puml` file as verified just because it rendered without a syntax error — Step 4's visual comparison against the source is required, not optional.
 - Does not render verification output into `media/` using the source diagram's own base name — that's the one mistake with real, hard-to-notice consequences (a silently overwritten original), and Step 4 exists specifically to prevent it.
+- Does not describe an image's type by what it isn't — Step 5's descriptions and this skill's own classifications (Step 2) state what something is.

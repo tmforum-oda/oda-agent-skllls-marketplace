@@ -1,0 +1,81 @@
+@startuml
+title Resulting Information View (SID simplified view) and link with ODA Components
+
+skinparam class {
+  BackgroundColor<<Party>> White
+  BorderColor<<Party>> Red
+  BackgroundColor<<ContactMethod>> Salmon
+  BorderColor<<ContactMethod>> Red
+  BackgroundColor<<PartyRoleSpec>> IndianRed
+  BackgroundColor<<PartyRole>> White
+  BorderColor<<CommunicationInteraction>> DarkRed
+  BackgroundColor<<DigitalIdentity>> White
+  BorderColor<<DigitalIdentity>> Purple
+  BackgroundColor<<PermissionSpec>> Violet
+  BackgroundColor<<Permission>> White
+  BorderColor<<Permission>> Magenta
+}
+
+package "TMFC028 Party Mgt" {
+  class "Party/Individual" as Party <<Party>> {
+    name = "John Smith"
+  }
+  class "Contact Method" as ContactMethod <<ContactMethod>> {
+    email address = "john.smith@emailprovider.com"
+  }
+}
+
+package "TMFC023 Party Interaction Mgt" {
+  class "Communication Interaction" as CommInteraction <<CommunicationInteraction>> {
+    description = "John Smith'portal interaction 2023/06/15"
+  }
+  class "Communication Interaction Item" as CommInteractionItem <<CommunicationInteraction>> {
+    subject = "create John Smith's \"account\""
+  }
+}
+
+package "TMFC020 Digital Identity Mgt" {
+  class "Digital Identity" as DigitalIdentity <<DigitalIdentity>> {
+    login = "login123"
+    passwd = "XXXXXXXXXX"
+  }
+}
+
+package "TMFC035 Party Roles & Permissions Mgt" {
+  class "PartyRole" as PartyRole {
+    description = "John Smith's portal user role"
+    validFrom = "2023/06/15"
+  }
+  class "PartyRole Spec" as PartyRoleSpec <<PartyRoleSpec>> {
+    value = "portal user"
+  }
+  class "Permission" as PermInitiateOrder <<Permission>> {
+    value = "initiate customer order"
+    validFrom = "2023/06/15"
+  }
+  class "Permission" as PermContactCallCenter <<Permission>> {
+    value = "contact call center X"
+    validFrom = "2023/06/15"
+  }
+  class "Permission Spec" as PermSpecInitiateOrder <<PermissionSpec>> {
+    value = "initiate customer order"
+  }
+  class "Permission Spec" as PermSpecContactCallCenter <<PermissionSpec>> {
+    value = "contact call center X"
+  }
+}
+
+Party --> ContactMethod : defines
+Party --> PartyRole : has
+DigitalIdentity --> Party : identifies
+CommInteraction --> Party : is initiated by
+CommInteraction --> CommInteractionItem : contains
+PartyRoleSpec --> PartyRole : describes
+PartyRole --> PermInitiateOrder : has permission
+PartyRole --> PermContactCallCenter : has permission
+PartyRoleSpec --> PermSpecInitiateOrder : gives permission
+PermSpecInitiateOrder --> PermInitiateOrder : describes
+PermSpecContactCallCenter --> PermContactCallCenter : describes
+PartyRole ..> CommInteractionItem : is a result of
+
+@enduml

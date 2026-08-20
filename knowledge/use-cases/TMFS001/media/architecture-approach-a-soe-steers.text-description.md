@@ -1,6 +1,6 @@
 # architecture-approach-a-soe-steers.jpeg
 
-**Type:** Architecture/block diagram, not a sequence diagram.
+**Type:** Architecture/block diagram.
 **Source context:** `# Appendix` — "Approach A: SoE steers the process,"
 one row of the two-row architecture comparison table (paired with
 `architecture-approach-b-sor-steers.jpeg`).

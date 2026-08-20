@@ -1,6 +1,6 @@
 # account-creation-ui-mockup.png
 
-**Type:** UI wireframe/mockup (not a UML diagram).
+**Type:** UI wireframe/mockup.
 **Source context:** `# Description` section, illustrating the 5 steps
 narrated in the surrounding text.
 
