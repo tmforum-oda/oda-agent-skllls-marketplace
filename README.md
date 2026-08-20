@@ -94,9 +94,11 @@ skill-run time. Two audiences: **consumers** build a product using ODA;
 |---|---|---|
 | [`check-usecase-maturity`](skills/check-usecase-maturity/SKILL.md) | a `TMFSxxx` id | a plain-language "is this safe to build against" verdict from frontmatter alone |
 | [`recommend-oda-components-for-requirement`](skills/recommend-oda-components-for-requirement/SKILL.md) | a plain-language requirement | the closest matching use case(s) and a starting component/API architecture |
+| [`capture-requirements-from-usecase`](skills/capture-requirements-from-usecase/SKILL.md) | a `TMFSxxx` id | user stories and acceptance criteria, citing real component/API ids |
 | [`generate-test-cases-from-usecase`](skills/generate-test-cases-from-usecase/SKILL.md) | a `TMFSxxx` id | BDD/Gherkin test scenarios grounded in the use case's real linked components/APIs and cached schemas |
 | [`generate-api-mocks-from-usecase`](skills/generate-api-mocks-from-usecase/SKILL.md) | a `TMFSxxx` id | mock/fixture payloads for its linked APIs, from cached schemas and real sample payloads |
 | [`draft-architecture-diagram-from-usecase`](skills/draft-architecture-diagram-from-usecase/SKILL.md) | a `TMFSxxx` id | a Mermaid diagram redrawn from the use case's own sequence diagrams |
+| [`validate-design-against-oda`](skills/validate-design-against-oda/SKILL.md) | a proposed component/API design | a drift report checking its claimed dependencies against the real cached specs |
 | [`assess-change-impact`](skills/assess-change-impact/SKILL.md) | a `TMFCxxx`/`TMFxxx` id + proposed change | every use case that depends on it (index reverse links) and a maturity-weighted migration risk report |
 | [`audit-implementation-against-usecase`](skills/audit-implementation-against-usecase/SKILL.md) | a `TMFSxxx` id + an existing implementation | a drift report against what the use case actually specifies |
 
