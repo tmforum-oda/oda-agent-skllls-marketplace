@@ -55,6 +55,7 @@ by reading one of these files, not by scanning the corpus:
 | `usecase-list.json` | every `TMFSxxx` id IG1228 knows about, including `planned`/`not available` ones with nothing converted yet |
 | `usecase-component-matrix.json` | IG1228's own corpus-level "which use case touches which component" table |
 | `matrix-discrepancies.md` | where a use case's own document disagrees with that matrix, logged rather than silently resolved one way (spec.md §5.4) — read **both** sources for a complete answer; neither alone is |
+| `gaps-backlog.md` | capability gaps TM Forum's own authors already flagged in use cases' "Lessons learned" sections — proposed components/APIs that don't exist yet, consolidated across every use case that raises each one (spec.md §11.2, `skills/harvest-gaps-from-lessons-learned/`) |
 | `component-folder-map.json` / `api-samples-folder-map.json` | id → upstream GitHub folder lookups, internal to `tools/fetch_*.py` |
 
 Regenerate all three main index files with `python tools/build_index.py`
@@ -88,6 +89,8 @@ skill-run time (spec.md §8):
 
 - [`skills/check-usecase-maturity/`](skills/check-usecase-maturity/SKILL.md) — given a `TMFSxxx` id, a plain-language "is this safe to build against" verdict from frontmatter alone.
 - [`skills/generate-test-cases-from-usecase/`](skills/generate-test-cases-from-usecase/SKILL.md) — given a `TMFSxxx` id, drafts BDD/Gherkin test scenarios grounded in the use case's real linked components/APIs and their cached schemas, citing every id back to its exact source.
+- [`skills/assess-change-impact/`](skills/assess-change-impact/SKILL.md) — given a `TMFCxxx`/`TMFxxx` id, lists every use case that depends on it (via the index's reverse links) and a maturity-weighted migration risk report.
+- [`skills/harvest-gaps-from-lessons-learned/`](skills/harvest-gaps-from-lessons-learned/SKILL.md) — mines every use case's "Lessons learned" section for capability gaps TM Forum's own authors already flagged, consolidated in [`knowledge/index/gaps-backlog.md`](knowledge/index/gaps-backlog.md).
 
 Using these skills from another repository? See [`CONSUMING.md`](CONSUMING.md) —
 covers both a sparse clone (lighter, git-native) and installing
