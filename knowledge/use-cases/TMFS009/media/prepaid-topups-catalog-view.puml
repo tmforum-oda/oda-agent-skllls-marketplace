@@ -1,0 +1,121 @@
+@startuml
+title Appendix A - Prepaid Top Ups as products
+
+class "Prepaid Broadband" as Contract <<ProductOffering>>
+class "Start Package" as StartPackage <<ProductOffering>>
+Contract --> StartPackage : "Min 1, Max 1"
+
+class "Mobile Line" as MobileLineOffering <<ProductOffering>> {
+  POPrice = "one time 12€"
+}
+class "Recurring Data Top Ups" as RecurringTopUpsOffering <<ProductOffering>> {
+  recurring
+  if V=1GB 5€/month
+  if V=3GB 12€/month
+  if V=5GB 20€/month
+}
+class "One Time Data Top Ups" as OneTimeTopUpsOffering <<ProductOffering>> {
+  one time
+  if V=1GB 6€
+  if V=3GB 13€
+  if V=5GB 21€
+}
+
+StartPackage --> MobileLineOffering : "Min 1, Max 1"
+StartPackage --> RecurringTopUpsOffering : "Min 1, Max1 (One of)"
+StartPackage --> OneTimeTopUpsOffering : "Min 1 (One of)"
+
+package "Network Product Spec" #E2F0D9 {
+  class "Mobile Line" as MobileLineSpec <<ProductSpecification>> {
+    Number, Roaming Options, Barrings Options
+  }
+  class "Data" as DataUsageSpec <<ProductUsageSpecification>>
+  MobileLineSpec ..> DataUsageSpec : Requires
+}
+
+package "Usage Volume Product Spec" #E2F0D9 {
+  class "Recurring Data Package" as RecurringDataSpec <<ProductSpecification>> {
+    1, 3, 5 GB
+    blocked: Y
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+  class "Data Package" as DataPackageSpec <<ProductSpecification>> {
+    1, 3, 5 GB
+    blocked: Y
+    recurring: N
+    validity period: 1 month
+    rollover: N
+  }
+  RecurringDataSpec --> DataUsageSpec : Concerns
+  DataPackageSpec --> DataUsageSpec : Concerns
+  RecurringDataSpec --> MobileLineSpec : Requires
+  DataPackageSpec --> MobileLineSpec : Requires
+}
+
+MobileLineOffering --> MobileLineSpec : restricts
+RecurringTopUpsOffering --> RecurringDataSpec : restricts
+OneTimeTopUpsOffering --> DataPackageSpec : restricts
+
+package "TMFC006 Service Catalog" #FFE0B2 {
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine {
+    msisdn, usageLimit, nVoiceMinutes,
+    iVoiceMinutes, smsUnits, mmsUnits, dataVolume
+  }
+  class "[Network Service CFS]\nRecurring Data Package" as CFS_RecurringData {
+    Volume: 1 to 50 GB, step of 1 GB
+    blocked: Y
+    recurring: Y
+    validity period: 1 month
+    rollover: Y or N
+    ..Service Balance Rule Specification..
+    Start date = delivery date
+    Renewal Period = 30 Days
+    Balance Rule = Rollover
+    ..Usage Mgt Rule Specification..
+    1MB data usage increment
+  }
+  class "[Network Service CFS]\nData Package" as CFS_DataPackage {
+    Volume: 1 to 50 GB, step of 1 GB
+    blocked: Y
+    recurring: N
+    validity period: 1 month
+    rollover: Y or N
+    ..Service Balance Rule Specification..
+    Start date = delivery date
+    Renewal Period = 30 Days
+    Balance Rule = Rollover
+    ..Usage Mgt Rule Specification..
+    1MB data usage increment
+  }
+
+  class "Data" as CFS_DataUsageSpec <<ServiceUsageSpecification>>
+  CFS_MobileLine ..> CFS_DataUsageSpec : "describes usage of"
+  CFS_RecurringData --> CFS_DataUsageSpec : concerns
+
+  CFS_RecurringData --> CFS_MobileLine : requires
+  CFS_DataPackage --> CFS_MobileLine : requires
+
+  class "[Network Service RFS]\n4G Mobile Line" as RFS_4GMobileLine
+  class "[Network Service RFS]\n5G Mobile Line" as RFS_5GMobileLine
+  class "[Network Service RFS]\nUnified Package" as RFS_UnifiedPackage
+
+  CFS_MobileLine --> RFS_4GMobileLine : "is realized by"
+  CFS_MobileLine --> RFS_5GMobileLine : "is realized by"
+  RFS_4GMobileLine --> RFS_5GMobileLine : OR
+  CFS_RecurringData --> RFS_UnifiedPackage : "is realized by"
+  CFS_DataPackage --> RFS_UnifiedPackage : "is realized by"
+
+  note bottom of RFS_UnifiedPackage
+    Assumptions:
+    The diagram depicts only one single "RFS "Unified
+    Package" to avoid overloading by many entities.
+  end note
+}
+
+MobileLineSpec --> CFS_MobileLine : restricts
+RecurringDataSpec --> CFS_RecurringData : restricts
+DataPackageSpec --> CFS_DataPackage : restricts
+
+@enduml

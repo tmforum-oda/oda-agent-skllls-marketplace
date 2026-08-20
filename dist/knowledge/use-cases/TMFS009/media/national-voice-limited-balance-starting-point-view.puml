@@ -1,0 +1,62 @@
+@startuml
+title National Voice with extra product limited balance - starting point
+
+package "TMFC005 Product Inventory" #E2F0D9 {
+  class "Mobile Line" as PS_MobileLine {
+    status: Active
+    start date: 4th Nov 2022
+    Number=XXXXXX
+    Barring Options=Y
+    Roaming Options=Z
+  }
+  class "Extra National Package" as PS_ExtraNational {
+    status: Active
+    start date: 4th Nov 2022
+    Volume=2 hours
+    blocked: N
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+  PS_ExtraNational --> PS_MobileLine : "applies on"
+}
+
+package "TMFC008 Service Inventory" #FFE0B2 {
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine {
+    status: Active
+    start date: 4th Nov 2022
+    msisdn=XXXXXX
+    usageLimit
+    nVoiceMinutes
+    iVoiceMinutes
+    smsUnits
+    mmsUnits
+    dataVolume
+  }
+  class "[Network Service CFS]\nNational Package" as CFS_ExtraNational {
+    status: Active
+    start date: 4th Nov 2022
+    Volume=2 hours
+    blocked:N
+    recurring:Y
+    validity period: 1 month
+    rollover: N
+  }
+  CFS_ExtraNational --> CFS_MobileLine : "applies on"
+}
+
+PS_MobileLine --> CFS_MobileLine : "corresponds to"
+PS_ExtraNational --> CFS_ExtraNational : "corresponds to"
+
+package "TMFC013 Service Balance Management" #E5DCF0 {
+  class "National Voice Balance 1" as NationalVoiceBalance {
+    Startdate=4th Nov 2022
+    Enddate=3th Dec 2022
+    **Remaining Value=1m30s**
+    Blocked=N
+  }
+}
+
+CFS_ExtraNational --> NationalVoiceBalance : "corresponds to"
+
+@enduml

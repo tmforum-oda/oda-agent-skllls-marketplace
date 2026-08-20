@@ -1,0 +1,51 @@
+@startuml
+title TMFC002 Product Order Capture and Validation
+
+class "Mobile Postpaid Contract" as Contract <<ProductOfferingOrderItem>> <<add>>
+class "Postpaid Mobile Line" as PostpaidMobileLine <<ProductOfferingOrderItem>> <<add>>
+Contract --> PostpaidMobileLine
+
+class "Mobile Line" as MobileLineOffering <<ProductOfferingOrderItem>> <<add>> {
+  POPrice = 10€/month
+  National Voice usage: 1€/10mn
+  SMS usage: 0,1€/SMS
+}
+class "Extra National Voice" as ExtraNationalOffering <<ProductOfferingOrderItem>> <<add>> {
+  recurring  2h 8€/month
+}
+class "Extra Data" as ExtraDataOffering <<ProductOfferingOrderItem>> <<add>> {
+  recurring 5GB 20€/month
+}
+
+PostpaidMobileLine --> MobileLineOffering
+PostpaidMobileLine --> ExtraNationalOffering
+PostpaidMobileLine --> ExtraDataOffering
+
+class "Mobile Line" as MobileLineSpec <<ProductSpecificationOrderItem>> <<add>> {
+  Number=XXXXXX
+  Roaming Options=Y
+  Barrings Options=Z
+}
+class "Extra National Package" as ExtraNationalSpec <<ProductSpecificationOrderItem>> <<add>> {
+  Volume=2 hours
+  blocked: N
+  recurring: Y
+  validity period: 1 month
+  rollover: N
+}
+class "Extra Data Package" as ExtraDataSpec <<ProductSpecificationOrderItem>> <<add>> {
+  Volume=5 GB
+  blocked: Y
+  recurring: Y
+  validity period: 1 month
+  rollover: N
+}
+
+MobileLineOffering --> MobileLineSpec
+ExtraNationalOffering --> ExtraNationalSpec
+ExtraDataOffering --> ExtraDataSpec
+
+ExtraNationalSpec --> MobileLineSpec : "Applies on"
+ExtraDataSpec --> MobileLineSpec : "Applies on"
+
+@enduml

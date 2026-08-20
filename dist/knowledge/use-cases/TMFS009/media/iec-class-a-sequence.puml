@@ -1,0 +1,38 @@
+@startuml
+title Immediate Event Charging - Class A
+
+participant "Network Function" as NF
+participant "CHF/OCF - EBCF" as EBCF
+participant "ABMF" as ABMF
+participant "RF" as RF
+participant "CHF/OCF - CDF" as CDF
+participant "CGF" as CGF
+
+NF -> EBCF : Online Charging Request
+activate EBCF
+
+EBCF -> CDF : Open CDR
+CDF --> EBCF : CDR Opened
+
+EBCF -> ABMF : Retrieve Balance(s)
+ABMF --> EBCF : Balance(s) returned
+
+EBCF -> RF : Price request
+RF -> RF : Price retrieval
+RF --> EBCF : Price response
+note right of CDF : The value of the\nevent is established -\nmonetary or non-\nmonetary
+
+EBCF -> EBCF : Determine granted\nunits & price
+
+EBCF -> ABMF : Debit Balance
+ABMF --> EBCF : Debit Balance response
+
+EBCF --> NF : Online Charging Response
+note left of NF : Service is
+
+EBCF -> CDF : Close CDR
+CDF --> EBCF : CDR Closed
+note right of CGF : CDF will forward the\nCDR to the CGF for\nfurther distribution to\nthe billing domain
+deactivate EBCF
+
+@enduml

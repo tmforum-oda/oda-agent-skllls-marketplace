@@ -1,0 +1,101 @@
+@startuml
+title National Voice with extra product limited balance
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+participant "SmartPhone" as Phone #purple
+participant "NetworkFunction" as NF #lightblue
+participant "OCS_ChargingFunction" as OCF #lightblue
+
+box "ServiceBalanceManagement"
+  participant "OCS_AccountBalanceMgmt" as ABMF #blue
+  participant "OCS_RatingFunction_a" as RFa #blue
+end box
+
+box "ProductUsageManagement"
+  participant "OCS_RatingFunction_b" as RFb <<blackbox>>
+end box
+
+participant "OCS_ChargingDataFunction" as CDF
+participant "OCS_ChargingGatewayFunction" as CGF
+
+Phone -> NF : 1 start voice call
+activate NF
+note right of NF : Voice call starts 8:30:55 PM
+NF -> OCF : 2 authorize voice call
+activate OCF
+
+OCF -> CDF : 3 Open CDR
+CDF --> OCF : 4 CDR Opened
+
+OCF -> ABMF : 5 get applicable balances for service
+activate ABMF
+ABMF -> ABMF : 6 balances for service retrieved
+ABMF --> OCF : 7
+deactivate ABMF
+
+OCF -> RFa : 8 determine value of the session and pass in balances
+activate RFa
+RFa -> RFa : 9 value determined based on\nparameters and service details.\nincrement change detected
+note right of CDF : 60s increment used before 8PM and\n30s increment used after 8PM
+RFa --> OCF : 10 value established including expiry time for current calculation
+deactivate RFa
+
+OCF -> OCF : 11 determine reservation amount
+note right of OCF : value determined as 3*30 depleting the balance
+
+OCF -> ABMF : 12 reserve balance
+activate ABMF
+ABMF -> ABMF : 13 balance reservation added
+ABMF --> OCF : 14 balance reservation successful
+deactivate ABMF
+
+OCF --> NF : 15 authorize session
+note right of OCF
+  as this is a non-blocking session
+  a session metering quota as per operator requirements
+  is set for how long to keep the session open.
+  In theory it can be infinite as this is non-blocking
+end note
+NF --> Phone : 16 start voice call
+note left of Phone : User starts the call
+
+Phone -> NF : 17 voice call ends
+note left of Phone : User ends call at 8:39:03 PM
+NF -> OCF : 18 finalize voice call
+
+OCF -> OCF : 19 determine the final value for the balance used
+note right of ABMF : value and rules already known
+
+OCF -> ABMF : 20 debit balance
+activate ABMF
+ABMF -> ABMF : 21 balance debited
+note right of CDF : final amount for first part debited based on\n30s increment reduced from balance
+ABMF --> OCF : 22 balance debit successful
+deactivate ABMF
+
+OCF -> CDF : 23 Update CDR
+CDF --> OCF : 24 CDR updated with balance information
+
+OCF -> RFb : 25 determine value of the remaining part exceeding the balance
+activate RFb
+note right of RFb : 1€/10 minutes according to the Mobile Line product
+RFb -> RFb : 26 value determined based on\nparameters and service details
+RFb --> OCF : 27 value established
+deactivate RFb
+
+OCF --> NF : 28 finalization completed
+deactivate NF
+
+OCF -> CDF : 29 Close CDR
+activate CDF
+CDF -> CGF : 30 Finalized CDR
+note right of CGF : the finalized event includes the information\nabout the charged price
+CDF --> OCF : 31 CDR Closed
+deactivate CDF
+deactivate OCF
+
+@enduml

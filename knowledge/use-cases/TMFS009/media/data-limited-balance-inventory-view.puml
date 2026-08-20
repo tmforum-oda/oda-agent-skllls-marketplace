@@ -1,0 +1,73 @@
+@startuml
+title Data - limited balance: Product and Service inventories
+
+package "TMFC005 Product" #E2F0D9 {
+  class "Mobile Line" as PS_MobileLine {
+    status: Active
+    start date: 4th Nov 2022
+    number=XXXXXX
+    Roaming Options=Y
+    Barring Options=Z
+  }
+  class "Extra Data Package" as PS_ExtraData {
+    status: Active
+    start date: 4th Nov 2022
+    Volume= 5 GB
+    blocked: Y
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+  PS_ExtraData --> PS_MobileLine : "applies on"
+}
+
+package "TMFC008 Service Inventory" #FFE0B2 {
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine {
+    status: Active
+    start date: 4th Nov 2022
+    msisdn=XXXXXX
+    usageLimit
+    nVoiceMinutes
+    iVoiceMinutes
+    smsUnits
+    mmsUnits
+    dataVolume
+  }
+  class "[Network Service CFS]\nData Package" as CFS_ExtraData {
+    status: Active
+    start date: 4th Nov 2022
+    Volume=5 GB
+    blocked:Y
+    recurring:Y
+    validity period: 1 month
+    rollover: N
+  }
+  CFS_ExtraData --> CFS_MobileLine : "applies on"
+}
+
+PS_MobileLine --> CFS_MobileLine : "corresponds to"
+PS_ExtraData --> CFS_ExtraData : "corresponds to"
+
+package "TMFC015 Service Usage" #F5D0D0 {
+  class "[Service Usage Record]\nId ########" as ServiceUsageRecord {
+    Type: National Data Usage
+    Actual Volume Used: 4GB
+    Consumed Balance: 4GB
+    Date: 5th Nov 2022, 12am
+  }
+}
+
+package "TMFC013 Service Balance Management" #E5DCF0 {
+  class "Data Balance 1" as DataBalance {
+    Startdate=4th Nov 2022
+    Enddate=3th Dec 2022
+    **Remaining Value=0GB**
+    Blocked=Y
+  }
+}
+
+CFS_MobileLine --> ServiceUsageRecord : "corresponds to"
+ServiceUsageRecord --> DataBalance : "charged to"
+CFS_ExtraData --> DataBalance : "corresponds to"
+
+@enduml

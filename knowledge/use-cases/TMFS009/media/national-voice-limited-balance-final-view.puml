@@ -1,0 +1,97 @@
+@startuml
+title National Voice with extra product limited balance - final view
+
+package "TMFC005 Product Inventory" #E2F0D9 {
+  class "Mobile Line" as PO_MobileLine {
+    POPrice = "10€/month starting 4th Nov 2022"
+    status: Active
+    start date: 4th Nov 2022
+    National Voice usage: 1€/10mn
+    SMS usage: 0,1€/SMS
+  }
+  class "Mobile Line" as PS_MobileLine {
+    status: Active
+    start date: 4th Nov 2022
+    Number=XXXXXX
+    Roaming Options=Y
+    Barring Options=Z
+  }
+  class "Extra National Package" as PS_ExtraNational {
+    status: Active
+    start date: 4th Nov 2022
+    Volume=2 hours
+    blocked: N
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+  PO_MobileLine --> PS_MobileLine
+  PS_ExtraNational --> PS_MobileLine : "applies on"
+}
+
+package "TMFC013 Service Inventory" #FFE0B2 {
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine {
+    status: Active
+    start date: 4th Nov 2022
+    msisdn=XXXXXX
+    usageLimit
+    nVoiceMinutes
+    iVoiceMinutes
+    smsUnits
+    mmsUnits
+    dataVolume
+  }
+  class "[Network Service CFS]\nNational Package" as CFS_ExtraNational {
+    status: Active
+    start date: 4th Nov 2022
+    Volume=2 hours
+    blocked:N
+    recurring:Y
+    validity period: 1 month
+    rollover: N
+  }
+  CFS_ExtraNational --> CFS_MobileLine : "applies on"
+}
+
+PS_MobileLine --> CFS_MobileLine : "corresponds to"
+PS_ExtraNational --> CFS_ExtraNational : "corresponds to"
+
+package "TMFC015 Service Usage" #F5D0D0 {
+  class "[Service Usage Record]\nId ########" as ServiceUsageRecord {
+    Type: National Voice
+    Actual duration:8m8s
+    **Consumed balance: 1m:30s**
+    Start Date: 7th Nov 2022, 8:30:55 pm
+    End Date: 7th Nov 2022 8:39:03 pm
+  }
+}
+
+package "TMFC013 Service Balance Management" #E5DCF0 {
+  class "National Voice Balance 1" as NationalVoiceBalance {
+    Startdate=4th Nov 2022
+    Enddate=3th Dec 2022
+    **Remaining Value=0m0s**
+    Blocked=N
+  }
+}
+
+package "TMFC040 Product Usage" #C0D8D8 {
+  class "[Product Usage Record]\nId ######" as ProductUsageRecord {
+    Usage Charge 0.66€
+  }
+  class "UsageProdPriceCharge" as UsageProdPriceCharge <<ProductUsageCharacteristic>> {
+    Type: National Voice
+    Basis for price calculation
+    6m38s
+  }
+  ProductUsageRecord --> UsageProdPriceCharge
+}
+
+CFS_MobileLine --> ServiceUsageRecord : "corresponds to"
+ServiceUsageRecord --> NationalVoiceBalance : "charged to"
+CFS_ExtraNational --> NationalVoiceBalance : "corresponds to"
+PO_MobileLine --> ProductUsageRecord : "corresponds to"
+ProductUsageRecord --> ServiceUsageRecord : "relates to"
+ServiceUsageRecord --> ProductUsageRecord : "charged to"
+
+@enduml

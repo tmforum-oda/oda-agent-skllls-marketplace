@@ -1,0 +1,93 @@
+@startuml
+title Product and Service inventory instantiation after the order is completed
+
+package "TMFC005 Product Inventory" #E2F0D9 {
+  class "Prepaid Broadband" as Contract {
+    status: Active
+    start date: 20th Jan 2025
+  }
+  class "Start Package" as StartPackage {
+    status: Active
+    start date: 20th Jan 2025
+  }
+  Contract --> StartPackage : "Min 1, Max 1"
+
+  class "Mobile Line" as MobileLineOffering {
+    POPrice = "one time = 12€ 20th Jan 2025"
+    status: Active
+    start date: 20th Jan 2025
+  }
+  class "One Time Data Top Ups" as OneTimeTopUpsOffering {
+    POPrice = "one time = 13€ 20th Jan 2025"
+    status: Active
+    start date: 20th Jan 2025
+  }
+  StartPackage --> MobileLineOffering
+  StartPackage --> OneTimeTopUpsOffering : "Min 0, Max 1"
+
+  class "Mobile Line" as MobileLineSpec {
+    status: Active
+    start date: 20th Jan 2025
+    Number=XXXXXX
+    Roaming Options=Y
+    Barrings Options=Z
+  }
+  class "Data Package" as DataPackageSpec {
+    status: Active
+    start date: 20th Jan 2025
+    Volume= 3GB
+    blocked: Y
+    recurring: N
+    validity period: 1 month
+    rollover: N
+  }
+  MobileLineOffering --> MobileLineSpec
+  OneTimeTopUpsOffering --> DataPackageSpec
+  DataPackageSpec --> MobileLineSpec : "Applies on"
+}
+
+package "TMFC008 Service Inventory" #FFE0B2 {
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine {
+    status: Active
+    start date: 20th Jan 2025
+    msisdn=XXXXXX
+    usageLimit
+    nVoiceMinutes
+    iVoiceMinutes
+    smsUnits
+    mmsUnits
+    dataVolume
+  }
+  class "[Network Service CFS]\nData Package" as CFS_DataPackage {
+    status: Active
+    start date: 20th Jan 2025
+    Volume=3 GB
+    blocked:Y
+    recurring:N
+    validity period: 1 month
+    rollover: N
+  }
+  CFS_DataPackage --> CFS_MobileLine : "applies on"
+
+  class "[Network Service RFS]\nUnified Package" as RFS_UnifiedPackage {
+    profile
+  }
+  CFS_MobileLine --> RFS_UnifiedPackage : "is realized by"
+  CFS_DataPackage --> RFS_UnifiedPackage : "is realized by"
+}
+
+MobileLineSpec --> CFS_MobileLine : "corresponds to"
+DataPackageSpec --> CFS_DataPackage : "corresponds to"
+
+package "TMFC013 Service Balance" #E5DCF0 {
+  class "Data Balance 1" as DataBalance <<BalanceItem>> {
+    Startdate=20th Jan 2025
+    Enddate=19 Feb 2025
+    Remaining Value=3 GB
+    Blocked=Y
+  }
+}
+
+RFS_UnifiedPackage --> DataBalance : "is realized by"
+
+@enduml

@@ -151,29 +151,34 @@ Extended / Optional Offerings:
 
 For this use case Product Specification Characteristics has been added to provide examples of the type of characteristics required for usage and balance management. Below details have been added about the prices for the mobile line including monthly recurring fee as well as pricing details of national voice and SMS usage. For the optional offerings characteristics are added for recurring fees, one off charges but also at product specification level characteristics for balances including balance amount, rules around recurrence and if the service is blocked or not if the balance is depleted. 
 
-![](media/image01.png)
+![](media/product-catalog-view.png)
+*([PlantUML source](media/product-catalog-view.puml))*
 
 ### Service Catalog View
 
 The service catalog has been further enhanced to show what information is required for the Service Specification Characteristics where the Service Balance Rules and Usage Management Rule specifications exemplified below are a subset. Here we have added further details that are required on the Service Level. For the package products and related CFS specification, the balance characteristics are further detailed to instruct the behavior of how to treat a balance, such as start date, renewal periods, if the balance is to expire or roll over to next month. For usage, we have added details on how to determine the value of usage based on chargeable increments.  For voice, we have said that each chargeable increment between 8 AM - 8 PM is 60 seconds and other times 30. This means that a voice call that lasts for 1 minute 25 seconds will be charged as 120 seconds between 8 AM and 8 PM and 90 seconds the other times. This will impact the value of the event to make both a reservation and for the final debit of a balance. 
 
-![](media/image02.png)
+![](media/service-catalog-view.png)
+*([PlantUML source](media/service-catalog-view.puml))*
 
 ## Product Order Structure
 
 A product order is released by the Product Order Capture and Validation component with 3 product-specification-level order items with configuration values chosen by the customer, and the related commercial order items related to product offerings.
 
-![](media/image03.png)
+![](media/product-order-structure-view.png)
+*([PlantUML source](media/product-order-structure-view.puml))*
 
 ## Product & Service Inventories
 
 After the delivery of the product order, the information available in the Product Inventory is:
 
-![](media/image04.png)
+![](media/product-inventory-view.png)
+*([PlantUML source](media/product-inventory-view.puml))*
 
 After the delivery of the product order, the information available in the Product and Service levels Inventories are:
 
-![](media/image05.png)
+![](media/product-service-balance-inventory-view.png)
+*([PlantUML source](media/product-service-balance-inventory-view.puml))*
 
 Note: the balance management rules are not duplicated in the inventory view as they are directly available at catalog level.
 
@@ -199,23 +204,27 @@ The first set of sequence diagrams aims to show how a data session may be proces
 
 The following sequence diagrams show a simplified view of a successful reservation of a data session.
 
-![](media/image06.png)
+![](media/data-first-reservation-sequence.png)
+*([PlantUML source](media/data-first-reservation-sequence.puml))*
 
 ### Reservation Extension
 
 When reservations are about to end a new request will come into extend the reservation unless the session is finished. The following sequence diagram is a continuation of the first reservation showing the extension:
 
-![](media/image07.png)
+![](media/data-reservation-extension-sequence.png)
+*([PlantUML source](media/data-reservation-extension-sequence.puml))*
 
 ### End of session
 
 As a session ends, a final debit request will come from the network to debit the actual used amount and potentially release any unused reservation. 
 
-![](media/image08.png)
+![](media/data-end-of-session-sequence.png)
+*([PlantUML source](media/data-end-of-session-sequence.puml))*
 
 At the end of the session the information available at Product and Service inventories level are:
 
-![](media/image09.png)
+![](media/data-end-of-session-inventory-view.png)
+*([PlantUML source](media/data-end-of-session-inventory-view.puml))*
 
 ## Sequence Diagram for data with extra product and limited balance
 
@@ -223,15 +232,18 @@ In this scenario the balance available is limited so the reservation amount will
 
  
 
-![](media/image10.png)
+![](media/data-limited-balance-sequence.png)
+*([PlantUML source](media/data-limited-balance-sequence.puml))*
 
-![](media/image11.png)
+![](media/data-limited-balance-inventory-view.png)
+*([PlantUML source](media/data-limited-balance-inventory-view.puml))*
 
 ## Sequence diagram for data with extra product and depleted balance
 
 In this scenario, there is no balance available, and the service will be blocked immediately. The unit of measure for the balance and the associated reservations and debits are volume of data.
 
-![](media/image12.png)
+![](media/data-depleted-balance-sequence.png)
+*([PlantUML source](media/data-depleted-balance-sequence.puml))*
 
 ## Sequence diagram for national voice with extra product
 
@@ -247,21 +259,25 @@ Voice is also a session based type of event and will follow a similar pattern to
 | Actual Duration | 14m 18s |
 | Consumed balance | 14m 30s |
 
-![](media/image13.png)
+![](media/national-voice-extra-product-sequence.png)
+*([PlantUML source](media/national-voice-extra-product-sequence.puml))*
 
 This example is intended to illustrate the logic applied as there are various implementation choices regarding the interaction between the Charging System and the network function. In reality, an aim is to optimize the signaling between the network and the charging function and limit it as much as possible. As the above case is for a non-blocking scenario, it is possible that the choice of implementation will opt for just one large reservation leading to only a need for the start of the call and the finalization of the call where the finalization will still take the logic in steps 17-31 into account. However, the purpose of this use case is to show an example of consumption of a balance based on varying information during a session and in this case a voice call. 
 
-![](media/image14.png)
+![](media/national-voice-post-call-inventory-view.png)
+*([PlantUML source](media/national-voice-post-call-inventory-view.puml))*
 
 ## National Voice with extra product limited balance
 
 In this scenario the user has a limited balance remaining to be used and will then be charged according to the default product setup until such a time that the balance is renewed. On the product level the user has the Mobile Line with product characteristics for National Voice and the Extra National Voice offer with a balance that is not blocked once depleted. Once the balance is used it will allow the call to continue but now charged for that part of the call based on the Mobile Line product offering price that defines it as1€/10 minutes for National Usage.
 
-![](media/image15.png)
+![](media/national-voice-limited-balance-product-inventory-view.png)
+*([PlantUML source](media/national-voice-limited-balance-product-inventory-view.puml))*
 
 On the Service level, this is the representation of the starting point for the scenario with 1 min 30 seconds remaining balance for National Voice. As this is depleted it will revert back to price per minute as defined by the Mobile Line product.
 
-![](media/image16.png)
+![](media/national-voice-limited-balance-starting-point-view.png)
+*([PlantUML source](media/national-voice-limited-balance-starting-point-view.puml))*
 
 | Start Time | 8:30:55 |
 | --- | --- |
@@ -275,11 +291,13 @@ In the sequence diagram below, the OCS Rating Function is implied in two scenari
 
  
 
-![](media/image17.png)
+![](media/national-voice-limited-balance-sequence.png)
+*([PlantUML source](media/national-voice-limited-balance-sequence.puml))*
 
 With this scenario we illustrate how Service and Product interacts and the output is a service record, that contains the information on balance used and the price for the remaining call. The price applied can be acknowledged as the final price or be re-rated in subsequent processes and applied to the customer's account - this is an operator choice.
 
-![](media/image18.png)
+![](media/national-voice-limited-balance-final-view.png)
+*([PlantUML source](media/national-voice-limited-balance-final-view.puml))*
 
 # Conclusion
 
@@ -335,7 +353,8 @@ In addition to setting the first balance, some of the balances in the use case a
 
 Below is an updated inventory diagram where the TMF654 attributes related to balance (bucket) and renewal has been added: 
 
-![](media/image19.png)
+![](media/tmf654-balance-inventory-view.png)
+*([PlantUML source](media/tmf654-balance-inventory-view.puml))*
 
 TopUpBalance is to solve more for a prepaid product than a postpaid, however the attributes used and required for topping up either scenario are closely related, and it is important that we determine where these attributes should be placed and separate the commerce side from the service side. This also relates to the evolution of SID and this API needs to evolve in line with the evolution Service Balances as well as the possibility to describe the balances in terms of Product and Service. In a next iteration of the use case a renewal scenario will be described and this requires clarity on where the necessary data is located and how this can be triggered. 
 
@@ -345,7 +364,8 @@ When it comes to run time use of the service and possible balance consumption as
 
 In IG1242, the current Production domain depicting order and orchestration does not include how the Service Balance Management is instantiated with the balance. In our use case we have used product and service characteristics to describe the balances. One possible option is that Service Balance Management is provisioned by the Service Order component that will provide it with necessary details to be able to manage the balance but also to be able to drive the renewal process. The following is a suggestion of the updated Product domain diagram: 
 
-![](media/image20.png)
+![](media/service-balance-management-component-diagram.png)
+*([PlantUML source](media/service-balance-management-component-diagram.puml))*
 
 In addition to the provisioning flow, the renewal process of balances also needs to be considered in detail as the process for a recurring balance for a postpaid subscription vs a prepaid auto top-up differs greatly. The Service Balance Management component needs to have the process to manage its balance as per the specification of the product. For a postpaid scenario the cost of the balance is most likely part of a recurring charge and thus there is no need to charge the user for the renewal as it is already part of the product. This means that the Service Balance Management component can manage the renewal process according to the definition of the product. For prepaid there is more involved as there is a need to 1.) charge the user and 2.) get the payment **before **the new balance can be instantiated. In the evolution of ODA towards a catalog based approach, it might be worth re-visiting this flow to see how this could be done by defining the top ups as products and have the renewal process for prepaid be driven as a product order in the commerce layer and instantiating a new balance as the top-up renewal is successful. It would be worth having a separate use case that looks at prepaid scenarios and top ups, as that is not in the scope of this use case. 
 
@@ -373,15 +393,18 @@ As part of investigating a global way of describing the use of Usage Volume Prod
 
 For a new customer the first thing they need is a start package that gives them the access to the service and with that they will choose the type of top up they want to start with. In case a subscriber chooses a recurring top up, that top up will be active until canceled or changed. In the case a one-time top up is chosen, that will be valid for its period and then another top up can be chosen or even a recurring. 
 
-![](media/image21.png)
+![](media/prepaid-topups-catalog-view.png)
+*([PlantUML source](media/prepaid-topups-catalog-view.puml))*
 
 This is an example of a start package purchase with a one-time top up: 
 
-![](media/image22.png)
+![](media/prepaid-start-package-order-view.png)
+*([PlantUML source](media/prepaid-start-package-order-view.puml))*
 
 This is the Product and Service inventory instantiation after the order is completed.
 
-![](media/image23.png)
+![](media/prepaid-start-package-inventory-view.png)
+*([PlantUML source](media/prepaid-start-package-inventory-view.puml))*
 
 ## Appendix B - High Level Overview of 3GPP Charging Architecture
 
@@ -401,7 +424,8 @@ With the requirements a set of high-level principles assist in guiding the requi
 
 The Charging Architecture is specified in TS 32.240 and covers both the new Service Based Architecture introduced with 5G as well as 4G and prior standards.  The Charging Architecture is illustrated by a set of functions that together deliver the charging mechanisms required to meet the vast number of use cases to supports both retail and wholesale. To support the various forms of charging, support is provided for both offline scenarios where events are collected from the network and passed along after the fact as well as online scenarios where usage can be authorized prior to providing the service.
 
-![](media/image24.png)
+![](media/3gpp-charging-architecture-overview.png)
+*([PlantUML source](media/3gpp-charging-architecture-overview.puml))*
 
 The Converged Charging System is where 3GPP is heading, but as all network functions are not yet moved over to 5G, we will see that the old and the new architecture will live side by side during the transition and move to 5G. With the evolution of the 5G standards we see that more and more services will be moved to the service based architecture. Data based services were first out to use the 5G interfaces over SBA and now more and more services such as Edge and IMS are moved. The voice domain is still outstanding but as it is moved to the 5G architecture the Converged Charging Architecture will be ready to take this on the interfaces with its unique parameterization is defined. 
 
@@ -411,7 +435,8 @@ With Use Case 9 in mind we are focusing on the aspects of online charging define
 
 The following is a representation of the functions that build up the Online Charging system and how it interacts with the network on a generic level: 
 
-![](media/image25.png)
+![](media/online-charging-system-functions.png)
+*([PlantUML source](media/online-charging-system-functions.puml))*
 
 As online charging is used to authorize the service prior to the actual usage, the OCF relies on the Rating Function to determines the value of the event (monetary or non-monetary) and the Account Balance Management Function to keep track and manage available balances. Looking at a simple scenario of an event with a demand on quota/balance, the event will come into OCF that will interact with the Rating Function to determine the resource value and interact with the  ABMF to determine if there is balance available to be able to allow the service.
 
@@ -425,7 +450,8 @@ CDRs may be generated for online charging scenarios. 3GPP suggests alternatives,
 
 An example of an extended Online Charging architecture to include CDR generation can be found here:
 
-![](media/image26.png)
+![](media/online-charging-system-cdr-generation.png)
+*([PlantUML source](media/online-charging-system-cdr-generation.puml))*
 
 When an event comes into the OCF, an CDR is opened by the CDF that will maintain the CDR state until the completion of the online charging request. Upon completion the CDR is closed, and the CDF transfers the CDR to the CGF for further distribution to the Billing Domain.
 
@@ -433,7 +459,8 @@ When an event comes into the OCF, an CDR is opened by the CDF that will maintain
 
 The CCS is an evolution where offline and online charging capabilities are combined into one and part of the Service Based Architecture introduced with 5G. How this applies to charging is described in TS 32.240 with the new operations and interface in TS 32.290 Telecommunication management; Charging management; 5G system; Services, operations and procedures of charging using Service Based Interface (SBI). A key aspect and evolution with CCS is that chargeable events are created through the CCS and not by the individual network functions. 
 
-![](media/image27.png)
+![](media/converged-charging-system-5g.png)
+*([PlantUML source](media/converged-charging-system-5g.puml))*
 
 Network Functions interact over the Nchf interface for converged charging or offline charging and for the Policy Control Function (PCF) it uses the interface for spending limit control. 
 
@@ -451,9 +478,11 @@ In 3GPP the patterns and sequence of events for how a session based usage event 
 
 As the CCS also is responsible for the creation of CDRs and passing these to the Billing Domain the following two sample sequence diagrams have been created showcasing the sequence of events for an initial session setup, one incremental update and a termination for Class A and B respectively including the creation of the CDR. The term used in both use cases for the action to determine the value is named Tariff request in the diagram using the term from 3GPP as defined in 3GPP TS 32.296.
 
-![](media/image28.png)
+![](media/ccs-session-based-charging-class-a-sequence.png)
+*([PlantUML source](media/ccs-session-based-charging-class-a-sequence.puml))*
 
-![](media/image29.png)
+![](media/ccs-session-based-charging-class-b-sequence.png)
+*([PlantUML source](media/ccs-session-based-charging-class-b-sequence.puml))*
 
 **Legend**:
 
@@ -471,13 +500,17 @@ Event based charging is just like session-based charging described in detail in 
 
 The following sample sequence diagrams have been created to illustrate the two methods of Event based charging for Class A and B respectively including the creation of the CDR. The term used to determine the value for event based charging is Price and is in alignment with the 3GPP term used.
 
-![](media/image30.png)
+![](media/iec-class-a-sequence.png)
+*([PlantUML source](media/iec-class-a-sequence.puml))*
 
-![](media/image31.png)
+![](media/ecur-class-a-sequence.png)
+*([PlantUML source](media/ecur-class-a-sequence.puml))*
 
-![](media/image32.png)
+![](media/iec-class-b-sequence.png)
+*([PlantUML source](media/iec-class-b-sequence.puml))*
 
-![](media/image33.png)
+![](media/ecur-class-b-sequence.png)
+*([PlantUML source](media/ecur-class-b-sequence.puml))*
 
 **Legend**:
 

@@ -1,0 +1,140 @@
+@startuml
+title Service Catalog View
+
+package "TMFC001 Product Catalog" #E2F0D9 {
+  class "Mobile Line" as PS_MobileLine <<ProductSpecification>> {
+    Number, Roaming Options, Barring Options
+  }
+  class "Extra National Package" as PS_ExtraNational <<ProductSpecification>> {
+    Volume: 1,2,5 hours
+    blocked: N
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+  class "Extra SMS Package" as PS_ExtraSMS <<ProductSpecification>> {
+    100, 500 SMS
+    blocked: N
+    recurring: N
+    validity period: 12 months
+    rollover: N
+  }
+  class "*Extra International Voice Package" as PS_ExtraIntl <<ProductSpecification>> {
+    15€
+    blocked: Y
+    recurring: N
+    validity period: 12 months
+    rollover: N
+  }
+  class "Extra Data Package" as PS_ExtraData <<ProductSpecification>> {
+    1, 3, 5 GB
+    blocked: Y
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+
+  PS_ExtraNational --> PS_MobileLine : requires
+  PS_ExtraSMS --> PS_MobileLine : requires
+  PS_ExtraIntl --> PS_MobileLine : requires
+  PS_ExtraData --> PS_MobileLine : requires
+}
+
+package "TMFC006 Service Catalog" #FFE0B2 {
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine {
+    msisdn, usageLimit, nVoiceMinutes,
+    iVoiceMinutes, smsUnits, mmsUnits, dataVolume
+  }
+  class "[Network Service CFS]\nExtra National Package" as CFS_ExtraNational {
+    Volume: 1 to 10 hours, step of 1 hour
+    blocked: N
+    recurring: Y
+    validity period: 1 month
+    rollover: Y or N
+    ..Service Balance Rule Specification..
+    Start date = delivery date
+    Renewal Period = 30 Days
+    Balance rule = Expire
+    ..Usage Mgt Rule Specification..
+    8am-8pm = 60 second increment
+    8pm-8am = 30 second increment
+  }
+  class "[Network Service CFS]\nExtra SMS Package" as CFS_ExtraSMS {
+    Volume: 100 to 1000 SMS, step of 100 SMS
+    blocked: N
+    recurring: N
+    validity period: 3, 6 or 12 months
+    rollover: Y or N
+  }
+  class "[Network Service CFS]\n*International Package" as CFS_ExtraIntl {
+    15€
+    blocked: Y
+    recurring: N
+    validity period: 3, 6 or 12 months
+    rollover: Y or N
+    ..Usage Mgt Rule Specification..
+    60 second increment
+    Thailand: startup fee 0.5€/call, 2€/60s
+  }
+  class "[Network Service CFS]\nData Package" as CFS_ExtraData {
+    Volume: 1 to 50 GB, step of 1 GB
+    blocked: Y
+    recurring: Y
+    validity period: 1 month
+    rollover: Y or N
+    ..Service Balance Rule Specification..
+    Start date = delivery date
+    Renewal Period = 30 Days
+    Balance Rule = Rollover
+    ..Usage Mgt Rule Specification..
+    1MB data usage increment
+  }
+
+  PS_MobileLine --> CFS_MobileLine : restricts
+  PS_ExtraNational --> CFS_ExtraNational : restricts
+  PS_ExtraSMS --> CFS_ExtraSMS : restricts
+  PS_ExtraIntl --> CFS_ExtraIntl : restricts
+  PS_ExtraData --> CFS_ExtraData : restricts
+
+  CFS_ExtraNational --> CFS_MobileLine : requires
+  CFS_ExtraSMS --> CFS_MobileLine : requires
+  CFS_ExtraIntl --> CFS_MobileLine : requires
+  CFS_ExtraData --> CFS_MobileLine : requires
+
+  package "Usage Specifications" #FFF3E0 {
+    class "National Voice" as US_NationalVoice
+    class "SMS" as US_SMS
+    class "International Voice" as US_InternationalVoice
+    class "Data" as US_Data
+  }
+
+  CFS_MobileLine ..> US_NationalVoice : "describes usage of"
+  CFS_ExtraNational --> US_NationalVoice : concerns
+  CFS_ExtraSMS --> US_SMS : concerns
+  CFS_ExtraIntl --> US_InternationalVoice : concerns
+  CFS_ExtraData --> US_Data : concerns
+
+  class "[Network Service RFS]\n4G Mobile Line" as RFS_4GMobileLine {
+    profile
+  }
+  class "[Network Service RFS]\n5G Mobile Line" as RFS_5GMobileLine {
+    profile
+  }
+  class "[Network Service RFS]\nUnified Package" as RFS_UnifiedPackage
+
+  CFS_MobileLine --> RFS_4GMobileLine : "is realized by"
+  CFS_MobileLine --> RFS_5GMobileLine : "is realized by"
+  RFS_4GMobileLine --> RFS_5GMobileLine : OR
+  CFS_ExtraNational --> RFS_UnifiedPackage : "is realized by"
+  CFS_ExtraSMS --> RFS_UnifiedPackage : "is realized by"
+  CFS_ExtraIntl --> RFS_UnifiedPackage : "is realized by"
+  CFS_ExtraData --> RFS_UnifiedPackage : "is realized by"
+
+  note bottom of RFS_UnifiedPackage
+    Assumptions:
+    The diagram depicts only one single "RFS "Unified
+    Package" to avoid overloading by many entities.
+  end note
+}
+
+@enduml

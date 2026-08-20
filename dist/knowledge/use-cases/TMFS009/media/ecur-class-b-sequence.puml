@@ -1,0 +1,58 @@
+@startuml
+title Event Charging with Unit Reservation - Class B
+
+participant "Network Function" as NF
+participant "CHF/OCF - EBCF" as EBCF
+participant "ABMF" as ABMF
+participant "RF" as RF
+participant "CHF/OCF - CDF" as CDF
+participant "CGF" as CGF
+
+group Reservation
+
+    NF -> EBCF : Online Charging Request
+    activate EBCF
+
+    EBCF -> CDF : Open CDR
+    CDF --> EBCF : CDR Opened
+
+    EBCF -> RF : Price request
+    RF -> RF : Price retrieval and\ncounter reservations
+    RF --> EBCF : Price response
+    note right of CDF : The value of the\nevent is established -\nmonetary or non-\nmonetary
+
+    EBCF -> EBCF : Determine granted\nunits & price
+
+    EBCF -> ABMF : Reserve Balance
+    ABMF --> EBCF : Reserve Balance response
+    note right of ABMF : Sufficient balance
+
+    EBCF --> NF : Online Charging Response
+    deactivate EBCF
+    note left of NF : Service is
+
+end
+
+group Debit
+
+    NF -> EBCF : Online Charging Request
+    activate EBCF
+    note left of NF : Granted Service\nused, debit\nrequested
+
+    EBCF -> RF : Price request
+    RF -> RF : Final price rating\nand debit of\ncounters
+    RF --> EBCF : Price response
+
+    EBCF -> ABMF : Debit Balance
+    ABMF --> EBCF : Debit Balance response
+
+    EBCF --> NF : Online Charging Response
+
+    EBCF -> CDF : Close CDR
+    CDF --> EBCF : CDR Closed
+    note right of CGF : CDF will forward the\nCDR to the CGF for\nfurther distribution to\nthe billing domain
+    deactivate EBCF
+
+end
+
+@enduml

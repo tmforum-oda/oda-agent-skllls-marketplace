@@ -1,0 +1,74 @@
+@startuml
+title National Voice - Product and Service inventories after the call
+
+package "TMFC005 Product Inventory" #E2F0D9 {
+  class "Mobile Line" as PS_MobileLine {
+    status: Active
+    start date: 4th Nov 2022
+    Number=XXXXXX
+    Roaming Options=Y
+    Barring Options=Z
+  }
+  class "Extra National Package" as PS_ExtraNational {
+    status: Active
+    start date: 4th Nov 2022
+    Volume=2 hours
+    blocked: N
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+  PS_ExtraNational --> PS_MobileLine : "applies on"
+}
+
+package "TMFC008 Service Inventory" #FFE0B2 {
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine {
+    status: Active
+    start date: 4th Nov 2022
+    msisdn=XXXXXX
+    usageLimit
+    nVoiceMinutes
+    iVoiceMinutes
+    smsUnits
+    mmsUnits
+    dataVolume
+  }
+  class "[Network Service CFS]\nNational Package" as CFS_ExtraNational {
+    status: Active
+    start date: 4th Nov 2022
+    Volume=2 hours
+    blocked:N
+    recurring:Y
+    validity period: 1 month
+    rollover: N
+  }
+  CFS_ExtraNational --> CFS_MobileLine : "applies on"
+}
+
+PS_MobileLine --> CFS_MobileLine : "corresponds to"
+PS_ExtraNational --> CFS_ExtraNational : "corresponds to"
+
+package "TMFC015 Service Usage" #F5D0D0 {
+  class "[Service Usage Record]\nId ########" as ServiceUsageRecord {
+    Type: Voice Usage Record
+    **Actual duration:14m18s**
+    **Consumed balance: 14m:30s**
+    Start Date: 7th Nov 2022, 7:55:05 pm
+    End Date: 7th Nov 2022 8:09:23 pm
+  }
+}
+
+package "TMFC013 Service Balance Management" #E5DCF0 {
+  class "National Voice Balance 1" as NationalVoiceBalance {
+    Startdate=4th Nov 2022
+    Enddate=3th Dec 2022
+    **Remaining Value=105m30s**
+    Blocked=N
+  }
+}
+
+CFS_MobileLine --> ServiceUsageRecord : "corresponds to"
+ServiceUsageRecord --> NationalVoiceBalance : "charged to"
+CFS_ExtraNational --> NationalVoiceBalance : "corresponds to"
+
+@enduml

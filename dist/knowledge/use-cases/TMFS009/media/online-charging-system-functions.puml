@@ -1,0 +1,16 @@
+@startuml
+title Online Charging System
+
+package "Online Charging System" #white {
+  class "Online Charging Function (OCF)" as OCF
+  class "Account Balance Management Function (ABMF)" as ABMF
+  class "Rating Function (RF)" as RF
+
+  OCF --> ABMF
+  OCF --> RF
+}
+
+class "Network Elements" as NetworkElements
+NetworkElements --> OCF : "Ro / CAP"
+
+@enduml

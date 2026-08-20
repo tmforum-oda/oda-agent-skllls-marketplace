@@ -1,0 +1,40 @@
+@startuml
+title Data Usage - Reservation Extension
+
+participant "SmartPhone" as Phone #purple
+participant "NetworkFunction" as NF #lightblue
+participant "CCS_ChargingFunction" as CCF #lightblue
+
+box "ServiceBalanceManagement"
+  participant "CCS_AccountBalanceMgmt" as ABMF #blue
+  participant "CCS_RatingFunction" as RF #blue
+end box
+
+box "ServiceUsageManagement"
+  participant "CCS_ChargingDataFunction" as CDF #blue
+end box
+
+Phone -> NF : 1 continued use of data
+activate NF
+NF -> CCF : 2 extend data session
+activate CCF
+
+CCF -> CCF : 3 determine reservation amount
+note right of CCF : value and rules already known
+
+CCF -> ABMF : 4 reserve balance
+activate ABMF
+ABMF -> ABMF : 5 balance reservation added to the original reservation
+ABMF --> CCF : 6 balance reservation successful
+deactivate ABMF
+
+CCF -> CDF : 7 Update CDR
+CDF --> CCF : 8 CDR updated
+
+CCF --> NF : 9 authorize session
+deactivate CCF
+NF --> Phone : 10 data session continues
+deactivate NF
+note left of Phone : User continues to consume data
+
+@enduml

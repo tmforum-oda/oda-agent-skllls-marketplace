@@ -1,0 +1,106 @@
+@startuml
+title TMFC001 Product Catalog
+
+legend
+  Blue = Product Offering / light blue = Product Offering Price Specification
+  Dark green = Product Specification / light green = Product Specification Characteristic
+  Dashed green = Product Usage Specification
+  Assumptions: User Equipment=SmartPhone/Tablet/Modem; not a bundled offering (SIM-only);
+  precheck done for SIM card type compatibility and eSIM profile/download option; VAS=Contents,APPs,Licenses
+end legend
+
+class "Mobile Postpaid Contract" as Contract <<ProductOffering>>
+class "Postpaid Mobile Line" as PostpaidMobileLine <<ProductOffering>>
+Contract --> PostpaidMobileLine : "Min 1, Max 1"
+
+class "Mobile Line" as MobileLineOffering <<ProductOffering>> {
+  POPrice = 10€/month
+  National Voice usage: 1€/10mn
+  SMS usage: 0,1€/SMS
+}
+class "Extra National Voice" as ExtraNationalVoiceOffering <<ProductOffering>> {
+  recurring
+  if V=1h 5€/month
+  if V=2h 8€/month
+  if V=5h 20€/month
+}
+class "*Extra International Voice" as ExtraInternationalVoiceOffering <<ProductOffering>> {
+  one time 12€
+}
+class "Extra SMS" as ExtraSMSOffering <<ProductOffering>> {
+  one time
+  if V=100 5€
+  if V=500 15€
+}
+class "Extra Data" as ExtraDataOffering <<ProductOffering>> {
+  recurring
+  if V=1GB 5€/month
+  if V=3GB 12€/month
+  if V=5GB 20€/month
+}
+
+PostpaidMobileLine --> MobileLineOffering : "Min 1, Max 1"
+PostpaidMobileLine --> ExtraNationalVoiceOffering : "Min 0, Max 1"
+PostpaidMobileLine --> ExtraInternationalVoiceOffering : "Min 0, Max 1"
+PostpaidMobileLine --> ExtraSMSOffering : "Min 0, Max 1"
+PostpaidMobileLine --> ExtraDataOffering : "Min 0, Max 1"
+
+package "Network Product Spec" #E2F0D9 {
+  class "Mobile Line" as MobileLineSpec <<ProductSpecification>> {
+    Number, Roaming Options, Barrings Options
+  }
+}
+
+package "Usage Volume Product Spec" #E2F0D9 {
+  class "Extra National Package" as ExtraNationalPackageSpec <<ProductSpecification>> {
+    Volume: 1,2,5 hours
+    blocked: N
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+  class "*Extra International Package" as ExtraInternationalPackageSpec <<ProductSpecification>> {
+    15€
+    blocked: Y
+    recurring: N
+    validity period: 12 months
+    rollover: N
+  }
+  class "Extra SMS Package" as ExtraSMSPackageSpec <<ProductSpecification>> {
+    100, 500 SMS
+    blocked: N
+    recurring: N
+    validity period: 12 months
+    rollover: N
+  }
+  class "Extra Data Package" as ExtraDataPackageSpec <<ProductSpecification>> {
+    1, 3, 5 GB
+    blocked: Y
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+
+  class "National Voice" as NationalVoiceUsageSpec <<ProductUsageSpecification>>
+  class "*International Voice" as InternationalVoiceUsageSpec <<ProductUsageSpecification>>
+  class "SMS" as SMSUsageSpec <<ProductUsageSpecification>>
+  class "Data" as DataUsageSpec <<ProductUsageSpecification>>
+
+  ExtraNationalPackageSpec --> NationalVoiceUsageSpec : Concerns
+  ExtraInternationalPackageSpec --> InternationalVoiceUsageSpec : Concerns
+  ExtraSMSPackageSpec --> SMSUsageSpec : Concerns
+  ExtraDataPackageSpec --> DataUsageSpec : Concerns
+
+  ExtraNationalPackageSpec --> MobileLineSpec : Requires
+  ExtraInternationalPackageSpec --> MobileLineSpec : Requires
+  ExtraSMSPackageSpec --> MobileLineSpec : Requires
+  ExtraDataPackageSpec --> MobileLineSpec : Requires
+}
+
+MobileLineOffering --> MobileLineSpec
+ExtraNationalVoiceOffering --> ExtraNationalPackageSpec
+ExtraInternationalVoiceOffering --> ExtraInternationalPackageSpec
+ExtraSMSOffering --> ExtraSMSPackageSpec
+ExtraDataOffering --> ExtraDataPackageSpec
+
+@enduml

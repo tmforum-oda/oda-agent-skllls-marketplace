@@ -1,0 +1,111 @@
+@startuml
+title National Voice - Sequence diagram for national voice with extra product
+
+participant "SmartPhone" as Phone #purple
+participant "NetworkFunction" as NF #lightblue
+participant "OCS_ChargingFunction" as OCF #lightblue
+
+box "ServiceBalanceManagement"
+  participant "OCS_AccountBalanceMgmt" as ABMF #blue
+  participant "OCS_RatingFunction" as RF #blue
+end box
+
+box "ServiceUsageManagement"
+  participant "OCS_ChargingDataFunction" as CDF #blue
+  participant "OCS_ChargingGatewayFunction" as CGF #blue
+end box
+
+Phone -> NF : 1 start voice call
+activate NF
+note right of NF : Voice call starts 7:55:05 PM
+NF -> OCF : 2 authorize voice call
+activate OCF
+
+OCF -> CDF : 3 Open CDR
+CDF --> OCF : 4 CDR Opened
+
+OCF -> ABMF : 5 get applicable balances for service
+activate ABMF
+ABMF -> ABMF : 6 balances for service retrieved
+ABMF --> OCF : 7
+deactivate ABMF
+
+OCF -> RF : 8 determine value of the session and pass in balances
+activate RF
+RF -> RF : 9 value determined based on\nparameters and service details.\nincrement change detected
+note right of CDF : 60s increment used before 8PM and\n30s increment used after 8PM
+RF --> OCF : 10 value established including expiry time for current calculation
+deactivate RF
+
+OCF -> OCF : 11 determine reservation amount
+note right of OCF : value determined as 5*60
+
+OCF -> ABMF : 12 reserve balance
+activate ABMF
+ABMF -> ABMF : 13 balance reservation added
+ABMF --> OCF : 14 balance reservation successful
+deactivate ABMF
+
+OCF --> NF : 15 authorize session; expiry time 8:00:05 PM
+note right of OCF : re-athorization required to account\nfor the upcoming change in increments
+NF --> Phone : 16 start voice call
+note left of Phone : User starts the call
+
+Phone -> NF : 17 voice call continues
+note left of NF : Time for increment change reached.\nRe-athorization required
+NF -> OCF : 18 re-authorize voice call
+
+OCF -> OCF : 19 determine the final value for the first increment
+note right of ABMF : value and rules already known
+
+OCF -> ABMF : 20 debit balance
+activate ABMF
+ABMF -> ABMF : 21 balance debited
+note right of CDF : final amount for first part debited based on 60s increment
+ABMF --> OCF : 22 balance debit successful
+deactivate ABMF
+
+OCF -> RF : 23 determine value of the session
+activate RF
+note right of CDF : 30s increment used after 8PM
+RF -> RF : 24 value determined based on\nparameters and service details.\nincrement change detected
+RF --> OCF : 25 value established including expiry time for current calculation
+deactivate RF
+
+OCF -> OCF : 26 determine reservation amount
+note right of OCF : reservation amount established based on 30s increment
+
+OCF -> ABMF : 27 reserve balance
+activate ABMF
+ABMF -> ABMF : 28 balance reservation added
+ABMF --> OCF : 29 balance reservation successful
+deactivate ABMF
+
+OCF --> NF : 30 authorize session
+NF --> Phone : 31 voice call continues
+
+Phone -> NF : 32 voice call ends
+note left of NF : User ends call at 8:09:23 PM
+NF -> OCF : 33 finalize voice call
+
+OCF -> OCF : 34 determine final value
+
+OCF -> ABMF : 35 debit balance
+activate ABMF
+note right of ABMF : debits the balance and\nreleases any unused reservation
+ABMF -> ABMF : 36 balance debited
+ABMF --> OCF : 37 debit balance successful
+deactivate ABMF
+
+OCF --> NF : 38 finalization completed
+deactivate NF
+
+OCF -> CDF : 39 Close CDR
+activate CDF
+CDF -> CGF : 40 Finalized CDR
+note right of CGF : the finalized event including information\non the increment change is stored and\navailable for further distribution
+CDF --> OCF : 41 CDR Closed
+deactivate CDF
+deactivate OCF
+
+@enduml

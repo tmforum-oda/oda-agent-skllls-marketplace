@@ -1,0 +1,36 @@
+@startuml
+title TMFC002 Product Order Capture and Validation - Start package purchase with one-time top up
+
+class "Prepaid Broadband" as Contract <<ProductOfferingOrderItem>> <<add>>
+class "Start Package" as StartPackage <<ProductOfferingOrderItem>> <<add>>
+Contract --> StartPackage : "Min 1, Max 1"
+
+class "Mobile Line" as MobileLineOffering <<ProductOfferingOrderItem>> <<add>> {
+  one time = 12€
+}
+class "One Time Data Top Ups" as OneTimeTopUpsOffering <<ProductOfferingOrderItem>> <<add>> {
+  one time=13€
+}
+
+StartPackage --> MobileLineOffering
+StartPackage --> OneTimeTopUpsOffering : "Min 0, Max 1"
+
+class "Mobile Line" as MobileLineSpec <<ProductSpecificationOrderItem>> <<add>> {
+  Number=XXXXXX
+  Roaming Options=Y
+  Barrings Options=Z
+}
+class "Data Package" as DataPackageSpec <<ProductSpecificationOrderItem>> <<add>> {
+  Volume= 3GB
+  blocked: Y
+  recurring: N
+  validity period: 1 month
+  rollover: N
+}
+
+MobileLineOffering --> MobileLineSpec
+OneTimeTopUpsOffering --> DataPackageSpec
+
+DataPackageSpec --> MobileLineSpec : "Applies on"
+
+@enduml

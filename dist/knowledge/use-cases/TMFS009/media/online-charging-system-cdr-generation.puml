@@ -1,0 +1,23 @@
+@startuml
+title Online Charging System Extended With CDR Generation
+
+package "Online Charging System Extended With CDR Generation" #white {
+  class "Online Charging Function (OCF)" as OCF
+  class "Account Balance Management Function (ABMF)" as ABMF
+  class "Rating Function (RF)" as RF
+  class "Charging Data Function (CDF)" as CDF
+  class "Charging Gateway Function (CGF)" as CGF
+
+  OCF --> ABMF
+  OCF --> RF
+  OCF --> CDF
+  CDF --> CGF
+}
+
+class "Billing Domain (BD)" as BD
+class "Network Elements" as NetworkElements
+
+CGF --> BD : Bx
+NetworkElements --> OCF : "Ro / CAP"
+
+@enduml

@@ -1,0 +1,76 @@
+@startuml
+title Session Based Charging - Class A
+
+participant "Network Function" as NF
+participant "CHF - SBCF" as SBCF
+participant "ABMF" as ABMF
+participant "RF" as RF
+participant "CHF - CDF" as CDF
+participant "CGF" as CGF
+
+group Initial request
+
+    NF -> SBCF : Online Charging Request
+    activate SBCF
+
+    SBCF -> CDF : Open CDR
+    CDF --> SBCF : CDR Opened
+
+    SBCF -> ABMF : Retrieve Balance(s)
+    ABMF --> SBCF : Balance(s) returned
+
+    SBCF -> RF : Tariff request
+    RF -> RF : Tariff retrieval
+    RF --> SBCF : Tariff response
+    note right of CDF : The value of the\nevent is established -\nmonetary or non-\nmonetary
+
+    SBCF -> SBCF : Determine granted\nunits & price
+
+    SBCF -> ABMF : Reserve Balance
+    ABMF --> SBCF : Reserve Balance response
+    note right of ABMF : Sufficient balance
+
+    SBCF --> NF : Online Charging Response
+    deactivate SBCF
+    note left of NF : Service is
+
+end
+
+group Interim update
+
+    NF -> SBCF : Online Charging Request
+    activate SBCF
+    note left of NF : Granted\nreservation is\nused
+
+    SBCF -> SBCF : Determine granted\nunits & price
+
+    SBCF -> ABMF : Reserve Balance
+    ABMF --> SBCF : Reserve Balance response
+    note right of ABMF : Sufficient balance
+
+    SBCF --> NF : Online Charging Response
+    deactivate SBCF
+
+end
+
+group Termination
+
+    NF -> SBCF : Online Charging Request
+    activate SBCF
+    note left of NF : Session ends
+
+    SBCF -> SBCF : Final service rating
+
+    SBCF -> ABMF : Debit Balance
+    ABMF --> SBCF : Debit Balance response
+
+    SBCF --> NF : Online Charging Response
+
+    SBCF -> CDF : Close CDR
+    CDF --> SBCF : CDR Closed
+    note right of CGF : CDF will forward the\nCDR to the CGF for\nfurther distribution to\nthe billing domain
+    deactivate SBCF
+
+end
+
+@enduml

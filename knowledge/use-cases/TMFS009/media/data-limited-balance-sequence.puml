@@ -1,0 +1,80 @@
+@startuml
+title Data Usage - limited balance
+
+participant "SmartPhone" as Phone #purple
+participant "NetworkFunction" as NF #lightblue
+participant "CCS_ChargingFunction" as CCF #lightblue
+
+box "ServiceBalanceManagement"
+  participant "CCS_AccountBalanceMgmt" as ABMF #blue
+  participant "CCS_RatingFunction" as RF #blue
+end box
+
+box "ServiceUsageManagement"
+  participant "CCS_ChargingDataFunction" as CDF #blue
+  participant "CCS_ChargingGatewayFunction" as CGF #blue
+end box
+
+Phone -> NF : 1 start data session
+activate NF
+NF -> CCF : 2 authorize data session
+activate CCF
+
+CCF -> CDF : 3 Open CDR
+CDF --> CCF : 4 CDR Opened
+
+CCF -> ABMF : 5 get applicable balances for service
+activate ABMF
+ABMF -> ABMF : 6 balances for service retrieved
+ABMF --> CCF : 7
+deactivate ABMF
+
+CCF -> RF : 8 determine value of the session and pass in balances
+activate RF
+RF -> RF : 9 value determined based on\nparameters and service details
+note right of CDF : 1MB increment used as part\nof establishing the value
+RF --> CCF : 10 value established
+deactivate RF
+
+CCF -> CCF : 11 determine reservation amount
+note right of CCF : due to limited balance the reservation amount is\nadjusted instead of using a higher default value
+
+CCF -> ABMF : 12 reserve balance
+activate ABMF
+ABMF -> ABMF : 13 balance reservation added
+ABMF --> CCF : 14 balance reservation successful
+deactivate ABMF
+
+CCF --> NF : 15 authorize session
+NF --> Phone : 16 data session started
+note left of Phone : User starts to consume data
+
+Phone -> NF : 17 continue use of data
+NF -> CCF : 18 extend data session
+CCF -> CCF : 19 determine reservation amount
+note right of CCF : value and rules already known\nand the balance is depleted
+CCF --> NF : 20 insufficient balance
+NF --> Phone : 21 discontinue data session
+
+NF -> CCF : 22 debit data session
+CCF -> CCF : 23 determine final value
+
+CCF -> ABMF : 24 debit balance
+activate ABMF
+note right of ABMF : debits the balance
+ABMF -> ABMF : 25 balance debited
+ABMF --> CCF : 26 debit balance successful
+deactivate ABMF
+
+CCF --> NF : 27 final debit complete
+deactivate NF
+
+CCF -> CDF : 28 Close CDR
+activate CDF
+CDF -> CGF : 29 Finalized CDR
+note right of CGF : the finalized event is stored and\navailable for further distribution
+CDF --> CCF : 30 CDR Closed
+deactivate CDF
+deactivate CCF
+
+@enduml
