@@ -1,0 +1,58 @@
+@startuml
+title Sequence diagram showing the service qualification check at the requested address
+
+actor Customer
+participant "EngagementManagement\nWeb UI" as WebUI #purple
+participant "EngagementManagement\nBFF" as BFF #purple
+participant "E2E SM Domain\nService Qualification Mgt" as E2ESQ #blue
+participant "Fixed Access Domain\nService Qualification Mgt" as FASQ #blue
+participant "Mobile Access Domain\nService Qualification Mgt" as MASQ #blue
+participant "Copper Domain\nService Qualification Mgt" as COSQ #blue
+participant "Product Configurator\nComponent" as PCC
+participant "Product Catalog Management\nComponent" as PCM
+
+Customer -> WebUI : 1 Enter Service Address or Landline Phone Number
+WebUI -> BFF : 2 Enter Service Address or Landline Phone Number
+activate BFF
+BFF -> BFF : 3 validate input data
+
+BFF -> E2ESQ : 4 **TMF 645 POST /QueryServiceQualification**  address
+activate E2ESQ
+
+E2ESQ -> FASQ : 5 **TMF 645 POST /QueryServiceQualification**  address
+activate FASQ
+FASQ --> E2ESQ : 6 return service(s) available for the specified address
+deactivate FASQ
+
+E2ESQ -> MASQ : 7 **TMF 645 POST /QueryServiceQualification**  address
+activate MASQ
+MASQ --> E2ESQ : 8 return service(s) available for the specified address
+deactivate MASQ
+
+E2ESQ -> COSQ : 9 **TMF 645 POST /QueryServiceQualification**  address
+activate COSQ
+COSQ --> E2ESQ : 10 return service(s) available for the specified address
+deactivate COSQ
+
+E2ESQ --> BFF : 11 return E2E Connectivity available for the specified address
+deactivate E2ESQ
+
+BFF -> PCC : 12 **TMF679 POST /productOfferingQualification**  by category, address, and channel
+activate PCC
+PCC -> PCC : 13 load offers
+
+PCC -> PCM : 14 **TMF620 GET /productOffering**  by offer IDs
+activate PCM
+PCM --> PCC : 15
+deactivate PCM
+
+PCC -> PCC : 16 filter by category
+
+PCC --> BFF : 17 eligible product offers
+deactivate PCC
+
+BFF --> WebUI : 18 eligible product offers
+deactivate BFF
+WebUI --> Customer : 19 present product offers
+
+@enduml

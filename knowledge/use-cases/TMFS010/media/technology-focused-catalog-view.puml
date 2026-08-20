@@ -1,0 +1,93 @@
+@startuml
+title Product & Service Catalogue View (Service Exposure for Technology Focused Product Models)
+
+legend
+  Blue = Product Offering / light blue = Product Offering Price Specification
+  Dark green = Product Specification / light green = Product Specification Characteristic
+  Orange = Service Specification / light orange = Service Specification Characteristic
+  Olive = Resource Specification / pale yellow = Resource Specification Characteristic
+  Grey box = Domain
+end legend
+
+class "Fibre Contract" as FibreContract <<ProductOffering>> {
+  Welcome Discount: 5 Euro/month, first 10 months
+}
+class "Box" as BoxOffering <<ProductOffering>>
+class "Connectivity over Fibre Access" as ConnectivityOffering <<ProductOffering>> {
+  10 Euro / month
+}
+class "TV Channels" as TVChannelsOffering <<ProductOffering>> {
+  If Basic: 5 Euro / month
+  If Extra: 15 Euro / month
+}
+
+FibreContract --> BoxOffering : "Min 0, Max 1"
+FibreContract --> ConnectivityOffering : "Min 1, Max 1"
+FibreContract --> TVChannelsOffering : "Min 0, Max 1"
+
+class "Box 1" as Box1Offering <<ProductOffering>> {
+  5 Euro / month
+}
+class "Box 2" as Box2Offering <<ProductOffering>> {
+  7 Euro / month
+}
+BoxOffering --> Box1Offering : "Min 0, Max 1"
+BoxOffering --> Box2Offering : "Min 0, Max 1"
+
+class "Box 1" as Box1Spec <<ProductSpecification>>
+class "Box 2" as Box2Spec <<ProductSpecification>>
+Box1Offering --> Box1Spec
+Box2Offering --> Box2Spec
+
+class "Connectivity over\nFibre Access" as ConnectivitySpec <<ProductSpecification>>
+class "TV Channels" as TVChannelsSpec <<ProductSpecification>>
+ConnectivityOffering --> ConnectivitySpec
+TVChannelsOffering --> TVChannelsSpec
+
+ConnectivitySpec --> Box1Spec : "Requires"
+ConnectivitySpec --> Box2Spec : "Requires (OR)"
+
+class "[Device] Box 1" as DeviceBox1 <<ResourceSpecification>>
+class "[Device] Box 2" as DeviceBox2 <<ResourceSpecification>>
+Box1Spec --> DeviceBox1
+Box2Spec --> DeviceBox2
+
+class "Connectivity over\nFibre Access" as CFS_Connectivity <<ServiceSpecification>>
+class "TV Channels" as CFS_TVChannels <<ServiceSpecification>>
+ConnectivitySpec --> CFS_Connectivity : restricts
+TVChannelsSpec --> CFS_TVChannels : restricts
+
+package "E2E Service Management Domain" #E8E8E8 {
+  class "[Composite Network Service CFS]\nE2E Connectivity Service\n(Internet + Access)" as E2EConnectivityService <<ServiceSpecification>>
+}
+CFS_Connectivity <--> E2EConnectivityService
+
+package "Soft Service Domain" #E8E8E8 {
+  class "TV Service" as TVService <<ServiceSpecification>>
+}
+CFS_TVChannels --> TVService : "Min 1, Max 1"
+
+package "Internet Domain" #E8E8E8 {
+  class "Internet\nConnectivity" as InternetConnectivity <<ServiceSpecification>>
+  class "Device RFS" as DeviceRFS <<ServiceSpecification>>
+  InternetConnectivity --> DeviceRFS
+}
+E2EConnectivityService --> InternetConnectivity : "Min 1, Max 1"
+DeviceRFS --> DeviceBox1 : "Requires (OR)"
+DeviceRFS --> DeviceBox2 : "Requires"
+
+package "Mobile Domain" #E8E8E8 {
+  class "Mobile Access\n3G / 4G / 5G" as MobileAccess <<ServiceSpecification>>
+}
+package "Fixed Access Domain" #E8E8E8 {
+  class "[Access Service]\nFibre Access*" as FibreAccess <<ServiceSpecification>>
+  class "[Access Service]\nCopper Access" as CopperAccess <<ServiceSpecification>>
+}
+E2EConnectivityService --> MobileAccess : "Min 1, Max n"
+E2EConnectivityService --> FibreAccess : "Min 1, Max n"
+
+note bottom of FibreAccess
+  * The E2E Connectivity Service instantiate Fibre Access based on the intent
+end note
+
+@enduml

@@ -3,7 +3,7 @@ title Figure 15: Completion of the HSS subscriber profile resource order item
 
 participant "Resource Inventory" as RI #blue
 participant "Resource Order\nManagement" as ROM #blue
-participant "Resource Activation\n&amp; Configuration" as RAC #blue
+participant "Resource Activation\n& Configuration" as RAC #blue
 participant "Resource Catalog\nManagement" as RCM #blue
 participant "HSS"
 

@@ -1,0 +1,88 @@
+@startuml
+title CFS-based delivery via E2E Service Management and NaaS approach
+
+participant "ProductOrderDelivery\nOrchestration&Management" as PODOM
+participant "E2E SM Domain\nServiceOrderManagement" as E2ESOM #blue
+participant "Fixed Access Domain\nServiceOrderManagement" as FASOM #blue
+participant "Network Service Domain\nServiceOrderManagement" as NSSOM #blue
+participant "Soft Service Domain\nServiceOrderManagement" as SSSOM #blue
+participant "EventBus" as Bus #grey
+
+PODOM -> E2ESOM : 1 **POST Service Order TMF641**\n**E2E Connectivity Service**
+activate E2ESOM
+E2ESOM -> E2ESOM : 2 Validate the\nincoming request
+E2ESOM --> PODOM : 3 201 Service Order created
+
+E2ESOM -> E2ESOM : 4 Service Order Progression
+note right of E2ESOM
+  Depending on the
+  input received for
+  **E2E Connectivity Service**
+  either **Fixed Fibre Access**  OR
+  **Copper Access**
+  will be created
+end note
+
+group Access Service
+
+    E2ESOM -> FASOM : 5 **POST Service Order TMF641**\n**Fixed Fibre Access**
+    activate FASOM
+    FASOM -> FASOM : 6 Validate the\nincoming request
+    FASOM --> E2ESOM : 7 201 Service Order created
+
+    FASOM -> Bus : 8 **TMF688 Event** - Service Order Create Event
+    Bus --> E2ESOM : 9 Service Order Create Event
+
+    FASOM -> FASOM : 10 Service Order Progression
+    FASOM -> Bus : 11 **TMF688 Event** - Service Order State Change Event (state=completed)
+    Bus --> E2ESOM : 12 Service Order State Change Event (state=completed)
+
+    FASOM -> Bus : 13 **TMF688 Event** - Service Create Event
+    Bus --> E2ESOM : 14 Service Create Event
+    deactivate FASOM
+
+end
+
+group Internet Service
+
+    E2ESOM -> NSSOM : 15 **POST Service Order TMF641**\n**Fix Connectivity**
+    activate NSSOM
+    note right of E2ESOM : Can be via TMF640 as well and depends on implementation
+
+    NSSOM -> NSSOM : 16 Validate the\nincoming request
+    NSSOM --> E2ESOM : 17 201 Service Order created
+
+    NSSOM -> Bus : 18 **TMF688 Event** - Service Order Create Event
+    Bus --> E2ESOM : 19 Service Order Create Event
+
+    NSSOM -> NSSOM : 20 Service Order Progression
+    NSSOM -> Bus : 21 **TMF688 Event** - Service Order State Change Event (state=completed)
+    Bus --> E2ESOM : 22 Service Order State Change Event (state=completed)
+
+    NSSOM -> Bus : 23 **TMF688 Event** - Service Create Event
+    Bus --> E2ESOM : 24 Service Create Event
+    deactivate NSSOM
+
+end
+
+E2ESOM -> Bus : 25 **TMF688 Event** - Service Order State Change Event (state=completed)
+E2ESOM -> Bus : 26 **TMF688 Event** - Service Create Event
+deactivate E2ESOM
+Bus --> PODOM : 27 Order Flow Listener
+
+group TV Service
+
+    PODOM -> SSSOM : 28 **POST Activation & Configuration TMF640**\n**TV Channels**
+    activate SSSOM
+    note right of PODOM : Can be via TMF641 as well and depends on implementation
+
+    SSSOM -> SSSOM : 29 Validate the\nincoming request
+    SSSOM -> SSSOM : 30 Service Activation\nProgression
+    SSSOM --> PODOM : 31 201 Service Activated
+
+    SSSOM -> Bus : 32 **TMF688 Event** - Service Create Event
+    deactivate SSSOM
+
+end
+
+@enduml

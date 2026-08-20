@@ -5,7 +5,7 @@ participant "Resource Inventory" as RI #blue
 participant "Resource Order\nManagement" as ROM #blue
 participant "Event Management" as Event #grey
 participant "Resource Catalog\nManagement" as RCM #blue
-participant "Resource Activation\n&amp; Configuration" as RAC #blue
+participant "Resource Activation\n& Configuration" as RAC #blue
 participant "PCF"
 participant "UDM/UDR" as UDMUDR
 participant "OCS/CHF" as OCSCHF

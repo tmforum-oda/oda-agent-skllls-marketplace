@@ -56,9 +56,15 @@ The TM Forum's Open Digital Architecture has been designed to enable members to 
 
 This use case proposes that every production group (e.g., Transport, IP, access, media, etc.) exposes and manages service capabilities (i.e., Network as a Service) in the Open Digital Architecture (ODA) from the Production function block to other ODA functional blocks *(such as Core Commerce Management, Intelligence Management)* via the decoupling and integration function block (i.e., APIs and API gateway) to allow for zero touch automation.
 
-![](media/image01.png)
+![](media/oda-functional-architecture-overview.png)
+*([text description](media/oda-functional-architecture-overview.text-description.md))*
 
 Figure 1: Open Digital Architecture Functional Architecture
+
+![](media/production-functional-block-with-odm.png)
+*([text description](media/production-functional-block-with-odm.text-description.md))*
+
+Figure 2: Production functional Block with ODM
 
 ## Objective of the use case
 
@@ -86,7 +92,7 @@ The purpose of this document is to demonstrate the benefits and agility brought 
 
 | Production block as per TMSF003 & TMSF004 | Production block with introduction of NaaS and E2E Service Management Domain |
 | --- | --- |
-| <br>![](media/image03.png) | <br>![](media/image04.png) |
+| <br>![](media/production-block-without-naas.png)<br>*([text description](media/production-block-without-naas.text-description.md))* | <br>![](media/production-block-with-naas.png)<br>*([text description](media/production-block-with-naas.text-description.md))* |
 
 Figure 3: Comparison of Production functional block without and with NaaS
 
@@ -100,7 +106,8 @@ A simplified, modularized and abstracted** Composite Service** (E2E Connectivity
 
 Having the E2E SM Domain hiding the technology complexity, CSPs can move away from selling technology to selling Product offers agnostic of technology. This helps CSPs migrating technologies, using 3rd parties or even start with one technology available (e.g. Mobile) and change it later when, for example Fixed access is available; providing another way to differentiate. Refer to the example below where the current offers have been dynamically generated according to the technologies available returned by the E2E SM Domain for the requested address (or landline phone number).
 
-![](media/image05.png)
+![](media/touchpoint-screen-flow-mockup.png)
+*([text description](media/touchpoint-screen-flow-mockup.text-description.md))*
 
 Figure 4: Example of CSP intent request for technology-agnostic product offering
 
@@ -110,7 +117,8 @@ Figure 4: Example of CSP intent request for technology-agnostic product offering
 
 Below is the service model with technology agnostic service specifications supporting Technology-focused Products. The E2E Connectivity Service CFS contains information from every Access technology domain available, the Network Service domain and the mobile domain (which can be possibly used as a backup service). The product specification "Connectivity over Fibre Access" will instantiate the E2E Connectivity Service with its choice of Fibre technology as per the Product offering sold to the customer.
 
-![](media/image06.png)
+![](media/technology-focused-catalog-view.png)
+*([PlantUML source](media/technology-focused-catalog-view.puml))*
 
 Figure 5: Product and service catalogue view supporting technology-focused product offerings  
 
@@ -118,7 +126,8 @@ Figure 5: Product and service catalogue view supporting technology-focused produ
 
 Below is the service model with technology agnostic service offerings supporting non-technology focused Products. The same E2E Connectivity Service CFS as above is used but this time Product Offers are not tied to technologies. Product specifications can still be created for access, connectivity and TV channels if these can be sold individually or as Add-On or can be combined in one product specification. The right technology to deliver the customer intent will be determined by the E2E Connectivity Service.
 
-![](media/image07.png)
+![](media/technology-agnostic-catalog-view.png)
+*([PlantUML source](media/technology-agnostic-catalog-view.puml))*
 
 Figure 6: Product and service catalogue view supporting technology agnostic product offerings
 
@@ -132,14 +141,16 @@ Services once designed are published to NaaS Catalog for exposure to other domai
 
 The below sequence diagram shows the creation journey of "E2E Connectivity Service" composite service.
 
-![](media/image08.png)
+![](media/service-consumption-naas-e2e-sm-sequence.png)
+*([PlantUML source](media/service-consumption-naas-e2e-sm-sequence.puml))*
  
 
 Figure 7: Sequence diagram showing the creation journey of "E2E Connectivity Service" composite service
 
 ## API call flows
 
-![](media/image09.png)
+![](media/service-qualification-check-sequence.png)
+*([PlantUML source](media/service-qualification-check-sequence.puml))*
  
 
 Figure 8: Sequence diagram showing the service qualification check at the requested address
@@ -148,7 +159,8 @@ Figure 8: Sequence diagram showing the service qualification check at the reques
 
 The below sequence diagram explains the service order delivery with NaaS approach. The CCM will perform the Order Capture first with the requested Products and the Product Order Delivery Orchestration & Management subsequently send a service order to activate connected "Add-On" with necessary parameters to E2E Service Management Domain.
 
-![](media/image10.png)
+![](media/cfs-based-delivery-e2e-naas-sequence.png)
+*([PlantUML source](media/cfs-based-delivery-e2e-naas-sequence.puml))*
  
 
 Figure 9: Sequence diagram showing the Service Order Delivery via E2E SM and NaaS approach

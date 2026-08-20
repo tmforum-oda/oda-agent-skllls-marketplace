@@ -1,5 +1,5 @@
 @startuml
-title Step 2: Service &amp; related resource order initiation
+title Step 2: Service & related resource order initiation
 
 participant "Product Order\nDelivery & Orchestration\nManagement" as PODOM
 participant "Event Management" as Event #grey

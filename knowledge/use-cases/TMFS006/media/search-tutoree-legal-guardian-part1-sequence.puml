@@ -1,5 +1,5 @@
 @startuml
-title Part 1: Search tutoree &amp; Legal Guardian
+title Part 1: Search tutoree & Legal Guardian
 
 actor Marie
 actor JohnCustomerAgent as John

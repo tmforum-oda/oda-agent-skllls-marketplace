@@ -1,5 +1,5 @@
 @startuml
-title Product &amp; Service levels Inventories
+title Product & Service levels Inventories
 
 package "TMFC005 Product Inventory" #E2F0D9 {
   class "Mobile Line" as PS_MobileLine {

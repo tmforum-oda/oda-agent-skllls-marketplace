@@ -1,0 +1,42 @@
+@startuml
+title Service Consumption using NaaS and E2E Service Management
+
+participant "Fixed Access Domain\nServiceCatalogManagement" as FA
+participant "Copper Domain\nServiceCatalogManagement" as CO
+participant "Soft Service Domain\nServiceCatalogManagement" as SS
+participant "Network Service Domain\nServiceCatalogManagement" as NS
+participant "Centralised\nServiceCatalogManagement" as CSM
+participant "EventBus" as Bus #grey
+participant "E2E SM Domain\nServiceCatalogManagement" as E2E
+participant "Product Catalog Management" as PCM
+
+FA -> CSM : 1 **POST Service Specification TMF633**\n**Fiber Fixed Access**
+CSM -> Bus : 2 Service Specification Create Event
+Bus -> E2E : 3 Service Specification Create Listener
+
+CO -> CSM : 4 **POST Service Specification TMF633**\n**Copper Access**
+CSM -> Bus : 5 Service Specification Create Event
+Bus -> E2E : 6 Service Specification Create Listener
+
+NS -> CSM : 7 **POST Service Specification TMF633**\n**Fix Connectivity**
+CSM -> Bus : 8 Service Specification Create Event
+Bus -> E2E : 9 Service Specification Create Listener
+
+E2E -> E2E : 10 Perform Composite Service Design
+
+E2E -> CSM : 11 **POST Service Specification TMF633**\n**E2E Connectivity Service**
+CSM -> Bus : 12 Service Specification Create Event
+Bus -> PCM : 13 Service Specification Create Listener
+
+SS -> CSM : 14 **POST Service Specification TMF633**\n**TV Service**
+CSM -> Bus : 15 Service Specification Create Event
+Bus -> PCM : 16 Service Specification Create Listener
+
+note over CSM, E2E
+  NOTE:
+  1. Step 2, 5, 8 can also be listened by Product Catalog
+  2. Step 1, 4, 7 - Alternatively the centralised catalog can
+  perform GET based on an event published by the catalog of each domain
+end note
+
+@enduml

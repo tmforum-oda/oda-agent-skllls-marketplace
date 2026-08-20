@@ -3,7 +3,7 @@ title Figure 17: Completion of the resource order item related to the Voice Mail
 
 participant "Resource Inventory" as RI #blue
 participant "Resource Order\nManagement" as ROM #blue
-participant "Resource Activation\n&amp; Configuration" as RAC #blue
+participant "Resource Activation\n& Configuration" as RAC #blue
 participant "Resource Catalog\nManagement" as RCM #blue
 participant "VMS"
 

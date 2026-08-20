@@ -1,10 +1,10 @@
 @startuml
-title Figure 20: Recurring Package &amp; Data Package CFS Order Item Processing
+title Figure 20: Recurring Package & Data Package CFS Order Item Processing
 
 participant "Resource Inventory" as RI #blue
 participant "Resource Order\nManagement" as ROM #blue
 participant "Event Management" as Event #grey
-participant "Resource Activation\n&amp; Configuration" as RAC #blue
+participant "Resource Activation\n& Configuration" as RAC #blue
 participant "Resource Catalog\nManagement" as RCM #blue
 participant "PCF"
 
