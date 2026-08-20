@@ -1,0 +1,17 @@
+{
+  "id": "TMFC035",
+  "type": "component",
+  "name": "PermissionsManagement",
+  "version": "1.1.1",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC035-PermissionsManagement/Specification/TMFC035-PermissionsManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "de0ec6bd6eae8ef0f00bd0918e31442e516f0d9e7cf9945defcf5f9a4019e58b"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

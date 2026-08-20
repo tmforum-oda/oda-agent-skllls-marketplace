@@ -1,0 +1,45 @@
+{
+    "correlationId": "7af07271-5f0c",
+    "description": "ServiceAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4414-a94c-43a0a142a98c",
+    "eventTime": "2022-08-25T12:19:28.526Z",
+    "eventType": "ServiceAttributeValueChangeEvent",
+    "priority": "3",
+    "timeOcurred": "2022-08-25T12:19:19.786Z",
+    "title": "ServiceAttributeValueChangeEvent",
+    "event": {
+        "service": {
+            "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/5351",
+            "id": "5351",
+            "@type": "Service",
+            "place": [
+                {
+                  "role": "InstallationAddress",
+                  "place": {
+                    "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/2435",
+                    "id": "2435",
+                    "name": "Customer primary location",
+                    "@type": "PlaceRefOrValue",
+                    "@referredType" : "GeographicAddress"
+                  },
+                  "@type": "RelatedPlaceRefOrValue"
+                }
+              ]
+        }
+    },
+    "reportingSystem": {
+        "id": "427",
+        "name": "APP-755",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "149",
+        "name": "APP-78",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ServiceAttributeValueChangeEvent"
+}

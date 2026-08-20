@@ -1,0 +1,34 @@
+{
+    "correlationId": "e76a7eed-8d38",
+    "description": "ResourceCandidateAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4de3-bca3-816b64d9cb29",
+    "eventTime": "2017-09-09T00:00:00.000Z",
+    "eventType": "ResourceCandidateAttributeValueChangeEvent",
+    "priority": "1",
+    "timeOcurred": "2017-09-09T00:00:00.000Z",
+    "title": "ResourceCandidateAttributeValueChangeEvent",
+    "event": {
+        "resourceCandidate": {
+            "id": "7479", 
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCandidate/7479", 
+            "name": "Virtual Storage Medium Sized", 
+            "lastUpdate": "2017-09-09T00:00:00.000Z", 
+            "@type": "ResourceCandidate"
+        }
+    },
+    "reportingSystem": {
+        "id": "335",
+        "name": "APP-179",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "853",
+        "name": "APP-30",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ResourceCandidateAttributeValueChangeEvent"
+}

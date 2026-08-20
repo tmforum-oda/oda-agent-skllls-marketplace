@@ -1,0 +1,17 @@
+{
+  "id": "TMFC040",
+  "type": "component",
+  "name": "ProductUsageManagement",
+  "version": "1.1.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC040-ProductUsageManagement/Specification/TMFC040-ProductUsageManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "c73f297f0a6944f33c372f3c7c7490db809c3c15559e76e6cddd0b94bb6300e2"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

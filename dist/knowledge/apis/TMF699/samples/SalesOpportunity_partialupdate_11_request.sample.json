@@ -1,0 +1,7 @@
+{
+  "@type": "SalesOpportunity",
+  "name": "GoBank account Sales Opportunity",
+  "description": "Opportunity for Gobank Account",
+  "status": "pending",
+  "statusChangeReason": "more information required for Opportunity to be processed"
+}

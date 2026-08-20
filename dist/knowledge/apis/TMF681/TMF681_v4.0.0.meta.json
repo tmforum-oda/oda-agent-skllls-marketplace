@@ -1,0 +1,16 @@
+{
+  "id": "TMF681",
+  "type": "api",
+  "name": "communication-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "6c97c723110b6cc167d34de16936775619c920e07ad4012969fb95dd5b5dec8c"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

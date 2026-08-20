@@ -1,0 +1,36 @@
+{
+    "correlationId": "23ad1947-6b0a",
+    "description": "CancelWorkOrderInformationRequiredEvent illustration request for attachment",
+    "domain": "Commercial",
+    "eventId": "4655-9378-c6258e688816",
+    "eventTime": "2022-08-25T12:18:12.224Z",
+    "eventType": "CancelWorkOrderInformationRequiredEvent",
+    "priority": "2",
+    "timeOcurred": "2022-08-25T12:18:07.161Z",
+    "title": "CancelWorkOrderInformationRequiredEvent",
+    "event": {
+        "cancelWorkOrder": {
+            "id": "cc8e9f41-c351-48ac-8980-548d4a2d59ca",
+            "href": "https://mycsp.com/tmf-api/v5/workOrderManagement/cancelWorkOrder/cc8e9f41-c351-48ac-8980-548d4a2d59ca",
+            "@type": "CancelWorkOrder"
+        },
+        "informationRequired": {
+            "op": "add",
+            "path": "/cancellationReason"
+        }
+    },
+    "reportingSystem": {
+        "id": "759",
+        "name": "APP-745",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "705",
+        "name": "APP-317",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CancelWorkOrderInformationRequiredEvent"
+}

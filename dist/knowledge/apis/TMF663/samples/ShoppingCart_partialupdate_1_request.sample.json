@@ -1,0 +1,138 @@
+{
+  "@type": "ShoppingCart",
+  "cartItem": [
+    {
+      "id": "1203-100",
+      "action": "add",
+      "quantity": 1,
+      "status": "active",
+      "@type": "CartItem",
+      "itemTotalPrice": [
+        {
+          "description": "Total Recurring Price.",
+          "name": "Monthly Price",
+          "priceType": "recurring",
+          "recurringChargePeriod": "month",
+          "@type": "CartPrice",
+          "price": {
+            "taxRate": 10,
+            "dutyFreeAmount": {
+              "unit": "EUR",
+              "value": 29
+            },
+            "taxIncludedAmount": {
+              "unit": "EUR",
+              "value": 31.9
+            },
+            "@type": "Price"
+          },
+          "priceAlteration": [
+            {
+              "@type": "PriceAlteration",
+              "applicationDuration": 3,
+              "description": "First 3 month get 50% off",
+              "name": "WelcomeDiscount",
+              "priceType": "recurring",
+              "priority": 1,
+              "recurringChargePeriod": "month",
+              "price": {
+                "percentage": 50,
+                "@type": "Price"
+              }
+            }
+          ]
+        }
+      ],
+      "itemPrice": [
+        {
+          "description": "Total Recurring Price.",
+          "name": "Monthly Price",
+          "priceType": "recurring",
+          "recurringChargePeriod": "month",
+          "@type": "CartPrice",
+          "price": {
+            "taxRate": 10,
+            "dutyFreeAmount": {
+              "unit": "EUR",
+              "value": 29
+            },
+            "taxIncludedAmount": {
+              "unit": "EUR",
+              "value": 31.9
+            },
+            "@type": "Price"
+          },
+          "priceAlteration": [
+              {
+                "@type": "PriceAlteration",
+                "applicationDuration": 3,
+                "description": "First 3 month get 50% off",
+                "name": "WelcomeDiscount",
+                "priceType": "recurring",
+                "priority": 1,
+                "recurringChargePeriod": "month",
+                "price": {
+                  "percentage": 50,
+                  "@type": "Price"
+                }
+              }
+          ],
+          "productOfferingPrice": {
+            "id": "1788",
+            "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOfferingPrice/1788",
+            "name": "Recurring Monthly Price for Talk Simple 25",
+            "@type": "ProductOfferingPriceRef",
+            "@referredType" :"ProductOfferingPrice"
+          }
+        }
+      ],
+      "itemTerm": [
+        {
+          "description": "Tariff plan 12 Months commitment",
+          "name": "12Months",
+          "@type": "CartTerm",
+          "duration": {
+            "amount": 12,
+            "units": "month"
+          }
+        }
+      ],
+      "note": [
+        {
+          "id": "88",
+          "author": "Jack Smith",
+          "date": "2019-05-28T12:02:41.791Z",
+          "text": "Please wrap with double bag",
+          "@type": "Note"
+
+        }
+      ],
+      "product": {
+        "name": "Talk Simple 25",
+        "@type" : "Product",
+        "relatedParty": [
+          {
+            "role": "member",
+            "@type": "RelatedPartyOrPartyRole",
+            "partyOrPartyRole": 
+            { 
+            "id": "9866",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v4/individual/9866",
+            "name": "Sandy Smith",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+            }
+          }
+        ]
+      },
+      "productOffering": {
+        "id": "142456",
+        "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOffering/142456",
+        "name": "Talk Simple 25",
+        "@referredType": "ProductOffering",
+        "@type": "ProductOfferingRef"
+          
+      }
+    }
+  ]
+}

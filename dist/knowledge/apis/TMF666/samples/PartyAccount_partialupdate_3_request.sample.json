@@ -1,0 +1,10 @@
+[
+  {
+    "op": "replace",
+    "path": "/taxExemption/validFor?/taxExemption/certificateNumber=45678889876",
+    "value": {
+        "startDateTime": "2018-06-13T00:00:00.000Z", 
+        "endDateTime": "2020-01-10T00:00:00.000Z"
+    }
+  }
+]

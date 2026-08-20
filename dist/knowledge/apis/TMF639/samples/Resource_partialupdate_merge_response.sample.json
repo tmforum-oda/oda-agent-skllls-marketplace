@@ -1,0 +1,127 @@
+{
+  "id": "ca239a70-5810-433f-a251-ba5277a5af72",
+  "href": "http://host:port/resourceInventoryManagement/v5/resource/ca239a70-5810-433f-a251-ba5277a5af72",
+  "name": "Router",
+  "description": "This is a Router resource.",
+  "startOperatingDate": "2025-05-13T00:00:00.000Z",
+  "operationalState": "disabled",
+  "usageState": "idle",
+  "administrativeState": "unlocked",
+  "lifecycleState": "installed",
+  "availabilityStatus": "online",
+  "controlStatus": "subjectToTest",
+  "standbyStatus": "providingService",
+  "unknownStatus": false,
+  "powerConsumingState": "fullPower",
+  "powerConsumingLevel": 100,
+  "allocationStatus": "allocated",
+  "resourceVersion": "v2",
+  "relatedParty": [
+    {
+      "role": "user",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "fcba712d-0462-40e5-8d81-6a3439980278",
+        "href": "https://host:port/tmf-api/partyManagement/v5/individual/fcba712d-0462-40e5-8d81-6a3439980278",
+        "name": "John Doe",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "note": [
+    {
+      "text": "Router installed at customer's premises, available for testing purposes.",
+      "date": "2025-05-13T00:00:00.000Z",
+      "@type": "Note"
+    }
+  ],
+  "place": [
+    {
+      "role": "installationAddress",
+      "@type": "RelatedPlaceRef",
+      "place": {
+        "id": "859ad898-2308-4879-a09c-33a35cbd1c44",
+        "href": "https://host:port/geographicAddressManagement/v5/geographicAddress/859ad898-2308-4879-a09c-33a35cbd1c44",
+        "@type": "PlaceRef",
+        "@referredType": "GeographicAddress"
+      }
+    }
+  ],
+  "resourceRelationship": [
+    {
+      "relationshipType": "contains",
+      "@type": "ResourceRelationship",
+      "resource": {
+        "id": "0d5c8d46-6ac3-4e96-ac8d-c32343a05b2d",
+        "href": "http://host:port/resourceInventoryManagement/v5/resource/0d5c8d46-6ac3-4e96-ac8d-c32343a05b2d",
+        "@type": "ResourceRef",
+        "@referredType": "PhysicalResource"
+      }
+    },
+    {
+      "relationshipType": "contains",
+      "@type": "ResourceRelationship",
+      "resource": {
+        "id": "00f00279-ef09-4592-bcbf-7ced615903d2",
+        "href": "http://host:port/resourceInventoryManagement/v5/resource/00f00279-ef09-4592-bcbf-7ced615903d2",
+        "@type": "ResourceRef",
+        "@referredType": "PhysicalResource"
+      }
+    }
+  ],
+  "resourceSpecification": {
+    "id": "74ed54b9-008f-4d1d-87f0-b79a283c6ce5",
+    "href": " http://host:port/resourceCatalogManagement/v5/resourceSpecification/74ed54b9-008f-4d1d-87f0-b79a283c6ce5",
+    "@type": "ResourceSpecificationRef",
+    "@referredType": "PhysicalResourceSpecification"
+  },
+  "externalIdentifier": [
+    {
+      "externalIdentifierType": "Supplier-Router-Id",
+      "id": "B-AGB-6414-X",
+      "owner": "Supplier-B",
+      "@type": "ExternalIdentifier"
+    }
+  ],
+  "supportingResource": [
+    {
+      "id": "e451a1f1-f9c9-4040-a4eb-97a71c2ddc53",
+      "href": "http://host:port/resourceInventoryManagement/v5/resource/e451a1f1-f9c9-4040-a4eb-97a71c2ddc53",
+      "@type": "ResourceRef",
+      "@referredType": "PhysicalResource"
+    }
+  ],
+  "resourceCharacteristic": [
+    {
+      "name": "casing size",
+      "valueType": "Quantity",
+      "value": {
+        "amount": 19,
+        "units": "\""
+      },
+      "@type": "ObjectCharacteristic"
+    }
+  ],
+  "resourceOrderItem": [
+    {
+      "role": "supplier purchase",
+      "itemAction": "add",
+      "itemId": "1",
+      "resourceOrderId": "10720d6f-e5a6-4590-a3c7-89194e3039f3",
+      "resourceOrderHref": "http://host:port/resourceOrderManagement/v5/resourceOrder/10720d6f-e5a6-4590-a3c7-89194e3039f3",
+      "@type": "RelatedResourceOrderItem",
+      "@referredType": "ResourceOrderItem"
+    }
+  ],
+  "attachment": [
+    {
+      "id": "439ad8f9-bcf9-4204-9efd-7089a06aa89a",
+      "href": "http://host:port/documentManagement/v5/attachment/439ad8f9-bcf9-4204-9efd-7089a06aa89a",
+      "@type": "AttachmentRef",
+      "@referredType": "Attachment"
+    }
+  ],
+  "@type": "PhysicalResource",
+  "@baseType": "Resource"
+}

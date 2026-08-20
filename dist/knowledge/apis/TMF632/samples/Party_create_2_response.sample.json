@@ -1,0 +1,8 @@
+{
+  "id": "128",
+  "href": "https://serverRoot/tmf-api/party/v5/organization/128",
+  "@type": "Organization",
+  "@baseType": "Party",
+  "name": "Coffee Do Brazil",
+  "status": "initialized"
+}

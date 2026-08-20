@@ -1,0 +1,5 @@
+[
+  { "op":"delete",
+    "path": "/cartItem?cartItem.id=='1203-100' "
+  }
+]

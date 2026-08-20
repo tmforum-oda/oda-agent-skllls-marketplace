@@ -1,0 +1,248 @@
+[
+    {
+        "id": "20011",
+        "href": "https://mycsp.com:8080//tmf-api/intentManagement/v5/intent/20011",
+        "creationDate": "2023-10-23T00:30:00.00Z",
+        "description": "Intent for ordering live broadcast service for an event",
+        "validFor": {
+            "startDateTime": "2023-10-23T00:30:00.00Z",
+            "endDateTime": "2024-10-19T23:30:00.00Z"
+        },
+        "name": "EventLiveBroadcast",
+        "lastUpdate": "2023-10-23T00:30:00.00Z",
+        "lifecycleStatus": "Active",    
+        "statusChangeDate": "2023-10-23T00:30:00.00Z",
+        "version": "1.0",
+        "priority": "1",
+        "isBundled": false,    
+        "context": "Autonomous services",    
+        "intentSpecification": {
+            "@type": "IntentSpecificationRef",
+            "id": "EventLiveBroadcast_IntentSpec",
+            "name": "EventLiveBroadcastIntentSpec",
+            "@referredType": "IntentSpecification",
+            "@href": "/intent/v5/IntentSpecification/EventLiveBroadcast_IntentSpec"
+        },
+        "characteristic": [
+            {
+                "id": "19997-pn",
+                "name": "isTimeConstrained",
+                "value": true,
+                "valueType": "boolean",
+                "@type": "BooleanCharacteristic"
+            }
+        ],
+        "relatedParty": [
+            {
+              "role": "user",
+              "partyOrPartyRole": {
+                "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+                "id": "19993",
+                "name": "Marcus Aurelius",
+                "@type": "PartyRef",
+                "@referredType": "Individual"
+              },
+              "@type": "RelatedPartyRefOrPartyRoleRef"
+            }
+        ],    
+        "expression": {
+            "@type": "JsonLdExpression",
+            "iri": "https://mycsp.com:8080/tmf-api/rdfs/expression-example-1",
+            "expressionValue": {
+                "@context": {
+                    "icm": "http://tio.models.tmforum.org/tio/v3.4.0/IntentCommonModel/",
+                    "imo": "http://tio.models.tmforum.org/tio/v3.4.0/IntentManagmentOntology/",
+                    "log": "http://tio.models.tmforum.org/tio/v3.4.0/LogicalOperators/",
+                    "cat": "http://www.operator.com/Catalog#",
+                    "idan": "http://www.idan-tmforum-catalyst.org/IntentDrivenAutonomousNetworks#",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#",
+                    "t": "http://www.w3.org/2006/time#",
+                    "elb": "http://www.operator.com/Catalog/EventWirelessAccess#",
+                    "app": "http://www.operator.com/Catalog/StreamingApplication#",
+                    "geo": "https://tmforum.org/2020/07/geographicPoint#"
+                },
+                "idan:EventLiveBroadcast000001": {
+                    "@type": "icm:Intent",
+                    "icm:intentOwner": "idan:Salesforce",
+                    "icm:hasExpectation": {
+                        "idan:Delivery_service": {
+                            "@type": "icm:DeliveryExpectation",
+                            "icm:target": "_:service",
+                            "icm:params": {
+                                "icm:targetDescription": "cat:EventWirelessAccess"
+                            }
+                        },
+                        "idan:Delivery_app": {
+                            "@type": "icm:DeliveryExpectation",
+                            "icm:target": "_:application",
+                            "icm:params": {
+                                "icm:targetDescription": "cat:StreamingApplication"
+                            }
+                        },
+                        "idan:Property_service": {
+                            "@type": "icm:PropertyExpectation",
+                            "icm:target": "_:service",
+                            "icm:params": {
+                                "elb:serviceQuality": [
+                                    {
+                                        "icm:value": "4KUHD"
+                                    }
+                                ],
+                                "elb:numberOfParticipants": [
+                                    {
+                                        "icm:atMost": "200"
+                                    }
+                                ],
+                                "elb:areaOfService": [
+                                    {
+                                        "geo:geographicPoints": [
+                                            {
+                                                "geo:longitude": 90,
+                                                "geo:latitude": 44,
+                                                "geo:altitude": 84
+                                            },
+                                            {
+                                                "geo:longitude": 84,
+                                                "geo:latitude": -12,
+                                                "geo:altitude": 24
+                                            },
+                                            {
+                                                "geo:longitude": 131,
+                                                "geo:latitude": -36,
+                                                "geo:altitude": 29
+                                            },
+                                            {
+                                                "geo:longitude": 7,
+                                                "geo:latitude": 81,
+                                                "geo:altitude": -42
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "idan:Property_app": {
+                            "@type": "icm:PropertyExpectation",
+                            "icm:target": "_:application",
+                            "icm:params": {
+                                "app:appType": [
+                                    {
+                                        "icm:value": "AWS MediaLive"
+                                    },
+                                    {
+                                        "icm:value": "Facebook Live"
+                                    },
+                                    {
+                                        "icm:value": "YouTube"
+                                    }
+                                ]
+                            }
+                        },
+                        "idan:Reporting": {
+                            "@type": "icm:ReportingExpectation",
+                            "icm:target": "idan:EventLiveBroadcast",
+                            "icm:params": {
+                                "icm:reportingInterval": [
+                                    {
+                                        "t:Duration": [
+                                            {
+                                                "t:numbericDuration": 10,
+                                                "t:temporalUnit": "unitMinute"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "icm:reportingEvent": [
+                                    "icm:StateComplies",
+                                    "icm:StateDegrades"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },    
+        "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Common/Intent.schema.json",
+        "@type": "Intent"
+    },
+    {
+        "id": "20023",
+        "href": "https://mycsp.com:8080//tmf-api/intentManagement/v5/intent/20023",
+        "creationDate": "2022-07-04T15:40:47.797Z",
+        "description": "An intent resource",
+        "lastUpdate": "2022-07-04T15:40:47.797Z",
+        "lifecycleStatus": "Active",
+        "name": "Increase network capacity Intent",
+        "statusChangeDate": "2022-07-04T15:40:47.797Z",
+        "version": "1.0",
+        "priority": "1",
+        "isBundled": false,        
+        "context": "intent-based networks",        
+        "expression": {            
+            "iri": "https://mycsp.com:8080/tmf-api/rdfs/expression-example-2",
+            "expressionValue": {
+                   "@context": {
+                       "voc": "https://tmforum.org/vocab/intent/v1",
+                       "icm": "http://tio.models.tmforum.org/tio/v3.4.0/IntentCommonModel/",
+                       "imo": "http://tio.models.tmforum.org/tio/v3.4.0/IntentManagmentOntology/"        
+                      },                    
+                    "voc:name": "Increase network capacity",
+                    "voc:description": "Increase the overall network capacity in region X to accommodate anticipated traffic growth.%20 increase capacity in 1 hour",
+                    "voc:priority": "High", 
+                    "icm:target": {
+                      "imo:@type": "NetworkResource",  
+                      "imo:id": "region-X"  
+                    },  
+                    "imo:parameters": {
+                      "percentageIncrease": 20  
+                    }, 
+                    "icm:constraints": {
+                      "completionTime": "PT1H"  
+                    }
+                 
+            },
+            "@baseType": "Expression",
+            "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Common/JsonLdExpression.schema.json",
+            "@type": "JsonLdExpression"
+        },
+        "validFor": {
+            "endDateTime": "2023-04-12T23:20:50.52Z",
+            "startDateTime": "2022-07-04T15:40:47.797Z"
+        },        
+        "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Common/Intent.schema.json",
+        "@type": "Intent"
+    },
+    {
+        "id": "20051",
+        "href": "https://mycsp.com:8080//tmf-api/intentManagement/v5/intent/20051",
+        "description": "A probe intent resource",
+        "name": "probeIntentExample",
+        "lifecycleStatus": "Active",
+        "version": "1.0",
+        "expression": {      
+          "iri": "https://mycsp.com:8080/tmf-api/rdfs/turtleExpression-example-1",
+          "expressionValue":"@prefix rdf: <http:\/\/www.w3.org\/1999\/02\/22-rdf-syntax-ns#> .\n@prefix rdfs: <http:\/\/www.w3.org\/2000\/01\/rdf-schema#> .\n@prefix icm: <http:\/\/tio.models.tmforum.org\/tio\/v1.0.0\/IntentCommonModel#> .\n@prefix imo: <http:\/\/tio.models.tmforum.org\/tio\/v1.0.0\/IntentManagementOntology#> .\n@prefix pbi: <http:\/\/tio.models.tmforum.org\/tio\/v1.0.0\/ProposalBestIntent#> .\n@prefix cat: <http:\/\/www.operator.com\/Catalog#> .\n@prefix spot: <http:\/\/www.sdo1.org\/Models\/DynamicpriceOntology#> .\n@prefix met: <http:\/\/www.sdo2.org\/TelecomMetrics\/Version_1.0#> .\n@prefix   t: <http:\/\/www.w3.org\/2006\/time#> .\n@prefix idan: <http:\/\/www.idan-tmforum-catalyst.org\/IntentDrivenAutonomousNetworks#> .\n@prefix iv: <https:\/\/tmforum.org\/2021\/07\/intentValidity#> .\n@prefix itv: <https:\/\/tmforum.org\/2021\/07\/intentTemporalValidity#> .\n@prefix cem:  <http:\/\/tio.labs.tmforum.org\/tio\/v1.0.0\/CatalystExtensionModel#> .\n@prefix xsd: <http:\/\/www.w3.org\/2001\/XMLSchema#> .\n@prefix sli: <http:\/\/io.irc.huawei.com\/Io\/v1.0.0\/SliceExtensionModel#> .\n\n# --- Intent ----------\nidan:R1_PSE_Res_Slice_Intent1\n a icm:Intent ;\n   rdfs:comment \"'Intent for ordering connectivity via slice'\";\n   imo:intentOwner idan:IntentManagerXYZ_S;\n   cem:layer \"'resource'\";\n   icm:hasExpectation idan:PSE_Exp_R1Slice_delivery,\n                         idan:PSE_Exp_R1Slice_property,\n                         idan:PSE_Exp_R1Slice_reporting; \n.\n##Delivery Expectation\nidan:PSE_Exp_R1Slice_delivery\n a icm:DeliveryExpectation ;\n   icm:target _:resource_slice ;\n   icm:params idan:PSE_Exp_R1Slice_delivery_Param_type;\n.\nidan:PSE_Exp_R1Slice_delivery_Param_type\n a icm:DeliveryParam ;\n   icm:targetDescription cat:Slice_NEST_eMBB;\n.\n\n##Property Expectation\nidan:PSE_Exp_R1Slice_property\n a icm:PropertyExpectation ;\n   icm:target _:resource_slice ;\n   icm:params idan:PSE_Exp_R1Slice_property_Param_nssiId , \n               idan:PSE_Exp_R1Slice_property_Param_nssiName , \n               idan:PSE_Exp_R1Slice_property_Param_nsiId , \n               idan:PSE_Exp_R1Slice_property_Param_latency\n\n.\nidan:PSE_Exp_R1Slice_property_Param_nssiId\n a icm:PropertyParam ;\n   sli:nssiId [ icm:value \"'NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G'\"^^xsd:string ] ;\n.\nidan:PSE_Exp_R1Slice_property_Param_nssiName\n a icm:PropertyParam ;\n   sli:nssiName [ icm:value \"'NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G'\"^^xsd:string ] ;\n.\nidan:PSE_Exp_R1Slice_property_Param_nsiId\n a icm:PropertyParam ;\n   sli:nsiId [ icm:value \"'NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G'\"^^xsd:string ] ;\n.\nidan:PSE_Exp_R1Slice_property_Param_latency\n a icm:PropertyParam ;\n   met:latency [ icm:atMost \"'12 ms'\" ] ;\n.\n\n##Reporting Expectation\nidan:PSE_Exp_R1Slice_reporting\n a icm:ReportingExpectation ;\n   icm:target idan:R1_PSE_Res_Slice_Intent1 ;\n   icm:params idan:PSE_Exp_R1Slice_reporting_Param_interval,\n               idan:PSE_Exp_R1Slice_reporting_Param_event ;\n.\nidan:PSE_Exp_R1Slice_reporting_Param_interval\n a icm:ReportingParam ;\n   icm:reportingInterval [ a t:Duration ;\n                                t:numericDuration \"'10'\" ;\n                                t:temporalUnit t:unitMinute ] .\nidan:PSE_Exp_R1Slice_reporting_Param_event              \n a icm:ReportingParam ; \n   icm:reportingEvent icm:ReportingIntervalExpired ,\n                        icm:IntentRejected ,\n                        icm:StateComplies ,\n                        icm:StateDegrades ,\n                        icm:HandlingEnded ,\n                        icm:UpdateRejected ,\n                        icm:UpdateFinished  ;\n.\n\n",
+          "@baseType": "Expression",
+          "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Common/TurtleExpression.schema.json",
+          "@type": "TurtleExpression"
+        },
+        "validFor": {
+          "endDateTime": "2023-04-12T23:20:50.52Z",
+          "startDateTime": "2022-08-04T15:40:47.797Z"
+        },
+        "isBundle": false,	
+        "priority": "1",
+        "context": "Broadband services",
+        "intentSpecification": {
+            "@type": "IntentSpecificationRef",
+            "id": "EventLiveBroadcast_IntentSpec",
+            "name": "EventLiveBroadcastIntentSpec",
+            "@referredType": "IntentSpecification",
+            "@href": "https://mycsp.com:8080/tmf-api/intent/v5/IntentSpecification/EventLiveBroadcast_IntentSpec"
+        },    	
+        "lastUpdate": "2023-03-09T08:42:33.044Z",
+        "@baseType": "Intent",
+        "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Common/ProbeIntent.schema.json",
+        "@type": "ProbeIntent"
+    }
+]

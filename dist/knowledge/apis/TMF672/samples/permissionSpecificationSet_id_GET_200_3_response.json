@@ -1,0 +1,54 @@
+{
+  "@type": "PermissionSpecificationSet",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-edd9d8a4",
+  "id": "pss-edd9d8a4",
+  "involvementRole": "Customer.Selfcare.Admin",
+  "permissionSpecification": [
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-dd798b34",
+      "id": "ps-dd798b34",
+      "description": "Permission to manage users and to add or remove permissions to delegated users.",
+      "name": "usermanagement:readwrite",
+      "function": "user_management",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-591c77a2",
+      "id": "ps-591c77a2",
+      "description": "Permission to view and change account data details.",
+      "name": "accountdetails:readwrite",
+      "function": "account_details",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-9f32c9e0",
+      "id": "ps-9f32c9e0",
+      "description": "Permission to place request to change holder data.",
+      "name": "holderdata:change",
+      "function": "change_holder_data",
+      "action": "ReadWrite",
+      "specificationCharacteristic": [
+        {
+          "@type": "CharacteristicSpecification",
+          "name": "Macro.Segment",
+          "valueType": "string",
+          "characteristicValueSpecification": [
+            {
+              "@type": "StringCharacteristicValueSpecification",
+              "valueType": "string",
+              "value": "mass_market"
+            },
+            {
+              "@type": "StringCharacteristicValueSpecification",
+              "valueType": "string",
+              "value": "residential"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

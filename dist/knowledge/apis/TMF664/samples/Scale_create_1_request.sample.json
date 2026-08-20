@@ -1,0 +1,29 @@
+{
+  "@type": "Scale",
+  "resourceFunction": {
+    "id": "acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+    "href": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+    "@type": "ResourceFunctionRef",
+    "@referredType": "ResourceFunction"
+  },
+  "scaleType": "scaleOut",
+  "numberOfSteps": {
+    "amount": 2,
+    "units": "GB"
+  },
+  "name": "Increase Memory for Web Server",
+  "aspectId": "Quick Access Memory",
+  "schedule": [
+    {
+      "@type": "ScheduleDefinition",
+      "id": "b32c19f3-0297-4dd4-93c7-87c3a4fee14e",
+      "recurringFrequency": "daily",
+      "scheduleDefinitionHourRange": [
+        {
+          "startHour": "02:00",
+          "endHour": "04:00"
+        }
+      ]
+    }
+  ]
+}

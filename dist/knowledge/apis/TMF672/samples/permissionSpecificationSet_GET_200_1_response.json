@@ -1,0 +1,175 @@
+[
+  {
+    "@type": "PermissionSpecificationSet",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-ebe41def",
+    "id": "pss-ebe41def",
+    "involvementRole": "MyTV familyAdmin Profile",
+    "permissionSpecification": [
+      {
+        "@type": "PermissionSpecificationRef",
+        "@referredType": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-5afe52c5",
+        "id": "pss-5afe52c5"
+      },
+      {
+        "@type": "PermissionSpecificationRef",
+        "@referredType": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-769ef409",
+        "id": "pss-769ef409"
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSpecificationSet",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-5de89f4f",
+    "id": "pss-5de89f4f",
+    "involvementRole": "Owner",
+    "permissionSpecification": [
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-9d5692ea",
+        "id": "ps-9d5692ea",
+        "name": "all:readwrite",
+        "function": "all",
+        "action": "ReadWrite"
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSpecificationSet",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-edd9d8a4",
+    "id": "pss-edd9d8a4",
+    "involvementRole": "Customer.Selfcare.Admin",
+    "permissionSpecification": [
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-dd798b34",
+        "id": "ps-dd798b34",
+        "description": "Permission to manage users and to add or remove permissions to delegated users.",
+        "name": "usermanagement:readwrite",
+        "function": "user_management",
+        "action": "ReadWrite"
+      },
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-591c77a2",
+        "id": "ps-591c77a2",
+        "description": "Permission to view and change account data details.",
+        "name": "accountdetails:readwrite",
+        "function": "account_details",
+        "action": "ReadWrite"
+      },
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-9f32c9e0",
+        "id": "ps-9f32c9e0",
+        "description": "Permission to place request to change holder data.",
+        "name": "holderdata:change",
+        "function": "change_holder_data",
+        "action": "ReadWrite",
+        "specificationCharacteristic": [
+          {
+            "@type": "CharacteristicSpecification",
+            "name": "Macro.Segment",
+            "valueType": "string",
+            "characteristicValueSpecification": [
+              {
+                "@type": "StringCharacteristicValueSpecification",
+                "valueType": "string",
+                "value": "mass_market"
+              },
+              {
+                "@type": "StringCharacteristicValueSpecification",
+                "valueType": "string",
+                "value": "residential"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSpecificationSet",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-8f1a5628",
+    "id": "pss-8f1a5628",
+    "involvementRole": "Customer.OTT.Primary.User",
+    "permissionSpecification": [
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-a99c47c6",
+        "id": "ps-a99c47c6",
+        "description": "Permission to manage users and to add or remove permissions to delegated users.",
+        "name": "usermanagement:readwrite",
+        "function": "user_management",
+        "action": "ReadWrite"
+      },
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-5ea0f3cc",
+        "id": "ps-5ea0f3cc",
+        "description": "Permission to buy products in OTT apps.",
+        "name": "impulsebuy:enabled",
+        "function": "impulse_buy",
+        "action": "Enabled"
+      },
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-b4b3601a",
+        "id": "ps-b4b3601a",
+        "description": "Permission to manage delegated users parental controls.",
+        "name": "parentalcontrols:manage",
+        "function": "manage_parental_controls",
+        "action": "ReadWrite"
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSpecificationSet",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-9f346b96",
+    "id": "pss-9f346b96",
+    "involvementRole": "TMF620 API Provider Role",
+    "permissionSpecification": [
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-31d5b770",
+        "id": "psp-31d5b770",
+        "name": "Catalog:ReadWrite",
+        "function": "Catalog",
+        "action": "ReadWrite"
+      },
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-d9f344d5",
+        "id": "psp-d9f344d5",
+        "name": "ProductOffering:ReadWrite",
+        "function": "ProductOffering",
+        "action": "ReadWrite"
+      },
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-7fa60a0f",
+        "id": "psp-7fa60a0f",
+        "name": "ProductOfferingPrice:ReadWrite",
+        "function": "ProductOfferingPrice",
+        "action": "ReadWrite"
+      },
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-0bd79203",
+        "id": "psp-0bd79203",
+        "name": "ProductSpecification:ReadWrite",
+        "function": "ProductSpecification",
+        "action": "ReadWrite"
+      },
+      {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-873b7ab5",
+        "id": "psp-873b7ab5",
+        "name": "Category:ReadWrite",
+        "function": "Category",
+        "action": "ReadWrite"
+      }
+    ]
+  }
+]

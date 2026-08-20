@@ -90,8 +90,9 @@ skill-run time (spec.md §8):
 - [`skills/generate-test-cases-from-usecase/`](skills/generate-test-cases-from-usecase/SKILL.md) — given a `TMFSxxx` id, drafts BDD/Gherkin test scenarios grounded in the use case's real linked components/APIs and their cached schemas, citing every id back to its exact source.
 
 Using these skills from another repository? See [`CONSUMING.md`](CONSUMING.md) —
-`skills/` needs `knowledge/` alongside it as a sibling, and a sparse
-partial clone gets you both without `references/`'s DOCX/PDF weight.
+covers both a sparse clone (lighter, git-native) and installing
+[`dist/`](dist/) as a Claude Code plugin (heavier — bundles `knowledge/`
+inside the plugin — but zero manual clone/update management).
 
 ## Tools
 

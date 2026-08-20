@@ -1,0 +1,34 @@
+{
+  "@type": "MigrateStateChangeEvent",
+  "id": "evt-migrate-003",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-migrate-003",
+  "correlationId": "migrate-g56Iht",
+  "description": "MigrateStateChangeEvent illustration",
+  "eventId": "00003",
+  "eventTime": "2024-08-25T15:20:26.121Z",
+  "eventType": "MigrateStateChangeEvent",
+  "timeOccurred": "2024-08-25T15:20:25.823Z",
+  "title": "MigrateStateChangeEvent",
+  "event": {
+    "migrate": {
+      "id": "afccfc16-a28e-4f3b-81e0-1cf7ba649ef9",
+      "href": "/resourceFunctionActivation/v5/migrate/afccfc16-a28e-4f3b-81e0-1cf7ba649ef9",
+      "@type": "Migrate",
+      "state": "done"
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

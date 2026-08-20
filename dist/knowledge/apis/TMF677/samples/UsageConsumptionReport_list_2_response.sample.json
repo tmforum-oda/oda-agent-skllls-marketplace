@@ -1,0 +1,73 @@
+[ 
+ {
+   "id": "ucr0002",
+   "href": "https://serverRoot/tmf-api/usageConsumption/v4/usageConsumptionReport/ucr0002",
+   "name": "Usage consumption report ucr0002",
+   "description": "Usage Consumption Report for Lea phablet",
+   "effectiveDate": "2018-03-15T:15:44:28",
+   "bucket": [
+     {
+       "id": "bkt007",
+       "name": "Shared data bucket",
+       "usageType": "data",
+       "isShared": true,
+       "product": [  
+         {
+           "id": "product3",
+           "name": "Lea phablet",
+           "publicIdentifier": "33603030303",
+           "user": [
+             {
+               "id": "usr2", 
+               "name": "Lea",
+               "role": "user",
+               "@referredType": "Individual"
+             }
+           ]
+         }
+       ],
+       "bucketBalance": [
+         {
+           "remainingValue": {
+             "amount": 2.0,
+             "units": "Go"
+           },
+           "remainingValueName": "it remains 2.0 Go",
+           "validFor": {
+              "startDateTime": "2016-03-15T:00:00:00",
+              "endDateTime": "2016-03-30T:00:00:00"
+           }
+         }
+       ],  
+       "bucketCounter": [
+         {
+            "counterType":"used",
+            "level":"global",
+            "value": {
+               "amount": 3.0,
+               "units": "Go"
+            },
+            "valueName": "3.0 Go used",
+            "consumptionPeriod": {
+               "startDateTime": "2018-03-01T:00:00:00",
+               "endDateTime": "2018-03-15T:00:00:00"
+            }
+          },
+          {
+            "counterType":"used",
+            "level":"detail",
+            "value": {
+              "amount": 2.0,
+              "units": "Go"
+            },
+            "valueName": "2.0 Go used",
+            "consumptionPeriod": {
+               "startDateTime": "2018-03-01T:00:00:00",
+               "endDateTime": "2018-03-15T:00:00:00"
+            }
+          } 
+        ]
+      }
+    ]
+  } 
+]

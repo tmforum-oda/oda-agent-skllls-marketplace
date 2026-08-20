@@ -1,0 +1,6 @@
+{
+	"id": "33173014-fc84-4e7b-8ccf-3e900c0a9917",
+	"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddressValidation/33173014-fc84-4e7b-8ccf-3e900c0a9917",
+	"state": "done",
+	"@type":"GeographicAddressValidation"
+}

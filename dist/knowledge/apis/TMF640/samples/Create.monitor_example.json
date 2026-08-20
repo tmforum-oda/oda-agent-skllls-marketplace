@@ -1,0 +1,91 @@
+{
+    "correlationId": "9b374459-e9b0",
+    "description": "MonitorCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "40c3-a3a0-2379e9894a7d",
+    "eventTime": "2022-08-25T12:19:28.538Z",
+    "eventType": "MonitorCreateEvent",
+    "priority": "3",
+    "timeOccurred": "2022-08-25T12:19:25.724Z",
+    "title": "MonitorCreateEvent",
+    "event": {
+        "monitor": {
+            "href": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/monitor/4035",
+            "id": "4035",
+            "@type": "Monitor",
+            "state": "InProgress",
+            "request": {
+                "method": "POST",
+                "to": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service",
+                "body": {
+                    "state": "active",
+                    "@type": "Service",
+                    "serviceSpecification": {
+                        "id": "conferenceBridgeEquipment",
+                        "href": " .../serviceCatalog/v5/serviceSpecification/conferenceBridgeEquipment",
+                        "@type": "ServiceSpecificationRef"
+                    },
+                    "serviceCharacteristic": [
+                    {
+                        "name": "numberOfVc500Units",
+                        "value": "1",
+                        "valueType": "string",
+                        "@type": "StringCharacteristic"
+                    },
+                    {
+                        "name": "numberOfVc100Units",
+                        "value": "2",
+                        "valueType": "string",
+                        "@type": "StringCharacteristic"
+                    },
+                    {
+                        "name": "routerType",
+                        "value": "CiscoASR1000",
+                        "valueType": "string",
+                        "@type": "StringCharacteristic"
+                    },
+                    {
+                        "name": "powerSupply",
+                        "value": "UK",
+                        "valueType": "string",
+                        "@type": "StringCharacteristic"
+                    }
+                    ]
+                },
+                "header": [
+                    {
+                        "name": "locale",
+                        "value": "en-us"
+                    }
+                ]
+            },
+            "response": {
+                "statusCode": "202",
+                "header": [
+                    {
+                        "name": "Location",
+                        "value": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service/123-456"
+                    },
+                    {
+                        "name": "locale",
+                        "value": "en-us"
+                    }
+                ]
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "427",
+        "name": "APP-755",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "149",
+        "name": "APP-78",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "MonitorCreateEvent"
+}

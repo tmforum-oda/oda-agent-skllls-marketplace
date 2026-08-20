@@ -1,0 +1,127 @@
+{
+  "correlationId": "be58c421-12cf",
+  "description": "ProductOfferingPrice CreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4a0a-9a52-86f728494b4e",
+  "eventTime": "2022-08-25T12:17:59.603Z",
+  "eventType": "ProductOfferingPriceCreateEvent",
+  "priority": "3",
+  "timeOcurred": "2022-08-25T12:17:52.237Z",
+  "title": "ProductOfferingPriceCreateEvent",
+  "event": {
+    "productOfferingPrice": {
+      "id": "1747",
+      "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v4/productOfferingPrice/1747",
+      "name": "Recurring Charge for Business Firewall",
+      "description": "This pricing describes the recurring charge for a firewall service that can be deployed in business customer premise.",
+      "version": "1.0",
+      "validFor": {
+        "startDateTime": "2020-09-22T00:00:00Z",
+        "endDateTime": "2021-09-22T00:00:00Z"
+      },
+      "priceType": "recurring",
+      "recurringChargePeriodType": "monthly",
+      "recurringChargePeriodLength": 1,
+      "lastUpdate": "2020-09-23T00:00:00Z",
+      "isBundle": false,
+      "lifecycleStatus": "Active",
+      "unitOfMeasure": {
+        "amount": 1,
+        "units": "Month"
+      },
+      "price": {
+        "unit": "EUR",
+        "value": 50
+      },
+      "percentage": 0,
+      "productOfferingTerm": [
+        {
+          "name": "12 Month",
+          "description": "12 month contract",
+          "duration": {
+            "amount": 12,
+            "units": "Month"
+          },
+          "validFor": {
+            "startDateTime": "2020-09-22T16:42:23.0Z",
+            "endDateTime": "2021-09-22T00:00:00.0Z"
+          },
+          "@type": "ProductOfferingTerm"
+        }
+      ],
+      "place": [
+        {
+          "id": "2707",
+          "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v4/geographicAddress/2707",
+          "name": "San Francisco Bay Area",
+          "@referredType": "GeographicAddress",
+          "@type": "PlaceRef"
+        }
+      ],
+        "policy": [
+            {
+                "@referredType": "Policy",
+                "name": "PriceRuleNo1",
+                "id": "2503",
+                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/policy/2503",
+                "@type": "PolicyRef"
+            }
+        ],
+      "pricingLogicAlgorithm": [
+        {
+          "id": "2777",
+          "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v4/PricingLogicAlgorithm/2777",
+          "name": "RecurringRatingPLA",
+          "description": "Algorithm that rates Recurring event",
+          "plaSpecId": "2801",
+          "validFor": {
+            "startDateTime": "2020-09-22T16:42:23.0Z",
+            "endDateTime": "2021-09-22T00:00:00.0Z"
+          },
+          "@type": "PricingLogicAlgorithm"
+        }
+      ],
+      "tax": [
+        {
+          "taxAmount": {
+            "unit": "EUR",
+            "value": 10
+          },
+          "taxCategory": "VAT",
+          "taxRate": 20,
+          "@type": "TaxItem"
+        }
+      ],
+      "popRelationship": [
+        {
+          "id": "1741",
+          "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v4/productOfferingPrice/1741",
+          "relationshipType": "discountedBy",
+          "validFor": {
+            "startDateTime": "2020-09-23T16:42:23.0Z",
+            "endDateTime": "2021-09-22T00:00:00.0Z"
+          },
+          "role": "A-Charge",
+          "@referredType": "ProductOfferingPriceAlteration",
+          "@type": "ProductOfferingPriceRelationship"
+        }
+      ],
+      "bundledPopRelationship": [],
+      "@type": "ProductOfferingPrice"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ProductOfferingPrice",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProductOfferingPriceAttributeValueChangeEvent"
+}

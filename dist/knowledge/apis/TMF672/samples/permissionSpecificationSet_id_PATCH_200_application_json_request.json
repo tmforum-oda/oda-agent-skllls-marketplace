@@ -1,0 +1,28 @@
+{
+  "@type": "PermissionSpecificationSet",
+  "involvementRole": "MyTV SPORT+ familyAdmin Profile",
+  "name": "TV Sport and Family Admin",
+  "description": "Gives permissions to use Sport Channels and manage the family",
+  "permissionSpecification": [
+    {
+      "@type": "PermissionSpecificationRef",
+      "@referredType": "PermissionSpecification",
+      "id": "632514"
+    },
+    {
+      "@type": "PermissionSpecificationRef",
+      "@referredType": "PermissionSpecification",
+      "id": "12014"
+    },
+    {
+      "@type": "PermissionSpecificationRef",
+      "@referredType": "PermissionSpecification",
+      "id": "960124"
+    },
+    {
+      "@type": "PermissionSpecificationRef",
+      "@referredType": "PermissionSpecification",
+      "id": "6888633"
+    }
+  ]
+}

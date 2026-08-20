@@ -1,0 +1,80 @@
+{
+  "@type": "ProductUsage",
+  "href": "https://mycsp.com/tmf-api/productUsageManagement/v5/productUsage/83c780b5-517c-4e28-9924-625e3fc7b341",
+  "id": "83c780b5-517c-4e28-9924-625e3fc7b341",
+  "creationDate": "2023-09-11T14:35:05Z",
+  "status": "initialized",
+  "usageType": "InternationalVoice",
+  "usageCharacteristic": [
+    {
+      "@type": "StringCharacteristic",
+      "name": "originatingCountryCode",
+      "value": "FR"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "destinationCountryCode",
+      "value": "GB"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "destinationPhoneNumber",
+      "value": "+447092734896"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "originatingPhoneNumber",
+      "value": "+33939487561"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "callType",
+      "value": "outgoing"
+    },
+    {
+      "@type": "IntegerCharacteristic",
+      "name": "duration",
+      "value": 300
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "startDateTime",
+      "valueType": "date-time",
+      "value": "2023-09-11T14:30:00Z"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "endDateTime",
+      "valueType": "date-time",
+      "value": "2023-09-11T14:35:00Z"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "callStatus",
+      "value": "completed"
+    }
+  ],
+  "serviceUsage": [
+    {
+      "@type": "ServiceUsageRef",
+      "@referredType": "ServiceUsage",
+      "href": "https://mycsp.com/tmf-api/serviceUsageManagement/v5/serviceUsage/472999bf-1aeb-48e6-b954-1303c2c7939b",
+      "id": "472999bf-1aeb-48e6-b954-1303c2c7939b"
+    }
+  ],
+  "product": {
+    "@type": "ProductRef",
+    "@referredType": "Product",
+    "href": "https://mycsp.com/tmf-api/productInventory/v5/product/05c89397-6984-4c8e-9030-7cf092754f18",
+    "id": "05c89397-6984-4c8e-9030-7cf092754f18",
+    "name": "FixCommunication"
+  },
+  "usageSpecification": {
+    "@type": "ProductUsageSpecificationRef",
+    "@referredType": "ProductUsageSpecification",
+    "href": "https://mycsp.com/tmf-api/productUsageCatalogManagement/v5/productUsageSpecification/c2d6642b-59be-4cd1-800d-f3920dd4bc7f",
+    "id": "c2d6642b-59be-4cd1-800d-f3920dd4bc7f",
+    "name": "InternationalVoice",
+    "version": "2.5"
+  }
+}

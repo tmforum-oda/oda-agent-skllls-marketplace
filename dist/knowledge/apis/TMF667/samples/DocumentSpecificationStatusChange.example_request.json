@@ -1,0 +1,15 @@
+{
+  "@type": "DocumentSpecificationStatusChangeEvent",
+  "eventId": "e3dac91d-a035-465f-afc5-d3b603b53ad2",
+  "eventTime": "2021-11-09T14:15:00.000Z",
+  "eventType": "DocumentSpecificationStatusChangeEvent",
+  "event": {
+    "documentSpecification": {
+      "@type": "DocumentSpecification",
+      "@baseType": "EntitySpecification",
+      "href": "https://serverRoot/tmf-api/document/v5/documentSpecification/9b12-789948415bd7",
+      "id": "9b12-789948415bd7",
+      "lifecycleStatus": "published"
+    }
+  }
+}

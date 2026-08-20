@@ -1,0 +1,35 @@
+{
+  "@type": "MonitorCreateEvent",
+  "id": "evt-mon-001",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-mon-001",
+  "correlationId": "mon-726ffbd5",
+  "description": "MonitorCreateEvent illustration",
+  "eventId": "00001",
+  "eventTime": "2024-08-25T12:30:18.121Z",
+  "eventType": "MonitorCreateEvent",
+  "timeOccurred": "2024-08-25T12:30:17.823Z",
+  "title": "MonitorCreateEvent",
+  "event": {
+    "monitor": {
+      "@type": "Monitor",
+      "id": "3bc72846-3516-4504-86ce-63a4954f7c00",
+      "href": "/resourceFunctionActivation/v5/monitor/3bc72846-3516-4504-86ce-63a4954f7c00",
+      "sourceHref": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+      "state": "InProgress"
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

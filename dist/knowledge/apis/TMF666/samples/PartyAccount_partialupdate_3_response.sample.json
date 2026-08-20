@@ -1,0 +1,36 @@
+{
+    "@type":"PartyAccount",
+    "href": "https://host:port/tmf-api/accountManagement/v5/partyAccount/4458", 
+    "id": "4458", 
+    "name": "Travel account", 
+    "taxExemption": [
+        {
+            "@type": "TaxExemption",
+            "certificateNumber": "45678889876", 
+            "issuingJurisdiction": "USA", 
+            "reason": "Embassy", 
+            "taxDefinition": [
+                {
+                  "@type": "TaxDefinition",
+                  "id": "96",
+                  "name": "Value Added Tax",
+                  "taxType": "federalVat"
+                }
+            ],
+            "attachment": {
+                "@type": "Attachment",
+                "id": "654321234334534552",
+                "href": "https://host:port/tmf-api/document/v5/attachment/654321234334534552",
+                "attachmentType": "taxExemptionCertificate",
+                "name": "TaxExemptionCertificate-654321.pdf",
+                "description": "Electronic version of the tax exemption certificate",
+                "mimeType": "application/pdf",
+                "url": "http://host:port/DocumentManager/666/TaxExemptionCertificate-654321.pdf"
+            },
+            "validFor": {
+                "startDateTime": "2018-06-13T00:00:00.000Z", 
+                "endDateTime": "2020-01-10T00:00:00.000Z"
+            }
+        }
+    ]
+}

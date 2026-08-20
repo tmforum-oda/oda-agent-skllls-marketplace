@@ -1,0 +1,35 @@
+{
+    "@type":"PartyAccount",
+    "href": "https://host:port/tmf-api/accountManagement/v5/partyAccount/4458", 
+    "id": "4458", 
+    "name": "Travel account", 
+    "creditLimit": {
+        "unit": "USD",
+        "value": 5000     
+    },
+    "relatedParty": [
+        {
+            "role": "owner",
+ 	       "@type": "RelatedPartyRefOrPartyRoleRef",
+ 	       "partyOrPartyRole":
+ 	       {
+     	       "@type": "PartyRefOrPartyRoleRef",
+     	       "@referredType": "Organization",
+                "href": "https://host:port/tmf-api/partyManagement/v5/organization/4665", 
+                "id": "4665", 
+                "name": "John Doe Ltd"
+            }
+        },
+        {
+            "role": "contact",
+ 	       "@type": "RelatedPartyRefOrPartyRoleRef",
+ 	       "partyOrPartyRole": {
+                "@type":"PartyRefOrPartyRoleRef",
+                "@referredType" : "Individual",
+                "href": "https://host:port/tmf-api/partyManagement/v5/individual/6666", 
+                "id": "6666", 
+                "name": "John Doe"
+            }
+        }
+    ]
+}

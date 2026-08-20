@@ -1,0 +1,30 @@
+{
+  "id": "687aa68dd7c24668a545ba00a071d2d5",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/checkPermission/687aa68dd7c24668a545ba00a071d2d5",
+  "@type": "CheckPermission",
+  "state": "inProgress",
+  "permissionSpecification": {
+    "@type": "PermissionSpecification",
+    "name": "Product:read",
+    "function": "Product",
+    "action": "read"
+  },
+  "user": {
+    "role": "ProductUser",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "Jonathan.Goldberg",
+      "@type": "PartyRoleRef",
+      "@referredType": "PartyRole"
+    }
+  },
+  "entity": [
+    {
+      
+      "id": "g265-tf85",
+      "href": "https://serverRoot/productInventoryManagement/v5/product/g265-tf85",
+      "@type": "EntityRef",
+      "@referredType": "Product"
+    }
+  ]
+}

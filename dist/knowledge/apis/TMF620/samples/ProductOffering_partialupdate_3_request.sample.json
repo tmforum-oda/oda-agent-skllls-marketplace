@@ -1,0 +1,7 @@
+[
+  {
+    "op": "replace",
+    "path": "/prodSpecCharValueUse/productSpecCharacteristicValue?value=16",
+    "value": 12
+  }
+]

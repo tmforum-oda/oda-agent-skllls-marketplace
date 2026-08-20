@@ -1,0 +1,39 @@
+{
+  "correlationId": "d107a5f0-9257",
+  "description": "ProductOfferingAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "456b-8663-72338e38d4f0",
+  "eventTime": "2022-08-25T12:18:12.181Z",
+  "eventType": "ProductOfferingAttributeValueChangeEvent",
+  "priority": "1",
+  "timeOcurred": "2022-08-25T12:18:11.750Z",
+  "title": "ProductOfferingAttributeValueChangeEvent",
+  "event": {
+    "productOffering": {
+        "id": "7655", 
+        "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOffering/7655", 
+        "name": "Basic Firewall for Business (corrected)", 
+        "description": "This product offering suggests a firewall service that can be deployed in business customer premise (corrected).", 
+        "version": "2.2", 
+        "validFor": {
+            "startDateTime": "2021-08-25T00:00:00Z", 
+            "endDateTime": "2022-08-25T00:00:00Z"
+        }, 
+        "@type": "ProductOffering"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ProductOffering",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProductOfferingAttributeValueChangeEvent"
+}

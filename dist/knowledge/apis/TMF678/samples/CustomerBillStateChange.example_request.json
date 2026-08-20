@@ -1,0 +1,33 @@
+{
+    "correlationId": "10ca43d6-e2a2",
+    "description": "CustomerBillStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4992-97e5-25fa266295e3",
+    "eventTime": "2023-03-05T12:41:39.885Z",
+    "eventType": "CustomerBillStateChangeEvent",
+    "priority": "3",
+    "timeOcurred": "2023-03-05T12:41:31.945Z",
+    "title": "CustomerBillStateChangeEvent",
+    "event": {
+        "customerBill": {
+        	"id": "CB-123",
+        	"href": "https://server:port/tmf-api/Customer_Bill_Management/v5/customerBill/CB-123",
+        	"status": "settled",
+            "@type":"CustomerBill"
+        }
+    },
+    "reportingSystem": {
+        "id": "222",
+        "name": "APP-756",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "233",
+        "name": "APP-628",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CustomerBillStateChangeEvent"
+}

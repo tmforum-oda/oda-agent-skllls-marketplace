@@ -1,0 +1,36 @@
+{
+   "correlationId": "333-fd6",
+   "description": "DigitalIdentityAttributeValueChangeEvent illustration",
+   "domain": "Commercial",
+   "eventId": "569",
+   "eventTime": "2021-09-27T07:43:59.059Z",
+   "eventType": "DigitalIdentityAttributeValueChangeEvent",
+   "priority": "1",
+   "timeOccurred": "2021-09-27T07:43:59.059Z",
+   "title": "DigitalIdentityAttributeValueChangeEvent",
+   "event": {
+      "digitalIdentity": {
+         "href": "https://serverRoot/tmf-api/digitalIdentityManagement/v5/digitalIdentity/2391ee4acbc142b1a4b74b4d4ab38152",
+         "id": "2391ee4acbc142b1a4b74b4d4ab38152",
+         "@type": "DigitalIdentity",
+         "nickname": "Neo",
+         "validFor": {
+            "startDateTime": "2018-09-21T23:20:50.52Z"
+         }
+      }
+   },
+   "reportingSystem": {
+      "id": "123",
+      "name": "CRM app",
+      "@type": "ReportingResource",
+      "@referredType": "LogicalResource"
+   },
+   "source": {
+      "id": "123",
+      "name": "CRM app",
+      "@type": "ReportingResource",
+      "@referredType": "LogicalResource"
+   },
+   "@baseType": "Event",
+   "@type": "DigitalIdentityAttributeValueChangeEvent"
+}

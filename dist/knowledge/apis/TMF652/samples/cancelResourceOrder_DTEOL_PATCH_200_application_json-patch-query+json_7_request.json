@@ -1,0 +1,14 @@
+[
+  {
+    "op": "add",
+    "path": "/account/settings",
+    "value": "newSettingValue",
+    "from": "system"
+  },
+  {
+    "op": "add",
+    "path": "/user/preferences",
+    "value": "updatedPreference",
+    "from": "userProfile"
+  }
+]

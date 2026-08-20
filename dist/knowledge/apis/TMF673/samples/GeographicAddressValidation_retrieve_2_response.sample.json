@@ -1,0 +1,17 @@
+{
+	"id": "21956612-5f4a-40a8-96ae-2e9d30936ed9",
+	"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddressValidation/21956612-5f4a-40a8-96ae-2e9d30936ed9",
+	"provideAlternative": false,
+	"state": "done",
+	"validationDate": "2012-07-09T19:22:09.1440844Z",
+	"validationResult" : "fail",
+	"submittedGeographicAddress": {
+		"streetNr": "151",
+		"streetName": "Landgrabenweg",
+		"city": "Bonn",
+		"country": "Germany",
+		"@type":"GeographicAddress"
+	},
+	"@type":"GeographicAddressValidation"
+}
+

@@ -1,0 +1,40 @@
+{
+  "correlationId": "caf9c6f7-301f",
+  "description": "SalesLeadAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4488-8183-c9ba372e72aa",
+  "eventTime": "2022-08-25T12:27:45.928Z",
+  "eventType": "SalesLeadAttributeValueChangeEvent",
+  "priority": "4",
+  "timeOccurred": "2022-08-25T12:27:44.485Z",
+  "title": "SalesLeadAttributeValueChangeEvent",
+  "event": {
+    "salesLead": {
+      "href": "https://serverRoot/tmf-api/salesManagement/v5/salesLead/123",
+      "id": "123",
+      "name": "Campaign 17 salesLead 7852",
+      "@type": "SalesLead",
+      "marketingCampaign": {
+        "id": "21",
+        "href": "https://serverRoot/tmf-api/marketingManagement/v5/marketingCampaign/21",
+        "name": "January 2026 campaign for Orange Bank",
+        "@type": "MarketingCampaignRef",
+        "@referredType": "MarketingCampaign"
+      }
+    }
+  },
+  "reportingSystem": {
+    "id": "87",
+    "name": "APP-467",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "175",
+    "name": "APP-488",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "SalesLeadAttributeValueChangeEvent"
+}

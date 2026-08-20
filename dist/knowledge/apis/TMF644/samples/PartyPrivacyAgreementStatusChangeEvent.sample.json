@@ -1,0 +1,33 @@
+{
+    "correlationId": "06b52b7a-ecfe",
+    "description": "PartyPrivacyAgreementStatusChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "45bc-8937-fe1bc98c7099",
+    "eventTime": "2022-08-25T12:20:32.693Z",
+    "eventType": "PartyPrivacyAgreementStatusChangeEvent",
+    "priority": "3",
+    "timeOcurred": "2022-08-25T12:20:26.936Z",
+    "title": "PartyPrivacyAgreementStatusChangeEvent",
+    "event": {
+        "partyPrivacyAgreement": {
+            "id": "6810",
+            "href": "http://serverlocation:port/privacyManagement/v5/partyPrivacyAgreement/6810",
+            "@type" : "PartyPrivacyAgreement",
+            "status": "validated"           
+        }
+    },
+    "reportingSystem": {
+        "id": "665",
+        "name": "APP-224",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "403",
+        "name": "APP-686",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PartyPrivacyAgreementStatusChangeEvent"
+}

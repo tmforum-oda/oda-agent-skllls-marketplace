@@ -1,0 +1,35 @@
+{
+    "correlationId": "akj-566",
+    "description": "PermissionSpecificationSetAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "741",
+    "eventTime": "2021-09-27T07:43:59.059Z",
+    "eventType": "PermissionSpecificationSetAttributeValueChangeEvent",
+    "priority": "1",
+    "timeOccurred": "2021-09-27T07:43:59.059Z",
+    "title": "PermissionSpecificationSetAttributeValueChangeEvent",
+    "event": {
+        "permissionSpecificationSet": {
+            "@type": "PermissionSpecificationSet",
+            "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/413920",
+            "id": "413920",
+            "involvementRole": "MyTV SPORT+ familyAdmin Profile",
+            "name": "TV Sport and Family Admin",
+            "description": "Gives permissions to use Sport Channels and manage the family"
+        }
+    },
+    "reportingSystem": {
+        "id": "123",
+        "name": "CRM app",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "123",
+        "name": "CRM app",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PermissionSpecificationSetAttributeValueChangeEvent"
+}

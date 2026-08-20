@@ -1,0 +1,32 @@
+[
+    {
+    "id": "6987",
+    "serviceOrder": {
+        "id": "45f-98f-ss45",
+        "href": "https://host:port/serviceOrdering/v5/serviceOrder/45f-98f-ss45",
+        "@type": "ServiceOrderRef",
+        "@referredType": "ServiceOrder"
+        },
+    "@type": "CancelServiceOrder"
+    },
+    {
+    "id": "7412",
+    "serviceOrder": {
+        "id": "45f-789-sdre",
+        "href": "https://host:port/serviceOrdering/v5/serviceOrder/45f-789-sdre",
+        "@type": "ServiceOrderRef",
+        "@referredType": "ServiceOrder"
+        },
+    "@type": "CancelServiceOrder"
+     },
+     {
+    "id": "3214",
+    "serviceOrder": {
+        "id": "45f-as4-os3f",
+        "href": "https://host:port/serviceOrdering/v5/serviceOrder/45f-as4-os3f",
+        "@type": "ServiceOrderRef",
+        "@referredType": "ServiceOrder"
+        },
+    "@type": "CancelServiceOrder"
+    }
+]

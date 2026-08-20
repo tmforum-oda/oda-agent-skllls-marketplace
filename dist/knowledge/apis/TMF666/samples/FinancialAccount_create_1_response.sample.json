@@ -1,0 +1,7 @@
+{
+    "@type":"FinancialAccount",
+    "href": "https://host:port/tmf-api/accountManagement/v5/financialAccount/1041", 
+    "id": "1041", 
+    "lastModified": "2018-06-14T00:00:00.000Z", 
+    "name": "Administration account"
+}

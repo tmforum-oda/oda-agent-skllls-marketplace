@@ -1,0 +1,76 @@
+{
+    "correlationId": "80c3041f-75f0",
+    "description": "PromotionCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4598-9729-305e4be5fb40",
+    "eventTime": "2024-04-26T06:49:11.086Z",
+    "eventType": "PromotionCreateEvent",
+    "priority": "2",
+    "timeOcurred": "2024-04-26T06:49:01.548Z",
+    "title": "PromotionCreateEvent",
+    "event": {
+        "promotion": {
+            "id": "PREPAIDOFFER_5GB",
+            "href": "http://servername/promotion/PREPAIDOFFER_5GB",
+            "description": "Top-up by £20 or more and get 5GB of data for only £5",
+            "lastUpdate": "2021-01-19T00:00:00.000Z",
+            "lifecycleStatus": "release",
+            "name": "More 5GB data when £20 top-up",
+            "pattern": [
+                {
+                    "@type":"PromotionPattern",
+                    "id": "PATTERN_PREPAID_PRODUCT_OFFERING_5GB",
+                    "action": [
+                        {
+                            "@type":"PromotionAction",
+                            "id": "ACTION_PREPAID_PRODUCT_OFFERING_5GB",
+                            "actionEntityRef": {
+                                "@type": "EntityRef",
+                                "id": "PRODUCT_OFFERING_5GB",
+                                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOffering/PRODUCT_OFFERING_5GB",
+                                "name": "5GB data add-on"
+                            },
+                            "actionType": "3",
+                            "actionValue": "5"
+                        }
+                    ],
+                    "criteriaGroup": [
+                        {
+                            "@type":"PromotionCriteriaGroup",
+                            "id": "GROUP_PREPAID_PRODUCT_OFFERING_5GB",
+                            "criteria": [
+                                {
+                                    "@type":"PromotionCriteria",
+                                    "id": "CRITERIA_PREPAID_PRODUCT_OFFERING_5GB",
+                                    "criteriaOperator": ">=",
+                                    "criteriaParameter": "5.3",
+                                    "criteriaValue": "£20"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "@type":"Promotion",
+            "promotionType": "Reduction",
+            "validFor": {
+                "startDateTime": "2020-01-05T12:00:56.982Z",
+                "endDateTime": "9999-12-31T23:59:59.999Z"
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "634",
+        "name": "APP-849",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "657",
+        "name": "APP-400",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PromotionCreateEvent"
+}

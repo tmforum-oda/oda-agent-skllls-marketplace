@@ -1,0 +1,17 @@
+{
+    "@type":"PartyAccount",
+    "name": "Travel account", 
+    "relatedParty": [
+        {
+    	    "@type" : "RelatedPartyRefOrPartyRoleRef",
+    	    "role": "owner",
+    	    "partyOrPartyRole":
+    	    {
+        	    "@type" : "PartyRefOrPartyRoleRef",
+        	    "@referredType" : "Organization",
+                "href": "https://host:port/tmf-api/partyManagement/v5/organization/4665", 
+                "id": "4665"
+            }
+        }
+    ]
+}

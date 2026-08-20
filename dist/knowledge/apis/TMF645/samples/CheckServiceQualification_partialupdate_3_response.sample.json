@@ -1,0 +1,74 @@
+{
+  "id": "44",
+  "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/checkServiceQualification/44",
+  "checkServiceQualificationDate": "2023-04-10T19:20:39.239Z",
+  "description": "check service qualification illustration",
+  "expectedQualificationDate": "2023-06-15T15:20:39.239Z",
+  "externalIdentifier": [
+    {
+      "id": "CSQ1-001",
+      "@type": "ExternalIdentifier"
+    }
+  ],
+  "provideAlternative": true,
+  "provideResultReason": true,
+  "instantSyncQualification": false,
+  "qualificationResult": "unqualified",
+  "relatedParty": [
+    {
+      "role": "Buyer contact",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "id": "456",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+        "name": "Jean Pontus",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "serviceQualificationItem": [
+    {
+      "id": "1",
+      "expectedActivationDate": "2023-04-16T19:20:39.239Z",
+      "expectedServiceAvailabilityDate": "2023-04-11T19:20:39.239Z",
+      "qualificationResult": "unqualified",
+      "state": "acknowledged",
+      "service": {
+        "place": [
+          {
+            "role": "Installation place",
+            "@type": "RelatedPlaceRefOrValue",
+            "place": {
+              "@type": "PlaceRef",
+              "@referredType": "GeographicSite",
+              "id": "11",
+              "href": "https://mycsp.com:8080/tmf-api/geographicSiteManagement/v5/geographicSite/11",
+              "name": "Jean Pontus home"
+            }
+          }
+        ],
+        "serviceCharacteristic": [
+          {
+            "id": "1",
+            "name": "BroadcastQuality",
+            "valueType": "string",
+            "value": "4K",
+            "@type": "StringCharacteristic"
+          }
+        ],
+        "serviceSpecification": {
+          "id": "23",
+          "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/23",
+          "name": "TVAccess",
+          "@type": "ServiceSpecificationRef",
+          "@referredType": "ServiceSpecification"
+        },
+        "@type": "Service"
+      },
+      "@type": "CheckServiceQualificationItem"
+    }
+  ],
+  "state": "acknowledged",
+  "@type": "CheckServiceQualification"
+}

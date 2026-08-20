@@ -1,0 +1,34 @@
+{
+  "priority": "1",
+  "description": "Service order description",
+  "category": "TMF resource illustration",
+  "requestedStartDate": "2020-08-27T09:37:40.508Z",
+  "requestedCompletionDate": "2020-08-27T09:37:40.508Z",
+  "@type": "ServiceOrder",
+  "serviceOrderItem": [
+      {
+          "id": "1",
+          "action": "modify",
+          "service": {
+            "id": "456",
+            "@type": "ServiceRef",
+            "href": "http://serverlocation:port/serviceInventoryManagement/v5/service/456"
+          },
+          "modifyPath":[
+              {
+                  "op": "add",
+                  "path": "/serviceCharacteristic",
+                  "value":
+                  {
+                      "id": "452-gh6",
+                      "valueType": "string",
+                      "name": "InputPort",
+                      "value": "456/7",
+                      "@type": "StringCharacteristic"
+                    }
+              }
+          ],
+          "@type": "ServiceOrderItem"
+        }
+  ]
+}

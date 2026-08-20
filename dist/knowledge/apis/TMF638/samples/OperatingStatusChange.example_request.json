@@ -1,0 +1,33 @@
+{
+    "correlationId": "b382501b-c423",
+    "description": "ServiceOperatingStatusChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4da6-b0f1-5a7fce3edc94",
+    "eventTime": "2022-08-25T12:19:28.512Z",
+    "eventType": "ServiceOperatingStatusChangeEvent",
+    "priority": "4",
+    "timeOcurred": "2022-08-25T12:19:28.180Z",
+    "title": "ServiceOperatingStatusChangeEvent",
+    "event": {
+        "service": {
+            "id": "5351",
+            "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/5351",
+            "operatingStatus": "running",
+            "@type": "Service"
+        }
+    },
+    "reportingSystem": {
+        "id": "427",
+        "name": "APP-755",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "149",
+        "name": "APP-78",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ServiceOperatingStatusChangeEvent"
+}

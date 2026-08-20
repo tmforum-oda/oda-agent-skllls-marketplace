@@ -1,0 +1,94 @@
+[
+	{
+		"id": "33173014-fc84-4e7b-8ccf-3e900c0a9917",
+		"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddressValidation/33173014-fc84-4e7b-8ccf-3e900c0a9917",
+		"provideAlternative": true,
+		"state": "done",
+		"validationDate": "2012-07-09T19:22:09.1440844Z",
+		"validationResult" : "success",
+		"submittedGeographicAddress": {
+			"streetNr": "151",
+			"streetName": "Landgrabenweg",
+			"city": "Bonn",
+			"country": "Germany",
+			"@type":"GeographicAddress"
+		},
+		"validGeographicAddress": {
+			"id": "2b8cea8f-642d-42e0-bdb2-6f47fabb3f07",
+			"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/2b8cea8f-642d-42e0-bdb2-6f47fabb3f07",
+			"streetNr": "151",
+			"streetNrSuffix": "Erstbau",
+			"streetName": "Landgrabenweg",
+			"streetType": "road",
+			"postcode": "53227",
+			"locality": "Beuel",
+			"city": "Bonn",
+			"stateOrProvince": "NRW",
+			"country": "Germany",
+			"geographicLocation": {
+				"id": "67301845-ee43-4984-ba3b-b4fba4b98872",
+				"href": "https://host/tmf-api/geographicLocation/v5/geographicLocation/67301845-ee43-4984-ba3b-b4fba4b98872",
+				"@type":"GeoJsonPoint"
+			},
+			"@type":"GeographicAddress"
+		},
+		"@type":"GeographicAddressValidation"
+	},
+	{
+		"id": "21956612-5f4a-40a8-96ae-2e9d30936ed9",
+		"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddressValidation/21956612-5f4a-40a8-96ae-2e9d30936ed9",
+		"provideAlternative": false,
+		"state": "done",
+		"validationDate": "2012-07-09T19:22:09.1440844Z",
+		"validationResult" : "fail",
+		"submittedGeographicAddress": {
+			"streetNr": "151",
+			"streetName": "Landgrabenweg",
+			"city": "Bonn",
+			"country": "Germany",
+			"@type":"GeographicAddress"
+		},
+		"@type":"GeographicAddressValidation"
+	},
+	{
+		"id": "33b50501-fc52-438d-96d8-6d03b23bbeb2",
+		"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddressValidation/33b50501-fc52-438d-96d8-6d03b23bbeb2",
+		"provideAlternative": true,
+		"state": "done",
+		"validationDate": "2012-07-09T19:22:09.1440844Z",
+		"validationResult" : "success",
+		"submittedGeographicAddress": {
+			"streetNr": "151",
+			"streetName": "Landgrabenweg",
+			"city": "Bonn",
+			"country": "Germany",
+			"@type":"GeographicAddress"
+		},
+		"alternateGeographicAddress": [
+			{
+				"id": "2b8cea8f-642d-42e0-bdb2-6f47fabb3f07",
+				"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/2b8cea8f-642d-42e0-bdb2-6f47fabb3f07",
+				"streetNr": "151",
+				"streetNrSuffix": "Erstbau",
+				"streetName": "Landgrabenweg",
+				"streetType": "road",
+				"postcode": "53227",
+				"locality": "Beuel",
+				"city": "Bonn",
+				"stateOrProvince": "NRW",
+				"country": "Germany",
+				"geographicLocation": {
+					"id": "67301845-ee43-4984-ba3b-b4fba4b98872",
+					"href": "https://host/tmf-api/geographicLocation/v5/geographicLocation/67301845-ee43-4984-ba3b-b4fba4b98872",
+					"@type":"GeoJsonPoint"
+				},
+				"similarityScore":50,
+				"matchinRule": "FuzzyRule",
+				"matchingDegree":"medium",				
+				"@type":"AlternateGeographicAddress"
+			}
+		],
+		"@type":"GeographicAddressValidation"
+	}	
+]
+  

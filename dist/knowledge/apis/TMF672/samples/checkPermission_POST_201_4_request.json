@@ -1,0 +1,25 @@
+{
+  "@type": "CheckPermission",
+  "permissionSpecification": {
+    "@type": "PermissionSpecification",
+    "name": "ProductOffering:read",
+    "function": "ProductOffering",
+    "action": "read"
+  },
+  "user": {
+    "role": "ProductMarketeer",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "Jane.Doe",
+      "@type": "PartyRoleRef",
+      "@referredType": "PartyRole"
+    }
+  },
+  "entity": [
+    {
+      "id": "7655",
+      "@type": "EntityRef",
+      "@referredType": "ProductOffering"
+    }
+  ]
+}

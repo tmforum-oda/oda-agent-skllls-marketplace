@@ -1,0 +1,32 @@
+{
+    "correlationId": "14094289-0a38",
+    "description": "FinancialAccountDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "48cb-a41e-943478b26d15",
+    "eventTime": "2022-08-25T12:23:44.212Z",
+    "eventType": "FinancialAccountDeleteEvent",
+    "priority": "1",
+    "timeOcurred": "2022-08-25T12:23:35.327Z",
+    "title": "FinancialAccountDeleteEvent",
+    "event": {
+        "financialAccount": {
+            "@type": "FinancialAccount",
+            "href": "http://servername/financialAccount/1041",
+            "id": "1041"
+        }
+    },
+    "reportingSystem": {
+        "id": "855",
+        "name": "APP-400",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "92",
+        "name": "APP-105",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "FinancialAccountDeleteEvent"
+}

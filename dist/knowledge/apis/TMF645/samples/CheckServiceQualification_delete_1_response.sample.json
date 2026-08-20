@@ -1,0 +1,6 @@
+{
+    "id": "456",
+    "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/checkServiceQualification/456",
+    "@type": "CheckServiceQualification"
+}
+  

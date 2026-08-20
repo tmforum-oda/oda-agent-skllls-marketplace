@@ -1,0 +1,36 @@
+{
+    "correlationId": "49b0f96a-3e30",
+    "description": "PaymentMethodAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "46d5-b63a-6971a3452911",
+    "eventTime": "2022-08-25T12:24:21.097Z",
+    "eventType": "PaymentMethodAttributeValueChangeEvent",
+    "priority": "2",
+    "timeOcurred": "2022-08-25T12:24:15.278Z",
+    "title": "PaymentMethodAttributeValueChangeEvent",
+    "event": {
+        "paymentMethod": {
+            "href": "http://servername/paymentMethod/123456",
+            "id": "123456",
+            "@type": "PaymentMethod",
+            "validFor": {
+                "startDateTime": "2021-03-17T00:00:00.000Z",
+                "endDateTime": "2021-04-16T00:00:00.000Z"
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "614",
+        "name": "APP-102",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "716",
+        "name": "APP-177",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PaymentMethodAttributeValueChangeEvent"
+}

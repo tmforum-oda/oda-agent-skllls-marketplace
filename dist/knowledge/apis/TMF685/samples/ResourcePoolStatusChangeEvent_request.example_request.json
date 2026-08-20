@@ -1,0 +1,33 @@
+{
+    "@type": "ResourcePoolStatusChangeEvent",
+    "@baseType": "Event",
+    "correlationId": "f162615b-69be-476f-bc99-440e9ff6b122",
+    "description": "ResourcePoolStatusChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "dce63750-ee42-48c4-b220-85295f3830a6",
+    "eventTime": "2024-09-19T13:55:06.910Z",
+    "eventType": "ResourcePoolStatusChangeEvent",
+    "priority": "3",
+    "timeOccurred": "2024-09-19T13:55:03.868Z",
+    "title": "ResourcePoolStatusChangeEvent",
+    "event": {
+        "resourcePool": {
+            "@type": "ResourcePool",
+            "id": "c3fef858-b864-4fac-971e-795b1195ded9", 
+            "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePool/c3fef858-b864-4fac-971e-795b1195ded9", 
+            "resourceStatus": "planned"
+        }
+    },
+    "reportingSystem": {
+        "id": "109",
+        "name": "APP-804",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "8",
+        "name": "APP-307",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    }
+}

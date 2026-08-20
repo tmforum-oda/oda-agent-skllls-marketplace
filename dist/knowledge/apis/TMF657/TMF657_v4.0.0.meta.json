@@ -1,0 +1,16 @@
+{
+  "id": "TMF657",
+  "type": "api",
+  "name": "service-quality-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF657_Service_Quality_Management/4.0.0/swagger/TMF657_Service_Quality_Management_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "a47dcbe438ee869d5d9d5d2f454f3d46c283cda1be2de3736b0020f967d0f7b0"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

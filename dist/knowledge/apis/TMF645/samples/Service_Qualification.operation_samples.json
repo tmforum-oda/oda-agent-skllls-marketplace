@@ -1,0 +1,143 @@
+{
+    "CheckServiceQualification": {
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's a sample of a request for retrieving a CheckServiceQualification resource based on its id",
+                    "content-type": "application/json",
+                    "objectId": "44",
+                    "response": "$_CheckServiceQualification_retrieve_1_response"
+                }
+            ]
+        },
+        "create": {
+            "samples": [
+                {
+                    "description": "Here's a sample of a request for creating a CheckServiceQualification resource. We use the ‘fields’ parameter to restrict the numbers of attributes returned in the response.",
+                    "content-type": "application/json",
+                    "request": "$_CheckServiceQualification_create_1_request",
+                    "response": "$_CheckServiceQualification_create_1_response"
+                }
+            ]
+        },
+        "list": {
+            "samples": [
+                {
+                    "filtering": "state=done",
+                    "fields": "id,description,effectiveQualificationDate,expirationDate,qualificationResult", 
+                    "content-type": "application/json",
+                    "description": "Here's an example of a request for retrieving all the CheckServiceQualification that were completed.",
+                    "response": "$_CheckServiceQualification_list_1_response"
+                }
+            ]
+        },
+        "partialupdate": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for patching a CheckServiceQualification resource (created via previous POST) with change on following attributes: externalId and expectedQualificationDate value",
+                    "request": "$_CheckServiceQualification_partialupdate_1_request",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "44",
+                    "response": "$_CheckServiceQualification_partialupdate_1_response"
+                },
+                {
+                    "description": "Here is an example of a request for patching CheckServiceQualification resource with change in expectedQualificationDate",
+                    "request": "$_CheckServiceQualification_partialupdate_2_request",
+                    "content_type": "application/json-patch+json",
+                    "objectId": "44",
+                    "response": "$_CheckServiceQualification_partialupdate_2_response"
+                },
+                {
+                    "description": "Here is an example of a request for patching CheckServiceQualification resource with change in expectedActivationDate",
+                    "request": "$_CheckServiceQualification_partialupdate_3_request",
+                    "content_type": "application/json-patch-query+json",
+                    "objectId": "44",
+                    "response": "$_CheckServiceQualification_partialupdate_3_response"
+                }
+            ]
+        },
+        "delete": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for deleting a CheckServiceQualification.",
+                    "objectId": "44",
+                    "content-type": "application/json",
+                    "response": "$_CheckServiceQualification_delete_1_response"
+                }
+            ]
+        }
+    },
+    "QueryServiceQualification": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a list of query service qualification request(s). The given criteria is the query service qualification state (done).",
+                    "filtering": "state=done",  
+                    "content-type": "application/json", 
+                    "response": "$_QueryServiceQualification_list_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for retrieving a list of query service qualification request(s). The given criteria is the query service qualification state (done).",
+                    "fields": "id,effectiveQualificationDate,expirationDate", 
+                    "filtering": "state=done",  
+                    "content-type": "application/json", 
+                    "response": "$_QueryServiceQualification_list_2_with_field_selection"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's an example of a query service qualification  request retrieval. The given criteria is the query service qualification for id 54.",
+                    "content-type": "application/json", 
+                    "objectId": "54",
+                    "response": "$_QueryServiceQualification_retrieve_1_response"
+                }		
+            ]
+        }, 
+        "create": {
+         "samples": [
+            {
+                "description" : "Here's an example of a request for a query service qualification  - the resulting queryServiceQualification request is 54. For illustration prupose the service qualification is not done synchronously (state is acknowledged)",
+                "request": "$_QueryServiceQualification_create_1_request",
+                "response": "$_QueryServiceQualification_create_1_response"
+            } 
+         ]   
+        },
+        "partialupdate": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for patching a QueryServiceQualification resource (created via previous POST) with change on following attributes: externalId and expectedQualificationDate value.",
+                    "request": "$_QueryServiceQualification_partialupdate_1_request",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "54",
+                    "response": "$_QueryServiceQualification_partialupdate_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for patching a QueryServiceQualification (created via previous POST) with change on expectedQualificationDate value.",
+                    "request": "$_QueryServiceQualification_partialupdate_2_request",
+                    "content-type": "application/json-patch+json",
+                    "objectId": "54",
+                    "response": "$_QueryServiceQualification_partialupdate_2_response"
+                },
+                {
+                    "description": "Here's an example of a request for patching a QueryServiceQualificationresource (created via previous POST) with change on related party value.",
+                    "request": "$_QueryServiceQualification_partialupdate_3_request",
+                    "content-type": "application/json-patch-query+json",
+                    "objectId": "54",
+                    "response": "$_QueryServiceQualification_partialupdate_3_response"
+                }
+            ]
+        },
+        "delete": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for deleting a QueryServiceQualification.",
+                    "objectId": "54",
+                    "content-type": "application/json",
+                    "response": "$_QueryServiceQualification_delete_1_response"
+                }
+            ]
+        }
+    }
+}

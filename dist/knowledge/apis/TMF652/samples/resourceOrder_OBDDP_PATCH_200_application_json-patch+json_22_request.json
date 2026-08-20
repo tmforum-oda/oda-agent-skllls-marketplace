@@ -1,0 +1,28 @@
+[
+  {
+    "op": "replace",
+    "path": "/priority",
+    "value": 2
+  },
+  {
+    "op": "replace",
+    "path": "/description",
+    "value": "Updated description: This order pertains to the deployment of a new network infrastructure with enhanced security features."
+  },
+  {
+    "op": "add",
+    "path": "/note/-",
+    "value": {
+      "@type": "Note",
+      "id": "NOTE002",
+      "author": "Jane Smith",
+      "date": "2025-01-25T10:30:00Z",
+      "text": "Updated order priority and completion date due to additional security requirements."
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/expectedCompletionDate",
+    "value": "2025-02-20T06:41:23Z"
+  }
+]

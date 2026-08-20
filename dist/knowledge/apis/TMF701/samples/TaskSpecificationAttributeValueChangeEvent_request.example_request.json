@@ -1,0 +1,47 @@
+{
+  "id": "evt-021",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-021",
+  "correlationId": "g56Iht-oi09",
+  "eventId": "00063",
+  "eventTime": "2024-04-18T16:42:25-04:00",
+  "eventType": "TaskSpecificationAttributeValueChangeEvent",
+  "description": "TaskSpecificationAttributeValueChangeEvent illustration",
+  "timeOccurred": "2024-04-18T16:42:25-04:00",
+  "title": "TaskSpecificationAttributeValueChangeEvent",
+  "event": {
+    "taskSpecification": {
+      "id": "tfs0",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs0",
+      "name": "Eligibility Check",
+      "relatedParty": [
+        {
+          "role": "approver",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "9I8-430",
+            "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/9I8-430",
+            "name": "Sara Eskiv",
+            "@referredType": "Individual",
+            "@type": "PartyRef"
+          }
+        }
+      ],
+      "@type": "TaskSpecification"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TaskSpecificationAttributeValueChangeEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

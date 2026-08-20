@@ -1,0 +1,18 @@
+{
+  "@type": "CheckPermission",
+  "permissionSpecification": {
+    "@type": "PermissionSpecification",
+    "name": "ProductOffering::create",
+    "function": "ProductOffering",
+    "action": "create"
+  },
+  "user": {
+    "role": "ProductManager",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "Jonathan.Goldberg",
+      "@type": "PartyRoleRef",
+      "@referredType": "PartyRole"
+    }
+  }
+}

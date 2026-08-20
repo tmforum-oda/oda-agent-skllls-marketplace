@@ -1,0 +1,46 @@
+{
+    "correlationId": "95731510-e85e",
+    "description": "BillingAccountAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "421f-ba83-b5ed387f1100",
+    "eventTime": "2022-08-25T12:23:44.191Z",
+    "eventType": "BillingAccountAttributeValueChangeEvent",
+    "priority": "2",
+    "timeOcurred": "2022-08-25T12:23:40.440Z",
+    "title": "BillingAccountAttributeValueChangeEvent",
+    "event": {
+        "billingAccount": {
+            "href": "http://servername/BillingAccount/1041",
+            "id": "1041",
+            "@type": "BillingAccount",
+            "accountBalance": [
+                {
+                    "@type": "AccountBalance",
+                    "amount": {
+                        "unit": "USD",
+                        "value": 50.58
+                    },
+                    "balanceType": "ReceivableBalance",
+                    "validFor": {
+                        "startDateTime": "2018-06-15T00:00:00.000Z",
+                        "endDateTime": "2019-01-10T00:00:00.000Z"
+                    }
+                }
+            ]
+        }
+    },
+    "reportingSystem": {
+        "id": "855",
+        "name": "APP-400",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "92",
+        "name": "APP-105",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "BillingAccountAttributeValueChangeEvent"
+}

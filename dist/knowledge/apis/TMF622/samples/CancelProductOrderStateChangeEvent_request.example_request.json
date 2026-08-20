@@ -1,0 +1,55 @@
+{
+  "correlationId": "456-fff",
+  "description": "CancelProductOrderStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "129",
+  "eventTime": "2021-09-28T07:43:59.059Z",
+  "eventType": "CancelProductOrderStateChangeEvent",
+  "priority": "1",
+  "timeOcurred": "2021-09-28T07:43:59.059Z",
+  "title": "CancelProductOrderStateChangeEvent",
+  "event": {
+    "cancelProductOrder": {
+        "id": "789-fsds5-kjp",
+        "href": "https://host:port/productOrderingManagement/v5/cancelProductOrder/789-fsds5-kjp",
+        "cancellationReason": "Duplicate order",
+        "creationDate": "2019-04-30T08:13:59.506Z",
+        "requestedCancellationDate": "2021-08-30T09:14:46.145Z",
+        "productOrder": {
+          "id": "45f-98f-ss45",
+          "href": "https://host:port/productOrderingManagement/v5/productOrder/45f-98f-ss45",
+          "@referredType": "ProductOrder",
+          "@type": "ProductOrderRef"
+        },
+        "state": "inProgress",
+        "@type": "CancelProductOrder"
+      }
+  },
+  "relatedParty": [
+    {
+      "role": "Issuer",
+      "partyOrPartyRole": {
+        "id": "56d",
+        "href": "https://host:port/partyManagement/v5/organization/56d",
+        "name": "Joe Doe",
+        "@type": "PartyRef",
+        "@referredType": "Organization"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    }
+  ],
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CancelProductOrderStateChangeEvent"
+}

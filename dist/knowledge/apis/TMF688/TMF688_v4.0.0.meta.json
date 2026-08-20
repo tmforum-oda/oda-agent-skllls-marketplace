@@ -1,0 +1,16 @@
+{
+  "id": "TMF688",
+  "type": "api",
+  "name": "event-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "8c63fa68c92f846ebb407f4053dd8cada44d5505c839399afcd06ee967b25027"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

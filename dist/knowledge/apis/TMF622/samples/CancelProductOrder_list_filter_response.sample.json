@@ -1,0 +1,29 @@
+[
+    {
+    "id": "6987",
+    "productOrder": {
+        "id": "45f-98f-ss45",
+        "href": "https://host:port/productOrderingManagement/v5/productOrder/45f-98f-ss45",
+        "@type": "ProductOrderRef"
+        },
+    "@type": "CancelProductOrder"
+    },
+    {
+    "id": "7412",
+    "productOrder": {
+        "id": "45f-789-sdre",
+        "href": "https://host:port/productOrderingManagement/v5/productOrder/45f-789-sdre",
+        "@type": "ProductOrderRef"
+        },
+    "@type": "CancelProductOrder" 
+     },
+     {
+    "id": "3214",
+    "productOrder": {
+        "id": "45f-as4-os3f",
+        "href": "https://host:port/productOrderingManagement/v5/productOrder/45f-as4-os3f",
+        "@type": "ProductOrderRef"
+        },
+    "@type": "CancelProductOrder"
+    }
+]

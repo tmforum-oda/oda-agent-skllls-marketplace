@@ -1,0 +1,40 @@
+{
+  "specCharacteristic": [
+    {
+      "id": "42",
+      "criticalityLevel": "high",
+      "description": "Can EmailAddress be used for information purpose",
+      "name": "emailAddress",
+      "configurable": true,
+      "privacyType": "InternalPurpose",
+      "privacyUsagePurpose": "ADMIN",
+      "allowedRole": [
+        {
+          "id" : "vendor_123",
+          "@type": "PartyPrivacyRoleSpecification",
+          "name": "vendor"
+        }
+      ],
+      "characteristicValueSpecification": [
+        {
+          "isDefault": true,
+          "valueType": "string",
+          "value":"Yes",
+          "@type": "StringCharacteristicValueSpecification"
+        },
+        {
+          "isDefault": false,
+          "valueType": "string",
+          "value":"No",
+          "@type": "StringCharacteristicValueSpecification"
+        }
+      ],
+      "validFor": {
+        "endDateTime": "2019-09-06T10:36:30.709Z",
+        "startDateTime": "2020-09-06T10:36:30.709Z"
+      },
+    "@type": "PartyPrivacyProfileSpecificationCharacteristic"
+    }
+  ],
+   "@type": "partyPrivacyProfileSpecification"
+}

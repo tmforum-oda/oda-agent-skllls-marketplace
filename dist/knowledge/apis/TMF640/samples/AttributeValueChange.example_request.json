@@ -1,0 +1,49 @@
+{
+    "correlationId": "7af07271-5f0c",
+    "description": "ServiceAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4414-a94c-43a0a142a98c",
+    "eventTime": "2022-08-25T12:19:28.526Z",
+    "eventType": "ServiceAttributeValueChangeEvent",
+    "priority": "3",
+    "timeOccurred": "2022-08-25T12:19:19.786Z",
+    "title": "ServiceAttributeValueChangeEvent",
+    "event": {
+        "service": {
+            "id": "5351",
+            "href": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service/5351",
+            "serviceCharacteristic": [
+                {
+                    "id": "452-gh6",
+                    "name": "vCPE",
+                    "valueType": "object",
+                    "value": {
+                        "@type": "vCPE",
+                        "@schemaLocation": "http://my.schemas/vCPE.schema.json",
+                        "vCPE_IP": "193.218.236.21",
+                        "MaxTxRate": 789,
+                        "TransmitPower": "50 dBm",
+                        "maxTream": "ON"
+                    },
+                    "@type":"ObjectCharacteristic"
+                }
+            ],
+            "@type": "Service",
+            "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Service/vCPE.schema.json"
+        }
+    },
+    "reportingSystem": {
+        "id": "427",
+        "name": "APP-755",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "149",
+        "name": "APP-78",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ServiceAttributeValueChangeEvent"
+}

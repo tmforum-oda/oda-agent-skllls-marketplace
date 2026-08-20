@@ -1,0 +1,56 @@
+{
+    "ProductOrder": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a list of product order(s). The given criteria is the category (B2C) and state (held).",
+                    "filtering": "fields=id,href,expectedCompletionDate&category=B2C&state=held", 
+                    "content-type": "application/json", 
+                    "response" : "$_ProductOrder_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description": "Here's an example of a request for retrieving a product order for use case 1. The given criteria is the product order id 963-fg4.",
+                    "content-type": "application/json",
+                    "objectId": "963-fg4",  
+                    "response" : "$_ProductOrder_retrieve_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for retrieving a product order for use case 2. The given criteria is the product order id 87g-8tt.",
+                    "content-type": "application/json", 
+                    "objectId": "87g-8tt",
+                    "response" : "$_ProductOrder_retrieve_2_response"
+                }		
+            ]
+        }, 
+        "create": {
+         "samples:" : [
+            {
+                "description" : "Here's an example of a request for creating a product order for use case 1 - the resulting product order is 963-fg4.",
+                "request" : "$_ProductOrder_create_1_request",
+                "response" : "$_ProductOrder_create_1_response"
+            } 
+         ]   
+        },
+        "partialupdate": {
+            "samples:" : [
+               {
+                   "description" : "Here's an example of a request for updating a product order for use case 1 - Change value for billing account id.",
+                   "request" : "$_ProductOrder_partialupdate_1_request",
+                   "response" : "$_ProductOrder_partialupdate_1_response"
+               } 
+            ]   
+           },
+        "delete": {
+	        "samples" : [
+		        {
+		             "description": "Here's an example of a request for deleting a product order.",
+		             "objectId" : "87g-8tt"
+	        	}
+	       ]
+    	}
+    }
+}

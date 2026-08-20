@@ -1,0 +1,35 @@
+{
+    "correlationId": "236c3e13-ce4f",
+    "description": "ServiceLevelSpecificationAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "46b0-bd8a-87e384cd5d14",
+    "eventTime": "2022-08-25T12:22:27.312Z",
+    "eventType": "ServiceLevelSpecificationAttributeValueChangeEvent",
+    "priority": "5",
+    "timeOcurred": "2022-08-25T12:22:21.171Z",
+    "title": "ServiceLevelSpecificationAttributeValueChangeEvent",
+    "event": {
+        "serviceLevelSpecification": {
+            "href": "http://servername/serviceLevelSpecification/1112",
+            "id": "1112",
+            "validFor": {
+                "endDateTime": "2021-05-00T00:00:00+01:00",
+                "startDateTime": "2020-03-00T00:00:00+01:00"
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "973",
+        "name": "APP-88",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "245",
+        "name": "APP-506",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ServiceLevelSpecificationAttributeValueChangeEvent"
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "op": "test",
+    "path": "$.siteFeature[?(@.id=='f9f06997-5a8c-4079-9c84-afdd154c3fcf')].name",
+    "value": "Out Of Hours Access"
+  },
+  {
+    "op": "replace",
+    "path": "$.siteFeature[?(@.id=='f9f06997-5a8c-4079-9c84-afdd154c3fcf')].name",
+    "value": "Out Of Hours Access Updated"
+  }
+]

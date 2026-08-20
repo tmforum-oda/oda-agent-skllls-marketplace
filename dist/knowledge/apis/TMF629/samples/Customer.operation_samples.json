@@ -1,0 +1,50 @@
+{
+    "Customer": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving Customer resources.",
+                    "content-type": "application/json", 
+                    "response" : "$_Customer_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description": "Here's an example of a request for retrieving a Customer resource",
+                    "content-type": "application/json",
+                    "objectId": "1140",  
+                    "response" : "$_Customer_retrieve_1_response"
+                }
+            ]
+        }, 
+        "create": {
+            "samples" : [
+		{
+                    "description" : "Here's an example of a request for creating a Customer resource. In this example, the engaged party is searched based on the customer name, then it is included in the result (retrieved if existing or created on the fly if not existing).",
+                    "request" : "$_Customer_create_1_request",
+                    "response" : "$_Customer_create_1_response"
+		} 
+            ]   
+        },
+        "partialupdate": {
+            "samples" : [
+		{
+                    "description" : "Here's an example of a request for patching a Customer resource.\nChanging the name (using json-merge).",
+		    "content-type" : "application/merge-patch+json",
+                    "request" : "$_Customer_partialupdate_1_request",
+                    "response" : "$_Customer_partialupdate_1_response"
+		} 
+            ]   
+           },
+        "delete": {
+	    "samples" : [
+		{
+		    "description": "This operation deletes a Customer resource.",
+		    "objectId" : "1140"
+		}
+	    ]
+	}
+    }
+}

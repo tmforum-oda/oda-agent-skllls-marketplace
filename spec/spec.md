@@ -305,7 +305,7 @@ The pilot's single most important finding: **of the six use cases converted, the
 ## 7. Extensibility (not built now, but the layout must not block it)
 
 - `knowledge/etom/` and `knowledge/sid/` are reserved. When TM Forum's Sparx EA model is exported (a separate, heavier effort — see project history for the proposed XMI → structured YAML → Markdown pipeline), it lands here with the same provenance-in-frontmatter pattern as §5.1.
-- An MCP server is a thin read-only wrapper over `knowledge/index/*.json` and the per-document files — nothing in this layout needs to change to add one later; it would expose `get_use_case(id)`, `list_use_cases(maturity=...)`, `get_component(id)`, `trace_usecase_impact(component_id)` as tools reading exactly the files described above.
+- An MCP server is a thin read-only wrapper over `knowledge/index/*.json` and the per-document files — nothing in this layout needs to change to add one later; it would expose `get_use_case(id)`, `list_use_cases(maturity=...)`, `get_component(id)`, `trace_usecase_impact(component_id)` as tools reading exactly the files described above. Still not built (Phase 8 built plugin/sparse-clone distribution instead, both Claude Code-only); this remains the identified path to cross-agent reach (e.g. GitHub Copilot's MCP client), deliberately deferred rather than built speculatively — see `spec/tasks.md` Phase 8.3 and `CONSUMING.md`'s closing section.
 - Nothing here assumes only one CSP/deployment context; component and API caches are shared, version-addressed data, not tied to any one use case.
 
 ## 8. How this gets consumed: pilot skills

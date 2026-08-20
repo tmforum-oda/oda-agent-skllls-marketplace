@@ -1,0 +1,12 @@
+[
+    {
+      "op": "test",
+      "path": "$.place.siteFeature[?(@.id=='981dc298-364c-45a3-b051-e1feab7f4622')].isEnabled",
+      "value": "true"
+    },
+    {
+      "op": "replace",
+      "path": "$.place.siteFeature[?(@.id=='981dc298-364c-45a3-b051-e1feab7f4622')].isEnabled",
+      "value": "false"
+    }
+  ]

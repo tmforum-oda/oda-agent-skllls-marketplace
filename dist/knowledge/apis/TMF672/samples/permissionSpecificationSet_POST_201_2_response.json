@@ -1,0 +1,48 @@
+{
+  "@type": "PermissionSpecificationSet",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-9f346b96",
+  "id": "pss-9f346b96",
+  "involvementRole": "TMF620 API Provider Role",
+  "permissionSpecification": [
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-31d5b770",
+      "id": "psp-31d5b770",
+      "name": "Catalog:ReadWrite",
+      "function": "Catalog",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-d9f344d5",
+      "id": "psp-d9f344d5",
+      "name": "ProductOffering:ReadWrite",
+      "function": "ProductOffering",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-7fa60a0f",
+      "id": "psp-7fa60a0f",
+      "name": "ProductOfferingPrice:ReadWrite",
+      "function": "ProductOfferingPrice",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-0bd79203",
+      "id": "psp-0bd79203",
+      "name": "ProductSpecification:ReadWrite",
+      "function": "ProductSpecification",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-873b7ab5",
+      "id": "psp-873b7ab5",
+      "name": "Category:ReadWrite",
+      "function": "Category",
+      "action": "ReadWrite"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+	"id": "4c6b6fc1-d954-4ad6-adf6-59c275afb541",
+	"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/4c6b6fc1-d954-4ad6-adf6-59c275afb541",
+	"streetNr": "151",
+	"streetNrSuffix": "Erstbau",
+	"streetName": "Landgrabenweg",
+	"streetType": "road",
+	"postcode": "53227",
+	"locality": "Beuel",
+	"city": "Bonn",
+	"stateOrProvince": "NRW",
+	"country": "Germany",
+	"geographicLocation": {
+	  "id": "67301845-ee43-4984-ba3b-b4fba4b98872",
+	  "href": "https://host/tmf-api/geographicLocation/v5/geographicLocation/67301845-ee43-4984-ba3b-b4fba4b98872",
+	  "@type":"GeoJsonPoint"
+	},
+	"countryCode": [
+	  {
+		"format": "ISO 3166-1 Alpha-2",
+		"value": "DE",
+		"@type": "StandardIdentifier"
+	}
+	],
+	"externalIdentifier": [
+	  {
+		"id": "df882733-6a5d-440a-9a91-d261ba6ac346",
+		"owner": "Master",
+		"externalIdentifierType": "GeographicAddress",
+		"@type":"ExternalIdentifier"
+	  }
+	],
+    "geographicAddressType": "residential",
+	"geographicSubAddress":[
+		{
+			"id": "20901d24-f20e-4391-8db8-57757380c9eb",
+			"href":"https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/4c6b6fc1-d954-4ad6-adf6-59c275afb541/geographicSubAddress/20901d24-f20e-4391-8db8-57757380c9eb",
+			"levelNumber": "0",
+			"levelType": "floor",
+			"subAddressType": "subUnit",
+			"subUnit":[
+				{
+					"subUnitNumber": "1",
+					"subUnitType": "SHOP",
+					"@type":"GeographicSubAddressUnit"
+				}
+			],
+			"@type":"GeographicSubAddress"			
+		}
+	],
+	"@type":"GeographicAddress"
+  }
+  

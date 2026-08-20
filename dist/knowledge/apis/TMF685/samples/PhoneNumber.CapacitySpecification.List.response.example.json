@@ -1,0 +1,79 @@
+[
+    {
+        "@type": "CapacitySpecification",
+        "id": "3d01344d-4409-4b15-8fcb-b8802314ff9c", 
+        "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/capacitySpecification/3d01344d-4409-4b15-8fcb-b8802314ff9c", 
+        "name": "Phone Number range",
+        "description": "This CapacitySpecification defines the details of capacity for Phone Number ranges.",
+        "capacityCharacteristicSpecification":
+        [
+            {
+                "@type": "CharacteristicSpecification",
+                "name": "lowerNumber",
+                "description": "the lower boundary of a block of phone numbers; phone numbers consist of a country code (cc), national destination code (ndc), subscriber number (sn), and optionally a direct dial in (ddi), all sections separated by '-'",
+                "valueType": "string",
+                "characteristicValueSpecification":
+                [
+                    {
+                        "@type": "CharacteristicValueSpecification",
+                        "valueType": "string",
+                        "regex": "^\\+(?<cc>[1-9]\\d{0,2})-(?<ndc>[1-9]\\d*)-(?<sn>[1-9]\\d*)(?:-?(?<ddi>\\d+))?$"
+                    }
+                ]
+            },
+            {
+                "@type": "CharacteristicSpecification",
+                "name": "upperNumber",
+                "description": "the upper boundary of a block of phone numbers; phone numbers consist of a country code (cc), national destination code (ndc), subscriber number (sn), and optionally a direct dial in (ddi), all sections separated by '-'",
+                "valueType": "string",
+                "characteristicValueSpecification":
+                [
+                    {
+                        "@type": "CharacteristicValueSpecification",
+                        "valueType": "string",
+                        "regex": "^\\+(?<cc>[1-9]\\d{0,2})-(?<ndc>[1-9]\\d*)-(?<sn>[1-9]\\d*)(?:-?(?<ddi>\\d+))?$"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "@type": "CapacitySpecification",
+        "id": "3a2e4da3-ecf8-41d8-b379-e05998761f87", 
+        "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/capacitySpecification/3a2e4da3-ecf8-41d8-b379-e05998761f87", 
+        "name": "IPv4 Address range",
+        "description": "This CapacitySpecification defines the details of capacity for IP Address ranges.",
+        "capacityCharacteristicSpecification":
+        [
+            {
+                "@type": "CharacteristicSpecification",
+                "name": "IPv4-PrefixSize",
+                "description": "Number of bits to specify a range of IPv4 addresses, e.g. the '8' in '192.0.0.0/8'",
+                "valueType": "integer",
+                "characteristicValueSpecification":
+                [
+                    {
+                        "@type": "CharacteristicValueSpecification",
+                        "valueType": "integer",
+                        "valueFrom": 0,
+                        "valueTo": 32
+                    }
+                ]
+            },
+            {
+                "@type": "CharacteristicSpecification",
+                "name": "IPv4-Address",
+                "description": "a IPv4 address in decimal dot notation, e.g. 192.0.0.1",
+                "valueType": "string",
+                "characteristicValueSpecification":
+                [
+                    {
+                        "@type": "CharacteristicValueSpecification",
+                        "valueType": "string",
+                        "regex": "^\\+(?<cc>[1-9]\\d{0,2})-(?<ndc>[1-9]\\d*)-(?<sn>[1-9]\\d*)(?:-?(?<ddi>\\d+))?$"
+                    }
+                ]
+            }
+        ]
+    }
+]

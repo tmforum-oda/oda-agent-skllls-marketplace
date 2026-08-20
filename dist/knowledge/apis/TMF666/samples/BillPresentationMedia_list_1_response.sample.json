@@ -1,0 +1,17 @@
+[
+    {
+        "@type": "BillPresentationMedia",
+        "id": "42", 
+        "name": "signed mail"
+    }, 
+    {
+        "@type": "BillPresentationMedia",
+        "id": "43", 
+        "name": "postal"
+    }, 
+    {
+        "@type": "BillPresentationMedia",
+        "id": "44", 
+        "name": "web"
+    }
+]

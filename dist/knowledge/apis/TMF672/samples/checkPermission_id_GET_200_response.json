@@ -1,0 +1,21 @@
+{
+  "id": "f3fc707ae9ce42fbbf273a46ccacdeca",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/checkPermission/f3fc707ae9ce42fbbf273a46ccacdeca",
+  "@type": "CheckPermission",
+  "state": "done",
+  "permissionSpecification": {
+    "@type": "PermissionSpecification",
+    "name": "ProductOffering::create",
+    "function": "ProductOffering",
+    "action": "create"
+  },
+  "user": {
+    "role": "ProductManager",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "Jonathan.Goldberg",
+      "@type": "PartyRoleRef",
+      "@referredType": "PartyRole"
+    }
+  }
+}

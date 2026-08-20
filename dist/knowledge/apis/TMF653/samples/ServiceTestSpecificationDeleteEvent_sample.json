@@ -1,0 +1,20 @@
+{
+  "correlationId": "d7243a09-1206",
+  "description": "ServiceTestSpecificationDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "490b-a75e-e388a74813af",
+  "eventTime": "2022-08-25T12:21:36.724Z",
+  "eventType": "ServiceTestSpecificationDeleteEvent",
+  "priority": "4",
+  "timeOccurred": "2022-08-25T12:21:36.363Z",
+  "title": "ServiceTestSpecificationDeleteEvent",
+  "event": {
+    "serviceTestSpecification": {
+      "href": "http://servername/serviceTestSpecification/12",
+      "id": "12",
+      "@type": "ServiceTestSpecification"
+    }
+  },
+  "@baseType": "Event",
+  "@type": "ServiceTestSpecificationDeleteEvent"
+}

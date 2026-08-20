@@ -1,0 +1,72 @@
+[ 
+ {
+  "id": "ucr0007",
+  "href": "https://serverRoot/tmf-api/usageConsumption/v4/usageConsumptionReport/ucr0007",
+  "description": "Consumption Report for shared data bucket for Lea smartphone",
+  "effectiveDate": "2018-03-15T:15:44:28",
+  "bucket": [
+    {
+      "id": "bkt0010",
+      "name": "Shared data bucket",
+      "usageType": "data",
+      "isShared": true,
+      "product": [  
+        {
+          "id": "product2",
+          "name": "Lea smartphone",
+          "publicIdentifier": "33602020202",
+          "user": [ 
+             {
+               "id": "usr2", 
+               "name": "Lea",
+               "role": "user",
+               "@referredType": "Individual"
+             }
+           ]
+         }
+       ],
+       "bucketBalance": [
+         {
+           "remainingValue": {
+              "amount": 1.8,
+              "units": "Go"
+           },
+           "remainingValueName": "it remains 1.8 Go",
+           "validFor": {
+              "startDateTime": "2018-03-15T:00:00:00",
+              "endDateTime": "2018-03-30T:00:00:00"
+            }
+          }
+          ],  
+          "bucketCounter": [
+            {
+              "counterType":"used",
+              "level":"global",
+              "value": {
+                 "amount": 3.2,
+                 "units": "Go"
+              },
+              "valueName": "3.2 Go used",
+              "consumptionPeriod": {
+                 "startDateTime": "2018-03-01T:00:00:00",
+                 "endDateTime": "2018-03-15T:00:00:00"
+               }
+            },
+            {
+                "counterType":"used",
+                "level":"detailByProduct",
+                 "value": {
+                   "amount": 1.0,
+                   "units": "Go"
+                 },
+                "valueName": "1.0 Go used",
+                "product": {
+                   "publicIdentifier": "33602020202"
+                }
+              }
+           ]
+        }
+    ]
+  }
+]
+

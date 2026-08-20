@@ -1,0 +1,135 @@
+[
+    {
+        "id": "123-456",
+        "href": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service/123-456",
+        "hasStarted": true,
+        "isBundle": false,
+        "isServiceEnabled": true,
+        "isStateful": true,
+        "serviceType":"Mobile",
+        "serviceDate": "020-04-01T12:15:39.434Z",
+        "startDate": "2020-04-03T12:15:39.434Z",
+        "category": "Fixed Wireless",
+        "description": "Mobile Service 5G",
+        "feature": [
+          {
+            "id": "1",
+            "isBundle": false,
+            "isEnabled": true,
+            "name": "Voice",
+            "featureCharacteristic": [
+              {
+                "id": "1",
+                "name": "VoiceSettings",
+                "valueType": "object",
+                "value": {
+                  "voiceStandard": "enable",
+                  "voWifi": "disable",
+                  "roaming": "enable",
+                  "@schemaLocation": "http://my.schemas/VoiceFeatureCharacteristic.schema.json",
+                  "@type": "VoiceFeatureCharacteristic"
+                },
+                "@type": "ObjectCharacteristic"
+              }
+            ],
+            "@type": "Feature"
+          },
+          {
+            "id": "2",
+            "isEnabled": false,
+            "name": "Data",
+            "@type": "Feature",
+            "featureCharacteristic": [
+              {
+                "id": "75",
+                "name": "isGreen",
+                "valueType": "string",
+                "value": "enable",
+                "@type": "StringCharacteristic"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "isEnabled": true,
+            "name": "Messaging",
+            "featureCharacteristic": [
+              {
+                "id": "74",
+                "name": "incomingSMS",
+                "valueType": "string",
+                "value": "enable",
+                "@type": "StringCharacteristic"
+              },
+              {
+                "id": "73",
+                "name": "outgoingSMS",
+                "valueType": "string",
+                "value": "enable",
+                "@type": "StringCharacteristic"
+              }
+            ],
+            "@type": "Feature"
+          }
+        ],
+        "relatedParty": [
+          {
+            "role": "member",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+              "id": "9866",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9866",
+              "name": "Sandy Smith",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            }
+          }
+        ],
+        "serviceCharacteristic": [
+          {
+            "id": "89",
+            "name": "MSISDN",
+            "valueType": "string",
+            "value": "4152757439",
+            "@type": "StringCharacteristic"
+          }
+        ],
+        "serviceSpecification": {
+          "id": "cfs45",
+          "href": ".../serviceCatalog/v5/serviceSpecification/cfs45",
+          "name": "c_Mobile",
+          "@type": "ServiceSpecificationRef",
+          "@referredType": "ServiceSpecification"
+        },
+        "state": "active",
+        "supportingService": [
+          {
+            "serviceSpecification": {
+              "id": "cfs89",
+              "href": ".../serviceCatalog/v5/serviceSpecification/cfs89",
+              "name": "c_MobileSupport",
+              "@type": "ServiceSpecificationRef",
+              "@referredType": "ServiceSpecification"
+            },
+            "serviceCharacteristic": [
+              {
+                "id": "sd-8",
+                "name": "IMSI",
+                "valueType": "string",
+                "value": "228 01 21 76510739 ",
+                "@type": "StringCharacteristic"
+              }
+            ],
+            "state": "active",
+            "@type": "Service"
+          },
+          {
+            "id": "741-853",
+            "href": "http://serverlocation:port/tmf-api/serviceInventory/v5/service/741-853",
+            "@referredType": "Service",
+            "@type": "ServiceRef"
+          }
+        ],
+        "@type": "Service"
+      }
+]

@@ -1,0 +1,47 @@
+{
+  "@type": "PermissionSet",
+  "description": "Customer OTT primary user profile granted by owner to delegate primary usage of an OTT service.",
+  "validFor": {
+    "startDateTime": "2023-03-01T00:00:00.000Z",
+    "endDateTime": "2023-04-01T00:00:00.000Z"
+  },
+  "user": {
+    "role": "family owner",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "cust-745712-A",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "granter": {
+    "role": "customer advisor",
+    "@type": "RelatedPartyRefOrPartyRoleRef",
+    "partyOrPartyRole": {
+      "id": "cclt-456745",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "permission": [
+    {
+      "@type": "Permission",
+      "managedAssetGroup": {
+        "@type": "ListAssetGroup",
+        "@baseType": "AssetGroup",
+        "entity": [
+          {
+            "@type": "EntityRef",
+            "id": "S123456789",
+            "@referredType": "Service"
+          }
+        ]
+      },
+      "permissionSpecificationSet": {
+        "@type": "PermissionSpecificationSetRef",
+        "@referredType": "PermissionSpecificationSet",
+        "id": "pss-8f1a5628"
+      }
+    }
+  ]
+}

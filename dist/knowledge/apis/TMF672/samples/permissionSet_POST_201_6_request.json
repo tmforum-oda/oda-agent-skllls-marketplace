@@ -1,0 +1,81 @@
+{
+  "@type": "PermissionSet",
+  "description": "Product Catalog Management webapp TMF620 API consumer role permission set",
+  "validFor": {
+    "startDateTime": "2025-10-01T00:00:00.000Z",
+    "endDateTime": "2025-10-31T23:59:59.000Z"
+  },
+  "user": {
+    "role": "tmf-api-consumer",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "rr-82288122",
+      "name": "Product Catalog Management Web Application TMF Open API Consumer Role",
+      "@type": "ResourceRoleRef",
+      "@referredType": "ResourceRole"
+    }
+  },
+  "granter": {
+    "role": "product_catalog_mng_admin",
+    "@type": "RelatedPartyRefOrPartyRoleRef",
+    "partyOrPartyRole": {
+      "id": "p-70fabcac9b01",
+      "name": "Darth Vader",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "permission": [
+    {
+      "@type": "Permission",
+      "permissionSpecification": {
+        "@type": "PermissionSpecification",
+        "name": "Catalog:ReadWrite",
+        "function": "Catalog",
+        "action": "ReadWrite"
+      },
+      "managedAssetGroup": {
+        "@type": "SetAssetGroup",
+        "@baseType": "AssetGroup",
+        "name": "Catalog Asset Group Set",
+        "entityType": [
+          "Catalog"
+        ]
+      }
+    },
+    {
+      "@type": "Permission",
+      "permissionSpecification": {
+        "@type": "PermissionSpecification",
+        "name": "ProductOffering:ReadWrite",
+        "function": "ProductOffering",
+        "action": "ReadWrite"
+      },
+      "managedAssetGroup": {
+        "@type": "SetAssetGroup",
+        "@baseType": "AssetGroup",
+        "name": "ProductOffering Asset Group Set",
+        "entityType": [
+          "ProductOffering"
+        ]
+      }
+    },
+    {
+      "@type": "Permission",
+      "permissionSpecification": {
+        "@type": "PermissionSpecification",
+        "name": "ProductOfferingPrice:ReadWrite",
+        "function": "ProductOfferingPrice",
+        "action": "ReadWrite"
+      },
+      "managedAssetGroup": {
+        "@type": "SetAssetGroup",
+        "@baseType": "AssetGroup",
+        "name": "ProductOfferingPrice Asset Group Set",
+        "entityType": [
+          "ProductOfferingPrice"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "correlationId": "SOM-20021",
+  "description": "CancelServiceOrderStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "10099",
+  "eventTime": "2021-12-28T01:09:57.059Z",
+  "eventType": "CancelServiceOrderStateChangeEvent",
+  "priority": "1",
+  "timeOcurred": "2021-12-28T01:09:57.059Z",
+  "title": "CancelServiceOrderStateChangeEvent",
+  "event": {
+    "cancelServiceOrder": {
+      "id": "789-fsds5-kjp",
+      "href": "https://host:port/serviceOrdering/v5/cancelServiceOrder/789-fsds5-kjp",
+      "serviceOrder": {
+        "id": "45f-98f-ss45",
+        "href": "https://host:port/serviceOrdering/v5/serviceOrder/45f-98f-ss45",
+        "@referredType": "ServiceOrder",
+      "@type": "ServiceOrderRef"
+      },
+      "state": "done",
+      "@type": "CancelServiceOrder"
+    }
+  },
+  "reportingSystem": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CancelServiceOrderStateChangeEvent"
+}

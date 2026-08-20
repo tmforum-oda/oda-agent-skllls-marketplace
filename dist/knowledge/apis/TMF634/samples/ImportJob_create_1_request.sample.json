@@ -1,0 +1,6 @@
+{
+    "contentType": "application/json",
+    "path": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCatalog/3830",
+    "url": "https://my-platform/daily/job/NHCFD6",
+    "@type": "ImportJob"
+}

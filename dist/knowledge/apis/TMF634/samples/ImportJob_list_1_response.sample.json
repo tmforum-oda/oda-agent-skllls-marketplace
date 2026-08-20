@@ -1,0 +1,25 @@
+[
+    {
+        "id": "7497",
+        "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/importJob/7497",
+        "contentType": "application/json",
+        "creationDate": "2023-06-17T00:00:00.000Z",
+        "completionDate": "2023-06-17T00:05:00.000Z",
+        "path": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCatalog/3830",
+        "status": "Succeeded",
+        "url": "https://my-platform/daily/job/NHCFD6",
+        "errorLog": "http://my-platform/logging/errors.log",
+        "@type": "ImportJob"
+    },
+    {
+        "id": "7498",
+        "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/importJob/7498",
+        "contentType": "application/json",
+        "creationDate": "2023-06-17T00:00:00.000Z",
+        "path": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCatalog/3830",
+        "status": "Running",
+        "url": "https://my-platform/daily/job/NHCFD6",
+        "errorLog": "http://my-platform/logging/errors.log",
+        "@type": "ImportJob"
+    }
+]

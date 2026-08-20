@@ -1,0 +1,41 @@
+{
+  "correlationId": "SOM-20011",
+  "description": "ServiceOrderStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "10091",
+  "eventTime": "2021-12-27T01:06:59.059Z",
+  "eventType": "ServiceOrderStateChangeEvent",
+  "priority": "1",
+  "timeOcurred": "2021-12-27T01:06:59.059Z",
+  "title": "ServiceOrderStateChangeEvent",
+  "event": {
+    "serviceOrder": {
+        "id": "5351", 
+        "href": "https://host:port/serviceOrder/v5/serviceOrder/5351",
+        "state": "inProgress",
+        "@type": "ServiceOrder"
+    }
+  },
+  "relatedParty": [
+    {
+      "id": "56d",
+      "role": "Issuer",
+      "@type": "RelatedParty",
+      "@referredType": "Organization"
+    }
+  ],
+  "reportingSystem": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ServiceOrderStateChangeEvent"
+}

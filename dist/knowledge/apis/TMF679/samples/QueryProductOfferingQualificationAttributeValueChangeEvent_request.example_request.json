@@ -1,0 +1,33 @@
+{
+  "correlationId": "azer-55",
+  "description": "QueryProductOfferingQualificationAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "467",
+  "eventTime": "2022-09-14T12:14:28.774Z",
+  "eventType": "ProductAttributeValueChangeEvent",
+  "priority": "3",
+  "timeOcurred": "2022-09-14T12:14:23.473Z",
+  "title": "QueryProductOfferingQualificationAttributeValueChangeEvent",
+  "event": {
+    "queryProductOfferingQualification": {
+      "href": "https://host:port/productOfferingQualification/v5/QueryProductOfferingQualification/14",
+      "id": "14",
+      "@type": "QueryProductOfferingQualification",
+      "requestedQualificationCompletionDate": "2021-09-06T15:51:12.570Z"
+    }
+  },
+  "reportingSystem": {
+    "id": "533",
+    "name": "APP-963",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "200",
+    "name": "APP-893",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "QueryProductOfferingQualificationAttributeValueChangeEvent"
+}

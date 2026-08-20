@@ -1,0 +1,22 @@
+[
+  {
+    "id": "f3fc707ae9ce42fbbf273a46ccacdeca",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/checkPermission/32434646753180",
+    "@type": "CheckPermission",
+    "state": "done",
+    "permissionSpecification": {
+      "@type": "PermissionSpecification",
+      "function": "ProductOffering",
+      "action": "create"
+    },
+    "user": {
+      "role": "ProductManager",
+      "@type": "RelatedSecurityPrincipal",
+      "securityPrincipal": {
+        "id": "Jonathan.Goldberg",
+        "@type": "PartyRoleRef",
+        "@referredType": "PartyRole"
+      }
+    }
+  }
+]

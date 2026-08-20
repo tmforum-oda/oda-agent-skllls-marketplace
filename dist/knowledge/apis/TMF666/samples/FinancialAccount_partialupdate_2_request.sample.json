@@ -1,0 +1,17 @@
+[
+  {
+    "op": "add",
+    "path": "/relatedParty",
+    "value": {
+        "role": "payer",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+            "@referredType" : "Individual",
+            "@type": "PartyRefOrPartyRoleRef",
+            "href": "https://host:port/tmf-api/partyManagement/v5/individual/345365", 
+            "id": "345365", 
+            "name": "Sylvia Strudock"
+        }
+    }
+  }
+]

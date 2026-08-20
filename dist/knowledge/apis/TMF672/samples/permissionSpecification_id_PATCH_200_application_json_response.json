@@ -1,0 +1,22 @@
+{
+  "@type": "PermissionSpecification",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-7e0a2d18",
+  "id": "ps-7e0a2d18",
+  "name": "ProductOrder:grantAlteration",
+  "function": "ProductOrder",
+  "action": "grantAlteration",
+  "specificationCharacteristic": [
+    {
+      "@type": "CharacteristicSpecification",
+      "name": "reductionPercentage",
+      "valueType": "number",
+      "characteristicValueSpecification": [
+        {
+          "@type": "FloatCharacteristicValueSpecification",
+          "valueType": "number",
+          "value": 5.5
+        }
+      ]
+    }
+  ]
+}

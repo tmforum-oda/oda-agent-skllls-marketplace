@@ -1,0 +1,16 @@
+[
+ {
+   "id": "128",
+   "href": "https://serverRoot/tmf-api/party/v5/organization/128",
+   "@type": "Organization",
+   "@baseType": "Party",
+   "name": "Coffee Do Brazil Fair Trade"
+ },
+ {
+   "id": "1882",
+   "href": "https://serverRoot/tmf-api/party/v5/organization/1882",
+   "@type": "Organization",
+   "@baseType": "Party",
+   "name": "Joe's Pizza"
+ }
+]

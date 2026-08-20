@@ -1,0 +1,76 @@
+{
+    "id": "g265-tf86",
+    "href": "https://host:port/productInventory/v5/product/g265-tf86",
+    "description": "This product is an Product Offering instance",
+    "isBundle": false,
+    "isCustomerVisible": true,
+    "name": "Voice Over IP Basic instance for Jean",
+    "creationDate": "2021-04-12T23:59:59.52Z",
+    "status": "created",
+    "@type": "Product",
+    "productOffering": {
+      "id": "PO-101-1",
+      "href": "https://host:port/productCatalogManagement/v5/productOffering/PO-101-1",
+      "name": "Voice Over IP Basic",
+      "@type": "ProductOfferingRef",
+      "@referredType": "ProductOffering"
+    },
+    "productRelationship": [
+      {
+        "id": "g265-tf85",
+        "href": "https://host:port/productInventory/v5/product/g265-tf85",
+        "@type": "ProductRelationship",
+        "relationshipType": "sells"
+      }
+    ],
+    "productPrice": [
+      {
+        "@type": "ProductPrice",
+        "productOfferingPrice": {
+          "id": "POP1",
+          "name": "Fiber recurring fee",
+          "href": "https://host:port/productCatalogManagement/v5/productOfferingPrice/POP1",
+          "@referredType": "ProductOfferingPrice",
+          "@type": "ProductOfferingPriceRef"
+        },
+        "recurringChargePeriod": "month",
+        "price": {
+          "@type": "Price",
+          "taxIncludedAmount": {
+            "unit": "EUR",
+            "value": 29.99
+          },
+          "taxRate": 15
+        },
+        "priceType": "reccurring"
+      }
+    ],
+    "productTerm": [
+      {
+        "@type": "ProductTerm",
+        "description": "Fiber standard commitment",
+        "duration": {
+          "amount": 12,
+          "units": "month"
+        },
+        "validFor": {
+          "startDateTime": "2021-04-12T23:59:59.52Z",
+          "endDateTime": "2022-04-11T00:00:00.52Z"
+        },
+        "name": "12months commitment"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "owner",
+        "partyOrPartyRole": {
+          "id": "45hj-8888",
+          "href": "https://host:port/partyManagement/v5/individual/45hj-8888",
+          "name": "Jean",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyOrPartyRole"
+      }
+    ]
+  }

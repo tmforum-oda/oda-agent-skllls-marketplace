@@ -1,0 +1,39 @@
+{
+  "id": "evt-004",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-004",
+  "eventId": "00064",
+  "eventTime": "2024-04-18T16:49:25-04:00",
+  "eventType": "TaskInformationRequiredEvent",
+  "correlationId": "p698jf-pl45",
+  "description": "TaskInformationRequiredEvent illustration",
+  "timeOccurred": "2024-04-18T16:42:25-04:00",
+  "title": "TaskInformationRequiredEvent",
+  "@type": "TaskInformationRequiredEvent",
+  "@baseType": "Event",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json",
+  "event": {
+    "task": {
+      "id": "4fd-ty56-gg55-2",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/task/4fd-ty56-gg55-2",
+      "isMandatory": true,
+      "state": "ready",
+      "@type": "Task"
+    },
+    "informationRequired": {
+      "op": "add",
+      "path": "/relatedParty/partyOrPartyRole?role=customer"
+    }
+  },
+  "reportingSystem": {
+    "id": "884",
+    "name": "COMP-41",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "507",
+    "name": "APP-548",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  }
+}

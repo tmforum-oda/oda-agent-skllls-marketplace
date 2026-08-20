@@ -1,0 +1,33 @@
+{
+  "correlationId": "da76162e-c8ca",
+  "description": "ResourceAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4d1f-ac04-980d628aabcc",
+  "eventType": "ResourceAttributeValueChangeEvent",
+  "eventTime": "2025-10-22T08:12:58.274Z",
+  "timeOccurred": "2025-10-22T08:11:34.196Z",
+  "priority": "3",
+  "title": "ResourceAttributeValueChangeEvent",
+  "event": {
+    "resource": {
+      "id": "ca239a70-5810-433f-a251-ba5277a5af72",
+      "href": "http://host:port/resourceInventoryManagement/v5/resource/ca239a70-5810-433f-a251-ba5277a5af72",
+      "description": "This is the Router owned by John Doe.",
+      "@type": "PhysicalResource"
+    }
+  },
+  "reportingSystem": {
+    "id": "445",
+    "name": "APP-655",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "62",
+    "name": "APP-182",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ResourceAttributeValueChangeEvent"
+}

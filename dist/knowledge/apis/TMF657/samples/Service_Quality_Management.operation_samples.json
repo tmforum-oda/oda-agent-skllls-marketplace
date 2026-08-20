@@ -1,0 +1,113 @@
+{
+    "ServiceLevelObjective": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple service level objectives.",
+                    "filtering": "status=inprogress",
+                    "content-type": "application/json",
+                    "response": "$_ServiceLevelObjective_list_1_response"
+                }
+            ]
+        },
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a specific service level objective.",
+                    "content-type": "application/json",
+                    "objectId": "3830",
+                    "response": "$_ServiceLevelObjective_retrieve_1_response"
+                }
+            ]
+        },
+        "create": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for creating a service level objectve.",
+                    "content-type": "application/json",
+                    "request": "$_ServiceLevelObjective_create_1_request",
+                    "response": "$_ServiceLevelObjective_create_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for creating a servive level objective.",
+                    "content-type": "application/json",
+                    "request": "$_ServiceLevelObjective_create_2_request",
+                    "response": "$_ServiceLevelObjective_create_2_response"
+                }
+            ]
+        },
+        "partialupdate": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for updating a service level objective.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "3830",
+                    "request": "$_ServiceLevelObjective_partialupdate_1_request",
+                    "response": "$_ServiceLevelObjective_partialupdate_1_response"
+                }
+            ]
+        },
+        "delete": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for deleting a service level objective.",
+                    "content-type": "application/json",
+                    "objectId": "3830"
+                }
+            ]
+        }
+    },
+
+    "ServiceLevelSpecification": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple service level specifications.",
+                    "filtering": "status=inprogress",
+                    "content-type": "application/json",
+                    "response": "$_ServiceLevelSpecification_list_1_response"
+                }
+            ]
+        },
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a specific service level specification.",
+                    "content-type": "application/json",
+                    "objectId": "3830",
+                    "response": "$_ServiceLevelSpecification_retrieve_1_response"
+                }
+            ]
+        },
+        "create": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for creating a service level objectve.",
+                    "content-type": "application/json",
+                    "request": "$_ServiceLevelSpecification_create_1_request",
+                    "response": "$_ServiceLevelSpecification_create_1_response"
+                }
+            ]
+        },
+        "partialupdate": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for updating a service level specification.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "3830",
+                    "request": "$_ServiceLevelSpecification_partialupdate_1_request",
+                    "response": "$_ServiceLevelSpecification_partialupdate_1_response"
+                }
+            ]
+        },
+        "delete": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for deleting a service level specification.",
+                    "content-type": "application/json",
+                    "objectId": "3830"
+                }
+            ]
+        }
+    }
+}

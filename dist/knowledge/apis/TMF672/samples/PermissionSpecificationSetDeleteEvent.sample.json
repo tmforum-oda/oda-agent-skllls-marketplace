@@ -1,0 +1,32 @@
+{
+    "correlationId": "145d-8hh",
+    "description": "PermissionSpecificationSetDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "523",
+    "eventTime": "2021-09-27T07:43:59.059Z",
+    "eventType": "PermissionSpecificationSetDeleteEvent",
+    "priority": "3",
+    "timeOccurred": "2021-09-27T07:43:59.059Z",
+    "title": "PermissionSpecificationSetDeleteEvent",
+    "event": {
+        "permissionSpecificationSet": {
+            "@type": "PermissionSpecificationSet",
+            "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-ebe41def",
+            "id": "pss-ebe41def"
+        }
+    },
+    "reportingSystem": {
+        "id": "123",
+        "name": "CRM app",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "123",
+        "name": "CRM app",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PermissionSpecificationSetDeleteEvent"
+}

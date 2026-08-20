@@ -1,0 +1,43 @@
+{
+  "correlationId": "86c9c4c9-b7a5",
+  "description": "TroubleTicketResolvedEvent illustration",
+  "domain": "Commercial",
+  "eventId": "41ad-b3e1-aa39d233a157",
+  "eventTime": "2022-08-25T12:18:12.213Z",
+  "eventType": "TroubleTicketResolvedEvent",
+  "priority": "5",
+  "timeOccurred": "2022-08-25T12:18:10.103Z",
+  "title": "TroubleTicketResolvedEvent",
+  "event": {
+    "troubleTicket": {
+      "id": "3180",
+      "href": "https://host:port/troubleTicket/v5/troubleTicket/3180",
+      "@type": "TroubleTicket",
+      "status": "resolved",
+      "statusChangeDate": "2019-05-31T07:34:45.968Z",
+      "statusChangeReason": "A refund was issued",
+      "statusChangeHistory": [
+        {
+          "statusChangeDate": "2019-05-31T07:34:45.968Z",
+          "statusChangeReason": "Need more information from the customer",
+          "status": "pending",
+          "@type": "StatusChange"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TroubleTicketResolvedEvent"
+}

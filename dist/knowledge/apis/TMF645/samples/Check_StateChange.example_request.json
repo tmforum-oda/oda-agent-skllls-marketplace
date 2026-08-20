@@ -1,0 +1,33 @@
+{
+    "correlationId": "a19c7353-eae1",
+    "description": "CheckServiceQualificationStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "45a4-81bb-85fa6cc903c8",
+    "eventTime": "2023-03-05T12:41:51.931Z",
+    "eventType": "CheckServiceQualificationStateChangeEvent",
+    "priority": "5",
+    "timeOccurred": "2023-03-05T12:41:44.375Z",
+    "title": "CheckServiceQualificationStateChangeEvent",
+    "event": {
+        "checkServiceQualification": {
+            "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/checkServiceQualification/44",
+            "id": "44",
+            "@type": "CheckServiceQualification",
+            "state": "done"
+        }
+    },
+    "reportingSystem": {
+        "id": "954",
+        "name": "APP-190",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "441",
+        "name": "APP-643",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CheckServiceQualificationStateChangeEvent"
+}

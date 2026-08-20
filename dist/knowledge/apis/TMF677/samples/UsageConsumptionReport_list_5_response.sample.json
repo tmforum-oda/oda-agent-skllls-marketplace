@@ -1,0 +1,111 @@
+[ 
+ {
+  "id": "ucr0006",
+  "href": "https://serverRoot/tmf-api/usageConsumption/v4/usageConsumptionReport/ucr0006",
+  "description": "Usage Consumption Report for shared data bucket and user Lea",
+  "effectiveDate": "2018-03-15T:15:44:28",
+   "bucket": [
+    {
+      "id": "bkt0010",
+      "name": "Shared data bucket",
+      "usageType": "data",
+      "isShared": true,
+      "product": [  
+        {
+          "id": "product2",
+          "name": "Lea smartphone",
+          "publicIdentifier": "33602020202",
+          "user": [ 
+             {
+               "id": "usr2", 
+               "name": "Lea",
+               "role": "user",
+               "@referredType": "individual"
+             }
+           ]
+        },
+        {
+          "id": "product3",
+          "name": "Lea phablet",
+          "publicIdentifier": "33603030303",
+          "user": [ 
+             {
+               "id": "usr2", 
+               "name": "Lea",
+               "role": "user",
+               "@referredType": "individual"
+             }
+           ]
+         }
+       ],
+       "bucketBalance": [
+         {
+           "remainingValue": {
+              "amount": 1.8,
+              "units": "Go"
+           },
+           "remainingValueName": "it remains 1.8 Go",
+           "validFor": {
+              "startDateTime": "2018-03-15T:00:00:00",
+              "endDateTime": "2018-03-30T:00:00:00"
+            }
+          }
+          ],  
+          "bucketCounter": [
+            {
+              "counterType":"used",
+              "level":"global",
+              "value": {
+                 "amount": 3.2,
+                 "units": "Go"
+              },
+              "valueName": "3.2 Go used",
+              "consumptionPeriod": {
+                 "startDateTime": "2018-03-01T:00:00:00",
+                 "endDateTime": "2018-03-15T:00:00:00"
+               }
+            },
+            {
+               "counterType":"used",
+               "level":"detailByUser",
+               "value": {
+                   "amount": 2.2,
+                   "units": "Go"
+                 },
+               "valueName": "2.2 Go used",
+               "user": {
+                   "id": "usr2", 
+                   "name": "Lea",
+                   "@referredType": "individual"
+               }
+              },
+              {
+                "counterType":"used",
+                "level":"detailByProduct",
+                "value": {
+                   "amount": 1.0,
+                   "units": "Go"
+                 },
+
+                "valueName": "1.0 Go used",
+                "product": {
+                   "publicIdentifier": "33602020202"
+                }
+              },
+              {
+                 "counterType":"used",
+                 "level":"detailByProduct",
+                 "value": {
+                   "amount": 1.2,
+                   "units": "Go"
+                 },
+                 "valueName": "1.2 Go used",
+                 "product": {
+                    "publicIdentifier": "33603030303"
+                 }
+               }
+            ]
+        }
+    ]
+  }
+]

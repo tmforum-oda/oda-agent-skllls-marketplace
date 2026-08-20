@@ -1,0 +1,37 @@
+{
+  "correlationId": "SOM-20021",
+  "description": "CancelServiceOrderInformationRequiredEvent illustration",
+  "eventId": "10103",
+  "eventTime": "2021-12-28T01:09:57.059Z",
+  "eventType": "CancelServiceOrderInformationRequiredEvent",
+  "priority": "1",
+  "timeOcurred": "2021-12-28T01:09:57.059Z",
+  "title": "CancelServiceOrderInformationRequiredEvent",
+  "event": {
+    "cancelServiceOrder": {
+        "id": "20021", 
+        "href": "https://host:port/serviceOrdering/v5/cancelServiceOrder/20021",
+        "@type": "CancelServiceOrder"
+    },
+    "informationRequired": [
+        {
+          "op": "add",
+          "path": "requestedCancellationDate"
+        }
+      ]
+  },
+  "reportingSystem": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CancelServiceOrderInformationRequiredEvent"
+}

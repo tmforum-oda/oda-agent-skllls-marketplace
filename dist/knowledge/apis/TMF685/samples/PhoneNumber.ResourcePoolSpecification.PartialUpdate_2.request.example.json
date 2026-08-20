@@ -1,0 +1,26 @@
+[
+    {
+        "op": "replace",
+        "path": "/name",
+        "value": "Phone Number pool (single subsubriber)"
+    },
+    {
+        "op": "add",
+        "path": "/resourceSpecCharacteristic",
+        "value":
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "sn",
+            "description": "Phone Number Subscriber Number",
+            "valueType": "string",
+            "characteristicValueSpecification":
+            [
+                {
+                    "@type": "CharacteristicValueSpecification",
+                    "valueType": "string",
+                    "regex": "^[1-9]\\d*$"
+                }
+            ]
+        }
+    }
+]

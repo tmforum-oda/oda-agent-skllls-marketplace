@@ -1,0 +1,160 @@
+{
+  "href": "https://mycsp.com:8080/tmf-api/serviceTestManagement/v5/serviceTestSpecification/12",
+  "id": "12",
+  "version": "1.1",
+  "lifecycleStatus": "active",
+  "name": "Fixed Broadband service test",
+  "description": "Service Test Specification for Fixed Broadband service",
+  "validFor": {
+    "startDateTime": "2016-03-02T24:00:00.00Z",
+    "endDateTime": "2020-03-02T24:00:00.00Z"
+  },
+  "testMeasureDefinition": [
+    {
+      "@type": "TestMeasureDefinition",
+      "id": "10",
+      "captureFrequency": "once",
+      "captureMethod": "automatic capture by instrument",
+      "capturePeriod": {
+        "amount": 15,
+        "units": "seconds"
+      },
+      "metricDescription": "This is the flow speed in a service",
+      "metricUri": "https://mycsp.com:8080/metricRepository/metric/21",
+      "metricName": "Flow speed",
+      "name": "Definition of Flow speed",
+      "unitOfMeasure": "bits per second",
+      "valueType": "number",
+      "specCharacteristic": [
+        {
+          "name": "metricValue",
+          "description": "This characteristic describes the flow speed metric value",
+          "valueType": "number",
+          "@type": "CharacteristicSpecification",
+          "configurable": false,
+          "validFor": {
+            "startDateTime": "2016-03-02T24:00:00.00Z",
+            "endDateTime": "2020-03-02T24:00:00.00Z"
+          },
+          "minCardinality": 0,
+          "maxCardinality": 1,
+          "isUnique": true,
+          "extensible": false,
+          "characteristicValueSpecification": [
+            {
+              "valueType": "number",
+              "@type": "NumberCharacteristicValueSpecification",
+              "unitOfMeasure": "bits per second",
+              "validFor": {
+                "startDateTime": "2016-03-02T24:00:00.00Z",
+                "endDateTime": "2020-03-02T24:00:00.00Z"
+              }
+            }
+          ]
+        }
+      ],
+      "thresholdRule": [
+        {
+          "@type": "MetricDefMeasureThresholdRule",
+          "conformanceTargetUpper": "2500",
+          "conformanceComparatorUpper": "greater than ",
+          "description": "This speed is greater than the target upper",
+          "name": "tooMuchTraffic",
+          "numberOfAllowedCrossing": 0,
+          "thresholdRuleSeverity": "1",
+          "tolerancePeriod": {
+            "amount": 15,
+            "units": "minutes"
+          },
+          "consequence": [
+            {
+              "@type": "MetricDefMeasureConsequence",
+              "prescribeAction": "sendWarning",
+              "description": "send a warning to the system",
+              "name": "sendWarning",
+              "repeatAction": false,
+              "validFor": {
+                "startDateTime": "2016-03-02T24:00:00.00Z",
+                "endDateTime": "2020-03-02T24:00:00.00Z"
+              }
+            },
+            {
+              "@type": "MetricDefMeasureConsequence",
+              "prescribeAction": "generateReport",
+              "description": "generate a warning report ",
+              "name": "generateReport",
+              "repeatAction": false,
+              "validFor": {
+                "startDateTime": "2016-03-02T24:00:00.00Z",
+                "endDateTime": "2020-03-02T24:00:00.00Z"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specCharacteristic": [
+    {
+      "name": "restart",
+      "description": "This characteristic describes if restart of the service is required",
+      "@type": "CharacteristicSpecification",
+      "valueType": "Boolean",
+      "configurable": true,
+      "validFor": {
+        "startDateTime": "2016-03-02T24:00:00.00Z",
+        "endDateTime": "2020-03-02T24:00:00.00Z"
+      },
+      "minCardinality": 0,
+      "maxCardinality": 1,
+      "isUnique": true,
+      "extensible": false,
+      "characteristicValueSpecification": [
+        {
+          "valueType": "Boolean",
+          "@type": "BooleanCharacteristicValueSpecification",
+          "isDefault": false,
+          "value": true,
+          "validFor": {
+            "startDateTime": "2016-03-02T24:00:00.00Z",
+            "endDateTime": "2020-03-02T24:00:00.00Z"
+          }
+        }
+      ]
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "testSupervisor",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "9866",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/Individual/9866",
+        "name": "Sandy Smith",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "serviceTestSpecificationRelationship": [
+    {
+      "@type": "ServiceTestSpecRelationship",
+      "@referredType": "ServiceTestSpecification",
+      "id": "13",
+      "href": "https://mycsp.com:8080/tmf-api/serviceTestManagement/v5/serviceTestSpecification/13",
+      "relationshipType": "dependency"
+    }
+  ],
+  "relatedServiceSpecification": [
+    {
+      "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/31",
+      "id": "31",
+      "name": "cpeServiceSpecification",
+      "@referredType": "vCPEServiceSpecification",
+      "@type": "ServiceSpecificationRef"
+    }
+  ],
+  "@baseType": "ServiceTestSpecification",
+  "@type": "ServiceTestSpecification",
+  "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/service/PerformanceTestSpecification.schema.json"
+}

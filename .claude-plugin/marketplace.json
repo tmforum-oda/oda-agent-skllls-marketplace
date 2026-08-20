@@ -1,0 +1,13 @@
+{
+  "name": "tm-forum-oda-marketplace",
+  "owner": {
+    "name": "Innovation Network"
+  },
+  "plugins": [
+    {
+      "name": "tm-forum-oda",
+      "source": "./dist",
+      "description": "TM Forum ODA use cases, components, and Open APIs as a provenance-tracked knowledge base, queryable via Agent Skills."
+    }
+  ]
+}

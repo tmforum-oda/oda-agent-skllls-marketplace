@@ -1,0 +1,46 @@
+{
+    "correlationId": "akj-566",
+    "description": "PermissionSpecificationAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "741",
+    "eventTime": "2021-09-27T07:43:59.059Z",
+    "eventType": "PermissionSpecificationAttributeValueChangeEvent",
+    "priority": "1",
+    "timeOccurred": "2021-09-27T07:43:59.059Z",
+    "title": "PermissionSpecificationAttributeValueChangeEvent",
+    "event": {
+        "permissionSpecification": {
+            "@type": "PermissionSpecification",
+            "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-7e0a2d18",
+            "id": "ps-7e0a2d18",
+            "specificationCharacteristic": [
+                {
+                    "@type": "CharacteristicSpecification",
+                    "name": "reductionPercentage",
+                    "valueType": "number",
+                    "characteristicValueSpecification": [
+                        {
+                            "@type": "FloatCharacteristicValueSpecification",
+                            "valueType": "number",
+                            "value": 5.5
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "reportingSystem": {
+        "id": "123",
+        "name": "CRM app",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "123",
+        "name": "CRM app",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PermissionSpecificationAttributeValueChangeEvent"
+}

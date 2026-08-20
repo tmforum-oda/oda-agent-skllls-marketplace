@@ -1,0 +1,6 @@
+{
+    "@type": "BillCycleSpecification",
+    "href": "https://host:port/tmf-api/accountManagement/v5/billingCycleSpecification/4556", 
+    "id": "4556", 
+    "name": "Monthly billing"
+}

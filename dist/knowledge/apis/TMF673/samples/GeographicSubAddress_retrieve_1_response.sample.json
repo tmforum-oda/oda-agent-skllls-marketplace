@@ -1,0 +1,14 @@
+{
+    "id": "1e58c8e7-6869-4c45-8af4-0fffbe8fc677",
+    "href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/f019f4e5-7431-44dc-94d6-97e9a881fe79/geographicSubAddress/1e58c8e7-6869-4c45-8af4-0fffbe8fc677",
+    "name": "EastGate Shopping Center",
+    "buildingName": "EastGate",
+    "levelType": "floor",
+    "levelNumber": "3",
+    "privateStreetName":"Queen St",
+    "privateStreetNumber":"1",
+    "subAddressType":"subUnit",
+    "subUnitType": "shop",
+    "subUnitNumber": "239",
+    "@type": "GeographicSubAddress"
+}

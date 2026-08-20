@@ -1,0 +1,98 @@
+{
+  "href": "https://host:port/productOfferingQualification/v5/QueryProductOfferingQualification/11",
+  "id": "11",
+  "@type": "QueryProductOfferingQualification",
+  "channel": {
+    "id": "1",
+    "name": "Web",
+    "@type": "ChannelRef"
+  },
+  "category": {
+    "id": "24",
+    "name": "International Data plan",
+    "href": "https://host:port/productCatalogManagement/v5/category/24",
+    "@type": "CategoryRef"
+  },
+  "description": "Example for a QueryProductOfferingQualification resource",
+  "effectiveQualificationDate": "2021-08-31T15:25:54.172Z",
+  "expectedQualificationCompletionDate": "2021-08-31T15:25:54.172Z",
+  "expirationDate": "2021-09-03T15:25:54.172Z",
+  "qualifiedProductOfferingItem": [
+    {
+      "@type": "QueryProductOfferingQualificationItem",
+      "productOffering": {
+        "id": "DPI89",
+        "name": "European Data Plan - 20 GB",
+        "href": "https://host:port/productCatalogManagement/v5/productOffering/DPI89",
+        "@type": "ProductOfferingRef"
+      },
+      "id": "1"
+    },
+    {
+      "@type": "QueryProductOfferingQualificationItem",
+      "productOffering": {
+        "id": "DPI90",
+        "name": "European Data Plan - 50 GB",
+        "href": "https://host:port/productCatalogManagement/v5/productOffering/DPI90",
+        "@type": "ProductOfferingRef"
+      },
+      "id": "2"
+    },
+    {
+      "@type": "QueryProductOfferingQualificationItem",
+      "productOffering": {
+        "id": "DPI91",
+        "name": "European Data Plan - 100 GB",
+        "href": "https://host:port/productCatalogManagement/v5/productOffering/DPI91",
+        "@type": "ProductOfferingRef"
+      },
+      "id": "3"
+    },
+    {
+      "@type": "QueryProductOfferingQualificationItem",
+      "productOffering": {
+        "id": "DPI123",
+        "name": "International Data Plan - 20 GB",
+        "href": "https://host:port/productCatalogManagement/v5/productOffering/DPI123",
+        "@type": "ProductOfferingRef"
+      },
+      "id": "4"
+    },
+    {
+      "@type": "QueryProductOfferingQualificationItem",
+      "productOffering": {
+        "id": "DPI124",
+        "name": "International Data Plan - 50 GB",
+        "href": "https://host:port/productCatalogManagement/v5/productOffering/DPI124",
+        "@type": "ProductOfferingRef"
+      },
+      "id": "5"
+    },
+    {
+      "@type": "QueryProductOfferingQualificationItem",
+      "productOffering": {
+        "id": "DPI125",
+        "name": "International Data Plan - 100 GB",
+        "href": "https://host:port/productCatalogManagement/v5/productOffering/DPI125",
+        "@type": "ProductOfferingRef"
+      },
+      "id": "6"
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "requester",
+      "partyOrPartyRole": {
+        "id": "45hj-999",
+        "href": "https://host:port/partyManagement/v5/individual/45hj-999",
+        "name": "Louise",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyOrPartyRole"
+    }
+  ],
+  "requestedQualificationCompletionDate": "2021-08-31T15:25:54.172Z",
+  "state": "done",
+  "creationDate": "2021-08-31T15:25:54.172Z"
+}

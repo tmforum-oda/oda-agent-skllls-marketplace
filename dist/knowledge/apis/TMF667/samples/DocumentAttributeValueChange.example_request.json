@@ -1,0 +1,14 @@
+{
+  "@type": "DocumentAttributeValueChangeEvent",
+  "eventId": "e3dac91d-a035-465f-afc5-d3b603b53ad2",
+  "eventTime": "2024-11-06T09:00:00.000Z",
+  "eventType": "DocumentAttributeValueChangeEvent",
+  "event": {
+    "document": {
+      "@type": "Document",
+      "href": "https://serverRoot/tmf-api/document/v5/document/9555-3c9c417feead",
+      "id": "9555-3c9c417feead",
+      "name": "Designing Web APIs: Building APIs That Developers really Love"
+    }
+  }
+}

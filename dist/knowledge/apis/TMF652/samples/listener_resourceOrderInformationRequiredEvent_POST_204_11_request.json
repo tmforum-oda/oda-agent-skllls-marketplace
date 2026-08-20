@@ -1,0 +1,71 @@
+{
+  "@type": "ResourceOrderInformationRequiredEvent",
+  "@schemaLocation": "/schema-registry/schema/resourceOrderInformationRequiredEvent",
+  "href": "/tmf-api/v5/events/informationRequired/12345",
+  "id": "12345",
+  "correlationId": "corr67890",
+  "domain": "OrderManagement",
+  "title": "Resource Order Information Required",
+  "description": "This event captures information required for a resource order.",
+  "priority": "medium",
+  "timeOccurred": "2025-02-11T08:16:16Z",
+  "source": {
+    "@type": "System",
+    "@schemaLocation": "/schema-registry/schema/System",
+    "href": "/tmf-api/v5/systems/sourceSystem/source123",
+    "id": "source123",
+    "name": "SourceSystem"
+  },
+  "reportingSystem": {
+    "@type": "System",
+    "@schemaLocation": "/schema-registry/schema/ReportingSystem",
+    "href": "/tmf-api/v5/systems/reportingSystem/report567",
+    "id": "report567",
+    "name": "ReportingSystem"
+  },
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "@schemaLocation": "/schema-registry/schema/RelatedParty",
+      "role": "Customer",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "@schemaLocation": "/schema-registry/schema/Party",
+        "href": "/tmf-api/v5/party/customer789",
+        "id": "customer789",
+        "name": "John Doe",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "eventId": "event56789",
+  "eventTime": "2025-02-11T08:16:16Z",
+  "eventType": "InformationRequired",
+  "event": {
+    "resourceOrder": {
+      "@type": "ResourceOrder",
+      "id": "5130d5131a23",
+      "href": "http://servername/resourceOrder/5130d5131a23",
+      "category": "Premium",
+      "description": "7000m of Optical Cable",
+      "expectedCompletionDate": "2020-05-31T20:50:27.275Z",
+      "name": "7km Optical Cable for Acme Inc",
+      "priority": 0,
+      "requestedCompletionDate": "2020-03-31T19:50:43.214Z",
+      "requestedStartDate": "2020-03-31T19:50:43.214Z",
+      "startDate": "2020-03-31T19:50:43.214Z"
+    },
+    "informationRequired": {
+      "id": "info-req-12345",
+      "href": "http://servername/informationRequired/info-req-12345",
+      "@type": "InformationRequiredEvent",
+      "informationRequiredPath": [
+        {
+          "op": "add",
+          "path": "/orderItem/0/resource/specification",
+          "value": "Resource specification is required"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{ "expectedFulfillmentStartDate": "2021-05-16T12:45:12.028Z",
+   "validFor": {
+    "endDateTime": "2021-05-20T12:45:12.033Z",    
+    "startDateTime": "2021-05-13T12:45:12.028Z"
+    }
+}

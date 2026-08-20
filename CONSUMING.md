@@ -6,30 +6,36 @@ cases, components, and Open APIs. This doc is for that consumer, not for
 building or refreshing this repo itself (see [`spec/spec.md`](spec/spec.md)
 and [`spec/tasks.md`](spec/tasks.md) for that).
 
-## What you need locally: `skills/` + `knowledge/`, kept as siblings
+There are two ways to get set up, with a real tradeoff between them —
+pick based on which cost you'd rather pay:
 
-Every skill's instructions read `knowledge/` at paths relative to wherever
-it's run from (e.g. `knowledge/use-cases/{ID}/{ID}.md`) — not relative to
-the skill's own folder. That's deliberate: both skills already share one
-`knowledge/` today rather than each carrying a private copy (see the design
-note in [`README.md`](README.md)). It means:
+| | Option A: sparse clone | Option B: Claude Code plugin |
+|---|---|---|
+| Works with | any agent that can read local files | Claude Code only |
+| Footprint | one clone, ~108MB, wherever you put it | plugin cache, ~64MB, bundled a second time inside `dist/` |
+| Discovery | manual — skills only work from that clone's directory | automatic — works from any project, any cwd, once installed |
+| Staying current | `git pull` | reinstall/update the plugin |
 
-- You need **both** `skills/` and `knowledge/`, not `skills/` alone.
-- They need to land as **siblings** — same parent directory — for the
-  skills' relative paths to resolve.
-- You do **not** need `references/` (the raw DOCX/PDF — `knowledge/` is
-  already generated from it) or `tools/` (this repo's own refresh
-  pipeline, irrelevant to a consumer) or `spec/` (this repo's own design
-  docs).
+Both are real, both are verified working (see `spec/tasks.md` Phase 8)
+— this isn't "one recommended, one theoretical."
 
-## Recommended: a sparse, partial clone
+## Option A: a sparse, partial clone
 
-A full `git clone` of this repo also pulls `references/`'s raw DOCX/PDF
-files (spec.md §10: "under 100MB" on its own) and the whole git history's
-blob objects for them — none of which a consumer needs. A **sparse,
-partial clone** fetches only `knowledge/` and `skills/` (plus the small
-root-level files like this one), which is meaningfully lighter and still
-fully git-native: versioned, pinnable, updatable with a plain `git pull`.
+Every skill's instructions read `knowledge/` at paths relative to
+wherever the agent's working directory is — that's how they work when
+run directly from this repo (or a partial clone of it). It means:
+
+- You need **both** `skills/` and `knowledge/`, not `skills/` alone, and
+  they need to land as **siblings** — same parent directory.
+- You do **not** need `references/` (raw DOCX/PDF — `knowledge/` is
+  already generated from it), `tools/` (this repo's own refresh
+  pipeline), or `spec/` (this repo's own design docs).
+
+A full `git clone` also pulls `references/`'s raw files (spec.md §10:
+"under 100MB" on its own) and the whole git history's blob objects for
+them — none of which a consumer needs. A **sparse, partial clone**
+fetches only `knowledge/` and `skills/`, and stays fully git-native:
+versioned, pinnable, updatable with a plain `git pull`.
 
 ```bash
 git clone --filter=blob:none --sparse \
@@ -39,62 +45,81 @@ cd tm-forum-oda
 git sparse-checkout set knowledge skills
 ```
 
-**Windows only** — a real gotcha found while testing this: some of the
-cached API sample-payload filenames under `knowledge/apis/*/samples/` are
-long enough to exceed Windows' default 260-character path limit, and the
-`sparse-checkout set` step above will fail partway through with
+**Windows only** — a real gotcha found while testing this: some cached
+API sample-payload filenames under `knowledge/apis/*/samples/` are long
+enough to exceed Windows' default 260-character path limit, and
+`sparse-checkout set` above will fail partway through with
 `Filename too long` errors if so. Fix once, before running the commands
-above:
+above (global, not per-repo — this is a Windows/git limitation, not
+specific to this one repository):
 
 ```bash
 git config --global core.longpaths true
 ```
 
-(Global, not per-repo, since this is a Windows/git limitation that isn't
-specific to this one repository.)
+Verified against the real repo: the resulting clone lands at ~108MB
+total (~65MB `knowledge/` working tree, ~44MB `.git` objects, `skills/`
+itself a few KB) — `references/`'s content is never fetched at all, not
+even into `.git`.
 
-Verified against the real repo while writing this: the resulting clone
-lands at ~108MB total (~65MB `knowledge/` working tree, ~44MB `.git`
-objects, `skills/` itself is a few KB) — `references/`'s content is never
-fetched at all, not even into `.git`, because it's outside the sparse
-patterns and the `--filter=blob:none` partial clone only pulls blobs for
-paths actually checked out.
+**Pointing your agent at the skills**: where `skills/` needs to live
+depends on your own agent harness's skill-discovery convention (e.g.
+Claude Code looks for a configured skills directory such as
+`.claude/skills/`) — that part is specific to whatever you're running.
+Whatever you point it at, keep `knowledge/` as that directory's sibling.
 
-## Pointing your agent at the skills
+**Staying up to date**: TM Forum republishes on a ~4–8 week cadence
+(spec.md §6), and this repo's own refresh cycle tracks that.
+Sparse-checkout patterns persist across `git pull`, so refreshing only
+ever touches `knowledge/`/`skills/` — nothing else gets fetched. To pin
+to a specific point in time instead of always tracking `main` (e.g. for
+a reproducible build), clone as above, then `git checkout <commit-or-tag>`.
 
-Where `skills/` needs to live depends on your own agent harness's
-skill-discovery convention (e.g. Claude Code looks for a configured skills
-directory such as `.claude/skills/`) — that part is specific to whatever
-you're running, not something this repo can dictate. Whatever you point
-it at, keep `knowledge/` as that directory's sibling, per above.
+## Option B: install as a Claude Code plugin
 
-## Staying up to date
+[`dist/`](dist/) is a ready-to-install Claude Code plugin — `skills/` and
+a full copy of `knowledge/`, bundled together, with every skill's
+`knowledge/...` path reference rewritten to
+`${CLAUDE_PLUGIN_ROOT}/knowledge/...` so it resolves correctly no matter
+where Claude Code installs the plugin or what project you're working in
+when you invoke it. That rewrite, and the reason it's necessary, is
+explained in [`tools/build_plugin.py`](tools/build_plugin.py)'s docstring.
 
-TM Forum republishes on a ~4–8 week cadence (spec.md §6), and this repo's
-own refresh cycle tracks that. To pick up a refresh:
+This deliberately breaks the usual norm that a plugin should be small —
+`dist/knowledge/` is a second, full copy of the corpus, on top of the one
+already at the repo's own top level, chosen so the plugin has zero
+dependency on any project-specific clone or directory layout.
 
-```bash
-cd tm-forum-oda
-git pull
+```
+/plugin marketplace add https://github.vodafone.com/Innovation-Network/tm-forum-sdlc.git
+/plugin install tm-forum-oda@tm-forum-oda-marketplace
 ```
 
-Sparse-checkout patterns persist across `pull`, so this only ever touches
-`knowledge/`/`skills/` — nothing else gets fetched.
+Skills install namespaced: `/tm-forum-oda:check-usecase-maturity` and
+`/tm-forum-oda:generate-test-cases-from-usecase`.
 
-To pin to a specific point in time instead of always tracking `main`
-(e.g. for a reproducible build), clone as above, then:
+**Verified for real** (not just from the docs): loaded `dist/` via
+`claude --plugin-dir` from a directory with no `knowledge/` of its own
+anywhere nearby, invoked both skills, and got correct answers grounded in
+the bundled data — confirming `${CLAUDE_PLUGIN_ROOT}` actually resolves
+regardless of the caller's working directory, which is the entire point
+of packaging it this way. See `spec/tasks.md` Phase 8.3 for the full
+verification record.
 
-```bash
-git checkout <commit-or-tag>
-```
+**Staying up to date**: reinstall or update the plugin through whatever
+mechanism your Claude Code version provides (`/plugin` commands) —
+there's no `git pull` step here, since a plugin install isn't a clone you
+own locally.
 
-## An alternative worth knowing about, not built yet
+## Cross-agent reach (Copilot, etc.) — not built, a later follow-up
 
-If you'd rather not maintain even a sparse local clone — e.g. you want
-skills that always read the current `knowledge/` with zero local
-footprint and no update step — that needs a different mechanism (a
-remote-fetch-capable skill, or an MCP server wrapping `knowledge/`, per
-spec.md §7). Both trade away this repo's "no network call needed at
-skill-run time" design principle in exchange for zero staleness; the
-sparse clone above keeps that principle and is what's actually built and
-verified today. Ask if you want to explore that direction instead.
+Neither option above works outside Claude Code — Option B's plugin
+mechanism (`${CLAUDE_PLUGIN_ROOT}`, `.claude-plugin/`) is Claude
+Code-specific, and Option A's skills format has no equivalent in other
+agents' own instruction-loading conventions. `knowledge/`'s actual data
+is plain Markdown/JSON and trivially agent-agnostic — the gap is only in
+how instructions get loaded. The one mechanism adopted by multiple
+vendors today, including Copilot's MCP client, is MCP: an MCP server
+wrapping `knowledge/` (spec.md §7) would be callable from Claude Code
+*and* Copilot from the same running server, at the cost of actually
+hosting one. Not built yet — ask if you want to explore that direction.

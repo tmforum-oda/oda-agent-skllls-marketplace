@@ -1,0 +1,49 @@
+{
+  "@type": "Customer",
+  "name": "Moon Football Club",
+  "engagedParty": {
+    "@type": "PartyRef",
+    "href": "https://host:port/tmf-api/partyManagement/v5/organization/500",
+    "id": "500",
+    "name": "Happy Travellers",
+    "@referredType": "Organization"
+  },
+  "contactMedium": [
+    {
+      "@type": "PhoneContactMedium",
+      "preferred": true,
+      "contactType": "homePhone",
+      "validFor": {
+        "startDateTime": "2018-06-12T00:00:00Z",
+        "endDateTime": "2019-01-01T00:00:00Z"
+      },
+      "phoneNumber": "01 09 75 83 51"
+    },
+    {
+      "@type": "GeographicAddressContactMedium",
+      "preferred": false,
+      "contactType": "homeAddress",
+      "validFor": {
+        "startDateTime": "2018-06-12T00:00:00Z",
+        "endDateTime": "2019-01-01T00:00:00Z"
+      },
+      "city": "Paris",
+      "country": "France",
+      "postCode": "75014",
+      "street1": "15 Rue des Canards"
+    }
+  ],
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "role": "bill receiver",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "href": "https://host:port/tmf-api/partyManagement/v5/organization/2777",
+        "id": "2777",
+        "name": "John Doe (Accounting) Ltd",
+        "@referredType": "Organization"
+      }
+    }
+  ]
+}

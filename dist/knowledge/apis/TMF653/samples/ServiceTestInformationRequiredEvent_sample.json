@@ -1,0 +1,30 @@
+{
+  "correlationId": "ST-20011",
+  "description": "ServiceTestInformationRequiredEvent illustration",
+  "domain": "Commercial",
+  "eventId": "11261",
+  "eventTime": "2024-12-27T01:06:59.059Z",
+  "eventType": "ServiceTestInformationRequiredEvent",
+  "priority": "1",
+  "timeOccurred": "2024-12-27T01:06:59.059Z",
+  "title": "ServiceTestInformationRequiredEvent",
+  "event": {
+    "serviceTest": {
+      "id": "12",
+      "href": "https://host:port/serviceTest/v5/serviceTest/12",
+      "@type": "ServiceTestRef"
+    },
+    "informationRequired": [
+      {
+        "op": "add",
+        "path": "/serviceTestSpecification"
+      },
+      {
+        "op": "add",
+        "path": "/testMeasure"
+      }
+    ]
+  },
+  "@baseType": "Event",
+  "@type": "ServiceTestInformationRequiredEvent"
+}

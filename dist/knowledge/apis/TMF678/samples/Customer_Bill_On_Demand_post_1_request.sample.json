@@ -1,0 +1,20 @@
+{
+    "description": "Customer bill on demand",
+    "lastUpdate": "2020-01-19T12:34:56.123Z",
+    "name": "BillOnCustomerDemand",
+    "billingAccount": {
+        "id": "A0815",
+        "@type": "BillingAccountRef",
+        "@referredType": "BillingAccount"
+    },
+    "relatedParty": {
+		"role": "requester",
+		"@type": "RelatedPartyRefOrRelatedPartyRoleRef",
+		"partyOrPartyRole": {
+    		"id": "RP0815",
+    		"@referredType": "Individual",
+    		"@type": "PartyRef"
+		}
+    },
+    "@type": "CustomerBillOnDemand"
+}

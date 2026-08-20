@@ -1,0 +1,14 @@
+{
+  "@type": "DocumentStateChangeEvent",
+  "eventId": "e3dac91d-a035-465f-afc5-d3b603b53ad2",
+  "eventTime": "2024-11-08T14:30:00.000Z",
+  "eventType": "DocumentStateChangeEvent",
+  "event": {
+    "document": {
+      "@type": "Document",
+      "href": "https://serverRoot/tmf-api/document/v5/document/9555-3c9c417feead",
+      "id": "9555-3c9c417feead",
+      "status": "published"
+    }
+  }
+}

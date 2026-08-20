@@ -1,0 +1,411 @@
+[
+  {
+    "@type": "PermissionSet",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSet/Prms-jnzgh456",
+    "id": "Prms-jnzgh456",
+    "creationDate": "2019-10-01T00:00:00.000Z",
+    "description": "superProfile Granted for user",
+    "validFor": {
+      "startDateTime": "2019-10-01T00:00:00.000Z",
+      "endDateTime": "2019-10-31T23:59:59.000Z"
+    },
+    "user": {
+      "role": "client",
+      "@type": "RelatedSecurityPrincipal",
+      "securityPrincipal": {
+        "id": "cust-745712-A",
+        "href": "https://host:port/partyManagement/v5/party/cust-745712-A",
+        "name": "Jack Marshall",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    "granter": {
+      "role": "customer advisor",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "cclt-456745",
+        "href": "https://host:port/partyManagement/v5/party/cclt-456745",
+        "name": "John Baker",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    "permission": [
+      {
+        "@type": "Permission",
+        "permissionSpecification": {
+          "@type": "PermissionSpecification",
+          "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-31d5b770",
+          "id": "ps-31d5b770",
+          "name": "ProductOrder:update",
+          "function": "ProductOrder",
+          "action": "update"
+        },
+        "managedAssetGroup": {
+          "@baseType": "AssetGroup",
+          "@type": "JSONPathAssetGroup",
+          "entityType": "ProductOrder",
+          "jsonPath": "filter=productSpecification=='tv-channel'&&productCharacteristic[?(@.name=='tvrating' && @.value=='children']"
+        }
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSet",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSet/Prms-31d5b770",
+    "id": "Prms-31d5b770",
+    "creationDate": "2019-10-01T00:00:00.000Z",
+    "validFor": {
+      "startDateTime": "2019-10-01T00:00:00.000Z",
+      "endDateTime": "2019-10-31T23:59:59.000Z"
+    },
+    "user": {
+      "role": "client",
+      "@type": "RelatedSecurityPrincipal",
+      "securityPrincipal": {
+        "id": "cust-745712-A",
+        "href": "https://host:port/partyManagement/v5/party/cust-745712-A",
+        "name": "Jack Marshall",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    "permission": [
+      {
+        "@type": "Permission",
+        "permissionSpecification": {
+          "@type": "PermissionSpecification",
+          "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-b2e2fa58",
+          "id": "ps-b2e2fa58",
+          "name": "IPTVaccess:enabled",
+          "function": "IPTV access",
+          "action": "enabled"
+        }
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSet",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permission/Prms-63116b98",
+    "id": "63116b98",
+    "creationDate": "2023-03-01T16:49:00.000Z",
+    "description": "Owner profile granted to user automatically for its owned customer, product and service entities.",
+    "validFor": {
+      "startDateTime": "2023-03-01T00:00:00.000Z",
+      "endDateTime": "2023-04-01T00:00:00.000Z"
+    },
+    "user": {
+      "role": "customer advisor",
+      "@type": "RelatedSecurityPrincipal",
+      "securityPrincipal": {
+        "id": "cclt-456745",
+        "href": "https://host:port/partyManagement/v5/party/cclt-456745",
+        "name": "John Baker",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    "permission": [
+      {
+        "@type": "Permission",
+        "managedAssetGroup": {
+          "@type": "ListAssetGroup",
+          "@baseType": "AssetGroup",
+          "entity": [
+            {
+              "@type": "EntityRef",
+              "href": "https://serverRoot/customerManagement/v5/customer/C123456789",
+              "id": "C123456789",
+              "@referredType": "Customer"
+            },
+            {
+              "@type": "EntityRef",
+              "href": "https://serverRoot/customerManagement/v5/customer/5.99999.99.99.999999",
+              "id": "5.99999.99.99.999999",
+              "@referredType": "Customer"
+            },
+            {
+              "@type": "EntityRef",
+              "href": "https://serverRoot/serviceInventory/v5/service/S123456789",
+              "id": "S123456789",
+              "@referredType": "Service"
+            },
+            {
+              "@type": "EntityRef",
+              "href": "https://serverRoot/productInventory/v5/service/1-44up07",
+              "id": "1-44up07",
+              "@referredType": "Product"
+            }
+          ]
+        },
+        "permissionSpecificationSet": {
+          "@type": "PermissionSpecificationSetRef",
+          "@referredType": "PermissionSpecificationSet",
+          "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-5de89f4f",
+          "id": "pss-5de89f4f"
+        }
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSet",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permission/Prms-7a0cb197",
+    "id": "7a0cb197",
+    "creationDate": "2023-03-01T16:49:00.000Z",
+    "description": "Customer selfcare admin profile granted by owner to delegate management of customers, products and services entities.",
+    "validFor": {
+      "startDateTime": "2023-03-01T00:00:00.000Z",
+      "endDateTime": "2023-04-01T00:00:00.000Z"
+    },
+    "user": {
+      "role": "client",
+      "@type": "RelatedSecurityPrincipal",
+      "securityPrincipal": {
+        "id": "cust-745712-A",
+        "href": "https://host:port/partyManagement/v5/party/cust-745712-A",
+        "name": "Jack Marshall",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    "granter": {
+      "role": "customer advisor",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "p7654321",
+        "href": "https://host:port/partyManagement/v5/party/p7654321",
+        "name": "Lynda Owens",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    "permission": [
+      {
+        "@type": "Permission",
+        "managedAssetGroup": {
+          "@type": "JSONPathAssetGroup",
+          "@baseType": "AssetGroup",
+          "entityType": "Customer",
+          "jsonPath": "$[status=='Active']"
+        },
+        "permissionSpecificationSet": {
+          "@type": "PermissionSpecificationSetRef",
+          "@referredType": "PermissionSpecificationSet",
+          "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-edd9d8a4",
+          "id": "pss-edd9d8a4"
+        }
+      },
+      {
+        "@type": "Permission",
+        "managedAssetGroup": {
+          "@type": "ListAssetGroup",
+          "@baseType": "AssetGroup",
+          "entity": [
+            {
+              "@type": "EntityRef",
+              "href": "https://serverRoot/customerManagement/v5/customer/5.99999.99.99.999999",
+              "id": "5.99999.99.99.999999",
+              "@referredType": "Customer"
+            }
+          ]
+        },
+        "permissionSpecificationSet": {
+          "@type": "PermissionSpecificationSetRef",
+          "@referredType": "PermissionSpecificationSet",
+          "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-edd9d8a4",
+          "id": "pss-edd9d8a4"
+        }
+      },
+      {
+        "@type": "Permission",
+        "managedAssetGroup": {
+          "@type": "ListAssetGroup",
+          "@baseType": "AssetGroup",
+          "entity": [
+            {
+              "@type": "EntityRef",
+              "href": "https://serverRoot/productInventory/v5/service/1-44up07",
+              "id": "1-44up07",
+              "@referredType": "Product"
+            }
+          ]
+        },
+        "permissionSpecificationSet": {
+          "@type": "PermissionSpecificationSetRef",
+          "@referredType": "PermissionSpecificationSet",
+          "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-edd9d8a4",
+          "id": "pss-edd9d8a4"
+        }
+      },
+      {
+        "@type": "Permission",
+        "managedAssetGroup": {
+          "@type": "ListAssetGroup",
+          "@baseType": "AssetGroup",
+          "entity": [
+            {
+              "@type": "EntityRef",
+              "href": "https://serverRoot/serviceInventory/v5/service/S123456789",
+              "id": "S123456789",
+              "@referredType": "Service"
+            }
+          ]
+        },
+        "permissionSpecificationSet": {
+          "@type": "PermissionSpecificationSetRef",
+          "@referredType": "PermissionSpecificationSet",
+          "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-edd9d8a4",
+          "id": "pss-edd9d8a4"
+        }
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSet",
+    "href": "https://server:port/userRolePermission/v5/permissionSet/7a0cb197-381a-4043-9cd6-aaef3729589f",
+    "id": "7a0cb197-381a-4043-9cd6-aaef3729589f",
+    "creationDate": "2023-03-01T16:49:00.000Z",
+    "description": "Customer OTT primary user profile granted by owner",
+    "validFor": {
+      "startDateTime": "2023-03-01T00:00:00.000Z",
+      "endDateTime": "2023-04-01T00:00:00.000Z"
+    },
+    "user": {
+      "role": "client",
+      "@type": "RelatedSecurityPrincipal",
+      "securityPrincipal": {
+        "id": "cust-745712-A",
+        "href": "https://host:port/partyManagement/v5/party/cust-745712-A",
+        "name": "Jack Marshall",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    "granter": {
+      "role": "customer advisor",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "cclt-456745",
+        "href": "https://host:port/partyManagement/v5/party/cclt-456745",
+        "name": "John Baker",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    "permission": [
+      {
+        "@type": "Permission",
+        "managedAssetGroup": {
+          "@type": "ListAssetGroup",
+          "@baseType": "AssetGroup",
+          "entity": [
+            {
+              "id": "S123456789",
+              "@type": "EntityRef",
+              "@referredType": "ServiceAccount"
+            }
+          ]
+        },
+        "permissionSpecificationSet": {
+          "@type": "PermissionSpecificationSetRef",
+          "href": "https://server:port/userRolePermission/v5/permissionSpecificationSet/adf0487a-1671-49c1-9be1-87e66a6d3a69",
+          "id": "adf0487a-1671-49c1-9be1-87e66a6d3a69",
+          "@referredType": "PermissionSpecificationSet"
+        }
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSet",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSet/pst-9c512f49",
+    "id": "pst-9c512f49",
+    "creationDate": "2025-10-01T00:00:00.000Z",
+    "description": "Product Catalog Management webapp TMF620 API consumer role permission set",
+    "validFor": {
+      "startDateTime": "2025-10-01T00:00:00.000Z",
+      "endDateTime": "2025-10-31T23:59:59.000Z"
+    },
+    "user": {
+      "role": "tmf-api-consumer",
+      "@type": "RelatedSecurityPrincipal",
+      "securityPrincipal": {
+        "id": "rr-82288122",
+        "href": "https://host:port/resourceRoleManagement/v5/resourceRole/rr-82288122",
+        "name": "Product Catalog Management Web Application TMF Open API Consumer Role",
+        "@type": "ResourceRoleRef",
+        "@referredType": "ResourceRole"
+      }
+    },
+    "granter": {
+      "role": "product_catalog_mng_admin",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "p-70fabcac9b01",
+        "href": "https://host:port/partyManagement/v5/party/p-70fabcac9b01",
+        "name": "Darth Vader",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    "permission": [
+      {
+        "@type": "Permission",
+        "permissionSpecification": {
+          "@type": "PermissionSpecification",
+          "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-31d5b770",
+          "id": "psp-31d5b770",
+          "name": "Catalog:ReadWrite",
+          "function": "Catalog",
+          "action": "ReadWrite"
+        },
+        "managedAssetGroup": {
+          "@type": "SetAssetGroup",
+          "@baseType": "AssetGroup",
+          "name": "Catalog Asset Group Set",
+          "entityType": [
+            "Catalog"
+          ]
+        }
+      },
+      {
+        "@type": "Permission",
+        "permissionSpecification": {
+          "@type": "PermissionSpecification",
+          "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-d9f344d5",
+          "id": "psp-d9f344d5",
+          "name": "ProductOffering:ReadWrite",
+          "function": "ProductOffering",
+          "action": "ReadWrite"
+        },
+        "managedAssetGroup": {
+          "@type": "SetAssetGroup",
+          "@baseType": "AssetGroup",
+          "name": "ProductOffering Asset Group Set",
+          "entityType": [
+            "ProductOffering"
+          ]
+        }
+      },
+      {
+        "@type": "Permission",
+        "permissionSpecification": {
+          "@type": "PermissionSpecification",
+          "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/psp-7fa60a0f",
+          "id": "psp-7fa60a0f",
+          "name": "ProductOfferingPrice:ReadWrite",
+          "function": "ProductOfferingPrice",
+          "action": "ReadWrite"
+        },
+        "managedAssetGroup": {
+          "@type": "SetAssetGroup",
+          "@baseType": "AssetGroup",
+          "name": "ProductOfferingPrice Asset Group Set",
+          "entityType": [
+            "ProductOfferingPrice"
+          ]
+        }
+      }
+    ]
+  }
+]

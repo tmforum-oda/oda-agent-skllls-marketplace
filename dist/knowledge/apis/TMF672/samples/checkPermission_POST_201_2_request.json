@@ -1,0 +1,33 @@
+{
+  "@type": "CheckPermission",
+  "permissionSpecification": {
+    "@type": "PermissionSpecification",
+    "name": "ProductOrder:grantAlteration",
+    "function": "ProductOrder",
+    "action": "grantAlteration"
+  },
+  "user": {
+    "role": "SalesAgent",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "Jonathan.Goldberg",
+      "@type": "PartyRoleRef",
+      "@referredType": "PartyRole"
+    }
+  },
+  "characteristic": [
+    {
+      "@type": "NumberCharacteristic",
+      "name": "reductionPercentage",
+      "valueType": "number",
+      "value": 10
+    }
+  ],
+  "entity": [
+    {
+      "id": "PO555333313",
+      "@type": "EntityRef",
+      "@referredType": "ProductOrder"
+    }
+  ]
+}

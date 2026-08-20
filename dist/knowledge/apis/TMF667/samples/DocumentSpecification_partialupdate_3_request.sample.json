@@ -1,0 +1,29 @@
+[
+  {
+    "op": "replace",
+    "path": "/name",
+    "value": "Email"
+  },
+  {
+    "op": "replace",
+    "path": "/specCharacteristic?name=pages",
+    "value": {
+      "@type": "CharacteristicSpecification",
+      "name": "pages",
+      "valueType": "integer",
+      "description": "The number of pages in this paperback book",
+      "configurable": true,
+      "minCardinality": 1,
+      "maxCardinality": 1,
+      "extensible": false,
+      "characteristicValueSpecification": [
+        {
+          "@type": "IntegerCharacteristicValueSpecification",
+          "@baseType": "CharacteristicValueSpecification",
+          "unitOfMeasure": "pages",
+          "valueFrom": 10
+        }
+      ]
+    }
+  }
+]

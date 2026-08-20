@@ -1,0 +1,33 @@
+{
+    "@type": "ExtractStateChangeEvent",
+    "@baseType": "Event",
+    "correlationId": "e4888f4d-71cd-43a4-a018-dd13f230935c",
+    "description": "ExtractStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "3b63e628-0c66-4d57-abbf-2fb6aeb229fd",
+    "eventTime": "2024-09-19T13:55:06.910Z",
+    "eventType": "ExtractStateChangeEvent",
+    "priority": "3",
+    "timeOccurred": "2024-09-19T13:55:03.868Z",
+    "title": "ExtractStateChangeEvent",
+    "event": {
+        "extract": {
+            "@type": "Extract",
+            "id": "c6a1e831-ef5b-4d09-85a8-594fca73313b",
+            "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePool/c3fef858-b864-4fac-971e-795b1195ded9/extract/c6a1e831-ef5b-4d09-85a8-594fca73313b",
+            "state": "done"
+        }
+    },
+    "reportingSystem": {
+        "id": "109",
+        "name": "APP-804",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "8",
+        "name": "APP-307",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    }
+}

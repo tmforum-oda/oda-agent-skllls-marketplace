@@ -1,0 +1,35 @@
+{
+  "@type": "PermissionSpecificationSet",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-8f1a5628",
+  "id": "pss-8f1a5628",
+  "involvementRole": "Customer.OTT.Primary.User",
+  "permissionSpecification": [
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-a99c47c6",
+      "id": "ps-a99c47c6",
+      "description": "Permission to manage users and to add or remove permissions to delegated users.",
+      "name": "usermanagement:readwrite",
+      "function": "user_management",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-5ea0f3cc",
+      "id": "ps-5ea0f3cc",
+      "description": "Permission to buy products in OTT apps.",
+      "name": "impulsebuy:enabled",
+      "function": "impulse_buy",
+      "action": "Enabled"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-b4b3601a",
+      "id": "ps-b4b3601a",
+      "description": "Permission to manage delegated users parental controls.",
+      "name": "parentalcontrols:manage",
+      "function": "manage_parental_controls",
+      "action": "ReadWrite"
+    }
+  ]
+}

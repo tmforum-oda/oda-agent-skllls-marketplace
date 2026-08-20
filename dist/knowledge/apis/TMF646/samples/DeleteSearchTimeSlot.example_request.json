@@ -1,0 +1,32 @@
+{
+  "@type": "SearchTimeSlotDeleteEvent",
+  "correlationId": "1da724c6-17bd",
+  "description": "SearchTimeSlotDeleteEvent  illustration",
+  "domain": "Commercial",
+  "eventId": "4e6a-95cb-0892c2e596b2",
+  "eventTime": "2026-03-26T08:49:14.288Z",
+  "eventType": "SearchTimeSlotDeleteEvent ",
+  "priority": "5",
+  "title": "SearchTimeSlotDeleteEvent ",
+  "event": {
+    "searchTimeSlot": {
+      "id": "99",
+      "state": "done",
+      "href": "https://serverRoot/tmf-api/appointment/v5/searchTimeSlot/99",
+      "@type": "SearchTimeSlot"
+    }
+  },
+  "reportingSystem": {
+    "id": "275",
+    "name": "APP-665",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "280",
+    "name": "APP-929",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event"
+}

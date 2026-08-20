@@ -1,0 +1,16 @@
+{
+  "relatedParty": [
+    {
+      "role": "Customer",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "9I8-430",
+        "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/9I8-430",
+        "name": "Sara Eskiv",
+        "@referredType": "Individual",
+        "@type": "PartyRef"
+      }
+    }
+  ],
+  "@type": "Process"
+}

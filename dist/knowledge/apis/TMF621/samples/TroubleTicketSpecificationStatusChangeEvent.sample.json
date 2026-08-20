@@ -1,0 +1,34 @@
+{
+  "correlationId": "95003dd3-e325",
+  "description": "TroubleTicketSpecificationStatusChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4010-9b59-509a64cf85a8",
+  "eventTime": "2022-08-25T12:18:12.171Z",
+  "eventType": "TroubleTicketSpecificationStatusChangeEvent",
+  "priority": "1",
+  "timeOccurred": "2022-08-25T12:18:06.252Z",
+  "title": "TroubleTicketSpecificationStatusChangeEvent",
+  "event": {
+    "troubleTicketSpecification": {
+      "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicketSpecification/25632415",
+      "id": "25632415",
+      "@type": "TroubleTicketSpecification",
+      "lastUpdate": "2022-06-22T10:36:30.709Z",
+      "lifecycleStatus": "active"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "Catalog Publishing",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "Catalog Authoring",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TroubleTicketSpecificationStatusChangeEvent"
+}

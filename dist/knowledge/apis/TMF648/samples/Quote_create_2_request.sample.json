@@ -1,0 +1,71 @@
+{
+  "category": "BSBS Quote",
+  "description": "instantSyncQuote Quote illustration",
+  "expectedFulfillmentStartDate": "2021-05-13T12:45:12.028Z",
+  "instantSyncQuote": true,
+    "quoteItem": [
+    {
+      "id": "1",
+      "action": "add",
+      "quantity": 1,
+      "product": {
+        "@type": "Product",
+          "productCharacteristic": [
+          {
+            "@type": "StringCharacteristic",
+            "name": "Voice Bundle",
+            "value": "unlimited"
+          },
+          {
+            "@type": "ObjectCharacteristic",
+            "id": "Char5",
+            "name": "Data Bundle",
+            "value": {
+              "volume": 50,
+              "unit": "Gb/month"
+            }
+          }
+        ],
+        "productSpecification": {
+          "id": "ssp7-ty89",
+          "href": "https://host:port/productCatalogManagement/v5/productSpecification/ssp7-ty89",
+          "name": "TMF Tariff Plan",
+          "@type":"ProductSpecificationRef",
+          "@referredType":"ProductSpecification"
+        }
+      },
+      "productOffering": {
+        "id": "54gg-zza1",
+        "href": "https://host:port/productCatalogManagement/v5/productSpecification/54gg-zza1",
+        "name": "TMF Tariff Plan 25",
+        "@type":"ProductOfferingRef",
+        "@referredType":"ProductOffering"
+      }
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "Buyer Contact",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "qsdd-9888",
+        "href": "https://host:port/partyManagement/v5/individual/qsdd-9888",
+        "name": "Jean Pontus",
+        "@referredType": "Individual",
+        "@type": "PartyRef"
+      }
+    },
+    {
+      "role": "Buyer organization",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "55",
+        "href": "https://host:port/partyManagement/v5/organization/55",
+        "name": "PerfectCustomer",
+        "@referredType": "Organization",
+        "@type": "PartyRef"
+      } 
+    }
+  ],
+  "@type": "Quote"
+}

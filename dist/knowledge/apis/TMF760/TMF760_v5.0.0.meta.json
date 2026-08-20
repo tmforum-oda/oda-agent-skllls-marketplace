@@ -1,0 +1,16 @@
+{
+  "id": "TMF760",
+  "type": "api",
+  "name": "product-configuration-management-api",
+  "version": "v5.0.0",
+  "status": "v5",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF760_Product_Configuration/5.0.0/swagger/TMF760-ProductConfiguration-v5.0.0.oas.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "d5acb0b1adc0427a1be1f5c64d79bc455b43f3a18a35746c0e047fbd50050b94"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

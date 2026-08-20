@@ -1,0 +1,170 @@
+{
+    "correlationId": "b382501b-c423",
+    "description": "ServiceCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4da6-b0f1-5a7fce3edc94",
+    "eventTime": "2022-08-25T12:19:28.512Z",
+    "eventType": "ServiceCreateEvent",
+    "priority": "4",
+    "timeOccurred": "2022-08-25T12:19:28.180Z",
+    "title": "ServiceCreateEvent",
+    "event": {
+        "service": {
+            "id": "5351",
+            "href": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/service/5351",
+            "serviceType": "Cloud",
+            "name": "vCPE serial 1355615",
+            "description": "Instantiation of vCPE",
+            "state": "active",
+            "category": "CFS",
+            "isServiceEnabled": true,
+            "hasStarted": true,
+            "startMode": "1",
+            "isStateful": true,
+            "startDate": "2018-01-15T12:26:11.747Z",
+            "serviceSpecification": {
+                "id": "1212",
+                "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/1212",
+                "name": "vCPE",
+                "version": "1.0.0",
+                "@type": "ServiceSpecificationRef"
+            },
+            "feature": [
+                {
+                    "id": "Feat1",
+                    "isEnabled": true,
+                    "name": "ElasticBandwith",
+                    "featureCharacteristic": [
+                        {
+                            "name": "isCapped",
+                            "value": true,
+                            "id": "45gh-fg",
+                            "valueType": "boolean",
+                            "@type": "BooleanCharacteristic"
+                        }
+                    ],
+                    "@type":"Feature"
+                }
+            ],
+            "serviceCharacteristic": [
+                {
+                    "id": "452-gh6",
+                    "name": "vCPE",
+                    "valueType": "object",
+                    "value": {
+                        "@type": "vCPE",
+                        "@schemaLocation": "http://my.schemas/vCPE.schema.json",
+                        "vCPE_IP": "193.218.236.21",
+                        "MaxTxRate": 300,
+                        "TransmitPower": "11 dBm",
+                        "maxTream": "OFF"
+                    },
+                    "@type":"ObjectCharacteristic"
+                }
+            ],
+            "serviceRelationship": [
+                {
+                    "relationshipType": "DependentOn",
+                    "serviceRelationshipCharacteristic": [
+                        {
+                            "id": "126",
+                            "name": "CrossRef",
+                            "value": "44-11-h",
+                            "valueType": "string",
+                            "@type":"StringCharacteristic"
+                        }
+               
+                    ],
+                    "service": {
+                        "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/5645",
+                        "id": "5645",
+                        "@type": "ServiceRef",
+                        "@referredType": "Service"
+                    },
+                    "@type":"ServiceRelationship"
+                }
+            ],
+            "supportingService": [
+                {
+                    "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/5885",
+                    "id": "5885",
+                    "@type": "ServiceRef",
+                    "@referredType": "Service"
+                }
+            ],
+            "supportingResource": [
+                {
+                    "id": "6161",
+                    "href": "https://mycsp.com:8080/tmf-api/resourceInventoryManagement/v5/resource/5351",
+                    "name": "GenInfra",
+                    "@referredType": "Resource",
+                    "@type":"ResourceRef"
+                },
+                {
+                    "id": "7171",
+                    "href": "https://mycsp.com:8080/tmf-api/resourceInventoryManagement/v5/resource/7171",
+                    "name": "BNG_MUX",
+                    "@referredType": "Resource",
+                    "@type":"ResourceRef"
+                }
+            ],
+            "relatedParty": [
+                {
+                    "role": "member",
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "partyOrPartyRole": {
+                        "id": "9866",
+                        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9866",
+                        "name": "Sandy Smith",
+                        "@type": "PartyRef",
+                        "@referredType": "Individual"
+                    }
+                }
+            ],
+            "serviceOrderItem": [
+                {
+                    "serviceOrderHref": "https://mycsp.com:8080/tmf-api/serviceOrder/v5/serviceOrder/42",
+                    "serviceOrderId": "42",
+                    "role": "initiator",
+                    "@referredType": "ServiceOrder",
+                    "itemId": "1",
+                    "itemAction": "add",
+                    "@type":"RelatedServiceOrderItem"
+                },
+                {
+                    "serviceOrderHref": "https://mycsp.com:8080/tmf-api/serviceOrder/v5/serviceOrder/896",
+                    "serviceOrderId": "896",
+                    "role": "activation",
+                    "@referredType": "ServiceOrder",
+                    "itemId": "4",
+                    "itemAction": "modify",
+                    "@type":"RelatedServiceOrderItem"
+                }
+            ],
+            "note": [
+                {
+                    "author": "Harvey Poupon",
+                    "date": "2018-01-15T12:26:11.748Z",
+                    "text": "This service was installed automatically, no issues were noted in testing.",
+                    "@type":"Note"
+                }
+            ],
+            "@type": "Service",
+            "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Service/vCPE.schema.json"
+        }
+    },
+    "reportingSystem": {
+        "id": "427",
+        "name": "APP-755",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "149",
+        "name": "APP-78",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ServiceCreateEvent"
+}

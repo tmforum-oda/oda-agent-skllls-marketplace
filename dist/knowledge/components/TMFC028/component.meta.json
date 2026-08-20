@@ -1,0 +1,17 @@
+{
+  "id": "TMFC028",
+  "type": "component",
+  "name": "PartyManagement",
+  "version": "2.1.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC028-PartyManagement/Specification/TMFC028-PartyManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "7716cb8571137be6ec30052aa9bcbcd4157dc519f596243004f97c8503140c1b"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

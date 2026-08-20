@@ -1,0 +1,14 @@
+[
+    {
+        "op": "add",
+        "path": "/resourceCharacteristic",
+        "value":
+        {
+            "@type": "StringCharacteristic",
+            "@baseType": "Characteristic",
+            "name": "sn",
+            "valueType": "string",
+            "value": "181"
+        }
+    }
+]

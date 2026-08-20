@@ -1,0 +1,16 @@
+{
+  "id": "TMF644",
+  "type": "api",
+  "name": "privacy-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF644_Privacy/4.0.0/swagger/TMF644_Privacy_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "071d5facb66893b2b5764d90a8a52a9c71606d37f772ae75f15c93130f3dc43f"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

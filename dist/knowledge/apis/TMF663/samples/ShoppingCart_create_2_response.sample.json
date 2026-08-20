@@ -1,0 +1,182 @@
+{
+  "id": "19501",
+  "href": "https://mycsp.com:8080/tmf-api/shoppingCart/v4/shoppingCart/19501",
+  "@type": "ShoppingCart",
+  "cartItem": [
+    {
+      "id": "1203-100",
+      "action": "add",
+      "quantity": 1,
+      "status": "active",
+      "@type":"CartItem",
+      "itemTotalPrice": [
+        {
+          "description": "Total Recurring Price.",
+          "name": "Monthly Price",
+          "priceType": "recurring",
+          "recurringChargePeriod": "month",
+          "@type": "CartPrice",
+          "price": {
+            "taxRate": 10,
+            "dutyFreeAmount": {
+              "unit": "EUR",
+              "value": 29
+            },
+            "taxIncludedAmount": {
+              "unit": "EUR",
+              "value": 31.9
+            },
+            "@type": "Price"
+          },
+          "priceAlteration": [
+            {
+              "@type": "PriceAlteration",
+              "applicationDuration": 3,
+              "description": "First 3 month get 50% off",
+              "name": "WelcomeDiscount",
+              "priceType": "recurring",
+              "priority": 1,
+              "recurringChargePeriod": "month",
+              "price": {
+                "percentage": 50,
+                "@type": "Price"
+
+              }
+            }
+          ]
+        }
+      ],
+      "itemPrice": [
+        {
+          "description": "Total Recurring Price.",
+          "name": "Monthly Price",
+          "priceType": "recurring",
+          "recurringChargePeriod": "month",
+          "unitOfMeasure": "string",
+          "@type": "CartPrice",
+          "price": {
+            "taxRate": 10,
+            "dutyFreeAmount": {
+              "unit": "EUR",
+              "value": 29
+            },
+            "taxIncludedAmount": {
+              "unit": "EUR",
+              "value": 31.9
+            },
+            "@type": "Price"
+          },
+          "priceAlteration": [
+              {
+                "@type": "PriceAlteration",
+                "applicationDuration": 3,
+                "description": "First 3 month get 50% off",
+                "name": "WelcomeDiscount",
+                "priceType": "recurring",
+                "priority": 1,
+                "recurringChargePeriod": "month",
+                "unitOfMeasure": "string",
+                "price": {
+                  "percentage": 50,
+                  "@type": "Price"
+                }
+              }
+          ],
+          "productOfferingPrice": {
+            "id": "1788",
+            "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOfferingPrice/1788",
+            "name": "Recurring Monthly Price for Talk Simple 25",
+            "@type": "ProductOfferingPriceRef",
+            "@referredType" :"ProductOfferingPrice"
+          }
+        }
+      ],
+      "itemTerm": [
+        {
+          "description": "Tariff plan 12 Months commitment",
+          "name": "12Months",
+          "@type": "CartTerm",
+          "duration": {
+            "amount": 12,
+            "units": "month"
+          }
+        }
+      ],
+      "note": [
+        {
+          "id": "88",
+          "author": "Jack Smith",
+          "date": "2019-05-28T12:02:41.791Z",
+          "text": "This is a gift",
+          "@type": "Note"
+        }
+      ],
+      "product": {
+        "name": "Talk Simple 25",
+        "@type": "Product",
+        "productCharacteristic": [
+          {
+          "name": "TEL_MSISDN",
+          "valueType": "string",
+          "value": "415 279 7439",
+          "@type":" StringCharacteristic"
+          }
+        ]
+      },
+      "productOffering": {
+        "id": "142456",
+        "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOffering/142456",
+        "name": "Talk Simple 25",
+        "@referredType": "ProductOffering",
+        "@type": "ProductOfferingRef"
+      }
+    }
+  ],
+  "cartTotalPrice": [
+    {
+      "description": "Total Recurring Price.",
+      "name": "Monthly Price",
+      "priceType": "recurring",
+      "recurringChargePeriod": "month",
+      "@type": "CartPrice",
+      "price": {
+        "taxRate": 10,
+        "dutyFreeAmount": {
+          "unit": "EUR",
+          "value": 29
+        },
+        "taxIncludedAmount": {
+          "unit": "EUR",
+          "value": 31.9
+        },
+        "@type": "CartPrice"
+      },
+      "priceAlteration": [
+        {
+          "@type": "PriceAlteration",
+          "applicationDuration": 3,
+          "description": "Total Discount",
+          "name": "WelcomeDiscount",
+          "priceType": "recurring",
+          "priority": 1,
+          "recurringChargePeriod": "month",
+          "price": {
+            "percentage": 50,
+            "@type": "Price"
+          }
+        }
+      ]
+    }
+  ],
+  "contactMedium": [
+    {
+      "@type": "EmailContactMedium",
+      "preferred": true,
+      "emailAddress": "JackSmith@mail.com"
+    }
+  ],
+    "validFor": {
+      "endDateTime": "2022-05-28T12:02:41.791Z",
+      "startDateTime": "2021-08-28T12:02:41.791Z"
+  }
+}

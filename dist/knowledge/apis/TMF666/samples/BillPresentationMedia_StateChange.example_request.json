@@ -1,0 +1,34 @@
+{
+    "correlationId": "fe01e099-6931",
+    "description": "BillPresentationMediaStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "463e-90fc-7f2accb4b802",
+    "eventTime": "2022-08-25T12:23:44.202Z",
+    "eventType": "BillPresentationMediaStateChangeEvent",
+    "priority": "5",
+    "timeOcurred": "2022-08-25T12:23:40.247Z",
+    "title": "BillPresentationMediaStateChangeEvent",
+    "event": {
+        "billPresentationMedia": {
+            "@type": "BillPresentationMedia",
+            "description": "This  bill format ...", 
+            "href": "https://host:port/tmf-api/accountManagement/v5/BillPresentationMedia/8718", 
+            "id": "8718", 
+            "name": "Detailed invoice"
+        }
+    },
+    "reportingSystem": {
+        "id": "855",
+        "name": "APP-400",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "92",
+        "name": "APP-105",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "BillPresentationMediaStateChangeEvent"
+}

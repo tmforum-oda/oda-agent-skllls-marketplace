@@ -1,0 +1,30 @@
+{
+    "conformanceComparator": ">", 
+    "conformanceTarget": "32",
+    "conformancePeriod": 
+    {
+        "endDateTime": "2021-03-00T00:00:00+01:00",
+        "startDateTime": "2020-03-00T00:00:00+01:00" 
+    },
+    "graceTimes": "3",
+    "name": "Upload bandwidth", 
+    "thresholdTarget": "28", 
+    "toleranceTarget": "5", 
+    "serviceLevelObjectiveConsequence": [ 
+        {
+            "prescribedAction": "https://service.com/vCPEBandwithAction", 
+            "validFor": {
+                "endDateTime": "2021-03-00T00:00:00+01:00",
+                "startDateTime": "2020-03-00T00:00:00+01:00" 
+            }
+        },
+        {
+            "prescribedAction": "https://service.com/AccessBandwithAction", 
+            "validFor": 
+            {
+                "endDateTime": "2021-03-00T00:00:00+01:00",
+                "startDateTime": "2020-03-00T00:00:00+01:00" 
+            }
+        }
+    ]
+}

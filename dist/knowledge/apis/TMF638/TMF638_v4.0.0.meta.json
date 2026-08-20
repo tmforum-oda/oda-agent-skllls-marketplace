@@ -1,0 +1,16 @@
+{
+  "id": "TMF638",
+  "type": "api",
+  "name": "service-inventory-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "eab9a3bbcbe1d0f25905563a2298d899811d318006a1c5942693db206620223f"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

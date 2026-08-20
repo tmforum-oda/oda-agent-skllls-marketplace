@@ -1,0 +1,32 @@
+{
+  "@type": "AppointmentStatusChangeEvent",
+  "correlationId": "ea37bbca-4316",
+  "description": "AppointmentStatusChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4e33-8e7a-3d6ec324d6c0",
+  "eventTime": "2026-03-26T08:49:14.288Z",
+  "eventType": "AppointmentStatusChangeEvent",
+  "priority": "4",
+  "title": "AppointmentStatusChangeEvent",
+  "event": {
+    "appointment": {
+      "id": "22",
+      "href": "https://serverRoot/tmf-api/appointment/v5/appointment/22",
+      "state": "completed",
+      "@type": "Appointment"
+    }
+  },
+  "reportingSystem": {
+    "id": "275",
+    "name": "APP-665",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "280",
+    "name": "APP-929",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event"
+}

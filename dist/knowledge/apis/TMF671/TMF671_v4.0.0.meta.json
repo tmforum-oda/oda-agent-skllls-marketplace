@@ -1,0 +1,16 @@
+{
+  "id": "TMF671",
+  "type": "api",
+  "name": "promotion-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF671_Promotion/4.0.0/swagger/TMF671_Promotion_Management_API_v4.0.0_beta_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "74214ce97dc858b31215a93a98dea747ca56f625dbf3e4d07549660e8958c4b7"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

@@ -1,0 +1,12 @@
+[
+    {
+        "op": "replace",
+        "path": "$.resourceSpecCharacteristic[?(@.name == 'cc')].description",
+        "value": "Phone Number Country Code (CC)"
+    },
+    {
+        "op": "replace",
+        "path": "$.resourceSpecCharacteristic[?(@.name == 'ndc')].description",
+        "value": "Phone Number National Destination Code (NDC)"
+    }
+]

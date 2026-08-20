@@ -1,0 +1,16 @@
+{
+  "id": "TMF635",
+  "type": "api",
+  "name": "usage-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF635_Usage/4.0.0/swagger/TMF635_Usage_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "e0d607c44b51078311de70cbc6b96429af21016cd6ff09ace4549e4f2d3ce14c"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

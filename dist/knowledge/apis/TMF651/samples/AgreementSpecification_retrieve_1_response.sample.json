@@ -1,0 +1,34 @@
+{
+    "@type": "AgreementSpecification",
+    "href": "https://mycsp.com:8080/tmf-api/agreementManagement/v5/agreementSpecification/1140", 
+    "id": "1140", 
+    "name": "Moon Agreement Template", 
+    "lifecycleStatus": "Approved", 
+    "lastUpdate": "2018-06-05T00:00:00Z",
+    "version": "2.0", 
+    "validFor": {
+        "startDateTime": "2018-06-12T00:00:00Z", 
+        "endDateTime": "2019-01-11T00:00:00Z"
+    }, 
+    "specificationCharacteristic": [
+        {
+    	    "@type": "CharacteristicSpecification",
+            "name": "fidelityProgram",
+            "configurable": true,
+            "valueType": "string"
+        }
+    ], 
+    "relatedParty": [
+        {
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "role": "agreement expert",
+            "partyOrPartyRole": {
+                "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/2778", 
+                "id": "2778", 
+                "name": "Jean Smith", 
+                "@type": "PartyRef",
+                "@referredType": "Organization"
+            }
+        }
+    ]
+}

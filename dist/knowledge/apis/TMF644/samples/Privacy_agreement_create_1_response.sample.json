@@ -1,0 +1,128 @@
+{
+  "id": "6810",
+  "href": "http://serverlocation:port/privacyManagement/v5/partyPrivacyAgreement/6810",
+  "@type" : "PartyPrivacyAgreement",
+  "agreementType": "commercial",
+  "description": "This agreements is between the individual user annd the service provider ...",
+  "relatedDocument": [
+    {
+      "@type": "RelatedDocumentRefOrValue",
+      "role": "string",
+      "document": {
+        "@type": "DocumentRef",
+        "@referredType": "Document",
+        "href": "http://serverlocation:port/document/v5/document/1999",
+        "id": "1999",
+        "name" : "Agreeemnt document"
+      }
+    }
+  ] ,   
+  "initialDate": "2019-08-06T09:56:38.679Z",
+  "name": "Customer mass market privacy agreement",
+  "statementOfIntent": "Agreement on customer mass market privacy profile",
+  "status": "initialized",
+  "version": "1",
+  "agreementItem": [
+    {
+      "id": "6810_988",
+      "@type" : "ProductAgreementItem",
+      "productOffering": [
+        {
+          "id": "9559",
+          "href": "https://host:port/productCatalog/v5/productOffering/bundledProductOffering/7120",
+          "name": "Magic Offer",
+          "@type": "ProductOfferingRef"
+        }
+      ],
+      "termOrCondition": [
+        {
+          "id": "8905",
+          "description": "This agreement term or condition",
+          "validFor": {
+            "endDateTime": "2019-09-06T09:56:38.679Z",
+            "startDateTime": "2020-09-06T09:56:38.679Z"
+          },
+          "@type": "AgreementTermOrCondition"
+        }
+      ]
+     }
+  ],
+  "agreementPeriod": {
+    "endDateTime": "2020-09-06T09:56:38.679Z",
+    "startDateTime": "2019-09-06T09:56:38.679Z"
+  },
+  "agreementSpecification": {
+    "id": "8139",
+    "href": "http://serverlocation:port/agreementManagement/v5/agreementSpecification/8139",
+    "description": "This agreement specification defines the rules of privacy to be followed by each party",
+    "name": "General Agreement Specification",
+    "@type": "AgreementSpecificationRef"
+  },
+  "agreementRelationship": [
+    {
+      "@type" : "AgreementRelationship",
+      "id": "987654",
+      "href": "http://serverlocation:port/privacyManagement/v5/partyPrivacyAgreement/987654",
+      "name": "General Privacy Agreement",
+      "relationshipType": "addendum "
+    }
+  ],
+  
+  "relatedParty": [
+    {
+      "role": "customer agent",
+      "@type": "PartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "5467",
+        "href": "http://serverlocation:port/partyManagement/v5/individual/5467",
+        "name" : "Jack Simion",
+        "@type": "PartyRef",
+        "@referredType": "Individual"          
+      }
+    }
+  ],
+  "engagedParty" :[
+    {
+      "id": "5467",
+      "href": "http://serverLocation:port/partyManagement/v5/individual/5467",
+      "name": "Bob Smith",
+      "@type" : "PartyRef",
+      "@referredType": "Individual"
+    }
+  ],
+  "partyPrivacyProfile": [
+    {
+      "@type":"partyPrivacyProfileRef",
+      "id": "103",
+      "href": "https://mycsp.com:8080/tmf-api/privacyManagement/v5/partyPrivacyProfile/103",
+      "name": "individual Consents"
+    }
+  ],
+  "partyPrivacyProfileCharacteristic": [
+    {
+      "@type": "partyPrivacyProfileCharacteristic",
+      "characterisitc": {
+        "id": "43",
+        "name": "emailAddress",
+        "valueType": "string",
+        "value": "Yes",
+        "@type": "StringCharacteristic"
+      },        
+      "privacyUsagePurpose": "ADMIN",
+      "relatedParty": [
+        {
+          "role": "Vendor",
+          "@type" : "PartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "8632",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/8632",
+            "name": "John Doe",
+            "@type" : "PartyRef",
+            "@referredType": "Individual"
+          } 
+          
+        }
+      ]
+    }
+  ]
+}

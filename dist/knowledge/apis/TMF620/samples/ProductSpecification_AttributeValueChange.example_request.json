@@ -1,0 +1,52 @@
+{
+    "correlationId": "4eeb06e2-8210",
+    "description": "ProductSpecificationAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "46c2-8e2b-0182de193a9c",
+    "eventTime": "2022-08-25T12:17:59.613Z",
+    "eventType": "ProductSpecificationAttributeValueChangeEvent",
+    "priority": "2",
+    "timeOcurred": "2022-08-25T12:17:57.413Z",
+    "title": "ProductSpecificationAttributeValueChangeEvent",
+    "event": {
+        "productSpecification": {
+            "href": "http://servername/productSpecification/9881",
+            "id": "9881",
+            "@type": "ProductSpecification",
+            "attachment": [
+                {
+                    "id": "22",
+                    "href": "https://mycsp.com:8080/tmf-api/documentManagement/v5/attachment/22",
+                    "name": "Product Picture",
+                    "mimeType": "image/jpeg",
+                    "url": "https://mycsp.com:7070/docloader?docnum=774451234",
+                    "@referredType": "Attachment",
+                    "@type": "AttachmentRefOrValue"
+                },
+                {
+                    "id": "33",
+                    "href": "https://mycsp.com:8080/tmf-api/documentManagement/v5/attachment/22",
+                    "name": "Product Manual",
+                    "mimeType": "application/pdf",
+                    "url": "https://mycsp.com:7070/docloader?docnum=774454321",
+                    "@referredType": "Attachment",
+                    "@type": "AttachmentRefOrValue"
+                }
+            ]
+        }
+    },
+    "reportingSystem": {
+        "id": "868",
+        "name": "APP-394",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "372",
+        "name": "APP-92",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ProductSpecificationAttributeValueChangeEvent"
+}

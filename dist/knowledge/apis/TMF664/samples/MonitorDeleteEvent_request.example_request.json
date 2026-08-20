@@ -1,0 +1,33 @@
+{
+  "@type": "MonitorDeleteEvent",
+  "id": "evt-mon-004",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-mon-004",
+  "correlationId": "mon-90cfc73d",
+  "description": "MonitorDeleteEvent illustration",
+  "eventId": "00004",
+  "eventTime": "2024-08-25T12:45:27.121Z",
+  "eventType": "MonitorDeleteEvent",
+  "timeOccurred": "2024-08-25T12:45:26.823Z",
+  "title": "MonitorDeleteEvent",
+  "event": {
+    "monitor": {
+      "@type": "Monitor",
+      "id": "3bc72846-3516-4504-86ce-63a4954f7c00",
+      "href": "/resourceFunctionActivation/v5/monitor/3bc72846-3516-4504-86ce-63a4954f7c00"
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

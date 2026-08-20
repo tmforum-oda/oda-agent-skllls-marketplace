@@ -1,0 +1,88 @@
+{
+    "@type": "PartyRoleSpecificationCreateEvent",
+    "@baseType": "Event",
+    "correlationId": "1ccd2737-msk9",
+    "domain": "Commercial",
+    "title": "PartyRoleSpecificationCreateEvent",
+    "description": "PartyRoleSpecificationCreateEvent illustration",
+    "priority": "2",
+    "timeOccurred": "2022-11-24T15:02:24.942Z",
+    "source": {
+        "@type": "ReportingResource",
+        "id": "21",
+        "name": "APP-422",
+        "@referredType": "LogicalResource"
+    },
+    "reportingSystem": {
+        "@type": "ReportingResource",
+        "id": "999",
+        "name": "APP-28",
+        "@referredType": "LogicalResource"
+    },
+    "eventId": "463a-a791-3572340bjcu8",
+    "eventTime": "2022-11-24T15:02:28.204Z",
+    "eventType": "PartyRoleSpecificationCreateEvent",
+    "event": {
+        "partyRoleSpecification": {
+                "@type": "PartyRoleSpecification",
+                "href": "https:/host:port/tmf-api/partyRoleManagement/v4/partyRoleSpecification/5713",
+                "id": "5713",
+                "name": "Catalog administration",
+                "partyRoleSpecificationCharacteristic": [
+                    {
+                        "@type": "CharacteristicSpecification",
+                        "id": "1",
+                        "name": "CatalogDomain",
+                        "valueType": "string",
+                        "characteristicValueSpecification": [
+                            {
+                                "@type": "StringCharacteristicValueSpecification",
+                                "value": "mobile catalog",
+                                "valueType": "string"
+                            },
+                            {
+                                "@type": "StringCharacteristicValueSpecification",
+                                "value": "internet/TV catalog",
+                                "valueType": "string"
+                            },
+                            {
+                                "@type": "StringCharacteristicValueSpecification",
+                                "value": "B2B catalog",
+                                "valueType": "string"
+                            }
+                        ]
+                    }
+                ],
+                "relatedParty": [
+                    {
+                        "@type": "RelatedPartyOrPartyRole",
+                        "role": "Rights&access manager",
+                        "partyOrPartyRole":
+                            {
+                                "@type": "PartyRef",
+                                "href": "https:/host:port/tmf-api/partyManagement/v4/individual/62ac-01fb",
+                                "id": "62ac-01fb",
+                                "name": "John Doe",
+                                "@referredType": "Individual"
+                            }
+                    }
+                ],
+                "permissionSpecificationSet": [
+                    {
+                        "@type": "PermissionSpecificationSetRef",
+                        "href": "https:/host:port/tmf-api/userRolePermissionManagement/v4/permissionSpecificationSet/2473-dc10",
+                        "id": "2473-dc10"
+                    },
+                    {
+                        "@type": "PermissionSpecificationSetRef",
+                        "href": "https:/host:port/tmf-api/userRolePermissionManagement/v4/permissionSpecificationSet/920e-01df",
+                        "id": "920e-01df"
+                    }
+                ],
+                "lifecycleStatus": "validationInProgress",
+                "validFor": {
+                    "startDateTime": "2022-06-01T00:00:00.000Z"
+                }
+            }
+        }
+}

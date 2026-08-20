@@ -1,0 +1,7 @@
+{
+    "contentType": "application/json",
+    "path": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/category",
+    "query": "category.id=7757",
+    "url": "ftp://ftp.mycsp.com/productCatalogManagement/1866.json",
+    "@type": "ExportJob"
+}

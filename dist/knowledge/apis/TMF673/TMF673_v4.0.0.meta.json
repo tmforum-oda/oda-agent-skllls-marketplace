@@ -1,0 +1,16 @@
+{
+  "id": "TMF673",
+  "type": "api",
+  "name": "geographic-address-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "5d7a2ef4b5cea9a9b6bd1957356930c880974c5ec0c9d6911c60b5a004891f0d"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

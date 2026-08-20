@@ -1,0 +1,47 @@
+{
+    "correlationId": "599d9b37-5cdc",
+    "description": "ServiceLevelSpecificationCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4be7-9fe9-7296d7dfc7cf",
+    "eventTime": "2022-08-25T12:22:27.299Z",
+    "eventType": "ServiceLevelSpecificationCreateEvent",
+    "priority": "3",
+    "timeOcurred": "2022-08-25T12:22:20.548Z",
+    "title": "ServiceLevelSpecificationCreateEvent",
+    "event": {
+        "serviceLevelSpecification": {
+            "href": "http://servername/serviceLevelSpecification/1112",
+            "id": "1112",
+            "description": "Maximum download/upload speed service level",
+            "name": "Access bandwidth",
+            "validFor": {
+                "endDateTime": "2021-05-00T00:00:00+01:00",
+                "startDateTime": "2020-03-00T00:00:00+01:00"
+            },
+            "relatedServiceLevelObjective": [
+                {
+                    "href": "https://host:port/tmf-api/serviceQualityManagement/v4/serviceLevelObjective/3112",
+                    "id": "3112"
+                },
+                {
+                    "href": "https://host:port/tmf-api/serviceQualityManagement/v4/serviceLevelObjective/3113",
+                    "id": "3113"
+                }
+            ]
+        }
+    },
+    "reportingSystem": {
+        "id": "973",
+        "name": "APP-88",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "245",
+        "name": "APP-506",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ServiceLevelSpecificationCreateEvent"
+}

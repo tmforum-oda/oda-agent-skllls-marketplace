@@ -1,0 +1,18 @@
+{
+  "siteCategory": "Warehouse",
+  "calendar": [
+    {
+      "@type": "CalendarPeriod",
+      "day": "weekdays",
+      "timeZone": "+00:00",
+      "hourPeriod": [
+        {
+          "endHour": "22:00",
+          "startHour": "07:00"
+        }
+      ],
+      "status": "open"
+    }
+  ],
+  "@type": "GeographicSite"
+}

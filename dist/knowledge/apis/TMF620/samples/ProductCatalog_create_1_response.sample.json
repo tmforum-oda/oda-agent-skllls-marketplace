@@ -1,0 +1,30 @@
+{
+    "id": "3830", 
+    "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/Catalog/3830", 
+    "name": "Catalog Wholesale Business", 
+    "description": "This catalog describes Product Offerings and technical specifications intended to address the wholesale business segment.",
+    "catalogType": "ProductCatalog", 
+    "version": "1.0", 
+    "validFor": {
+        "startDateTime": "2020-08-29T00:00:00Z", 
+        "endDateTime": "2024-03-25T00:00:00Z"
+    }, 
+   "lastUpdate": "2020-08-27T00:00:00Z", 
+   "lifecycleStatus": "Active",
+   "relatedParty": [
+        {
+            "role": "vendor",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "id": "3426", 
+                "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/organization/3426", 
+                "name": "Broadly Broad Ltd", 
+                "@type": "PartyRef",
+                "@referredType": "Organization"
+            }
+        }
+	],
+   "category": [
+    ],
+    "@type": "Catalog"
+}

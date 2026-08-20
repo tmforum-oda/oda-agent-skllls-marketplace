@@ -1,0 +1,362 @@
+{
+  "@type": "TroubleTicketCreateEvent",
+  "@baseType": "MGNOO",
+  "@schemaLocation": "YJEDX",
+  "href": "MTEXW",
+  "id": "CCDHH",
+  "correlationId": "PALEV",
+  "domain": "NUVRK",
+  "title": "ECURP",
+  "description": "LEPGY",
+  "priority": "QXDEE",
+  "timeOccurred": "2025-05-05T12:23:35Z",
+  "source": {
+    "@type": "BJSXY",
+    "@baseType": "EXXLX",
+    "@schemaLocation": "TMWGO",
+    "href": "SQTXY",
+    "id": "EVOXQ",
+    "name": "NXGOB",
+    "@referredType": "FIVCV"
+  },
+  "reportingSystem": {
+    "@type": "ETAVV",
+    "@baseType": "JYATV",
+    "@schemaLocation": "XSVLG",
+    "href": "RYBGR",
+    "id": "LXMXU",
+    "name": "JPHUQ",
+    "@referredType": "YSKTD"
+  },
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "@baseType": "TBFUA",
+      "@schemaLocation": "SMLPH",
+      "role": "IKDHQ",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "@baseType": "LLFEJ",
+        "@schemaLocation": "EPPLD",
+        "href": "HHGQS",
+        "id": "PBRIU",
+        "name": "CNGSV",
+        "@referredType": "FOYOT"
+      }
+    }
+  ],
+  "analyticCharacteristic": [
+    {
+      "@type": "BooleanArrayCharacteristic",
+      "@baseType": "PJYQO",
+      "@schemaLocation": "QQJHN",
+      "id": "QGBFG",
+      "name": "QYDGG",
+      "valueType": "DOYTH",
+      "characteristicRelationship": [
+        {
+          "@type": "CharacteristicRelationship",
+          "@baseType": "WJKRX",
+          "@schemaLocation": "LDOOE",
+          "id": "PMBLV",
+          "relationshipType": "RALDQ"
+        }
+      ],
+      "value": [
+        false,
+        true
+      ]
+    },
+    {
+      "@type": "BooleanArrayCharacteristic",
+      "@baseType": "LATHA",
+      "@schemaLocation": "HRIWV",
+      "id": "KEFPW",
+      "name": "EVSDK",
+      "valueType": "LAUVE",
+      "characteristicRelationship": [
+        {
+          "@type": "CharacteristicRelationship",
+          "@baseType": "TYNPL",
+          "@schemaLocation": "PDBTF",
+          "id": "PJEFC",
+          "relationshipType": "ISIMH"
+        }
+      ],
+      "value": [
+        false
+      ]
+    }
+  ],
+  "eventId": "SOVHF",
+  "eventTime": "2025-05-05T12:23:35Z",
+  "eventType": "CXJAD",
+  "event": {
+    "troubleTicket": {
+      "@type": "TroubleTicket",
+      "@baseType": "IOSLD",
+      "@schemaLocation": "FQMNX",
+      "href": "LJWMS",
+      "id": "WLIAH",
+      "name": "UAGHM",
+      "description": "FFNTR",
+      "severity": "PRETR",
+      "ticketType": "HQXCG",
+      "attachment": [
+        {
+          "@type": "Attachment",
+          "@baseType": "KTVDG",
+          "@schemaLocation": "IIOSS",
+          "href": "DYIQF",
+          "id": "HCDXE",
+          "name": "WEIGQ",
+          "description": "WCMNY",
+          "url": "XOVTW",
+          "content": "HBWEM",
+          "size": {
+            "amount": 545,
+            "units": "VTKHI"
+          },
+          "validFor": {
+            "startDateTime": "2025-05-05T12:23:35Z",
+            "endDateTime": "2025-05-05T12:23:35Z"
+          },
+          "attachmentType": "DHGVA",
+          "mimeType": "VBLEV"
+        },
+        {
+          "@type": "Attachment",
+          "@baseType": "AIMEI",
+          "@schemaLocation": "WPVLO",
+          "href": "DEMOR",
+          "id": "VCWJV",
+          "name": "CJRMJ",
+          "description": "FTBFH",
+          "url": "CVJRA",
+          "content": "PEWQR",
+          "size": {
+            "amount": 424,
+            "units": "TEVFQ"
+          },
+          "validFor": {
+            "startDateTime": "2025-05-05T12:23:35Z",
+            "endDateTime": "2025-05-05T12:23:35Z"
+          },
+          "attachmentType": "UCTBF",
+          "mimeType": "SJFIT"
+        }
+      ],
+      "channel": {
+        "@type": "ChannelRef",
+        "@baseType": "XHOAW",
+        "@schemaLocation": "VIUKY",
+        "href": "GMXAQ",
+        "id": "PHFLO",
+        "name": "FSBBY",
+        "@referredType": "ASFFO"
+      },
+      "creationDate": "2025-05-05T12:23:35Z",
+      "requestedResolutionDate": "2025-05-05T12:23:35Z",
+      "expectedResolutionDate": "2025-05-05T12:23:35Z",
+      "resolutionDate": "2025-05-05T12:23:35Z",
+      "externalIdentifier": [
+        {
+          "@type": "ExternalIdentifier",
+          "@baseType": "SFUHC",
+          "@schemaLocation": "WATEM",
+          "owner": "OFNSI",
+          "externalIdentifierType": "ICRVN",
+          "id": "TBQYI"
+        },
+        {
+          "@type": "ExternalIdentifier",
+          "@baseType": "BESVU",
+          "@schemaLocation": "NBHMU",
+          "owner": "NJWBC",
+          "externalIdentifierType": "XOBMF",
+          "id": "WHDJB"
+        }
+      ],
+      "lastUpdate": "2025-05-05T12:23:35Z",
+      "note": [
+        {
+          "@type": "Note",
+          "@baseType": "XCKDJ",
+          "@schemaLocation": "MIEXF",
+          "id": "QOKPV",
+          "author": "SKVQW",
+          "date": "2025-05-05T12:23:35Z",
+          "text": "LQERS"
+        },
+        {
+          "@type": "Note",
+          "@baseType": "FTSMD",
+          "@schemaLocation": "GOBYB",
+          "id": "NDMYX",
+          "author": "NGJID",
+          "date": "2025-05-05T12:23:35Z",
+          "text": "GUYEG"
+        }
+      ],
+      "priority": "OMNAD",
+      "relatedEntity": [
+        {
+          "@type": "RelatedEntity",
+          "@baseType": "LCGNA",
+          "@schemaLocation": "EJMKN",
+          "role": "ILAKE",
+          "entity": {
+            "@type": "CEPEW",
+            "@baseType": "QDPBL",
+            "@schemaLocation": "EMSWA",
+            "href": "VJABE",
+            "id": "LVXIG",
+            "name": "CHTSA",
+            "@referredType": "EGDDO"
+          }
+        }
+      ],
+      "relatedParty": [
+        {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "@baseType": "SQJYY",
+          "@schemaLocation": "UPPXM",
+          "role": "VORTU",
+          "partyOrPartyRole": {
+            "@type": "PartyRef",
+            "@baseType": "SQHUY",
+            "@schemaLocation": "QCCYS",
+            "href": "TTEMX",
+            "id": "DCNXW",
+            "name": "CUVXO",
+            "@referredType": "VQQAI"
+          }
+        },
+        {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "@baseType": "DKQIX",
+          "@schemaLocation": "YSRWL",
+          "role": "LUTLF",
+          "partyOrPartyRole": {
+            "@type": "PartyRef",
+            "@baseType": "YLTED",
+            "@schemaLocation": "BKWYO",
+            "href": "ECVYC",
+            "id": "PJHRD",
+            "name": "TTMFN",
+            "@referredType": "IFFWS"
+          }
+        }
+      ],
+      "status": "acknowledged",
+      "statusChangeDate": "2025-05-05T12:23:35Z",
+      "statusChangeReason": "TGJBB",
+      "statusChangeHistory": [
+        {
+          "@type": "StatusChange",
+          "@baseType": "MJUTN",
+          "@schemaLocation": "JVNNE",
+          "statusChangeDate": "2025-05-05T12:23:35Z",
+          "statusChangeReason": "OWNRJ",
+          "status": "acknowledged"
+        },
+        {
+          "@type": "StatusChange",
+          "@baseType": "OBSPM",
+          "@schemaLocation": "USBSO",
+          "statusChangeDate": "2025-05-05T12:23:35Z",
+          "statusChangeReason": "COXIF",
+          "status": "acknowledged"
+        }
+      ],
+      "troubleTicketRelationship": [
+        {
+          "@type": "TroubleTicketRelationship",
+          "@baseType": "QOEKV",
+          "@schemaLocation": "AYOPH",
+          "href": "DMYTU",
+          "id": "BEFEI",
+          "name": "RDQDL",
+          "@referredType": "LBBKJ",
+          "relationshipType": "BGSTP"
+        },
+        {
+          "@type": "TroubleTicketRelationship",
+          "@baseType": "HIOUK",
+          "@schemaLocation": "NUFUV",
+          "href": "MBYQL",
+          "id": "UEBQG",
+          "name": "MJIRI",
+          "@referredType": "ETWEQ",
+          "relationshipType": "IFMFD"
+        }
+      ],
+      "troubleTicketSpecification": {
+        "@type": "TroubleTicketSpecificationRef",
+        "@baseType": "GVTCD",
+        "@schemaLocation": "NHWUR",
+        "href": "FMIJR",
+        "id": "NRKOI",
+        "name": "PBVMU",
+        "@referredType": "MNBYT",
+        "version": "HMNEE"
+      },
+      "troubleTicketCharacteristic": [
+        {
+          "@type": "BooleanArrayCharacteristic",
+          "@baseType": "TFQDR",
+          "@schemaLocation": "XCCUF",
+          "id": "JUDEB",
+          "name": "KMKCF",
+          "valueType": "IDIOI",
+          "characteristicRelationship": [
+            {
+              "@type": "CharacteristicRelationship",
+              "@baseType": "RGVMJ",
+              "@schemaLocation": "MPKTA",
+              "id": "ORRNI",
+              "relationshipType": "SUPJT"
+            },
+            {
+              "@type": "CharacteristicRelationship",
+              "@baseType": "HLEMQ",
+              "@schemaLocation": "WMDBJ",
+              "id": "MGVEM",
+              "relationshipType": "VNRAJ"
+            }
+          ],
+          "value": [
+            true
+          ]
+        },
+        {
+          "@type": "BooleanArrayCharacteristic",
+          "@baseType": "IMSRR",
+          "@schemaLocation": "ENMEJ",
+          "id": "IWJKH",
+          "name": "HQWMF",
+          "valueType": "YAMEN",
+          "characteristicRelationship": [
+            {
+              "@type": "CharacteristicRelationship",
+              "@baseType": "RJUEO",
+              "@schemaLocation": "TBCXG",
+              "id": "PRSRD",
+              "relationshipType": "LXJHW"
+            },
+            {
+              "@type": "CharacteristicRelationship",
+              "@baseType": "ECOHW",
+              "@schemaLocation": "EHRJT",
+              "id": "OBXOD",
+              "relationshipType": "PIQNE"
+            }
+          ],
+          "value": [
+            true
+          ]
+        }
+      ]
+    }
+  }
+}

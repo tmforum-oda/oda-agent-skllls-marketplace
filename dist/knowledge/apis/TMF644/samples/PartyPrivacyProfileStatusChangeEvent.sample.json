@@ -1,0 +1,33 @@
+{
+    "correlationId": "06b52b7a-ecfe",
+    "description": "PartyPrivacyProfileStatusChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "45bc-8937-fe1bc98c7099",
+    "eventTime": "2022-08-25T12:20:32.693Z",
+    "eventType": "PartyPrivacyProfileStatusChangeEvent",
+    "priority": "3",
+    "timeOcurred": "2022-08-25T12:20:26.936Z",
+    "title": "PartyPrivacyProfileStatusChangeEvent",
+    "event": {
+        "partyPrivacyProfile": {
+            "id": "109",
+            "href": "http://servername//tmf-api/privacyManagement/v5/partyPrivacyProfile/109",
+            "@type" : "PartyPrivacyProfile",
+            "status": "retired"           
+        }
+    },
+    "reportingSystem": {
+        "id": "665",
+        "name": "APP-224",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "403",
+        "name": "APP-686",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PartyPrivacyProfileStatusChangeEvent"
+}

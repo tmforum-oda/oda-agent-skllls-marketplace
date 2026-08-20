@@ -1,0 +1,45 @@
+{
+  "correlationId": "e7e44c9a-64f5",
+  "description": "CheckServiceQualificationAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "483f-800d-f34613c8d3e2",
+  "eventTime": "2023-08-25T12:20:45.443Z",
+  "eventType": "CheckServiceQualificationAttributeValueChangeEvent",
+  "priority": "1",
+  "timeOccurred": "2023-08-25T12:20:42.512Z",
+  "title": "CheckServiceQualificationAttributeValueChangeEvent",
+  "event": {
+    "checkServiceQualification": {
+      "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/checkServiceQualification/44",
+      "id": "44",
+      "@type": "CheckServiceQualification",
+      "relatedParty": [
+        {
+          "role": "Buyer contact",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "456",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+            "name": "Ross",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          }
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "768",
+    "name": "APP-897",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "276",
+    "name": "APP-819",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CheckServiceQualificationAttributeValueChangeEvent"
+}

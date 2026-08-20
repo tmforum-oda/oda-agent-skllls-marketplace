@@ -1,0 +1,8 @@
+{
+  "@type": "PermissionSpecification",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-713e2adc",
+  "id": "ps-713e2adc",
+  "name": "all:readwrite",
+  "function": "all",
+  "action": "ReadWrite"
+}

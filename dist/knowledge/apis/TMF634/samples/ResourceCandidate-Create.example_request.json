@@ -1,0 +1,36 @@
+{
+    "correlationId": "7dd133ee-6c9a",
+    "description": "ResourceCandidateCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4876-8fbb-4d44dc98fd57",
+    "eventTime": "2017-08-09T00:00:00.000Z",
+    "eventType": "ResourceCandidateCreateEvent",
+    "priority": "4",
+    "timeOcurred": "2017-08-09T00:00:00.000Z",
+    "title": "ResourceCandidateCreateEvent",
+    "event": {
+        "resourceCandidate": {
+            "id": "7479", 
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCandidate/7479", 
+            "name": "Virtual Storage Medium", 
+            "description": "This resource candidate makes the virtual storage medium specification available in the cloud catalog", 
+            "lastUpdate": "2017-08-09T00:00:00.000Z", 
+            "lifecycleStatus": "Active", 
+            "@type": "ResourceCandidate"
+        }
+    },
+    "reportingSystem": {
+        "id": "335",
+        "name": "APP-179",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "853",
+        "name": "APP-30",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ResourceCandidateCreateEvent"
+}

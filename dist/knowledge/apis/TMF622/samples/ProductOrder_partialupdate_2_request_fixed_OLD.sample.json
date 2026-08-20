@@ -1,0 +1,210 @@
+{
+  "id": "30001",
+  "productOrderItem": [
+    {
+      "id": "100",
+      "quantity": 1,
+      "action": "add",
+      "productOffering": {
+        "id": "14277",
+        "href": "https://host:port/productCatalogManagement/v4/productOffering/14277",
+        "name": "TMF25"
+      },
+      "productOrderItemRelationship": [
+        {
+          "id": "110",
+          "relationshipType": "bundles",
+          "@type": "OrderItemRelationship"
+        },
+        {
+            "id": "120",
+            "relationshipType": "bundles",
+            "@type": "OrderItemRelationship"
+        },
+        {
+            "id": "130",
+            "relationshipType": "bundles",
+            "@type": "OrderItemRelationship"
+        }
+      ],
+      "state": "acknowledged",
+      "@type": "ProductOrderItem"
+    },
+    {
+        "id": "110",
+        "quantity": 1,
+        "action": "add",
+        "itemPrice": [
+          {
+            "description": "Access Fee",
+            "name": "Access Fee",
+            "priceType": "nonRecurring",
+            "price": {
+              "taxRate": 0,
+              "dutyFreeAmount": {
+                "unit": "EUR",
+                "value": 0.99
+              },
+              "taxIncludedAmount": {
+                "unit": "EUT",
+                "value": 0.99
+              }
+            }
+          }
+        ],
+        "payment": [
+          {
+            "id": "2365",
+            "href": "https://host:port/paymentManagement/v4/cashPayment/2365",
+            "name": "Cash payment for access fee",
+            "@type": "CashPayment",
+            "@referredType": "PaymentRef"
+          }
+        ],
+        "product": {
+          "isBundle": false,
+          "@type": "Product",
+          "productCharacteristic": [
+                {
+                "name": "TEL_MSISDN",
+                "valueType": "string",
+                "value": "415 279 7439"
+                }
+            ],
+          "productSpecification": {
+            "id": "14307",
+            "href": "https://host:port/productCatalogManagement/v4/productSpecification/14307",
+            "name": "Mobile Telephony",
+            "version": "1",
+            "@type": "ProductSpecificationRef"
+          }
+        },
+        "productOffering": {
+          "id": "14305",
+          "href": "https://host:port/productCatalogManagement/v4/productOffering/14305",
+          "name": "TMF Mobile Telephony"
+        },
+        "state": "acknowledged",
+        "@type": "ProductOrderItem"
+      },
+      {
+        "id": "120",
+        "quantity": 1,
+        "action": "add", 
+        "billingAccount": {
+            "id": "1889",
+            "href": "https://host:port/billingAccountManagement/v4/billingAccount/1889",
+            "@type": "BillingAccountRef"
+          },
+        "itemPrice": [
+          {
+            "description": "Tariff plan monthly fee",
+            "name": "MonthlyFee",
+            "priceType": "recurring",
+            "recurringChargePeriod": "month",
+            "price": {
+              "taxRate": 0,
+              "dutyFreeAmount": {
+                "unit": "EUR",
+                "value": 20
+              },
+              "taxIncludedAmount": {
+                "unit": "EUR",
+                "value": 20
+              }
+            },
+            "priceAlteration": [
+              {
+                "applicationDuration": 3,
+                "description": "20% for first 3 months",
+                "name": "WelcomeDiscount",
+                "priceType": "recurring",
+                "priority": 1,
+                "recurringChargePeriod": "month",
+                "price": {
+                  "percentage": 20,
+                  "taxRate": 0,
+                  "@baseType": "string",
+                  "@schemaLocation": "string",
+                  "@type": "string"
+                }
+              }
+            ]
+          }
+        ],
+        "itemTerm": [
+          {
+            "description": "Tariff plan 12 Months commitment",
+            "name": "12Months",
+            "duration": {
+              "amount": 12,
+              "units": "month"
+            }
+          }
+        ],
+        "product": {
+          "isBundle": false,
+          "@type": "Product",
+          "productSpecification": {
+            "id": "14395",
+            "href": "https://host:port/productCatalogManagement/v4/productSpecification/14395",
+            "name": "TMF Tariff plan",
+            "version": "1",
+            "@type": "ProductSpecificationRef"
+          }
+        },
+        "productOffering": {
+          "id": "14344",
+          "href": "https://host:port/productCatalogManagement/v4/productOffering/14344",
+          "name": "TMF Tariff Plan"
+        },
+        "productOrderItemRelationship": [
+          {
+            "id": "110",
+            "relationshipType": "reliesOn",
+            "@type": "OrderItemRelationship"
+          }
+        ],
+        "state": "acknowledged",
+        "@type": "ProductOrderItem"
+      },      
+      {
+        "id": "130",
+        "quantity": 1,
+        "action": "add",
+        "product": {
+          "isBundle": false,
+          "@type": "Product",
+          "productCharacteristic": [
+            {
+              "name": "CoverageOptions",
+              "valueType": "string",
+              "value": "National"
+            }
+          ],
+          "productSpecification": {
+            "id": "14353",
+            "href": "https://host:port/productCatalogManagement/v4/productSpecification/14353",
+            "name": "Coverage",
+            "version": "1",
+            "@type": "ProductSpecificationRef"
+          }
+        },
+        "productOffering": {
+          "id": "14354",
+          "href": "https://host:port/productCatalogManagement/v4/productOffering/14354",
+          "name": "Coverage Options"
+        },
+        "productOrderItemRelationship": [
+          {
+            "id": "110",
+            "relationshipType": "reliesOn",
+            "@type": "OrderItemRelationship"
+          }
+        ],
+        "state": "acknowledged",
+        "@type": "ProductOrderItem"
+      }
+  ],
+  "@type": "ProductOrder"
+}

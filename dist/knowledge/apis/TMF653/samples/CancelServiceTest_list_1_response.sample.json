@@ -1,0 +1,35 @@
+[
+  {
+    "id": "790-fsds5-kjp",
+    "href": "https://host:port/serviceTestManagement/v5/cancelServiceTest/790-fsds5-kjp",
+    "serviceTest": {
+      "id": "89757",
+      "href": "https://host:port/serviceTestManagement/v5/serviceTest/89757",
+      "@type": "ServiceTestRef",
+      "@referredType": "ServiceTest"
+    },
+    "@type": "CancelServiceTest"
+  },
+  {
+    "id": "791-fsds5-kjp",
+    "href": "https://host:port/serviceTestManagement/v5/cancelServiceTest/791-fsds5-kjp",
+    "serviceTest": {
+      "id": "89758",
+      "href": "https://host:port/serviceTestManagement/v5/serviceTest/89758",
+      "@type": "ServiceTestRef",
+      "@referredType": "ServiceTest"
+    },
+    "@type": "CancelServiceTest"
+  },
+  {
+    "id": "792-fsds5-kjp",
+    "href": "https://host:port/serviceTestManagement/v5/cancelServiceTest/792-fsds5-kjp",
+    "serviceTest": {
+      "id": "89759",
+      "href": "https://host:port/serviceTestManagement/v5/serviceTest/89759",
+      "@type": "ServiceTestRef",
+      "@referredType": "ServiceTest"
+    },
+    "@type": "CancelServiceTest"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "op": "add",
+    "path": "/relatedParty",
+    "value": {
+      "role": "Buyer organization",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "99",
+        "href": "https://host:port/partyManagement/v5/organization/99",
+        "name": "AnotherCustomer",
+        "@referredType": "Organization",
+        "@type": "PartyRef"
+      }
+    }
+  }
+]

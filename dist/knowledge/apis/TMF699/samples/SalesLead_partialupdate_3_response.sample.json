@@ -1,0 +1,7 @@
+{
+  "id": "123",
+  "href": "https://serverRoot/tmf-api/salesManagement/v5/salesLead/123",
+  "@type": "SalesLead",
+  "name": "Campaign 17 salesLead 7852",
+  "status": "pending"
+}

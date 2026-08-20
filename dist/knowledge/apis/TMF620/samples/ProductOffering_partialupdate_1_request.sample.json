@@ -1,0 +1,8 @@
+{
+    "version": "3.0",
+    "validFor": {
+        "startDateTime": "2020-11-06T00:00:00Z",
+        "endDateTime": "2021-11-06T00:00:00Z"
+    },
+    "@type": "ProductOffering"
+}

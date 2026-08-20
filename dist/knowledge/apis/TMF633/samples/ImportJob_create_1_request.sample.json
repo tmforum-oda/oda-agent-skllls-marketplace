@@ -1,0 +1,6 @@
+{
+    "contentType": "application/json", 
+    "errorLog": "http://my-platform/daily/logging/errors.log", 
+    "path": "serviceCatalogManagement/", 
+    "url": "ftp://ftp.mycsp.com/serviceCatalogManagement/1866.json"
+}

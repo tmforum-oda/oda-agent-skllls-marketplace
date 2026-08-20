@@ -1,0 +1,48 @@
+{
+    "GeographicLocation": {
+        "list": {
+            "samples": [{
+                "description": "An example request to retrieve a list of GeographicLocations: One GeoJsonPoint for three of the six buildings on the campus.",
+                "content-type": "application/json",
+                "response": "$_GeographicLocation_list_1_response"
+            }]
+        },
+        "retrieve": {
+            "samples": [{
+                    "description": "An example request to retrieve a specific GeographicLocation: The GeoJsonPoint for Babbage House which has an id of \"6d8e3c7a-8586\"",
+                    "content-type": "application/json",
+                    "objectId": "6d8e3c7a-8586",
+                    "response": "$_GeographicLocation_retrieve_1_response"
+                },
+                {
+                    "description": "An example request to retrieve a specific GeographicLocation: The GeoJsonPoint for Faraday House which has an id of \"7e73fac4-39c6\"",
+                    "content-type": "application/json",
+                    "objectId": "7e73fac4-39c6",
+                    "response": "$_GeographicLocation_retrieve_2_response"
+                }
+            ]
+        },
+        "create": {
+            "samples": [{
+                "description": "An example request to create a GeographicLocation to describe a GeoJsonPoint for the Pavillion building - the resulting GeographicLocation is 8252cd7c-bd6c",
+                "request": "$_GeographicLocation_create_1_request",
+                "response": "$_GeographicLocation_create_1_response"
+            }]
+        },
+        "partialupdate": {
+            "samples": [{
+                "description": "An example request to update the GeographicLocation which has an id of \"8252cd7c-bd6c\" (the Pavillion) - To JSON-PATCH 'add' a bounding box (GeoJSON's 'bbox' attribute giving a list of two coordinates to list opposite corners of the bounding box). The full updated response is returned.",
+                "content-type": "application/json-patch+json",
+                "request": "$_GeographicLocation_partialupdate_1_request",
+                "objectId": "8252cd7c-bd6c",
+                "response": "$_GeographicLocation_partialupdate_1_response"
+            }]
+        },
+        "delete": {
+            "samples": [{
+                "description": "An example request to delete the GeographicLocation that describes the Pavillion",
+                "objectId": "8252cd7c-bd6c"
+            }]
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "@type": "CustomerDeleteEvent",
+  "eventId": "63749ead-f133-4c64-b2ed-3a93a2a56999",
+  "eventTime": "2023-06-14T12:15:59.969117+02:00",
+  "eventType": "CustomerDeleteEvent",
+  "event": {
+    "customer": {
+      "@type": "Customer",
+      "id": "1140",
+      "href": "https://host:port/tmf-api/customerManagement/v5/customer/1140"
+    }
+  }
+}

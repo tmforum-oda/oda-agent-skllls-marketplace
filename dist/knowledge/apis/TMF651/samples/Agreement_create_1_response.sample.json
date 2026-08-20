@@ -1,0 +1,95 @@
+{
+    "@type": "Agreement",
+    "href": "https://mycsp.com:8080/tmf-api/agreementManagement/v5/agreement/40", 
+    "id": "40", 
+    "name": "Moon", 
+    "agreementType": "commercial", 
+    "status": "inProgress",
+    "version": "1.0",
+    "agreementSpecification": {
+    	"href": "https://mycsp.com:8080/tmf-api/agreementManagement/v5/agreementSpecification/1140",
+    	"id": "1140",
+    	"name": "Moon Agreement Template",
+        "@type": "AgreementSpecificationRef",
+        "@referredType": "AgreementSpecification"
+    },
+    "agreementPeriod": {
+        "startDateTime": "2018-06-12T00:00:00Z", 
+        "endDateTime": "2019-01-11T00:00:00Z"
+    }, 
+    "engagedParty": [
+        {
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/organization/500", 
+            "id": "500", 
+            "name": "Happy Travellers",
+            "@type": "PartyRef",
+            "@referredType": "Organization"
+        }
+    ], 
+    "characteristic": [
+        {
+            "name": "fidelityProgram",
+            "@type": "StringCharacteristic",
+            "value": "premium",
+            "valueType": "string"
+        }
+    ], 
+    "relatedParty": [
+        {
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "role": "bill receiver",
+            "partyOrPartyRole": {
+                "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/organization/2777", 
+                "id": "2777", 
+                "name": "John Doe Private Holdings", 
+                "@type": "PartyRef",
+                "@referredType": "Organization"
+            }
+        }
+    ],
+    "agreementItem": [
+    	{
+    	    "id": "1",
+        	"@type": "AgreementItem",
+    	    "termOrCondition": [
+                {
+                    "id": "1",
+                    "description": "delivery should be done in France",
+                    "@type": "AgreementTermOrCondition"
+                }
+    	    ]
+    	},
+        {
+            "id": "2",
+            "@type": "ProductAgreementItem",
+            "productOffering": [
+                {
+                    "id": "9559",
+                    "href": "https://mycsp.com:8080/tmf-api/productCatalog/v5/productOffering/9559",
+                    "name": "Magic Offer",
+                    "version": "1.1",
+                    "@type": "ProductOfferingRef"
+                }
+            ],
+            "product": [
+                {
+                    "id": "7120",
+                    "href": "https://mycsp.com:8080/tmf-api/productInventory/v5/product/7120",
+                    "name": "Magic Offer Instance",
+                    "@type": "ProductRef"
+                }
+            ],
+            "termOrCondition": [
+                {
+                    "id": "1",
+                    "description": "The product offering will be made available for up to 10 users",
+                    "validFor": {
+                        "endDateTime": "2019-09-06T09:56:38.679Z",
+                        "startDateTime": "2020-09-06T09:56:38.679Z"
+                    },
+                    "@type": "AgreementTermOrCondition"
+              }
+            ]
+       }
+    ]
+}

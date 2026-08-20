@@ -1,0 +1,17 @@
+{
+  "id": "TMFC011",
+  "type": "component",
+  "name": "ResourceOrderManagement",
+  "version": "1.2.0",
+  "status": "Pre-production",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC011-ResourceOrderManagement/Specification/TMFC011-ResourceOrderManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "9a315ad6e3ccc4958d91a9f26471748ef239dac0e65e8406e6c042ee66a294a2"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

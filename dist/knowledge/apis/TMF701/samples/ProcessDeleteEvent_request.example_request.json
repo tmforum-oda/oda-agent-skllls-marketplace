@@ -1,0 +1,33 @@
+{
+  "id": "evt-155",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-155",
+  "correlationId": "90cfc73d-gh5t",
+  "eventId": "00004",
+  "eventTime": "2024-04-18T16:42:27-04:00",
+  "eventType": "ProcessDeleteEvent",
+  "description": "ProcessDeleteEvent illustration",
+  "timeOccurred": "2024-04-18T16:42:26-00:00",
+  "title": "ProcessDeleteEvent",
+  "event": {
+    "process": {
+      "id": "4fd-ty56-gg55",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/process/4fd-ty56-gg55",
+      "@type": "Process"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProcessDeleteEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

@@ -1,0 +1,25 @@
+{
+  "@type": "SearchTimeSlot",
+  "requestedTimeSlot": [
+    {
+      "@type": "TimeSlot",
+      "timeWindow": {
+        "startDateTime": "2026-03-28T08:00:00.000Z",
+        "endDateTime": "2026-03-28T12:00:00.000Z"
+      }
+    }
+  ],
+  "relatedEntity": [
+    {
+      "@type": "RelatedEntity",
+      "role": "interaction",
+      "entity": {
+        "@type": "EntityRef",
+        "@referredType": "TroubleTicket",
+        "id": "789",
+        "name": "Internet connection problem to solve",
+        "href": "https://mycsp.com:8080/tmfapi/troubleTicket/v5/troubleTicket/789"
+      }
+    }
+  ]
+}

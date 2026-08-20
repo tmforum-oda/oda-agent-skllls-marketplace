@@ -1,0 +1,5 @@
+{
+  "lifecycleStatus": "active",
+  "description": "Bill Dispute Specification",
+  "@type": "TroubleTicketSpecification"
+}

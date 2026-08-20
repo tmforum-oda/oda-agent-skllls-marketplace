@@ -1,0 +1,11 @@
+{
+    "@type": "Agreement",
+    "attachment": [
+    	{
+            "@type": "Attachment",
+            "name": "Detailed description of Moon template",
+            "url": "https://www.allmydocs.fr/agreement_standard.pdf",
+            "mimeType": "application/pdf"
+	    }
+    ]
+}

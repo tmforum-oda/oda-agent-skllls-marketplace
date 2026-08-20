@@ -1,0 +1,40 @@
+{
+  "correlationId": "95003dd3-e325",
+  "description": "ExportJobCreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4010-9b59-509a64cf85a8",
+  "eventTime": "2023-08-25T00:00:00.001Z",
+  "eventType": "ExportJobCreateEvent",
+  "priority": "1",
+  "timeOcurred": "2023-08-25T00:00:00.000Z",
+  "title": "ExportJobCreateEvent",
+  "event": {
+    "exportJob": {
+      "id": "19001",
+      "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v4/exportJob/19001",
+      "creationDate": "2023-08-25T00:00:00.000Z",       
+      "contentType": "application/json",     
+      "errorLog": "http://my-platform/daily/logging/errors.log",     
+      "path": "serviceCatalogManagement/", 
+      "query": "@type=ServiceSpecification", 
+      "status": "Running", 
+      "url": "ftp://ftp.mycsp.com/serviceCatalogManagement/19001.json",
+      "@type": "ExportJob", 
+      "@schemaLocation": "https://mycsp.com:8080/tmf-api/schemas/Common/ExportJob.schema.json"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ExportJobCreateEvent"
+}

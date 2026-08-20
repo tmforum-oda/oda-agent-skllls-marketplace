@@ -1,0 +1,189 @@
+{
+  "id": "42",
+  "href": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/42",
+  "priority": "1",
+  "description": "Service order description",
+  "category": "TMF resource illustration",
+  "state": "InProgress",
+  "orderDate": "2020-08-27T09:37:40.508Z",
+  "requestedStartDate": "2020-08-31T09:37:40.508Z",
+  "requestedCompletionDate": "2020-08-31T09:37:40.508Z",
+  "expectedCompletionDate": "2020-08-31T09:37:40.508Z",
+  "startDate": "2020-08-31T09:37:40.508Z",
+  "@type": "ServiceOrder",
+  "note": [
+    {
+      "date": "2020-08-27T09:37:40.508Z",
+      "id": "1",
+      "author": "Harvey Poupon",
+      "text": "Some text",
+      "@type": "Note"
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "requester",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+        "id": "456",
+        "name": "Mr. N. Bene",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "jeopardyAlert": [
+    {
+      "id": "144",
+      "alertDate": "2020-08-27T23:17:45.450Z",
+      "exception": "Order Item Completion is in Jeopardy",
+      "jeopardyType": "Normal",
+      "message": "Order Item Completion is in Jeopardy",
+      "name": "Order Item Completion",
+      "serviceOrderItem": [
+        {
+          "itemId": "1",
+          "serviceOrderHref": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/42",
+          "serviceOrderId": "42",
+          "@type": "ServiceOrderItemRef"
+        }
+      ],
+      "@type": "ServiceOrderJeopardyAlert"
+    }
+  ],
+  "milestone": [
+    {
+      "id": "143",
+      "description": "Port Allocation",
+      "message": "Port Allocation",
+      "milestoneDate": "2020-08-27T23:17:45.450Z",
+      "name": "Port Allocation",
+      "status": "Completed",
+      "serviceOrderItem": [
+        {
+          "itemId": "2",
+          "serviceOrderHref": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/42",
+          "serviceOrderId": "42",
+          "@type": "ServiceOrderItemRef"
+        }
+      ],
+      "@type": "ServiceOrderMilestone"
+    }
+  ],
+  "serviceOrderItem": [
+    {
+      "id": "1",
+      "action": "add",
+      "state": "InProgress",
+      "service": {
+        "@type": "Service",
+        "state": "active",
+        "serviceCharacteristic": [
+          {
+            "id": "452-gh6",
+            "name": "vCPE",
+            "valueType": "object",
+            "value": {
+              "@type": "VCPE",
+              "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/VCPE.schema.json",
+              "vCPE_IP": "193.218.236.21",
+              "MaxTxRate": 300,
+              "TransmitPower": "11 dBm",
+              "maxTream": "OFF"
+            },
+            "@type": "ObjectCharacteristic"
+          }
+        ],
+        "serviceSpecification": {
+          "@type": "ServiceSpecificationRef",
+          "@referredType": "ServiceSpecification",
+          "id": "1212",
+          "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/1212",
+          "name": "vCPE",
+          "version": "1.0.0"
+        }
+      },
+      "errorMessage": [
+        {
+          "code": "500",
+          "message": "Resource Fallout",
+          "reason": "IP address not available",
+          "referenceError": "http://serverlocation:port/serviceOrdering/v5/errorMessage/500",
+          "status": "ERROR-003",
+          "timestamp": "2020-08-27T23:17:45.450Z",
+          "@type": "ServiceOrderItemErrorMessage"
+        }
+      ],
+      "@type": "ServiceOrderItem"
+    },
+    {
+      "id": "2",
+      "action": "modify",
+      "state": "InProgress",
+      "service": {
+        "id": "456",
+        "@type": "Service",
+        "href": "http://serverlocation:port/serviceInventoryManagement/v5/service/456",
+        "state": "active",
+        "serviceCharacteristic": [
+          {
+            "id": "452-gh6",
+            "valueType": "string",
+            "name": "InputPort",
+            "value": "456/7",
+            "@type": "StringCharacteristic"
+          }
+        ]
+      },
+      "@type": "ServiceOrderItem"
+    },
+    {
+      "id": "3",
+      "action": "add",
+      "state": "acknowledged",
+      "service": {
+        "state": "active",
+        "@type": "Service",
+        "serviceRelationship": [
+          {
+            "relationshipType": "reliesOn",
+            "service": {
+              "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/5645",
+              "id": "5645",
+              "@type": "ServiceRef",
+              "@referredType": "Service"
+            },
+            "@type": "ServiceRelationship"
+          }
+        ],
+        "serviceSpecification": {
+          "@type": "ServiceSpecificationRef",
+          "@referredType": "ServiceSpecification",
+          "id": "48",
+          "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/48",
+          "name": "genericDataService48",
+          "version": "2.0.0"
+        },
+        "feature": [
+          {
+            "id": "Feat1",
+            "isEnabled": true,
+            "name": "DataDownload",
+            "@type": "Feature",
+            "featureCharacteritic": [
+              {
+                "name": "VolumeCapped",
+                "id": "444",
+                "value": true,
+                "valueType": "boolean",
+                "@type": "BooleanCharacteristic"
+              }
+            ]
+          }
+        ]
+      },
+      "@type": "ServiceOrderItem"
+    }
+  ]
+}

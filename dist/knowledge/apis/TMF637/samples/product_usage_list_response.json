@@ -1,0 +1,66 @@
+[
+    {
+        "@type": "ProductUsage",
+        "href": "https://api.csp.com/tmf-api/productUsageManagement/v5/productUsage/bbba-0c6e63171b78",
+        "id": "bbba-0c6e63171b78",
+        "usageDate": "2024-08-25T12:19:14Z",
+        "status": "billed",
+        "usageType": "VOICE",
+        "usageProductPrice": [
+            {
+                "@type": "ProductPrice",
+                "recurringChargePeriod": "month",
+                "price": {
+                    "@type": "Price",
+                    "taxIncludedAmount": {
+                        "unit": "EUR",
+                        "value": 29.99
+                    }
+                }
+            }
+        ],
+        "product": {
+            "@type": "Product",
+            "href": "https://api.csp.com/tmf-api//product/qerr-475",
+            "id": "qerr-475"
+        },
+        "usageSpecification": {
+            "@type": "ProductUsageSpecificationRef",
+            "href": "https://api.csp.com/tmf-api/productUsageManagement/v5/productUsageSpecification/af59-b504c742900e",
+            "id": "af59-b504c742900e",
+            "name": "VoiceCall"
+        }
+    },
+    {
+        "@type": "ProductUsage",
+        "href": "https://api.csp.com/tmf-api/productUsageManagement/v5/productUsage/93c2-683ea281566c",
+        "id": "93c2-683ea281566c",
+        "usageDate": "2024-08-26T12:19:14Z",
+        "status": "rerated",
+        "usageType": "VOICE",
+        "usageProductPrice": [
+            {
+                "@type": "ProductPrice",
+                "recurringChargePeriod": "month",
+                "price": {
+                    "@type": "Price",
+                    "taxIncludedAmount": {
+                        "unit": "EUR",
+                        "value": 29.99
+                    }
+                }
+            }
+        ],
+        "product": {
+            "@type": "Product",
+            "href": "https://api.csp.com/tmf-api//product/qerr-475",
+            "id": "qerr-475"
+        },
+        "usageSpecification": {
+            "@type": "ProductUsageSpecificationRef",
+            "href": "https://api.csp.com/tmf-api/productUsageManagement/v5/productUsageSpecification/af59-b504c742900e",
+            "id": "af59-b504c742900e",
+            "name": "VoiceCall"
+        }
+    }
+]

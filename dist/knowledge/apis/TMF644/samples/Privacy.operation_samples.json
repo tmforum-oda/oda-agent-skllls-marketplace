@@ -1,0 +1,157 @@
+{
+    "PartyPrivacyProfile": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here is an example of a request for retrieving a list of privacy profile(s). This operation list party privacy profile entities.Attribute selection is enabled for all first level attributes. Filtering may be available depending on the compliance level supported by an implementation",
+                    "filtering": "agreedByParty.partyOrPartyRole.id=9176&agreedByParty.partyOrPartyRole.@referredType=Individual&status=created", 
+                    "content-type": "application/json", 
+                    "response" : "$_Privacy_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description": "Retrieve privacy profile type with id 109 - with all its attributes",
+                    "content-type": "application/json",
+                    "objectId": "109",  
+                    "response" : "$_Privacy_retrieve_1_response"
+                }
+            ]
+        }, 
+        "create": {
+         "samples" : [
+            {
+                "description" : "Here's an example of a request for creating a Privacy Profile for existing customer - the resulting privacy profile is 109.",
+                "request" : "$_Privacy_create_1_request",
+                "response" : "$_Privacy_create_1_response"
+            }
+             
+         ]  
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for updating a privacy profile. This example illustrating patch merge.",
+                    "content-type": "merge-patch+json",
+                    "objectId": "109",
+                    "request" : "$_Privacy_partialupdate_1_request",
+                    "response" : "$_Privacy_partialupdate_1_response"                   
+                }
+            ]   
+           },
+        "delete": {
+	        "samples" : [
+		        {
+		             "description": "Here's an example of a request for deleting a party privacy profile",
+		             "objectId" : "109"
+		        }
+	       ]
+    	}
+    },
+    
+    "PartyPrivacyProfileSpecification": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here is an example of a request for retrieving a list of privacy profile specification (s). This operation list party privacy profile specifications .Attribute selection is enabled for all first level attributes. Filtering is done on the applicable role.",
+                    "filtering": "applicableRole.name=owner",
+                    "content-type": "application/json", 
+                    "response" : "$_Privacy_spec_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description": "Retrieve privacy profile spec with id 103 - with all its attributes",
+                    "content-type": "application/json",
+                    "objectId": "103",  
+                    "response" : "$_Privacy_spec_retrieve_1_response"
+                }
+            ]
+        }, 
+        "create": {
+         "samples" : [
+            {
+                "description" : "Here's an example of a request for creating a Privacy Profile specification, the resulting privacy profile spec is 103.",
+                "request" : "$_Privacy_spec_create_1_request",
+                "response" : "$_Privacy_spec_create_1_response"
+            }
+             
+         ]  
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for updating a party privacy profile specification",
+                    "content-type": "merge-patch+json",
+                    "objectId": "103",
+                    "request" : "$_Privacy_spec_partialupdate_1_request",
+                    "response" : "$_Privacy_spec_partialupdate_1_response"                   
+                }
+            ]   
+           },
+        "delete": {
+	        "samples" : [
+		        {
+		             "description": "Here's an example of a request for deleting a party privacy profile specification",
+		             "objectId" : "103"
+		        }
+	       ]
+    	}
+    },
+
+    "PartyPrivacyAgreement": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here is an example of a request for retrieving a list of party privacy agreement (s). This operation list party privacy agreement .Attribute selection is enabled for all first level attributes. Filtering is done on the status.",
+                    "filtering": "status=validated",
+                    "content-type": "application/json", 
+                    "response" : "$_Privacy_agreement_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description": "Retrieve party privacy agreement with id 6810 - with all its attributes",
+                    "content-type": "application/json",
+                    "objectId": "6810",  
+                    "response" : "$_Privacy_agreement_retrieve_1_response"
+                }
+            ]
+        }, 
+        "create": {
+         "samples" : [
+            {
+                "description" : "Here's an example of a request for creating a party privacy agreement, the resulting privacy profile agreement is 6810.",
+                "request" : "$_Privacy_agreement_create_1_request",
+                "response" : "$_Privacy_agreement_create_1_response"
+            }
+             
+         ]  
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for updating a party privacy agreement with status approved and agreementAuthorization",
+                    "content-type": "merge-patch+json",
+                    "objectId": "103",
+                    "request" : "$_Privacy_agreement_partialupdate_1_request",
+                    "response" : "$_Privacy_agreement_partialupdate_1_response"                   
+                }
+            ]   
+           },
+        "delete": {
+	        "samples" : [
+		        {
+		             "description": "Here's an example of a request for deleting a party privacy agreement",
+		             "objectId" : "6810"
+		        }
+	       ]
+    	}
+    }
+}

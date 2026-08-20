@@ -1,0 +1,7 @@
+[
+  {
+    "op": "replace",
+    "path": "/revenueEstimate?value=1200",
+    "value": "1500"
+  }
+]

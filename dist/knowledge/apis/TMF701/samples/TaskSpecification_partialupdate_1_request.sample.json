@@ -1,0 +1,7 @@
+{
+  "validFor": {
+    "startDateTime": "2025-12-30T13:03:57.839Z"
+  },
+  "name": "Eligibility Check",
+  "@type": "TaskSpecification"
+}

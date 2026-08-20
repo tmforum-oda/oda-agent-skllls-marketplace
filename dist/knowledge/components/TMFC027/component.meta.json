@@ -1,0 +1,17 @@
+{
+  "id": "TMFC027",
+  "type": "component",
+  "name": "ProductConfigurator",
+  "version": "2.1.1",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC027-ProductConfigurator/Specification/TMFC027-ProductConfigurator.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "2e8ec86914ab2b9f812dfd71109e13ed4e2fb76864e58568f6a1ec437fc03c30"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

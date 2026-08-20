@@ -1,0 +1,65 @@
+{
+    "@type": "CapacitySpecificationCreateEvent",
+    "@baseType": "Event",
+    "correlationId": "e4888f4d-71cd-43a4-a018-dd13f230935c",
+    "description": "CapacitySpecificationCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "3b63e628-0c66-4d57-abbf-2fb6aeb229fd",
+    "eventTime": "2024-09-19T13:55:06.910Z",
+    "eventType": "CapacitySpecificationCreateEvent",
+    "priority": "3",
+    "timeOccurred": "2024-09-19T13:55:03.868Z",
+    "title": "CapacitySpecificationCreateEvent",
+    "event": {
+        "capacitySpecification": {
+            "@type": "CapacitySpecification",
+            "id": "3d01344d-4409-4b15-8fcb-b8802314ff9c", 
+            "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/capacitySpecification/3d01344d-4409-4b15-8fcb-b8802314ff9c", 
+            "name": "Phone Number range",
+            "description": "This CapacitySpecification defines the details of capacity for Phone Number ranges.",
+            "capacityCharacteristicSpecification":
+            [
+                {
+                    "@type": "CharacteristicSpecification",
+                    "name": "lowerNumber",
+                    "description": "the lower boundary of a block of phone numbers; phone numbers consist of a country code (cc), national destination code (ndc), subscriber number (sn), and optionally a direct dial in (ddi), all sections separated by '-'",
+                    "valueType": "string",
+                    "characteristicValueSpecification":
+                    [
+                        {
+                            "@type": "CharacteristicValueSpecification",
+                            "valueType": "string",
+                            "regex": "^\\+(?<cc>[1-9]\\d{0,2})-(?<ndc>[1-9]\\d*)-(?<sn>[1-9]\\d*)(?:-?(?<ddi>\\d+))?$"
+                        }
+                    ]
+                },
+                {
+                    "@type": "CharacteristicSpecification",
+                    "name": "upperNumber",
+                    "description": "the upper boundary of a block of phone numbers; phone numbers consist of a country code (cc), national destination code (ndc), subscriber number (sn), and optionally a direct dial in (ddi), all sections separated by '-'",
+                    "valueType": "string",
+                    "characteristicValueSpecification":
+                    [
+                        {
+                            "@type": "CharacteristicValueSpecification",
+                            "valueType": "string",
+                            "regex": "^\\+(?<cc>[1-9]\\d{0,2})-(?<ndc>[1-9]\\d*)-(?<sn>[1-9]\\d*)(?:-?(?<ddi>\\d+))?$"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "reportingSystem": {
+        "id": "109",
+        "name": "APP-804",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "8",
+        "name": "APP-307",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    }
+}

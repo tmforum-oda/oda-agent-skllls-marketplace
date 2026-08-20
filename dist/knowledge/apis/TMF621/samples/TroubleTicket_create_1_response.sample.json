@@ -1,0 +1,106 @@
+{
+  "id": "3180",
+  "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicket/3180",
+  "creationDate": "2022-05-31T07:34:45.968Z",
+  "description": "I do not accept the last VOD charge, since the movie was constantly interrupted, I had to quick watching the movie in the middle ",
+  "expectedResolutionDate": "2019-06-10T07:34:45.968Z",
+  "lastUpdate": "2022-05-31T07:34:45.968Z",
+  "name": "complaint over last bill",
+  "priority": "High",
+  "requestedResolutionDate": "2019-05-31T07:34:45.968Z",
+  "severity": "Major",
+  "status": "pending",
+  "statusChangeDate": "2019-05-31T07:34:45.968Z",
+  "statusChangeReason": "Need more information from the customer",
+  "ticketType": "Bill Dispute",
+  "attachment": [
+    {
+      "description": "Scanned disputed bill",
+      "attachmentType": "billCopy",
+      "mimeType": "image/png",
+      "name": "March Bill",
+      "url": "https://mycsp.com:7070/docloader?docnum=3534555",
+      "@type": "Attachment"
+    }
+  ],
+  "channel": {
+    "id": "8774",
+    "name": "self service",
+    "@type": "ChannelRef"
+  },
+  "note": [
+    {
+      "id": "77456",
+      "author": "Jack Smith",
+      "date": "2019-05-31T07:34:45.968Z",
+      "text": "This is quite important, please approach  me as soon as possible",
+      "@type": "Note"
+    }
+  ],
+  "relatedEntity": [
+    {
+      "role": "disputedBill",
+      "@type": "RelatedEntity",
+      "entity": {
+        "id": "3472",
+        "href": "https://mycsp.com:8080/tmf-api/customerBillManagement/v5/customerBill/8297",
+        "name": "March 2019 Bill",
+        "@type": "EntityRef",
+        "@referredType": "CustomerBill"
+      }
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "member",
+      "partyOrPartyRole": {
+        "id": "9866",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9866",
+        "name": "Sandy Smith",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    },
+    {
+      "role": "reporter",
+      "partyOrPartyRole": {
+        "id": "9877",
+        "name": "Jacob Jac Miller",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    },
+    {
+      "role": "customer",
+      "partyOrPartyRole": {
+        "id": "9176",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/customer/9176",
+        "name": "Jack Smith",
+        "@type": "PartyRoleRef",
+        "@referredType": "Customer"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    }
+  ],
+  "statusChangeHistory": [
+    {
+      "statusChangeDate": "2019-05-31T07:34:45.968Z",
+      "statusChangeReason": "Need more information from the customer",
+      "status": "pending",
+      "@type": "StatusChange"
+    }
+  ],
+  "troubleTicketRelationship": [
+    {
+      "id": "567433",
+      "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicket/567433",
+      "name": "Network Coverage",
+      "relationshipType": "dependecy",
+      "@type": "TroubleTicketRelationship"
+    }
+  ],
+  "@schemaLocation": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/schema/troubleTicket.yaml",
+  "@type": "TroubleTicket"
+}

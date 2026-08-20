@@ -1,0 +1,93 @@
+{
+  "@type": "CancelResourceOrderCreateEvent",
+  "@schemaLocation": "/schema-registry/schema/CancelResourceOrderCreateEvent",
+  "href": "/tmf-api/events/cancelResourceOrder/event12345",
+  "id": "event12345",
+  "correlationId": "corr98765",
+  "domain": "ResourceOrderManagement",
+  "title": "Cancel Resource Order Event",
+  "description": "This event indicates the cancellation of a resource order.",
+  "priority": "high",
+  "timeOccurred": "2025-01-22T06:41:26Z",
+  "source": {
+    "@type": "Source",
+    "@schemaLocation": "/schema-registry/schema/System",
+    "href": "/tmf-api/systems/source123",
+    "id": "source123",
+    "name": "SourceSystem"
+  },
+  "reportingSystem": {
+    "@type": "System",
+    "@schemaLocation": "/schema-registry/schema/ReportingSystem",
+    "href": "/tmf-api/systems/reportingSystem/report123",
+    "id": "report123",
+    "name": "ReportingSystem"
+  },
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "@schemaLocation": "/schema-registry/schema/RelatedParty",
+      "role": "Customer",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "@schemaLocation": "/schema-registry/schema/Party",
+        "href": "/tmf-api/parties/party123",
+        "id": "party123",
+        "name": "John Doe",
+        "@referredType": "Individual"
+      }
+    },
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "@schemaLocation": "/schema-registry/schema/RelatedParty",
+      "role": "Operator",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "@schemaLocation": "/schema-registry/schema/Party",
+        "href": "/tmf-api/parties/party456",
+        "id": "party456",
+        "name": "Jane Smith",
+        "@referredType": "Organization"
+      }
+    }
+  ],
+  "analyticCharacteristic": [
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "@schemaLocation": "/schema-registry/schema/Characteristic",
+      "id": "char001",
+      "name": "CancellationReason",
+      "valueType": "string",
+      "value": "CustomerRequest",
+      "characteristicRelationship": [
+        {
+          "@type": "CharacteristicRelationship",
+          "id": "rel001",
+          "relationshipType": "dependent"
+        }
+      ]
+    }
+  ],
+  "eventId": "event001",
+  "eventTime": "2025-01-22T06:41:26Z",
+  "eventType": "CancelResourceOrder",
+  "event": {
+    "cancelResourceOrder": {
+      "@type": "CancelResourceOrder",
+      "@schemaLocation": "/schema-registry/schema/CancelResourceOrder",
+      "requestedCancellationDate": "2025-01-22T06:41:26Z",
+      "effectiveCancellationDate": "2025-01-22T06:41:26Z",
+      "cancellationReason": "CustomerRequest",
+      "state": "acknowledged",
+      "resourceOrder": {
+        "@type": "ResourceOrderRef",
+        "@schemaLocation": "/schema-registry/schema/ResourceOrder",
+        "href": "/tmf-api/resourceOrder/RO123",
+        "id": "RO123",
+        "name": "ResourceOrder123",
+        "@referredType": "ResourceOrder"
+      }
+    }
+  }
+}

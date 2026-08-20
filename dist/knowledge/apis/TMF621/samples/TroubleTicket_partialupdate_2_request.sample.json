@@ -1,0 +1,5 @@
+{
+  "@type": "TroubleTicket",
+  "status": "resolved",
+  "statusChangeReason": "Give credit and resent bill to customer"
+}

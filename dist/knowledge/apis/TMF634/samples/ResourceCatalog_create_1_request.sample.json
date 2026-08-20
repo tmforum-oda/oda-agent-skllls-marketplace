@@ -1,0 +1,5 @@
+{
+    "name": "Cloud Resource Catalog", 
+    "description": "This resource catalog points to entities in the area of cloud management", 
+    "@type": "ResourceCatalog"
+}

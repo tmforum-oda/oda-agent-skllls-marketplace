@@ -1,0 +1,33 @@
+{
+  "correlationId": "f3a34f89-0046",
+  "description": "IndividualDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4996-b9b1-e533c09a0186",
+  "eventTime": "2022-08-25T12:17:59.636Z",
+  "eventType": "IndividualDeleteEvent",
+  "priority": "2",
+  "timeOcurred": "2022-08-25T12:17:55.035Z",
+  "title": "IndividualDeleteEvent",
+  "event": {
+    "individual": {
+        "id": "42",
+        "href": "https://serverRoot/tmf-api/party/v5/individual/42",
+        "@type": "Individual",
+        "@baseType": "Party"
+    }
+  },
+  "reportingSystem": {
+    "id": "868",
+    "name": "APP-394",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "372",
+    "name": "APP-92",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "IndividualDeleteEvent"
+}

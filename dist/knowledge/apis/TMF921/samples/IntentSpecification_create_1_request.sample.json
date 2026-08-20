@@ -1,0 +1,30 @@
+{
+	"@type": "IntentSpecification",
+	"@baseType": "EntitySpecification",
+	"@schemaLocation": "https://mycsp.com:8080/tmfapi/schema/Common/IntentSpecification.schema.json",
+	"id": "EventLiveBroadcast_Spec",
+	"description": "Intent spec for ordering live broadcast service for an event",	
+	"lifecycleStatus": "ACTIVE",
+	"validFor": {
+		"startDateTime": "2023-04-12T23:20:50.52Z",
+		"endDateTime": "2099-04-12T23:20:50.52Z"
+	},
+	"version": "1.0",
+	"relatedParty": [{
+		"@type": "RelatedPartyRefOrPartyRoleRef",
+		"role": "Provider",
+		"partyOrPartyRole": {
+			"@type": "PartyRoleRef",
+			"id": "28657",
+			"name": "TechSolutionsPro Ltd", 
+			"href": "https://mycsp.com:8080//tmf-api/partyRoleManagement/v5/partner/28657",
+			"@referredType": "Partner"			
+		}
+	}],
+	"name": "EventLiveBroadcastSpec",
+	"expressionSpecification": {
+		"@type": "ExpressionSpecification",
+		"expressionLanguage": "JSON-LD",
+		"iri": "http://tio.models.tmforum.org/tio/v3.4.0/IntentManagmentOntology/"
+	}
+}

@@ -1,0 +1,16 @@
+{
+  "id": "TMF640",
+  "type": "api",
+  "name": "service-activation-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF640_Service_Activation/4.0.0/swagger/TMF640_Service_Activation_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "18fdbc492af1a2d7d83b532c5f112adb759dcee60f3273871556851de8e7df44"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

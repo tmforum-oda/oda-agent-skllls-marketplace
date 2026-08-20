@@ -1,0 +1,20 @@
+[
+    {
+        "@type": "PartyRoleSpecification",
+        "id": "5713",
+        "name": "Catalog administration",
+        "lifecycleStatus":"validated"
+    },
+    {
+        "@type": "PartyRoleSpecification",
+        "id": "8016",
+        "name": "Human resources member",
+        "lifecycleStatus": "validated"
+    },
+    {
+        "@type": "PartyRoleSpecification",
+        "id": "6540",
+        "name": "Employees vacation validation",
+        "lifecycleStatus": "validated"
+    }
+]

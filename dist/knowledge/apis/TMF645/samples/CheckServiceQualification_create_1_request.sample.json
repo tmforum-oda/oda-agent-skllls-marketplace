@@ -1,0 +1,59 @@
+{
+  "description": "check service qualification illustration",
+  "expectedQualificationDate": "2023-04-11T15:20:39.239Z",
+  "externalIdentifier": [
+    {
+      "id": "CSQ1",
+      "@type": "ExternalIdentifier"
+    }
+  ],
+  "provideAlternative": true,
+  "instantSyncQualification": false,
+  "provideResultReason": true,
+  "relatedParty": [
+    {
+      "role": "Buyer contact",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "456",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+        "name": "Jean Pontus",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "serviceQualificationItem": [
+    {
+      "id": "1",
+      "expectedServiceAvailabilityDate": "2023-04-11T19:20:39.239Z",
+      "service": {
+        "place": [
+          {
+            "role": "Installation place",
+            "@type": "RelatedPlaceRefOrValue",
+            "place": {
+              "@type": "PlaceRef",
+              "@referredType": "GeographicSite",
+              "id": "11",
+              "href": "https://mycsp.com:8080/tmf-api/geographicSiteManagement/v5/geographicSite/11",
+              "name": "Jean Pontus home"
+            }
+          }
+        ],
+        "serviceCharacteristic": [
+          {
+            "id": "1",
+            "name": "BroadcastQuality",
+            "valueType": "string",
+            "value": "4K",
+            "@type": "StringCharacteristic"
+          }
+        ],
+        "@type": "Service"
+      },
+      "@type": "CheckServiceQualificationItem"
+    }
+  ],
+  "@type": "CheckServiceQualification"
+}

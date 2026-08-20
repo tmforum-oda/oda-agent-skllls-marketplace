@@ -1,0 +1,32 @@
+{
+    "correlationId": "c34a42ca-498e",
+    "description": "PartyPrivacyAgreementDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4942-89e4-eed1a99f3a40",
+    "eventTime": "2022-08-25T12:20:32.683Z",
+    "eventType": "PartyPrivacyAgreementDeleteEvent",
+    "priority": "5",
+    "timeOcurred": "2022-08-25T12:20:26.320Z",
+    "title": "PartyPrivacyAgreementDeleteEvent",
+    "event": {
+        "partyPrivacyAgreement": {
+            "id": "6810",
+            "href": "http://serverlocation:port/privacyManagement/v5/partyPrivacyAgreement/6810",
+            "@type" : "PartyPrivacyAgreement"
+        }
+    },
+    "reportingSystem": {
+        "id": "665",
+        "name": "APP-224",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "403",
+        "name": "APP-686",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PartyPrivacyAgreementDeleteEvent"
+}

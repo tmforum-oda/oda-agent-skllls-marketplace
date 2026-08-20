@@ -1,0 +1,32 @@
+{
+    "correlationId": "4afc7d04-5251",
+    "description": "QueryServiceQualificationDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4212-968d-a8fe5f08aa16",
+    "eventTime": "2022-08-25T12:20:45.513Z",
+    "eventType": "QueryServiceQualificationDeleteEvent",
+    "priority": "2",
+    "timeOccurred": "2022-08-25T12:20:36.791Z",
+    "title": "QueryServiceQualificationDeleteEvent",
+    "event": {
+        "queryServiceQualification": {
+            "id": "54",
+            "href": "http://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/queryServiceQualification/54",
+            "@type": "QueryServiceQualification"
+        }
+    },
+    "reportingSystem": {
+        "id": "768",
+        "name": "APP-897",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "276",
+        "name": "APP-819",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "QueryServiceQualificationDeleteEvent"
+}

@@ -1,0 +1,43 @@
+{
+  "correlationId": "333-fd6",
+  "description": "ProductOrderStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "569",
+  "eventTime": "2021-09-27T07:43:59.059Z",
+  "eventType": "ProductOrderStateChangeEvent",
+  "priority": "1",
+  "timeOcurred": "2021-09-27T07:43:59.059Z",
+  "title": "ProductOrderStateChangeEvent",
+  "event": {
+    "productOrder": {
+      "id": "9693",
+      "href": "https://host:port/productOrderingManagement/v5/productOrder/9693",
+      "@type": "ProductOrder",
+      "state": "inProgress",
+      "itemStateChange": [
+        {
+          "itemId": "1",
+          "state": "inProgress"
+        },
+        {
+          "itemId": "2",
+          "state": "inProgress"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProductOrderStateChangeEvent"
+}

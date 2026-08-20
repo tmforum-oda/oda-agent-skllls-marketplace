@@ -1,0 +1,19 @@
+{
+    "@type": "BillingAccount",
+    "href": "https://host:port/tmf-api/accountManagement/v5/billingAccount/5430", 
+    "id": "5430", 
+    "name": "Richard Cole Account", 
+    "relatedParty": [
+        {
+            "role": "service provider",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "@type": "PartyRefOrPartyRoleRef",
+                "@referredType": "Organization",
+                "id": "6838", 
+                "href": "https://host:port/tmf-api/partyManagement/v5/organization/6838", 
+                "name": "Richard Cole"
+            }
+        }
+    ]
+}

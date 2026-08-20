@@ -1,0 +1,12 @@
+{
+  "@type": "Attachment",
+  "href": "https://serverRoot/tmf-api/document/v5/attachment/1492026921",
+  "id": "1492026921",
+  "name": "Zelda as paperback",
+  "url": "https://www.amazon.co.uk/Designing-Web-APIs-Building-Developers/dp/1492026921",
+  "validFor": {
+    "startDateTime": "2023-11-05T10:15:26.007Z"
+  },
+  "attachmentType": "book",
+  "mimeType": "text/html"
+}

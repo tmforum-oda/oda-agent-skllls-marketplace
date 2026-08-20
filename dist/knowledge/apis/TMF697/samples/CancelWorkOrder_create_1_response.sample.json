@@ -1,0 +1,14 @@
+{
+    "@type": "CancelWorkOrder",
+    "requestedCancellationDate": "2024-05-01T10:15:30.000Z",
+    "effectiveCancellationDate": "2024-05-01T10:15:30.000Z",
+    "cancellationReason": "Workforce unavailability",
+    "state": "acknowledged",
+    "href": "https://mycsp.com/tmf-api/v5/workOrderManagement/cancelWorkOrder/cc8e9f41-c351-48ac-8980-548d4a2d59ca",
+    "id": "cc8e9f41-c351-48ac-8980-548d4a2d59ca",
+    "workOrder": {
+        "@type": "WorkOrderRef",
+        "href": "https://mycsp.com/tmf-api/v5/workOrderManagement/workOrder/f8ec1c38-4e4d-4378-a693-f95680e51e25",
+        "id": "f8ec1c38-4e4d-4378-a693-f95680e51e25"
+    }
+}

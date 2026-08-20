@@ -1,0 +1,88 @@
+{
+  "id": "evt-154",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-154",
+  "correlationId": "90cfc73d-deb7",
+  "description": "ProcessCreateEvent illustration",
+  "eventId": "00001",
+  "eventTime": "2024-04-11T14:52:25-04:00",
+  "eventType": "ProcessCreateEvent",
+  "timeOccurred": "2024-04-11T14:52:21.823Z",
+  "title": "ProcessCreateEvent",
+  "event": {
+    "process": {
+      "id": "4fd-ty56-gg55",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/process/4fd-ty56-gg55",
+      "creationDate": "2024-04-11T14:52:21.823Z",
+      "state": "active",
+      "channel": {
+        "id": "1",
+        "href": "https://www.mycsp.com/tmfapis/channel/1",
+        "name": "TMFWebStore",
+        "@type": "ChannelRef",
+        "@referredType": "Channel"
+      },
+      "processSpecification": {
+        "id": "OC54",
+        "href": "https://www.mycsp.com/tmfapis/processManagement/v5/ProcessSpecification/OC54",
+        "name": "orderCapture",
+        "@type": "ProcessSpecificationRef",
+        "@referredType": "ProcessSpecification"
+      },
+      "relatedParty": [
+        {
+          "role": "Customer",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "456-f69",
+            "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/456-f69",
+            "name": "Jean Pontus",
+            "@referredType": "Individual",
+            "@type": "PartyRef"
+          }
+        }
+      ],
+      "processCharacteristic": [
+        {
+          "modality": "input",
+          "@type": "FlowCharacteristic",
+          "characteristic": {
+            "name": "productOfferingRef",
+            "valueType": "object",
+            "@type": "ObjectCharacteristic",
+            "value": {
+              "name": "productOfferingRef",
+              "id": "TMFMobile20",
+              "href": "https://www.mycsp.com/tmfapis/productCatalog/v5/productOffering/TMFMobile20",
+              "@type": "ProductOfferingRef",
+              "@referredType": "ProductOffering"
+            }
+          }
+        }
+      ],
+      "task": [
+        {
+          "id": "4fd-ty56-gg55-2",
+          "href": "https://www.mycsp.com/tmfapis/processManagement/v5/task/4fd-ty56-gg55-2",
+          "@type": "TaskRef",
+          "@referredType": "Task"
+        }
+      ],
+      "@type": "Process"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProcessCreateEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

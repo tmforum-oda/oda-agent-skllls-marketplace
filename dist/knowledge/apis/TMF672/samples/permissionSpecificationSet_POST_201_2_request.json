@@ -1,0 +1,37 @@
+{
+  "@type": "PermissionSpecificationSet",
+  "name": "TMF620 API Provider Role",
+  "involvementRole": "TMF620 API Provider Role",
+  "permissionSpecification": [
+    {
+      "@type": "PermissionSpecification",
+      "name": "Catalog:ReadWrite",
+      "function": "Catalog",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "name": "ProductOffering:ReadWrite",
+      "function": "ProductOffering",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "name": "ProductOfferingPrice:ReadWrite",
+      "function": "ProductOfferingPrice",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "name": "ProductSpecification:ReadWrite",
+      "function": "ProductSpecification",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "name": "Category:ReadWrite",
+      "function": "Category",
+      "action": "ReadWrite"
+    }
+  ]
+}

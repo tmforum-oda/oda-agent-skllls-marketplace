@@ -1,0 +1,17 @@
+{
+  "id": "TMFC039",
+  "type": "component",
+  "name": "AgreementManagement",
+  "version": "1.1.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC039-AgreementManagement/Specification/TMFC039-AgreementManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "9150770c74939a14c4cb972a286aa6ed7de61c7f7d62fae858b8bfb7fba26b0f"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

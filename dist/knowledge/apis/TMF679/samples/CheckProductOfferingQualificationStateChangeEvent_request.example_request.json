@@ -1,0 +1,33 @@
+{
+  "correlationId": "qsd-ff",
+  "description": "CheckProductOfferingQualificationStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "698",
+  "eventTime": "2021-09-27T07:43:59.059Z",
+  "eventType": "CheckProductOfferingQualificationStateChangeEvent",
+  "priority": "2",
+  "timeOcurred": "2021-09-27T07:43:59.059Z",
+  "title": "CheckProductOfferingQualificationStateChangeEvent",
+  "event": {
+    "checkProductOfferingQualification": {
+      "href": "https://host:port/ProductOfferingQualification/v5/CheckProductOfferingQualification/99",
+      "id": "99",
+      "@type": "CheckProductOfferingQualification",
+      "state": "done"
+    }
+  },
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CheckProductOfferingQualificationStateChangeEvent"
+}

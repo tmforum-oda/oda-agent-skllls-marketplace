@@ -1,0 +1,37 @@
+{
+  "correlationId": "23ad1947-6b0a",
+  "description": "TroubleTicketInformationRequiredEvent illustration request for attachment",
+  "domain": "Commercial",
+  "eventId": "4655-9378-c6258e688816",
+  "eventTime": "2022-08-25T12:18:12.224Z",
+  "eventType": "TroubleTicketInformationRequiredEvent",
+  "priority": "2",
+  "timeOccurred": "2022-08-25T12:18:07.161Z",
+  "title": "TroubleTicketInformationRequiredEvent",
+  "event": {
+    "troubleTicket": {
+      "id": "3180",
+      "href": "https://host:port/troubleTicket/v5/troubleTicket/3180",
+      "name": "complaint over last bill",
+      "@type": "TroubleTicket"
+    },
+    "informationRequired": {
+      "op": "add",
+      "path": "/attachment"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TroubleTicketInformationRequiredEvent"
+}

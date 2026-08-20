@@ -1,0 +1,16 @@
+{
+  "searchCriteria": {
+    "service": [
+      {
+        "id": "123-456"
+      }
+    ]
+  },
+  "relatedParty": [
+    {
+      "id": "USER11333",
+      "role": "agent",
+      "@referredType": "Individual"
+    }
+  ]
+}

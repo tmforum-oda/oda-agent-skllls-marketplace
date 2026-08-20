@@ -1,0 +1,12 @@
+[    
+    {
+      "op": "replace",
+      "path": "/description",
+      "value": "A ProbeIntent resource update example"
+    },
+    {
+      "op": "replace",
+      "path": "/validFor/startDateTime",
+      "value": "2024-04-30T16:40:00.000Z"
+    }
+]

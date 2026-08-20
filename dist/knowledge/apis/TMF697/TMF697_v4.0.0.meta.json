@@ -1,0 +1,16 @@
+{
+  "id": "TMF697",
+  "type": "api",
+  "name": "work-order-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF697_Work_Order/4.0.0/swagger/TMF697_Work_Order_Management_API_v4.0.0_beta_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "c2d4db13817578916766b194c725559f5e7feaa033d3a274a7e603b77e115c39"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

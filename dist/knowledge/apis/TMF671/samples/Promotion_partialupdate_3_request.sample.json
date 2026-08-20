@@ -1,0 +1,7 @@
+[
+    {
+        "op":"replace",
+        "path": "/criteriaGroup/criteria/criteriaValue?id=CRITERIA_50_LOYALTY POINTS",
+        "value": "03-09"
+    }
+]

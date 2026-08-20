@@ -1,0 +1,41 @@
+{
+    "id": "RETENTIONNETFLIX3M",
+    "href": "https:/host:port/tmf-api/promotion/v5/promotion/RETENTIONNETFLIX3M",
+	"description": "Retention for more 24 months gives free Netflix for 3 months",
+	"lastUpdate": "2021-02-10T00:00:00.000Z",
+	"lifecycleStatus": "draft",
+	"name": "3 months of free Netflix when retention for more 24 months",
+	"pattern": [{
+		"@type":"PromotionPattern",
+		"action": [{
+			"@type":"PromotionAction",
+			"actionEntityRef": {
+				"@type": "EntityRef",
+				"id": "POSTPAID_PRODUCT_OFFERING_NETFLIX",
+				"href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOffering/PRODUCT_OFFERING_NETFLIX",
+				"name": "Netflix 3MFree"
+			},
+			"actionType": "9"
+		}],
+		"criteriaGroup": [{
+			"@type":"PromotionCriteriaGroup",
+			"criteria": [{
+				"@type":"PromotionCriteria",
+				"criteriaOperator": "=",
+				"criteriaParameter": "3.2",
+				"criteriaValue": "24"
+			},{
+				"@type":"PromotionCriteria",
+				"criteriaOperator": "=",
+				"criteriaParameter": "3.3",
+				"criteriaValue": "months"
+			}]
+		}]
+	}],
+	"promotionType": "Award",
+	"validFor": {
+		"startDateTime": "2020-01-05T12:00:56.982Z",
+		"endDateTime": "9999-12-31T23:59:59.999Z"
+	},
+	"@type":"Promotion"
+}

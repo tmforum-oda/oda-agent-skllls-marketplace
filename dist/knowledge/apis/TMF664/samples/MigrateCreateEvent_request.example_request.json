@@ -1,0 +1,43 @@
+{
+  "@type": "MigrateCreateEvent",
+  "id": "evt-migrate-001",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-migrate-001",
+  "correlationId": "migrate-726ffbd5",
+  "description": "MigrateCreateEvent illustration",
+  "eventId": "00001",
+  "eventTime": "2024-08-25T15:00:18.121Z",
+  "eventType": "MigrateCreateEvent",
+  "timeOccurred": "2024-08-25T15:00:17.823Z",
+  "title": "MigrateCreateEvent",
+  "event": {
+    "migrate": {
+      "id": "afccfc16-a28e-4f3b-81e0-1cf7ba649ef9",
+      "href": "/resourceFunctionActivation/v5/migrate/afccfc16-a28e-4f3b-81e0-1cf7ba649ef9",
+      "@type": "Migrate",
+      "name": "Move Location",
+      "cause": "planned",
+      "state": "inProgress",
+      "priority": 1,
+      "resourceFunction": {
+        "id": "acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+        "href": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+        "@type": "ResourceFunctionRef",
+        "@referredType": "ResourceFunction"
+      }
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

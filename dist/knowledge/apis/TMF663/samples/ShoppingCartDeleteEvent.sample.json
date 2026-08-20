@@ -1,0 +1,32 @@
+{
+    "correlationId": "8fa3d7ab-5b10",
+    "description": "ShoppingCartDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "431c-8f73-d4386abef8ba",
+    "eventTime": "2022-08-25T12:23:05.369Z",
+    "eventType": "ShoppingCartDeleteEvent",
+    "priority": "2",
+    "timeOcurred": "2022-08-25T12:23:03.451Z",
+    "title": "ShoppingCartDeleteEvent",
+    "event": {
+        "shoppingCart": {
+            "id": "1203",
+            "href": "http://servername/shoppingCart/1203",
+            "@type":"ShoppingCart"
+        }
+    },
+    "reportingSystem": {
+        "id": "491",
+        "name": "APP-677",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "157",
+        "name": "APP-514",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ShoppingCartDeleteEvent"
+}

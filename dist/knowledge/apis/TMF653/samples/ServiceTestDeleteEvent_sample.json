@@ -1,0 +1,32 @@
+{
+  "correlationId": "d7243a09-1206",
+  "description": "ServiceTestDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "490b-a75e-e388a74813af",
+  "eventTime": "2022-08-25T12:21:36.724Z",
+  "eventType": "ServiceTestDeleteEvent",
+  "priority": "4",
+  "timeOccurred": "2022-08-25T12:21:36.363Z",
+  "title": "ServiceTestDeleteEvent",
+  "event": {
+    "serviceTest": {
+      "href": "http://servername/serviceTest/89757",
+      "id": "89757",
+      "@type": "ServiceTest"
+    }
+  },
+  "reportingSystem": {
+    "id": "409",
+    "name": "APP-675",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "4",
+    "name": "APP-374",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ServiceTestDeleteEvent"
+}

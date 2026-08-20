@@ -1,0 +1,48 @@
+{
+    "correlationId": "0f874cb9-c70d",
+    "description": "CheckPermissionCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "41cf-ad81-d65ea1c2840c",
+    "eventTime": "2022-08-25T12:18:12.191Z",
+    "eventType": "CheckPermissionCreateEvent",
+    "priority": "5",
+    "timeOccurred": "2022-08-25T12:18:08.202Z",
+    "title": "CheckPermissionCreateEvent",
+    "event": {
+        "checkPermission": {
+            "id": "f3fc707ae9ce42fbbf273a46ccacdeca",
+            "href": "https://serverRoot/rolesAndPermissionsManagement/v5/checkPermission/f3fc707ae9ce42fbbf273a46ccacdeca",
+            "@type": "CheckPermission",
+            "state": "inProgress",
+            "permissionSpecification": {
+                "@type": "PermissionSpecification",
+                "name": "ProductOffering::create",
+                "function": "ProductOffering",
+                "action": "create"
+            },
+            "user": {
+                "role": "ProductManager",
+                "@type": "RelatedSecurityPrincipal",
+                "securityPrincipal": {
+                    "id": "Jonathan.Goldberg",
+                    "@type": "PartyRoleRef",
+                    "@referredType": "PartyRole"
+                }
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "759",
+        "name": "APP-745",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "705",
+        "name": "APP-317",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CheckPermissionCreateEvent"
+}

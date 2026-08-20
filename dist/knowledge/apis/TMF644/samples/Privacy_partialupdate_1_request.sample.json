@@ -1,0 +1,28 @@
+{
+  "@type": "PartyPrivacyProfile",
+  "partyPrivacyProfileCharacteristic": [
+    {
+      "@type": "PartyPrivacyProfileCharacteristic",
+      "characterisitc": {
+        "id": "43",
+        "name": "emailAddress",
+        "valueType": "string",
+        "value": "No",
+        "@type": "StringCharacteristic"
+      },  
+      "relatedParty": [
+        {
+          "role": "Vendor",
+          "partyOrPartyRole" : {
+            "id": "8632",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/8632",
+            "name": "John Doe",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          },
+          "@type" : "RelatedPartyRefOrPartyRoleRef"
+        }
+      ]
+    }
+  ]
+}

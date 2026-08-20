@@ -1,0 +1,33 @@
+{
+  "@type": "ResourceFunctionDeleteEvent",
+  "id": "evt-rf-004",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-rf-004",
+  "correlationId": "90cfc73d-gh5t",
+  "description": "ResourceFunctionDeleteEvent illustration",
+  "eventId": "00004",
+  "eventTime": "2024-08-28T16:42:27.121Z",
+  "eventType": "ResourceFunctionDeleteEvent",
+  "timeOccurred": "2024-08-28T16:42:26.823Z",
+  "title": "ResourceFunctionDeleteEvent",
+  "event": {
+    "resourceFunction": {
+      "@type": "ResourceFunction",
+      "id": "acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+      "href": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386"
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

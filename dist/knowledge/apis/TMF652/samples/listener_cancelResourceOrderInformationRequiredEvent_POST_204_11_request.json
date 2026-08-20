@@ -1,0 +1,63 @@
+{
+  "@type": "CancelResourceOrderInformationRequiredEvent",
+  "@schemaLocation": "/schema-registry/schema/cancelResourceOrderInformationRequiredEvent",
+  "href": "/tmf-api/v5/events/informationRequired/12345",
+  "id": "12345",
+  "correlationId": "corr67890",
+  "domain": "OrderManagement",
+  "title": "Cancel Resource Order Information Required",
+  "description": "This event captures information required for a cancel resource order.",
+  "priority": "medium",
+  "timeOccurred": "2025-02-11T08:40:56Z",
+  "source": {
+    "@type": "System",
+    "@schemaLocation": "/schema-registry/schema/System",
+    "href": "/tmf-api/v5/systems/sourceSystem/source123",
+    "id": "source123",
+    "name": "SourceSystem"
+  },
+  "reportingSystem": {
+    "@type": "System",
+    "@schemaLocation": "/schema-registry/schema/ReportingSystem",
+    "href": "/tmf-api/v5/systems/reportingSystem/report567",
+    "id": "report567",
+    "name": "ReportingSystem"
+  },
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "@schemaLocation": "/schema-registry/schema/RelatedParty",
+      "role": "Customer",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "@schemaLocation": "/schema-registry/schema/Party",
+        "href": "/tmf-api/v5/party/customer789",
+        "id": "customer789",
+        "name": "John Doe",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "eventId": "event56789",
+  "eventTime": "2025-02-11T08:40:56Z",
+  "eventType": "InformationRequired",
+  "event": {
+    "cancelResourceOrder": {
+      "@type": "CancelResourceOrder",
+      "id": "cancel-order-5130d51",
+      "href": "http://servername/cancelResourceOrder/cancel-order-5130d51"
+    },
+    "informationRequired": {
+      "id": "info-req-cancel-12345",
+      "href": "http://servername/informationRequired/info-req-cancel-12345",
+      "@type": "InformationRequiredEvent",
+      "informationRequiredPath": [
+        {
+          "op": "add",
+          "path": "/cancellationReason",
+          "value": "Cancellation reason is required"
+        }
+      ]
+    }
+  }
+}

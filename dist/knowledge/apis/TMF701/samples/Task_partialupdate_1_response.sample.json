@@ -1,0 +1,53 @@
+{
+  "id": "4fd-ty56-gg55-2",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/task/4fd-ty56-gg55-2",
+  "isMandatory": false,
+  "state": "active",
+  "taskType": "businessRuleTask",
+  "taskSpecification": {
+    "id": "tfs0",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs0",
+    "name": "Check Offer Eligibility",
+    "version": "1",
+    "@type": "TaskSpecificationRef",
+    "@referredType": "TaskSpecification"
+  },
+  "parentProcess": {
+    "id": "4fd-ty56-gg55",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/process/4fd-ty56-gg55",
+    "@type": "ProcessRef",
+    "@referredType": "Process"
+  },
+  "relatedParty": [
+    {
+      "role": "Customer",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "456-f69",
+        "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/456-f69",
+        "name": "Jean Pontus",
+        "@referredType": "Individual",
+        "@type": "PartyRef"
+      }
+    }
+  ],
+  "taskCharacteristic": [
+    {
+      "modality": "input",
+      "@type": "FlowCharacteristic",
+      "characteristic": {
+        "valueType": "object",
+        "@type": "ObjectCharacteristic",
+        "name": "",
+        "value": {
+          "name": "productOfferingRef",
+          "id": "TMFMobile20",
+          "href": "https://www.mycsp.com/tmfapis/productCatalog/v5/productOffering/TMFMobile20",
+          "@type": "ProductOfferingRef",
+          "@referredType": "ProductOffering"
+        }
+      }
+    }
+  ],
+  "@type": "Task"
+}
