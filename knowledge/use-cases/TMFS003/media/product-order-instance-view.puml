@@ -1,0 +1,142 @@
+@startuml
+title Product Order instance view
+
+class "Fiber Contract Silver" as FiberContract <<ProductOfferingInstance>> {
+  PPrice = "Welcome Discount: -5€/month for 10 first months"
+  tax rate = 20%
+}
+class "Status" as StatusFiberContract <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+FiberContract -- StatusFiberContract
+
+class "Box Shipping" as BoxShipping <<ProductOfferingInstance>> {
+  PPrice = "Standard: Free"
+  tax rate = 20%
+}
+class "Status" as StatusBoxShipping <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+BoxShipping -- StatusBoxShipping
+
+class "Box 1" as Box1 <<ProductOfferingInstance>> {
+  PPrice = "Recurring: 5€/month"
+  tax rate = 20%
+}
+class "Status" as StatusBox1 <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+Box1 -- StatusBox1
+
+class "Fiber Access" as FiberAccess <<ProductOfferingInstance>> {
+  PPrice = "Recurring: 10€/month"
+  tax rate = 20%
+  One Time Fees = "30€, tax rate 10%"
+}
+class "Status" as StatusFiberAccess <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+FiberAccess -- StatusFiberAccess
+
+class "Connectivity" as Connectivity <<ProductOfferingInstance>>
+class "Status" as StatusConnectivity <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+Connectivity -- StatusConnectivity
+
+class "Fix Communication Service" as FixCommService <<ProductOfferingInstance>> {
+  PPrice = "Recurring: 12€/month"
+  tax rate = 20%
+}
+class "Status" as StatusFixComm <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+FixCommService -- StatusFixComm
+
+class "TV Channeld" as TVChannel <<ProductOfferingInstance>> {
+  PPrice = "Recurring: 5€/month"
+  tax rate = 20%
+}
+class "Status" as StatusTVChannel <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+TVChannel -- StatusTVChannel
+
+FiberContract --> BoxShipping
+FiberContract --> Box1
+FiberContract --> FiberAccess
+FiberContract --> Connectivity
+FiberContract --> FixCommService
+FiberContract --> TVChannel
+
+class "Shipping" as Shipping <<ProductInstance>> {
+  Speed = standard
+}
+class "Status" as StatusShipping <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+Shipping -- StatusShipping
+BoxShipping --> Shipping : "Applies on"
+
+class "Box 1" as Box1Char <<ProductInstance>> {
+  Color = strawberry red
+  Storage = Maxi
+}
+class "Status" as StatusBox1Char <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+Box1Char -- StatusBox1Char
+Box1 --> Box1Char : "Applies on"
+Shipping --> Box1Char : "Applies on"
+
+class "Fiber Access" as FiberAccessChar <<ProductInstance>> {
+  Speed = Basic
+}
+class "Status" as StatusFiberAccessChar <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+FiberAccessChar -- StatusFiberAccessChar
+FiberAccess --> FiberAccessChar : "Applies On"
+
+class "Connectivity" as ConnectivityChar <<ProductInstance>>
+class "Status" as StatusConnectivityChar <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+ConnectivityChar -- StatusConnectivityChar
+Connectivity --> ConnectivityChar : "Applies On"
+FiberAccessChar --> ConnectivityChar : "Applies on"
+
+class "Fix Communicationl" as FixCommChar <<ProductInstance>> {
+  Phone Number = "+33 9xx xxx xxx"
+}
+class "Status" as StatusFixCommChar <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+FixCommChar -- StatusFixCommChar
+FixCommService --> FixCommChar : "Applies On"
+ConnectivityChar --> FixCommChar : "Applies On"
+
+class "TV Channel" as TVChannelChar <<ProductInstance>> {
+  Value = Basic
+}
+class "Status" as StatusTVChannelChar <<Product>> {
+  Status = Initialized
+  start Date = "08th Sep 2023"
+}
+TVChannelChar -- StatusTVChannelChar
+TVChannel --> TVChannelChar : "Applies On"
+ConnectivityChar --> TVChannelChar : "Applies On"
+
+@enduml

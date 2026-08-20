@@ -1,0 +1,58 @@
+@startuml
+title Step 1 - Build the default order configuration screen
+
+actor person
+participant "EngagementManagement" as EM
+participant "PartyInteractionMgt" as PIM
+participant "ServiceQualificationMgt" as SQM
+participant "ProductConfigurator" as PC
+participant "ProductCatalogMgt" as PCM
+participant "ProductOrderCapture\n& Validation" as POCV
+
+== Order Capture Initialization from previous interaction ==
+
+note over POCV : Prerequisite: ProductConfigurator component retrieves\npublished catalog information from ProductCatalogMgt
+
+person -> EM : 1 select an offer
+activate EM
+
+EM -> PIM : 2 **TMF701 Process Flow** PATCH /processFlow/id3/taskFlow/id2\nSessionId, taskId2 (start order), offering25, addressId9, partyId8,\ncheckServiceQualificationId11
+activate PIM
+
+PIM -> PIM : 3 **TMF683 Party Interaction Mgt** PATCH /partyInteraction/id1\n(new interactionItem for Start Order)
+
+PIM -> POCV : 4 **TMF701 Process Flow** POST /processFlow\nsessionId, offeringId25,\ncheckServiceQualificationId11, addressId9, partyId8
+activate POCV
+note right of POCV : we assume the story is following 2 previous UC
+
+group Check data consistency
+    POCV -> PCM : 5 **TMF620 Product Catalog Mgt** GET productOffering/id25
+    activate PCM
+    PCM --> POCV : 6 **TMF620** 200 OK\nofferingId25 representation
+    deactivate PCM
+    note right of POCV : Process describes if new SQ requires (via POST)\nor just check previous one (if provided)
+
+    POCV -> SQM : 7 **TMF645 Service Qualification Mgt** GET checkServiceQualification/11\nfields=qualificationResult (or POST checkServiceQualification)
+    activate SQM
+    SQM --> POCV : 8 **TMF645** 200 OK\ngreen
+    deactivate SQM
+
+    POCV -> PC : 9 **TMF760 Product Configuration** POST /queryProductConfiguration\n(offeringId25, partyId8)
+    activate PC
+    note right of POCV : This is a 'new' acquisition - No need to call Product Inventory
+    PC --> POCV : 10 **TMF760** 200 OK\n(ProductConfiguration.id1 proposed with offeringId25,26,89\nactions possible, princing information)\nOR 201 Created (if task persistence is chosen)\n(queryProductConfiguration.id1...)
+    deactivate PC
+end
+
+POCV --> PIM : 11 **TMF701** 201 Created\nSessionId, ProcessId4, available actions:\nTaskId2 Configure cart[configuration proposed with offeringId25,26,89\nactions possible, princing information, queryProductConfigurationId1, ProductConfiguration.id1],\nTaskId99 quit
+deactivate POCV
+
+PIM --> EM : 12 **TMF701** 200 OK\nSessionId, ProcessFlowId4, available actions:\nProcessFlowId4/TaskId2 Configure cart[...],\nProcessFlowId4/TaskId99 quit
+deactivate PIM
+
+EM -> EM : 13 display default configuration\n& default values (including prices)
+deactivate EM
+
+POCV -> POCV : 14 **TMF622 Product Order Mgt** POST /productOrder\n(draft, offeringId25,26,89 partyId8, productConfiguration characteristics)\nor **TMF663 Shopping Cart Mgt** POST /shoppingCart\n(offeringId25,26,89 partyId8, productConfiguration characteristics)
+
+@enduml

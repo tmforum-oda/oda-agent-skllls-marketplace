@@ -1,0 +1,41 @@
+@startuml
+title Step 5 - Customer Information required (capture appointment, address, contact, billing)
+
+actor person
+participant "EngagementManagement" as EM
+participant "ProductOrderCapture\n& Validation" as POCV
+participant "PartyManagement" as PM
+participant "BillingAccountMgt" as BAM
+participant "ProductInventory" as PI
+
+activate EM
+
+== Choose Appointment ==
+person -> EM : 100 choose appointment\nday and hour
+
+== Add a legal address ==
+person -> EM : 101 same address than the one\nused for the delivery
+
+== Add Contact Method ==
+person -> EM : 102 provide contactMethod
+
+== Choose Billing Options ==
+person -> EM : 103 choose day of the bill
+
+== Send information to the process ==
+EM -> POCV : 104 **TMF701 Process Flow** PATCH /processFlow/4/taskFlow/8\nSessionId, day=1
+activate POCV
+
+opt
+    POCV -> POCV : 105 check information Product Inventory updated
+    POCV -> PI : 106 **TMF637 Product Inventory Mgt** PATCH /product/?
+    activate PI
+    PI --> POCV : 107 **TMF637** 200 OK\nProduct representation
+    deactivate PI
+end
+
+POCV -> POCV : 108 **TMF622 Product Order Mgt** PATCH /productOrder/7\n(billingAccount456)
+deactivate POCV
+deactivate EM
+
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+title Step 3 - Provide Delivery Address and Choose Shipping Options
+
+actor person
+participant "EngagementManagement" as EM
+participant "ProductOrderCapture\n& Validation" as POCV
+participant "ProductConfigurator" as PC
+participant "LocationManagement" as LM
+
+activate EM
+activate POCV
+
+group Access Delivery Address selection
+    note over POCV : ProductConfigurator requests a delivery address for Fiber Access
+    EM -> EM : 30 display Address entry screen
+    person -> EM : 31 provide delivery address\nand validate
+    EM -> LM : 32 **TMF673 Geographic Address Mgt** POST geographicAddressValidation\n(deliveryAddress)
+    activate LM
+    LM -> LM : 33 check address
+    LM --> EM : 34 **TMF673** 201 Created\n(validationResult = success)
+    deactivate LM
+    EM -> PC : 35 **TMF760 Product Configuration** POST /queryProductConfiguration\n(configured delivery address + all previous validated configuration on all offerings\nOR ProductConfiguration.idx of all previous configurations done during the process)
+    activate PC
+    PC --> EM : 36 **TMF760** 200 OK\n(new items/characteristics to be configured + pricing information)\nOR 201 Created
+    deactivate PC
+end
+
+group shipping option selection
+    note over POCV : ProductConfigurator requests a shipping offer
+    EM -> EM : 37 display shipping options\nwith default values selected
+    person -> EM : 38 configure shipping\nand validate
+    EM -> PC : 39 **TMF760 Product Configuration** POST /queryProductConfiguration\n(selected shipping offering + configured address + all previous validated configuration on main offerings\nOR ProductConfiguration.idx of all previous configurations done during the process)
+    activate PC
+    PC --> EM : 40 **TMF760** 200 OK\n(configuration proposed and status for each item)\nOR 201 Created
+    deactivate PC
+end
+
+== Delegation to Configuration close and POCV take again process responsability ==
+
+person -> EM : 41 valid shipping option
+EM -> POCV : 42 **TMF701 Process Flow** PATCH /processFlow/4/taskFlow/2\n(SessionId, full configuration OR ProductConfiguration.idx of all previous configurations done during the process)
+
+POCV -> PC : 43 **TMF760 Product Configuration** POST /checkProductConfiguration\n(latest configuration selected by user for main offerings (items for fiber, add-ons, shipping)\nOR ProductConfiguration.idx of all previous configurations done during the process)
+activate PC
+PC --> POCV : 44 **TMF760** 201 Created\n(state=approved)
+deactivate PC
+
+POCV --> EM : 45 **TMF701** 200 OK\n(SessionId, ProcessId4, available actions:\nTaskId4 Validate Order [productOrder7],\nTaskId99 quit)
+deactivate EM
+
+POCV -> POCV : 46 **TMF622 Product Order Mgt** PATCH /productOrder/7\n(draft, offeringId25,26,89 with full configuration, partyId8)\nor **TMF663 Shopping Cart Mgt** PATCH /shoppingCart/7\n(offeringId25,26,89 with full configuration, partyId8)
+deactivate POCV
+
+@enduml

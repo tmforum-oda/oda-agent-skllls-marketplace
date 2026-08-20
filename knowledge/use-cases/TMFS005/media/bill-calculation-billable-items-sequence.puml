@@ -1,0 +1,45 @@
+@startuml
+title Bill Calculation
+
+participant "Bill Calculation Mgt" as BCM
+participant "Product Inventory Mgt" as PIM
+participant "Billing Account Mgt" as BAM #red
+participant "Event Management" as Event #grey
+
+== Calculating the billable items ==
+
+PIM -> Event : 1 **TMF637 Product Inventory Management:**\nPost ProductStateChangeEvent (ProductId="id1",State="Active")
+
+group Loop for all product offering recently Active
+
+    Event -> BCM : 2 **TMF688 Event Management:**POST listener/productStateChangeEvent\n(ProductId="id1", State= "Active")
+    note right of Event : Listner for ProductOffering StateChangeEvent .
+
+    BCM -> PIM : 3 **TMF637 Product Inventory Management:**get /product/ (ProductId ="id1" )
+    activate PIM
+    PIM --> BCM : 4 **TMF637** : 200 OK (ProductId1, ProductPriceId1 ,ProductPriceValue,StartingDate,ProductPriceType,BillingAcountId=Id7)
+    deactivate PIM
+
+    BCM -> BAM : 5 **TMF666 Account Mgt:** GET /billingAccount/{id7}(?BillingCycle Spec)
+    activate BAM
+    BAM --> BCM : 6 **TMF666**:200 OK (BillingCycleSpecId =Id1, Billing period =1st October-31 October)
+    deactivate BAM
+
+    BCM -> BCM : 7 Internal process
+    note right of BCM : Compare ActivationDate of the product with\nBillingPeriod StartDdate in order to determine if prorated charges need to be calculated
+
+    BCM -> BCM : 8 **TMF678 Customer Bill Mgt:**Post /AppliedCustomerBillingRate (BillingAcountId7,\nBillingPeriod,ProductPriceId1,ProductId1,ProductPriceType,Value)
+    note right of BCM : Create AppliedCustomerBillingCharge for the whole month.
+
+    BCM -> BCM : 9 **TMF678 Customer Bill Mgt:**Post /AppliedCustomerBillingRate (BillingAcountId7,\nBillingPeriod,ProductPriceId1,ProductId1,ProductPriceType,Value)
+    note right of BCM : Create AppliedCustomerBillingCharge for prorated period.
+
+    BCM -> BCM : 10 **TMF678 Customer Bill Mgt:**Patch /AppliedCustomerBillingRate/AppliedCustomerBillingRate.Id (TaxIncludedAmount, AppliedTax)
+    note right of BCM : Create AppliedBillingTaxRate for the whole month.
+
+    BCM -> BCM : 11 **TMF678 Customer Bill Mgt:**Patch /AppliedCustomerBillingRate/AppliedCustomerBillingRate.Id (TaxIncludedAmount, AppliedTax)
+    note right of BCM : Create AppliedBillingTaxRate for for prorated period.
+
+end
+
+@enduml

@@ -1,0 +1,100 @@
+@startuml
+title Customer / Contract / Billing view
+
+package "TMFC035-Permissions Management" #white {
+  class "John Smith" as JohnSmith <<PartyIndividal>>
+  class "John Smith as Customer" as JohnSmithCustomer <<PartyRole>>
+  JohnSmith --> JohnSmithCustomer : plays
+}
+
+package "TMFC024-BillingAccount Mgt" #FFE8CC {
+  class "John Billing Cycle" as JohnBillingCycle <<PartyBillingCycle>> {
+    BillingDate = 1stOctober 2023
+    paymentDueDate = 05Oct2023
+  }
+  class "John Billing Account" as JohnBillingAccount <<BillingAccount>>
+  JohnBillingCycle --> JohnBillingAccount : Assigned to
+}
+
+JohnBillingAccount --> JohnSmithCustomer : hold by
+
+package "TMFC005-Product Inventory" #white {
+  class "John Contract Silver Fiber" as Contract
+
+  class ":DiscountProductPriceAlteration" as Discount {
+    Type = discount
+    Value = 5
+    Currency = euro
+    Starting Date = 10thSep2023
+    valid For = 09June2024
+  }
+
+  class "Box1" as Box1
+  class "Fiber Acess" as FiberAcess
+  class "Connectivity" as Connectivity
+  class "Tv channels" as TvChannels
+  class "Box Shipping" as BoxShipping
+  class "Fix Communication Service" as FixCommunicationService
+
+  Contract --> Box1 : Contains
+  Contract --> FiberAcess : Contains
+  Contract --> Connectivity : Contains
+  Contract --> TvChannels : Contains
+  Contract --> BoxShipping : Contains
+  Contract --> FixCommunicationService : Contains
+
+  class ":RecurringProductPrice" as Box1Price {
+    RecurringPeriod = monthly
+    Value = 5
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class ":RecurringProductPrice" as FiberAcessPrice {
+    RecurringPeriod = monthly
+    Value = 10
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class ":OneTimeProductPrice" as FiberAcessOneTime {
+    Value = 30
+    Currency = euro
+    Date = 10thSep2023
+  }
+  class ":RecurringProductPrice" as TvChannelsPrice {
+    RecurringPeriod = monthly
+    Value = 5
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class ":RecurringProductPrice" as FixCommunicationServicePrice {
+    RecurringPeriod = monthly
+    Value = 12
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+
+  Box1 --> Box1Price : valued by
+  FiberAcess --> FiberAcessPrice : valued by
+  FiberAcess --> FiberAcessOneTime : valued by
+  TvChannels --> TvChannelsPrice : valued by
+  FixCommunicationService --> FixCommunicationServicePrice : Valued by
+
+  class "SpecialTax\n:TaxProductPriceAlteration" as SpecialTax {
+    Rate = 10%
+  }
+  class "CommercialTax\n:TaxProductPriceAlteration" as CommercialTax {
+    Rate = 20%
+  }
+
+  FiberAcessOneTime --> SpecialTax : impacted by
+
+  Box1Price --> CommercialTax : impacted by
+  TvChannelsPrice --> CommercialTax : impacted by
+  FixCommunicationServicePrice --> CommercialTax : impacted by
+  Discount --> CommercialTax : impacted by
+}
+
+Contract --> JohnBillingAccount : charged to
+Contract --> JohnSmithCustomer : Hold by
+
+@enduml

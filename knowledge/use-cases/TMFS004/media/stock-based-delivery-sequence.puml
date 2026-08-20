@@ -1,0 +1,80 @@
+@startuml
+title Stock-based delivery
+
+box "Service Provider"
+  participant "ProductOrderManagement" as POM
+  participant "SupplyChainManagement" as SCM #blue
+  participant "EventManagement" as Event
+  participant "ProductOrderCapture\nValidation" as POCV
+  participant "ProductInventory" as PI
+end box
+box "Logistic Partner"
+  participant "P_SupChainMgmt" as PSCM #blue
+end box
+box "Delivery Partner"
+  participant "D_SupChainMgmt" as DSCM #blue
+end box
+
+activate POM
+
+== Stock-based Delivery with supply chain and delivery partners ==
+
+group For stock-based product (Repeated for each Product requiring by a goods delivering)
+
+    SCM -> SCM : 80 Determine Product configuration to be delivered
+
+    note over SCM
+      API Issue? Shipping order need to define shipement to pass Product Configuration.
+      This is an issue as shipment as not yet been calculated.
+      As of now stock Item is not managed in ShippingOrder
+    end note
+
+    SCM -> POM : 81 **TMF700 Shipping Order** POST /shippingOrder
+
+    note left of POM : Ship «this» to «here» with this «shipping option»
+
+    POM --> SCM : 82 **TMF700 Shipping Order** 201 Created\nShipping Order #26 created
+
+    SCM -> SCM : 83 Define supply chain partner for Shipping to be delivered
+    SCM -> SCM : 84 Regroup shipping order items in a shipment\nDetermine shipment by value
+    SCM -> SCM : 85 **TMF700 Shipping Order** PATCH /shippingOrder/id26\n(to add shipment by value)
+
+    SCM -> PSCM : 86 **TMF700 Shipping Order** POST /shippingOrder\nwith shipment
+    activate PSCM
+
+    note left of PSCM : Ship «these» from «here» to «here» with this «shipping option»
+
+    PSCM --> SCM : 87 **TMF700 Shipping Order** 201 Created\nshippingOrder #LP1 created
+
+    PSCM -> PSCM : 88 Pick&Pack
+    PSCM -> PSCM : 89 Carrier Selection
+
+    PSCM -> DSCM : 90 **TMF711 Shippment Management** POST /shipment
+    activate DSCM
+    DSCM --> PSCM : 91 **TMF711** 201 Created\nshipment.id provided
+    deactivate DSCM
+
+    PSCM -> PSCM : 92 **TMF700 Shipping Order** PATCH /shippingOrder/LP1\nto update ShippingOrderItem with shipment.id
+
+    PSCM -> Event : 93 Event for shippingOrder/shippingOrderItem attribute value change\n(link shippingOrderItem to shipment)
+    PSCM -> Event : 94 Event for shippingOrder/shippingOrderItem state value change
+    deactivate PSCM
+
+    Event -> SCM : 95 Notification for shippingOrder/shippingOrderItem attribute value change
+    Event -> SCM : 96 Notification for shippingOrder state value change
+
+    SCM -> SCM : 97 **TMF700 Shipping Order** PATCH /shippingOrder/id26\nwith Shipment.id for ShippingOrderItem\n+state change
+
+    SCM -> Event : 98 Event for ShippingOrder attribute value change
+
+    Event -> POM : 99 Notification for ShippingOrder/ShippingOrderItem state change
+    Event -> POM : 100 Notification for ShippingOrder attribute value change
+
+    POM --> PI : 101 **TMF637 Product Inventory Management** PATCH /product/id1\n(state update)
+    POM --> POCV : 102 **TMF622 Product Ordering** PATCH /productOrder/id1\n(state item update)
+
+    note right of POCV : ProductOrder computes productOrder state accordingly to orderItem state
+
+end
+
+@enduml

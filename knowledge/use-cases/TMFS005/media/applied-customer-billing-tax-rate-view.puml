@@ -1,0 +1,185 @@
+@startuml
+title Applied Customer Billing Taxe Rate Information View
+
+package "TMFC031-Bill Calculation" #E2F0D9 {
+  class "Discount (Sep)\n:AppliedCustomerBillingDiscount" as DiscountSep {
+    BillingPeriod = 13Sep-30sep
+    Value = 3.06 euro
+  }
+  class "Discount (Oct)\n:AppliedCustomerBillingDiscount" as DiscountOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 5 euro
+  }
+  class "Box Rate (Sep)\n:AppliedCustomerBillingRecurringCharge" as BoxRateSep {
+    BillingPeriod = 13Sep-30sep
+    Value = 3.06 euro
+  }
+  class "Box Rate (Oct)\n:AppliedCustomerBillingRecurringCharge" as BoxRateOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 5 euro
+  }
+  class "Fiber Acess Rate (Sep)\n:AppliedCustomerBillingRecurringCharge" as FiberAcessRateSep {
+    BillingPeriod = 13Sep-30sep
+    Value = 5,94 euro
+  }
+  class "Fiber Acess Rate (Oct)\n:AppliedCustomerBillingRecurringCharge" as FiberAcessRateOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 10 euro
+  }
+  class "Fiber Acess Installation Fees\n:AppliedCustomerBillingOneTimeCharge" as FiberAcessInstallFees {
+    BillingPeriod = 13Sep-30sep
+    Value = 30 euro
+  }
+  class "Tv Channel Rate (Oct)\n:AppliedCustomerBillingRecurringCharge" as TvChannelRateOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 5 euro
+  }
+  class "Tv Channel Rate (Sep)\n:AppliedCustomerBillingRecurringCharge" as TvChannelRateSep {
+    BillingPeriod = 13Sep-30sep
+    Value = 3.06 euro
+  }
+  class "Fix Communication Rate (Sep)\n:AppliedCustomerBillingRecurringCharge" as FixCommRateSep {
+    BillingPeriod = 13Sep-30sep
+    Value = 7,20 euro
+  }
+  class "Fix Communication Rate (Oct)\n:AppliedCustomerBillingRecurringCharge" as FixCommRateOct {
+    BillingPeriod = 1 Oct-31Oct
+    Value = 12 euro
+  }
+
+  class "Discount Tax Rate (Sep)\n:AppliedCustomerBillingTaxRate" as DiscountTaxSep {
+    BillingPeriod = 10Sep-30sep
+    Value = 0,612 €
+    AppliedRate = 20%
+  }
+  class "Discount Tax Rate (Oct)\n:AppliedCustomerBillingTaxRate" as DiscountTaxOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 1 €
+    AppliedRate = 20%
+  }
+  class "BoxTax Rate (Sep)\n:AppliedCustomerBillingTaxRate" as BoxTaxSep {
+    BillingPeriod = 10Sep-30sep
+    Value = 0,612 €
+    AppliedRate = 20%
+  }
+  class "Box TaxRate (Oct)\n:AppliedCustomerBillingTaxRate" as BoxTaxOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 1 €
+    AppliedRate = 20%
+  }
+  class "Fiber Tax Acess Rate (Sep)\n:AppliedCustomerBillingTaxRate" as FiberAcessTaxSep {
+    BillingPeriod = 10Sep-30sep
+    Value = 1,118 €
+    AppliedRate = 20%
+  }
+  class "Fiber Tax Acess Rate (Oct)\n:AppliedCustomerBillingTaxRate" as FiberAcessTaxOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 2 €
+    AppliedRate = 20%
+  }
+  class "Fiber Acess Installation Fees Tax Rate\n:AppliedCustomerBillingTaxRate" as FiberAcessInstallTax {
+    BillingPeriod = 10Sep-30sep
+    Value = 3 €
+    AppliedRate = 10%
+  }
+  class "Tv Channel Tax Rate (Oct)\n:AppliedCustomerBillingTaxRate" as TvChannelTaxOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 1 €
+    AppliedRate = 20%
+  }
+  class "Tv Channel Tax Rate (Sep)\n:AppliedCustomerBillingTaxRate" as TvChannelTaxSep {
+    BillingPeriod = 10Sep-30sep
+    Value = 0,612 €
+    AppliedRate = 20%
+  }
+  class "Fix Communication Tax Rate (Sep)\n:AppliedCustomerBillingTaxRate" as FixCommTaxSep {
+    BillingPeriod = 10Sep-30sep
+    Value = 1,44 €
+    AppliedRate = 20%
+  }
+  class "Fix Communication Tax Rate (Oct)\n:AppliedCustomerBillingTaxRate" as FixCommTaxOct {
+    BillingPeriod = 1 Oct-31Oct
+    Value = 2,40 €
+    AppliedRate = 20%
+  }
+
+  DiscountTaxSep --> DiscountSep : AppliedAlterationRefersTo
+  DiscountTaxOct --> DiscountOct : AppliedAlterationRefersTo
+  BoxTaxSep --> BoxRateSep : AppliedAlterationRefersTo
+  BoxTaxOct --> BoxRateOct : AppliedAlterationRefersTo
+  FiberAcessTaxSep --> FiberAcessRateSep : AppliedAlterationRefersTo
+  FiberAcessTaxOct --> FiberAcessRateOct : AppliedAlterationRefersTo
+  FiberAcessInstallTax --> FiberAcessInstallFees : AppliedAlterationRefersTo
+  TvChannelTaxOct --> TvChannelRateOct : AppliedAlterationRefersTo
+  TvChannelTaxSep --> TvChannelRateSep : AppliedAlterationRefersTo
+  FixCommTaxSep --> FixCommRateSep : AppliedAlterationRefersTo
+  FixCommTaxOct --> FixCommRateOct : AppliedAlterationRefersTo
+}
+
+package "TMFC005-Product Inventory" #FFF3E0 {
+  class ":DiscountProductPriceAlteration" as DiscountAlteration {
+    Type = discount
+    Value = 5
+    Currency = euro
+    Starting Date = 10thSep2023
+    valid For = 09June2024
+  }
+  class ":RecurringProductPrice" as Box1Price {
+    RecurringPeriod = monthly
+    Value = 5
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class ":RecurringProductPrice" as FiberAcessPrice {
+    RecurringPeriod = monthly
+    Value = 10
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class ":OneTimeProductPrice" as FiberAcessOneTime {
+    Type = One Time
+    Value = 30
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class ":RecurringProductPrice" as TvChannelPrice {
+    RecurringPeriod = monthly
+    Value = 5
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class ":RecurringProductPrice" as FixCommunicationServicePrice {
+    RecurringPeriod = monthly
+    Value = 12
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+
+  class "CommercialTax\n:TaxProductPriceAlteration" as CommercialTax {
+    Rate = 20%
+  }
+  class "SpecialTax\n:TaxProductPriceAlteration" as SpecialTax {
+    Rate = 10%
+  }
+
+  CommercialTax --> DiscountAlteration : impacts
+  CommercialTax --> Box1Price : impacts
+  CommercialTax --> FiberAcessPrice : impacts
+  CommercialTax --> TvChannelPrice : impacts
+  CommercialTax --> FixCommunicationServicePrice : impacts
+  SpecialTax --> FiberAcessOneTime : impacts
+}
+
+DiscountTaxSep --> DiscountAlteration : "described by"
+DiscountTaxOct --> DiscountAlteration : "described by"
+BoxTaxSep --> Box1Price : "described by"
+BoxTaxOct --> Box1Price : "described by"
+FiberAcessTaxSep --> FiberAcessPrice : "described by"
+FiberAcessTaxOct --> FiberAcessPrice : "described by"
+FiberAcessInstallTax --> FiberAcessOneTime : "described by"
+TvChannelTaxOct --> TvChannelPrice : "described by"
+TvChannelTaxSep --> TvChannelPrice : "described by"
+FixCommTaxSep --> FixCommunicationServicePrice : "described by"
+FixCommTaxOct --> FixCommunicationServicePrice : "described by"
+
+@enduml

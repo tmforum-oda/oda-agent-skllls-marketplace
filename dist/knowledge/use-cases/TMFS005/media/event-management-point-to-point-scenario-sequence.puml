@@ -1,0 +1,21 @@
+@startuml
+title Event Management ( Scenario 2: Point-to-Point )
+
+participant "TMFCxxx (Producer)" as Producer
+participant "TMFCxxx (Consumer)" as Consumer
+
+group Consumer Registers listener
+
+    Consumer -> Producer : 1 **TMFxxx API:**\nPost /Hub (Callback="URL Given By The Consumer", query=eventType"EventName", filter="Optinnal filter")
+    Producer --> Consumer : 2 200 OK (HubId="",status="subscribed")
+
+end
+
+group Producer Publish Event to listener
+
+    Producer -> Consumer : 3 **TMFxxx API:**\nPost /Listener/eventName\n(eventId="EventId", eventType="EventType", data="EventData")
+    Consumer --> Producer : 4 200 OK
+
+end
+
+@enduml

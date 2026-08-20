@@ -1,0 +1,145 @@
+@startuml
+title Applied Customer Billing Rate Information view
+
+package "TMFC024-BillingAccount Mgt" #FFE8CC {
+  class "John billing Account" as JohnBillingAccount
+  class "John billing Cycle" as JohnBillingCycle {
+    Billing period = 1st October-31 October
+  }
+  JohnBillingCycle --> JohnBillingAccount : Configured For
+}
+
+package "TMFC030-Bill Generation Mgt" #white {
+  class "John October Bill\n:CustomerBill" as JohnOctoberBill
+  JohnOctoberBill ..> JohnBillingAccount : created for
+}
+
+package "TMFC031-Bill Calculation" #E2F0D9 {
+  class "Discount (Sep)\n:AppliedCustomerBillingDiscount" as DiscountSep {
+    BillingPeriod = 10Sep-30sep
+    Value = 3.06 euro
+  }
+  class "Discount (Oct)\n:AppliedCustomerBillingDiscount" as DiscountOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 5 euro
+  }
+  class "Box Rate (Sep)\n:AppliedCustomerBillingRecurringCharge" as BoxRateSep {
+    BillingPeriod = 10Sep-30sep
+    Value = 3.06 euro
+  }
+  class "Box Rate (Oct)\n:AppliedCustomerBillingRecurringCharge" as BoxRateOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 5 euro
+  }
+  class "Fiber Acess Rate (Sep)\n:AppliedCustomerBillingRecurringCharge" as FiberAcessRateSep {
+    BillingPeriod = 10Sep-30sep
+    Value = 5,94 euro
+  }
+  class "Fiber Acess Rate (Oct)\n:AppliedCustomerBillingRecurringCharge" as FiberAcessRateOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 10 euro
+  }
+  class "Fiber Acess Installation Fees\n:AppliedCustomerBillingOneTimeCharge" as FiberAcessInstallFees {
+    BillingPeriod = 10Sep-30sep
+    Value = 30 euro
+  }
+  class "Tv Channel Rate (Oct)\n:AppliedCustomerBillingRecurringCharge" as TvChannelRateOct {
+    BillingPeriod = 1 Oct-31 Oct
+    Value = 5 euro
+  }
+  class "Tv Channel Rate (Sep)\n:AppliedCustomerBillingRecurringCharge" as TvChannelRateSep {
+    BillingPeriod = 10Sep-30sep
+    Value = 3.06 euro
+  }
+  class "Fix Communication Rate (Sep)\n:AppliedCustomerBillingRecurringCharge" as FixCommRateSep {
+    BillingPeriod = 10Sep-30sep
+    Value = 7,20 euro
+  }
+  class "Fix Communication Rate (Oct)\n:AppliedCustomerBillingRecurringCharge" as FixCommRateOct {
+    BillingPeriod = 1 Oct-31Oct
+    Value = 12 euro
+  }
+
+  DiscountSep --> JohnBillingCycle : Assigned To
+  DiscountOct --> JohnBillingCycle : Assigned To
+  BoxRateSep --> JohnBillingCycle : Assigned To
+  BoxRateOct --> JohnBillingCycle : Assigned To
+  FiberAcessRateSep --> JohnBillingCycle : Assigned To
+  FiberAcessRateOct --> JohnBillingCycle : Assigned To
+  FiberAcessInstallFees --> JohnBillingCycle : Assigned To
+  TvChannelRateOct --> JohnBillingCycle : Assigned To
+  TvChannelRateSep --> JohnBillingCycle : Assigned To
+  FixCommRateSep --> JohnBillingCycle : Assigned To
+  FixCommRateOct --> JohnBillingCycle : Assigned To
+}
+
+package "TMFC005-Product Inventory" #white {
+  class "John Contract Silver Fiber" as Contract
+  class ":DiscountProductPriceAlteration" as DiscountAlteration {
+    Type = discount
+    Value = 5
+    Currency = euro
+    Starting Date = 10thSep2023
+    valid For = 09June2024
+  }
+  class "Box1" as Box1
+  class ":RecurringProductPrice" as Box1Price {
+    RecurringPeriod = monthly
+    Value = 5
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class "Fiber Acess" as FiberAcess
+  class ":RecurringProductPrice" as FiberAcessPrice {
+    RecurringPeriod = monthly
+    Value = 10
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class ":OneTimeProductPrice" as FiberAcessOneTime {
+    Type = One Time
+    Value = 30
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class "Tv Channel" as TvChannel
+  class ":RecurringProductPrice" as TvChannelPrice {
+    RecurringPeriod = monthly
+    Value = 5
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+  class "Fix Communication Service" as FixCommunicationService
+  class ":RecurringProductPrice" as FixCommunicationServicePrice {
+    RecurringPeriod = monthly
+    Value = 12
+    Currency = euro
+    Starting Date = 10thSep2023
+  }
+
+  Contract --> Box1 : Contains
+  Contract --> FiberAcess : Contains
+  Contract --> TvChannel : Contains
+  Contract --> FixCommunicationService : Contains
+
+  Contract --> DiscountAlteration : valuedby
+  Box1 --> Box1Price : valuedby
+  FiberAcess --> FiberAcessPrice : valuedby
+  FiberAcess --> FiberAcessOneTime : valuedby
+  TvChannel --> TvChannelPrice : valuedby
+  FixCommunicationService --> FixCommunicationServicePrice : Valued by
+}
+
+DiscountSep --> DiscountAlteration : "described by"
+DiscountOct --> DiscountAlteration : "described by"
+BoxRateSep --> Box1Price : "described by"
+BoxRateOct --> Box1Price : "described by"
+FiberAcessRateSep --> FiberAcessPrice : "described by"
+FiberAcessRateOct --> FiberAcessPrice : "described by"
+FiberAcessInstallFees --> FiberAcessOneTime : "described by"
+TvChannelRateOct --> TvChannelPrice : "described by"
+TvChannelRateSep --> TvChannelPrice : "described by"
+FixCommRateSep --> FixCommunicationServicePrice : "described by"
+FixCommRateOct --> FixCommunicationServicePrice : "described by"
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+title Step 5 - Customer Information required (identify required information)
+
+actor person
+participant "EngagementManagement" as EM
+participant "ProductOrderCapture\n& Validation" as POCV
+participant "ProductCatalogMgt" as PCM
+
+activate EM
+activate POCV
+
+== Complete order with all required information (party, legal address, appointment, billing account, payment, proof, etc.) ==
+
+note right of POCV : required information are based on Product Catalog information
+
+POCV -> PCM : 80 **TMF620 Product Catalog Mgt** GET /productOffering?offeringId25,26,89,74,12
+PCM --> POCV : 81 **TMF620** 200 OK\n(catalog information for productOffering25,26,89,74,12)
+
+POCV -> POCV : 82 Identify required information\nappointment for 25 (ProductOrderItem 1)\nbillingAccount for 26 (ProductOrderItem 2)\npayment for 74 (ProductOrderItem 3) & 12 (ProductOrderItem 6)
+
+POCV --> EM : 83 **TMF701** 200 OK\n(SessionId, ProcessId4, available actions:\nTaskId5 require appointment for ProductOrderitem1,\nTaskId8 require billing account,\nTaskId99 quit, save)
+
+note over EM, POCV
+  In this example it is up to the engagement management to
+  manage task priority on the UI (all displayed or railroad)
+end note
+
+EM -> EM : 84 Display order completion according\nto data (tasks) to be captured
+deactivate EM
+deactivate POCV
+
+@enduml

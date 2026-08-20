@@ -110,7 +110,8 @@ According to ODA principles, the Core Commerce Management is totally agnostic of
 
 In some cases the technology can be a marketing or business argument - so it is also possible to instantiate services associated to a specific technology and related products, as we do here for the Fiber Access.
 
-![](media/image01.png)
+![](media/oda-functional-architecture-overview.png)
+*([text description](media/oda-functional-architecture-overview.text-description.md))*
 
 ## Objective of the use case
 
@@ -176,7 +177,8 @@ The delivery process is entirely driven by the catalog model and information:
 
 Order fulfillment and confirmation to customer
 
-![](media/image02.png)
+![](media/order-fulfillment-email-mockup.png)
+*([text description](media/order-fulfillment-email-mockup.text-description.md))*
 
 # Information View
 
@@ -186,11 +188,13 @@ Order fulfillment and confirmation to customer
 
 ## Order delivery view
 
-![](media/image03.png)
+![](media/order-delivery-view-product-order.png)
+*([PlantUML source](media/order-delivery-view-product-order.puml))*
 
 Orchestration of orders:
 
-![](media/image04.png)
+![](media/order-fulfillment-sequencing-diagram.png)
+*([text description](media/order-fulfillment-sequencing-diagram.text-description.md))*
 
 # Sequence diagrams
 
@@ -208,7 +212,8 @@ Following diagram shows the high level view for delivery of the product order. A
 
 - POOM manages the orchestration of the Service Order / Shipping Order accordingly as SOM and logistic system are not "aware" of this orchestration.
 
-![](media/image05.png)
+![](media/order-delivery-high-level-sequence.png)
+*([PlantUML source](media/order-delivery-high-level-sequence.puml))*
 
 ## Step 2
 
@@ -222,7 +227,8 @@ Zoom on delivery for product Specification based on Service Specification - This
 
 Note: add a Service Qualification check in the next version
 
-![](media/image06.png)
+![](media/cfs-based-delivery-sequence.png)
+*([PlantUML source](media/cfs-based-delivery-sequence.puml))*
 
 At this stage we do not illustrate further the Resource delivery and the Service order update from the ROM.
 
@@ -236,13 +242,15 @@ At this stage we do not illustrate further the Resource delivery and the Service
 
 - POOM also triggers an event change.
 
-![](media/image07.png)
+![](media/cfs-based-delivery-completion-sequence.png)
+*([PlantUML source](media/cfs-based-delivery-completion-sequence.puml))*
 
 ## Step 3
 
 Zoom on order follow-up (performed by the Product Order Capture & Validation)
 
-![](media/image08.png)
+![](media/order-follow-up-zoom-sequence.png)
+*([PlantUML source](media/order-follow-up-zoom-sequence.puml))*
 
 ## Step 4
 
@@ -264,13 +272,13 @@ In this part:
 
 - POOM triggers a ShippingOrder to SP supply chain. The Shipping order should describe the product configuration (
 
-![](media/image09.png)
+![](media/warning-icon.png)*([text description](media/warning-icon.text-description.md))*
 ** following SID it should be stockItem**), place where it must delivered and what are the shipping condition. The reference of the productOrder is passed.
 
-- ![](media/image09.png)
+- ![](media/warning-icon.png)*([text description](media/warning-icon.text-description.md))*
  As of now product configuration is defined through ShippingOrder→ shippingOrderItem → Shipment - this is an issue because POOM cannot compute the shipment (this is Logistic responsability) so we need a link shippingOrderItem → ProductConfiguration/stockItem.
 
-- ![](media/image10.png)
+- ![](media/question-mark-icon.png)*([text description](media/question-mark-icon.text-description.md))*
  Is really the shippingOrder the right API for the interaction between POOM and the supply chain?
 
 - SP Supply chain identifies if and which logistic partner will be involved. Then SP Supply chain computes the shippment to be done by regrouping ShippingOrderItems.
@@ -281,14 +289,15 @@ In this part:
 
 - Logistic Partner triggers shippment request to transport partners and then updates the shipping order with the link(s) to the shipment. 
 
-![](media/image09.png)
+![](media/warning-icon.png)*([text description](media/warning-icon.text-description.md))*
  reference of the productOrder should be added in the shipment
 
 - Events are triggering on shipment and are used to updat the shipping orders.
 
 - POOM updates accordingly the product inventory and the product order.
 
-![](media/image11.png)
+![](media/stock-based-delivery-sequence.png)
+*([PlantUML source](media/stock-based-delivery-sequence.puml))*
 
 ### Shipment tracking management
 
@@ -300,7 +309,8 @@ In this second part:
 
 - Product Inventory & Product order are updated accordingly.
 
-![](media/image12.png)
+![](media/shipment-tracking-sequence.png)
+*([PlantUML source](media/shipment-tracking-sequence.puml))*
 
 # Conclusion
 

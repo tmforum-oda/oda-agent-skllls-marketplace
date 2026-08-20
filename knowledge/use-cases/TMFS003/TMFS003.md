@@ -90,7 +90,8 @@ According to ODA principles, the Core Commerce Management is totally agnostic of
 
 In some cases the technology can be a marketing or business argument - so it is also possible to instantiate services associated to a specific technology and related products, as we do here for the Fiber Access.
 
-![](media/image01.png)
+![](media/oda-functional-architecture-overview.png)
+*([text description](media/oda-functional-architecture-overview.text-description.md))*
 
 ## Objective of the use case
 
@@ -142,7 +143,8 @@ Moreover, we consider that John Smith checked the technical availability of fibe
 
 # Description
 
-![](media/image02.png)
+![](media/order-configuration-ui-mockup-step0-2.png)
+*([text description](media/order-configuration-ui-mockup-step0-2.text-description.md))*
 
 - Step 1
 
@@ -164,7 +166,8 @@ Moreover, we consider that John Smith checked the technical availability of fibe
 
 - Then he validates the global configuration of his order.
 
-![](media/image03.png)
+![](media/order-configuration-ui-mockup-step3-4.png)
+*([text description](media/order-configuration-ui-mockup-step3-4.text-description.md))*
 
 - Step 3.1
 
@@ -188,7 +191,8 @@ Moreover, we consider that John Smith checked the technical availability of fibe
 
 - John Smith is asked to validate his Product Order configuration (or Shopping Card), what he does.
 
-![](media/image04.png)
+![](media/order-configuration-ui-mockup-step5-6.png)
+*([text description](media/order-configuration-ui-mockup-step5-6.text-description.md))*
 
 - Step 5: To finish the order capture process, more information can be requested depending on the Product Order content and related Product Catalog rules, or depending on the already available Party information. In our current example :
 
@@ -216,7 +220,8 @@ This view details the Fiber Contract Silver product offering, with all the manda
 
 The CFS, RFS and Resource specification levels of the catalog will be more detailed in TMFS004 related to the delivery process.
 
-![](media/image05.png)
+![](media/global-catalog-view.png)
+*([PlantUML source](media/global-catalog-view.puml))*
 
 Notes:
 
@@ -236,7 +241,8 @@ The usage prices associated to the Fix Communication Product Offering are for ex
 
 This view represents the product order initialized at the end of Step2, according to the configuration validated by John Smith.
 
-![](media/image06.png)
+![](media/product-order-view.png)
+*([PlantUML source](media/product-order-view.puml))*
 
 Note: in a next version the detailed structure of the product order and its links with the products instantiated in the Product Inventory will be detailed.
 
@@ -286,7 +292,8 @@ Note: Sequence Diagrams will be updated in the next version to take into account
 
 - A Product Order (or a Shopping Cart) is initialized by the process with all collected information and default values defined in the Product Catalog for the selected Product Offering.
 
-![](media/image07.png)
+![](media/order-configuration-screen-sequence.png)
+*([PlantUML source](media/order-configuration-screen-sequence.puml))*
 
 ##  Step 2 - Change configuration values and validate
 
@@ -300,7 +307,8 @@ Note: Sequence Diagrams will be updated in the next version to take into account
 
 Note: to be studied in a next version - how to store a configuration step to be able to interrupt the process and retrieve the configuration later to continue it (store Product Configuration ? use Product Order or Shopping Cart ?)
 
-![](media/image08.png)
+![](media/configuration-values-validate-sequence.png)
+*([PlantUML source](media/configuration-values-validate-sequence.puml))*
 
 ##  Step 3 - Provide Delivery Address and Choose Shipping Options
 
@@ -314,7 +322,8 @@ Note: to be studied in a next version - how to store a configuration step to be 
 
 - And John Smith validates his Product Order configuration (or Shopping Cart).
 
-![](media/image09.png)
+![](media/delivery-address-shipping-sequence.png)
+*([PlantUML source](media/delivery-address-shipping-sequence.puml))*
 
 ##  Step 4 - Validation of the Product Order items
 
@@ -324,7 +333,8 @@ Note: to be studied in a next version - how to store a configuration step to be 
 
 - From a process perspective, the shopping cart is 'translated' in a product order (entity) (if shopping cart is used)
 
-![](media/image10.png)
+![](media/order-items-validation-sequence.png)
+*([PlantUML source](media/order-items-validation-sequence.puml))*
 
 ** **
 
@@ -344,7 +354,8 @@ Note: to be studied in a next version - how to store a configuration step to be 
 
 - From the information providing by the process, the front-end displays the screen to capture this data 
 
-![](media/image11.png)
+![](media/complete-order-required-info-sequence.png)
+*([PlantUML source](media/complete-order-required-info-sequence.puml))*
 
 - Appointment Management is not displayed in this release
 
@@ -354,7 +365,8 @@ Note: to be studied in a next version - how to store a configuration step to be 
 
 - Billing Account Management is not detailed in this release
 
-![](media/image12.png)
+![](media/appointment-address-billing-sequence.png)
+*([PlantUML source](media/appointment-address-billing-sequence.puml))*
 
 ## Step 6 - Order confirmation and completion
 
@@ -374,11 +386,13 @@ Note: to be studied in a next version - how to store a configuration step to be 
 
  
 
-![](media/image13.png)
+![](media/order-final-validation-sequence.png)
+*([PlantUML source](media/order-final-validation-sequence.puml))*
 
 At the end of these steps, we will have the following information in the Product Inventory:
 
-![](media/image14.png)
+![](media/product-order-instance-view.png)
+*([PlantUML source](media/product-order-instance-view.puml))*
 
 # Conclusion
 
@@ -390,9 +404,9 @@ Even if the use case still needs to be detailed, especially at step 5 - Customer
 
 | Project | Jira identifier |
 | --- | --- |
-| API | AP-3771 - Service Qualification - Add an appointment required in the response  backlog → CANCELLED <br>![](media/image15.png) New JIRA : [AP-6200] TMF645 - Add additional information in the response - TM Forum JIRA |
-| API | AP-3772 - Introduce Stock Item identifier concept in Stock API  done <br>![](media/image15.png) |
-| API | AP-3773 - Add a Task to generate ProductOrder from ShoppingCart  done <br>![](media/image15.png) |
+| API | AP-3771 - Service Qualification - Add an appointment required in the response  backlog → CANCELLED <br>![](media/done-checkmark-icon.png)<br>*([text description](media/done-checkmark-icon.text-description.md))* New JIRA : [AP-6200] TMF645 - Add additional information in the response - TM Forum JIRA |
+| API | AP-3772 - Introduce Stock Item identifier concept in Stock API  done <br>![](media/done-checkmark-icon.png)<br>*([text description](media/done-checkmark-icon.text-description.md))* |
+| API | AP-3773 - Add a Task to generate ProductOrder from ShoppingCart  done <br>![](media/done-checkmark-icon.png)<br>*([text description](media/done-checkmark-icon.text-description.md))* |
 | API | TMF620 Product Catalog API: treat impacts of the SID Jira tickets ISA-898 on the API resource model |
 | API | TMF633 Service Catalog API: treat impacts of the SID Jira tickets ISA-899 on the API resource model |
 | SID | [ISA-898] Product Specification ABE - Add attributes to manage technical eligibility check and geographic address need - TM Forum JIRA |

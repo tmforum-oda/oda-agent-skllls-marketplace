@@ -1,0 +1,60 @@
+@startuml
+title Zoom on order follow-up
+
+participant "ProductOrderCapture\nValidation" as POCV
+participant "PartyInteractionManagement" as PIM #red
+participant "PartyManagement" as PM #red
+participant "ProductInventory" as PI
+participant "EventManagement" as Event
+participant "CommunicationServer" as CS
+
+Event -> POCV : 60 **TMF688 Event Management** POST /listener/TaskFlowStateChange\nstate='Completed',PFSpec='POOM'
+
+alt complete product order delivered
+    Event -> POCV : 61 **TMF688 Event Management** POST /listener/ProcessFlowStateChange\nstate='Completed',PFSpec='POOM'
+end
+
+POCV -> POCV : 62 Compute order item at product offering level
+
+note right of PI : Update of Product Inventory for product offering level
+
+POCV -> PI : 63 **TMF637 Product Inventory Management** PATCH /product/id1 (Product Offering instance update for state, date, productPrice, etc.)
+activate PI
+PI --> POCV : 64 **TMF637** 200 OK\nProduct updated
+deactivate PI
+
+POCV -> POCV : 65 **TMF622 Product Ordering** PATCH /productOrder/id1\n(stateItem update)\nUpdate Product order item(s) state for product offering level
+
+POCV -> POCV : 66 Compute Product order state\n(Check all commercial activities\ncompletion like document signature)
+
+alt ProductOrder state shifted to completed
+    POCV -> POCV : 67 **TMF622 Product Ordering** PATCH /productOrder/id1\n(state update)
+
+    note over POCV, PIM : Order follow-up detects a communication must be sent to customer
+
+    POCV -> PIM : 68 **TMF701 Process Flow** POST /processFlow\n(ProcessFlowSpec=manageCommunication +\nCommunicateOrderDeliveryCompletion+productOrderId\n+party.id)
+    activate PIM
+
+    PIM -> PM : 69 **TMF632 Party Management** GET /party/{id}?fields=contactMedium
+    PM --> PIM : 70 party contact medium information
+
+    PIM -> PIM : 71 determine prefered customer contact\nor retrieve from order
+
+    PIM -> CS : 72 **TMF681 Communication** POST /communicationMessage\n(receiver method, content)
+    activate CS
+    CS --> PIM : 73 **TMF681** 201 Created\n(communication sent)
+    deactivate CS
+
+    PIM -> PIM : 74 **TMF683 Party Interaction** POST /partyInteraction
+
+    PIM --> POCV : 75 **TMF701** 201 Created\nProcessFlow created
+    deactivate PIM
+
+    PIM -> Event : 76 **TMF688 Event Management** POST Event (ProcessFlowStateChange\nstate='Completed',PFSpec='ManageCommunication')
+
+    Event -> POCV : 77 **TMF688 Event Management** POST /listener/ProcessFlowStateChangeEvent\n(state='Completed',PFSpec='ManageCommunication')
+
+    POCV -> Event : 78 **TMF688 Event Management** POST /processFlowStateChangeEvent\n(state='Completed',PFSpec='PrdOrdCptVd')
+end
+
+@enduml

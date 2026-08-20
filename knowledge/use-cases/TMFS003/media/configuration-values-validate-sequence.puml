@@ -1,0 +1,33 @@
+@startuml
+title Step 2 - Change configuration values and validate
+
+actor person
+participant "EngagementManagement" as EM
+participant "ProductConfigurator" as PC
+
+== POCV delegates to configurator the cart configuration responsability ==
+
+activate EM
+activate PC
+note right of PC : still possible to do a **TMF760 Product Configuration** GET /queryProductConfiguration/1 if resource has been created
+note right of PC : engagement is dealing directly with Product Configurator component
+
+loop Till user configures offer
+    person -> EM : 20 configure item
+    EM -> PC : 21 **TMF760 Product Configuration** POST /queryProductConfiguration\n(ProductConfiguration.id1, selected offering + characteristic values)
+    PC --> EM : 22 **TMF760** 200 OK\n(ProductConfiguration.id1, configuration updated with offerings, pricing,\ncharacteristics and actions possible)\nOR 201 Created (queryProductConfiguration.idX...)
+    EM -> EM : 23 display new configuration\nand prices
+end
+
+person -> EM : 24 validate configuration
+EM -> PC : 25 **TMF760 Product Configuration** POST /checkProductConfiguration\n(ProductConfiguration.id1 : latest configuration selected by user for\nmain selected offerings (items for fiber and add-ons))
+PC --> EM : 26 **TMF760** 200 OK\n(state=approved)\nOR 201 Created
+deactivate PC
+
+note over EM, PC
+  At this step, the main offerings have been configured, and the configuration is valid.
+  The next offerings to be configured (shipping) are known by Engagement Management from latest POST queryProductConfiguration
+end note
+deactivate EM
+
+@enduml

@@ -1,0 +1,65 @@
+@startuml
+title Stock-based delivery
+
+participant "EngagementManagement" as EM #magenta
+box "Service Provider"
+  participant "ProductOrderOrchestrationManagement" as POOM
+  participant "SupplyChainManagement" as SCM #blue
+  participant "EventManagement" as Event
+  participant "ProductOrderCaptureValidation" as POCV
+  participant "ProductInventory" as PI
+end box
+box "Logistic Partner"
+  participant "P_SupChainMgmt" as PSCM #blue
+end box
+box "Delivery Partner"
+  participant "D_SupChainMgmt" as DSCM #blue
+end box
+
+== Following shipment tracking ==
+
+note over EM : user wants to knows where is the shipment
+
+EM -> POCV : 120 **TMF622 Product Ordering** GET /productOrder\n(relatedParty.id&role, state)
+activate POCV
+POCV --> EM : 121 **TMF622** 200 OK\nget list of product order
+deactivate POCV
+
+EM -> SCM : 122 **TMF700 Shipping Order** GET /shippingOrder\n(relatedProductOrder)
+activate SCM
+SCM --> EM : 123 **TMF700** 200 OK\nget shippingOrder with supply chain partner & id
+deactivate SCM
+
+EM -> PSCM : 124 **TMF700 Shipping Order** GET /shippingOrder\n(relatedProductOrder)
+activate PSCM
+PSCM --> EM : 125 **TMF700** 200 OK\nget shippingOrder with shipment partner & id
+deactivate PSCM
+
+EM -> DSCM : 126 **TMF684 Shipment Tracking - HISTORIC API** GET shipmentTracking\n(order.id={id})
+activate DSCM
+DSCM --> EM : 127 **TMF684** 200 OK - details with carrier tracking Url
+deactivate DSCM
+
+EM -> EM : 128 Display carrier shipment follow-up UI
+
+== Later....once the box has been delivery to the customer ==
+
+DSCM -> PSCM : 129 Event for Shipment State change (completed)
+PSCM -> SCM : 130 Event for shippingOrder state change (completed)
+activate SCM
+
+SCM -> POOM : 131 Notification for shippingOrder state change (completed)
+SCM -> SCM : 132 PATCH ShippingOrder #26
+SCM -> Event : 133 Event for ShippingOrder/ShippingOrderItem state change
+
+Event --> POOM : 134 Notification for ShippingOrder/ShippingOrderItem state change
+deactivate SCM
+activate POOM
+POOM --> POOM : 135 update delivery flow
+POOM --> PI : 136 **TMF637 Product Inventory Management** PATCH /product/id1 (state update)
+POOM --> POCV : 137 **TMF622 Product Ordering** PATCH ProductOrder (state item update)
+
+note over POOM : Back to global flow view
+deactivate POOM
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+title Step 4 - Validation of the Product Order items
+
+actor person
+participant "EngagementManagement" as EM
+participant "ProductOrderCapture\n& Validation" as POCV
+participant "ProductConfigurator" as PC
+participant "ProductInventory" as PI
+
+activate EM
+activate POCV
+
+== get final approval of order configuration ==
+
+EM -> POCV : 60 **TMF622 Product Order Mgt** GET /productOrder/7\nor **TMF663 Shopping Cart Mgt** GET /shoppingCart/7
+POCV --> EM : 61 **TMF622** 200 OK\nproductOrder #7\nor **TMF663** 200 OK\nshoppingCart #7
+
+EM -> EM : 62 Display all items and tariff
+person -> EM : 63 confirm global approval
+EM -> POCV : 64 **TMF701 Process Flow** PATCH /processFlow/4/taskFlow/4\nSessionId, validate Order OK
+
+opt
+    POCV -> PI : 65 **TMF637 Product Inventory Mgt** POST /product
+    activate PI
+    PI --> POCV : 66 **TMF637** 201 Created\nProduct representation
+    deactivate PI
+end
+
+note over POCV
+  At this point the shopping cart is not anymore used
+  shift to Product Order entity necessary
+end note
+
+alt if shoppingCart API is used
+    POCV -> POCV : 67 **TMF663 Shopping Cart Mgt** PATCH /shoppingCart/7\n(change status to ordered)
+    POCV -> POCV : 68 **TMF622 Product Order Mgt** POST /productOrder\n(draft, from shoppingCart7)
+else if shoppingCart API is not used
+    POCV -> POCV : 69 **TMF622 Product Order Mgt** PATCH productOrder/7\n(draft)
+end
+deactivate POCV
+deactivate EM
+
+@enduml

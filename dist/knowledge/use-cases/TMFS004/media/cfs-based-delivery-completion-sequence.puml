@@ -1,0 +1,35 @@
+@startuml
+title CFS-based delivery
+
+participant "ProductOrderOrchestration\nManagement" as POOM
+participant "ProductOrderCapture\nValidation" as POCV
+participant "ProductInventory" as PI
+participant "ServiceOrdering\nManagement" as SOM
+participant "EventManagement" as Event
+
+Event -> SOM : 40 **TMF688 Event Management** POST /serviceOrderStateChangeEvent\n(serviceOrderItem#1 - state="completed")
+
+SOM --> POOM : 41 **TMF688 Event Management** POST /listener/serviceOrderStateChange\n(serviceOrderItem#1 - state="completed")
+activate POOM
+
+POOM -> POOM : 42 update delivery flow
+
+POOM -> PI : 43 **TMF637 Product Inventory Management** PATCH /product/id1\n(state update to active)
+activate PI
+PI --> POOM : 44 **TMF637** 200 OK\nProduct updated
+deactivate PI
+
+POOM -> POCV : 45 **TMF622 Product Ordering** PATCH /productOrder\n(state item update to completed)
+activate POCV
+POCV --> POOM : 46 **TMF622** 200 OK\nProductOrder updated
+deactivate POCV
+
+POOM -> Event : 47 **TMF688 Event Management** POST /productOrderStateChangeEvent\n(productOrderItem#1 - state="completed")
+
+alt if all PrdOrdCptVd item delivered
+    POOM -> Event : 48 **TMF688 Event Management** POST /processFlowStateChangeEvent\n(state='Completed',PFSpec='POOM')
+end
+
+deactivate POOM
+
+@enduml

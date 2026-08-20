@@ -1,0 +1,48 @@
+@startuml
+title Event Management ( Scenario 1: through Event Management Component)
+
+participant "TMFCxxx (Producer)" as Producer
+participant "Event Management (Broker)" as Broker #grey
+participant "TMFCxxx (Consumer)" as Consumer
+
+group Producer Job
+
+    Producer -> Broker : 1 **TMF688 Event Management:**\nPost /topic (name ="TopicName", description ="Topic regrouping Event category")
+    note right of Broker : Creation of topic and event type within the broker
+    Broker --> Producer : 2 201 Created (TopicId="IdTopic", "status": "created")
+
+    Producer -> Broker : 3 **TMF688 Event Management:**\nPost /topic/IdTopic/event\n(eventType="label Category of Event",priority= "High",title= "NameOfEvent" , "SampleRole",\nReportingSystem= "EventProducerId (TMFCxxx.Id)"
+    Broker --> Producer : 4 201 Created (EventId)
+
+end
+
+group Consumer Job
+
+    Consumer -> Broker : 5 **TMF688 Event Management:**\nPost /topic/IdTopic/Hub (Callback="URL Given By The Consumer", query= eventType="label Category of Event")
+    note right of Consumer : The consumer subscribes to a topic or an event
+    Broker --> Consumer : 6 200 OK (HubId="",status="subscribed")
+
+    group Or
+        Consumer -> Broker : 7 **TMF688 Event Management:**\nPost /Hub (Callback="URL Given By The Consumer", query= eventType="label Category of Event")
+        Broker --> Consumer : 8 200 OK (HubId="",status="subscribed")
+    end
+
+end
+
+group Publish Event
+
+    Producer -> Broker : 9 **TMF688 Event Management:**\nPOST /topics/{topicId}/event\n(eventType="EventType", data="EventData")
+    note right of Broker : The producer publish an event : The next version of the use case will elaborate on the differences between publishing events through component-specific APIs and the TMF688
+    Broker --> Producer : 10 200 OK (eventId="EventId")
+
+end
+
+group Consume Event
+
+    Broker -> Consumer : 11 **TMF688 Event Management:**\nPost /Listener/ConsumerCallbackUrl\n(eventId="EventId", eventType="EventType", data="EventData")
+    note right of Consumer : The consumer consume an event
+    Consumer --> Broker : 12 200 OK
+
+end
+
+@enduml
