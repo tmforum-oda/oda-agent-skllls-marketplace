@@ -100,7 +100,7 @@ INTERNAL_ONLY_SKILLS = {"process-usecase-media"}
 # mechanical restatement of the frontmatter description.
 SKILL_EXAMPLES = {
     "check-usecase-maturity": [
-        "Is TMFS030 safe to build against right now?",
+        "Is TMFS016 safe to build against right now?",
     ],
     "recommend-oda-components-for-requirement": [
         "We need to let customers manage their own SIM swaps online -- what ODA components and APIs should this be built on?",
@@ -109,19 +109,19 @@ SKILL_EXAMPLES = {
         "Turn TMFS030 into user stories and acceptance criteria for the delivery team.",
     ],
     "generate-test-cases-from-usecase": [
-        "Generate Gherkin/BDD test scenarios for TMFS030.",
+        "Generate Gherkin/BDD test scenarios for TMFS003.",
     ],
     "generate-api-mocks-from-usecase": [
-        "Scaffold mock API responses for TMFS030's dependencies so we can start integration testing before the real backend exists.",
+        "Scaffold mock API responses for TMFS003's dependencies so we can start integration testing before the real backend exists.",
     ],
     "draft-architecture-diagram-from-usecase": [
-        "Draw a sequence diagram for TMFS030's wholesale ordering flow.",
+        "Draw a sequence diagram for TMFS028's design phase service discovery. Save it as a .puml file",
     ],
     "validate-design-against-oda": [
         "Check whether our design's assumption that Party Management (TMF632) exposes a loyaltyPoints field actually holds.",
     ],
     "assess-change-impact": [
-        "We're deprecating TMF632 v4.0.0 -- which use cases break, and how badly?",
+        "We're deprecating TMF632 v4.0.0 - which use cases break, and how badly?",
     ],
     "audit-implementation-against-usecase": [
         "Does our current order-capture service actually implement TMFS030 the way the use case describes?",

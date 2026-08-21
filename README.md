@@ -4,9 +4,9 @@ A set of Agent skills for **Consumers** and **Creators** of the TM Forum Open Di
 
 The skills are packaged into two plugins `tm-forum-oda-consumer` and `tm-forum-oda-creator` and made available in a Marketplace. You can view the skills in:
 
-[dist\consumer\skills](dist\consumer\skills)
+[dist/consumer/skills](dist/consumer/skills)
 
-[dist\creator\skills](dist\creator\skills)
+[dist/creator/skills](dist/creator/skills)
 
 The [knowledge](knowledge) is a machine-readable knowledge base built from TM Forum's
 Open Digital Architecture (ODA) — use cases (`TMFSxxx`), ODA Components
