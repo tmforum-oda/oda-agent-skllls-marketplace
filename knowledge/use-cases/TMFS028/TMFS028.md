@@ -138,7 +138,8 @@ In the enterprise networking scenario, the configuration is as follows:
 
 Once deployed, both sites are connected to the private network under the same VPN instance, the end-to-end connectivity between the sites has been established. Billing is handled independently for each site and summed according to the defined charging policy.
 
-![](media/image01.png)
+![](media/cloud-based-vpn-access-network-topology.png)
+*([text description](media/cloud-based-vpn-access-network-topology.text-description.md))*
 
 # View
 
@@ -168,7 +169,8 @@ At runtime, the order processing specialist must also specify the site type and 
 
 Note: The "private network" referenced in this use case refers specifically to the operator’s bearer network, which corresponds to “CN2” in the Information View.
 
-![](media/image02.png)
+![](media/cloud-based-vpn-service-catalog-view.png)
+*([PlantUML source](media/cloud-based-vpn-service-catalog-view.puml))*
 
 A ServiceSpec starts in the "In Design" state when it is first created. After completing the design and passing the review process, it transitions to the "Designed" state. If the review fails, it remains in "In Design". If the ServiceSpec is abandoned during design, it moves to "Rejected".
 
@@ -180,7 +182,8 @@ When a ServiceSpec is scheduled for retirement but still has associated service 
 
 The service specification lifecycle view is informative and not normative.
 
-![](media/image03.png)
+![](media/service-specification-lifecycle-state-diagram.png)
+*([text description](media/service-specification-lifecycle-state-diagram.text-description.md))*
 
 # Diagrams
 
@@ -194,7 +197,8 @@ The service specification lifecycle view is informative and not normative.
 
 3. Seamless System Integration: Once the user confirms, the workflow transitions smoothly from manual consultation to CRM System processing. This culminates in the submission of the order to Product Order Capture & Validation, marking the formal handover from the "inquiry phase" to the "automated fulfillment phase."
 
-![](media/image04.png)
+![](media/pre-order-business-consultation-validation-sequence.png)
+*([PlantUML source](media/pre-order-business-consultation-validation-sequence.puml))*
 
 ### Product Fulfillment and Activation Sequence Diagram
 
@@ -222,7 +226,8 @@ This is the final execution phase where configurations are pushed to the network
 * State Synchronization: Updates the administrative and operational states of all components to "Active" across all inventory systems, ensuring the "as-built" record matches the "as-ordered" request.
 * Completion and Archiving: Finalizes the product order after successful activation, transitioning the process from an "Order State" to a "Live State" and notifying the customer that the service is ready for use.
 
-![](media/image05.png)
+![](media/product-fulfillment-and-activation-sequence.png)
+*([PlantUML source](media/product-fulfillment-and-activation-sequence.puml))*
 
 ### Design Phase Flowchart and Sequence Diagram
 
@@ -234,7 +239,8 @@ The core of the flowchart is:
 
 - Generate a list containing the content from the above two points and return it to the user.
 
-![](media/image06.png)
+![](media/design-phase-service-discovery-sequence-duplicate.png)
+*([text description](media/design-phase-service-discovery-sequence-duplicate.text-description.md))*
 
 The core of the sequence diagram is:
 
@@ -242,7 +248,8 @@ The core of the sequence diagram is:
 
 - The AI framework of the sequence diagram can be adjusted according to the requirements of each organization. Due to the rapid development of the AI era, there is no definitive consensus on the specific framework. However, the structure of its inputs and outputs is clear.
 
-![](media/image07.png)
+![](media/design-phase-service-discovery-sequence.png)
+*([PlantUML source](media/design-phase-service-discovery-sequence.puml))*
 
 # Conclusion
 
