@@ -1,0 +1,21 @@
+@startuml
+title TMFS019 Overview
+
+box "Entity\nCommunication Service Provider (CSP)"
+participant "Entity IT System\n(Solution)" as Entity
+end box
+box "Supplier"
+participant "Supplier IT System\n(Solution)" as Supplier
+end box
+
+== 1. Browse Supplier Catalog / Entity's Intent Management (TMFS019-1) ==
+Entity -> Supplier : 1.A Entity browse Suppliers' catalog
+Entity -> Supplier : 1.B or... Entity expresses to Supplier its Business Intent
+
+== 2. Entity / Supplier FrameworkAgreement Management (TMFS019-2 and TMFS019-3) ==
+Entity <-> Supplier : Definition of FrameworkAgreement and ad hoc ProductOffering proposition (bundle)\nincluding definition of Business Model, Contractual Model,\nFinancial Model, Operational Model...
+
+== 3. Partner/Suppliers' Stakeholders/Partner On-Boarding (TMFS019-4 and TMFS019-5) ==
+Entity -> Supplier : 3.A Supplier On-board Entity's assets\n(Actors/Organization, Billing Account, ZTP for lifecycle management, ...)
+Supplier -> Entity : 3.B Entity On-board Supplier's assets\n(Actors/Organization, Billing Account, ZTP for lifecycle management, ...)
+@enduml

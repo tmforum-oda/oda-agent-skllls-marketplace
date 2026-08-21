@@ -1,0 +1,34 @@
+{
+  "id": "30001",
+  "productOrderItem": [
+    {
+      "id": "100",
+      "quantity": 1,
+      "action": "add",
+      "@type": "ProductOrderItem"
+    },
+    {
+        "id": "110",
+        "quantity": 1,
+        "action": "add",
+        "@type": "ProductOrderItem"
+      },
+      {
+        "id": "120",
+        "quantity": 1,
+        "action": "add", 
+        "billingAccount": {
+            "id": "1889",
+            "@type": "BillingAccountRef"
+          },
+        "@type": "ProductOrderItem"
+      },      
+      {
+        "id": "130",
+        "quantity": 1,
+        "action": "add",
+        "@type": "ProductOrderItem"
+      }
+  ],
+  "@type": "ProductOrder"
+}

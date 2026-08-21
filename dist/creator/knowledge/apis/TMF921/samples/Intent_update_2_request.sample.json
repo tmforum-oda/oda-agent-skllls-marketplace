@@ -1,0 +1,12 @@
+[    
+    {
+      "op": "replace",
+      "path": "/description",
+      "value": "An intent resource update example"
+    },
+    {
+      "op": "replace",
+      "path": "/validFor/startDateTime",
+      "value": "2023-12-12T16:40:0.000Z"
+    }
+]

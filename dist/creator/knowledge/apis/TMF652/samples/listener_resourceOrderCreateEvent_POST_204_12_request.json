@@ -1,0 +1,326 @@
+{
+  "@type": "ResourceOrderCreateEvent",
+  "@schemaLocation": "/schema-registry/schema/ResourceOrderCreateEvent",
+  "href": "/tmf-api/v5/events/resourceOrderCreate/12345",
+  "id": "12345",
+  "correlationId": "corr67890",
+  "domain": "OrderManagement",
+  "title": "Resource Order Create",
+  "description": "This event creates a resource order.",
+  "priority": "medium",
+  "timeOccurred": "2025-01-22T06:41:27Z",
+  "source": {
+    "@type": "System",
+    "@schemaLocation": "/schema-registry/schema/System",
+    "href": "/tmf-api/v5/systems/sourceSystem/source123",
+    "id": "source123",
+    "name": "SourceSystem"
+  },
+  "reportingSystem": {
+    "@type": "System",
+    "@schemaLocation": "/schema-registry/schema/ReportingSystem",
+    "href": "/tmf-api/v5/systems/reportingSystem/report567",
+    "id": "report567",
+    "name": "ReportingSystem"
+  },
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "@schemaLocation": "/schema-registry/schema/RelatedParty",
+      "role": "Customer",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "@schemaLocation": "/schema-registry/schema/Party",
+        "href": "/tmf-api/v5/party/customer789",
+        "id": "customer789",
+        "name": "John Doe",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "analyticCharacteristic": [
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "@schemaLocation": "/schema-registry/schema/Characteristic",
+      "id": "char123",
+      "name": "OrderPriorityChange",
+      "valueType": "string",
+      "value": "High",
+      "characteristicRelationship": [
+        {
+          "@type": "CharacteristicRelationship",
+          "id": "rel456",
+          "relationshipType": "associated"
+        }
+      ]
+    }
+  ],
+  "eventId": "event56789",
+  "eventTime": "2025-01-22T06:41:27Z",
+  "eventType": "Create",
+  "event": {
+    "resourceOrder": {
+      "@type": "ResourceOrder",
+      "cancellationDate": "2025-01-22T06:41:27Z",
+      "cancellationReason": "Duplicate order identified",
+      "externalId": [
+        {
+          "@type": "ExternalIdentifier",
+          "id": "EXT00001",
+          "owner": "ExternalSystem",
+          "externalIdentifierType": "OrderReference"
+        }
+      ],
+      "name": "Customer Order Cancellation",
+      "description": "Cancellation of a duplicate customer order to avoid redundancy.",
+      "priority": 2,
+      "orderType": "Cancellation",
+      "category": "Customer Request",
+      "requestedStartDate": "2025-01-22T06:00:00Z",
+      "requestedCompletionDate": "2025-01-22T06:30:00Z",
+      "startDate": "2025-01-22T06:05:00Z",
+      "completionDate": "2025-01-22T06:25:00Z",
+      "expectedCompletionDate": "2025-01-22T06:30:00Z",
+      "note": [
+        {
+          "@type": "Note",
+          "id": "note123",
+          "author": "Jane Doe",
+          "date": "2025-01-22T06:10:00Z",
+          "text": "Cancellation approved by customer service team."
+        }
+      ],
+      "relatedParty": [
+        {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "@schemaLocation": "/schema-registry/schema/RelatedParty",
+          "role": "Customer",
+          "partyOrPartyRole": {
+            "@type": "PartyRef",
+            "@schemaLocation": "/schema-registry/schema/Party",
+            "href": "/tmf-api/v5/party/party123",
+            "id": "party123",
+            "name": "Service Provider Organization",
+            "@referredType": "Organization"
+          }
+        }
+      ],
+      "creationDate": "2025-01-22T06:41:27Z",
+      "state": "acknowledged",
+      "orderItem": [
+        {
+          "@type": "ResourceOrderItem",
+          "orderItemRelationship": [
+            {
+              "@type": "ResourceOrderItemRelationship",
+              "@schemaLocation": "/schema-registry/schema/ResourceOrderItemRelationship",
+              "relationshipType": "dependency",
+              "orderItem": {
+                "@type": "ResourceOrderItemRef",
+                "@schemaLocation": "/schema-registry/schema/ResourceOrderItemRef",
+                "itemId": "ITEM56789",
+                "resourceOrderId": "ORDER12345",
+                "resourceOrderHref": "/tmf-api/v5/resourceOrder/ORDER12345",
+                "@referredType": "ResourceOrderItem"
+              }
+            }
+          ],
+          "quantity": 500,
+          "appointment": {
+            "@type": "AppointmentRef",
+            "@schemaLocation": "/schema-registry/schema/AppointmentRef",
+            "href": "/tmf-api/v5/appointment/67890",
+            "id": "67890",
+            "name": "Site Installation Appointment",
+            "@referredType": "InstallationAppointment",
+            "description": "Appointment for the installation of network infrastructure at the customer site."
+          },
+          "action": "add",
+          "id": "12345",
+          "resource": {
+            "@type": "PhysicalResource",
+            "@baseType": "Resource",
+            "@schemaLocation": "/schema-registry/schema/Resource",
+            "category": "Network Element",
+            "description": "Fiber Optic Cable connecting two locations for high-speed data transmission.",
+            "name": "Fiber Optic Cable - Main Line",
+            "endOperatingDate": "2025-01-22T06:41:23Z",
+            "administrativeState": "locked",
+            "operationalState": "enabled",
+            "usageState": "idle",
+            "validFor": {
+              "startDateTime": "2025-01-22T06:41:23Z",
+              "endDateTime": "2025-02-25T06:41:23Z"
+            },
+            "note": [
+              {
+                "@type": "Note",
+                "id": "12345",
+                "author": "John Doe",
+                "date": "2025-01-22T06:41:23Z",
+                "text": "This resource order was created to address a high-priority customer request for infrastructure upgrade."
+              }
+            ],
+            "resourceOrderItem": [
+              {
+                "@type": "RelatedResourceOrderItem",
+                "@schemaLocation": "/schema-registry/schema/RelatedResourceOrderItem",
+                "resourceOrderHref": "/tmf-api/v5/resourceOrder/RO12345",
+                "resourceOrderId": "RO12345",
+                "itemAction": "add",
+                "itemId": "ITEM67890",
+                "role": "primary",
+                "@referredType": "ResourceOrderItem"
+              }
+            ],
+            "place": [
+              {
+                "@type": "RelatedPlaceRef",
+                "@schemaLocation": "/schema-registry/schema/RelatedPlaceRef",
+                "role": "installation",
+                "place": {
+                  "@type": "PlaceRef",
+                  "@schemaLocation": "/schema-registry/schema/PlaceRef",
+                  "href": "/tmf-api/v5/place/98765",
+                  "id": "98765",
+                  "name": "Customer Site - Location 1",
+                  "@referredType": "SiteLocation"
+                }
+              }
+            ],
+            "relatedParty": [
+              {
+                "@type": "RelatedPartyRefOrPartyRoleRef",
+                "@schemaLocation": "/schema-registry/schema/RelatedPartyRefOrPartyRoleRef",
+                "role": "Service Provider",
+                "partyOrPartyRole": {
+                  "@type": "PartyRef",
+                  "@schemaLocation": "/schema-registry/schema/PartyRef",
+                  "href": "/tmf-api/v5/party/98765",
+                  "id": "98765",
+                  "name": "ABC Telecom Services",
+                  "@referredType": "TelecommunicationsProvider"
+                }
+              }
+            ],
+            "resourceCharacteristic": [
+              {
+                "@type": "IntegerCharacteristic",
+                "@baseType": "Characteristic",
+                "@schemaLocation": "/schema-registry/schema/Characteristic",
+                "id": "CH123456",
+                "name": "Storage Capacity",
+                "valueType": "integer",
+                "value": 2048,
+                "characteristicRelationship": [
+                  {
+                    "@type": "CharacteristicRelationship",
+                    "@schemaLocation": "/schema-registry/schema/CharacteristicRelationship",
+                    "id": "CHREL7890",
+                    "relationshipType": "dependent"
+                  }
+                ]
+              }
+            ],
+            "attachment": [
+              {
+                "@type": "AttachmentRef",
+                "@schemaLocation": "/schema-registry/schema/Attachment",
+                "href": "/tmf-api/v5/attachment/ATT98765",
+                "id": "ATT98765",
+                "name": "Product Specification",
+                "@referredType": "Document",
+                "description": "Detailed product specification document.",
+                "url": "http://example.com/downloads/product-spec"
+              }
+            ],
+            "resourceSpecification": {
+              "@type": "ResourceSpecificationRef",
+              "@schemaLocation": "/schema-registry/schema/ResourceSpecification",
+              "href": "/tmf-api/v5/specification/SPEC54321",
+              "id": "SPEC54321",
+              "name": "Enterprise Storage",
+              "@referredType": "ResourceSpecification",
+              "version": "2.1"
+            },
+            "startOperatingDate": "2025-01-22T06:41:23Z",
+            "resourceVersion": "3.0",
+            "activationFeature": [
+              {
+                "@type": "Feature",
+                "@schemaLocation": "/schema-registry/schema/Feature",
+                "isBundle": false,
+                "featureRelationship": [
+                  {
+                    "@type": "FeatureRelationship",
+                    "@schemaLocation": "/schema-registry/schema/FeatureRelationship",
+                    "href": "/tmf-api/v5/feature/12345",
+                    "id": "12345",
+                    "name": "Network Upgrade",
+                    "relationshipType": "excluded",
+                    "validFor": {
+                      "startDateTime": "2025-01-22T06:41:23Z",
+                      "endDateTime": "2025-01-22T06:41:23Z"
+                    }
+                  }
+                ],
+                "featureCharacteristic": [
+                  {
+                    "@type": "IntegerCharacteristic",
+                    "@baseType": "Characteristic",
+                    "@schemaLocation": "/schema-registry/schema/Characteristic",
+                    "id": "45678",
+                    "name": "Speed",
+                    "valueType": "Integer",
+                    "value": 1000,
+                    "characteristicRelationship": [
+                      {
+                        "@type": "CharacteristicRelationship",
+                        "@schemaLocation": "/schema-registry/schema/CharacteristicRelationship",
+                        "id": "34567",
+                        "relationshipType": "associated"
+                      }
+                    ]
+                  }
+                ],
+                "policyConstraint": [
+                  {
+                    "@type": "PolicyRef",
+                    "@schemaLocation": "/schema-registry/schema/PolicyRef",
+                    "href": "/tmf-api/v5/policy/12345",
+                    "id": "12345",
+                    "name": "Data Retention Policy",
+                    "@referredType": "DataPolicy",
+                    "version": "1.0"
+                  }
+                ],
+                "isEnabled": false,
+                "id": "23456",
+                "name": "Service Bundle"
+              }
+            ],
+            "intent": {
+              "@type": "IntentRef",
+              "@schemaLocation": "/schema-registry/schema/IntentRef",
+              "href": "/tmf-api/v5/intent/INT1001",
+              "id": "INT1001",
+              "name": "Upgrade Service",
+              "@referredType": "Intent"
+            },
+            "externalIdentifier": [
+              {
+                "@type": "ExternalIdentifier",
+                "@schemaLocation": "/schema-registry/schema/ExternalIdentifier",
+                "owner": "XYZ Corp",
+                "externalIdentifierType": "ProjectID",
+                "id": "EXT45678"
+              }
+            ]
+          },
+          "state": "acknowledged"
+        }
+      ]
+    }
+  }
+}

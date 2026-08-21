@@ -1,0 +1,58 @@
+@startuml
+title Figure A.15 - ImplementationAgreement overview
+
+class Agreement <<Entity>> {
+  + documentNumber : String
+  + statementOfIntent : String
+  + status : String
+  + type : String
+  «required»
+  + validFor : TimePeriod
+}
+class AgreementItem <<Entity>> {
+  + validFor : TimePeriod
+}
+Agreement "1" <--> "0..*" AgreementItem : /AgreementConsistsOf
+
+class ContractualAgreement <<abstract>>
+class ContractualAgreementItem <<abstract>>
+ContractualAgreement --|> Agreement
+ContractualAgreementItem --|> AgreementItem
+ContractualAgreement "1" <--> "0..*" ContractualAgreementItem : ContractualAgreementConsistsOf
+
+class FrameworkAgreement
+class ImplementationAgreement
+FrameworkAgreement --|> ContractualAgreement
+ImplementationAgreement --|> ContractualAgreement
+FrameworkAgreement "0..1" <--> "0..*" ImplementationAgreement : ImplementationAgreementCanReferTo
+
+class FrameworkAgreementItem
+class ImplementationAgreementItem
+FrameworkAgreementItem --|> ContractualAgreementItem
+ImplementationAgreementItem --|> ContractualAgreementItem
+FrameworkAgreement "0..1" <--> "0..*" FrameworkAgreementItem : /FrameworkAgreementConsistsOf
+ImplementationAgreement "0..1" <--> "0..*" ImplementationAgreementItem : /ImplementationAgreementConsistsOf
+FrameworkAgreementItem "0..1" <--> "0..*" ImplementationAgreementItem : ImplementationAgreementItemCanReferTo
+
+class "ProductOfferingSpecification" as ProductOfferingSpecification <<EntitySpecification>> {
+  + isPromotion : Boolean
+  + isSellableStandAlone : Boolean
+}
+class "ProductOfferingInstance" as ProductOfferingInstance <<Entity>> {
+  + status : String
+  + validFor : TimePeriod
+}
+class "ProductSpecification" as ProductSpecification <<EntitySpecification>> {
+  + brand : String
+}
+class "Product" as Product <<Entity>> {
+  «required»
+  + status : String
+  + validFor : TimePeriod
+}
+
+ImplementationAgreementItem "0..*" --> "0..1" ProductOfferingSpecification : ImplemtationAgreementItemCanInvolve
+ImplementationAgreementItem "0..*" --> "0..*" ProductOfferingInstance : ImplementationAgreementItemCanInvolve
+ImplementationAgreementItem "0..*" --> "0..*" ProductSpecification : ImplementationAgreementItemCanInvolve
+ImplementationAgreementItem "0..*" --> "0..*" Product : ImplementationAgreementItemCanInvolve
+@enduml

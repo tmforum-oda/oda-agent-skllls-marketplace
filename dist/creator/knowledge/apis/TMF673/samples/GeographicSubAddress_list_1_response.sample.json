@@ -1,0 +1,49 @@
+[
+	{
+		"id": "1d40b27b-c32f-42e8-b473-eb71edff466b",
+		"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/f019f4e5-7431-44dc-94d6-97e9a881fe79/geographicSubAddress/1d40b27b-c32f-42e8-b473-eb71edff466b",
+		"levelNumber": "0",
+		"levelType": "floor",
+		"subAddressType": "floor",
+		"subUnit":[
+			{
+				"subUnitNumber": "1",
+				"subUnitType": "Rack",
+				"@type":"GeographicSubAddressUnit"
+			},
+			{
+				"subUnitNumber": "2",
+				"subUnitType": "Rack",
+				"@type":"GeographicSubAddressUnit"
+			}
+		],
+		"@type":"GeographicSubAddress"			
+	},
+	{
+		"id": "fbce45b8-f49b-4cac-ac3a-7e44f4953bcd",
+		"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/f019f4e5-7431-44dc-94d6-97e9a881fe79/geographicSubAddress/fbce45b8-f49b-4cac-ac3a-7e44f4953bcd",
+		"levelNumber": "1",
+		"levelType": "basement",
+		"subAddressType": "subUnit",
+		"subUnit":[
+			{
+				"subUnitNumber": "1",
+				"subUnitType": "shelf",
+				"@type":"GeographicSubAddressUnit"
+			},
+			{
+				"subUnitNumber": "2",
+				"subUnitType": "shelf",
+				"@type":"GeographicSubAddressUnit"
+			}
+		],
+		"@type":"GeographicSubAddress"			
+	},
+	{
+		"id": "5e98b484-c29e-41c6-9fd0-a5fe66be1667",
+		"href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/f019f4e5-7431-44dc-94d6-97e9a881fe79/geographicSubAddress/5e98b484-c29e-41c6-9fd0-a5fe66be1667",
+		"privateStreetName": "Sackgasse",
+		"privateStreetNumber": "A",
+		"@type":"GeographicSubAddress"			
+	}
+]

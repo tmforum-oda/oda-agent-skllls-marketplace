@@ -1,0 +1,16 @@
+{
+  "id": "TMF663",
+  "type": "api",
+  "name": "shopping-cart-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF663_Shopping_Cart/4.0.0/swagger/TMF663_Shopping_Cart_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "08ef12fdbdf7e57cc519154c19a0c6e92b703da1ebc80c8ca796e208e359f27a"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

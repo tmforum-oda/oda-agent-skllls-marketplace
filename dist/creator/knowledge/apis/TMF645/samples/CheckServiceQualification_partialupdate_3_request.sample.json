@@ -1,0 +1,6 @@
+[
+  {"op":"replace",
+    "path": "/serviceQualificationItem/expectedActivationDate?serviceQualificationItem.id=1",
+    "value": "2023-04-16T19:20:39.239Z"
+  }
+]

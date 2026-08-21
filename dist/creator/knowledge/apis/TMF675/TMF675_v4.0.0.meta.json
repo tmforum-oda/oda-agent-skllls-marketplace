@@ -1,0 +1,16 @@
+{
+  "id": "TMF675",
+  "type": "api",
+  "name": "geographic-location-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "c3780690d9f2fdbcf0592d15bc5a1f29efd0f353e60ba6c14626040c4ddabb22"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

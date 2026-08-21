@@ -1,0 +1,66 @@
+@startuml
+title TMF668 Option 1 all resources are created without interaction with prospective partner
+
+actor "Partner" as Partner
+participant "Exposure\nlayer" as Exposure
+participant "Orchestration\nLayer" as Orchestration
+participant "Party\nManagement" as PartyMgmt
+participant "Party Role\nManagement" as PartyRoleMgmt
+participant "Agreement\nmanagement" as AgreementMgmt
+participant "Billing Account\nManagement" as BillingMgmt
+participant "Settlement Account\nManagement" as SettlementMgmt
+participant "Product Offering Management" as ProdOfferMgmt
+actor "partner" as partner2
+
+Partner -> Exposure : 1 Information to be\ndeclared as partner( )
+Exposure -> Orchestration : 2 Party Creation\nrequest
+Orchestration -> PartyMgmt : 3 Create party ( )
+PartyMgmt -> Orchestration : 4 Notify Party\ncreation (ID)
+Orchestration -> Exposure : 5 Notify Party\ncreation (ID)
+
+Orchestration -> PartyRoleMgmt : 6 Create partyRole\n(supplier)
+PartyRoleMgmt -> Orchestration : 7 Notify PartyRole\ncreation (ID)
+Orchestration -> Exposure : 8 Notify PartyRole\ncreation (ID)
+
+PartyRoleMgmt -> PartyRoleMgmt : 9 create partyAccount ()
+PartyRoleMgmt -> Orchestration : 10 Notify partyAccount\ncreation (ID)
+Orchestration -> Exposure : 11 Notify PartyAccount\ncreation (ID)
+
+Orchestration -> AgreementMgmt : 12 Create agreement\n(supplier)
+AgreementMgmt -> Orchestration : 13 Notify agreement\ncreation (ID)
+Orchestration -> Exposure : 14 Notify agreement\ncreation (ID)
+
+Orchestration -> BillingMgmt : 15 Create billingaccount ( )
+BillingMgmt -> Orchestration : 16 Notify billingaccount creation (ID)
+Orchestration -> Exposure : 17 Notify billingaccount creation (ID)
+
+Orchestration -> SettlementMgmt : 18 Create settlement account ( )
+SettlementMgmt -> Orchestration : 19 Notify settlement account creation (ID)
+Orchestration -> Exposure : 20 Notify settlement account creation (ID)
+
+Partner -> Exposure : 21 Validate partyRole ( )
+Exposure -> Orchestration : 22 PartyRole update\nrequest
+Orchestration -> PartyRoleMgmt : 23 PartyRole update\nrequest
+PartyRoleMgmt -> Orchestration : 24 Notify PartyRole\nupdate(ID)
+Orchestration -> Exposure : 25 Notify PartyRole\nUpdate (ID)
+
+Partner -> Exposure : 26 Validate agreement
+Exposure -> Orchestration : 27 Agreement update\nrequest
+Orchestration -> AgreementMgmt : 28 Update agreement\n(status)
+AgreementMgmt -> ProdOfferMgmt : 29 Notify agreement Update\n(status)
+AgreementMgmt -> Orchestration : 30 Notify agreement\nstate change ()
+Orchestration -> Exposure : 31 Notify agreement\nstate change ()
+
+Orchestration -> BillingMgmt : 32 Update billing\naccount (status)
+BillingMgmt -> Orchestration : 33 Notify billing account\nattribute change ()
+Orchestration -> Exposure : 34 Notify billing account\nattribute change ()
+
+Orchestration -> SettlementMgmt : 35 Update settlement account\n(status)
+SettlementMgmt -> Orchestration : 36 Notify settlement\naccount attribute change ()
+Orchestration -> Exposure : 37 Notify settlement account\nattribute change ()
+
+Partner -> Exposure : 38 Export product offering ()
+Exposure -> Orchestration : 39 Product offering\nexport request
+Orchestration -> ProdOfferMgmt : 40 Create product offering ( )
+ProdOfferMgmt -> Orchestration : 41 Notify product offering\ncreation ( )
+@enduml

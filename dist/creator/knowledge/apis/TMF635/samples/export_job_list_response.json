@@ -1,0 +1,26 @@
+[
+  {
+  "@type": "ExportJob",
+  "href": "https://mycsp.com/tmf-api/productUsageManagement/v5/exportJob/aa1d7102-a2de-4e50-abc5-15cddac9c5d4",
+  "id": "aa1d7102-a2de-4e50-abc5-15cddac9c5d4",
+  "creationDate": "2023-10-01T00:00:20Z",
+  "completionDate": "2023-10-01T00:02:30Z",
+  "status": "Succeeded",
+  "path": "/productUsage",
+  "query": "status=validated,rated,notRated,superseded&creationDate.gte=2023-09-10T00:00:00Z&creationDate.lt=2023-10-10T00:00:00Z",
+	"contentType": "application/gzip",
+	"url": "sftp://sftp.mycsp.com/productUsageManagement/fzohfozg567gs5fg7dg3.gzip"
+},
+{
+  "@type": "ExportJob",
+  "href": "https://mycsp.com/tmf-api/productUsageManagement/v5/exportJob/e72d56d5-f5d7-473b-afe5-1e89eeed012b",
+  "id": "e72d56d5-f5d7-473b-afe5-1e89eeed012b",
+  "creationDate": "2023-11-01T00:00:20Z",
+  "completionDate": "2023-11-01T00:02:30Z",
+  "status": "Succeeded",
+  "path": "/productUsage",
+  "query": "status=validated,rated,notRated,superseded&creationDate.gte=2023-10-10T00:00:00Z&creationDate.lt=2023-11-10T00:00:00Z",
+	"contentType": "application/gzip",
+	"url": "sftp://sftp.mycsp.com/productUsageManagement/jiozjoe897cdjzd98.gzip"
+}
+]

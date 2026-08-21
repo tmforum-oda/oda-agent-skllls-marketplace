@@ -1,0 +1,41 @@
+{
+  "correlationId": "d107a5f0-9257",
+  "description": "ProductOfferingPriceAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "456b-8663-72338e38d4f0",
+  "eventTime": "2022-08-25T12:18:12.181Z",
+  "eventType": "ProductOfferingPriceAttributeValueChangeEvent",
+  "priority": "1",
+  "timeOcurred": "2022-08-25T12:18:11.750Z",
+  "title": "ProductOfferingPriceAttributeValueChangeEvent",
+  "event": {
+    "productOfferingPrice": {
+      "id": "1747",
+      "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v4/productOfferingPrice/1747",
+      "@type": "ProductOfferingPrice",
+      "place": [
+        {
+          "id": "2707",
+          "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v4/geographicAddress/2707",
+          "name": "San Francisco Bay Area",
+          "@referredType": "GeographicAddress",
+          "@type": "PlaceRef"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ProductOfferingPrice",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProductOfferingPriceAttributeValueChangeEvent"
+}

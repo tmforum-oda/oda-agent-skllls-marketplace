@@ -1,0 +1,16 @@
+{
+  "id": "TMF679",
+  "type": "api",
+  "name": "product-offering-qualification-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF679_Product_Offering_Qualification/4.0.0/swagger/TMF679_Product_Offering_Qualification_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "1681ae0c391576be3a5f9cac843134bca4f89ec8184168063edab0a315906ed4"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "op": "replace",
+  "path": "/specCharacteristic?id=42", 
+  "value": { "privacyUsagePurpose": "ADMIN"}      
+  }

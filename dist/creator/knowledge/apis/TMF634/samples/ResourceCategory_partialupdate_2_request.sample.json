@@ -1,0 +1,19 @@
+[
+    {
+        "op": "replace",
+        "path": "/version",
+        "value": "2.0"
+    },
+    {
+        "op": "replace",
+        "path": "/validFor/startDateTime",
+        "value": "2022-08-23T00:00:22.920Z"
+        
+    },
+    {
+        "op": "replace",
+        "path": "/validFor/endDateTime",
+        "value": "2023-11-25T00:00:22.920Z"
+        
+    }
+]

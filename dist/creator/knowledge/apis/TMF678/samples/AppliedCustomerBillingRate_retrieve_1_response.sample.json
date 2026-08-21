@@ -1,0 +1,61 @@
+{
+    "id": "ACBR-123",
+    "href": "https:/host:port/tmf-api/Customer_Bill_Management/v5/appliedCustomerBillingRate/ACBR-123",
+  "appliedBillingRateType": "monthly",
+  "date": "2020-01-19T13:38:18.938Z",
+  "isBilled": true,
+  "name": "Rental Fee",
+  "appliedTax": [
+    {
+      "taxCategory": "VAT",
+      "taxRate": 20,
+      "taxAmount": {
+        "unit": "EUR",
+        "value": 100
+      },
+      "@type": "AppliedBillingTaxRate"
+    }
+  ],
+  "bill": {
+    "id": "B123",
+    "href": "http://server:port/api/bill/v5/B123",
+    "name": "customer bill",
+    "@referredType": "CustomerBill",
+    "@type": "CustomerBillRef"
+  },
+  "billingAccount": {
+	"id": "A0815",
+	"href": "http://server:port/api/billingAccount/v5/A0815",
+	"name": "BA Peter Retep",
+    "@referredType": "BillingAccount",
+    "@type": "BillingAccountRef"
+  },
+  "characteristic": [
+    {
+      "name": "message",
+      "valueType": "string",
+      "@type": "StringCharacteristic",
+      "value": "Special discount this[ month only"
+    }
+  ],
+  "periodCoverage": {
+    "endDateTime": "2019-12-31T23:59:59.999Z",
+    "startDateTime": "2019-12-01T00:00:00.000Z"
+  },
+  "product": {
+    "id": "P-wfs-123",
+    "href": "http://server:port/api/product/v5/P-wfs-123",
+    "name": "CSPs wonderful fiber service",
+    "@referredType": "Product",
+    "@type": "ProductRef"
+  },
+  "taxExcludedAmount": {
+    "unit": "EUR",
+    "value": 40.00
+  },
+  "taxIncludedAmount": {
+    "unit": "EUR",
+    "value": 50.00
+  },
+  "@type": "AppliedCustomerBillingRate"
+}

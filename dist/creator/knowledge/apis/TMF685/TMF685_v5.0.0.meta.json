@@ -1,0 +1,16 @@
+{
+  "id": "TMF685",
+  "type": "api",
+  "name": "resource-pool-management-api",
+  "version": "v5.0.0",
+  "status": "v5",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF685_Resource_Pool/5.0.0/swagger/TMF685-Resource_Pool_Management-v5.0.0.oas.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "233b34b10bd796dfe0b98e59c17e10cf071608bcf2a8c57df595af2e1fa03cf7"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

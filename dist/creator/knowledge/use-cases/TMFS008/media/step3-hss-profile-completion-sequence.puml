@@ -1,0 +1,56 @@
+@startuml
+title Figure 15: Completion of the HSS subscriber profile resource order item
+
+participant "Resource Inventory" as RI #blue
+participant "Resource Order\nManagement" as ROM #blue
+participant "Resource Activation\n& Configuration" as RAC #blue
+participant "Resource Catalog\nManagement" as RCM #blue
+participant "HSS"
+
+== Step 3 (Mobile line related resource order items) ==
+
+ROM -> RCM : 1 **TMF634 Resource Catalog Management**\nGET /resourceSpecification
+RCM --> ROM : 2 **TMF634** 200 OK\n(HSS subscriber profile, Logical SIM, Number specifications)
+
+par Logical SIM order item
+
+    ROM -> RI : 3 **TMF639 Resource Inventory Management**\nPATCH /resource\n(SIM card with Logical SIM)
+    RI --> ROM : 4 **TMF639** 200 OK
+    ROM -> ROM : 5 update Logical SIM\nresourceOrderItem (state="completed")
+
+else Number order item
+
+    ROM -> RI : 6 **TMF639 Resource Inventory Management**\nPATCH /resource (Number)
+    RI --> ROM : 7 **TMF639** 200 OK
+    ROM -> ROM : 8 update Number\nresourceOrderItem (state="completed")
+
+end
+
+ROM -> RI : 9 **TMF639 Resource Inventory Management**\nPOST /resource\n(HSS subscriber profile, resourceStatus="standby")
+RI --> ROM : 10 **TMF639** 201 Created (HSS subscriber profile)
+
+ROM -> RAC : 11 **TMF702 Resource Activation Management**\nPOST /resource (HSS subscriber profile)
+activate RAC
+RAC --> ROM : 12 **TMF702** 202 Accepted (HSS subscriber profile, monitorRef)
+
+RAC -> RCM : 13 **TMF634 Resource Catalog Management**\nGET /resourceSpecification (HSS API)
+RCM --> RAC : 14 **TMF634** 200 OK (HSS API specification)
+
+ROM -> RI : 15 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 16 **TMF639** 200 OK (API endpoint)
+
+RAC -> HSS : 17 **HSS API** (HSS subscriber profile)
+activate HSS
+HSS --> RAC : 18 **HSS API** call response
+deactivate HSS
+
+ROM -> RAC : 19 **TMF702 Resource Activation Management**\nGET /monitor (monitorRef)
+RAC --> ROM : 20 **TMF702** 200 OK (monitorState="Completed")
+deactivate RAC
+
+ROM -> RI : 21 **TMF639 Resource Inventory Management**\nPATCH /resource\n(HSS subscriber profile, resourceStatus="available")
+RI --> ROM : 22 **TMF639** 200 OK
+
+ROM -> ROM : 23 update HSS subscriber profile\nresourceOrderItem (state="completed")
+
+@enduml

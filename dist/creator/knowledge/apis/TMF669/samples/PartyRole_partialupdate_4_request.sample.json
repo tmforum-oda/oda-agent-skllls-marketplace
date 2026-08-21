@@ -1,0 +1,10 @@
+[
+    {
+        "op": "replace",
+        "path": "/contactMedium?id=1", 
+        "value": {
+            "@type": "PhoneContactMedium",
+            "phoneNumber": "+3312345678"
+        }
+    }
+]

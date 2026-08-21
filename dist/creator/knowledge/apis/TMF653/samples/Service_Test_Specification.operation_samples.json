@@ -1,0 +1,76 @@
+{
+    "ServiceTestSpecification": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple service test specifications.",
+                    "fields": "description, href, id, version,name, validFor, relatedServiceSpecification", 
+                    "filtering": "name=\"monkey test\"", 
+                    "content-type": "application/json", 
+                    "response" : "$_ServiceTestSpecification_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific service test specification.",
+                    "content-type": "application/json",
+                    "objectId": "12",
+                    "response" : "$_ServiceTestSpecification_retrieve_1_response"
+        		}
+            ]
+        }, 
+        "create": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for creating a specific service test specification. In this example the request only passes mandatory attributes.",
+                    "content-type": "application/json",
+                    "request" : "$_ServiceTestSpecification_create_1_request",
+                    "response" : "$_ServiceTestSpecification_create_1_response"
+        		}
+            ]
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for patching a service test specification using application/json. In this example, a new version is set, together with validity period.",
+                    "content-type": "application/json",
+                    "objectId": "12",
+                    "request" : "$_ServiceTestSpecification_partialupdate_1_request",
+                    "response" : "$_ServiceTestSpecification_partialupdate_1_response"
+        		},
+                {
+                    "description" : "Here's an example of a request for patching a service test specification using merge-patch+json. In this example, a validity period attribute is updated.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "12",
+                    "request" : "$_ServiceTestSpecification_partialupdate_2_request",
+                    "response" : "$_ServiceTestSpecification_partialupdate_2_response"
+        		},
+        		{
+                    "description" : "Here's an example of a request for patching a service test specification using json-patch+json. In this example, the version is updated.",
+                    "content-type": "application/json-patch+json",
+                    "objectId": "12",
+                    "request" : "$_ServiceTestSpecification_partialupdate_3_request",
+                    "response" : "$_ServiceTestSpecification_partialupdate_3_response"
+        		},
+                {
+                    "description" : "Here's an example of a request for patching a service test specification using json-patch-query+json. In this example, the capture period for the Test Measure Definition is updated.",
+                    "content-type": "application/json-patch-query+json",
+                    "objectId": "12",
+                    "request" : "$_ServiceTestSpecification_partialupdate_4_request",
+                    "response" : "$_ServiceTestSpecification_partialupdate_4_response"
+        		}
+            ]
+        },
+        "delete":  {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for deleting a service test specification.",
+                    "content-type": "application/json",
+                    "objectId": "12"
+        		}
+            ]
+        }
+    }
+}

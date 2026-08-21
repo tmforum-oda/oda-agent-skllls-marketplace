@@ -1,0 +1,35 @@
+{
+  "id": "evt-023",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-023",
+  "correlationId": "b33a05fc-b3gt5",
+  "description": "TaskSpecificationStateChangeEvent illustration",
+  "eventId": "be074c51",
+  "eventTime": "2024-08-25T12:28:11.007Z",
+  "eventType": "TaskSpecificationStateChangeEvent",
+  "priority": "1",
+  "timeOccurred": "2024-08-25T12:28:09.716Z",
+  "title": "TaskSpecificationStateChangeEvent",
+  "event": {
+    "taskSpecification": {
+      "id": "tfs0",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs0",
+      "@type": "TaskSpecification",
+      "lifecycleStatus": "active"
+    }
+  },
+  "reportingSystem": {
+    "id": "884",
+    "name": "APP-41",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "507",
+    "name": "APP-548",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TaskSpecificationStateChangeEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

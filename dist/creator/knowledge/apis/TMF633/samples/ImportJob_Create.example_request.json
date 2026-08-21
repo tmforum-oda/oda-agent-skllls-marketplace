@@ -1,0 +1,39 @@
+{
+  "correlationId": "95003dd3-e325",
+  "description": "ImportJobCreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4010-9b59-509a64cf85a8",
+  "eventTime": "2022-08-25T12:18:12.171Z",
+  "eventType": "ImportJobCreateEvent",
+  "priority": "1",
+  "timeOcurred": "2022-08-25T12:18:06.252Z",
+  "title": "ImportJobCreateEvent",
+  "event": {
+    "importJob": {
+        "id": "2341",
+        "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/importJob/2341",
+        "contentType": "application/json",
+        "creationDate": "2020-08-25T00:00:00Z",
+        "completionDate": "2020-08-25T00:01:31Z",
+        "path": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/",
+        "status": "Running",
+        "url": "ftp://ftp.mycsp.com/productCatalogManagement/1866.json",
+        "errorLog": "http://my-platform/logging/errors.log",
+        "@type": "ImportJob"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ImportJobCreateEvent"
+}

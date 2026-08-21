@@ -1,0 +1,21 @@
+@startuml
+title ProductOfferingQualification - Common
+
+box "Wholebuyer" #E0E0E0
+  participant "BuyerGW" as BuyerGW
+end box
+box "Wholeseller" #E0E0E0
+  participant "SellerGW" as SellerGW
+end box
+
+== Wholesale Broadband - ProductOfferingQualification - Common ==
+
+BuyerGW -> SellerGW : 1 POST /WholesaleBroadband/Seller/ProductOfferingQualification
+activate SellerGW
+SellerGW --> BuyerGW : 2 201 Created
+
+SellerGW -> BuyerGW : 3 POST /WholesaleBroadband/Buyer/Notification/\nProductOfferingQualificationStateChangeEvent\nstate: done
+BuyerGW --> SellerGW : 4 201 Created
+deactivate SellerGW
+
+@enduml

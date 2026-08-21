@@ -1,0 +1,30 @@
+[
+{
+    "id": "9ffg-ze56-ed51",
+    "href": "https://host:port/quoteManagement/v5/quote/9ffg-ze56-ed51",
+    "state" : "accepted",
+    "@type": "Quote",
+    "expectedQuoteCompletionDate": "2021-05-11T14:52:21.823Z" 
+  },
+  {
+    "id": "7412",
+    "href": "https://host:port/quoteManagement/v5/quote/7412",
+    "state" : "approved",
+    "@type": "Quote",
+    "expectedQuoteCompletionDate": "2021-05-18T14:21:31.325Z"
+  },
+  {
+    "id": "3214",
+    "href": "https://host:port/quoteManagement/v5/quote/3214",
+    "state" : "pending",
+    "@type": "Quote",
+    "expectedQuoteCompletionDate": "2021-05-21T18:08:31.325Z"
+  },
+  {
+    "id": "6547",
+    "href": "https://host:port/quoteManagement/v5/quote/6547",
+    "state" : "inProgress",
+    "@type": "Quote",
+    "expectedQuoteCompletionDate": "2021-05-29T10:48:28.325Z"
+  }
+]

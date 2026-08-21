@@ -1,0 +1,25 @@
+{
+  "@type": "CheckPermission",
+  "permissionSpecification": {
+    "@type": "PermissionSpecification",
+    "name": "Product:read",
+    "function": "Product",
+    "action": "read"
+  },
+  "user": {
+    "role": "ProductUser",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "Jonathan.Goldberg",
+      "@type": "PartyRoleRef",
+      "@referredType": "PartyRole"
+    }
+  },
+  "entity": [
+    {
+      "id": "g265-tf85",
+      "@type": "EntityRef",
+      "@referredType": "Product"
+    }
+  ]
+}

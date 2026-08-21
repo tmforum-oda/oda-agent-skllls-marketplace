@@ -1,0 +1,48 @@
+@startuml
+title Figure 16: Completion of the resource order item related to the Bucket RFS
+
+participant "Resource Inventory" as RI #blue
+participant "Resource Order\nManagement" as ROM #blue
+participant "Resource Activation\n& Configuration" as RAC #blue
+participant "Resource Catalog\nManagement" as RCM #blue
+participant "PCRF"
+
+== Step 3 (Bucket) ==
+
+ROM -> RCM : 1 **TMF634 Resource Catalog Management**\nGET /resourceSpecification
+RCM --> ROM : 2 **TMF634** 200 OK\n(PCRF profile specification)
+
+ROM -> RI : 3 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 4 **TMF639** 200 OK (Logical SIM card, Number)
+
+ROM -> RI : 5 **TMF639 Resource Inventory Management**\nPOST /resource\n(PCRF profile, resourceStatus="standby")
+RI --> ROM : 6 **TMF639** 202 Accepted (PCRF profile, monitorRef)
+
+ROM -> RAC : 7 **TMF702 Resource Activation Management**\nPOST /resource (PCRF profile)
+activate RAC
+RAC --> ROM : 8 **TMF702** 201 OK (PCRF profile)
+
+RAC -> RCM : 9 **TMF634 Resource Catalog Management**\nGET /resourceSpecification (PCRF API)
+RCM --> RAC : 10 **TMF634** 200 OK (PCRF API specification)
+
+ROM -> RI : 11 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 12 **TMF639** 200 OK (API endpoint)
+
+RAC -> PCRF : 13 **PCRF API** (PCRF profile)
+activate PCRF
+PCRF --> RAC : 14 **PCRF API** (response)
+deactivate PCRF
+
+ROM -> RAC : 15 **TMF702 Resource Activation Management**\nGET /monitor (monitorRef)
+RAC --> ROM : 16 **TMF702** 200 OK (monitorState="Completed")
+deactivate RAC
+
+ROM -> RI : 17 **TMF639 Resource Inventory Management**\nPATCH /resource\n(PCRF profile, resourceStatus="available")
+RI --> ROM : 18 **TMF639** 200 OK
+
+ROM -> RI : 19 **TMF639 Resource Inventory Management**\nPATCH /resource\n(Logical SIM card, Number)
+RI --> ROM : 20 **TMF639** 200 OK
+
+ROM -> ROM : 21 update resourceOrderItem (state="completed")
+
+@enduml

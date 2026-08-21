@@ -1,0 +1,37 @@
+  {
+    "id": "g265-tf85",
+    "productCharacteristic": [
+      {
+        "@type": "BooleanCharacteristic",
+        "id": "Char1",
+        "name": "FixedIP",
+        "valueType": "boolean",
+        "value": false
+    },
+    {
+        "@type": "ObjectCharacteristic",
+        "id": "Char5",
+        "name": "FiberSpeed",
+        "valueType": "object",
+        "value": {
+            "@type": "Speed",
+            "volume": 120,
+            "unit": "Mbps"
+        }
+    }    
+    ],
+    "relatedParty": [
+      {
+        "role": "User",
+        "partyOrPartyRole": {
+          "id": "777",
+          "href": "https://host:port/partyManagement/v5/individual/777",
+          "name": "Pierre",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyOrPartyRole"
+      }
+    ]
+  }
+

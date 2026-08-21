@@ -1,0 +1,59 @@
+@startuml
+title Figure 11: Order structure
+
+package "Product Order" #E2F0D9 {
+  class "SIM Card" as PO_SIMCard <<add>>
+  class "Mobile Line" as PO_MobileLine <<add>>
+  class "Voice Mail" as PO_VoiceMail <<add>>
+  class "Recurring Bundle" as PO_RecurringBundle <<add>>
+
+  PO_SIMCard --> PO_MobileLine : Requires
+  PO_VoiceMail --> PO_MobileLine : Requires
+  PO_RecurringBundle --> PO_MobileLine : Requires
+}
+
+class "[Compound Resource]\nSIM Card" as RES_SIMCard <<modify>>
+PO_SIMCard --> RES_SIMCard
+
+package "Service Order" #FFE0B2 {
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine <<add>>
+  class "[Network Service CFS]\nVoice Mail" as CFS_VoiceMail <<add>>
+  class "[Network Service CFS]\nRecurring Bundle" as CFS_RecurringBundle <<add>>
+
+  CFS_VoiceMail --> CFS_MobileLine : Requires
+  CFS_RecurringBundle --> CFS_MobileLine : Requires
+}
+
+PO_MobileLine --> CFS_MobileLine
+PO_VoiceMail --> CFS_VoiceMail
+PO_RecurringBundle --> CFS_RecurringBundle
+
+package "Resource Order - Internal SOM Decomposition" #FFF6E0;line.dotted {
+  class "[Network Service RFS]\n4G Mobile Line" as RFS_4GMobileLine <<add>>
+  class "[Network Service RFS]\nVoice Mail" as RFS_VoiceMail <<add>>
+  class "[Network Service RFS]\nUsage Bucket" as RFS_UsageBucket <<add>>
+}
+
+CFS_MobileLine --> RFS_4GMobileLine
+CFS_VoiceMail --> RFS_VoiceMail
+CFS_RecurringBundle --> RFS_UsageBucket
+
+package "Resource Order (1)" #FFF6D0 {
+  class "[Logical Resource]\nNumber" as LR_Number <<modify>>
+  class "[Logical Resource]\nLogical SIM" as LR_LogicalSIM <<modify>>
+  class "[Logical Resource]\nHSS Subscriber Profile" as LR_HSSProfile <<add>>
+}
+package "Resource Order (2)" #FFF6D0 {
+  class "[Logical Resource]\nVMS Profile" as LR_VMSProfile <<add>>
+}
+package "Resource Order (3)" #FFF6D0 {
+  class "[Logical Resource]\nPCRF Profile" as LR_PCRFProfile <<add>>
+}
+
+RFS_4GMobileLine --> LR_Number
+RFS_4GMobileLine --> LR_LogicalSIM
+RFS_4GMobileLine --> LR_HSSProfile
+RFS_VoiceMail --> LR_VMSProfile
+RFS_UsageBucket --> LR_PCRFProfile
+
+@enduml

@@ -1,0 +1,67 @@
+{
+    "@type": "CommunicationMessage",
+    "id": "1708",
+    "href": "https://serverlocation/tmf-api/communicationManagement/v5/communicationMessage/1708",
+    "subject": "News: the latest promotion for you",
+    "scheduledSendTime": "2020-02-10T00:00:00+01:00",
+    "sendTime": "2020-02-10T00:00:00+01:00",
+    "sendTimeComplete": "2020-02-10T00:10:00+01:00",
+    "state": "completed",
+    "description": "this is communication message for promotion",
+    "content": "Dear $Parameter1, Here is the information of the promotion $Parameter2",
+    "characteristic": [
+        {
+            "@type": "StringCharacteristic",
+            "name": "$Parameter1",
+            "value": "Mr. Jones",
+            "valueType": "string"     
+        },
+        {
+            "@type": "StringCharacteristic",
+            "name": "$Parameter2",
+            "value": "4G_LTE Discount 30%",
+            "valueType": "string"    
+        }
+    ],
+    "attachment": [
+        {
+            "@type": "Attachment",
+            "url": "https://serverlocation/files/1",
+            "name": "File_XYZ_001"
+        }
+    ],
+    "sender": {
+        "@type": "Sender",
+        "id": "10099",
+        "name": "ABC Company",
+        "phoneNumber": "10086",
+        "party": {
+            "role": "service provider",
+            "partyOrPartyRole": {
+                "id": "1066",
+                "href": "https://serverlocation/tmf-api/partyManagement/v4/organization/1",
+                "name": "ABC Company",
+                "@type": "Organization"
+            },
+            "@type": "RelatedPartyOrPartyRole"
+        }
+    },
+    "receiver": [
+        {
+            "@type": "Receiver",
+            "id": "10234",
+            "name": "John White",
+            "phoneNumber": "008613811112222",
+            "party": {
+                "role": "customer",
+                "partyOrPartyRole": {
+                    "id": "991",
+                    "href": "https://serverlocation//tmf-api/partyManagement/v4/individual/1",
+                    "name": "John White",
+                    "@type": "Individual"
+                },
+                "@type": "RelatedPartyOrPartyRole"
+            }
+        }
+    ]
+}

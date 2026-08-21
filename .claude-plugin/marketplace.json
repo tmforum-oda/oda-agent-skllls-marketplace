@@ -5,9 +5,14 @@
   },
   "plugins": [
     {
-      "name": "tm-forum-oda",
-      "source": "./dist",
-      "description": "TM Forum ODA use cases, components, and Open APIs as a provenance-tracked knowledge base, queryable via Agent Skills."
+      "name": "tm-forum-oda-consumer",
+      "source": "./dist/consumer",
+      "description": "Agent Skills backed by TM Forum ODA knowledge - for building software against ODA."
+    },
+    {
+      "name": "tm-forum-oda-creator",
+      "source": "./dist/creator",
+      "description": "Agent Skills backed by TM Forum ODA knowledge - for extending and contributing to ODA itself."
     }
   ]
 }

@@ -1,0 +1,6 @@
+{
+    "@type": "BillPresentationMedia",
+    "href": "https://host:port/tmf-api/accountManagement/v5/billPresentationMedia/4506", 
+    "id": "4506", 
+    "name": "Electronic"
+}

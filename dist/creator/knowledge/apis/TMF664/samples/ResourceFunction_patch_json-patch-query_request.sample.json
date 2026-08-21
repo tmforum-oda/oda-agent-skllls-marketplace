@@ -1,0 +1,7 @@
+[
+  {
+    "op": "replace",
+    "path": "/resourceCharacteristic?name=OperatingSystem/value",
+    "value": "Windows"
+  }
+]

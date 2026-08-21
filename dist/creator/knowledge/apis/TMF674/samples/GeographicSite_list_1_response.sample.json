@@ -1,0 +1,14 @@
+[
+  {
+    "@type": "GeographicSite",
+    "href": "https://mycsp.com/tmf-api/geographicSiteManagement/v5/geographicSite/ae4b915f-16f5-4f05-a3c7-8c6a99c7d24b",
+    "id": "ae4b915f-16f5-4f05-a3c7-8c6a99c7d24b",
+    "name": "BS-9283"
+  },
+  {
+    "@type": "GeographicSite",
+    "href": "https://mycsp.com/tmf-api/geographicSiteManagement/v5/geographicSite/0738f85e-c8b0-4ed2-ac3e-b47687ade274",
+    "id": "0738f85e-c8b0-4ed2-ac3e-b47687ade274",
+    "name": "BS-2397"
+  }
+]

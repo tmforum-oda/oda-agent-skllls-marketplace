@@ -1,0 +1,177 @@
+{
+  "description": "product description",
+  "isBundle": false,
+  "name": "Voice Over IP Basic instance for Jean",
+  "@baseType": "Product",
+  "@type": "Product",
+  "@schemaLocation": "https:://host:port/standardProduct.json",
+  "productOffering": {
+    "id": "PO-101-1",
+    "href": "https://host:port/productCatalogManagement/v5/productOffering/PO-101-1",
+    "name": "Voice Over IP Basic",
+    "@type": "ProductOfferingRef",
+    "@referredType": "ProductOffering"
+  },
+  "productCharacteristic": [
+    {
+      "name": "Number",
+      "@type": "StringCharacteristic",
+      "valueType": "string",
+      "value": "415 279 7439"
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "User",
+      "partyOrPartyRole": {
+        "id": "45hj-8888",
+        "href": "https://host:port/partyManagement/v5/individual/45hj-8888",
+        "name": "Jean",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyOrPartyRole"
+    }
+  ],
+  "productSpecification": {
+    "id": "PS-101",
+    "href": "https://host:port/productCatalogManagement/v5/productSpecification/PS-101",
+    "@type": "ProductSpecificationRef",
+    "@referredType": "ProductSpecification",
+    "version": "1"
+  },
+  "intent": {
+    "@type": "Intent",
+    "id": "42",
+    "description": "Intent for ordering live broadcast service for an event",
+    "validFor": {
+      "startDateTime": "2022-10-23T00:30:00.00Z",
+      "endDateTime": "2022-10-19T23:30:00.00Z"
+    },
+    "isBundle": true,
+    "version": "1.0.0",
+    "intentSpecification": {
+      "@type": "IntentSpecificationRef",
+      "id": "EventLiveBroadcast_IntentSpec",
+      "name": "EventLiveBroadcastIntentSpec",
+      "@referredType": "IntentSpecification",
+      "@href": "https://host:port/intent/v5/IntentSpecification/EventLiveBroadcast_IntentSpec"
+    },
+    "name": "EventLiveBroadcast",
+    "expression": {
+      "@type": "JsonLdExpression",
+      "expressionValue": {
+        "@context": {
+          "icm": "http://www.models.tmforum.org/tio/v1.0.0/IntentCommonModel#",
+          "cat": "http://www.operator.com/Catalog#",
+          "idan": "http://www.idan-tmforum-catalyst.org/IntentDrivenAutonomousNetworks#",
+          "xsd": "http://www.w3.org/2001/XMLSchema#",
+          "t": "http://www.w3.org/2006/time#",
+          "elb": "http://www.operator.com/Catalog/EventWirelessAccess#",
+          "app": "http://www.operator.com/Catalog/StreamingApplication#",
+          "geo": "https://tmforum.org/2020/07/geographicPoint#"
+        },
+        "idan:EventLiveBroadcast000001": {
+          "@type": "icm:Intent",
+          "icm:intentOwner": "idan:Salesforce",
+          "icm:hasExpectation": {
+            "idan:Delivery_service": {
+              "@type": "icm:DeliveryExpectation",
+              "icm:target": "_:service",
+              "icm:params": {
+                "icm:targetDescription": "cat:EventWirelessAccess"
+              }
+            },
+            "idan:Delivery_app": {
+              "@type": "icm:DeliveryExpectation",
+              "icm:target": "_:application",
+              "icm:params": {
+                "icm:targetDescription": "cat:StreamingApplication"
+              }
+            },
+            "idan:Property_service": {
+              "@type": "icm:PropertyExpectation",
+              "icm:target": "_:service",
+              "icm:params": {
+                "elb:serviceQuality": [
+                  {
+                    "icm:value": "4KUHD"
+                  }
+                ],
+                "elb:numberOfParticipants": [
+                  {
+                    "icm:atMost": "200"
+                  }
+                ],
+                "elb:areaOfService": [
+                  {
+                    "geo:geographicPoints": [
+                      {
+                        "geo:longitude": 90,
+                        "geo:latitude": 44,
+                        "geo:altitude": 84
+                      },
+                      {
+                        "geo:longitude": 84,
+                        "geo:latitude": -12,
+                        "geo:altitude": 24
+                      },
+                      {
+                        "geo:longitude": 131,
+                        "geo:latitude": -36,
+                        "geo:altitude": 29
+                      },
+                      {
+                        "geo:longitude": 7,
+                        "geo:latitude": 81,
+                        "geo:altitude": -42
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "idan:Property_app": {
+              "@type": "icm:PropertyExpectation",
+              "icm:target": "_:application",
+              "icm:params": {
+                "app:appType": [
+                  {
+                    "icm:value": "AWS MediaLive"
+                  },
+                  {
+                    "icm:value": "Facebook Live"
+                  },
+                  {
+                    "icm:value": "YouTube"
+                  }
+                ]
+              }
+            },
+            "idan:Reporting": {
+              "@type": "icm:ReportingExpectation",
+              "icm:target": "idan:EventLiveBroadcast",
+              "icm:params": {
+                "icm:reportingInterval": [
+                  {
+                    "t:Duration": [
+                      {
+                        "t:numbericDuration": 10,
+                        "t:temporalUnit": "unitMinute"
+                      }
+                    ]
+                  }
+                ],
+                "icm:reportingEvent": [
+                  "icm:StateComplies",
+                  "icm:StateDegrades"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "lastUpdate": "2023-03-09T08:42:33.044Z"
+  }
+}

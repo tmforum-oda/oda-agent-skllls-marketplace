@@ -1,0 +1,23 @@
+[
+  {
+    "id": "453180",
+    "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicketSpecification/453180",
+    "name": "Billing Dispute",
+    "lifecycleStatus": "active",
+    "@type": "TroubleTicketSpecification"
+  },
+  {
+    "id": "453256",
+    "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicketSpecification/453256",
+    "name": "Technical TroubleTicket Specification",
+    "lifecycleStatus": "active",
+    "@type": "TroubleTicketSpecification"
+  },
+  {
+    "id": "454563",
+    "href": "https://mycsp.com:8080/tmf-api/troubleTicket/5/troubleTicketSpecification/454563",
+    "name": "Network and latency TicketSpecification",
+    "lifecycleStatus": "active",
+    "@type": "TroubleTicketSpecification"
+  }
+]

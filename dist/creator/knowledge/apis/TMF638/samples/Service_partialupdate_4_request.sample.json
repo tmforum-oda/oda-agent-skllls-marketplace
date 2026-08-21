@@ -1,0 +1,12 @@
+{
+  "state": "inactive",
+  "supportingService": [
+    {
+      "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/6500",
+      "id": "6500",
+      "@type": "ServiceRef",
+      "@referredType": "Service"
+    }
+  ],
+  "@type": "Service"
+}

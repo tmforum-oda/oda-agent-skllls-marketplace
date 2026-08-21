@@ -1,0 +1,73 @@
+@startuml
+title Part 1: Search tutoree & Legal Guardian
+
+actor Marie
+actor JohnCustomerAgent as John
+participant "Lambda_Portal" as Portal #purple
+participant "PartyInteractionMgt" as PIM #red
+participant "PartyMgt" as PM #red
+participant "PartyRole&PermissionsMgt" as PRPM #red
+
+Marie -> John : 1 "I'm the legal tutor of BOB"
+John -> Portal : 2 "John choose the option :Search Identity"
+
+Portal -> PM : 3 **TMF632 Party Management** (Get /individual?firstName=Marie&\nlastName=Curie&Id-Card=00865345& Id-CardType= passport)
+activate PM
+PM --> Portal : 4 **TMF632** 200 OK party.Id2 + individual informations
+deactivate PM
+
+John -> Portal : 5 "John choose the option :Manage Legal Guardian"
+note left of Portal
+  John is already connected to
+  **lambda portal** which shows all available actions of the welcome process for Agent: not covered in this use case.
+end note
+
+Portal -> PIM : 6 **TMF701 Process Flow**PATCH\n/processFlow\n(processFlowSpecification= ManageLegalGuardian, sessionId1,partyId.2,PartyId.11)\n"new session started for LegalGuardianConfig process"
+activate PIM
+note right of Portal : We send party Id of Marie, and PartyId of John needed for communication interaction.
+
+PIM --> Portal : 7 **TMF701** 201 OK
+
+PIM -> PIM : 8 **TMF683 Party Interaction** POST /partyInteraction\n(interactionDate, relatedChannel,relatedChannel.channel.id='POS22')\n"new interaction" -> interation.id1 created
+
+PIM -> PIM : 9 **TMF683 Party Interaction**PATCH\n/partyInteraction/id1 (New interactionItem for legal guardian)
+
+PIM -> PIM : 10 **TMF701 Process Flow**POST /processFlow\n(sessionId1, processFlowSpecification=ConfigureLegalGuardian)\ncallback\nwhen legalGuardian fully created( processFlowId1,taskFlowId1.3) Configure Legal Guardian
+
+PIM --> PIM : 11 **TMF701** 201 Created processFlow.Id2 taskFlow.Id2.0
+
+PIM --> PIM : 12 **TMF701** taskFlowInformationRequiredEvent":\n("sessionId1,processFlow Id2,taskFlowId2.1":\n"parameters":partyId ,partyRoleId )(search Tutoree)
+
+PIM --> Portal : 13 **TMF701** (sessionId1,\n"callback "(processFlow.id2,taskFlow.id2.1) ,\n"parameters":partyId,partyRoleId)(search Tutoree)
+deactivate PIM
+
+Portal -> Portal : 14 Display search Form for Tutoree
+
+John -> Portal : 15 Fill-in form & Search
+
+Portal -> PM : 16 **TMF632 Party Management** GET /individual?givenName=BOB&\nfamilyName=Smith Number=+3396939)party serach
+activate PM
+PM --> Portal : 17 **TMF632** 200 OK party.Id1 + individual informations
+deactivate PM
+
+Portal -> PRPM : 18 **TMF669 Party Role Mgt** GET /partyRole?engagedPartyId=id.1
+activate PRPM
+PRPM --> Portal : 19 **TMF669** partyRoleId1, partyRole.Name=Customer
+deactivate PRPM
+
+Portal -> Portal : 20 Display Bob Informations + available actions
+
+John -> Portal : 21 John Validates informations displayed
+
+Portal -> PIM : 22 **TMF701 Process Flow** PATCH /processFlow.id2,taskFlow.id2.1 (sessionId1, partyId1,partyRoleId1)
+activate PIM
+
+PIM -> PM : 23 **TMF632 Party Management** GET\n/individual?id= partyId1
+activate PM
+PM --> PIM
+deactivate PM
+
+PIM --> Portal : 24 **TMF701** (sessionId1, "callback "\n(processFlow.id2,taskFlow.id2.3,"parameters":partyId) search Legal guardian
+deactivate PIM
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+title HSS activation fallout - Rollback
+
+participant "Resource Order\nManagement" as ROM #blue
+participant "Resource Inventory" as RI #blue
+
+ROM -> RI : 1 **TMF639 Resource Inventory Management**\nPATCH /resource (SIM card with Logical SIM)
+activate RI
+RI --> ROM : 2 **TMF639** 200 OK
+
+ROM -> RI : 3 **TMF639 Resource Inventory Management**\nPATCH /resource (Number)
+RI --> ROM : 4 **TMF639** 200 OK
+deactivate RI
+
+@enduml

@@ -1,0 +1,107 @@
+{
+  "@type": "ResourceFunction",
+  "href": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+  "id": "acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+  "name": "Updated Enterprise Firewall",
+  "description": "This firewall now serves a wider range of enterprise customers.",
+  "category": "Security",
+  "resourceSpecification": {
+    "@type": "ResourceSpecificationRef",
+    "id": "5fc91de8-88be-4c7c-8b3c-e08ccc53b889",
+    "href": "/resourceCatalog/v5/resourceSpecification/5fc91de8-88be-4c7c-8b3c-e08ccc53b889",
+    "@referredType": "ResourceFunctionSpecification"
+  },
+  "resourceCharacteristic": [
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "name": "OperatingSystem",
+      "value": "Linux"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "name": "MaxTraffic",
+      "value": "100Mbps"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "name": "keywords",
+      "value": "firewall, security"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "name": "language",
+      "value": "English"
+    }
+  ],
+  "connectionPoint": [
+    {
+      "id": "cp1",
+      "href": "/resourceInventory/v5/connectionPoint/cp1",
+      "name": "Input Port 1",
+      "@type": "ConnectionPointRef",
+      "@referredType": "Endpoint"
+    },
+    {
+      "id": "cp2",
+      "href": "/resourceInventory/v5/connectionPoint/cp2",
+      "name": "Output Port 1",
+      "@type": "ConnectionPointRef",
+      "@referredType": "Endpoint"
+    }
+  ],
+  "resourceRelationship": [
+    {
+      "@type": "ResourceRelationship",
+      "resource": {
+        "@type": "ResourceRef",
+        "id": "179ed458-6053-4be5-be14-e71be8be4440",
+        "href": "/resourceInventory/v5/resource/179ed458-6053-4be5-be14-e71be8be4440",
+        "@referredType": "LogicalResource",
+        "name": "SWI.1"
+      },
+      "relationshipType": "contains"
+    }
+  ],
+  "connectivity": [
+    {
+      "@type": "ResourceGraph",
+      "id": "graph1",
+      "name": "Internal Network Graph",
+      "description": "Internal connectivity graph for the firewall function",
+      "connection": [
+        {
+          "@type": "Connection",
+          "id": "conn1",
+          "name": "Input to Processing",
+          "associationType": "pointToPoint",
+          "endpoint": [
+            {
+              "@type": "Endpoint"
+            },
+            {
+              "@type": "Endpoint"
+            }
+          ]
+        },
+        {
+          "@type": "Connection",
+          "id": "conn2",
+          "name": "Processing to Output",
+          "associationType": "pointToPoint",
+          "endpoint": [
+            {
+              "@type": "Endpoint"
+            },
+            {
+              "@type": "Endpoint"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

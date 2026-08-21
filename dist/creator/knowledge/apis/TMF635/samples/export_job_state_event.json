@@ -1,0 +1,16 @@
+{
+  "@type": "ExportJobStateChangeEvent",
+  "@baseType": "Event",
+  "domain": "Product Usage",
+  "timeOccurred": "2023-10-01T00:02:30Z",
+  "eventId": "f5e40b51-6a6a-4926-848e-03a666ed0ce5",
+  "eventType": "ExportJobStateChangeEvent",
+  "event": {
+    "exportJob": {
+      "@type": "ExportJob",
+      "href": "https://mycsp.com/tmf-api/productUsageManagement/v5/exportJob/aa1d7102-a2de-4e50-abc5-15cddac9c5d4",
+      "id": "aa1d7102-a2de-4e50-abc5-15cddac9c5d4",
+      "status": "Succeeded"
+    }
+  }
+}

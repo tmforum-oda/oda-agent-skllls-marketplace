@@ -1,0 +1,38 @@
+{
+    "@type": "CapacitySpecification",
+    "id": "3d01344d-4409-4b15-8fcb-b8802314ff9c", 
+    "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/capacitySpecification/3d01344d-4409-4b15-8fcb-b8802314ff9c", 
+    "name": "Phone Number range",
+    "description": "This CapacitySpecification defines the details of capacity for Phone Number ranges.",
+    "capacityCharacteristicSpecification":
+    [
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "lowerNumber",
+            "description": "the lower boundary of a block of phone numbers; phone numbers consist of a country code (cc), national destination code (ndc), subscriber number (sn), and optionally a direct dial in (ddi), all sections separated by '-'",
+            "valueType": "string",
+            "characteristicValueSpecification":
+            [
+                {
+                    "@type": "CharacteristicValueSpecification",
+                    "valueType": "string",
+                    "regex": "^\\+(?<cc>[1-9]\\d{0,2})-(?<ndc>[1-9]\\d*)-(?<sn>[1-9]\\d*)(?:-?(?<ddi>\\d+))?$"
+                }
+            ]
+        },
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "upperNumber",
+            "description": "the upper boundary of a block of phone numbers; phone numbers consist of a country code (cc), national destination code (ndc), subscriber number (sn), and optionally a direct dial in (ddi), all sections separated by '-'",
+            "valueType": "string",
+            "characteristicValueSpecification":
+            [
+                {
+                    "@type": "CharacteristicValueSpecification",
+                    "valueType": "string",
+                    "regex": "^\\+(?<cc>[1-9]\\d{0,2})-(?<ndc>[1-9]\\d*)-(?<sn>[1-9]\\d*)(?:-?(?<ddi>\\d+))?$"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+  "correlationId": "76225ba6-e7ed",
+  "description": "ServiceTestAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "480d-b29d-6ff6b8e0f5bb",
+  "eventTime": "2022-08-25T12:21:36.714Z",
+  "eventType": "ServiceTestAttributeValueChangeEvent",
+  "priority": "1",
+  "timeOccurred": "2022-08-25T12:21:36.133Z",
+  "title": "ServiceTestAttributeValueChangeEvent",
+  "event": {
+    "serviceTest": {
+      "href": "http://servername/serviceTest/12",
+      "id": "12",
+      "@type": "ServiceTest",
+      "description": "Speed Test for Fixed Broadband service"
+    }
+  },
+  "@baseType": "Event",
+  "@type": "ServiceTestAttributeValueChangeEvent"
+}

@@ -1,0 +1,52 @@
+@startuml
+title Suggested updated Product domain diagram (with Service Balance Management)
+
+skinparam class {
+  BackgroundColor<<component>> #666666
+  FontColor<<component>> white
+}
+
+class "TMFC007 - Service Order Management\n{ServiceOrder}" as SOM <<component>>
+class "TMFC011 - Resource Order Management\n{ResourceOrder}" as ROM <<component>>
+class "TMFC062 - Resource Configuration & Activation\n{ResourceConfiguration}" as RCA <<component>>
+class "TMFC013 - Service Balance\n{Balance**}" as SB <<component>>
+class "TMFC008 - Service Inventory\n{Service (CFS and RFS)}" as SI <<component>>
+class "TMFC006 - Service Catalog\n{ServiceSpecification* (CFSS and RFSS)}" as SC <<component>>
+class "TMFC012 - Resource Inventory\n{Resource}" as RI <<component>>
+class "TMFC010 - Resource Catalog\n{ResourceSpecification*}" as RC <<component>>
+class "Equipement or Network Element to configure" as NE #ADD8E6
+
+note right of SB
+  ** SID Entity is today UsageVolumeBalance and it is on
+  Product Level. Jira ticket raised for the need to have
+  the running balance on Service Level
+end note
+
+note right of SOM
+  *** With the evolution of SID, the current TMF654 Prepay
+  Balance Management API needs to align and differentiate
+  the commercial side from the service aspect. This will be
+  a major change so until that is better understood the API
+  identifier will be open.
+end note
+
+SOM --> SB : "TMF??? ***"
+SOM --> SI : "TMF638 ServiceInventory\n(Get, Post, Patch)"
+SOM --> SC : "TMF633 Service Catalog Management (Get)"
+SOM --> ROM : "TMF652 ResourceOrderMgt\n(Get, Post, Patch)"
+SOM : exposes TMF641 ServiceOrderMgt (CFS or RFS level)
+SOM : exposes TMF640 Service Activation Configuration
+
+ROM --> RC : "TMF634 Resource Catalog\n(Get, Post, Patch)"
+ROM --> SC : "TMF633 Service Catalog Management (Get)"
+ROM --> RI : "TMF639 ResourceInventory\n(Get, Post, Patch)"
+ROM --> RCA : "TMF702 Resource Activation\n(Get, Post, Patch)"
+ROM --> RCA : "TMF664 Resource Function\n(Get, Post, Patch)"
+
+RCA --> RI : Get
+RCA --> RC : Get
+RCA --> NE : "HSS API call, PCRF API call, VMS API call,..."
+
+SI --> SC : Get
+
+@enduml

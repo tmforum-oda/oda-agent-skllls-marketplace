@@ -1,0 +1,12 @@
+[
+    {
+        "@type": "BillFormat",
+        "id": "42", 
+        "name": "simple invoice"
+    }, 
+    {
+        "@type": "BillFormat",
+        "id": "43", 
+        "name": "detailed invoice"
+    }
+]

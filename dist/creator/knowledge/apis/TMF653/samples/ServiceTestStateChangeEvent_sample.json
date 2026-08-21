@@ -1,0 +1,33 @@
+{
+  "correlationId": "1a9aaff3-697a",
+  "description": "ServiceTestStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4242-baa3-0beca5e429ad",
+  "eventTime": "2022-08-25T12:21:36.678Z",
+  "eventType": "ServiceTestStateChangeEvent",
+  "priority": "2",
+  "timeOccurred": "2022-08-25T12:21:28.377Z",
+  "title": "ServiceTestStateChangeEvent",
+  "event": {
+    "serviceTest": {
+      "href": "http://servername/serviceTest/89757",
+      "id": "89757",
+      "@type": "ServiceTest",
+      "state": "completed"
+    }
+  },
+  "reportingSystem": {
+    "id": "409",
+    "name": "APP-675",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "4",
+    "name": "APP-374",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ServiceTestStateChangeEvent"
+}

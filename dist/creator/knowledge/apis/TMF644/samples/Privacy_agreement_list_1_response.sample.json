@@ -1,0 +1,277 @@
+[
+  {
+    "id": "6810",
+    "href": "http://serverlocation:port/privacyManagement/v5/partyPrivacyAgreement/6810",
+    "@type" : "PartyPrivacyAgreement",
+    "agreementType": "commercial",
+    "description": "This agreements is between the individual user annd the service provider ...",
+    "relatedDocument": [
+      {
+        "@type": "RelatedDocumentRefOrValue",
+        "role": "string",
+        "document": {
+          "@type": "DocumentRef",
+          "@referredType": "Document",
+          "href": "http://serverlocation:port/document/v5/document/1999",
+          "id": "1999",
+          "name" : "Agreeemnt document"
+        }
+      }
+    ] ,   
+    "initialDate": "2019-08-06T09:56:38.679Z",
+    "name": "Customer mass market privacy agreement",
+    "statementOfIntent": "Agreement on customer mass market privacy profile",
+    "status": "validated",
+    "version": "1",
+    "agreementAuthorization": [
+      {
+        "@type" : "AgreementAuthorization",
+        "date": "2019-08-06T09:56:38.679Z",
+        "signatureRepresentation": "Digital",
+        "state": "approved"
+      }
+    ],
+    "agreementItem": [
+      {
+        "id": "6810_988",
+        "@type" : "ProductAgreementItem",
+        "productOffering": [
+          {
+            "id": "9559",
+            "href": "https://host:port/productCatalog/v5/productOffering/9559",
+            "name": "Magic Offer"
+          }
+        ],
+        "termOrCondition": [
+          {
+            "id": "8905",
+            "description": "This agreement term or condition",
+            "validFor": {
+              "endDateTime": "2019-09-06T09:56:38.679Z",
+              "startDateTime": "2020-09-06T09:56:38.679Z"
+            },
+            "@type" : "AgreementTermOrCondition"
+          }
+          
+        ]
+       }
+    ],
+    "agreementPeriod": {
+      "endDateTime": "2020-09-06T09:56:38.679Z",
+      "startDateTime": "2019-09-06T09:56:38.679Z"
+    },
+    "agreementSpecification": {
+      "@type" : "AgreementSpecificationRef",
+      "id": "8139",
+      "href": "http://serverlocation:port/privacyManagement/v5/partyPrivacyAgreementSpecification/8139",
+      "description": "This agreement specification defines the rules of privacy to be followed by each party",
+      "name": "General Agreement Specification"
+    },
+    "agreementRelationship": [
+      {
+        "@type" : "AgreementRelationship",
+        "id": "987654",
+        "href": "http://serverlocation:port/privacyManagement/v5/partyPrivacyAgreement/987654",
+        "name": "General Privacy Agreement",
+        "relationshipType": "addendum "
+      }
+    ],
+    "completionDate": {
+      "endDateTime": "2020-09-06T09:56:38.679Z"
+    },
+    "relatedParty": [
+      {
+        "role": "customer agent",
+        "@type": "PartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "5467",
+          "href": "http://serverlocation:port/partyManagement/v5/individual/5467",
+          "name" : "Jack Simion",
+          "@type": "PartyRef",
+          "@referredType": "Individual"          
+        }
+      }
+    ],
+    "engagedParty" :[
+      {
+        "id": "5467",
+        "href": "http://serverLocation:port/partyManagement/v5/individual/5467",
+        "name": "Bob Smith",
+        "@referredType": "Individual",
+        "@type": "PartyRef"
+      }
+    ],
+    "partyPrivacyProfile": [
+      {
+        "@type": "PartyPrivacyProfileRef",
+        "id": "103",
+        "href": "https://mycsp.com:8080/tmf-api/privacyManagement/v5/partyPrivacyProfile/103",
+        "name": "individual Consents"
+      }
+    ],
+    "partyPrivacyProfileCharacteristic": [
+      {
+        "@type": "partyPrivacyProfileCharacteristic",
+        "characterisitc": {
+          "id": "43",
+          "name": "emailAddress",
+          "valueType": "string",
+          "value": "Yes",
+          "@type": "StringCharacteristic"
+        },        
+        "privacyUsagePurpose": "ADMIN",
+        "relatedParty": [
+          {
+            "role": "Vendor",
+            "@type" : "PartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+              "id": "8632",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/8632",
+              "name": "John Doe",
+              "@type" : "PartyRef",
+              "@referredType": "Individual"
+            } 
+            
+          }
+        ]
+      }
+    ]
+},
+{
+  "id": "6811",
+  "href": "http://serverlocation:port/privacyManagement/v5/partyPrivacyAgreement/6811",
+  "@type" : "PartyPrivacyAgreement",
+  "agreementType": "commercial",
+  "description": "This agreements is between the individual user annd the service provider ...",
+  "relatedDocument": [
+    {
+      "@type": "RelatedDocumentRefOrValue",
+      "role": "string",
+      "document": {
+        "@type": "DocumentRef",
+        "@referredType": "Document",
+        "href": "http://serverlocation:port/document/v5/document/1888",
+        "id": "1888",
+        "name" : "Agreeemnt document"
+      }
+    }
+  ] ,   
+  "initialDate": "2022-08-06T09:56:38.679Z",
+  "name": "Customer mass market privacy agreement",
+  "statementOfIntent": "Agreement on customer mass market privacy profile",
+  "status": "validated",
+  "version": "1",
+  "agreementAuthorization": [
+    {
+      "@type" :"AgreementAuthorization",
+      "date": "2022-08-06T09:56:38.679Z",
+      "signatureRepresentation": "Digital",
+      "state": "approved"
+    }
+  ],
+  "agreementItem": [
+    {
+      "id": "6811_1111",
+      "@type" : "ProductAgreementItem",
+      "productOffering": [
+        {
+          "id": "9550",
+          "href": "https://host:port/productOffering/v5/productOffering/9550",
+          "name": "Special Offer"
+        }
+      ],
+      "termOrCondition": [
+        {
+          "@type":"AgreementTermOrCondition",
+          "id": "8900",
+          "description": "This agreement term or condition",
+          "validFor": {
+            "endDateTime": "2021-09-06T09:56:38.679Z",
+            "startDateTime": "2022-09-06T09:56:38.679Z"
+          }
+        }
+      ]
+     }
+  ],
+  "agreementPeriod": {
+    "endDateTime": "2022-09-06T09:56:38.679Z",
+    "startDateTime": "2021-09-06T09:56:38.679Z"
+  },
+  "agreementSpecification": {
+    "id": "8139",
+    "href": "http://serverlocation:port/agreementManagement/agreementSpecification/8139",
+    "description": "This agreement specification defines the rules of privacy to be followed by each party",
+    "name": "General Agreement Specification",
+    "@type" : "AgreementSpecificationRef"
+  },
+  "agreementRelationship": [
+    {
+      "@type":"agreementRelationship",
+      "id": "987600",
+      "href": "http://serverlocation:port/privacyManagement/v5/partyPrivacyAgreement/987600",
+      "name": "General Privacy Agreement",
+      "relationshipType": "addendum "
+    }
+  ],
+  "completionDate": {
+    "endDateTime": "2022-09-06T09:56:38.679Z"
+  },
+  "relatedParty": [
+    {
+      "role": "customer agent",
+      "@type": "PartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "5467",
+        "href": "http://serverlocation:port/partyManagement/v5/individual/5467",
+        "name" : "Jack Simion",
+        "@type": "PartyRef",
+        "@referredType": "Individual"          
+      }
+    }
+  ],
+  "engagedParty" :[
+    {
+      "id": "5499",
+      "href": "http://serverLocation:port/partyManagement/individual/5499",
+      "name": "Jermy Jim",
+      "@type" : "PartyRef",
+      "@referredType": "Individual"
+    }
+  ],
+  "partyPrivacyProfile": [
+    {
+      "id": "1009",
+      "href": "https://mycsp.com:8080/tmf-api/privacyManagement/v5/partyPrivacyProfile/1009",
+      "name": "individual Consents",
+      "@type" : "PartyPrivacyProfileRef"
+    }
+  ],
+  "partyPrivacyProfileCharacteristic": [
+    {
+      "@type": "partyPrivacyProfileCharacteristic",
+      "characterisitc": {
+        "id": "43",
+        "name": "emailAddress",
+        "valueType": "string",
+        "value": "Yes",
+        "@type": "StringCharacteristic"
+      },        
+      "privacyUsagePurpose": "ADMIN",
+      "relatedParty": [
+        {
+          "role": "Vendor",
+          "@type" : "PartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "8632",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/8632",
+            "name": "John Doe",
+            "@type" : "PartyRef",
+            "@referredType": "Individual"
+          } 
+          
+        }
+      ]
+    }
+  ]
+} 
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/qualifiedProductOfferingItem/productCharacteristic/value/physicalLayer?qualifiedProductOfferingItem.id=1",
+    "value": "100BASE-T"
+  },
+  {
+    "op": "replace",
+    "path": "/place/postcode?role=INSTALL_LOCATION",
+    "value": "75005"
+  }
+]

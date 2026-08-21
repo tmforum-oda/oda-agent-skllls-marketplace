@@ -1,0 +1,97 @@
+[
+    {
+        "id": "ACBR-123",
+        "href": "https:/host:port/tmf-api/Customer_Bill_Management/v5/appliedCustomerBillingRate/ACBR-123",
+		"@type": "AppliedCustomerBillingRate",
+        "name": "voice usage",
+        "type": "appliedCustomerBillingRate",
+        "isBilled": false,
+        "billingAccount": {
+            "id": "A0815",
+            "href": "http://host:port/tmf-api/Account_Management/v5/billingAccount/A0815",
+            "name": "BA Peter Retep",
+            "@referredType": "BillingAccount",
+			"@type": "BillingAccountRef"
+        },
+        "date": "2019-12-07T13:02:34.123Z",
+        "description": "voice usage.",
+        "product": {
+            "id": "PROD-123",
+            "href": "http://host:port/tmf-api/product_Inventory/v5/product/PROD-123",
+            "name": "Voice service",
+            "@referredType": "Product",
+ 		   "@type": "ProductRef"
+       },
+        "taxExcludedAmount": {
+            "unit": "EUR",
+            "value": 0.04
+        },
+        "taxIncludedAmount": {
+            "unit": "EUR",
+            "value": 0.05
+        },
+        "appliedTax": [
+            {
+                "taxCategory": "VAT",
+                "taxRate": 0.2,
+                "taxAmount": {
+                    "unit": "EUR",
+                    "value": 0.01
+                },
+			"@type": "AppliedTaxRate"
+            }
+        ]
+    },
+    {
+        "id": "ACBR-124",
+        "href": "https:/host:port/tmf-api/Customer_Bill_Management/v5/appliedCustomerBillingRate/ACBR-124",
+		"@type": "AppliedCustomerBillingRate",
+        "name": "voice usage",
+        "type": "appliedCustomerBillingRate",
+        "isBilled": true,
+        "billingAccount": {
+            "id": "A0815",
+            "href": "http://host:port/tmf-api/Account_Management/v5/billingAccount/A0815",
+            "name": "BA Peter Retep",
+            "@referredType": "BillingAccount",
+			"@type": "BillingAccountRef"
+        },
+        "customerBill": {
+            "id": "CB-123",
+            "href": "https://server:port/tmf-api/Customer_Bill_Management/v5/customerBill/CB-123",
+            "@referredType": "CustomerBill",
+			"@type": "CustomerBillRef"
+        },
+        "date": "2019-11-29T17:02:34.123Z",
+        "description": "voice usage.",
+        "product": {
+            "id": "PROD-123",
+            "href": "http://host:port/tmf-api/product_Inventory/v5/product/PROD-123",
+            "name": "Voice service",
+            "@referredType": "Product",
+			"@type": "ProductRef"
+        },
+        "taxExcludedAmount": {
+            "unit": "EUR",
+            "value": 0.4
+        },
+        "taxIncludedAmount": {
+            "unit": "EUR",
+            "value": 0.5
+        },
+        "appliedTax": [
+            {
+                "taxCategory": "VAT",
+                "taxRate": 0.2,
+                "taxAmount": {
+                    "unit": "EUR",
+                    "value": 0.1
+                },
+			"@type": "AppliedTaxRate"
+            }
+        ]
+    }
+]
+
+
+

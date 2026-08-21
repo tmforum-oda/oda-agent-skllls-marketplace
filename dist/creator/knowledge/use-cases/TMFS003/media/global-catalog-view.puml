@@ -1,0 +1,114 @@
+@startuml
+title Global Catalog view
+
+class "Fiber Contract Silver" as FiberContract <<ProductOffering>> {
+  POPrice = "Welcome Discount: -5€/month for 10 first months"
+  tax rate = 20%
+}
+
+class "Box" as Box <<ProductOffering>> {
+  min:0, max:1, default 1
+}
+class "Box 1" as Box1Offering <<ProductOffering>> {
+  POPrice = "4€/Month for Standard, 5€/Month for Maxi"
+  tax rate = 20%
+  min:1, max:1, default Box 1
+}
+class "Box 2" as Box2Offering <<ProductOffering>> {
+  POPrice = "7€/Month"
+  tax rate = 20%
+}
+class "Box Shipping" as BoxShipping <<ProductOffering>> {
+  POPrice = "Express: 5€, Standard: Free"
+  tax rate = 20%
+  min:0, max:1, default 1 -- conditionally requires Box
+}
+
+class "Fiber Access Standard" as FiberAccessStandard <<ProductOffering>> {
+  POPrice: if speed=basic = "10€/month" (tax 20%)
+  POPrice: if speed=high = "15€/month"
+  installation fees = "30€ (tax 10%)"
+  min:1, max:1
+}
+class "Connectivity" as Connectivity <<ProductOffering>> {
+  min:1, max:1
+}
+class "Fix Communication Service" as FixCommService <<ProductOffering>> {
+  POPrice = "12€/month + usage prices plan"
+  tax rate = 20%
+  min:1, max:1
+}
+class "TV Channel" as TVChannelOffering <<ProductOffering>> {
+  POPrice: Basic = "5€/month", Extra = "10€/month"
+  tax rate = 20%
+  min:0, max:1, default 1
+}
+
+class "Box 1" as Box1Spec <<ProductSpecification>> {
+  Color = apple green | strawberry red (D)
+  Storage = Maxi | Standard (D)
+}
+class "Box 2" as Box2Spec <<ProductSpecification>>
+
+class "Fiber Access" as FiberAccessSpec <<ProductSpecification>> {
+  Speed = Basic | High (D)
+}
+class "Connectivity" as ConnectivitySpec <<ProductSpecification>> {
+  Speed = Basic | High (D)
+}
+class "Fix Communication" as FixCommSpec <<ProductSpecification>> {
+  Phone Number = "to be chosen"
+}
+class "TV Channel" as TVChannelSpec <<ProductSpecification>> {
+  Value = Basic (D) | Extra
+}
+
+class "Shipping CFS" as ShippingCFS <<ResourceSpecification>>
+class "Landline Access (L2)" as LandlineAccess <<ResourceSpecification>> {
+  Technical Eligibility Test = Mandatory
+}
+class "Landline Connectivity (L3)" as LandlineConnectivity <<ResourceSpecification>>
+class "Fix Communication" as FixCommResource <<ServiceDomain>>
+class "TV Channels" as TVChannelsResource <<ServiceDomain>>
+
+class "Box 1 resource specification" as Box1ResourceSpec <<ServiceDomain>>
+class "SKU 1 (BR256, Box 1 Red 256)" as SKU1 <<StockItem>>
+class "SKU 2 (BG256, Box 1 Green 256)" as SKU2 <<StockItem>>
+class "SKU 3 (BR512-1/2, Box 1 Red 512)" as SKU3 <<StockItem>>
+class "SKU 4 (BG512, Box 1 Green 512)" as SKU4 <<StockItem>>
+
+FiberContract --> Box : "packages (Min:0,Max:1,default 1)"
+FiberContract --> FiberAccessStandard : "packages (Min:1,Max:1)"
+FiberContract --> Connectivity : "packages (Min:1,Max:1)"
+FiberContract --> FixCommService : "packages (Min:1,Max:1)"
+FiberContract --> TVChannelOffering : "packages (Min:0,Max:1,default 1)"
+Box --> Box1Offering : "packages (Min:1,Max:1,default Box 1)"
+Box --> Box2Offering : packages
+BoxShipping ..> Box : "conditionally requires"
+
+Box1Offering --> Box1Spec : Requires
+Box2Offering --> Box2Spec : Requires
+BoxShipping --> ShippingCFS : Requires
+
+FiberAccessStandard --> FiberAccessSpec : Requires
+Connectivity --> ConnectivitySpec : Requires
+FixCommService --> FixCommSpec : Requires
+TVChannelOffering --> TVChannelSpec : Requires
+
+FiberAccessSpec --> LandlineAccess : Requires
+ConnectivitySpec --> LandlineConnectivity : Requires
+FixCommSpec --> FixCommResource : Requires
+TVChannelSpec --> TVChannelsResource : Requires
+
+LandlineConnectivity <-- LandlineAccess : Requires
+FixCommResource --> LandlineConnectivity : Requires
+TVChannelsResource --> LandlineConnectivity : Requires
+
+ShippingCFS --> Box1ResourceSpec : Requires
+Box1Spec ..> Box1ResourceSpec : "[Device]"
+Box1ResourceSpec --> SKU1
+Box1ResourceSpec --> SKU2
+Box1ResourceSpec --> SKU3
+Box1ResourceSpec --> SKU4
+
+@enduml

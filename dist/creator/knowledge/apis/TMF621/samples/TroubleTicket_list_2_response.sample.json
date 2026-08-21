@@ -1,0 +1,296 @@
+[
+  {
+    "id": "3256",
+    "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicket/3256",
+    "creationDate": "2023-05-31T07:34:45.968Z",
+    "description": "I ordered a new mobile line 2 week ago, but the mobile device did not arrived",
+    "expectedResolutionDate": "2019-06-10T07:34:45.968Z",
+    "lastUpdate": "2023-05-31T07:34:45.968Z",
+    "name": "Commerce problem",
+    "priority": "High",
+    "requestedResolutionDate": "2022-05-31T07:34:45.968Z",
+    "resolutionDate": "2023-05-31T07:34:45.968Z",
+    "severity": "Minor",
+    "status": "resolved",
+    "statusChangeDate": "2023-05-31T07:34:45.968Z",
+    "statusChangeReason": "Apply full credit",
+    "ticketType": "Commerce Issue",
+    "troubleTicketCharacteristic": [
+      {
+        "id": "1",
+        "name": "orderReferenceNumber",
+        "valueType": "string",
+        "value": "Order_888",
+        "@type": "StringCharacteristic"
+      },
+      {
+        "id": "2",
+        "name": "orderCreationDate",
+        "valueType": "string",
+        "value": "2023-05-31",
+        "@type": "StringCharacteristic"
+      }
+    ],
+    "attachment": [
+      {
+        "description": "Scanned Order",
+        "attachmentType": "orderCopy",
+        "mimeType": "image/png",
+        "name": "New Mobile Order",
+        "url": "https://mycsp.com:7070/docloader?docnum=3534888",
+        "@type": "Attachment"
+      }
+    ],
+    "channel": {
+      "id": "8774",
+      "name": "self service",
+      "@type": "ChannelRef"
+    },
+    "note": [
+      {
+        "id": "77458",
+        "author": "Jack Smith",
+        "date": "2023-05-31T07:34:45.968Z",
+        "text": "I did not recived the mobile device",
+        "@type": "Note"
+      }
+    ],
+    "relatedEntity": [
+      {
+        "role": "disputedOrder",
+        "@type": "RelatedEntity",
+        "entity": {
+          "id": "Order_888",
+          "href": "https://mycsp.com:8080/tmf-api/productOrdering/v5/productOrder/Order_888",
+          "name": "New Mobile Order",
+          "@type": "EntityRef",
+          "@referredType": "ProductOrder"
+        }
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "member",
+        "partyOrPartyRole": {
+          "id": "9866",
+          "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9866",
+          "name": "Sandy Smith",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyRefOrPartyRoleRef"
+      },
+      {
+        "role": "reporter",
+        "partyOrPartyRole": {
+          "id": "9877",
+          "name": "Jacob Jac Miller",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyRefOrPartyRoleRef"
+      },
+      {
+        "role": "customer",
+        "partyOrPartyRole": {
+          "id": "9176",
+          "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/customer/9176",
+          "name": "Jack Smith",
+          "@type": "PartyRoleRef",
+          "@referredType": "Customer"
+        },
+        "@type": "RelatedPartyRefOrPartyRoleRef"
+      }
+    ],
+    "statusChangeHistory": [
+      {
+        "statusChangeDate": "2023-05-28T07:34:45.968Z",
+        "statusChangeReason": "trouble ticket created ",
+        "status": "acknowledged",
+        "@type": "StatusChange"
+      },
+      {
+        "statusChangeDate": "2023-05-28T08:34:45.968Z",
+        "statusChangeReason": "start process",
+        "status": "inProgress",
+        "@type": "StatusChange"
+      },
+      {
+        "statusChangeDate": "2023-05-31T07:34:45.968Z",
+        "statusChangeReason": "Resend new device to the customer",
+        "status": "resolved",
+        "@type": "StatusChange"
+      }
+    ],
+    "@type": "TroubleTicket"
+  },
+  {
+    "id": "3180",
+    "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicket/3180",
+    "creationDate": "2022-05-31T07:34:45.968Z",
+    "description": "I do not accept the last VOD charge, since the movie was constantly interrupted, I had to quick watching the movie in the middle ",
+    "expectedResolutionDate": "2019-06-10T07:34:45.968Z",
+    "lastUpdate": "2022-05-31T07:34:45.968Z",
+    "name": "complaint over last bill",
+    "priority": "High",
+    "requestedResolutionDate": "2022-05-31T07:34:45.968Z",
+    "resolutionDate": "2022-05-31T07:34:45.968Z",
+    "severity": "Minor",
+    "status": "resolved",
+    "statusChangeDate": "2022-05-31T07:34:45.968Z",
+    "statusChangeReason": "Apply full credit",
+    "ticketType": "Bill Dispute",
+    "troubleTicketCharacteristic": [
+      {
+        "id": "1",
+        "name": "disputeAmount",
+        "valueType": "number",
+        "value": 40,
+        "@type": "NumberCharacteristic"
+      },
+      {
+        "id": "2",
+        "name": "creditAmount",
+        "valueType": "number",
+        "value": 40,
+        "characteristicRelationship": [
+          {
+            "id": "4",
+            "relationshipType": "dependency",
+            "@type": "CharacteristicRelationship"
+          }
+        ],
+        "@type": "NumberCharacteristic"
+      },
+      {
+        "id": "3",
+        "name": "currency",
+        "valueType": "string",
+        "value": "USD",
+        "@type": "StringCharacteristic"
+      },
+      {
+        "id": "4",
+        "name": "creditReason",
+        "valueType": "string",
+        "value": "Network connectivity issues",
+        "@type": "StringCharacteristic"
+      }
+    ],
+    "attachment": [
+      {
+        "description": "Scanned disputed bill",
+        "attachmentType": "billCopy",
+        "mimeType": "image/png",
+        "name": "March Bill",
+        "url": "https://mycsp.com:7070/docloader?docnum=3534555",
+        "@type": "Attachment"
+      }
+    ],
+    "channel": {
+      "id": "8774",
+      "name": "self service",
+      "@type": "ChannelRef"
+    },
+    "note": [
+      {
+        "id": "77456",
+        "author": "Jack Smith",
+        "date": "2019-05-31T07:34:45.968Z",
+        "text": "This is quite important, please approach me as soon as possible",
+        "@type": "Note"
+      }
+    ],
+    "relatedEntity": [
+      {
+        "role": "disputedBill",
+        "@type": "RelatedEntity",
+        "entity": {
+          "id": "3472",
+          "href": "https://mycsp.com:8080/tmf-api/customerBillManagement/v5/customerBill/8297",
+          "name": "March 2019 Bill",
+          "@type": "EntityRef",
+          "@referredType": "CustomerBill"
+        }
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "member",
+        "partyOrPartyRole": {
+          "id": "9866",
+          "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9866",
+          "name": "Sandy Smith",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyRefOrPartyRoleRef"
+      },
+      {
+        "role": "reporter",
+        "partyOrPartyRole": {
+          "id": "9877",
+          "name": "Jacob Jac Miller",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyRefOrPartyRoleRef"
+      },
+      {
+        "role": "customer",
+        "partyOrPartyRole": {
+          "id": "9176",
+          "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/customer/9176",
+          "name": "Jack Smith",
+          "@type": "PartyRoleRef",
+          "@referredType": "Customer"
+        },
+        "@type": "RelatedPartyRefOrPartyRoleRef"
+      }
+    ],
+    "statusChangeHistory": [
+      {
+        "statusChangeDate": "2022-05-28T07:34:45.968Z",
+        "statusChangeReason": "trouble ticket created ",
+        "status": "acknowledged",
+        "@type": "StatusChange"
+      },
+      {
+        "statusChangeDate": "2022-05-28T08:34:45.968Z",
+        "statusChangeReason": "start process",
+        "status": "inProgress",
+        "@type": "StatusChange"
+      },
+      {
+        "statusChangeDate": "2022-05-29T07:34:45.968Z",
+        "statusChangeReason": "Need more information from the customer",
+        "status": "pending",
+        "@type": "StatusChange"
+      },
+      {
+        "statusChangeDate": "2022-05-31T07:34:45.968Z",
+        "statusChangeReason": "Apply full credit",
+        "status": "resolved",
+        "@type": "StatusChange"
+      }
+    ],
+    "troubleTicketRelationship": [
+      {
+        "id": "567433",
+        "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicket/567433",
+        "name": "Network Coverage",
+        "relationshipType": "dependecy",
+        "@type": "TroubleTicketRelationship"
+      }
+    ],
+    "externalIdentifier": [
+      {
+        "id": "3331234",
+        "owner": "BMC Remedy",
+        "externalIdentifierType": "Incident",
+        "@type": "ExternalIdentifier"
+      }
+    ],
+    "@type": "TroubleTicket"
+  }
+]

@@ -1,0 +1,65 @@
+{
+    "Product": {
+      "list": {
+        "samples": [
+          {
+            "description": "Here's an example of a request for retrieving a list of product (not descriped in the UC part). The given criteria is the billing account id (BA1236).",
+            "filtering": "fields=id,href,status,orderDate,productOffering.id,productOffering.name&status=suspended",
+            "content-type": "application/json",
+            "response": "$_Product_list_filter_response"
+          }
+        ]
+      },
+      "retrieve": {
+        "samples": [
+          {
+            "description": "Here's an example of a request for retrieving a product (based on a Product Specification). The given criteria is the product id g265-tf85.",
+            "content-type": "application/json",
+            "objectId": "g265-tf85",
+            "response": "$_Product_retrieve_1_response"
+          },
+          {
+            "description": "Here's an example of a request for retrieving a product (based on a Product Offering). The given criteria is the product.id 45hj-df54-yui9.",
+            "content-type": "application/json",
+            "objectId": "45hj-df54-yui9",
+            "response": "$_Product_retrieve_2_response"
+          }
+        ]
+      },
+      "create": {
+        "samples": [
+          {
+            "description": "Here's an example of a request for creating a product for use case 1 - the resulting product is g265-tf85.",
+            "request": "$_Product_create_request",
+            "response": "$_Product_create_response"
+          }
+        ]
+      },
+      "partialupdate": {
+        "samples": [
+          {
+            "description": "Here's an example of a request for updating a product (using previous product created) using json-patch - Change value for speed + user contact.",
+            "content-type": "application/json-patch+json",
+            "request": "$_Product_partialupdate_1_request",
+            "objectId": "g265-tf85",
+            "response": "$_Product_partialupdate_1_response"
+          },
+          {
+            "description": "Here's an example of a request for updating a product (using previous product created) using merge-patch  - Change value for speed + user contact.",
+            "content-type": "application/merge-patch+json",
+            "request": "$_Product_partialupdate_2_request",
+            "objectId": "g265-tf85",
+            "response": "$_Product_partialupdate_2_response"
+          }
+        ]
+      },
+      "delete": {
+        "samples": [
+          {
+            "description": "Here's an example of a request for deleting a product.",
+            "objectId": "g265-tf85"
+          }
+        ]
+      }
+    }
+  }

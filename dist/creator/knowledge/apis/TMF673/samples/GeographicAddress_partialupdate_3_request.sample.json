@@ -1,0 +1,12 @@
+[
+	{
+	  "op": "test",
+	  "path": "$.postcode",
+	  "value": "999222"
+	},
+	{
+	  "op": "replace",
+	  "path": "$.postcode",
+	  "value": "999283"
+	}
+  ]

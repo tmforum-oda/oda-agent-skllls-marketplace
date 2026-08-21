@@ -1,0 +1,33 @@
+{
+    "correlationId": "eed80420-1889",
+    "description": "AgreementSpecificationStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4594-809a-e75849cc782e",
+    "eventTime": "2022-08-25T12:20:58.645Z",
+    "eventType": "AgreementSpecificationStateChangeEvent",
+    "priority": "5",
+    "timeOcurred": "2022-08-25T12:20:49.658Z",
+    "title": "AgreementSpecificationStateChangeEvent",
+    "event": {
+        "agreementSpecification": {
+            "href": "https://mycsp.com:8080/tmf-api/agreementManagement/v5/agreementSpecification/1140",
+            "id": "1140",
+            "@type": "AgreementSpecification",
+            "lifecycleStatus": "Approved"
+        }
+    },
+    "reportingSystem": {
+        "id": "959",
+        "name": "APP-628",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "281",
+        "name": "APP-436",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "AgreementSpecificationStateChangeEvent"
+}

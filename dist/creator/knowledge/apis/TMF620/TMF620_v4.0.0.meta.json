@@ -1,0 +1,16 @@
+{
+  "id": "TMF620",
+  "type": "api",
+  "name": "product-catalog-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "e4d73a59e906fc5daf379273d923cc0874305634b1cee8bc52275b8d6cac354a"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

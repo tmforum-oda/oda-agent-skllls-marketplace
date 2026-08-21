@@ -1,0 +1,94 @@
+@startuml
+title Figure 3.2.1: Example of Order Structure
+
+note as N1
+  This diagram depicts an example of an Order Structure with a limited list of Order Items.
+end note
+
+package "Product Order" #E2F0D9 {
+  class "Slice Selfcare Management" as PO_SliceSelfcare
+  class "Business Slice" as PO_BusinessSlice
+  class "Package" as PO_Package
+  class "Platinum Package" as PO_Platinum
+  class "VAS" as PO_VAS
+  class "Edge VAS" as PO_EdgeVAS
+
+  PO_SliceSelfcare --> PO_BusinessSlice
+  PO_Package --> PO_BusinessSlice
+  PO_Package --> PO_Platinum
+  PO_Platinum --> PO_BusinessSlice
+  PO_VAS --> PO_EdgeVAS
+}
+
+package "Service Order" #FFE0B2 {
+  class "Slice Selfcare\nManagement [CFS]" as CFS_SliceSelfcare
+  class "Business Slice [CFS]" as CFS_BusinessSlice
+  class "Service Profile Template [CFS]" as CFS_ServiceProfileTemplate
+  class "Edge VAS [CFS]" as CFS_EdgeVAS
+
+  CFS_ServiceProfileTemplate --> CFS_BusinessSlice
+}
+
+PO_SliceSelfcare --> CFS_SliceSelfcare
+PO_BusinessSlice --> CFS_BusinessSlice
+PO_Platinum --> CFS_ServiceProfileTemplate
+PO_EdgeVAS --> CFS_EdgeVAS
+
+package "Internal SOM decomposition" #FFF6E0 {
+  class "Slice Selfcare\nManagement [RFS]" as RFS_SliceSelfcare
+  class "Slice [RFS]" as RFS_Slice
+  class "Slice Profile Template [RFS]" as RFS_SliceProfileTemplate
+  class "Edge VAS [RFS]" as RFS_EdgeVAS
+
+  RFS_SliceProfileTemplate --> RFS_Slice
+
+  class "RAN NS [RFS]" as RFS_RANNS
+  class "Transport NS [RFS]" as RFS_TransportNS
+  class "Core NS [RFS]" as RFS_CoreNS
+
+  RFS_Slice --> RFS_RANNS
+  RFS_Slice --> RFS_TransportNS
+  RFS_Slice --> RFS_CoreNS
+}
+
+CFS_SliceSelfcare --> RFS_SliceSelfcare
+CFS_BusinessSlice --> RFS_Slice
+CFS_ServiceProfileTemplate --> RFS_SliceProfileTemplate
+CFS_EdgeVAS --> RFS_EdgeVAS
+
+class "Selfcare Management License" as ResSelfcareLicense
+class "Selfcare Management Endpoint" as ResSelfcareEndpoint
+class "RAN VNF" as ResRANVNF
+class "RAN PNF" as ResRANPNF
+class "Transport VNF" as ResTransportVNF
+class "Transport PNF" as ResTransportPNF
+class "Core VNF" as ResCoreVNF
+class "Core PNF" as ResCorePNF
+class "RAN Subnet Profile" as ResRANSubnetProfile
+class "Transport Subnet Profile" as ResTransportSubnetProfile
+class "Core Subnet Profile" as ResCoreSubnetProfile
+class "Edge Application License" as ResEdgeAppLicense
+class "Edge Application Profile" as ResEdgeAppProfile
+
+RFS_SliceSelfcare --> ResSelfcareLicense
+RFS_SliceSelfcare --> ResSelfcareEndpoint
+RFS_RANNS --> ResRANVNF
+RFS_RANNS --> ResRANPNF
+RFS_TransportNS --> ResTransportVNF
+RFS_TransportNS --> ResTransportPNF
+RFS_CoreNS --> ResCoreVNF
+RFS_CoreNS --> ResCorePNF
+RFS_SliceProfileTemplate --> ResRANSubnetProfile
+RFS_SliceProfileTemplate --> ResTransportSubnetProfile
+RFS_SliceProfileTemplate --> ResCoreSubnetProfile
+RFS_EdgeVAS --> ResEdgeAppLicense
+RFS_EdgeVAS --> ResEdgeAppProfile
+
+ResRANSubnetProfile --> ResRANVNF : uses
+ResRANSubnetProfile --> ResRANPNF : uses
+ResTransportSubnetProfile --> ResTransportVNF : uses
+ResTransportSubnetProfile --> ResTransportPNF : uses
+ResCoreSubnetProfile --> ResCoreVNF : uses
+ResCoreSubnetProfile --> ResCorePNF : uses
+
+@enduml

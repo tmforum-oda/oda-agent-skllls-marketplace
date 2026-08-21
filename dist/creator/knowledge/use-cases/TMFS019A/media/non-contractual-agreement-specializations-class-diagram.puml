@@ -1,0 +1,18 @@
+@startuml
+title Figure A.06a - NonContractualAgreement Specializations
+
+class Agreement <<Entity>> {
+  + documentNumber : String
+  + statementOfIntent : String
+  + status : String
+  + type : String
+  «required»
+  + validFor : TimePeriod
+}
+
+class NonContractualAgreement
+class InternalAgreement
+
+NonContractualAgreement --|> Agreement
+InternalAgreement --|> NonContractualAgreement
+@enduml

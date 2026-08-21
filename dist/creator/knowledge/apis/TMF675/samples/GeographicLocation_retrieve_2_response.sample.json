@@ -1,0 +1,14 @@
+{
+    "id": "7e73fac4-39c6", 
+    "href": "https://api.company.com/tmf-api/geographicLocation/v5/geographicLocation/7e73fac4-39c6",
+    "name": "Faraday House",
+    "@baseType": "GeographicLocation",
+    "@type": "GeoJsonPoint",
+    "geoJson": {
+        "type": "Point",
+        "coordinates": [
+            -1.3201913237571716,
+            51.41561755173973
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "@type": "PermissionSpecification",
+  "specificationCharacteristic": [
+    {
+      "@type": "CharacteristicSpecification",
+      "name": "reductionPercentage",
+      "valueType": "number",
+      "characteristicValueSpecification": [
+        {
+          "@type": "FloatCharacteristicValueSpecification",
+          "valueType": "number",
+          "value": 5.5
+        }
+      ]
+    }
+  ]
+}

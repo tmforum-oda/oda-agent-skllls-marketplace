@@ -1,0 +1,40 @@
+{
+  "correlationId": "e757af54-9a28-4f35-b2e7-071a6736c62d",
+  "description": "GeographicSiteAttributeValueChangeEvent illustration",
+  "domain": "Resource",
+  "eventId": "64a81a78-9f37-42f3-a59d-a59b4699a7ee",
+  "eventTime": "2024-08-25T12:25:22.389Z",
+  "eventType": "GeographicSiteAttributeValueChangeEvent",
+  "priority": "4",
+  "timeOccurred": "2022-08-25T12:25:12.838Z",
+  "title": "GeographicSiteAttributeValueChangeEvent",
+  "event": {
+    "geographicSite": {
+      "id": "0738f85e-c8b0-4ed2-ac3e-b47687ade274",
+      "href": "https://mycsp.com/tmf-api/geographicSiteManagement/v5/geographicSite/0738f85e-c8b0-4ed2-ac3e-b47687ade274",
+      "@type": "GeographicSite",
+      "externalIdentifier": [
+        {
+          "id": "01abc593-82f5-4609-bd6e-31e58078e690",
+          "@type": "ExternalIdentifier",
+          "owner": "Address Management System",
+          "externalIdentifierType": "Address"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "cd8d6280-1abc-4542-8663-263fbe2c0eed",
+    "name": "APP-746",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "1235910b-2ed0-4d38-a5c2-ee35cb7cc542",
+    "name": "APP-623",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "GeographicSiteAttributeValueChangeEvent"
+}

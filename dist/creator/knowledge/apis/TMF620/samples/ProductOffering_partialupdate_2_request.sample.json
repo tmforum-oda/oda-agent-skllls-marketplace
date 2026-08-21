@@ -1,0 +1,16 @@
+[
+  {
+    "op": "update",
+    "path": "/version",
+    "value": "1.1" 
+  },
+  {
+    "op": "update",
+    "path": "/agreementPeriod",
+    "value": {
+        "startDateTime": "2018-06-12T00:00Z", 
+        "endDateTime": "2020-01-11T00:00Z"
+    } 
+  }
+        
+]

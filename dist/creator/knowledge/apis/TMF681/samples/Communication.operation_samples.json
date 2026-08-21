@@ -1,0 +1,60 @@
+{
+    "CommunicationMessage": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple communication messages.",
+                    "filtering": "status=inprogress",
+                    "content-type": "application/json",
+                    "response": "$_CommunicationMessage_list_1_response"
+                }
+            ]
+        },
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a specific communication message.",
+                    "content-type": "application/json",
+                    "objectId": "3830",
+                    "response": "$_CommunicationMessage_retrieve_1_response"
+                }
+            ]
+        },
+        "create": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for creating a communication message. In this example the request is created in the initial state. The message will be available for sending by later setting the status to inProgress.",
+                    "content-type": "application/json",
+                    "request": "$_CommunicationMessage_create_1_request",
+                    "response": "$_CommunicationMessage_create_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for creating a communication message. In this example the request is created in the inProgress state and will be sent at the scheduled send time.",
+                    "content-type": "application/json",
+                    "request": "$_CommunicationMessage_create_2_request",
+                    "response": "$_CommunicationMessage_create_2_response"
+                }
+            ]
+        },
+        "partialupdate": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for updating a communication message. In this example, the message status is set to inProgress, together with a new scheduled send time.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "3830",
+                    "request": "$_CommunicationMessage_partialupdate_1_request",
+                    "response": "$_CommunicationMessage_partialupdate_1_response"
+                }
+            ]
+        },
+        "delete": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for deleting a communication message.",
+                    "content-type": "application/json",
+                    "objectId": "3830"
+                }
+            ]
+        }
+    }
+}

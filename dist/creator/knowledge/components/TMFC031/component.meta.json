@@ -1,0 +1,17 @@
+{
+  "id": "TMFC031",
+  "type": "component",
+  "name": "BillCalculation",
+  "version": "3.0.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC031-BillCalculation/Specification/TMFC031-BillCalculation.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "97e2d8ca8feeb8ea8c7f6bd0dc02c6c7a133b4f75fe319b155fdb517a7a80645"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

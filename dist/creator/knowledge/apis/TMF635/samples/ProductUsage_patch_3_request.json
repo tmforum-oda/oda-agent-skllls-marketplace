@@ -1,0 +1,7 @@
+[
+  {
+    "op": "replace",
+    "path": "/usageCharacteristic/value?name=originatingPhoneNumber",
+    "value": "+33939487562"
+  }
+]

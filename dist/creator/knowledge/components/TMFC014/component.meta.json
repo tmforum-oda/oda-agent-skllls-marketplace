@@ -1,0 +1,17 @@
+{
+  "id": "TMFC014",
+  "type": "component",
+  "name": "LocationManagement",
+  "version": "1.2.1",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC014-LocationManagement/Specification/TMFC014-LocationManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "0bc8d7899f88cad06077ea3c92e8542573bc83d93bbe94e06eb3ffbb8734a5a3"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

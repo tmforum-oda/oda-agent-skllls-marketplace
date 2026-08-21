@@ -1,0 +1,32 @@
+{
+    "correlationId": "9b374459-e9b0",
+    "description": "MonitorAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "40c3-a3a0-2379e9894a7d",
+    "eventTime": "2022-08-25T12:19:28.538Z",
+    "eventType": "MonitorAttributeValueChangeEvent",
+    "priority": "3",
+    "timeOccurred": "2022-08-25T12:19:25.724Z",
+    "title": "MonitorAttributeValueChangeEvent",
+    "event": {
+        "monitor": {
+            "href": "http://serverlocation:port/tmf-api/serviceActivationConfiguration/v5/monitor/4035",
+            "id": "4035",
+            "@type": "Monitor"
+        }
+    },
+    "reportingSystem": {
+        "id": "427",
+        "name": "APP-755",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "149",
+        "name": "APP-78",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "MonitorAttributeValueChangeEvent"
+}

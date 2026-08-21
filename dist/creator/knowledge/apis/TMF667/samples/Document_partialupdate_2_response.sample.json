@@ -1,0 +1,78 @@
+{
+  "@type": "Document",
+  "href": "https://serverRoot/tmf-api/document/v5/document/9555-3c9c417feead",
+  "id": "9555-3c9c417feead",
+  "name": "Designing Web APIs: Building APIs That Developers really Love",
+  "documentType": "paperback",
+  "version": "2",
+  "creationDate": "2021-11-06T10:15:26.007Z",
+  "description": "Designing an API is complicated to begin with, but evolving your API design over time makes the process even more difficult. There are several books on the topic, but ...",
+  "documentSpecification": {
+    "@type": "DocumentSpecificationRef",
+    "@referredType": "DocumentSpecification",
+    "href": "https://serverRoot/tmf-api/document/v5/documentSpecification/a65d-a08c744f2fe7",
+    "id": "a65d-a08c744f2fe7",
+    "name": "Standard Paperback Book"
+  },
+  "lastUpdate": "2024-11-05T10:15:26.007Z",
+  "status": "published",
+  "attachment": [
+    {
+      "@type": "Attachment",
+      "name": "Link to paperback",
+      "url": "https://www.amazon.co.uk/Designing-Web-APIs-Building-Developers/dp/1492026921",
+      "validFor": {
+        "startDateTime": "2024-11-05T10:15:26.007Z"
+      },
+      "attachmentType": "book",
+      "mimeType": "text/html"
+    }
+  ],
+  "characteristic": [
+    {
+      "@type": "IntegerCharacteristic",
+      "@baseType": "Characteristic",
+      "name": "pages",
+      "valueType": "integer",
+      "value": 200
+    },
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "name": "language",
+      "valueType": "string",
+      "value": "en"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "name": "isbn-10",
+      "valueType": "string",
+      "value": "9781492026921"
+    }
+  ],
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "role": "Author",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "href": "http://serverlocation:port/tmf-api/partyManagement/v5/individual/789",
+        "id": "789",
+        "name": "Brenda Jin",
+        "@referredType": "Individual"
+      }
+    },
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "role": "Publisher",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "href": "http://serverlocation:port/tmf-api/partyManagement/v5/organization/123",
+        "id": "123",
+        "name": "O'Reilly",
+        "@referredType": "Organization"
+      }
+    }
+  ]
+}

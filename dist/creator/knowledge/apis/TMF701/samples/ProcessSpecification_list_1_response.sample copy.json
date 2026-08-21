@@ -1,0 +1,102 @@
+[
+  {
+    "id": "OC54",
+    "href": "https://www.mycsp.com/tmfapis/processManagement/v5/processSpecification/OC54",
+    "lifecycleStatus": "onDesign",
+    "version": "1",
+    "lastUpdate": "2023-12-30T09:42:25.747Z",
+    "name": "orderCapture",
+    "description": "Description of the order capture process for all channels",
+  "attachment": [
+    {
+      "attachmentType": "ProcessDocumentation",
+      "description": "description of the business process with examples",
+  "mimeType": "application/pdf",
+      "name": "pfs-1-doc",
+      "url": "https://mycsp.com/content/4aafacbd-11ff-4dc8-b445-305f2215715f",
+      "size": {
+        "amount": 2423,
+        "units": "Mb"
+      },
+      "validFor": {
+        "startDateTime": "2030-04-10T23:20:50.52Z"
+      },
+      "@type": "Attachment"
+    }
+  ],
+    "processSpecificationCharacteristic": [
+      {
+        "modality": "input",
+        "@type": "FlowCharacteristicSpecification",
+        "characteristicSpecification": {
+          "configurable": true,
+          "description": "identification of product offering that the customer wishes to have",
+          "extensible": false,
+          "isUnique": false,
+          "maxCardinality": 1,
+          "minCardinality": 0,
+          "name": "productOfferingRef",
+          "@type": "CharacteristicSpecification",
+          "@valueSchemaLocation": "https://www.mycsp.com/tmfapis/productCatalog/v5/schema/productOfferingRef.json"
+        }
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "designer",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "4cf-mg1",
+          "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/4cf-mg1",
+          "name": "Simon Clement",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      },
+      {
+        "role": "approver",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "fp5-559",
+          "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/fp5-559",
+          "name": "Kate Noman",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      }
+    ],
+    "taskSpecification": [
+      {
+        "id": "tfs99",
+        "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs99",
+        "@type": "TaskSpecificationRef",
+        "@referredType":"TaskSpecification"
+      },
+      {
+        "id": "tfs0",
+        "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs0",
+        "@type": "TaskSpecificationRef",
+        "@referredType":"TaskSpecification"
+      },
+      {
+        "id": "tfs1",
+        "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs1",
+        "@type": "TaskSpecificationRef",
+        "@referredType":"TaskSpecification"
+      },
+      {
+        "id": "tfs2",
+        "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs1",
+        "@type": "TaskSpecificationRef",
+        "@referredType":"TaskSpecification"
+      },
+      {
+        "id": "tfs3",
+        "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs1",
+        "@type": "TaskSpecificationRef",
+        "@referredType":"TaskSpecification"
+      }
+    ],
+    "@type": "ProcessSpecification"
+  }
+]

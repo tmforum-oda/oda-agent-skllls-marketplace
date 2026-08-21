@@ -1,0 +1,69 @@
+[
+  {
+    "id": "1203",
+    "href": "https://host:port/shoppingCart/v5/shoppingCart/1203",
+    "@type": "ShoppingCart",
+    "validFor": {
+      "endDateTime": "2022-05-28T12:02:41.791Z",
+      "startDateTime": "2021-08-28T12:02:41.791Z"
+    }, 
+    "relatedParty": [
+      {
+        "role": "customer",
+        "@type": "RelatedPartyOrPartyRole",
+        "partyOrPartyRole": 
+          { 
+            "id": "9176",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v4/customer/9176",
+            "name": "Jack Smith",
+            "@type": "PartyRoleRef",
+            "@referredType": "Customer"
+          }  
+        
+      }
+    ]
+  },
+  {
+    "id": "1204",
+    "href": "https://host:port/shoppingCart/v5/shoppingCart/1204",
+    "@type": "ShoppingCart",
+    "validFor": {
+      "endDateTime": "2022-06-28T12:02:41.791Z",
+      "startDateTime": "2021-08-28T12:02:41.791Z"
+    }, 
+    "relatedParty": [
+      {
+        "role":" customer",
+        "@type": "RelatedPartyOrPartyRole",
+        "PartyOrPartyRole" : 
+        {
+          "name": "Alan Pull",
+          "@type":"PartyRoleRef",
+          "@referredType": "Customer"
+        }
+      }
+    ]
+  },
+  {
+    "id": "1205",
+    "href": "https://host:port/shoppingCart/v5/shoppingCart/1205",
+    "@type": "ShoppingCart",
+    "validFor": {
+      "endDateTime": "2022-06-29T12:02:41.791Z",
+      "startDateTime": "2021-08-28T12:02:41.791Z"
+    }, 
+    "relatedParty": [
+      {
+        "role":" customer",
+        "@type": "RelatedPartyOrPartyRole",
+        "PartyOrPartyRole" : 
+        {
+          "name": "Jeffry Goodman",
+          "@type":"PartyRoleRef",
+          "@referredType": "Customer"
+        }
+      }
+
+    ]
+  }
+]

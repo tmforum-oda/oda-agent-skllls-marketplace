@@ -1,0 +1,63 @@
+{
+	"ResourceFunction": {
+		"create": {
+			"samples": [
+				{
+					"description": "The following is an example of a synchronous request to create a resource function:",
+					"request": "$_ResourceFunction_create_1_request",
+					"response": "$_ResourceFunction_create_1_response"
+				},
+				{
+					"description": "The following is an example of an asynchronous request to create a resource function.\n\nThe response status code SHOULD be '202 Accepted'. A 'Link:' header SHOULD be included providing a URI, with the 'title' parameter having value 'monitor', at which progress of the request may be tracked.\n\nSee TMF630 REST API Design Guidelines Part 1 section 9 Monitor Pattern.",
+					"request": "$_ResourceFunction_create_2_request",
+					"response": "$_ResourceFunction_create_2_response"
+				}
+			]
+		}
+	},
+	"Monitor": {
+		"retrieve": {
+			"samples": [
+				{
+					"description": "The following is an example of retrieving a monitor for an in progress task resource:",
+					"content-type": "application/json",
+					"objectId": "3bc72846-3516-4504-86ce-63a4954f7c00",
+					"response": "$_Monitor_retrieve_1_response"
+				}
+			]
+		}
+	},
+	"Heal": {
+		"create": {
+			"samples": [
+				{
+					"description": "The following is an example of a request to create a Heal task resource:",
+					"request": "$_Heal_create_1_request",
+					"response": "$_Heal_create_1_response"
+				}
+			]
+		}
+	},
+	"Scale": {
+		"create": {
+			"samples": [
+				{
+					"description": "The following is an example of a request to create a Scale task resource:",
+					"request": "$_Scale_create_1_request",
+					"response": "$_Scale_create_1_response"
+				}
+			]
+		}
+	},
+	"Migrate": {
+		"create": {
+			"samples": [
+				{
+					"description": "The following is an example of a request to create a Migrate task resource:",
+					"request": "$_Migrate_create_1_request",
+					"response": "$_Migrate_create_1_response"
+				}
+			]
+		}
+	}
+}

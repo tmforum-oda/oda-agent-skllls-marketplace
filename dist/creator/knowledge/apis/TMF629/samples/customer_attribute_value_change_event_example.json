@@ -1,0 +1,20 @@
+{
+  "@type": "CustomerAttributeValueChangeEvent",
+  "eventId": "e3dac91d-a035-465f-afc5-d3b603b53ad2",
+  "eventTime": "2018-06-12T00:00:00Z",
+  "eventType": "CustomerAttributeValueChangeEvent",
+  "event": {
+    "customer": {
+      "@type": "Customer",
+      "href": "https://host:port/tmf-api/customerManagement/v5/customer/1140",
+      "id": "1140",
+      "engagedParty": {
+        "@type": "PartyRef",
+        "href": "https://host:port/tmf-api/partyManagement/v5/organization/236",
+        "id": "236",
+        "name": "Long Distance Travellers",
+        "@referredType": "Organization"
+      }
+    }
+  }
+}

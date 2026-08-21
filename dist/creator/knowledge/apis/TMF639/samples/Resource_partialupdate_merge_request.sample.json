@@ -1,0 +1,6 @@
+{
+  "id": "ca239a70-5810-433f-a251-ba5277a5af72",
+  "href": "http://host:port/resourceInventoryManagement/v5/resource/ca239a70-5810-433f-a251-ba5277a5af72",
+  "@type": "PhysicalResource",
+  "operationalState": "disabled"
+}

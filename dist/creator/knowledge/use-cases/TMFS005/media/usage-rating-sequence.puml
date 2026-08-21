@@ -1,0 +1,59 @@
+@startuml
+title Usage Rating 1/1
+
+participant "Service Usage Management" as SUM #blue
+participant "Event Management" as Event #grey
+participant "Product Usage Management" as PUM
+participant "Product Inventory" as PI
+participant "Product Catalog" as PC
+
+group loop [These steps are true for all generated CDRs]
+
+    SUM -> SUM : 1. Cdr Validation
+    note right of SUM : (1)This use case version does not address the creation of the ServiceUsage record
+
+    SUM -> Event : 2. **TMF 688 Event Management:**\nPost /topics/topicId/ServiceUsageStateChangeEvent\n(eventId,ServiceUsageId="id1",\n ServiceUsageStatus="generated",\n ServiceUsageDate='2023-09-11-T150000Z',\nServiceUsageSpec="Voice National Usage Spec", Payload="CDR Content")
+    Event --> SUM : 3. 200 OK
+
+    note right of Event : (2)In this diagram we are using the V4 of TMF727 Service Usage Management (beta version)
+
+    Event -> PUM : 4. **TMF688 Event Management:**\npost /listener/ServiceUsageStateChangeEvent\n(eventId,ServiceUsageId="id1", ServiceUsageStatus="generated",\n ServiceUsageDate='2024-12-01-T150000Z',\n ServiceUsageSpec="Voice National Usage Spec", Payload="CDR Content")
+    PUM --> Event : 5. 200 OK
+
+    PUM -> PUM : 6. Extract UsageCaracteristicName="+339 xxxxxxxx"
+
+    PUM -> PI : 7. **TMF637 Product Inventory Management:**\nget /product(PhoneNumber="+339 xxxxxxxx")\n?"(ProductId, ProductOfferingId, productSpecificationId)"
+    activate PI
+    PI --> PUM : 8. 200 OK (ProductId=Id1, ProductOfferingId=Id1,\n productSpecificationId=Id1)
+    deactivate PI
+
+    PUM -> PC : 9. **TMF767 Product Usage Management:**\nget /ProductUsageSpecification (productSpecificationId.Id1)\n?"(ProductUsageSpecificationCharacteritic, ProductUsageSpecId)"
+    activate PC
+    PC --> PUM : 10. ProductUsageSpecId=Id1,\n Product Usage Specification Characteritics for\n (productSpecificationId=Id1)\n ==> "Voice National"
+    deactivate PC
+
+    note right of PUM
+      (9)The current version of the
+      TMFC001 Product Catalog Management
+      does not expose the sub-resource
+      ProductUsageSpecification from TMF767
+    end note
+
+    PUM -> PUM : 11. **TMF767 Product Usage Management:**\nPOST /productUsage ->(ProductUsageId=Id1 ProductUsage.Status="Initialized")
+
+    PUM -> Event : 12. **TMF 688 Event Management:**\nPost /topics/topicId/ProductUsageCreateEvent\n(eventId,ProductUsageId=Id1 ProductUsage.Status="Initialized")
+    note left of Event : An event that could be consumed by the interested component
+
+    PUM -> PC : 13. **TMF620 Product Catalog Management:**\nget UsageProdOfferPriceCharge\n(productSpecificationId.Id1, ProductUsageSpecId.Id1)\n?(UsageProdOfferPriceCharge.Id,UsageProdOfferPriceCharge.Value)
+    activate PC
+    PC --> PUM : 14. (UsageProdOfferPriceCharge=Id1, UsageProdOfferPriceCharge.Value(0,1euro/min))\n ==> for (ProductUsageSpecId.Id1)
+    deactivate PC
+
+    PUM -> PUM : 15. **TMF767 Product Usage Management:**\nPatch /ProductUsage/Id1 (\nUsageProductPrice.price.dutyFreeAmount.Money.value=1,\nUsageProductPrice.price.dutyFreeAmount.Money.unit="EUR",\nProductUsageStatus="rated" )
+
+    PUM -> Event : 16. **TMF 688 Event Management:**\nPost /topics/topicId/ProductUsageStateChangeEvent\n(eventId,ProductUsageId=Id1\nProductUsage.Status="rated"\nUsageProductPrice.price.dutyFreeAmount.Money.value=1\nUsageProductPrice.price.dutyFreeAmount.Money.unit="EUR")
+    Event --> PUM : 17. 200 OK
+
+end
+
+@enduml

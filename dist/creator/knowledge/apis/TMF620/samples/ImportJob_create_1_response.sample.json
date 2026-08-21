@@ -1,0 +1,12 @@
+{
+    "id": "2341",
+    "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/importJob/2341",
+    "contentType": "application/json",
+    "creationDate": "2020-08-25T00:00:00Z",
+    "completionDate": "2020-08-25T00:01:31Z",
+    "path": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/",
+    "status": "Succeeded",
+    "url": "ftp://ftp.mycsp.com/productCatalogManagement/1877.json",
+    "errorLog": "http://my-platform/logging/errors.log",
+    "@type": "ImportJob"
+}

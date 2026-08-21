@@ -1,0 +1,16 @@
+{
+  "id": "TMF687",
+  "type": "api",
+  "name": "stock-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF687_Stock/4.0.0/swagger/TMF687_Stock_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "85163de48d396a01d22fb6519687195da8e591126f37e81d7772bb4f7e67b249"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

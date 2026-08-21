@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/name",
+    "value": "Designing Web APIs: Building APIs That Developers really Love"
+  },
+  {
+    "op": "replace",
+    "path": "/version",
+    "value": "2"
+  }
+]

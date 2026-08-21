@@ -1,0 +1,12 @@
+{
+    "id": "5435",
+    "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/exportJob/5435",
+    "contentType": "application/json",
+    "creationDate": "2020-09-23T00:00:00Z",
+    "path": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/category",
+    "query": "category.id=7757",
+    "status": "Running",
+    "url": "ftp://ftp.mycsp.com/productCatalogManagement/1866.json",
+    "errorLog": "http://my-platform/logging/errors.log",
+    "@type": "ExportJob"
+}

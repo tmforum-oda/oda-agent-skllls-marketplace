@@ -1,0 +1,314 @@
+[
+    {
+        "id": "9881",
+        "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productSpecification/9881",
+        "name": "Cisco Firepower NGFW",
+        "brand": "Cisco",
+        "productNumber": "CSC-340-NGFW",
+        "description": "Powerful product that integrates with a firewall, including intrusion prevention, advanced malware protection, cloud-based sandboxing, URL filtering, endpoint protection, web gateway, email security, network traffic analysis, network access control and CASB.",
+        "isBundle": true,
+        "lastUpdate": "2020-09-23T16:42:23Z",
+        "lifecycleStatus": "Active",
+        "validFor": {
+            "startDateTime": "2020-09-23T00:00:00Z",
+            "endDateTime": "2022-11-24T16:42:23Z"
+        },
+        "version": "2.0",
+        "relatedParty": [
+            {
+                "role": "Owner",
+                "@type": "RelatedPartyRefOrPartyRoleRef",
+                "partyOrPartyRole": {
+                    "id": "1234",
+                    "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/partyRole/1234",
+                    "name": "Gustave Flaubert",
+                    "@type": "PartyRef",
+                    "@referredType": "Individual"
+                }
+            }
+        ],
+        "attachment": [
+            {
+                "id": "22",
+                "href": "https://mycsp.com:8080/tmf-api/documentManagement/v5/attachment/22",
+                "name": "Product Picture",
+                "mimeType": "image/jpeg",
+                "url": "https://mycsp.com:7070/docloader?docnum=774451234",
+                "@referredType": "Attachment",
+                "@type":  "AttachmentRefOrValue"
+            },
+            {
+                "id": "33",
+                "href": "https://mycsp.com:8080/tmf-api/documentManagement/v5/attachment/22",
+                "name": "Product Manual",
+                "mimeType": "application/pdf",
+                "url": "https://mycsp.com:7070/docloader?docnum=774454321",
+                "@referredType": "Attachment",
+                "@type":  "AttachmentRefOrValue"
+            }
+        ],
+        "bundledProductSpecification": [
+            {
+                "id": "15",
+                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productSpecification/15",
+                "name": "URL Filter",
+                "@type": "BundledProductSpecification",
+                "@baseType":  "",
+                "lifecycleStatus": "Active"
+            },
+            {
+                "id": "64",
+                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productSpecification/64",
+                "name": "Malware Protector",
+                "@type": "BundledProductSpecification",
+                "@baseType":  "",
+                "lifecycleStatus": "Active"
+            }
+        ],
+        "targetProductSchema": {
+            "@type": "Firewall",
+            "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Product/Firewall.schema.json"
+        },
+        "productSpecificationRelationship": [
+            {
+                "id": "23",
+                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productSpecification/23",
+                "relationshipType": "OptionalFor",
+                "validFor": {
+                    "startDateTime": "2020-09-23T16:42:23Z"
+                },
+                "name": "DataPlan",
+                "role": "A-Item",
+                "@referredType": "ProductSpecification",
+                "@type":  "ProductSpecificationRelationship"
+            }
+        ],
+        "serviceSpecification": [
+            {
+                "id": "22",
+                "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/22",
+                "name": "Firewall",
+                "version": "1.0",
+                "@referredType": "ServiceSpecification",
+                "@type":  "ServiceSpecificationRef"
+            }
+        ],
+        "resourceSpecification": [
+            {
+                "id": "63",
+                "href": "https://mycsp.com:8080/tmf-api/resourceCatalogManagement/v5/resourceSpecification/63",
+                "name": "Firewall Port",
+                "version": "1.0",
+                "@referredType": "PhysicalResourceSpecification",
+                "@type":  "ResourceSpecificationRef"
+            }
+        ],
+        "productSpecCharacteristic": [
+            {
+                "name": "Number of Ports",
+                "description": "The total Number of Ports for this product",
+                "valueType": "number",
+                "configurable": true,
+                "minCardinality": 1,
+                "maxCardinality": 1,
+                "isUnique": true,
+                "@type": "CharacteristicSpecification",
+                "charSpecRelationship": [
+                    {
+                        "parentSpecificationId": "43",
+                        "parentSpecificationHref": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productSpecification/43",
+                        "characteristicSpecificationId": "2",
+                        "name": "Bandwidth",
+                        "validFor": {
+                            "startDateTime": "2020-09-23T16:42:23-04:00"
+                        },
+                        "@type": "CharacteristicSpecificationRelationship"
+                    }
+                ],
+                "characteristicValueSpecification": [
+                    {
+                        "isDefault": true,
+                        "valueType": "number",
+                        "validFor": {
+                            "startDateTime": "2020-09-23T00:00:00Z",
+                            "endDateTime": "2022-11-24T00:00:00Z"
+                        },
+                        "value": "8",
+                        "@type":  "NumberCharacteristicValueSpecification"
+                    },
+                    {
+                        "isDefault": false,
+                        "valueType": "number",
+                        "validFor": {
+                            "startDateTime": "2020-09-23T00:00:00Z",
+                            "endDateTime": "2022-11-24T00:00:00Z"
+                        },
+                        "value": "16",
+                        "@type":  "NumberCharacteristicValueSpecification"
+                    },
+                    {
+                        "isDefault": false,
+                        "valueType": "number",
+                        "validFor": {
+                            "startDateTime": "2020-09-23T00:00:00Z",
+                            "endDateTime": "2022-11-24T00:00:00Z"
+                        },
+                        "value": "24",
+                        "@type":  "NumberCharacteristicValueSpecification"
+                    }
+                ],
+                "validFor": {
+                    "startDateTime": "2020-09-23T16:42:23Z"
+                }
+            },
+            {
+                "name": "Color",
+                "description": "Color of the Firewall housing",
+                "valueType": "string",
+                "configurable": true,
+                "minCardinality": 1,
+                "maxCardinality": 1,
+                "extensible": true,
+                "isUnique": true,
+                "@type": "CharacteristicSpecification",
+                "characteristicValueSpecification": [
+                    {
+                        "isDefault": true,
+                        "valueType": "string",
+                        "value": "Black",
+                        "@type": "StringCharacteristicValueSpecification"
+                    },
+                    {
+                        "isDefault": false,
+                        "valueType": "string",
+                        "value": "White",
+                        "@type": "StringCharacteristicValueSpecification"
+                    }
+                ],
+                "validFor": {
+                    "startDateTime": "2020-09-23T16:42:23Z"
+                }
+            }
+        ],
+        "@type": "ProductSpecification"
+    },
+    {
+        "id": "5563",
+        "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productSpecification/5563",
+        "name": "Deep Packet Inspection",
+        "brand": "HPE",
+        "productNumber": "HPE-367-DPI",
+        "description": "This product specification describes a Deep Packet Inspection product that can be deployed in customer premise.",
+        "isBundle": false,
+        "lastUpdate": "2020-10-23T16:42:23Z",
+        "lifecycleStatus": "In Design",
+        "validFor": {
+            "startDateTime": "2020-09-23T00:00:00Z",
+            "endDateTime": "2022-11-24T16:42:23Z"
+        },
+        "version": "1.0",
+        "relatedParty": [
+            {
+                "role": "Owner",
+                "@type": "RelatedPartyRefOrPartyRoleRef",
+                "partyOrPartyRole": {
+                    "id": "1234",
+                    "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/partyRole/1234",
+                    "name": "Gustave Flaubert",
+                    "@type": "PartyRef",
+                    "@referredType": "Individual"
+                }
+            }
+        ],
+        "attachment": [
+            {
+                "id": "2017",
+                "href": "https://mycsp.com:8080/tmf-api/documentManagement/v5/attachment/2017",
+                "name": "Product Manual",
+                "mimeType": "application/pdf",
+                "url": "https://mycsp.com:7070/docloader?docnum=4168051665",
+                "@referredType": "Attachment",
+                "@type":  "AttachmentRefOrValue"
+            }
+        ],
+        "targetProductSchema": {
+            "@type": "DPI",
+            "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Product/Firewall.schema.json"
+        },
+        "serviceSpecification": [
+            {
+                "id": "5059",
+                "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/5059",
+                "name": "DPI Service",
+                "version": "1.0",
+                "@referredType": "ServiceSpecification",
+                "@type":  "ServiceSpecificationRef"
+            }
+        ],
+        "productSpecCharacteristic": [
+            {
+                "name": "httpIncomingTraffic",
+                "description": "DPI for http Incoming Traffic",
+                "valueType": "string",
+                "configurable": true,
+                "minCardinality": 1,
+                "maxCardinality": 1,
+                "isUnique": true,
+                "@type":  "CharacteristicSpecification",
+                "characteristicValueSpecification": [
+                    {
+                        "isDefault": true,
+                        "valueType": "string",
+                        "validFor": {
+                            "startDateTime": "2020-09-23T00:00:00Z", 
+                            "endDateTime": "2022-11-24T00:00:00Z"
+                        }, 
+                        "value": "enabled",
+                        "@type":  "StringCharacteristicValueSpecification"
+                    },
+                    {
+                        "isDefault": false,
+                        "valueType": "string",
+                        "validFor": {
+                            "startDateTime": "2020-09-23T00:00:00Z", 
+                            "endDateTime": "2022-11-24T00:00:00Z"
+                        }, 
+                        "value": "disabled",
+                        "@type":  "StringCharacteristicValueSpecification"
+                    }
+                ],
+                "validFor": {"startDateTime": "2020-09-23T16:42:23Z"}
+            },
+            {
+                "name": "httpIOutgoingTraffic",
+               "description": "DPI for http Outgoing Traffic",
+                "valueType": "string",
+                "configurable": true,
+                "minCardinality": 1,
+                "maxCardinality": 1,
+                "extensible": true,
+                "isUnique": true,
+                "@type":  "CharacteristicSpecification",
+                "characteristicValueSpecification": [
+                    {
+                        "isDefault": false,
+                        "valueType": "string",
+                        "value": "enabled",
+                        "@type":  "StringCharacteristicValueSpecification"
+                    },
+                    {
+                        "isDefault": true,
+                        "valueType": "string",
+                        "value": "disabled",
+                        "@type":  "StringCharacteristicValueSpecification"
+                    }
+                ],
+                "validFor": {
+                    "startDateTime": "2020-09-23T16:42:23Z"
+                }
+            }
+        ],
+        "@type": "ProductSpecification"
+    }
+    
+]

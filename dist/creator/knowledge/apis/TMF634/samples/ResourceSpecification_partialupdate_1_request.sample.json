@@ -1,0 +1,8 @@
+{
+    "@type": "ResourceSpecification",
+    "version": "4.0", 
+    "validFor": {
+        "startDateTime": "2022-03-23T00:00:00.000Z", 
+        "endDateTime": "2023-09-25T00:00:00.000Z"
+    }
+}

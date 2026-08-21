@@ -1,0 +1,381 @@
+{
+  "correlationId": "3cb1acc3-e7cc",
+  "description": "QueryUsageConsumption StateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "410d-b31d-62329cd302e1",
+  "eventTime": "2022-08-25T12:25:47.711Z",
+  "eventType": "QueryUsageConsumptionStateChangeEvent",
+  "priority": "4",
+  "timeOccurred": "2022-08-25T12:25:45.717Z",
+  "title": "QueryUsageConsumptionStateChangeEvent",
+  "event": {
+    "queryUsageConsumption": {
+      "id": "7655",
+      "href": "https://mycsp.com:8080/tmf-api/usageConsumption/v5/queryUsageConsumption/7655",
+      "state": "done",
+      "relatedParty": [
+        {
+          "role": "Agent",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "3426",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/3426",
+            "name": "Bob Smith",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          }
+        }
+      ],
+      "searchCriteria": {
+        "bucket": [
+          {
+            "usageType": "voice national",
+            "@type": "Bucket"
+          },
+          {
+            "usageType": "voice international",
+            "@type": "Bucket"
+          },
+          {
+            "usageType": "data",
+            "@type": "Bucket"
+          }
+        ],
+        "@type": "UsageConsumptionReport"
+      },
+      "usageConsumption": [
+        {
+          "id": "UC1",
+          "creationDate": "2021-06-18T16:04:09.084Z",
+          "lastUpdate": "2021-06-18T16:04:09.084Z",
+          "bucket": [
+            {
+              "id": "BK1",
+              "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/bucket/BK1",
+              "description": "Bucket related to international calls",
+              "isShared": false,
+              "name": "RED Voice Plus Bucket - International calls",
+              "remainingValue": {
+                "amount": 2000,
+                "units": "minutes"
+              },
+              "remainingValueName": "2000 minutes",
+              "usageType": "voice international",
+              "bucketCounter": [
+                {
+                  "id": "CT1",
+                  "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/consumptionSummary/CT1",
+                  "counterType": "used",
+                  "level": "global",
+                  "consumptionPeriod": {
+                    "endDateTime": "2021-06-01T16:04:09.084Z",
+                    "startDateTime": "2021-06-18T16:04:09.084Z"
+                  },
+                  "value": {
+                    "amount": 1000,
+                    "units": "minutes"
+                  },
+                  "@type": "BucketCounter"
+                }
+              ],
+              "bucketRelationship": [
+                {
+                  "relationshipType": "aggregated",
+                  "bucket": {
+                    "id": "BK2",
+                    "href": "https://mycsp.com:8080/tmf-api/usageConsumption/v5/bucket/BK2",
+                    "@type": "BucketRef"
+                  },
+                  "@type": "BucketRelationship"
+                }
+              ],
+              "product": [
+                {
+                  "id": "PR1",
+                  "href": "https://mycsp.com:8080/tmf-api/productInventory/v5/product/PR1",
+                  "name": "RED Voice Plus",
+                  "@type": "ProductRef"
+                }
+              ],
+              "relatedParty": [
+                {
+                  "role": "Customer",
+                  "@type": "RelatedPartyRefOrPartyRoleRef",
+                  "partyOrPartyRole": {
+                    "id": "3426",
+                    "href": "https://mycsp.com:8080/tmf-api/customerManagement/v5/customer/3426",
+                    "name": "John Doe",
+                    "@type": "PartyRoleRef",
+                    "@referredType": "Customer"
+                  }
+                }
+              ],
+              "@type": "Bucket"
+            },
+            {
+              "id": "BK2",
+              "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/bucket/BK2",
+              "description": "Bucket related to national calls",
+              "isShared": false,
+              "name": "RED Voice Plus Bucket - National calls",
+              "remainingValue": {
+                "amount": 4000,
+                "units": "minutes"
+              },
+              "remainingValueName": "4000 minutes",
+              "usageType": "voice national",
+              "bucketCounter": [
+                {
+                  "id": "CT2",
+                  "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/consumptionSummary/CT2",
+                  "counterType": "used",
+                  "level": "global",
+                  "consumptionPeriod": {
+                    "endDateTime": "2021-06-01T16:04:09.084Z",
+                    "startDateTime": "2021-06-18T16:04:09.084Z"
+                  },
+                  "value": {
+                    "amount": 1000,
+                    "units": "minutes"
+                  },
+                  "@type": "ConsumptionSummary"
+                }
+              ],
+              "bucketRelationship": [
+                {
+                  "relationshipType": "aggregated",
+                  "bucket": {
+                    "id": "BK1",
+                    "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/bucket/BK2",
+                    "@type": "BucketRef"
+                  },
+                  "@type": "BucketRelationship"
+                }
+              ],
+              "product": [
+                {
+                  "id": "PR1",
+                  "href": "https://mycsp.com:8080/tmf-api/productInventory/v5/product/PR1",
+                  "name": "RED Voice Plus",
+                  "@type": "ProductRef"
+                }
+              ],
+              "relatedParty": [
+                {
+                  "role": "Customer",
+                  "@type": "RelatedPartyRefOrPartyRoleRef",
+                  "partyOrPartyRole": {
+                    "id": "3426",
+                    "href": "https://mycsp.com:8080/tmf-api/customerManagement/v5/customer/3426",
+                    "name": "John Doe",
+                    "@type": "PartyRoleRef",
+                    "@referredType": "Customer"
+                  }
+                }
+              ],
+              "@type": "Bucket"
+            },
+            {
+              "id": "BK3",
+              "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/bucket/BK3",
+              "description": "Bucket related to data",
+              "isShared": true,
+              "name": "RED Shared Data 10 - Data",
+              "usageType": "data",
+              "bucketCounter": [
+                {
+                  "id": "CT3",
+                  "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/consumptionSummary/CT3",
+                  "counterType": "used",
+                  "level": "detailed by user",
+                  "consumptionPeriod": {
+                    "endDateTime": "2021-06-01T16:04:09.084Z",
+                    "startDateTime": "2021-06-18T16:04:09.084Z"
+                  },
+                  "user": {
+                    "role": "Shared data member",
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "partyOrPartyRole": {
+                      "id": "CUST2",
+                      "name": "Helen Water",
+                      "@type": "PartyRef",
+                      "@referredType": "Individual"
+                    }
+                  },
+                  "value": {
+                    "amount": 1,
+                    "units": "GB"
+                  },
+                  "@type": "ConsumptionSummary"
+                },
+                {
+                  "id": "CT4",
+                  "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/consumptionSummary/CT4",
+                  "counterType": "used",
+                  "level": "detailed by user",
+                  "consumptionPeriod": {
+                    "endDateTime": "2021-06-01T16:04:09.084Z",
+                    "startDateTime": "2021-06-18T16:04:09.084Z"
+                  },
+                  "user": {
+                    "role": "Shared data member",
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "partyOrPartyRole": {
+                      "id": "CUST3",
+                      "name": "Shawn Water",
+                      "@type": "PartyRef",
+                      "@referredType": "Individual"
+                    }
+                  },
+                  "value": {
+                    "amount": 0.7,
+                    "units": "GB"
+                  },
+                  "@type": "ConsumptionSummary"
+                },
+                {
+                  "id": "CT5",
+                  "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/consumptionSummary/CT5",
+                  "counterType": "used",
+                  "level": "detailed by user",
+                  "consumptionPeriod": {
+                    "endDateTime": "2021-06-01T16:04:09.084Z",
+                    "startDateTime": "2021-06-18T16:04:09.084Z"
+                  },
+                  "user": {
+                    "role": "Shared data member",
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "partyOrPartyRole": {
+                      "id": "CUST1",
+                      "name": "John Water",
+                      "@type": "PartyRef",
+                      "@referredType": "Individual"
+                    }
+                  },
+                  "value": {
+                    "amount": 1.5,
+                    "units": "GB"
+                  },
+                  "@type": "ConsumptionSummary"
+                },
+                {
+                  "id": "CT6",
+                  "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/consumptionSummary/CT6",
+                  "counterType": "remaining",
+                  "level": "detailed by user",
+                  "consumptionPeriod": {
+                    "endDateTime": "2021-06-01T16:04:09.084Z",
+                    "startDateTime": "2021-06-18T16:04:09.084Z"
+                  },
+                  "user": {
+                    "role": "Shared data member",
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "partyOrPartyRole": {
+                      "id": "CUST2",
+                      "name": "Helen Water",
+                      "@type": "PartyRef",
+                      "@referredType": "Individual"
+                    }
+                  },
+                  "value": {
+                    "amount": 1,
+                    "units": "GB"
+                  },
+                  "@type": "ConsumptionSummary"
+                },
+                {
+                  "id": "CT7",
+                  "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/consumptionSummary/CT7",
+                  "counterType": "remaining",
+                  "level": "detailed by user",
+                  "consumptionPeriod": {
+                    "endDateTime": "2021-06-01T16:04:09.084Z",
+                    "startDateTime": "2021-06-18T16:04:09.084Z"
+                  },
+                  "user": {
+                    "role": "Shared data member",
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "partyOrPartyRole": {
+                      "id": "CUST3",
+                      "name": "Shawn Water",
+                      "@type": "PartyRef",
+                      "@referredType": "Individual"
+                    }
+                  },
+                  "value": {
+                    "amount": 1.3,
+                    "units": "GB"
+                  },
+                  "@type": "ConsumptionSummary"
+                },
+                {
+                  "id": "CT8",
+                  "href": "https://mycsp.com:8080/tmf-api/balanceManagement/v5/consumptionSummary/CT8",
+                  "counterType": "remaining",
+                  "level": "detailed by user",
+                  "consumptionPeriod": {
+                    "endDateTime": "2021-06-01T16:04:09.084Z",
+                    "startDateTime": "2021-06-18T16:04:09.084Z"
+                  },
+                  "user": {
+                    "role": "Shared data member",
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "partyOrPartyRole": {
+                      "id": "CUST1",
+                      "name": "John Water",
+                      "@type": "PartyRef",
+                      "@referredType": "Individual"
+                    }
+                  },
+                  "value": {
+                    "amount": 4.5,
+                    "units": "GB"
+                  },
+                  "@type": "ConsumptionSummary"
+                }
+              ],
+              "product": [
+                {
+                  "id": "PR2",
+                  "href": "https://mycsp.com:8080/tmf-api/productInventory/v5/product/PR2",
+                  "name": "RED Shared Data 10",
+                  "@type": "ProductRef"
+                }
+              ],
+              "relatedParty": [
+                {
+                  "role": "Customer",
+                  "@type": "RelatedPartyRefOrPartyRoleRef",
+                  "partyOrPartyRole": {
+                    "id": "3426",
+                    "href": "https://mycsp.com:8080/tmf-api/customerManagement/v5/customer/3426",
+                    "name": "John Doe",
+                    "@type": "PartyRoleRef",
+                    "@referredType": "Customer"
+                  }
+                }
+              ],
+              "@type": "Bucket"
+            }
+          ],
+          "@type": "UsageConsumptionReport"
+        }
+      ],
+      "@type": "QueryUsageConsumption"
+    }
+  },
+  "reportingSystem": {
+    "id": "694",
+    "name": "APP-764",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "621",
+    "name": "APP-625",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "QueryUsageConsumptionStateChangeEvent"
+}

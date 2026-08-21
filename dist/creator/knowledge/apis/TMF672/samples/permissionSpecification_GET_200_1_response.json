@@ -1,0 +1,93 @@
+[
+  {
+    "@type": "PermissionSpecification",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-7e0a2d18",
+    "id": "ps-7e0a2d18",
+    "name": "ProductOrder:grantAlteration",
+    "function": "ProductOrder",
+    "action": "grantAlteration",
+    "specificationCharacteristic": [
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "reductionPercentage",
+        "valueType": "number",
+        "characteristicValueSpecification": [
+          {
+            "@type": "FloatCharacteristicValueSpecification",
+            "valueType": "number",
+            "value": 5.5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSpecification",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-713e2adc",
+    "id": "ps-713e2adc",
+    "name": "all:readwrite",
+    "function": "all",
+    "action": "ReadWrite"
+  },
+  {
+    "@type": "PermissionSpecification",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-591c77a2",
+    "id": "ps-591c77a2",
+    "description": "Permission to view and change account data details.",
+    "name": "accountdetails:readwrite",
+    "function": "account_details",
+    "action": "ReadWrite"
+  },
+  {
+    "@type": "PermissionSpecification",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-9f32c9e0",
+    "id": "ps-9f32c9e0",
+    "description": "Permission to place request to change holder data.",
+    "name": "holderdata:change",
+    "function": "change_holder_data",
+    "action": "ReadWrite",
+    "specificationCharacteristic": [
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "Macro.Segment",
+        "valueType": "string",
+        "characteristicValueSpecification": [
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "valueType": "string",
+            "value": "mass_market"
+          },
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "valueType": "string",
+            "value": "residential"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@type": "PermissionSpecification",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-a99c47c6",
+    "id": "ps-a99c47c6",
+    "description": "Permission to manage users and to add or remove permissions to delegated users.",
+    "function": "user_management",
+    "action": "ReadWrite"
+  },
+  {
+    "@type": "PermissionSpecification",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-5ea0f3cc",
+    "id": "ps-5ea0f3cc",
+    "description": "Permission to buy products in OTT apps.",
+    "function": "impulse_buy",
+    "action": "Enabled"
+  },
+  {
+    "@type": "PermissionSpecification",
+    "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-b4b3601a",
+    "id": "ps-b4b3601a",
+    "description": "Permission to manage delegated users parental controls.",
+    "function": "manage_parental_controls",
+    "action": "ReadWrite"
+  }
+]

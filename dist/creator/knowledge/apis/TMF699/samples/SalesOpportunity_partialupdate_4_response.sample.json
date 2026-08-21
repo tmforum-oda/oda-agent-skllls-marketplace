@@ -1,0 +1,18 @@
+{
+  "id": "12345",
+  "href": "https://serverRoot/tmf-api/salesManagement/v5/salesOpportunity/12345",
+  "@type": "SalesOpportunity",
+  "name": "GoBank account",
+  "description": "Opportunity for Gobank Account",
+  "creationDate": "2022-03-30T12:27:59.123Z",
+  "rating": "hot",
+  "status": "inProgress",
+  "revenueEstimate": [
+    {
+      "amount": {
+        "unit": "EUR",
+        "value": 1500
+      }
+    }
+  ]
+}

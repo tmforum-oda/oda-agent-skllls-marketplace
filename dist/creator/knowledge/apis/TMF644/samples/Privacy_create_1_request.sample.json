@@ -1,0 +1,68 @@
+{
+  "description": "Individual Privacy Profile",
+  "name": "Individual Consents",
+  "agreedByParty": {
+    "role": "owner",
+    "partyOrPartyRole" : {
+      "id": "9176",
+      "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9176",
+      "name": "Sandy Smith",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    },
+    "@type" : "RelatedPartyRefOrPartyRoleRef"
+  },
+  "agreement": {
+    "id": "Agreement_5667789jjhbjklb7878",
+    "name": "agreement",
+    "@type": "PartyPrivacyAgreementRef"
+  },
+  "applicableForParty": {
+    "role": "user",
+    "partyOrPartyRole" : {
+      "id": "7889",
+      "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/7889",
+      "name": "Smith junior",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    },
+    "@type" : "RelatedPartyRefOrPartyRoleRef"
+  },
+  "partyPrivacyProfileCharacteristic": [
+    {
+      "@type":"PartyPrivacyProfileCharacteristic",  
+      "characterisitc": {
+          "id": "43",
+          "name": "emailAddress",
+          "valueType": "string",
+          "value": "Yes",
+          "@type": "StringCharacteristic"
+        },        
+        "privacyUsagePurpose": "ADMIN",
+        "relatedParty": [
+          {
+            "role": "Vendor",
+            "partyOrPartyRole" : {
+              "id": "8632",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/5/individual/8632",
+              "name": "John Doe",
+              "role": "Vendor",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            },
+            "@type" : "RelatedPartyRefOrPartyRoleRef"
+          }
+        ]
+      }
+  ],
+  "partyPrivacyProfileSpecification": {
+    "id": "103",
+    "name": "Individual Privacy ",
+    "@type": "partyPrivacyProfileSpecificationRef"
+  },
+  "validFor": {
+    "endDateTime": "2019-09-06T05:26:06.566Z",
+    "startDateTime": "2019-09-06T05:26:06.566Z"
+  },
+  "@type": "PartyPrivacyProfile"
+}

@@ -1,0 +1,41 @@
+{
+    "correlationId": "066e4b9c-fd92",
+    "description": "GeographicLocationDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "49f1-95bf-fab096b859d4",
+    "eventTime": "2023-03-05T12:42:11.562Z",
+    "eventType": "GeographicLocationDeleteEvent",
+    "priority": "4",
+    "timeOcurred": "2023-03-05T12:42:05.161Z",
+    "title": "GeographicLocationDeleteEvent",
+    "event": {
+        "geographicLocation": {
+            "id": "10c5f5b5-e408",
+            "href": "http://servername/tmf-api/geographicLocation/v5/geographicLocation/10c5f5b5-e408",
+            "name": "Vodafone House",
+            "@baseType": "GeographicLocation",
+            "@type": "@GeoJsonPoint",
+            "geoJson": {
+                "type": "Point",
+                "coordinates": [
+                    -1.3197581470012665,
+                    51.41671197068097
+                ]
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "274",
+        "name": "APP-869",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "637",
+        "name": "APP-903",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "GeographicLocationDeleteEvent"
+}

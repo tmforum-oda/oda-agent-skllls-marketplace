@@ -1,0 +1,36 @@
+{
+    "correlationId": "7dd133ee-6c9a",
+    "description": "ResourceCatalogCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4876-8fbb-4d44dc98fd57",
+    "eventTime": "2017-08-27T00:00:00.000Z",
+    "eventType": "ResourceCatalogCreateEvent",
+    "priority": "4",
+    "timeOcurred": "2017-08-27T00:00:00.000Z",
+    "title": "ResourceCatalogCreateEvent",
+    "event": {
+        "resourceCatalog": {
+            "id": "5574", 
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCatalog/5574", 
+            "name": "Cloud Resource Catalog", 
+            "description": "This resource catalog points to entities in the area of cloud management", 
+            "lastUpdate": "2017-08-27T00:00:00.000Z",
+            "lifecycleStatus": "In study",
+            "@type": "ResourceCatalog"
+        }
+    },
+    "reportingSystem": {
+        "id": "335",
+        "name": "APP-179",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "853",
+        "name": "APP-30",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ResourceCatalogCreateEvent"
+}

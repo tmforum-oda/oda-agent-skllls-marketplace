@@ -1,0 +1,95 @@
+{
+  "href": "https://host:port/productOfferingQualification/v5/CheckProductOfferingQualification/101",
+  "id": "101",
+  "@type": "CheckProductOfferingQualification",
+  "channel": {
+    "id": "1",
+    "name": "Web",
+    "@type": "ChannelRef"
+  },
+  "description": "Example for an acknowledged CheckProductOfferingQualification resource",
+  "expectedQualificationCompletionDate": "2021-09-05T07:11:53.167Z",
+  "CheckProductOfferingQualificationItem": [
+    {
+      "@type": "CheckProductOfferingQualificationItem",
+      "expectedActivationDate": "2021-09-02T07:11:53.167Z",
+      "product": {
+        "@type": "Product",
+        "productSpecification": {
+          "id": "77",
+          "href": "https://host:port/productCatalogManagement/v5/productSpecification/77",
+          "name": "NEST for enhanced MobileBroadband with IMS support"
+        },
+        "productCharacteristic": [
+          {
+            "@type": "ObjectCharacteristic",
+            "id": "Slice5G_Characteristic",
+            "name": "Slice 5G POQ configuration",
+            "valueType": "Slice5G JSON descriptor",
+            "value": {
+              "@valueSchemaLocation": "https://github.com/..5GPOQ.json",
+              "@type": "5GSliceJsonSpecification",
+              "availability": 99.999,
+              "MMTel_Support": 1,
+              "Session _Service_Continuity_support": 1,
+              "Slice_Quality_Of_Service": [
+                1,
+                2,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            }
+          }
+        ],
+        "place": [
+          {
+            "role": "Coverage",
+            "place": {
+              "id": "FRA",
+              "href": "https://host:port/geographicLocationManagement/v5/geographicLocation/FRA",
+              "name": "France",
+              "@referredType": "GeographicLocation",
+              "@type": "PlaceRef"
+            },
+            "@type": "RelatedPlaceRefOrValue"
+          },
+          {
+            "role": "Coverage",
+            "place": {
+              "id": "BEL",
+              "href": "https://host:port/geographicLocationManagement/v5/geographicLocation/BEL",
+              "name": "Belgium",
+              "@referredType": "GeographicLocation",
+              "@type": "PlaceRef"
+            },
+            "@type": "RelatedPlaceRefOrValue"
+          }
+        ]
+      },
+      "action": "add",
+      "id": "1",
+      "state": "acknowledged"
+    }
+  ],
+  "provideAlternative": true,
+  "provideResultReason": true,
+  "relatedParty": [
+    {
+      "role": "requester",
+      "partyOrPartyRole": {
+        "id": "45hj-999",
+        "href": "https://host:port/partyManagement/v5/individual/45hj-999",
+        "name": "Louise",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyOrPartyRole"
+    }
+  ],
+  "requestedQualificationCompletionDate": "2021-09-02T07:11:53.168Z",
+  "state": "acknowledged",
+  "creationDate": "2021-09-02T07:11:53.168Z"
+}

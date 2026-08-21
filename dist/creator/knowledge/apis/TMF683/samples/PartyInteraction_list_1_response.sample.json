@@ -1,0 +1,72 @@
+[
+	{
+		"id": "123",
+		"href": "https://host:port/partyInteraction/v5/partyInteraction/123",
+		"@type": "PartyInteraction",
+		"relatedParty": [
+			{
+				"role": "user",
+				"@type": "RelatedPartyOrPartyRole",
+				"partyOrPartyRole": 
+				{
+					"id": "999",
+					"href": "https://host:port/partyManagement/v5/individual/999",  
+					"name": "John Doe",
+					"@type" :"PartyRef",
+					"@referredType": "Individual"
+				}
+				
+			},
+			{
+				"role": "customer",
+				"@type": "RelatedPartyOrPartyRole",
+				"partyOrPartyRole": 
+				{
+					"id": "3434",
+					"href": "https://host:port/partyManagement/v5/individual/3434",  
+					"name": "Malik Doe",
+					"@type" :"PartyRoleRef",
+					"@referredType": "Customer"
+				}
+				
+			},
+			{
+				"role": "agent",
+				"@type": "RelatedPartyOrPartyRole",
+				"partyOrPartyRole": 
+				{
+					"id": "36666",
+					"href": "https://host:port/partyManagement/v5/individual/36666",  
+					"name": "Rian Muray",
+					"@type" :"PartyRef",
+					"@referredType": "Individual"
+				}
+				
+			}
+		]
+	},
+	{
+		"id": "555",
+		"href": "https://host:port/partyInteraction/v5/partyInteraction/555",
+		"@type": "PartyInteraction",
+		"relatedParty": 
+		[
+			{
+				"role": "user",
+				"@type": "RelatedPartyOrPartyRole",
+				"partyOrPartyRole": 
+				{
+					"id": "999",
+					"href": "https://host:port/partyManagement/v5/individual/999",  
+					"name": "John Doe",
+					"@type" :"PartyRef",
+					"@referredType": "Individual"
+				}
+				
+			}
+			
+			
+			
+		]
+	}
+]

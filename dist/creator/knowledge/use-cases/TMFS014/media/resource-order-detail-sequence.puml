@@ -1,0 +1,59 @@
+@startuml
+title Step 8-9 (For each resource order)
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+participant "Product Order\nCapture &\nValidation" as POCV <<blackbox>>
+participant "Product Inventory" as ProductInventory <<blackbox>>
+participant "Product Order\nOrchestration &\nManagement" as POOM <<blackbox>>
+participant "Service Inventory" as SI #blue
+participant "Service Order Management" as SOM #blue
+participant "Event Mgt" as EventMgt #grey
+participant "Resource Order\nManagement" as ROM #blue
+participant "Resource Inventory" as ResourceInventory #blue
+
+note over SOM, ROM : Subscribe to the SI events for specific Slice related RFS updates
+
+group run through ResourceOrder orchestration
+
+    ROM -> EventMgt : 1 **TMF688 Event Management**\nPOST event resourceOrderStateChange\n(resourceOrderItemState="inProgress")
+    activate EventMgt
+    EventMgt -> SOM : 2 **TMF688 Event Management**\nPOST listener/resourceOrderStateChange\n(resourceOrderItemState="inProgress")
+    deactivate EventMgt
+
+    note right of SOM : Resource order item\nspecific steps (follows below this section)
+
+    ROM -> EventMgt : 3 **TMF688 Event Management**\nPOST event resourceOrderStateChange\n(resourceOrderItemState="completed")
+    activate EventMgt
+    EventMgt -> SOM : 4 **TMF688 Event Management**\nPOST listener/resourceOrderStateChange\n(resourceOrderItemState="completed")
+    deactivate EventMgt
+
+end
+
+SOM -> SOM : 5 update CFSOrderItem (state="completed")
+
+SOM -> SI : 6 **TMF638 Service Inventory Management**\nPATCH /service\n(state="active")
+activate SI
+SI --> SOM : 7 **TMF638** 201 RFS
+
+SOM -> SI : 8 **TMF638 Service Inventory Management**\nPATCH /service\n(state="active")
+SI --> SOM : 9 **TMF638** 201 CFS
+deactivate SI
+
+SOM -> EventMgt : 10 **TMF688 Event Management**\nPOST event serviceOrderStateChange\n(serviceOrderItemState="completed")
+activate EventMgt
+EventMgt --> POOM : 11 **TMF688 Event Management**\nPOST listener/serviceOrderStateChange\n(serviceOrderItemState="completed")
+deactivate EventMgt
+
+POOM -> POCV : 12 **TMF620 Product Catalog Management**\nPATCH /productOrder\n(product-specification-level order item\nstate="completed")
+activate POCV
+deactivate POCV
+
+POOM -> ProductInventory : 13 **TMF637 Product Inventory Management**\nPATCH /product\n(product-specification-level order item\nstate="Active")
+activate ProductInventory
+deactivate ProductInventory
+
+@enduml

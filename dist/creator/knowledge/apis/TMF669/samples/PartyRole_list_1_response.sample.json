@@ -1,0 +1,41 @@
+[
+    {
+        "@type": "PartyRole",
+        "id": "7321-7c0d",
+        "name": "Mobile catalog administrator",
+        "role": "CatalogAdmin",
+        "engagedParty": {
+            "@type": "PartyRef",
+            "href": "https:/host:port/tmf-api/partyManagement/v2/individual/3b1c-74f1",
+            "id": "3b1c-74f1",
+            "name": "Jean Pontus",
+            "@referredType": "Individual"
+        }
+    },
+    {
+        "@type": "PartyRole",
+        "id": "567c-df01",
+        "name": "Telco operator employee",
+        "role": "Employee",
+        "engagedParty": {
+            "@type": "PartyRef",
+            "href": "https:/host:port/tmf-api/partyManagement/v2/individual/3b1c-74f1",
+            "id": "3b1c-74f1",
+            "name": "Jean Pontus",
+            "@referredType": "Individual"
+        }
+    },
+    {
+        "@type": "PartyRole",
+        "id": "6d0a-aac7",
+        "name": "Catalog administration tool user",
+        "role": "CatalogToolingUser",
+        "engagedParty": {
+            "@type": "PartyRef",
+            "href": "https:/host:port/tmf-api/partyManagement/v2/individual/3b1c-74f1",
+            "id": "3b1c-74f1",
+            "name": "Jean Pontus",
+            "@referredType": "Individual"
+        }
+    }
+]

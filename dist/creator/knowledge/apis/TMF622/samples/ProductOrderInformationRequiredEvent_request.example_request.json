@@ -1,0 +1,38 @@
+{
+  "correlationId": "qs1-k33",
+  "description": "ProductOrderInformationRequiredEvent illustration",
+  "domain": "Commercial",
+  "eventId": "966",
+  "eventTime": "2021-09-27T07:43:59.059Z",
+  "eventType": "ProductOrderInformationRequiredEvent",
+  "priority": "1",
+  "timeOcurred": "2021-09-27T07:43:59.059Z",
+  "title": "ProductOrderInformationRequiredEvent",
+  "event": {
+    "productOrder": {
+      "id": "30001",
+      "href": "https://host:port/productOrderingManagement/v5/productOrder/30001",
+      "@type": "ProductOrder",
+      "@referredtype": "ProductOrderRef"
+    },
+    "informationRequired": {
+          "op": "add",
+          "path": "agreement.id"
+    }
+  },
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProductOrderInformationRequiredEvent"
+}
+   

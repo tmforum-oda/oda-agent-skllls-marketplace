@@ -1,0 +1,46 @@
+{
+  "id": "evt-026",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-026",
+  "correlationId": "90kl90-Hj6",
+  "description": "ProcessAttributeValueChangeEvent illustration",
+  "eventId": "00003",
+  "eventTime": "2024-04-16T16:52:25-04:00",
+  "eventType": "ProcessAttributeValueChangeEvent",
+  "timeOccurred": "2024-04-16T16:42:21.823Z",
+  "title": "ProcessAttributeValueChangeEvent",
+  "event": {
+    "process": {
+      "id": "4fd-ty56-gg55",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/process/4fd-ty56-gg55",
+      "@type": "Process",
+      "relatedParty": [
+        {
+          "role": "Customer",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "9I8-430",
+            "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/9I8-430",
+            "name": "Sara Eskiv",
+            "@referredType": "Individual",
+            "@type": "PartyRef"
+          }
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProcessAttributeValueChangeEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

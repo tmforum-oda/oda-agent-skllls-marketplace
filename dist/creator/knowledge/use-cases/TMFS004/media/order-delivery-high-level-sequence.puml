@@ -1,0 +1,57 @@
+@startuml
+title Customer order delivery - high level view
+
+participant "ProductOrderCaptureValidation" as POCV
+participant "ProductOrderOrchestrationManagement" as POOM
+participant "ProductCatalogManagement" as PCM
+participant "EventManagement" as Event
+participant "ProductInventory" as PI
+
+== Order Delivery step 1 ==
+
+POCV -> Event : 1 **TMF688 Event Management** POST /productOrderStateChangeEvent\n(state="accepted")
+Event --> POOM : 2 **TMF688 Event Management** POST listener/productOrderStateChangeEvent\n(state="accepted")
+activate POOM
+
+POOM -> POOM : 3 **TMF701 Process Flow** POST /processFlow\n(ProcessFlowSpec=POOM + ProductOrderId1)
+
+POOM -> POCV : 4 **TMF622 Product Ordering** GET /productOrder/id1
+activate POCV
+POCV --> POOM : 5 **TMF622** 200 OK\n(ProductOrder representation)
+deactivate POCV
+
+note right of POOM : PrdOrdOrcMgmt manages only ProductSpec level order item delivery
+
+POOM -> POOM : 6 initiate delivery graph
+
+loop compute PrdOrdCptVd delivery flow till item to be delivered
+    POOM -> POOM : 7 Identify productSpec(s) to be managed
+
+    alt Retrieve catalog information for product to be fullfilled
+        note right of POOM
+          catalog information distribution to POOM could be discussed
+          as several options possibles (API access, Batch copy, etc.)
+        end note
+        POOM -> PCM : 8 **TMF620 Product Catalog Management** GET /productSpecification/id1
+        activate PCM
+        PCM --> POOM : 9 **TMF620** 200 OK\n(ProductSpecification information : support CFS / Stock Item)
+        deactivate PCM
+    end
+
+    note right of POOM : UC did not feature existing assets modification - Inventory API not used
+
+    group Manage delivery depending on type of productSpec
+        note right of POOM
+          Flow for the UC to be describe
+           - for service based see CFS-Based delivery
+           - for goods see stock based delivery
+        end note
+    end
+
+    POOM -> POOM : 10 update delivery graph
+end
+
+note right of POOM : Flow for order follow up is described in another diagram
+deactivate POOM
+
+@enduml

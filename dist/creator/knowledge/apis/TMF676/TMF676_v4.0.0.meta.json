@@ -1,0 +1,16 @@
+{
+  "id": "TMF676",
+  "type": "api",
+  "name": "payment-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF676_Payment/4.0.0/swagger/TMF676_Payment_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "a7d048d200716e3b91ae8badd3d895d12d9f74a6cec5493e1c1deea565eda0d5"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

@@ -1,0 +1,33 @@
+@startuml
+title Figure 3.5 Illustration for information view for Entity (the CSP) and the SSE Provider (step 2)
+
+package "CSP" {
+  package "Product Catalog (TMFC001)" as CSPCatalog {
+    package "Supplier Catalog View" as SupplierCatalogView {
+      class "SSE by P1" as SSEbyP1
+    }
+  }
+  package "Agreement (TMFC039)" as CSPAgreement {
+    class "Framework Agreement" as CSPFrameworkAgreement
+    class "ImplemAgreementSpec for Supplier" as CSPImplSpec
+    class "Framework Agreement Spec for Supplier" as CSPFrameworkSpec
+    CSPFrameworkSpec --> CSPImplSpec
+    CSPImplSpec --> CSPFrameworkAgreement
+  }
+}
+
+package "SSE Provider P1" {
+  package "Product Catalog (TMFC001)" as SPCatalog {
+    class "SSE" as SSE
+  }
+  package "Agreement (TMFC039)" as SPAgreement {
+    class "Framework Agreement" as SPFrameworkAgreement
+  }
+}
+
+SupplierCatalogView --> SSEbyP1
+SSEbyP1 <..> SSE : corresponds to
+CSPFrameworkAgreement <..> SPFrameworkAgreement : corresponds to
+SSEbyP1 ..> CSPFrameworkAgreement : involves
+CSPFrameworkSpec ..> SupplierCatalogView : result in
+@enduml

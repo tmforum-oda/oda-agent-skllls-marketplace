@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/productSpecCharacteristic/characteristicValueSpecification/isDefault?value=/productSpecCharacteristic/characteristicValueSpecification/Black",
+    "value": false
+  },
+  {
+    "op": "replace",
+    "path": "/productSpecCharacteristic/characteristicValueSpecification/isDefault?value=/productSpecCharacteristic/characteristicValueSpecification/White",
+    "value": true
+  }
+]

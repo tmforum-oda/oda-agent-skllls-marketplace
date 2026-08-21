@@ -1,0 +1,33 @@
+{
+  "@type": "HealDeleteEvent",
+  "id": "evt-heal-004",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-heal-004",
+  "correlationId": "heal-90cfc73d",
+  "description": "HealDeleteEvent illustration",
+  "eventId": "00004",
+  "eventTime": "2024-08-25T13:30:27.121Z",
+  "eventType": "HealDeleteEvent",
+  "timeOccurred": "2024-08-25T13:30:26.823Z",
+  "title": "HealDeleteEvent",
+  "event": {
+    "heal": {
+      "id": "c6015b3d-64ad-432d-b7a5-9a9fa3430aa4",
+      "href": "/resourceFunctionActivation/v5/heal/c6015b3d-64ad-432d-b7a5-9a9fa3430aa4",
+      "@type": "Heal"
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

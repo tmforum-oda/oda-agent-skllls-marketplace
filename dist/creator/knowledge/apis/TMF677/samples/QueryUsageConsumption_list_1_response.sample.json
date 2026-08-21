@@ -1,0 +1,95 @@
+[
+  {
+    "id": "7655",
+    "href": "https://mycsp.com:8080/tmf-api/usageConsumption/v5/queryUsageConsumption/7655",
+    "relatedParty": [
+      {
+        "role": "Customer",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "3426",
+          "href": "https://mycsp.com:8080/tmf-api/customerManagement/v5/customer/3426",
+          "name": "John Doe",
+          "@type": "PartyRoleRef",
+          "@referredType": "Customer"
+        }
+      }
+    ],
+    "searchCriteria": {
+      "bucket": [
+        {
+          "usageType": "voice national",
+          "@type": "Bucket"
+        },
+        {
+          "usageType": "voice international",
+          "@type": "Bucket"
+        },
+        {
+          "usageType": "data",
+          "@type": "Bucket"
+        }
+      ],
+      "@type": "UsageConsumptionReport"
+    },
+    "@type": "QueryUsageConsumption"
+  },
+  {
+    "id": "3853",
+    "href": "https://mycsp.com:8080/tmf-api/usageConsumption/v5/queryUsageConsumption/3853",
+    "relatedParty": [
+      {
+        "role": "Customer",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "6254",
+          "href": "https://mycsp.com:8080/tmf-api/customerManagement/v5/customer/6254",
+          "name": "John Doe",
+          "@type": "PartyRoleRef",
+          "@referredType": "Customer"
+        }
+      }
+    ],
+    "searchCriteria": {
+      "logicalResource": [
+        {
+          "id": "1754",
+          "name": "Lara's phone number",
+          "value": "963161043",
+          "@referredType": "MSISDN",
+          "@type": "LogicalResourceRef"
+        }
+      ],
+      "@type": "UsageConsumptionReport"
+    },
+    "@type": "QueryUsageConsumption"
+  },
+  {
+    "id": "1732",
+    "href": "https://mycsp.com:8080/tmf-api/usageConsumption/v5/queryUsageConsumption/1732",
+    "relatedParty": [
+      {
+        "role": "Customer",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "7211",
+          "href": "https://mycsp.com:8080/tmf-api/customerManagement/v5/customer/7211",
+          "name": "John Doe",
+          "@type": "PartyRoleRef",
+          "@referredType": "Customer"
+        }
+      }
+    ],
+    "searchCriteria": {
+      "partyAccount": [
+        {
+          "id": "BI12234",
+          "@referredType": "BillingAccount",
+          "@type": "PartyAccountRef"
+        }
+      ],
+      "@type": "UsageConsumptionReport"
+    },
+    "@type": "QueryUsageConsumption"
+  }
+]

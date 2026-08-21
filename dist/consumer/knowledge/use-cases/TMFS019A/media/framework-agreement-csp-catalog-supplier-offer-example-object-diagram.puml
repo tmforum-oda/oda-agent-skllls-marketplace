@@ -1,0 +1,70 @@
+@startuml
+title Figure A.14 - Illustration 01.02: CSP Catalog - Supplier Offer
+
+object "Greenfield International\nBusiness : Organization" as GreenfieldOrg {
+  isLegalEntity = true
+}
+object "Cloud Experts :\nOrganization" as CloudExpertsOrg {
+  isLegalEntity = true
+}
+object "Greenfield International\nBusiness CSP : PartyRole" as CSPRole
+object "Cloud Experts\nSupplier : PartyRole" as SupplierRole
+
+object "SASE Offer :\nCompositeProductOfferingSpecification" as SASEOffer
+object "SASE Price Plan :\nProductOfferingPrice" as SASEPrice
+object "Cloud Hosting Offer :\nAtomicProductOfferingSpecification" as CloudHostingOffer
+object "SDWAN Product Offering Spec :\nAtomicProductOfferingSpecification" as SDWANOfferSpec
+object "SSE Product Offering Spec :\nAtomicProductOfferingSpecification" as SSEOfferSpec
+object "SDWAN Product\nSpecification : AtomicProductSpecification" as SDWANSpec
+object "SSE Product\nSpecification : AtomicProductSpecification" as SSESpec
+
+object "Greenfield PRPOS for Cloud Hosting\nOffer : PartyRoleProductOfferingSpec" as GreenfieldPRPOS {
+  marketedBy = True
+  orderTakenBy = True
+  postOrderFulfilledBy = True
+  billedBy = True
+  paymentAcceptedBy = True
+  paymentMadeTo = True
+  afterSalesServiceProvidedBy = True
+}
+object "Cloud Experts PRPOS for CE Cloud\nHosting Offer : PartyRoleProductOfferingSpec" as CloudExpertsPRPOS {
+  marketedBy = True
+  orderTakenBy = True
+  postOrderFulfilledBy = True
+  billedBy = True
+  paymentAcceptedBy = True
+  paymentMadeTo = True
+  afterSalesServiceProvidedBy = True
+}
+object ":PartyRoleProdOffSpecRelationship" as PRPOSRelationship {
+  partyRoleProdOffRelType = OrderedFrom
+}
+
+object "CE Cloud Hosting Offer :\nAtomicProductOfferingSpecification" as CECloudHostingOffer
+object "CE Cloud Hosting\nOffer Price Plan : ProductOfferingPrice" as CECloudHostingPrice
+object "CE Cloud Hosting Product\nSpecification : AtomicProductSpecification" as CECloudHostingSpec {
+  brand = Cloud Experts
+}
+
+GreenfieldOrg --> CSPRole : :/OrganisationPlays
+CloudExpertsOrg --> SupplierRole : :/OrganisationPlays
+
+CSPRole --> SASEOffer : :ProductOfferingSpecificationMarketedBy
+SASEOffer --> SASEPrice : :ProductOfferingSpecificationValuedBy
+SASEOffer --> CloudHostingOffer : ":ProductOfferingSpecificationComposedOfPOSpec {0,1}"
+SASEOffer --> SDWANOfferSpec : ":ProductOfferingSpecificationComposedOfPOSpec {1,1}"
+SASEOffer --> SSEOfferSpec : ":ProductOfferingSpecificationComposedOfPOSpec {0,1}"
+SDWANOfferSpec --> SDWANSpec : :ProdSpecMadeAvailableAsAtomicProductOfferingSpecification
+SSEOfferSpec --> SSESpec : :ProdSpecMadeAvailableAsAtomicProductOfferingSpecification
+
+CSPRole --> GreenfieldPRPOS : :PartyRoleProvidesPartyRoleProdOfferingSpec
+GreenfieldPRPOS --> PRPOSRelationship
+PRPOSRelationship --> CloudExpertsPRPOS
+CloudExpertsPRPOS <-- SupplierRole : :PartyRoleProvidesPartyRoleProdOfferingSpec
+GreenfieldPRPOS --> CloudHostingOffer : :ProductOfferingSpecificationPlays
+CloudExpertsPRPOS --> CECloudHostingOffer : :ProductOfferingSpecificationPlays
+
+SupplierRole --> CECloudHostingOffer : :ProductOfferingSpecificationMarketedBy
+CECloudHostingOffer --> CECloudHostingSpec : :ProdSpecMadeAvailableAsAtomicProductOfferingSpecification
+CECloudHostingOffer --> CECloudHostingPrice : :ProductOfferingSpecificationValuedBy
+@enduml

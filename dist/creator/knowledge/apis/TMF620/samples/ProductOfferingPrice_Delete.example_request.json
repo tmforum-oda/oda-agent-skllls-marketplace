@@ -1,0 +1,32 @@
+{
+  "correlationId": "90cfc73d-deb7",
+  "description": "ProductOfferingPrice illustration",
+  "domain": "Commercial",
+  "eventId": "47d6-9751-40e4f01440c9",
+  "eventTime": "2022-08-25T12:18:12.202Z",
+  "eventType": "ProductOfferingPriceDeleteEvent",
+  "priority": "4",
+  "timeOcurred": "2022-08-25T12:18:07.224Z",
+  "title": "ProductOfferingPriceDeleteEvent",
+  "event": {
+    "productOfferingPrice": {
+      "id": "1747",
+      "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v4/productOfferingPrice/1747",
+      "@type": "ProductOfferingPrice"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProductOfferingPriceDeleteEvent"
+}

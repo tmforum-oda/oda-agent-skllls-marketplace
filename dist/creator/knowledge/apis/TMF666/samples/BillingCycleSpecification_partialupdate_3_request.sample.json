@@ -1,0 +1,5 @@
+{
+    "op": "replace",
+    "path": "/billingDateShift?/billingDateShift=20", 
+    "value": 30
+}

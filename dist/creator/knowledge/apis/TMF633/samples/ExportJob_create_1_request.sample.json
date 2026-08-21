@@ -1,0 +1,8 @@
+{
+    "contentType": "application/json", 
+    "path": "serviceCatalogManagement/", 
+    "query": "@type=ServiceSpecification", 
+    "url": "ftp://ftp.mycsp.com/serviceCatalogManagement/1866.json",
+    "@type": "ExportJob", 
+    "@schemaLocation": "https://mycsp.com:8080/tmf-api/schemas/Common/ExportJob.schema.json"
+}

@@ -1,0 +1,88 @@
+@startuml
+title Figure 4: Resource catalog relationships view
+
+legend
+  Solid arrow = mandatory "requires" relationship
+  Dotted arrow = optional relationship
+end legend
+
+class "[API Resource]\nHSS API" as HSSAPI {
+  endpoint, protocol
+}
+class "[Logical Resource]\nHSS Subscriber Profile" as HSSProfile {
+  subscriberProfile
+}
+class "[Compound Resource]\nSIM Card" as SIMCard
+class "[Physical Resource]\nPhysical SIM" as PhysicalSIM {
+  iccid
+}
+class "[Logical Resource]\nLogical SIM" as LogicalSIM {
+  type, imsi, puk
+}
+class "[Physical Resource]\n*User Equipment" as UserEquipment
+
+class "[API Resource]\nVMS API" as VMSAPI {
+  endpoint, protocol
+}
+class "[Logical Resource]\nVMS Profile" as VMSProfile {
+  vmsProfile
+}
+class "[Logical Resource]\nNumber" as Number {
+  msisdn
+}
+
+class "[API Resource]\nPCRF API" as PCRFAPI {
+  endpoint, protocol
+}
+class "[Logical Resource]\nPCRF Profile" as PCRFProfile {
+  policy
+}
+class "*[Logical Resource]\nOCS profile" as OCSProfile
+
+class "*[Logical Resource]\nUDM/UDR Subscriber Profile" as UDMProfile {
+  subscriberProfile, supi, gpsi
+}
+class "*[API Resource]\nUDM/UDR API" as UDMAPI
+class "*[Logical Resource]\n5G Logical SIM" as LogicalSIM5G {
+  type, supi, gpsi, puk
+}
+class "*[Logical Resource]\neSIM profile" as eSIMProfile
+
+class "*[API Resource]\nPCF API" as PCFAPI {
+  endpoint, protocol
+}
+class "*[Logical Resource]\nPCF Profile" as PCFProfile {
+  plmnid, pei, dnn
+}
+
+HSSAPI --> HSSProfile : "uses configured"
+VMSProfile ..> HSSProfile : "requires (optional)"
+VMSProfile --> HSSProfile : requires
+HSSProfile --> LogicalSIM : requires
+SIMCard --> PhysicalSIM : "is composed of"
+SIMCard --> LogicalSIM : "is composed of"
+LogicalSIM --> Number : requires
+
+VMSAPI --> VMSProfile : "uses configured"
+VMSProfile --> Number : requires
+VMSProfile --> UDMProfile : "* requires"
+
+UDMAPI ..> UDMProfile : "uses configured"
+UDMProfile --> Number : "* requires"
+UDMProfile --> LogicalSIM5G : "* requires"
+LogicalSIM5G --> eSIMProfile : "* requires"
+LogicalSIM5G --> PCFProfile : "* requires"
+
+PCFAPI --> PCFProfile : "uses configured"
+PCFProfile --> Number : "* requires"
+PCFProfile ..> OCSProfile : "* requires (optional)"
+
+PCRFAPI --> PCRFProfile : "uses configured"
+PCRFProfile --> Number : requires
+PCRFProfile ..> OCSProfile : "requires (optional)"
+LogicalSIM --> PCRFProfile : requires
+
+OCSProfile --> Number : "* requires"
+OCSProfile --> eSIMProfile : "* requires"
+
+@enduml

@@ -1,0 +1,16 @@
+{
+  "@type": "PermissionSpecificationSet",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-5de89f4f",
+  "id": "pss-5de89f4f",
+  "involvementRole": "Owner",
+  "permissionSpecification": [
+    {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-9d5692ea",
+      "id": "ps-9d5692ea",
+      "name": "all:readwrite",
+      "function": "all",
+      "action": "ReadWrite"
+    }
+  ]
+}

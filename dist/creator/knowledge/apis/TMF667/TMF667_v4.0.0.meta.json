@@ -1,0 +1,16 @@
+{
+  "id": "TMF667",
+  "type": "api",
+  "name": "document-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "54f5d2b95ed03dd390c0503274874bb39f399cbe052e7bc11cb41c2f078cae7f"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

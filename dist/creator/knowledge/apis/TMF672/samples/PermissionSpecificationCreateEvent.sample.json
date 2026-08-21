@@ -1,0 +1,49 @@
+{
+  "correlationId": "126-54f",
+  "description": "PermissionSpecificationCreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "125",
+  "eventTime": "2021-09-27T07:43:59.059Z",
+  "eventType": "PermissionSpecificationCreateEvent",
+  "priority": "1",
+  "timeOccurred": "2021-09-27T07:43:59.059Z",
+  "title": "PermissionSpecificationCreateEvent",
+  "event": {
+    "permissionSpecification": {
+      "@type": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-7e0a2d18",
+      "id": "ps-7e0a2d18",
+      "function": "ProductOrder",
+      "action": "grantAlteration",
+      "name": "Allow adhoc price alteration",
+      "specificationCharacteristic": [
+        {
+          "@type": "CharacteristicSpecification",
+          "name": "reductionPercentage",
+          "valueType": "number",
+          "characteristicValueSpecification": [
+            {
+              "@type": "FloatCharacteristicValueSpecification",
+              "valueType": "number",
+              "value": 5.5
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "PermissionSpecificationCreateEvent"
+}

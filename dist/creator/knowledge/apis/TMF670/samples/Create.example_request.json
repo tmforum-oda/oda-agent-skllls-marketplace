@@ -1,0 +1,74 @@
+{
+    "correlationId": "44f0d080-1c4d",
+    "description": "PaymentMethodCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "46bc-bd9d-ac25d76a9c79",
+    "eventTime": "2022-08-25T12:24:21.085Z",
+    "eventType": "PaymentMethodCreateEvent",
+    "priority": "2",
+    "timeOcurred": "2022-08-25T12:24:13.013Z",
+    "title": "PaymentMethodCreateEvent",
+    "event": {
+        "paymentMethod": {
+            "id": "123456",
+            "href": "http://servername/paymentMethod/123456",
+            "name": "Main credit card",
+            "description": "My gold mastercard",
+            "isPreferred": true,
+            "validFor": {
+                "startDateTime": "2021-03-17T00:00:00.000Z",
+                "endDateTime": "2021-04-16T00:00:00.000Z"
+            },
+            "authorizationCode": "1234567890",
+            "status": "InActive",
+            "statusDate": "2021-03-17T00:00:00.000Z",
+            "statusReason": "This payment method has expired, therefore its status is now inactive.",
+            "@type": "PaymentMethod",
+            "brand": "MasterCard",
+            "cardType": "Debit",
+            "cardNumber": "0000-0000-0000-0000",
+            "expirationDate": "2025-11-25T12:00:00.000Z",
+            "cvv": "123",
+            "lastFourDigits": "0000",
+            "nameOnCard": "Abbey S King",
+            "bank": "Fictitious Bank Inc",
+            "account": [
+                {
+                    "id": "321654",
+                    "href": "{AccountsManagementAPI}/account/321654",
+                    "name": "Abbey S King’s account"
+                },
+                {
+                    "id": "987654",
+                    "href": "{AccountsManagementAPI}/account/987654",
+                    "name": "The account of Abbey S King’s daughter"
+                }
+            ],
+            "relatedParty": {
+                "id": "66665555",
+                "href": "{PartyManagementAPI}/individual/66665555",
+                "name": "Abbey S King",
+                "role": "Owner"
+            },
+            "relatedPlace": {
+                "id": "55554444",
+                "href": "{GeographicAddressManagementAPI}/geographicAddress/55554444",
+                "@referredType": "GeographicAddress"
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "614",
+        "name": "APP-102",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "716",
+        "name": "APP-177",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PaymentMethodCreateEvent"
+}

@@ -1,0 +1,90 @@
+@startuml
+title Product Order view
+
+class "Fiber Contract Silver" as FiberContract <<ProductOffering>> {
+  POPrice = "Welcome Discount: -5€/month for 10 first months"
+  tax rate = 20%
+}
+class "Create" as CreateFiberContract <<OrderItemAction>>
+FiberContract -- CreateFiberContract
+
+class "Box 1" as Box1 <<ProductOffering>> {
+  POPrice = "5€/Month for Maxi"
+  tax rate = 20%
+}
+class "Create" as CreateBox1 <<OrderItemAction>>
+Box1 -- CreateBox1
+
+class "Fiber Access" as FiberAccess <<ProductOffering>> {
+  POPrice = "10€/month"
+  tax rate = 20%
+}
+class "Create" as CreateFiberAccess <<OrderItemAction>>
+FiberAccess -- CreateFiberAccess
+
+class "Connectivity" as Connectivity <<ProductOffering>> {
+  POPrice = "Fees: 30€"
+  tax rate = 10%
+}
+class "Create" as CreateConnectivity <<OrderItemAction>>
+Connectivity -- CreateConnectivity
+
+class "Fix Communication Service" as FixCommService <<ProductOffering>> {
+  POPrice = "12€/month"
+  tax rate = 20%
+}
+class "Create" as CreateFixComm <<OrderItemAction>>
+FixCommService -- CreateFixComm
+
+class "TV Channeld" as TVChannel <<ProductOffering>> {
+  POPrice = "Basic: 5€/month"
+  tax rate = 20%
+}
+class "Create" as CreateTVChannel <<OrderItemAction>>
+TVChannel -- CreateTVChannel
+
+FiberContract --> Box1
+FiberContract --> FiberAccess
+FiberContract --> Connectivity
+FiberContract --> FixCommService
+FiberContract --> TVChannel
+
+class "Box 1" as Box1Spec <<ProductSpecification>> {
+  Color = strawberry red
+  Storage = Maxi
+}
+class "Box 2" as Box2Spec <<ProductSpecification>>
+class "Fiber Access" as FiberAccessSpec <<ProductSpecification>> {
+  Speed = Basic
+}
+class "Connectivity" as ConnectivitySpec <<ProductSpecification>> {
+  Speed = Basic
+}
+class "Fix Communication" as FixCommSpec <<ProductSpecification>> {
+  Phone Number = "+33 9xx xxx xxx"
+}
+class "TV Channel" as TVChannelSpec <<ProductSpecification>> {
+  Value = Basic
+}
+
+Box1 --> Box1Spec : "Applies on"
+Connectivity --> ConnectivitySpec : "Applies On"
+FixCommService --> FixCommSpec : "Applies On"
+TVChannel --> TVChannelSpec : "Applies on"
+FiberAccess --> FiberAccessSpec : (Applies on, via Geo Address)
+
+class "Shipping" as Shipping <<ProductSpecification>> {
+  Speed = standard
+}
+class "Box Shipping" as BoxShipping <<ProductOffering>> {
+  POPrice = "Standard: Free"
+  tax rate = 20%
+}
+class "Create" as CreateBoxShipping <<OrderItemAction>>
+BoxShipping -- CreateBoxShipping
+BoxShipping --> Shipping : "Applies on"
+Shipping --> Box1Spec
+
+Box2Spec ..> Box1Spec : (linked resource, per legend)
+
+@enduml

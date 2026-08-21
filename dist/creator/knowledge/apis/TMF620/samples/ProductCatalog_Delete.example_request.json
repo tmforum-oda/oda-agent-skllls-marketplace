@@ -1,0 +1,32 @@
+{
+  "correlationId": "f3a34f89-0046",
+  "description": "CatalogDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4996-b9b1-e533c09a0186",
+  "eventTime": "2022-08-25T12:17:59.636Z",
+  "eventType": "CatalogDeleteEvent",
+  "priority": "2",
+  "timeOcurred": "2022-08-25T12:17:55.035Z",
+  "title": "CatalogDeleteEvent",
+  "event": {
+    "catalog": {
+      "id": "3830",
+      "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v4/Catalog/3830",
+      "@type": "Catalog"
+    }
+  },
+  "reportingSystem": {
+    "id": "868",
+    "name": "APP-394",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "372",
+    "name": "APP-92",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CatalogDeleteEvent"
+}

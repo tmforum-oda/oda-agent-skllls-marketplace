@@ -1,0 +1,16 @@
+{
+  "id": "TMF674",
+  "type": "api",
+  "name": "geographic-site-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "215eece03a3721499cf34fb96c2310418361f7520609e9412ada79f3e12322d2"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

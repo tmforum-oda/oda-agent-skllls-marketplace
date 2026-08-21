@@ -1,0 +1,107 @@
+@startuml
+title Figure 2: Product catalog
+
+legend
+  <<ProductOffering>> = Product Offering (blue)
+  <<ProductSpecification>> = Product Specification (green)
+  <<ProductUsageSpecification>> = Product Usage Specification (dashed green)
+  Names prefixed with '*' are part of the extended scenario only.
+end legend
+
+class "Mobile Postpaid Contract" as Contract <<ProductOffering>>
+
+class "* User Equipment" as UserEquipmentOffering <<ProductOffering>>
+class "* VAS" as VASOffering <<ProductOffering>>
+class "Postpaid Mobile Line" as PostpaidMobileLineOffering <<ProductOffering>>
+
+Contract --> UserEquipmentOffering : "Min 0, Max 1"
+Contract --> VASOffering : "Min 0, Max n"
+Contract --> PostpaidMobileLineOffering : "Min 1, Max 1"
+
+class "* User Equipment" as UserEquipmentSpec <<ProductSpecification>>
+class "* VAS" as VASSpec <<ProductSpecification>> {
+  Social Networks Subscription
+}
+UserEquipmentOffering --> UserEquipmentSpec
+VASOffering --> VASSpec
+
+class "Recurring Package" as RecurringPackageOffering <<ProductOffering>>
+class "* One-Time Package" as OneTimePackageOffering <<ProductOffering>>
+class "Mobile Line" as MobileLineOffering <<ProductOffering>>
+class "* Vanity Lines" as VanityLinesOffering <<ProductOffering>>
+class "Extra National Voice" as ExtraNationalVoiceOffering <<ProductOffering>>
+class "* Extra International Voice" as ExtraInternationalVoiceOffering <<ProductOffering>>
+class "Extra SMS" as ExtraSMSOffering <<ProductOffering>>
+class "Extra Data" as ExtraDataOffering <<ProductOffering>>
+class "Voice Mail" as VoiceMailOffering <<ProductOffering>>
+class "SIM Card" as SIMCardOffering <<ProductOffering>>
+
+PostpaidMobileLineOffering --> RecurringPackageOffering : "Min 0, Max 1"
+PostpaidMobileLineOffering --> OneTimePackageOffering : "Min 0, Max 1"
+PostpaidMobileLineOffering --> MobileLineOffering : "Min 1, Max 1"
+PostpaidMobileLineOffering --> VanityLinesOffering : "Min 0, Max 1"
+PostpaidMobileLineOffering --> ExtraNationalVoiceOffering : "Min 0, Max 1"
+PostpaidMobileLineOffering --> ExtraInternationalVoiceOffering : "Min 0, Max 1"
+PostpaidMobileLineOffering --> ExtraSMSOffering : "Min 0, Max 1"
+PostpaidMobileLineOffering --> ExtraDataOffering : "Min 0, Max 1"
+PostpaidMobileLineOffering --> VoiceMailOffering : "Min 0, Max 1"
+PostpaidMobileLineOffering --> SIMCardOffering : "Min1, Max 1"
+
+class "Recurring Package" as RecurringPackageSpec <<ProductSpecification>>
+class "* One-Time Package" as OneTimePackageSpec <<ProductSpecification>>
+class "Mobile Line" as MobileLineSpec <<ProductSpecification>> {
+  Number, Roaming Options, Barring Options
+}
+class "* Vanity Lines" as VanityLinesSpec <<ProductSpecification>>
+class "Extra National Package" as ExtraNationalPackageSpec <<ProductSpecification>>
+class "* Extra International Package" as ExtraInternationalPackageSpec <<ProductSpecification>>
+class "Extra SMS Package" as ExtraSMSPackageSpec <<ProductSpecification>>
+class "Extra Data Package" as ExtraDataPackageSpec <<ProductSpecification>>
+class "Voice Mail" as VoiceMailSpec <<ProductSpecification>> {
+  mailboxSize
+}
+class "Physical SIM" as PhysicalSIMSpec <<ProductSpecification>>
+class "* eSIM" as eSIMSpec <<ProductSpecification>>
+
+RecurringPackageOffering --> RecurringPackageSpec
+OneTimePackageOffering --> OneTimePackageSpec
+MobileLineOffering --> MobileLineSpec
+VanityLinesOffering --> VanityLinesSpec
+ExtraNationalVoiceOffering --> ExtraNationalPackageSpec
+ExtraInternationalVoiceOffering --> ExtraInternationalPackageSpec
+ExtraSMSOffering --> ExtraSMSPackageSpec
+ExtraDataOffering --> ExtraDataPackageSpec
+VoiceMailOffering --> VoiceMailSpec
+SIMCardOffering --> PhysicalSIMSpec : "Min 0, Max 1"
+SIMCardOffering --> eSIMSpec : "Min 0, Max 1 (OR)"
+
+OneTimePackageSpec --> MobileLineSpec : Requires
+VanityLinesSpec --> MobileLineSpec : Requires
+RecurringPackageSpec --> MobileLineSpec : Requires
+ExtraNationalPackageSpec --> MobileLineSpec : Requires
+ExtraInternationalPackageSpec --> MobileLineSpec : Requires
+ExtraSMSPackageSpec --> MobileLineSpec : Requires
+ExtraDataPackageSpec --> MobileLineSpec : Requires
+UserEquipmentSpec --> MobileLineSpec : Requires
+MobileLineSpec --> PhysicalSIMSpec : Requires
+MobileLineSpec --> eSIMSpec : Requires
+
+package "Usage Specifications" #line.dashed {
+  class "National Voice" as NationalVoiceUsageSpec <<ProductUsageSpecification>>
+  class "* International Voice" as InternationalVoiceUsageSpec <<ProductUsageSpecification>>
+  class "SMS" as SMSUsageSpec <<ProductUsageSpecification>>
+  class "Data" as DataUsageSpec <<ProductUsageSpecification>>
+}
+
+ExtraNationalPackageSpec --> NationalVoiceUsageSpec : Concerns
+ExtraInternationalPackageSpec --> InternationalVoiceUsageSpec : Concerns
+ExtraSMSPackageSpec --> SMSUsageSpec : Concerns
+ExtraDataPackageSpec --> DataUsageSpec : Concerns
+RecurringPackageSpec --> DataUsageSpec : Concerns
+
+class "Physical SIM Template" as PhysicalSIMTemplateSpec <<ProductSpecification>>
+class "* eSIM Template" as eSIMTemplateSpec <<ProductSpecification>>
+PhysicalSIMSpec --> PhysicalSIMTemplateSpec
+eSIMSpec --> eSIMTemplateSpec
+
+@enduml

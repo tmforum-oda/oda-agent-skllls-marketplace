@@ -1,0 +1,33 @@
+{
+  "correlationId": "dbd2cdb0-3631",
+  "description": "ResourceDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "403f-810a-354d44291cc0",
+  "eventType": "ResourceDeleteEvent",
+  "eventTime": "2025-10-22T17:34:38.635Z",
+  "timeOccurred": "2025-10-22T17:34:23.862Z",
+  "priority": "1",
+  "title": "ResourceDeleteEvent",
+  "event": {
+    "resource": {
+      "id": "ca239a70-5810-433f-a251-ba5277a5af72",
+      "href": "http://host:port/resourceInventoryManagement/v5/resource/ca239a70-5810-433f-a251-ba5277a5af72",
+      "@type": "PhysicalResource",
+      "@baseType": "Resource"
+    }
+  },
+  "reportingSystem": {
+    "id": "445",
+    "name": "APP-655",
+    "@type": "ResourceRef",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "62",
+    "name": "APP-182",
+    "@type": "ResourceRef",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ResourceDeleteEvent"
+}

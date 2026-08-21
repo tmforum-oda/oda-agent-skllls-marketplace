@@ -1,0 +1,59 @@
+{
+    "Quote": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a list of quote(s). The given criteria is the state (inProgess) and expectedQuoteCompletionDate (.gt).",
+                    "filtering": "fields=id,href,@type,expectedQuoteCompletionDate&state=inProgress&expectedQuoteCompletionDate.gt=2021-05-12T12:33:43.331Z", 
+                    "content-type": "application/json", 
+                    "response" : "$_Quote_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description": "Here's an example of a request for retrieving a quote. The given criteria is the quote id 12dd-78hg.",
+                    "content-type": "application/json",
+                    "objectId": "12dd-78hg",  
+                    "response" : "$_Quote_retrieve_1_response"
+                }	
+            ]
+        }, 
+        "create": {
+         "samples" : [
+            {
+                "description" : "Here's an example of a request for creating a quote with instantSync set to false - a quote resource is created -  the resulting quote is 87h-98g.",
+                "request" : "$_Quote_create_1_request",
+                "response" : "$_Quote_create_1_response"
+            }
+         ]   
+        },
+        "partialupdate": {
+            "samples" : [
+               {
+                "description" : "Here's an example of a request for updating a quote - In this example buyer contact is changed and item 2 quantity is changed to 12.",
+                "content-type": "application/json-patch+json",
+                "request" : "$_Quote_partialupdate_1_request",
+                "objectId": "12dd-78hg", 
+                "response" : "$_Quote_partialupdate_1_response"
+               },
+               {
+                "description" : "Here's an example of a request for updating a quote - In this example buyer contact is changed and item 2 quantity is changed to 12.",
+                "content-type": "application/merge-patch+json",
+                "request" : "$_Quote_partialupdate_2_request",
+                "objectId": "12dd-78hg", 
+                "response" : "$_Quote_partialupdate_1_response"
+            }
+         ]   
+           },
+        "delete": {
+	        "samples" : [
+		        {
+		             "description": "Here's an example of a request for deleting a quote.",
+		             "objectId" : "87g-8tt"
+	        	}
+	       ]
+    	}
+    }
+}

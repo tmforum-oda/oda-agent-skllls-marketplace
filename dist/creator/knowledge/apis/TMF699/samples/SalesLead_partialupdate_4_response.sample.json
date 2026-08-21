@@ -1,0 +1,18 @@
+{
+  "id": "123",
+  "href": "https://serverRoot/tmf-api/salesManagement/v5/salesLead/123",
+  "@type": "SalesLead",
+  "name": "Sales Lead Illustration",
+  "creationDate": "2022-03-30T12:27:59.123Z",
+  "rating": "hot",
+  "status": "inProgress",
+  "revenueEstimate": [
+    {
+      "amount": {
+        "unit": "EUR",
+        "value": 1500
+      },
+      "revenueType": "oneTime"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{ 
+    "correlationId": "d371820b-e3b6",
+    "description": "CommunicatDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "41e9-b9f6-6872721debb7",
+    "eventTime": "2022-08-25T12:26:26.398Z",
+    "eventType": "CommunicationMessageDeleteEvent",
+    "priority": "4",
+    "timeOcurred": "2022-08-25T12:26:21.665Z",
+    "title": "CommunicationMessageDeleteEvent",
+    "event": {
+        "communicationMessage": {
+            "@type": "CommunicationMessage",
+            "href": "http://servername/communicationMessage/1708",
+            "id": "1708",
+            "state": "completed",
+            "receiver": [
+                {
+                    "@type": "Receiver",
+                    "id": "10234",
+                    "name": "Customer",
+                    "phoneNumber": "008613811112222",
+                    "party": {
+                        "role": "customer",
+                        "partyOrPartyRole": {
+                            "id": "991",
+                            "href": "https://serverlocation/tmf-api/partyManagement/v4/individual/1",
+                            "role": "customer",
+                            "name": "John White",
+                            "@type": "Individual"
+                        },
+                        "@type": "RelatedPartyOrPartyRole"
+                    }
+                }
+            ]
+        }
+    },
+    "reportingSystem": {
+        "id": "332",
+        "name": "APP-275",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "257",
+        "name": "APP-587",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CommunicationMessageDeleteEvent"
+}

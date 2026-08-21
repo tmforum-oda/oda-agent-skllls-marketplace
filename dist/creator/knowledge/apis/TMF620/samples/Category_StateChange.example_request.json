@@ -1,0 +1,33 @@
+{
+  "correlationId": "d991dd5c-cb42",
+  "description": "CategoryStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4768-a3c5-c47b06010b06",
+  "eventTime": "2022-08-25T12:17:59.625Z",
+  "eventType": "CategoryStateChangeEvent",
+  "priority": "4",
+  "timeOcurred": "2022-08-25T12:17:58.436Z",
+  "title": "CategoryStateChangeEvent",
+  "event": {
+    "Category": {
+      "id": "9881",
+      "href": "http://servername/Category/9881",
+      "@type": "Category",
+      "lifecycleStatus": "Active"
+    }
+  },
+  "reportingSystem": {
+    "id": "868",
+    "name": "APP-394",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "372",
+    "name": "APP-92",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CategoryStateChangeEvent"
+}

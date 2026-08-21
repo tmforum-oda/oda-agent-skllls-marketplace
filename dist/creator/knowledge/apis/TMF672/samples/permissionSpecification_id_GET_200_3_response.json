@@ -1,0 +1,9 @@
+{
+  "@type": "PermissionSpecification",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-591c77a2",
+  "id": "ps-591c77a2",
+  "description": "Permission to view and change account data details.",
+  "name": "accountdetails:readwrite",
+  "function": "account_details",
+  "action": "ReadWrite"
+}

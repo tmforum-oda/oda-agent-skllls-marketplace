@@ -1,0 +1,63 @@
+{
+  "@type": "PermissionSet",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permission/Prms-63116b98",
+  "id": "63116b98",
+  "creationDate": "2023-03-01T16:49:00.000Z",
+  "description": "Owner profile granted to user automatically for its owned customer, product and service entities.",
+  "validFor": {
+    "startDateTime": "2023-03-01T00:00:00.000Z",
+    "endDateTime": "2023-04-01T00:00:00.000Z"
+  },
+  "user": {
+    "role": "customer advisor",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "cclt-456745",
+      "href": "https://host:port/partyManagement/v5/party/cclt-456745",
+      "name": "John Baker",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "permission": [
+    {
+      "@type": "Permission",
+      "managedAssetGroup": {
+        "@type": "ListAssetGroup",
+        "@baseType": "AssetGroup",
+        "entity": [
+          {
+            "@type": "EntityRef",
+            "href": "https://serverRoot/customerManagement/v5/customer/C123456789",
+            "id": "C123456789",
+            "@referredType": "Customer"
+          },
+          {
+            "@type": "EntityRef",
+            "href": "https://serverRoot/customerManagement/v5/customer/5.99999.99.99.999999",
+            "id": "5.99999.99.99.999999",
+            "@referredType": "Customer"
+          },
+          {
+            "@type": "EntityRef",
+            "href": "https://serverRoot/serviceInventory/v5/service/S123456789",
+            "id": "S123456789",
+            "@referredType": "Service"
+          },
+          {
+            "@type": "EntityRef",
+            "href": "https://serverRoot/productInventory/v5/service/1-44up07",
+            "id": "1-44up07",
+            "@referredType": "Product"
+          }
+        ]
+      },
+      "permissionSpecificationSet": {
+        "@type": "PermissionSpecificationSetRef",
+        "@referredType": "PermissionSpecificationSet",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-5de89f4f",
+        "id": "pss-5de89f4f"
+      }
+    }
+  ]
+}

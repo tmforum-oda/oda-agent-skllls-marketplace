@@ -1,0 +1,118 @@
+{
+  "correlationId": "SOM-20011",
+  "description": "ServiceOrderJeopardyEvent illustration",
+  "domain": "Commercial",
+  "eventId": "10079",
+  "eventTime": "2021-12-27T01:06:59.059Z",
+  "eventType": "ServiceOrderJeopardyEvent",
+  "priority": "1",
+  "timeOcurred": "2021-12-27T01:06:59.059Z",
+  "title": "ServiceOrderJeopardyEvent",
+  "event": {
+    "serviceOrder": {
+      "id": "42",
+      "href": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/42",
+      "priority": "1",
+      "description": "Service order description",
+      "category": "TMF resource illustration",
+      "state": "InProgress",
+      "orderDate": "2020-08-27T09:37:40.508Z",
+      "requestedStartDate": "2020-08-31T09:37:40.508Z",
+      "requestedCompletionDate": "2020-08-31T09:37:40.508Z",
+      "expectedCompletionDate": "2020-08-31T09:37:40.508Z",
+      "startDate": "2020-08-31T09:37:40.508Z",
+      "@type": "ServiceOrder",
+      "note": [
+        {
+          "date": "2020-08-27T09:37:40.508Z",
+          "id": "1",
+          "author": "Harvey Poupon",
+          "text": "Some text",
+          "@type": "Note"
+        }
+      ],
+      "relatedParty": [
+        {
+          "role": "requester",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+            "id": "456",
+            "name": "Jean Pontus",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          }
+        }
+      ],
+      "jeopardyAlert": [
+        {
+          "id": "144",
+          "alertDate": "2020-08-27T23:17:45.450Z",
+          "exception": "Order Item Completion is in Jeopardy",
+          "jeopardyType": "Normal",
+          "message": "Order Item Completion is in Jeopardy",
+          "name": "Order Item Completion",
+          "serviceOrderItem": [
+            {
+              "itemId": "1",
+              "serviceOrderHref": "http://serverlocation:port/serviceOrdering/v5/serviceOrder/42",
+              "serviceOrderId": "42",
+              "@type": "ServiceOrderItemRef"
+            }
+          ],
+          "@type": "ServiceOrderJeopardyAlert"
+        }
+      ],
+      "serviceOrderItem": [
+        {
+          "id": "1",
+          "action": "add",
+          "state": "InProgress",
+          "service": {
+            "@type": "Service",
+            "state": "active",
+            "serviceCharacteristic": [
+              {
+                "id": "452-gh6",
+                "name": "vCPE",
+                "valueType": "object",
+                "value": {
+                  "@type": "VCPE",
+                  "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/VCPE.schema.json",
+                  "vCPE_IP": "193.218.236.21",
+                  "MaxTxRate": 300,
+                  "TransmitPower": "11 dBm",
+                  "maxTream": "OFF"
+                },
+                "@type": "ObjectCharacteristic"
+              }
+            ],
+            "serviceSpecification": {
+              "@type": "ServiceSpecificationRef",
+              "@referredType": "ServiceSpecification",
+              "id": "1212",
+              "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/1212",
+              "name": "vCPE",
+              "version": "1.0.0"
+            }
+          },
+          "@type": "ServiceOrderItem"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ServiceOrderJeopardyEvent"
+}

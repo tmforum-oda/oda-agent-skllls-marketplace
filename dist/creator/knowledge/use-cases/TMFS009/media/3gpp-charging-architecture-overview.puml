@@ -1,0 +1,37 @@
+@startuml
+title High Level Overview of 3GPP Charging Architecture
+
+class "Billing Domain (BD)" as BD
+
+package "3G/4G" #F5D0D0 {
+  class "Charging Gateway Function (CGF)" as CGF
+  class "Charging Data Function (CDF)" as CDF
+  class "Online Charging System (OCS)" as OCS
+  class "Network Elements" as NetworkElements
+
+  CDF --> CGF : Ga
+  NetworkElements --> CDF : Rf
+  NetworkElements --> OCS : Ro
+
+  note bottom of NetworkElements
+    Offline Charging
+    Online Charging
+  end note
+}
+
+package "5G" #D6E4F0 {
+  class "Converged Charging System (CCS)" as CCS
+  class "Network Functions" as NetworkFunctions
+
+  NetworkFunctions --> CCS : Nchf
+
+  note bottom of NetworkFunctions
+    Converged Offline and Online Charging
+  end note
+}
+
+CGF --> BD : Bx
+OCS --> BD : Bx
+CCS --> BD : Bx
+
+@enduml

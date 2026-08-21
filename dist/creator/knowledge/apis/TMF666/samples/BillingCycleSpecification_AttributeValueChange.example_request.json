@@ -1,0 +1,33 @@
+{
+    "correlationId": "95731510-e85e",
+    "description": "BillingCycleSpecificationAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "421f-ba83-b5ed387f1100",
+    "eventTime": "2022-08-25T12:23:44.191Z",
+    "eventType": "BillingCycleSpecificationAttributeValueChangeEvent",
+    "priority": "2",
+    "timeOcurred": "2022-08-25T12:23:40.440Z",
+    "title": "BillingCycleSpecificationAttributeValueChangeEvent",
+    "event": {
+        "billingCycleSpecification": {
+            "href": "http://servername/BillingCycleSpecification/1041",
+            "id": "1041",
+            "@type": "BillingCycleSpecification",
+            "chargeDateOffset": 5 
+        }
+    },
+    "reportingSystem": {
+        "id": "855",
+        "name": "APP-400",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "92",
+        "name": "APP-105",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "BillingCycleSpecificationAttributeValueChangeEvent"
+}

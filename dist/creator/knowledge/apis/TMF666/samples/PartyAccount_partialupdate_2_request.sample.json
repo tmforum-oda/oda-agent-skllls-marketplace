@@ -1,0 +1,17 @@
+[
+  {
+    "op": "add",
+    "path": "/relatedParty",
+    "value": {
+        "role": "contact",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+            "@type":"PartyRefOrPartyRoleRef",
+            "@referredType" : "Individual",
+            "href": "https://host:port/tmf-api/partyManagement/v5/individual/6666", 
+            "id": "6666", 
+            "name": "John Doe"
+        }
+    }
+  }
+]

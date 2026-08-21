@@ -1,0 +1,55 @@
+{
+    "@type": "PermissionSet",
+    "href": "https://server:port/userRolePermission/v5/permissionSet/7a0cb197-381a-4043-9cd6-aaef3729589f",
+    "id": "7a0cb197-381a-4043-9cd6-aaef3729589f",
+    "creationDate": "2023-03-01T16:49:00.000Z",
+    "description": "Customer OTT primary user profile granted by owner",
+    "validFor": {
+        "startDateTime": "2023-03-01T00:00:00.000Z",
+        "endDateTime": "2023-04-01T00:00:00.000Z"
+    },
+    "user": {
+        "role": "client",
+        "@type": "RelatedSecurityPrincipal",
+        "securityPrincipal": {
+            "id": "cust-745712-A",
+            "href": "https://host:port/partyManagement/v5/party/cust-745712-A",
+            "name": "Jack Marshall",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+        }
+    },
+    "granter": {
+        "role": "customer advisor",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+            "id": "cclt-456745",
+            "href": "https://host:port/partyManagement/v5/party/cclt-456745",
+            "name": "John Baker",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+        }
+    },
+    "permission": [
+        {
+            "@type": "Permission",
+            "managedAssetGroup": {
+                "@type": "ListAssetGroup",
+                "@baseType": "AssetGroup",
+                "entity": [
+                    {
+                        "id": "S123456789",
+                        "@type": "EntityRef",
+                        "@referredType": "ServiceAccount"
+                    }
+                ]
+            },
+            "permissionSpecificationSet": {
+                "@type": "PermissionSpecificationSetRef",
+                "href": "https://server:port/userRolePermission/v5/permissionSpecificationSet/adf0487a-1671-49c1-9be1-87e66a6d3a69",
+                "id": "adf0487a-1671-49c1-9be1-87e66a6d3a69",
+                "@referredType": "PermissionSpecificationSet"
+            }
+        }
+    ]
+}

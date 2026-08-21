@@ -1,0 +1,66 @@
+@startuml
+title Access Network Documentation
+
+class "Seller Network" as SellerNetwork
+
+class "GeographicSite\nsiteCategory: WholesaleBroadbandInterconnectionPoint\nname: POP1" as POP1
+class "GeographicSite\nsiteCategory: WholesaleBroadbandInterconnectionPoint\nname: POP2" as POP2
+SellerNetwork --> POP1
+SellerNetwork --> POP2
+
+class "GeographicSite\nsiteCategory: AccessNode\nname: AN1.1" as AN11
+class "GeographicSite\nsiteCategory: AccessNode\nname: AN1.2" as AN12
+class "GeographicSite\nsiteCategory: AccessNode\nname: AN1.3" as AN13
+POP1 --> AN11
+POP1 --> AN12
+POP1 --> AN13
+
+class "GeographicSite\nsiteCategory: AccessNode\nname: AN2.1" as AN21
+class "GeographicSite\nsiteCategory: AccessNode\nname: AN2.2" as AN22
+POP2 --> AN21
+POP2 --> AN22
+
+class "BuildingEntryPoint 1.1.1" as BEP111
+class "BuildingEntryPoint 1.1.2" as BEP112
+class "BuildingEntryPoint 1.1.3" as BEP113
+class "BuildingEntryPoint 1.1.4" as BEP114
+AN11 --> BEP111
+AN11 --> BEP112
+AN11 --> BEP113
+AN11 --> BEP114
+
+class "BuildingEntryPoint 1.2.1" as BEP121
+class "BuildingEntryPoint 1.2.2" as BEP122
+class "BuildingEntryPoint 1.2.3" as BEP123
+class "BuildingEntryPoint 1.2.4" as BEP124
+AN12 --> BEP121
+AN12 --> BEP122
+AN12 --> BEP123
+AN12 --> BEP124
+
+class "BuildingEntryPoint 1.3.1" as BEP131
+class "BuildingEntryPoint 1.3.2" as BEP132
+class "BuildingEntryPoint 1.3.3" as BEP133
+AN13 --> BEP131
+AN13 --> BEP132
+AN13 --> BEP133
+
+class "BuildingEntryPoint 2.1.1" as BEP211
+class "BuildingEntryPoint 2.1.2" as BEP212
+class "BuildingEntryPoint 2.1.3" as BEP213
+class "BuildingEntryPoint 2.1.4" as BEP214
+AN21 --> BEP211
+AN21 --> BEP212
+AN21 --> BEP213
+AN21 --> BEP214
+
+class "BuildingEntryPoint 2.2.1" as BEP221
+class "BuildingEntryPoint 2.2.2" as BEP222
+class "BuildingEntryPoint 2.2.3" as BEP223
+class "BuildingEntryPoint 2.2.4" as BEP224
+AN22 --> BEP221
+AN22 --> BEP222
+AN22 --> BEP223
+AN22 --> BEP224
+
+@enduml

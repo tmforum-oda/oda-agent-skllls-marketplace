@@ -1,0 +1,10 @@
+{
+  "expectedQualificationDate": "2023-06-15T15:20:39.239Z",
+  "externalIdentifier": [
+    {
+      "id": "CSQ1-001",
+      "@type": "ExternalIdentifier"
+    }
+  ],
+  "@type": "CheckServiceQualification"
+}

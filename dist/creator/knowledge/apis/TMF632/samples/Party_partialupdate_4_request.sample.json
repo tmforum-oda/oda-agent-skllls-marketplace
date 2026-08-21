@@ -1,0 +1,24 @@
+[
+  {
+    "op": "add",
+    "path": "/organizationIdentification/-",
+    "value": {
+      "@type": "OrganizationIdentification",
+      "identificationType": "Business Permit",
+      "identificationId": "966935345345",
+      "issuingAuthority": "State of New Jersey",
+      "issuingDate": "2016-01-22T09:31:52.028Z",
+      "validFor": {
+        "startDateTime": "2016-01-22T09:31:52.028Z"
+      },
+      "attachment": {
+          "@type": "Attachment",
+          "attachmentType": "documentCopy",
+          "name": "BusinessPermitCertificate888441.pdf",
+          "description": "Scanned copy of the business permit",
+          "mimeType": "application/pdf",
+          "url": "http://DocumentManager/888441/BusinessPermitCertificate888441.pdf"
+        }
+    }
+  }
+]

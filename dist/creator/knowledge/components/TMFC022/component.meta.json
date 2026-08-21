@@ -1,0 +1,17 @@
+{
+  "id": "TMFC022",
+  "type": "component",
+  "name": "PartyPrivacyManagement",
+  "version": "1.1.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC022-PartyPrivacyManagement/Specification/TMFC022-PartyPrivacyManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "601ec1339cc598f8092f05f9249b964074d66f33e7538c36b8a76fe8a53dc033"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "correlationId": "333-fd6",
+  "description": "QuoteStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "569",
+  "eventTime": "2021-09-27T07:43:59.059Z",
+  "eventType": "QuoteStateChangeEvent",
+  "priority": "1",
+  "timeOccurred": "2021-09-27T07:43:59.059Z",
+  "title": "QuoteStateChangeEvent",
+  "event": {
+    "quote": {
+      "id": "9693",
+      "href": "https://host:port/quoteManagement/v5/quote/9693",
+      "@type": "Quote",
+      "state": "approved"
+    }
+  },
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "QuoteStateChangeEvent"
+}

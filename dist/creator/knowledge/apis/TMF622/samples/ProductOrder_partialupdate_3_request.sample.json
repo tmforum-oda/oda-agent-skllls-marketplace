@@ -1,0 +1,6 @@
+[
+  {"op":"replace",
+    "path": "/category",
+    "value": "B2B product order"
+  }
+]

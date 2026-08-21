@@ -1,0 +1,22 @@
+[
+    {
+        "@type": "PartyAccount",
+        "id": "9473", 
+        "href": "https://host:port/tmf-api/accountManagement/v5/partyAccount/9473", 
+        "creditLimit": {
+            "unit": "USD",
+            "value": 50000     
+        }, 
+        "name": "Administration Account"
+    }, 
+    {
+        "@type": "PartyAccount",
+        "id": "9899", 
+        "href": "https://host:port/tmf-api/accountManagement/v5/partyAccount/9899", 
+        "creditLimit": {
+            "unit": "USD",
+            "value": 1000000     
+        }, 
+        "name": "Bahamas Account"
+    }
+]

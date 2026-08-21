@@ -1,0 +1,7 @@
+{
+    "@type": "PartyAccount",
+    "creditLimit": {
+        "unit": "USD",
+        "value": 5000     
+    }
+}

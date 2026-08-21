@@ -1,0 +1,7 @@
+{
+  "@type": "PermissionSet",
+  "validFor": {
+    "startDateTime": "2021-10-01T00:00:00.000Z",
+    "endDateTime": "2023-10-31T23:59:59.000Z"
+  }
+}

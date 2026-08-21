@@ -1,0 +1,15 @@
+{
+  "@type": "Heal",
+  "resourceFunction": {
+    "id": "acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+    "href": "/resourceFunctionActivation/v5/resourceFunction/acd6cbde-22a1-4f42-9ed0-52bc72d82386",
+    "@type": "ResourceFunctionRef",
+    "@referredType": "ResourceFunction"
+  },
+  "cause": "SLA violation",
+  "degreeOfHealing": "restoreToStateBeforeFailure",
+  "name": "SLA Violation",
+  "action": "healResourceFunction",
+  "actionType": "script",
+  "startTime": "2019-08-17T13:11:51Z"
+}

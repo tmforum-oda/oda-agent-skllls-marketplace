@@ -1,0 +1,258 @@
+{
+  "correlationId": "95003dd3-e325",
+  "description": "TroubleTicketCreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4010-9b59-509a64cf85a8",
+  "eventTime": "2022-08-25T12:18:12.171Z",
+  "eventType": "TroubleTicketCreateEvent",
+  "priority": "1",
+  "timeOccurred": "2022-08-25T12:18:06.252Z",
+  "title": "TroubleTicketCreateEvent",
+  "event": {
+    "troubleTicket": {
+      "id": "3180",
+      "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicket/3180",
+      "creationDate": "2022-05-31T07:34:45.968Z",
+      "description": "I do not accept the last VOD charge, since the movie was constantly interrupted, I had to quit watching the movie in the middle ",
+      "expectedResolutionDate": "2019-06-10T07:34:45.968Z",
+      "lastUpdate": "2022-05-31T07:34:45.968Z",
+      "name": "complaint over last bill",
+      "priority": "High",
+      "requestedResolutionDate": "2022-05-31T07:34:45.968Z",
+      "resolutionDate": "2022-05-31T07:34:45.968Z",
+      "severity": "Minor",
+      "status": "resolved",
+      "statusChangeDate": "2022-05-31T07:34:45.968Z",
+      "statusChangeReason": "Apply full credit",
+      "ticketType": "Bill Dispute",
+      "troubleTicketSpecification": {
+        "id": "25632415",
+        "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicketSpecification/25632415",
+        "name": "Bill Dispute",
+        "version": "1",
+        "@type": "TroubleTicketSpecificationRef",
+        "@referredType": "TroubleTicketSpecification",
+        "@baseType": "TroubleTicketSpecificationRef",
+        "@schemaLocation": "https://github.com/mycsp/schemas/v5/TroubleTicketSpecificationRef.schema.json"
+      },
+      "troubleTicketCharacteristic": [
+        {
+          "id": "1",
+          "name": "disputeAmount",
+          "valueType": "number",
+          "value": 40,
+          "@type": "NumberCharacteristic",
+          "@baseType": "Characteristic",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/NumberCharacteristic.schema.json"
+        },
+        {
+          "id": "2",
+          "name": "creditAmount",
+          "valueType": "number",
+          "value": 40,
+          "characteristicRelationship": [
+            {
+              "id": "4",
+              "relationshipType": "dependency",
+              "@type": "CharacteristicRelationship",
+              "@baseType": "CharacteristicRelationship",
+              "@schemaLocation": "https://github.com/mycsp/schemas/v5/CharacteristicRelationship.schema.json"
+            }
+          ],
+          "@type": "NumberCharacteristic",
+          "@baseType": "Characteristic",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/Characteristic.schema.json"
+        },
+        {
+          "id": "3",
+          "name": "currency",
+          "valueType": "string",
+          "value": "USD",
+          "@type": "StringCharacteristic",
+          "@baseType": "Characteristic",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/StringCharacteristic.schema.json"
+        },
+        {
+          "id": "4",
+          "name": "creditReason",
+          "valueType": "string",
+          "value": "Network connectivity issues",
+          "@type": "StringCharacteristic",
+          "@baseType": "Characteristic",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/StringCharacteristic.schema.json"
+        }
+      ],
+      "attachment": [
+        {
+          "id": "34345",
+          "href": "https://mycsp.com:8080/tmf-api/attachment/v5/attachment/34345",
+          "description": "Scanned disputed bill",
+          "name": "March Bill",
+          "@baseType": "AttchmentRef",
+          "@type": "AttachmentRef",
+          "@referredType": "Attachment",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/AttachmentRef.schema.json"
+        }
+      ],
+      "channel": {
+        "id": "8774",
+        "href": "https://mycsp.com:8080/tmf-api/channelManagement/v5/Channel/8774",
+        "name": "self service",
+        "@type": "ChannelRef",
+        "@baseType": "ChannelRef",
+        "@referredType": "Channel",
+        "@schemaLocation": "https://github.com/mycsp/schemas/v5/ChannelRef.schema.json"
+      },
+      "note": [
+        {
+          "id": "77456",
+          "author": "Jack Smith",
+          "date": "2019-05-31T07:34:45.968Z",
+          "text": "This is quite important, please approach me as soon as possible",
+          "@type": "Note",
+          "@baseType": "Note",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/Note.schema.json"
+        }
+      ],
+      "relatedEntity": [
+        {
+          "role": "disputedBill",
+          "entity": {
+            "id": "3472",
+            "href": "https://mycsp.com:8080/tmf-api/customerBillManagement/v5/customerBill/3472",
+            "name": "March 2019 Bill",
+            "@type": "EntityRef",
+            "@referredType": "CustomerBill",
+            "@baseType": "EntityRef",
+            "@schemaLocation": "https://github.com/mycsp/schemas/v5/EntityRef.schema.json"
+          },
+          "@type": "RelatedEntity",
+          "@baseType": "RelatedEntity",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/RelatedEntity.schema.json"
+        }
+      ],
+      "relatedParty": [
+        {
+          "role": "member",
+          "partyOrPartyRole": {
+            "id": "9866",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9866",
+            "name": "Sandy Smith",
+            "@type": "PartyRef",
+            "@referredType": "Individual",
+            "@baseType": "PartyRef",
+            "@schemaLocation": "https://github.com/mycsp/schemas/v5/PartyRef.schema.json"
+          },
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "@baseType": "RelatedPartyRefOrPartyRoleRef",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/RelatedPartyRefOrPartyRoleRef.schema.json"
+        },
+        {
+          "role": "reporter",
+          "partyOrPartyRole": {
+            "id": "9867",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9867",
+            "name": "Jacob Jac Miller",
+            "@type": "PartyRef",
+            "@referredType": "Individual",
+            "@baseType": "PartyRef",
+            "@schemaLocation": "https://github.com/mycsp/schemas/v5/PartyRef.schema.json"
+          },
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "@baseType": "RelatedPartyRefOrPartyRoleRef",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/RelatedPartyRefOrPartyRoleRef.schema.json"
+        },
+        {
+          "role": "customer",
+          "partyOrPartyRole": {
+            "id": "9176",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/customer/9176",
+            "name": "Jack Smith Family",
+            "partyId": "9177",
+            "partyName": "Jack Smith",
+            "@type": "PartyRoleRef",
+            "@referredType": "Customer",
+            "@baseType": "PartyRoleRef",
+            "@schemaLocation": "https://github.com/mycsp/schemas/v5/PartyRoleRef.schema.json"
+          },
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "@baseType": "RelatedPartyRefOrPartyRoleRef",
+          "@schemaLocation": "https://github.com/mycs/pschemas/v5/RelatedPartyRefOrPartyRoleRef.schema.json"
+        }
+      ],
+      "statusChangeHistory": [
+        {
+          "statusChangeDate": "2022-05-28T07:34:45.968Z",
+          "statusChangeReason": "trouble ticket created ",
+          "status": "acknowledged",
+          "@type": "StatusChange",
+          "@baseType": "StatusChange",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/StatusChange.schema.json"
+        },
+        {
+          "statusChangeDate": "2022-05-28T08:34:45.968Z",
+          "statusChangeReason": "start process",
+          "status": "inProgress",
+          "@type": "StatusChange",
+          "@baseType": "StatusChange",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/StatusChange.schema.json"
+        },
+        {
+          "statusChangeDate": "2022-05-29T07:34:45.968Z",
+          "statusChangeReason": "Need more information from the customer",
+          "status": "pending",
+          "@type": "StatusChange",
+          "@baseType": "StatusChange",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/StatusChange.schema.json"
+        },
+        {
+          "statusChangeDate": "2022-05-31T07:34:45.968Z",
+          "statusChangeReason": "Apply full credit",
+          "status": "resolved",
+          "@type": "StatusChange",
+          "@baseType": "StatusChange",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/StatusChange.schema.json"
+        }
+      ],
+      "troubleTicketRelationship": [
+        {
+          "id": "567433",
+          "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicket/567433",
+          "name": "Network Coverage",
+          "relationshipType": "dependecy",
+          "@type": "TroubleTicketRelationship",
+          "@referredType": "TroubleTicket",
+          "@baseType": "TroubleTicketRelationship",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/TroubleTicketRelationship.schema.json"
+        }
+      ],
+      "externalIdentifier": [
+        {
+          "id": "3331234",
+          "owner": "BMC Remedy",
+          "externalIdentifierType": "Incident",
+          "@type": "ExternalIdentifier",
+          "@baseType": "ExternalIdentifier",
+          "@schemaLocation": "https://github.com/mycsp/schemas/v5/ExternalIdentifier.schema.json"
+        }
+      ],
+      "@type": "TroubleTicket",
+      "@baseType": "TroubleTicket",
+      "@schemaLocation": "https://github.com/mycsp/schemas/v5/TroubleTicket.schema.json"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TroubleTicketCreateEvent"
+}

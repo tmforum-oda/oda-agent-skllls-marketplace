@@ -1,0 +1,38 @@
+@startuml
+title Figure A.06 - Agreement Specialization overview
+
+class Agreement <<Entity>> {
+  + documentNumber : String
+  + statementOfIntent : String
+  + status : String
+  + type : String
+  «required»
+  + validFor : TimePeriod
+}
+
+class AgreementSpecification <<EntitySpecification>>
+
+Agreement "0..*" <--> "0..1" AgreementSpecification : AgreementDescribedBy
+
+class AmendmentAgreement
+class ContractualAgreement <<abstract>>
+class NonContractualAgreement
+
+AmendmentAgreement --|> Agreement
+ContractualAgreement --|> Agreement
+NonContractualAgreement --|> Agreement
+
+Agreement "0..*" --> "0..*" AmendmentAgreement : AmmendmentAgreementAmmends
+
+class AmendmentAgreementSpecification
+class ContractualAgreementSpecification <<abstract>>
+class NonContractualAgreementSpecification
+
+AmendmentAgreementSpecification --|> AgreementSpecification
+ContractualAgreementSpecification --|> AgreementSpecification
+NonContractualAgreementSpecification --|> AgreementSpecification
+
+ContractualAgreement "0..*" <--> "0..1" ContractualAgreementSpecification : ContractualAgreementDescribedBy
+NonContractualAgreement "0..*" <--> "0..1" NonContractualAgreementSpecification : NonContractualAgreementDescribedBy
+AmendmentAgreement "0..*" <--> "0..1" AmendmentAgreementSpecification : AmendmentAgreementDescribedBy
+@enduml

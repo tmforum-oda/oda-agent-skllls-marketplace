@@ -1,0 +1,103 @@
+@startuml
+title TMFC005 Product Inventory
+
+legend
+  <<ProductOfferingInstance>> = Product Offering Instance (status, PPrice excluding tax, TaxRate)
+  <<Product>> = Product (Charac. / Charac.value)
+end legend
+
+class "Fiber Contract Silver" as FiberContractSilver <<ProductOfferingInstance>> {
+  Status = Active
+  start date = 10th Sep 2023
+  PPrice = "Welcome Discount: -5€/month for 10 first months"
+  TaxRate = 20%
+}
+
+class "Box Shipping" as BoxShipping <<ProductOfferingInstance>> {
+  Status = Shipped
+  Shipping Date = 09th Sep 2023
+  PPrice = "Standard: Free"
+}
+
+class "Box 1" as Box1POI <<ProductOfferingInstance>> {
+  Status = Active
+  start date = 10th Sep 2023
+  PPrice = "Storage:Maxi Recurring: 5€/month"
+  starting date = 10th Sep 2023
+  TaxRate = 20%
+}
+
+class "Fiber Access" as FiberAccessPOI <<ProductOfferingInstance>> {
+  Status = Active
+  start date = 10th Sep 2023
+  PPrice = "Recurring: 10€/month"
+  starting date = 10th Sep 2023
+  TaxRate = 20%
+  PPrice = "OneTime Fees: 30€"
+  starting date = 10th Sep 2023
+  TaxRate = 10%
+}
+
+class "Connectivity" as ConnectivityPOI <<ProductOfferingInstance>> {
+  Status = Active
+  start date = 10th Sep 2023
+}
+
+class "Fix Communication Service" as FixCommunicationServicePOI <<ProductOfferingInstance>> {
+  Status = Active
+  start date = 10th Sep 2023
+  PPrice = "Recurring: 12€/month"
+  starting date = 10th Sep 2023
+  TaxRate = 20%
+}
+
+class "TV Channeld" as TVChanneldPOI <<ProductOfferingInstance>> {
+  Status = Active
+  start date = 10th Sep 2023
+  PPrice = "type=Basic Recurring: 5€/month"
+  starting date = 10th Sep 2023
+  TaxRate = 20%
+}
+
+FiberContractSilver --> BoxShipping
+FiberContractSilver --> Box1POI
+FiberContractSilver --> FiberAccessPOI
+FiberContractSilver --> ConnectivityPOI
+FiberContractSilver --> FixCommunicationServicePOI
+FiberContractSilver --> TVChanneldPOI
+
+class "Shipping" as Shipping <<Product>> {
+  Speed = standard
+}
+
+class "Box 1" as Box1 <<Product>> {
+  Color = strawberry red
+  Storage = Maxi
+}
+
+class "Fiber Access" as FiberAccess <<Product>> {
+  Speed = High
+}
+
+class "Connectivity" as Connectivity <<Product>>
+
+class "Fix Communication" as FixCommunication <<Product>> {
+  Phone Number = "+33 9xx xxx"
+}
+
+class "TV Channel" as TVChannel <<Product>> {
+  Value = Basic
+}
+
+BoxShipping --> Shipping : Applies on
+Box1POI --> Box1 : Applies on
+FiberAccessPOI --> FiberAccess : Applies on
+ConnectivityPOI --> Connectivity : Applies on
+FixCommunicationServicePOI --> FixCommunication : Applies On
+TVChanneldPOI --> TVChannel : Applies on
+
+Shipping --> Box1 : Applies on
+Connectivity --> FiberAccess : Requires
+TVChannel --> Connectivity : Applies On
+
+@enduml

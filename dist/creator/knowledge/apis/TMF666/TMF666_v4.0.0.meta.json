@@ -1,0 +1,16 @@
+{
+  "id": "TMF666",
+  "type": "api",
+  "name": "account-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "36ea91d1a267a63ad4d15afb96304d64135b13ffae6ba9b0189ad0bb777e8fa4"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

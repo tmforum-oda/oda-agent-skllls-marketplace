@@ -1,0 +1,28 @@
+@startuml
+title Figure A.14 - Illustration 01.01: CSP Catalog
+
+object "Greenfield International\nBusiness : Organization" as Org {
+  isLegalEntity = true
+}
+object "Greenfield International\nBusiness CSP : PartyRole" as CSPRole
+object "SASE Offer :\nCompositeProductOfferingSpecification" as SASEOffer
+object "SASE Price Plan :\nProductOfferingPrice" as SASEPrice
+object "Cloud Hosting Offer :\nAtomicProductOfferingSpecification" as CloudHostingOffer
+object "SDWAN Product Offering Spec :\nAtomicProductOfferingSpecification" as SDWANOfferSpec
+object "SSE Product Offering Spec :\nAtomicProductOfferingSpecification" as SSEOfferSpec
+object "CE Cloud Hosting Product\nSpecification : AtomicProductSpecification" as CECloudHostingSpec {
+  brand = Cloud Experts
+}
+object "SDWAN Product\nSpecification : AtomicProductSpecification" as SDWANSpec
+object "SSE Product\nSpecification : AtomicProductSpecification" as SSESpec
+
+Org --> CSPRole : :/OrganisationPlays
+CSPRole --> SASEOffer : :ProductOfferingSpecificationMarketedBy
+SASEOffer --> SASEPrice : :ProductOfferingSpecificationValuedBy
+SASEOffer --> CloudHostingOffer : ":ProductOfferingSpecificationComposedOfPOSpec {0,1}"
+SASEOffer --> SDWANOfferSpec : ":ProductOfferingSpecificationComposedOfPOSpec {1,1}"
+SASEOffer --> SSEOfferSpec : ":ProductOfferingSpecificationComposedOfPOSpec {0,1}"
+CloudHostingOffer --> CECloudHostingSpec : :ProdSpecMadeAvailableAsAtomicProductOfferingSpecification
+SDWANOfferSpec --> SDWANSpec : :ProdSpecMadeAvailableAsAtomicProductOfferingSpecification
+SSEOfferSpec --> SSESpec : :ProdSpecMadeAvailableAsAtomicProductOfferingSpecification
+@enduml

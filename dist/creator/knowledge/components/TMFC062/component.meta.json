@@ -1,0 +1,17 @@
+{
+  "id": "TMFC062",
+  "type": "component",
+  "name": "ResourceConfigurationandActivation",
+  "version": "1.0.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC062-ResourceConfigurationandActivation/Specification/TMFC062-ResourceConfigurationandActivation.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "151a61558a31fed99c69c71b9e4aad71bdb722f3f99674ae5f194623f102475a"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

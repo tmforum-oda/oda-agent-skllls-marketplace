@@ -1,0 +1,34 @@
+@startuml
+title Step 0: Product order handling aspects
+
+participant "Product Order\nCapture &\nValidation" as POCV
+participant "Event Management" as Event #grey
+participant "Product Order\nDelivery & Orchestration\nManagement" as PODOM
+participant "Product Inventory" as PI
+
+== Step 0 ==
+
+POCV -> PODOM : 1 **TMF622 Product Order Management**\nPOST /productOrder\n(productOrder)
+activate PODOM
+PODOM -> PODOM : 2 validate productOrder
+PODOM --> POCV : 3 **TMF622** 201 Created\n(productOrder, state="acknowledged")
+
+PODOM -> PI : 4 **TMF637 Product Inventory Management**\nPOST /product\n(state="created")
+activate PI
+PI --> PODOM : 5 **TMF637** 201 Created\n(product)
+deactivate PI
+
+PODOM -> PODOM : 6 start execution of productOrderItems\nupdate productOrder (state="inProgress")
+
+PODOM -> Event : 7 **TMF688 Event Management**\nPOST event productOrderStateChange\n(state="inProgress")
+activate Event
+Event -> POCV : 8 **TMF688 Event Management**\nPOST listener/productOrderStateChange\n(state="inProgress")
+deactivate Event
+
+PODOM -> PI : 9 **TMF637 Product Inventory Management**\nPATCH /product\n(state="pendingActive")
+activate PI
+PI --> PODOM : 10 **TMF637** 200 OK\n(product)
+deactivate PI
+deactivate PODOM
+
+@enduml

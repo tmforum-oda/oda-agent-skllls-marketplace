@@ -1,0 +1,29 @@
+[
+    {
+        "@type": "Extract",
+        "id": "c6a1e831-ef5b-4d09-85a8-594fca73313b",
+        "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePool/c3fef858-b864-4fac-971e-795b1195ded9/extract/c6a1e831-ef5b-4d09-85a8-594fca73313b",
+        "capacityDemand":
+        {
+            "@type": "Capacity",
+            "capacityAmount":
+            {
+                "amount": 2,
+                "units": "number"
+            },
+            "capacityStatus": "planned",
+            "applicableTimePeriod":
+            [
+                {
+                    "@type": "ApplicableTimePeriod",
+                    "fromToDateTime":
+                    {
+                        "startDateTime": "2024-05-13T00:00:00Z", 
+                        "endDateTime": "2024-09-20T00:00:00Z"
+                    }
+                }
+            ]
+        },
+        "state": "inProgress"
+    }
+]

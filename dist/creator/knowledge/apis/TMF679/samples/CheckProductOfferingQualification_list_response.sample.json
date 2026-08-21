@@ -1,0 +1,198 @@
+[
+  {
+    "href": "https://host:port/productOfferingQualification/v5/CheckProductOfferingQualification/99",
+    "id": "99",
+    "@type": "CheckProductOfferingQualification",
+    "channel": {
+      "id": "1",
+      "name": "Web",
+      "@type": "ChannelRef"
+    },
+    "description": "Example for a CheckProductOfferingQualification resource",
+    "effectiveQualificationDate": "2021-09-01T14:21:03.352Z",
+    "expectedQualificationCompletionDate": "2021-09-01T14:21:03.352Z",
+    "expirationDate": "2021-09-01T14:21:03.352Z",
+    "note": [
+      {
+        "@type": "Note",
+        "author": "Mr. N. Bene",
+        "date": "2020-11-20T08:00:00Z",
+        "id": "1",
+        "text": "Not for a CheckProductOfferingQualification"
+      }
+    ],
+    "checkProductOfferingQualificationItem": [
+      {
+        "@type": "CheckProductOfferingQualificationItem",
+        "expectedActivationDate": "2021-09-01T14:21:03.352Z",
+        "productOffering": {
+          "id": "DPI123",
+          "name": "International Data Plan - 20 GB",
+          "href": "https://host:port/productCatalogManagement/v5/productOffering/DPI123",
+          "@type": "ProductOfferingRef"
+        },
+        "action": "add",
+        "id": "1",
+        "qualificationItemResult": "green",
+        "state": "done"
+      },
+      {
+        "@type": "CheckProductOfferingQualificationItem",
+        "expectedActivationDate": "2021-09-01T14:21:03.352Z",
+        "eligibilityResultReason": [
+          {
+            "@type": "EligibilityResultReason",
+            "label": "This offering is not anymore available but similar offer exists",
+            "code": "TE45A"
+          }
+        ],
+        "productOffering": {
+          "id": "DPI123",
+          "name": "International Data Plan - 40 GB",
+          "href": "https://host:port/productCatalogManagement/v5/productOffering/DPI123",
+          "@type": "ProductOfferingRef"
+        },
+        "alternateProductOfferingProposal": [
+          {
+            "@type": "AlternateProductOfferingProposal",
+            "alternateActivationDate": "2021-09-01T14:21:03.353Z",
+            "alternateProductOffering": {
+              "id": "DPI124",
+              "name": "International Data Plan - 50 GB",
+              "href": "https://host:port/productCatalogManagement/v5/productOffering/DPI124",
+              "@type": "ProductOfferingRef"
+            },
+            "id": "1"
+          }
+        ],
+        "action": "add",
+        "id": "2",
+        "qualificationItemResult": "orange",
+        "state": "done"
+      },
+      {
+        "@type": "CheckProductOfferingQualificationItem",
+        "expectedActivationDate": "2021-09-01T14:21:03.352Z",
+        "eligibilityResultReason": [
+          {
+            "@type": "EligibilityResultReason",
+            "label": "This offering is not anymore open to new customer",
+            "code": "TE45"
+          }
+        ],
+        "productOffering": {
+          "id": "DPI128",
+          "name": "France Voice Plan - 3 hours",
+          "href": "https://host:port/productCatalogManagement/v5/productOffering/DPI128",
+          "@type": "ProductOfferingRef"
+        },
+        "action": "add",
+        "id": "3",
+        "qualificationItemResult": "red",
+        "state": "done"
+      }
+    ],
+    "provideAlternative": true,
+    "provideResultReason": true,
+    "relatedParty": [
+      {
+        "role": "requester",
+        "partyOrPartyRole": {
+          "id": "45hj-999",
+          "href": "https://host:port/partyManagement/v5/individual/45hj-999",
+          "name": "Louise",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyOrPartyRole"
+      }
+    ],
+    "requestedQualificationCompletionDate": "2021-09-01T14:21:03.354Z",
+    "state": "done",
+    "creationDate": "2021-09-01T14:21:03.354Z"
+  },
+  {
+    "href": "https://host:port/productOfferingQualification/v5/CheckProductOfferingQualification/101",
+    "id": "101",
+    "@type": "CheckProductOfferingQualification",
+    "channel": {
+      "id": "1",
+      "name": "Web",
+      "@type": "ChannelRef"
+    },
+    "description": "Example for an acknowledged CheckProductOfferingQualification resource",
+    "expectedQualificationCompletionDate": "2021-09-05T07:11:53.167Z",
+    "CheckProductOfferingQualificationItem": [
+      {
+        "@type": "CheckProductOfferingQualificationItem",
+        "expectedActivationDate": "2021-09-02T07:11:53.167Z",
+        "product": {
+          "@type": "Product",
+          "productSpecification": {
+            "id": "77",
+            "href": "https://host:port/productCatalogManagement/v5/productSpecification/77",
+            "name": "NEST for enhanced MobileBroadband with IMS support"
+          },
+          "productCharacteristic": [
+            {
+              "@type": "ObjectCharacteristic",
+              "id": "Slice5G_Characteristic",
+              "name": "Slice 5G POQ configuration",
+              "valueType": "Slice5G JSON descriptor",
+              "value": {
+                "@valueSchemaLocation": "https://github.com/..5GPOQ.json",
+                "@type": "5GSliceJsonSpecification",
+                "availability": 99.999,
+                "MMTel_Support": 1,
+                "Session _Service_Continuity_support": 1,
+                "Slice_Quality_Of_Service": [
+                  1,
+                  2,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ]
+              }
+            }
+          ],
+          "place": [
+            {
+              "role": "Coverage",
+              "place": {
+                "id": "FRA",
+                "href": "https://host:port/geographicLocationManagement/v5/geographicLocation/FRA",
+                "name": "France",
+                "@referredType": "GeographicLocation",
+                "@type": "PlaceRef"
+              },
+              "@type": "RelatedPlaceRefOrValue"
+            }
+          ]
+        },
+        "action": "add",
+        "id": "1",
+        "state": "acknowledged"
+      }
+    ],
+    "provideAlternative": true,
+    "provideResultReason": true,
+    "relatedParty": [
+      {
+        "role": "requester",
+        "partyOrPartyRole": {
+          "id": "45hj-999",
+          "href": "https://host:port/partyManagement/v5/individual/45hj-999",
+          "name": "Louise",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyOrPartyRole"
+      }
+    ],
+    "requestedQualificationCompletionDate": "2021-09-02T07:11:53.168Z",
+    "state": "acknowledged",
+    "creationDate": "2021-09-02T07:11:53.168Z"
+  }
+]

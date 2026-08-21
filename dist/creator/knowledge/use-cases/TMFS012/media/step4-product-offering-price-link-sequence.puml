@@ -1,0 +1,56 @@
+@startuml
+title Product Catalog Management - Step 4 - Product Offering Price Link to PO
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+actor Marketer
+participant "EngagementManagement" as EM #purple
+participant "ProductCatalogManagement" as PCM <<blackbox>>
+participant "EventManager" as EventMgr #grey
+
+Marketer -> EM : 100 I need to associate the PO 'Fiber Access' with the product offering price
+EM -> PCM : 101 **TMF701 Process Flow** POST /processFlow\n(ManageProductOffering, PO#569)
+activate PCM
+note right of PCM
+  Because PO#569 is inDesign we do not manage version at this stage
+  For other lifecycle state, the modify task scope will differ
+end note
+PCM --> EM : 102 **TMF701** 201 Created (process#, NextTasks:\nmodify identity data,\nOperationSpecification, ProductOfferingTerm,\nAssociationToProductPrice,CancelModification)
+
+Marketer -> EM : 103 I associate 'Fiber Internet monthly charge with PO 'Fiber Access'
+EM -> PCM : 104 **TMF701 ProcessFlow** PATCH /processFlow/id15/taskFlow/id1\n(AssociationToProductPrice, #c45, PO#569)
+PCM --> EM : 105 **TMF701** 200 OK (process#/task#, NextTasks:\nmodify identity data, OperationSpecification, ProductOfferingTerm,\nAssociationToProductPrice,\nCancelModification, ValidateModification)
+
+Marketer -> EM : 106 I'm done with this modification
+EM -> PCM : 107 **TMF701 Process Flow** PATCH /processFlow/id15/taskFlow/id2\n(ValidateModfication, true)
+
+PCM -> PCM : 108 **TMF620 Product Catalog Management**\nPATCH /productOffering/id569\n(associate to #c45)
+
+PCM --> EM : 109 **TMF701** 200 OK\n(process# completed, List of available actions:\nCreate ProductOffering, Manage ProductOffering\nRetrieve Notification, Create POP, Manage POP\nTest PO, Launch PO)
+deactivate PCM
+
+group validate Product Offering design
+
+    Marketer -> EM : 110 I need to validate my new 'Fiber Access'ProductOffering
+    EM -> PCM : 111 **TMF620 Product Catalog** GET /productOffering/id569
+    activate PCM
+    PCM --> EM : 112 **TMF620** GET /productOffering/id569
+
+    Marketer -> EM : 113 I'm happy with this ProductOfferingn\nlet's go to next step
+    EM -> PCM : 114 **TMF701 Process Flow** POST /processFlow\n(ManageProductOffering, PO#569, state designed)
+
+    PCM -> PCM : 115 Check state change consistency
+
+    PCM -> PCM : 116 **TMF620 Product Catalog Management**\nPATCH /productOffering/id569\n(state designed)
+
+    PCM -> EventMgr : 117 **TMF688 Event Management**\nPOST /productOfferingStateChangeEvent\n(PO#569, state=designed)
+
+    PCM --> EM : 118 **TMF701** 200 OK\n(process# completed - List of available actions:\nCreate ProductOffering, Manage ProductOffering\nRetrieve Notification, Create POP, Manage POP\nTest PO, Launch PO)
+    deactivate PCM
+
+end
+
+@enduml

@@ -1,0 +1,45 @@
+[
+  {
+    "op": "replace",
+    "path": "/note?(@.id=='NOTE001')/text",
+    "value": "Order updated - priority escalated due to customer requirements."
+  },
+  {
+    "op": "replace",
+    "path": "/orderItem/-/resource/resourceCharacteristic/-",
+    "value": {
+      "@type": "IntegerCharacteristic",
+      "@baseType": "Characteristic",
+      "@schemaLocation": "/schema-registry/schema/Characteristic",
+      "id": "CH123456",
+      "name": "Storage Capacity",
+      "valueType": "integer",
+      "value": 2048,
+      "characteristicRelationship": [
+        {
+          "@type": "CharacteristicRelationship",
+          "@schemaLocation": "/schema-registry/schema/CharacteristicRelationship",
+          "id": "CHREL7890",
+          "relationshipType": "dependent"
+        }
+      ]
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/relatedParty/-",
+    "value": {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "@schemaLocation": "/schema-registry/schema/RelatedParty",
+      "role": "Service Provider",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "@schemaLocation": "/schema-registry/schema/Party",
+        "href": "/tmf-api/v5/relatedParties/67890",
+        "id": "67890",
+        "name": "ABC Telecom - Premium Services",
+        "@referredType": "Organization"
+      }
+    }
+  }
+]

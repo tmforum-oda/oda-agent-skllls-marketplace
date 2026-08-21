@@ -1,0 +1,60 @@
+@startuml
+title Figure 8: Product catalog
+
+legend
+  Blue = Product Offering / light blue = Product Offering Price
+  Dark green = Product Specification / light green = Product Specification Characteristic
+  Dashed green = Product Usage Specification
+end legend
+
+class "Mobile Contract" as MobileContract <<ProductOffering>> {
+  Welcome discount:10% / first 12 months
+}
+class "Mobile Bundle" as MobileBundle <<ProductOffering>>
+MobileContract --> MobileBundle : "Min1, Max n"
+
+class "SIM Card" as SIMCardOffering <<ProductOffering>> {
+  3€ / duplic. sim
+}
+class "Voice Mail" as VoiceMailOffering <<ProductOffering>> {
+  1€ / month
+}
+class "Postpaid Mobile Line" as PostpaidMobileLineOffering <<ProductOffering>> {
+  25€ / month
+}
+
+MobileBundle --> SIMCardOffering : "Min1, Max n"
+MobileBundle --> VoiceMailOffering : "Min 0, Max 1"
+MobileBundle --> PostpaidMobileLineOffering : "Min 1, Max 1"
+
+class "SIM Card" as SIMCardSpec <<ProductSpecification>>
+class "Voice Mail" as VoiceMailSpec <<ProductSpecification>> {
+  mailboxSize
+}
+class "Recurring Bundle" as RecurringBundleSpec <<ProductSpecification>> {
+  money
+}
+class "Mobile Line" as MobileLineSpec <<ProductSpecification>> {
+  number
+  usageLimit
+}
+
+SIMCardOffering --> SIMCardSpec
+VoiceMailOffering --> VoiceMailSpec
+PostpaidMobileLineOffering --> RecurringBundleSpec : "money = 20€"
+RecurringBundleSpec --> MobileLineSpec : requires
+
+SIMCardSpec --> MobileLineSpec : requires
+VoiceMailSpec --> MobileLineSpec : requires
+
+class "Data" as DataUsageSpec <<ProductUsageSpecification>>
+class "SMS" as SMSUsageSpec <<ProductUsageSpecification>>
+class "National Voice" as NationalVoiceUsageSpec <<ProductUsageSpecification>>
+
+RecurringBundleSpec --> DataUsageSpec : concerns
+RecurringBundleSpec --> SMSUsageSpec : concerns
+RecurringBundleSpec --> NationalVoiceUsageSpec : concerns
+
+MobileLineSpec ..> NationalVoiceUsageSpec : "describes usage of"
+
+@enduml

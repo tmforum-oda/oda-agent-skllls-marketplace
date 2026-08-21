@@ -1,0 +1,28 @@
+{
+  "@type": "PermissionSpecification",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-9f32c9e0",
+  "id": "ps-9f32c9e0",
+  "description": "Permission to place request to change holder data.",
+  "name": "holderdata:change",
+  "function": "change_holder_data",
+  "action": "ReadWrite",
+  "specificationCharacteristic": [
+    {
+      "@type": "CharacteristicSpecification",
+      "name": "Macro.Segment",
+      "valueType": "string",
+      "characteristicValueSpecification": [
+        {
+          "@type": "StringCharacteristicValueSpecification",
+          "valueType": "string",
+          "value": "mass_market"
+        },
+        {
+          "@type": "StringCharacteristicValueSpecification",
+          "valueType": "string",
+          "value": "residential"
+        }
+      ]
+    }
+  ]
+}

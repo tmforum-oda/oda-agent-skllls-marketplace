@@ -1,0 +1,50 @@
+@startuml
+title Figure A.06c - ContractualAgreement specialization
+
+class Agreement <<Entity>> {
+  + documentNumber : String
+  + statementOfIntent : String
+  + status : String
+  + type : String
+  «required»
+  + validFor : TimePeriod
+}
+class AgreementSpecification <<EntitySpecification>>
+Agreement "0..*" <--> "0..1" AgreementSpecification : AgreementDescribedBy
+
+class ContractualAgreement
+class ContractualAgreementSpecification
+ContractualAgreement --|> Agreement
+ContractualAgreementSpecification --|> AgreementSpecification
+ContractualAgreement "0..*" <--> "0..1" ContractualAgreementSpecification : ContractualAgreementDescribedBy
+
+class Commitment
+class ServiceLevelAgreement
+class SalesQuoteAgreement
+class PartyPrivacyAgreement
+class PartyRevenueSharingAgreement
+class WorkContract
+class ImplementationAgreement
+class FrameworkAgreement
+
+Commitment --|> ContractualAgreement
+ServiceLevelAgreement --|> ContractualAgreement
+SalesQuoteAgreement --|> ContractualAgreement
+PartyPrivacyAgreement --|> ContractualAgreement
+PartyRevenueSharingAgreement --|> ContractualAgreement
+WorkContract --|> ContractualAgreement
+ImplementationAgreement --|> ContractualAgreement
+FrameworkAgreement --|> ContractualAgreement
+
+class WorkContractSpecification
+class ImplementationAgreementSpecification
+class FrameworkAgreementSpecification
+
+WorkContractSpecification --|> ContractualAgreementSpecification
+ImplementationAgreementSpecification --|> ContractualAgreementSpecification
+FrameworkAgreementSpecification --|> ContractualAgreementSpecification
+
+WorkContract "0..*" <--> "0..1" WorkContractSpecification : WorkContractDescribedBy
+ImplementationAgreement "0..*" <--> "0..1" ImplementationAgreementSpecification : ImplementationAgreementDescribedBy
+FrameworkAgreement "0..*" <--> "0..1" FrameworkAgreementSpecification : FrameworkAgreementDescribedBy
+@enduml

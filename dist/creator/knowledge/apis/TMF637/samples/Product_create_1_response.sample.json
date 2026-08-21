@@ -1,0 +1,51 @@
+[
+  {
+    "id": "g265-tf85",
+    "href": "https://host:port/productInventory/v5/product/g265-tf85",
+    "description": "product description",
+    "isBundle": false,
+    "isCustomerVisible": true,
+    "name": "Voice Over IP Basic instance for Jean",
+    "productSerialNumber": "N/A",
+    "startDate": "2017-11-01T09:37:29.961Z",
+    "status": "created",
+    "@baseType": "Product",
+    "@type": "Product",
+    "@schemaLocation": "https:://host:port/standardProduct.json",
+    "productOffering": {
+      "id": "PO-101-1",
+      "href": "https://host:port/productCatalogManagement/v5/productOffering/PO-101-1",
+      "name": "Voice Over IP Basic",
+      "@type": "ProductOfferingRef",
+      "@referredType": "ProductOffering"
+    },
+    "productCharacteristic": [
+      {
+        "name": "Number",
+        "valueType": "string",
+        "@type": "StringCharacteristic",
+        "value": "415 279 7439"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "User",
+        "partyOrPartyRole": {
+          "id": "45hj-8888",
+          "href": "https://host:port/partyManagement/v5/individual/45hj-8888",
+          "name": "Jean",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyOrPartyRole"
+      }
+    ],
+    "productSpecification": {
+      "id": "PS-101",
+      "href": "https://host:port/productCatalogManagement/v5/productSpecification/PS-101",
+      "@referredType": "ProductSpecification",
+      "@type": "ProductSpecificationRef",
+      "version": "1"
+    }
+  }
+]

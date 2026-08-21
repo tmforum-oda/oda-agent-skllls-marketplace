@@ -1,0 +1,28 @@
+{
+  "@type": "PermissionSpecificationSet",
+  "name": "Customer.OTT.Primary.User",
+  "involvementRole": "Customer.OTT.Primary.User",
+  "permissionSpecification": [
+    {
+      "@type": "PermissionSpecification",
+      "description": "Permission to manage users and to add or remove permissions to delegated users.",
+      "name": "usermanagement:readwrite",
+      "function": "user_management",
+      "action": "ReadWrite"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "description": "Permission to buy products in OTT apps.",
+      "name": "impulsebuy:enabled",
+      "function": "impulse_buy",
+      "action": "Enabled"
+    },
+    {
+      "@type": "PermissionSpecification",
+      "description": "Permission to manage delegated users parental controls.",
+      "name": "parentalcontrols:manage",
+      "function": "manage_parental_controls",
+      "action": "ReadWrite"
+    }
+  ]
+}

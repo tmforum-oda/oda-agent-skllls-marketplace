@@ -1,0 +1,33 @@
+{
+    "correlationId": "10182509-654c",
+    "description": "GeographicAddressAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4fe7-88d1-f6ce0aa8cde0",
+    "eventTime": "2023-02-22T11:20:57.355Z",
+    "eventType": "GeographicAddressAttributeValueChangeEvent",
+    "priority": "3",
+    "timeOcurred": "2023-02-22T11:20:52.833Z",
+    "title": "GeographicAddressAttributeValueChangeEvent",
+    "event": {
+        "geographicAddress": {
+            "id": "4c6b6fc1-d954-4ad6-adf6-59c275afb541",
+            "href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/4c6b6fc1-d954-4ad6-adf6-59c275afb541",
+            "streetNr": "225",
+            "@type":"GeographicAddress"
+        }
+    },
+    "reportingSystem": {
+        "id": "1e1b2eb3-49e2-45a7-a069-8402e2688ff3",
+        "name": "APP-365",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "ee1bbeb6-2cb1-4123-9d30-826b349b00f8",
+        "name": "APP-250",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "GeographicAddressAttributeValueChangeEvent"
+}

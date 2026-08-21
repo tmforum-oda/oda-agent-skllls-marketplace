@@ -1,0 +1,14 @@
+{
+  "@type": "AttachmentAttributeValueChangeEvent",
+  "eventId": "e3dac91d-a035-465f-afc5-d3c603b53ad2",
+  "eventTime": "2024-11-06T11:00:00.000Z",
+  "eventType": "AttachmentAttributeValueChangeEvent",
+  "event": {
+    "attachment": {
+      "@type": "Attachment",
+      "href": "https://serverRoot/tmf-api/document/v5/attachment/1492026921",
+      "id": "1492026921",
+      "name": "Zelda as paperback"
+    }
+  }
+}

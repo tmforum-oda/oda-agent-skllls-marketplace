@@ -1,0 +1,8 @@
+{
+    "description": "A ProbeIntent resource update example",        
+    "validFor": {
+        "endDateTime": "2026-04-30T16:40:00.000Z",
+        "startDateTime": "2024-04-30T16:40:00.000Z"
+    },    
+    "@type": "ProbeIntent"
+}

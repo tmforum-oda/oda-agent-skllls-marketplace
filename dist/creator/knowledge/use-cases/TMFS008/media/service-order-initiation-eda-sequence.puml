@@ -1,0 +1,108 @@
+@startuml
+title Figure 22: Service order initiation using asynchronous APIs
+
+participant "Product Order\nDelivery & Orchestration\nManagement" as PODOM
+participant "Event Management" as Event #grey
+participant "Service Qualification\nManagement" as SQM #blue
+participant "Service Catalog\nManagement" as SCM #blue
+participant "Service Order\nManagement" as SOM #blue
+participant "Service Inventory" as SI #blue
+
+== Step 2 ==
+
+note over PODOM : Service Order Launching
+
+PODOM -> Event : 1 **TMF688 Event Management**\nPOST /topic/[prefix].serviceOrderManagement.v1.createServiceOrder.commandRequest/event\n(CFSSpecification)
+Event --> PODOM : 2 **TMF688** 201 Created
+
+Event -> SOM : 3 **TMF688 Event Management**\nPOST /listener/[prefix].serviceOrderManagement.v1.createServiceOrder.commandRequest\n(CFSSpecification)
+note right of SOM : Service Order Creation
+SOM --> Event : 4 **TMF688** 201 Created
+
+SOM -> SOM : 5 validate CFS order\n(state="acknowledged")
+
+SOM -> Event : 6 **TMF688 Event Management**\nPOST /topic/[prefix].serviceOrderManagement.v1.createServiceOrder.commandReply/event\n(state="acknowledge")
+Event --> SOM : 7 **TMF688** 201 Created
+
+Event -> PODOM : 8 **TMF688 Event Management**\nPOST /listener/[prefix].serviceOrderManagement.v1.createServiceOrder.commandReply\n(state="acknowledge")
+PODOM --> Event : 9 **TMF688** 201 Created
+
+PODOM -> PODOM : 10 link productOrderItems and CFSOrderItems
+
+note over SOM : Service Order Execution
+SOM -> SOM : 11 start execution of CFSOrder
+
+group execute CFSOrder orchestration sequence
+
+    SOM -> SOM : 12 update CFSOrderItem (state="inProgress")
+    note right of SOM : Notify Service Order State Change to inProgress
+
+    SOM -> Event : 13 **TMF688 Event Management**\nPOST /topic/[prefix].serviceOrderManagement.v1.serviceOrder.notificationEvent/event\nserviceOrderStateChange\n(serviceOrderItemState="inProgress")
+    Event --> SOM : 14 **TMF688** 201 Created
+
+    Event -> PODOM : 15 **TMF688 Event Management**\nPOST /listener/[prefix].serviceOrderManagement.v1.serviceOrder.notificationEvent\n(serviceOrderItemState="inProgress")
+    PODOM --> Event : 16 **TMF688** 201 Created
+
+    note right of SOM : Service Qualification Launching
+
+    SOM -> Event : 17 **TMF688 Event Management**\nPOST /topic/[prefix].serviceQualificationManagement.v1.createCheckServiceQualification.commandRequest/event\n(CFSSpecification)
+    Event --> SOM : 18 **TMF688** 201 Created
+
+    note right of SQM : Check Service Qualification Creation
+
+    Event -> SQM : 19 **TMF688 Event Management**\nPOST /listener/[prefix].serviceQualificationManagement.v1.createCheckServiceQualification.commandRequest\n(CFSSpecification)
+    SQM --> Event : 20 **TMF688** 201 Created
+
+    SQM -> Event : 21 **TMF688 Event Management**\nPOST /topic/[prefix].serviceQualificationManagement.v1.createCheckServiceQualification.commandReply/event\n(CFSSpecification)
+    Event --> SQM : 22 **TMF688** 201 Created
+
+    Event -> SOM : 23 **TMF688 Event Management**\nPOST /listener/[prefix].serviceQualificationManagement.v1.createCheckServiceQualification.commandReply\n(CFSSpecification)
+    SOM --> Event : 24 **TMF688** 201 Created
+
+    note right of SI : Customer Facing Service Creation
+
+    SOM -> Event : 25 **TMF688 Event Management**\nPOST /topic/[prefix].serviceInventoryManagement.v1.createService.commandRequest/event\n(CFS)\n(state="feasibilityChecked")
+    Event --> SOM : 26 **TMF688** 201 Created
+
+    Event -> SI : 27 **TMF688 Event Management**\nPOST /listener/[prefix].serviceInventoryManagement.v1.createService.commandRequest\n(CFS)\n(state="feasibilityChecked")
+    SI --> Event : 28 **TMF688** 201 Created
+
+    SI -> Event : 29 **TMF688 Event Management**\nPOST /topic/[prefix].serviceInventoryManagement.v1.createService.commandReply/event\n(CFS)\n(state="feasibilityChecked")
+    Event --> SI : 30 **TMF688** 201 Created (CFS)
+
+    Event -> SOM : 31 **TMF688 Event Management**\nPOST /listener/[prefix].serviceInventoryManagement.v1.createService.commandReply\n(CFS)\n(state="feasibilityChecked")
+    SOM --> Event : 32 **TMF688** 201 Created (CFS)
+
+    note right of SCM : Customer Facing Service Specificaiton Inquiry
+
+    SOM -> Event : 33 **TMF688 Event Management**\nPOST /topic/[prefix].serviceCatalogManagement.v1.retrieveServiceSpecification.commandRequest/event\n(CFSSpecification)
+    Event --> SOM : 34 **TMF688** 201 Created
+
+    Event -> SCM : 35 **TMF688 Event Management**\nPOST /listener/[prefix].serviceCatalogManagement.v1.retrieveServiceSpecification.commandRequest\n(CFSSpecification)
+    SCM --> Event : 36 **TMF688** 201 Created
+
+    SCM -> Event : 37 **TMF688 Event Management**\nPOST /topic/[prefix].serviceCatalogManagement.v1.retrieveServiceSpecification.commandReply/event\n(CFSSpecification)
+    Event --> SCM : 38 **TMF688** 201 Created (CFSSpecification)
+
+    Event -> SOM : 39 **TMF688 Event Management**\nPOST /listener/[prefix].serviceCatalogManagement.v1.retrieveServiceSpecification.commandReply\n(CFSSpecification)
+    SOM --> Event : 40 **TMF688** 201 Created (CFSSpecification)
+
+    SOM -> SOM : 41 decide between RFS alternatives
+
+    note right of SI : Resource Facing Service Creation
+
+    SOM -> Event : 42 **TMF688 Event Management**\nPOST /topic/[prefix].serviceInventoryManagement.v1.createService.commandRequest/event\n(RFS)\n(state="feasibilityChecked")
+    Event --> SOM : 43 **TMF688** 201 Created
+
+    Event -> SI : 44 **TMF688 Event Management**\nPOST /listener/[prefix].serviceInventoryManagement.v1.createService.commandRequest\n(RFS)\n(state="feasibilityChecked")
+    SI --> Event : 45 **TMF688** 201 Created
+
+    SI -> Event : 46 **TMF688 Event Management**\nPOST /topic/[prefix].serviceInventoryManagement.v1.createService.commandReply/event\n(RFS)\n(state="feasibilityChecked")
+    Event --> SI : 47 **TMF688** 201 Created (RFS)
+
+    Event -> SOM : 48 **TMF688 Event Management**\nPOST /listener/[prefix].serviceInventoryManagement.v1.createService.commandReply\n(RFS)\n(state="feasibilityChecked")
+    SOM --> Event : 49 **TMF688** 201 Created (RFS)
+
+end
+
+@enduml

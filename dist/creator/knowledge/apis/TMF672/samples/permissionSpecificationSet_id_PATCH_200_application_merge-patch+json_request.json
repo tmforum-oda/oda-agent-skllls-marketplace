@@ -1,0 +1,5 @@
+{
+  "@type": "PermissionSpecificationSet",
+  "name": "TV Sport and Family Admin",
+  "description": "Gives permissions to use Sport Channels and manage the family"
+}

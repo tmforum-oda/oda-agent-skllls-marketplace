@@ -1,0 +1,92 @@
+{
+    "ServiceOrder": {
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's a sample of a request for retrieving a ServiceOrder resource based on its id",
+                    "content-type": "application/json",
+                    "objectId": "43",
+                    "response": "$_ServiceOrder_retrieve_1_response"
+                }
+            ]
+        },
+        "create": {
+            "samples": [
+                {
+                    "description": "Here's a sample of a request for creating a ServiceOrder resource. We use the ‘fields’ parameter to restrict the numbers of attributes returned in the response.",
+                    "fields": [
+                        "id",
+                        "href"
+                    ],
+                    "request": "$_ServiceOrder_create_1_request",
+                    "response": "$_ServiceOrder_create_1_response"
+                }
+            ]
+        },
+        "list": {
+            "samples": [
+                {
+                    "filtering": "fields=id,href,expectedCompletionDate&state=completed&category=TMFresourceillustration&completionDate.gt=2020-08-27T09:37:40.508Z",
+                    "content-type": "application/json",
+                    "description": "Here's an example of a request for retrieving all the service orders for a given customer that were completed before a specified date",
+                    "response": "$_ServiceOrder_list_1_response"
+                }
+            ]
+        },
+        "partialupdate": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for patching a ServiceOrder resource (created via previous POST) with change on following attributes: description, requestedStartDate, requestedCompletionDate, vCPE IP (characteristic) value",
+                    "request": "$_ServiceOrder_partialupdate_1_request",
+                    "content-type": "application/merge-patch+json",
+                    "response": "$_ServiceOrder_partialupdate_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for patching a ServiceOrder resource (created via previous POST) with change on following attributes: description, requestedStartDate, requestedCompletionDate, vCPE IP (characteristic) value",
+                    "request": "$_ServiceOrder_partialupdate_2_request",
+                    "content-type": "application/json-patch+json",
+                    "response": "$_ServiceOrder_partialupdate_1_response"
+                }
+            ]
+        },
+        "delete": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for deleting a Service order.",
+                    "objectId": "47"
+                }
+            ]
+        }
+    },
+    "CancelServiceOrder": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a list of Service order cancel request(s). The given criteria is the cancel request state (done).",
+                    "filtering": "fields=id,ServiceOrder.id,ServiceOrder.href&state=done", 
+                    "content-type": "application/json", 
+                    "response": "$_CancelServiceOrder_list_1_response"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's an example of a cancel Service order request retrieval. The given criteria is the Service order request cancel id 789-fsds5-kjp.",
+                    "content-type": "application/json", 
+                    "objectId": "789-fsds5-kjp",
+                    "response": "$_CancelServiceOrder_retrieve_1_response"
+                }		
+            ]
+        }, 
+        "create": {
+         "samples": [
+            {
+                "description" : "Here's an example of a request for cancel a Service order  - the resulting Service order cancellation request is 789-fsds5-kjp.",
+                "request": "$_CancelServiceOrder_create_1_request",
+                "response": "$_CancelServiceOrder_create_1_response"
+            } 
+         ]   
+        }
+    }
+}

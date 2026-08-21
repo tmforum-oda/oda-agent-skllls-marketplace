@@ -1,0 +1,48 @@
+{
+    "@type": "ResourcePoolSpecification",
+    "id": "b0e0827c-5693-4e41-8445-22438abb33cb", 
+    "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePoolSpecification/b0e0827c-5693-4e41-8445-22438abb33cb", 
+    "name": "Phone Number pool",
+    "description": "Specifies the details of ResourcePools for Phone Number ranges",
+    "capacitySpecification":
+    [
+        {
+            "@type": "CapacitySpecificationRef",
+            "@referredType": "CapacitySpecification",
+            "id": "3d01344d-4409-4b15-8fcb-b8802314ff9c",
+            "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/capacitySpecification/3d01344d-4409-4b15-8fcb-b8802314ff9c",
+            "name": "Phone Number range"
+        }
+    ],
+    "resourceSpecCharacteristic":
+    [
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "cc",
+            "description": "Phone Number Country Code (CC)",
+            "valueType": "string",
+            "characteristicValueSpecification":
+            [
+                {
+                    "@type": "CharacteristicValueSpecification",
+                    "valueType": "string",
+                    "regex": "^[1-9]\\d{0,2}$"
+                }
+            ]
+        },
+        {
+            "@type": "CharacteristicSpecification",
+            "name": "ndc",
+            "description": "Phone Number National Destination Code (NDC)",
+            "valueType": "string",
+            "characteristicValueSpecification":
+            [
+                {
+                    "@type": "CharacteristicValueSpecification",
+                    "valueType": "string",
+                    "regex": "^[1-9]\\d*?$"
+                }
+            ]
+        }
+    ]
+}

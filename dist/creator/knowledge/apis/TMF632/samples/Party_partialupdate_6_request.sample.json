@@ -1,0 +1,7 @@
+[
+  {
+    "op": "replace",
+    "path": "/partyCharacteristic/value?/partyCharacteristic/name=market segment",
+    "value": "Food retail"
+  }
+]

@@ -1,0 +1,33 @@
+{
+    "correlationId": "8a0f2551-8e5d",
+    "description": "ResourceSpecificationStatusChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "415c-be02-41dee60b5bda",
+    "eventTime": "2022-08-25T12:19:03.462Z",
+    "eventType": "ResourceSpecificationStatusChangeEvent",
+    "priority": "3",
+    "timeOcurred": "2022-08-25T12:19:03.157Z",
+    "title": "ResourceSpecificationStatusChangeEvent",
+    "event": {
+        "resourceSpecification": {
+            "id": "42", 
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceSpecification/42", 
+            "@type": "ResourceSpecification", 
+            "lifecycleStatus": "Active"
+        }
+    },
+    "reportingSystem": {
+        "id": "335",
+        "name": "APP-179",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "853",
+        "name": "APP-30",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ResourceSpecificationStatusChangeEvent"
+}

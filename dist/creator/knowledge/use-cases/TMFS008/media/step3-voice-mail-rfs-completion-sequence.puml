@@ -1,0 +1,48 @@
+@startuml
+title Figure 17: Completion of the resource order item related to the Voice Mail RFS
+
+participant "Resource Inventory" as RI #blue
+participant "Resource Order\nManagement" as ROM #blue
+participant "Resource Activation\n& Configuration" as RAC #blue
+participant "Resource Catalog\nManagement" as RCM #blue
+participant "VMS"
+
+== Step 3 (Voice mail) ==
+
+ROM -> RCM : 1 **TMF634 Resource Catalog Management**\nGET /resourceSpecification
+RCM --> ROM : 2 **TMF634** 200 OK (VMS profile specification)
+
+ROM -> RI : 3 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 4 **TMF639** 200 OK (HSS subscriber profile, Number)
+
+ROM -> RI : 5 **TMF639 Resource Inventory Management**\nPOST /resource\n(VMS profile, resourceStatus="standby")
+RI --> ROM : 6 **TMF639** 202 Accepted (VMS profile, monitorRef)
+
+ROM -> RAC : 7 **TMF702 Resource Activation Management**\nPOST /resource (VMS profile)
+activate RAC
+RAC --> ROM : 8 **TMF702** 201 OK (VMS profile)
+
+RAC -> RCM : 9 **TMF634 Resource Catalog Management**\nGET /resourceSpecification (VMS API)
+RCM --> RAC : 10 **TMF634** 200 OK (VMS API specification)
+
+ROM -> RI : 11 **TMF639 Resource Inventory Management**\nGET /resource
+RI --> ROM : 12 **TMF639** 200 OK (API endpoint)
+
+RAC -> VMS : 13 **VMS API** (VMS profile)
+activate VMS
+VMS --> RAC : 14 **VMS API** (response)
+deactivate VMS
+
+ROM -> RAC : 15 **TMF702 Resource Activation Management**\nGET /monitor (monitorRef)
+RAC --> ROM : 16 **TMF702** 200 OK (monitorState="Completed")
+deactivate RAC
+
+ROM -> RI : 17 **TMF639 Resource Inventory Management**\nPATCH /resource\n(VMS profile, resourceStatus="available")
+RI --> ROM : 18 **TMF639** 200 OK
+
+ROM -> RI : 19 **TMF639 Resource Inventory Management**\nPATCH /resource\n(HSS subscriber profile, Number)
+RI --> ROM : 20 **TMF639** 200 OK
+
+ROM -> ROM : 21 update resourceOrderItem (state="completed")
+
+@enduml

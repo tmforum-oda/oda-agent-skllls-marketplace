@@ -1,0 +1,70 @@
+@startuml
+title Approach A (SoE steers the process) — New Party: Create your own account
+
+actor Customer
+participant "EngagementManagement\nWeb UI" as WebUI
+participant "EngagementManagement\nBFF" as BFF
+participant "PartyInteractionMgt" as PIM
+participant "PartyManagement" as PM
+participant "PartyRoles\n&PermissionsMgt" as PRPM
+participant "DigitalIdentityMgt" as DIM
+
+Customer -> WebUI : 1 access web app
+activate WebUI
+
+WebUI -> BFF : 2 get available actions
+activate BFF
+BFF --> WebUI : 3 available actions: Identify yourself,\nCreate your Account, Browse B2C Catalogue, Read News
+
+BFF -> PIM : 4 **TMF683 Party Interaction** POST partyInteraction\n(date, used channel)
+activate PIM
+PIM -> PIM : 5 check data & create interaction
+PIM --> BFF : 6 **TMF683** 201 Created\n(interaction.id)
+deactivate PIM
+deactivate BFF
+
+WebUI --> Customer : 7 present available actions
+Customer -> WebUI : 8 Choose Create your Account
+WebUI --> Customer : 9 present needed data
+Customer -> WebUI : 10 enter account details\n(firstName, lastName, contactMedium, login, password)
+
+WebUI -> BFF : 11 submit account details\n(firstName, lastName, contactMedium, login, password)
+activate BFF
+
+BFF -> BFF : 12 validate input data
+
+BFF -> PIM : 13 **TMF683 Party Interaction** PATCH partyInteraction/id\n(new InteractionItem Create your Account)
+activate PIM
+PIM -> PIM : 14 check data & create interaction item
+PIM --> BFF : 15 **TMF683** 200 OK\n(interaction.id, interactionItem.id)
+deactivate PIM
+
+BFF -> PM : 16 **TMF632 Party Management** POST /individual\n(firstName, lastName, contactMedium)
+activate PM
+PM -> PM : 17 check data & create individual with contact medium
+PM --> BFF : 18 **TMF632** 201 Created\n(individual.id)
+deactivate PM
+
+BFF -> PRPM : 19 **TMF669 Party Role Management** POST /partyRole\n('portal user' (individual.id))
+activate PRPM
+PRPM -> PRPM : 20 check data & create party role with default permissions
+PRPM --> BFF : 21 **TMF669** 201 Created\n(partyRole.id)
+deactivate PRPM
+
+BFF -> DIM : 22 **TMF720 Digital Identity** POST /digitalIdentity\n(login, password, individual.id)
+activate DIM
+DIM -> DIM : 23 check data & create identity
+DIM --> BFF : 24 **TMF720** 201 Created\n(digitalIdentity.id)
+deactivate DIM
+
+BFF -> PIM : 25 **TMF683 Party interaction** PATCH /partyInteraction/id\n(interactionItem.id, individual.id, partyRole.id,\ndigitalIdentity.id, Create your Account done)
+activate PIM
+PIM -> PIM : 26 update interaction and interaction item
+PIM --> BFF : 27 **TMF683** 200 OK\n(interaction.id, interactionItem.id)
+deactivate PIM
+
+BFF --> WebUI : 28 individual.id
+deactivate BFF
+deactivate WebUI
+
+@enduml

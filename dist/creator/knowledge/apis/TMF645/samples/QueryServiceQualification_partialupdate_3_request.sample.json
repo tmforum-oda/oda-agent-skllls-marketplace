@@ -1,0 +1,6 @@
+[
+  {"op":"replace",
+    "path": "/relatedParty/partyOrPartyRole/name?relatedParty.partyOrPartyRole.id=456",
+    "value": "Ross"
+  }
+]

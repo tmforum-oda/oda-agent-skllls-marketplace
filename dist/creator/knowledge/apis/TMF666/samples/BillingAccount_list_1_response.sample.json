@@ -1,0 +1,14 @@
+[
+    {
+        "@type": "BillingAccount",
+        "id": "42", 
+        "href": "https://host:port/tmf-api/accountManagement/v5/billingAccount/42", 
+        "name": "Lakes Agency Account"
+    }, 
+    {
+        "@type": "BillingAccount",
+        "id": "43", 
+        "href": "https://host:port/tmf-api/accountManagement/v5/billingAccount/43", 
+        "name": "Santa Claus Donate Account"
+    }
+]

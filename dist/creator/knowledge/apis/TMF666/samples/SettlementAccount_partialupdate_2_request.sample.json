@@ -1,0 +1,8 @@
+{
+    "@type": "SettlementAccount",
+    "paymentStatus": "Normal", 
+    "creditLimit": {
+        "unit": "USD",
+        "value": 25000     
+    } 
+}

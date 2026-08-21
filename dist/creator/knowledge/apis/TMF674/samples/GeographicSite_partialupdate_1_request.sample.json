@@ -1,0 +1,22 @@
+[
+  {
+    "op": "test",
+    "path": "/siteCategory",
+    "value": "franchise-store"
+  },
+  {
+    "op": "replace",
+    "path": "/siteCategory",
+    "value": "owned-store"
+  },
+  {
+    "op": "test",
+    "path": "/description",
+    "value": "This is the site for the base station BS-9283"
+  },
+  {
+    "op": "replace",
+    "path": "/description",
+    "value": "This is the site for the base station BS-9999"
+  }
+]

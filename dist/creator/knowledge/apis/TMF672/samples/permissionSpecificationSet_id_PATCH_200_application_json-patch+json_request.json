@@ -1,0 +1,11 @@
+[
+  {
+    "op": "add",
+    "path": "/permissionSpecification",
+    "value": {
+      "id": "6888633",
+      "@type": "PermissionSpecificationRef",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/6888633"
+    }
+  }
+]

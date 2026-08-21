@@ -1,0 +1,5 @@
+{
+    "name": "Network Logical Resources",
+    "description": "This resource category groups together logical resources that are implemented in the network",
+    "@type": "ResourceCategory"
+}

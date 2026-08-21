@@ -1,0 +1,33 @@
+{
+    "path": "/taxExemption", 
+    "op": "add", 
+    "value": {
+        "@type": "TaxExemption",
+        "id": "2",
+        "certificateNumber": "1212555247", 
+        "issuingJurisdiction": "City of San Jose", 
+        "reason": "Embassy", 
+        "taxDefinition": [
+            {
+              "@type": "TaxDefinition",
+              "id": "96",
+              "name": "City Tax",
+              "taxType": "CityTax"
+            }
+        ],
+          "attachment": {
+            "@type": "Attachment",
+            "id": "902347285733567433412",
+            "href": "https://host:port/tmf-api/document/v5/attachment/902347285733567433412",
+            "attachmentType": "taxExemptionCertificate",
+            "name": "TaxExemptionCertificate-777.pdf",
+            "description": "Electronic version of the tax exemption certificate",
+            "mimeType": "application/pdf",
+            "url": "http://host:port/DocumentManager/777/TaxExemptionCertificate-777.pdf"
+          },
+        "validFor": {
+            "startDateTime": "2018-04-17T00:00:00.000Z", 
+            "endDateTime": "2019-02-10T00:00:00.000Z"
+        }
+    }
+}

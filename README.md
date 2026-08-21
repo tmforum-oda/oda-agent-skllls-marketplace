@@ -83,10 +83,13 @@ finding that a newly-changed use case is very likely pre-GA.
 ## Skills
 
 Built against `knowledge/`, read-only, no network calls needed at
-skill-run time. Two audiences: **consumers** build a product using ODA;
-**contributors** extend ODA itself.
+skill-run time. Two audiences, packaged as two separate Claude Code plugins
+(`tm-forum-oda-consumer` / `tm-forum-oda-creator`, see
+[`tools/build_plugin.py`](tools/build_plugin.py)) so each install's skill
+list stays focused on what that audience actually invokes: **consumers**
+build a product using ODA; **creators** extend ODA itself.
 
-**Consumers**
+**Consumers** (`tm-forum-oda-consumer`)
 
 | Skill | Given | Produces |
 |---|---|---|
@@ -100,7 +103,7 @@ skill-run time. Two audiences: **consumers** build a product using ODA;
 | [`assess-change-impact`](skills/assess-change-impact/SKILL.md) | a `TMFCxxx`/`TMFxxx` id + proposed change | every use case that depends on it (index reverse links) and a maturity-weighted migration risk report |
 | [`audit-implementation-against-usecase`](skills/audit-implementation-against-usecase/SKILL.md) | a `TMFSxxx` id + an existing implementation | a drift report against what the use case actually specifies |
 
-**Contributors**
+**Creators** (`tm-forum-oda-creator`)
 
 | Skill | Given | Produces |
 |---|---|---|
@@ -112,14 +115,16 @@ skill-run time. Two audiences: **consumers** build a product using ODA;
 
 Using these skills from another repository? See [`CONSUMING.md`](CONSUMING.md) —
 covers both a sparse clone (lighter, git-native) and installing
-[`dist/`](dist/) as a Claude Code plugin (heavier — bundles `knowledge/`
-inside the plugin — but zero manual clone/update management).
+[`dist/consumer/`](dist/consumer/) or [`dist/creator/`](dist/creator/) as a
+Claude Code plugin (heavier — bundles `knowledge/` inside the plugin — but
+zero manual clone/update management).
 
 **Repo maintenance**
 
 One skill writes to `knowledge/` instead of just reading it, and is
-deliberately excluded from `dist/` — a consumer building against this
-corpus has no use for a skill that edits it:
+deliberately excluded from both `dist/consumer/` and `dist/creator/` — a
+consumer or creator building against this corpus has no use for a skill
+that edits it:
 
 | Skill | Given | Produces |
 |---|---|---|

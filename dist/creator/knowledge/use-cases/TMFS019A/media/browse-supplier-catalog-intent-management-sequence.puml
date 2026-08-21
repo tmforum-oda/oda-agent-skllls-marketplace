@@ -1,0 +1,14 @@
+@startuml
+title TMF019 Overview-Step 1
+
+box "Entity\nCommunication Service Provider (CSP)"
+participant "Entity IT System\n(Solution)" as Entity
+end box
+box "Supplier"
+participant "Supplier IT System\n(Solution)" as Supplier
+end box
+
+== 1. Browse Supplier Catalog / Entity's Intent Management (TMFS019-1) ==
+Entity -> Supplier : 1.A Entity browse Supplier catalog
+Entity -> Supplier : 1.B or... Entity express to Supplier its Business Intent
+@enduml

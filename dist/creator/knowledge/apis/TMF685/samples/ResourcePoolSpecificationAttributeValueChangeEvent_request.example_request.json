@@ -1,0 +1,37 @@
+{
+    "@type": "ResourcePoolSpecificationAttributeValueChangeEvent",
+    "@baseType": "Event",
+    "correlationId": "41a5ab1a-e6bd-4cfa-bd86-024dc2e13890",
+    "description": "ResourcePoolSpecificationAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "5bb79084-116a-4db1-9cc3-4443f500a7e0",
+    "eventTime": "2024-09-19T13:55:06.910Z",
+    "eventType": "ResourcePoolSpecificationAttributeValueChangeEvent",
+    "priority": "3",
+    "timeOccurred": "2024-09-19T13:55:03.868Z",
+    "title": "ResourcePoolSpecificationAttributeValueChangeEvent",
+    "event": {
+        "resourcePoolSpecification": {
+            "@type": "ResourcePoolSpecification",
+            "id": "b0e0827c-5693-4e41-8445-22438abb33cb", 
+            "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePoolSpecification/b0e0827c-5693-4e41-8445-22438abb33cb",
+            "validFor":
+            {
+                "startDateTime": "2024-05-13T00:00:00Z", 
+                "endDateTime": "2024-09-20T00:00:00Z"
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "109",
+        "name": "APP-804",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "8",
+        "name": "APP-307",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    }
+}

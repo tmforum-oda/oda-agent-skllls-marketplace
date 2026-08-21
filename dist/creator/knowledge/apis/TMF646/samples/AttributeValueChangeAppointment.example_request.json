@@ -1,0 +1,59 @@
+{
+  "@type": "AppointmentAttributeValueChangeEvent",
+  "correlationId": "1da724c6-17bd",
+  "description": "AppointmentAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4e6a-95cb-0892c2e596b2",
+  "eventTime": "2026-03-26T08:49:14.288Z",
+  "eventType": "AppointmentAttributeValueChangeEvent",
+  "priority": "5",
+  "title": "AppointmentAttributeValueChangeEvent",
+  "event": {
+    "appointment": {
+      "id": "22",
+      "href": "https://serverRoot/tmf-api/appointment/v5/appointment/22",
+      "@type": "Appointment",
+      "timeSlot": {
+        "@type": "TimeSlot",
+        "id": "16bf91a0-07c9-4ed8-b7c1-7a3f0bf86620",
+        "timeWindow": {
+          "startDateTime": "2026-03-28T08:00:00.000Z",
+          "endDateTime": "2026-03-28T12:00:00.000Z"
+        }
+      },
+      "note": [
+        {
+          "date": "2026-03-28T08:01:00.000Z",
+          "author": "Ludovic Robert",
+          "@type": "Note",
+          "text": "Problem explained to the technician"
+        },
+        {
+          "date": "2026-03-28T08:05:00.000Z",
+          "author": "Ludovic Robert",
+          "@type": "Note",
+          "text": "Work order generated"
+        },
+        {
+          "date": "2026-03-28T16:05:00.000Z",
+          "@type": "Note",
+          "author": "Ludovic Robert",
+          "text": "Appointment prioritized since repetitive issue"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "275",
+    "name": "APP-665",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "280",
+    "name": "APP-929",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event"
+}

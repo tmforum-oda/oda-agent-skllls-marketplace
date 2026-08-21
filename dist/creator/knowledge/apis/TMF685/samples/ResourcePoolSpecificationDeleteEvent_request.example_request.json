@@ -1,0 +1,32 @@
+{
+    "@type": "ResourcePoolSpecificationDeleteEvent",
+    "@baseType": "Event",
+    "correlationId": "5b2ca6b7-d69f-4ee7-b36e-5a4b442b14c2",
+    "description": "ResourcePoolSpecificationDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4dfa961e-9dc4-4cea-8e5a-2d392f8076f1",
+    "eventTime": "2024-09-19T13:55:06.910Z",
+    "eventType": "ResourcePoolSpecificationDeleteEvent",
+    "priority": "3",
+    "timeOccurred": "2024-09-19T13:55:03.868Z",
+    "title": "ResourcePoolSpecificationDeleteEvent",
+    "event": {
+        "resourcePoolSpecification": {
+            "@type": "ResourcePoolSpecification",
+            "id": "b0e0827c-5693-4e41-8445-22438abb33cb", 
+            "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePoolSpecification/b0e0827c-5693-4e41-8445-22438abb33cb"
+        }
+    },
+    "reportingSystem": {
+        "id": "109",
+        "name": "APP-804",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "8",
+        "name": "APP-307",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    }
+}

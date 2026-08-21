@@ -1,0 +1,27 @@
+
+[
+    {
+        "op": "replace",
+        "path": "/name",
+        "value": "Phone Number block for partner 'MyPartner'"
+    },
+    {
+        "op": "replace",
+        "path": "/description",
+        "value": "This Pool collects the PhoneNumber resources assigned to the partner 'MyPartner'."
+    },
+    {
+        "op": "add",
+        "path": "/validFor",
+        "value":
+        {
+            "startDateTime": "2024-05-13T00:00:00Z", 
+            "endDateTime": "2024-09-20T00:00:00Z"
+        }
+    },
+    {
+        "op": "replace",
+        "path": "$.relatedParty[?(@.partyOrPartyRole.name == 'MyPartner')].role",
+        "value": "Business Customer"
+    }
+]

@@ -1,0 +1,54 @@
+@startuml
+title Fig 8.3.2 Containment relationships - Copilot proposed mapping
+
+package "OASIS eContracts\n(RDF/SHACL)" {
+  class "ec:Contract" as ecContract
+  class "ec:ContractFront" as ecContractFront
+  class "ec:Body" as ecBody
+  class "ec:Back" as ecBack
+  class "ec:Parties" as ecParties
+  class "ec:Block" as ecBlock
+  class "ec:PersonRecord" as ecPersonRecord
+  class "ec:Item" as ecItem
+  class "ec:Definition" as ecDefinition
+  class "ec:Term" as ecTerm
+  class "ec:Party" as ecParty
+  class "ec:Attachment" as ecAttachment
+}
+
+package "TMF651 Agreement API" {
+  class "Agreement" as TMFAgreement
+  class "AgreementItem" as TMFAgreementItem
+  class "AgreementTermOrCondition" as TMFAgreementTermOrCondition
+  class "RelatedParty" as TMFRelatedParty
+  class "AgreementAttachment" as TMFAgreementAttachment
+}
+
+package "TM Forum SID" {
+  class "Agreement" as SIDAgreement
+  class "AgreementItem" as SIDAgreementItem
+  class "AgreementTermOrCondition" as SIDAgreementTermOrCondition
+  class "PartyRole" as SIDPartyRole
+  class "Individual / Organization" as SIDIndividualOrganization
+  class "Attachment" as SIDAttachment
+  class "TimePeriod" as SIDTimePeriod
+}
+
+ecContract --> TMFAgreement
+TMFAgreement --> SIDAgreement
+
+ecBlock --> TMFAgreementItem
+ecItem --> TMFAgreementItem
+TMFAgreementItem --> SIDAgreementItem
+
+ecDefinition --> TMFAgreementTermOrCondition
+ecTerm --> TMFAgreementTermOrCondition
+TMFAgreementTermOrCondition --> SIDAgreementTermOrCondition
+
+ecParty --> TMFRelatedParty
+TMFRelatedParty --> SIDPartyRole
+TMFRelatedParty --> SIDIndividualOrganization
+
+ecAttachment --> TMFAgreementAttachment
+TMFAgreementAttachment --> SIDAttachment
+@enduml

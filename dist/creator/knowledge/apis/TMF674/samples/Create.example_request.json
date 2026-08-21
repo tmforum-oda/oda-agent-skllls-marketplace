@@ -1,0 +1,162 @@
+{
+  "correlationId": "82392652-42ce-4284-9a47-16d0fb06d269",
+  "description": "GeographicSiteCreateEvent illustration",
+  "domain": "Resource",
+  "eventId": "43265751-ceca-4133-9338-31bfd4edbf75",
+  "eventTime": "2024-08-25T12:25:22.380Z",
+  "eventType": "GeographicSiteCreateEvent",
+  "priority": "3",
+  "timeOccurred": "2022-08-25T12:25:12.746Z",
+  "title": "GeographicSiteCreateEvent",
+  "event": {
+    "geographicSite": {
+      "id": "ae4b915f-16f5-4f05-a3c7-8c6a99c7d24b",
+      "href": "https://mycsp.com/tmf-api/geographicSiteManagement/v5/geographicSite/ae4b915f-16f5-4f05-a3c7-8c6a99c7d24b",
+      "@type": "GeographicSite",
+      "externalIdentifier": [
+        {
+          "id": "f76bc43c-53d5-4222-8ac3-f1a3e5b7d3ab",
+          "@type": "ExternalIdentifier",
+          "owner": "Address Management System",
+          "externalIdentifierType": "Address"
+        }
+      ],
+      "creationDate": "2024-03-15T07:44:40.056Z",
+      "description": "This is the site for the base station BS-9283",
+      "status": "active",
+      "siteCategory": "BaseStation",
+      "relatedParty": [
+        {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "role": "Owner",
+          "partyOrPartyRole": {
+            "id": "da7f6b47-cd08-45a8-926b-d5824a5980e3",
+            "href": "https://mycsp.com/tmf-api/partyManagement/v5/individual/da7f6b47-cd08-45a8-926b-d5824a5980e3",
+            "name": "TelcoEngineering",
+            "@type": "PartyRef",
+            "@referredType": "Organization"
+          }
+        }
+      ],
+      "calendar": [
+        {
+          "@type": "CalendarPeriod",
+          "day": "weekdays",
+          "timeZone": "+00:00",
+          "hourPeriod": [
+            {
+              "endHour": "18:00",
+              "startHour": "09:00"
+            }
+          ],
+          "status": "open"
+        }
+      ],
+      "relatedAddress": [
+        {
+          "role": "service-address",
+          "address": {
+            "id": "fcdb7157-3df9-4c49-93a6-8a3a248d9a27",
+            "href": "https://mycsp.com/tmf-api/geographicAddressManagement/v5/geographicAddress/fcdb7157-3df9-4c49-93a6-8a3a248d9a27",
+            "@type": "GeographicAddressRef",
+            "@referredType": "GeographicAddress"
+          },
+          "@type": "RelatedGeographicAddressRef"
+        }
+      ],
+      "siteFeature": [
+        {
+          "id": "f9f06997-5a8c-4079-9c84-afdd154c3fcf",
+          "name": "Out Of Hours Access",
+          "@type": "GeographicSiteFeature",
+          "featureCategory": [
+            "OutOfHoursAccess"
+          ],
+          "isEnabled": true,
+          "featureCharacteristic": [
+            {
+              "id": "4b69fcbb-6d89-4de3-8f90-fd12a567ddfc",
+              "@type": "StringCharacteristic",
+              "name": "Out of Hours Access",
+              "value": "For out-of-hours weekday access please report to the reception to gain access to the site."
+            }
+          ],
+          "validFor": [
+            {
+              "@type": "CalendarPeriod",
+              "day": "weekdays",
+              "timeZone": "+00:00",
+              "hourPeriod": [
+                {
+                  "startHour": "18:00",
+                  "endHour": "09:00"
+                }
+              ],
+              "status": "open"
+            }
+          ]
+        },
+        {
+          "id": "d31a8f92-b8e7-4c82-8042-997ff5b64e30",
+          "name": "Survey Information",
+          "@type": "GeographicSiteFeature",
+          "featureCategory": [
+            "SiteFeature"
+          ],
+          "featureCharacteristic": [
+            {
+              "id": "4b69fcbb-6d89-4de3-8f90-fd12a567ddfc",
+              "@type": "StringCharacteristic",
+              "name": "Site Survey Reports",
+              "value": "Information on underground and overhead utilities (e.g., gas lines, electrical cables) to avoid interference during installation."
+            }
+          ],
+          "attachment": [
+            {
+              "id": "bc4d58a3-549c-4082-98de-d1dc9b1066a4",
+              "href": "https://mycsp.com/tmf-api/documentManagement/v5/attachment/bc4d58a3-549c-4082-98de-d1dc9b1066a4",
+              "@referredType": "Attachment",
+              "@type": "AttachmentRef"
+            }
+          ],
+          "note": [
+            {
+              "id": "8921d8e6-6570-4260-bba8-e66cbba4b49b",
+              "@type": "Note",
+              "author": "Mr. N. Bene",
+              "date": "2024-03-16T08:00:00Z",
+              "text": "Site Survey received from TechSurvey&Co"
+            }
+          ],
+          "relatedParty": [
+            {
+              "@type": "RelatedPartyRefOrPartyRoleRef",
+              "role": "SurveyPartner",
+              "partyOrPartyRole": {
+                "id": "1b3cc700-36cf-404c-85d5-c9f1c3c8fd99",
+                "href": "https://mycsp.com/tmf-api/partyManagement/v5/organization/1b3cc700-36cf-404c-85d5-c9f1c3c8fd99",
+                "name": "TechSurvey&Co",
+                "@type": "PartyRef",
+                "@referredType": "Organization"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "1afd23e9-5cfc-45b7-93a2-3de523b34971",
+    "name": "APP-746",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "769d82a4-c0c8-4d0d-8e76-c8b38de8b06d",
+    "name": "APP-623",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "GeographicSiteCreateEvent"
+}

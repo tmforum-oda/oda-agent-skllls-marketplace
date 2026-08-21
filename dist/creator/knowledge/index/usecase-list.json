@@ -1,0 +1,198 @@
+{
+  "generated_from": "IG1228 v31.0.0, chapter 1 (\"List of Use Cases\")",
+  "source_pdf": "references/ig1228/IG1228_How_to_use_ODA_Using_Open_APIs_to_Realize_UseCases_v31.0.0.pdf",
+  "use_cases": {
+    "TMFS000": {
+      "id": "TMFS000",
+      "title": "ODA Use Case Template",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS001": {
+      "id": "TMFS001",
+      "title": "New Party - Create your \"account\"",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS002": {
+      "id": "TMFS002",
+      "title": "Browse B2C catalog and check Fiber technical eligibility",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS003": {
+      "id": "TMFS003",
+      "title": "Order Capture - Fiber contract",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS004": {
+      "id": "TMFS004",
+      "title": "Order Delivery - Fiber contract",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS005": {
+      "id": "TMFS005",
+      "title": "Billing - Fiber contract",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS006": {
+      "id": "TMFS006",
+      "title": "Legual Guardian",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS007": {
+      "id": "TMFS007",
+      "title": "B2B use case re-using MEF",
+      "status_in_ig1228": "planned",
+      "comment": ""
+    },
+    "TMFS008": {
+      "id": "TMFS008",
+      "title": "Service and resource order management for postpaid mobile subscribers",
+      "status_in_ig1228": "Available",
+      "comment": "Updated version with minor fixes, clarifications and editorial changes."
+    },
+    "TMFS009": {
+      "id": "TMFS009",
+      "title": "Usage and Balance Management",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS010": {
+      "id": "TMFS010",
+      "title": "ODA Flow with NaaS Support",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS011": {
+      "id": "TMFS011",
+      "title": "Order Fallout Management",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS012": {
+      "id": "TMFS012",
+      "title": "Product Catalog - Launching a new Product Offering",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS013": {
+      "id": "TMFS013",
+      "title": "-",
+      "status_in_ig1228": "not available",
+      "comment": "Booked to describe Provisioning of Geographic Information - Planning a Radio Site"
+    },
+    "TMFS014": {
+      "id": "TMFS014",
+      "title": "5G Slice management",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS016": {
+      "id": "TMFS016",
+      "title": "Prospect to Order for the SASE",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS017": {
+      "id": "TMFS017",
+      "title": "FTTB/H Network Planning and deployment",
+      "status_in_ig1228": "planned",
+      "comment": ""
+    },
+    "TMFS018": {
+      "id": "TMFS018",
+      "title": "Wholesale Broadband - Fiber Access",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS019": {
+      "id": "TMFS019",
+      "title": "Part I: Partner On-boarding with Agreement Management",
+      "status_in_ig1228": "Part I and Part II Available",
+      "comment": "Part I updated and renamed explicitly to be a Part 1 and relate to Part II"
+    },
+    "TMFS020": {
+      "id": "TMFS020",
+      "title": "Multi Domain B2B2X Contract Management",
+      "status_in_ig1228": "Available",
+      "comment": "From ODA for B2B2X stream"
+    },
+    "TMFS021": {
+      "id": "TMFS021",
+      "title": "Orchestration of a Multi Party, Multi domain Sales Order",
+      "status_in_ig1228": "Available",
+      "comment": "From ODA for B2B2X stream"
+    },
+    "TMFS022": {
+      "id": "TMFS022",
+      "title": "Cross domain event correlation, event to incident management and closed loop resolution",
+      "status_in_ig1228": "planned",
+      "comment": "From ODA for B2B2x stream"
+    },
+    "TMFS023": {
+      "id": "TMFS023",
+      "title": "Multi party Usage Management and Charging",
+      "status_in_ig1228": "planned",
+      "comment": "From ODA for B2B2X stream"
+    },
+    "TMFS024": {
+      "id": "TMFS024",
+      "title": "Settlement with partner for Type 2 marketplaces",
+      "status_in_ig1228": "planned",
+      "comment": "From ODA for B2B2X stream"
+    },
+    "TMFS025": {
+      "id": "TMFS025",
+      "title": "Cloud Native Function Management",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS026": {
+      "id": "TMFS026",
+      "title": "OpenGateway Operate API",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS027": {
+      "id": "TMFS027",
+      "title": "AI Generate Application (name to be finalized)",
+      "status_in_ig1228": "planned",
+      "comment": "From Engagement Management Component stream"
+    },
+    "TMFS028": {
+      "id": "TMFS028",
+      "title": "Cloud-based VPN product development (name to be finalized)",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS029": {
+      "id": "TMFS029",
+      "title": "Cross-Domain Root Cause Analysis",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS030": {
+      "id": "TMFS030",
+      "title": "Satellite D2D - Wholesaling NTN capacity to MNOs",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS031": {
+      "id": "TMFS031",
+      "title": "Party Problem Management",
+      "status_in_ig1228": "Available",
+      "comment": ""
+    },
+    "TMFS032": {
+      "id": "TMFS032",
+      "title": "5G Core Automated Deployment & Lifecycle Management",
+      "status_in_ig1228": "planned",
+      "comment": "From AI4AN - Autonomous Network project"
+    }
+  }
+}

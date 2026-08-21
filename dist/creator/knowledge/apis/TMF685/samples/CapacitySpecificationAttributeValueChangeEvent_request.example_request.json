@@ -1,0 +1,33 @@
+{
+    "@type": "CapacitySpecificationAttributeValueChangeEvent",
+    "@baseType": "Event",
+    "correlationId": "41a5ab1a-e6bd-4cfa-bd86-024dc2e13890",
+    "description": "CapacitySpecificationAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "5bb79084-116a-4db1-9cc3-4443f500a7e0",
+    "eventTime": "2024-09-19T13:55:06.910Z",
+    "eventType": "CapacitySpecificationAttributeValueChangeEvent",
+    "priority": "3",
+    "timeOccurred": "2024-09-19T13:55:03.868Z",
+    "title": "CapacitySpecificationAttributeValueChangeEvent",
+    "event": {
+        "capacitySpecification": {
+            "@type": "CapacitySpecification",
+            "id": "3d01344d-4409-4b15-8fcb-b8802314ff9c", 
+            "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/capacitySpecification/3d01344d-4409-4b15-8fcb-b8802314ff9c", 
+            "name": "Phone Number Range"
+        }
+    },
+    "reportingSystem": {
+        "id": "109",
+        "name": "APP-804",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "8",
+        "name": "APP-307",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    }
+}

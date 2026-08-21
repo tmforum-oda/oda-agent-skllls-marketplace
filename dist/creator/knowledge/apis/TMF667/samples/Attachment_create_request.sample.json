@@ -1,0 +1,10 @@
+{
+  "@type": "Attachment",
+  "name": "Link to paperback",
+  "url": "https://www.amazon.co.uk/Designing-Web-APIs-Building-Developers/dp/1492026921",
+  "validFor": {
+    "startDateTime": "2024-11-05T10:15:26.007Z"
+  },
+  "attachmentType": "book",
+  "mimeType": "text/html"
+}

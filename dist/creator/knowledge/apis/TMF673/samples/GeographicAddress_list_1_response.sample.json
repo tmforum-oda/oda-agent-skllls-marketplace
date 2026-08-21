@@ -1,0 +1,65 @@
+[
+	{
+	  "id": "f9a64ffe-845d-4c5d-8618-910d2c56004e",
+	  "href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/f9a64ffe-845d-4c5d-8618-910d2c56004e",
+	  "streetNr": "1",
+	  "streetName": "UnterDenLinden",
+	  "city": "Berlin",
+	  "country": "Germany",
+	  "postcode": "10117",
+	  "@type": "GeographicAddress",
+	  "geographicLocation": {
+		"id": "d61505c5-0edb-4539-b1bc-2ba06a308c21",
+		"href":"https://host/tmf-api/geographicLocation/v5/geographicLocation/d61505c5-0edb-4539-b1bc-2ba06a308c21",
+		"@type":"GeoJsonPoint"
+	  },
+	  "countryCode": [
+		{
+		  "format": "ISO 3166-1 Alpha-2",
+		  "value": "DE",
+		  "@type": "StandardIdentifier"
+		}
+	  ],
+	  "externalIdentifier": [
+		{
+		  "id": "df882733-6a5d-440a-9a91-d261ba6ac346",
+		  "owner": "Master-SBS",
+		  "externalIdentifierType": "GeographicAddress",
+		  "@type":"ExternalIdentifier"
+		}
+	  ],
+	  "geographicAddressType": "residential"
+	},
+	{
+	  "id": "62a13770-b897-4b12-9b86-d05aa6f9b0c7",
+	  "href": "https://host/tmf-api/geographicAddressManagement/v5/geographicAddress/62a13770-b897-4b12-9b86-d05aa6f9b0c7",
+	  "streetNr": "3",
+	  "streetName": "UnterDenLinden",
+	  "city": "Berlin",
+	  "country": "Germany",
+	  "postcode": "10117",
+	  "@type": "GeographicAddress",
+	  "geographicLocation": {
+		"id": "d94a469c-12f3-425c-afa7-17165b704c70",
+		"href":"https://host/tmf-api/geographicLocation/v5/geographicLocation/d94a469c-12f3-425c-afa7-17165b704c70",
+		"@type":"GeoJsonPoint"
+	  },
+	  "countryCode": [
+		{
+		  "format": "ISO 3166-1 Alpha-2",
+		  "value": "DE",
+		  "@type": "StandardIdentifier"
+		}
+	  ],
+	  "externalIdentifier": [
+		{
+		  "id": "bb66f723-f55b-4035-a938-9be6f66f660c",
+		  "owner": "Master-SBS",
+		  "externalIdentifierType": "GeographicAddress",
+		  "@type":"ExternalIdentifier"
+		}
+	  ],
+	  "geographicAddressType": "residential"
+	}
+  ]
+  

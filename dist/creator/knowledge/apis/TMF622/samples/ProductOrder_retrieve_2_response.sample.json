@@ -1,0 +1,118 @@
+{
+  "id": "3774",
+  "href": "https://host:port/productOrderingManagement/v5/productOrder/3774",
+  "category": "B2C product order",
+  "description": "Product Order change illustration sample",
+  "expectedCompletionDate": "2019-05-22T08:13:59.506Z",
+  "externalId": [
+    {
+      "@type": "ExternalIdentifier",
+      "owner": "TMF",
+      "externalIdentifierType": "POnumber",
+      "id": "457"
+    }
+  ],
+  "creationDate": "2019-04-30T08:13:59.506Z",
+  "priority": "1",
+  "requestedCompletionDate": "2019-05-22T08:13:59.506Z",
+  "requestedStartDate": "2019-05-22T08:13:59.506Z",
+  "channel": [
+    {
+      "role": "Used channel for order capture",
+      "@type": "RelatedChannel",
+        "channel": {
+          "id": "1",
+          "name": "Online channel",
+          "@type": "ChannelRef"
+        }
+    }
+  ],
+  "note": [
+    {
+      "id": "1",
+      "author": "Jean Pontus",
+      "date": "2019-05-22T08:13:59.509Z",
+      "text": "This is a TMF product order illustration to change existing product",
+      "@type": "Note"
+    }
+  ],
+  "productOrderItem": [
+    {
+      "id": "100",
+      "quantity": 1,
+      "action": "noChange",
+      "product": {
+        "id": "6000",
+        "@type": "ProductRef",
+        "href": "https://host:port/productInventoryManagement/v5/product/6000"
+      },
+      "productOrderItemRelationship": [
+        {
+          "id": "110",
+          "relationshipType": "bundles",
+          "@type": "OrderItemRelationship"
+        }
+      ],
+      "state": "inProgress",
+      "@type": "ProductOrderItem"
+    },
+    {
+        "id": "110",
+        "quantity": 1,
+        "action": "add",
+        "product": {
+            "id": "6003",
+            "href": "https://host:port/productInventoryManagement/v5/product/6003",
+            "@type": "Product",
+            "productCharacteristic": [
+                {
+                "name": "CoverageOptions",
+                "id": "Char7",
+                "@type": "StringCharacteristic",
+                "valueType": "string",
+                "value": "International"
+                }
+            ],
+            "productRelationship": [
+                {
+                "relationshipType": "reliesOn",
+                "product": {
+                        "id": "6001",
+                        "@type": "ProductRef",
+                        "href": "https://host:port/productInventoryManagement/v5/product/6001"
+                    },
+                "@type": "ProductRelationship"
+                }
+            ]
+        },
+        "state": "inProgress",
+        "@type": "ProductOrderItem"
+      }
+  ],
+  "relatedParty": [
+    {
+      "role": "Seller",
+      "partyOrPartyRole": {
+        "id": "456-dd-df45",
+        "href": "https://host:port/partyManagement/v5/individual/456-dd-df45",
+        "name": "Joe Doe",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    },
+    {
+      "role": "Customer",
+      "partyOrPartyRole": {
+        "id": "ff55-hjy4",
+        "href": "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+        "name": "Jean Pontus",
+        "@type": "PartyRoleRef",
+        "@referredType": "Customer"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    }    
+  ],
+  "state": "inProgress",
+  "@type": "ProductOrder"
+}

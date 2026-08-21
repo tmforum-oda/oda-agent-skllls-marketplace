@@ -1,0 +1,69 @@
+@startuml
+title TMFC005 Product Inventory
+
+class "Mobile Postpaid Contract" as Contract <<ProductOfferingInventoryItem>> {
+  status: Active
+  start date: 4th Nov 2022
+}
+class "Postpaid Mobile Line" as PostpaidMobileLine <<ProductOfferingInventoryItem>> {
+  status: Active
+  start date: 4th Nov 2022
+}
+Contract --> PostpaidMobileLine
+
+class "Mobile Line" as MobileLineOffering <<ProductOfferingInventoryItem>> {
+  POPrice = "10€/month starting 4th Nov 2022"
+  status: Active
+  start date: 4th Nov 2022
+  National Voice usage: 1€/10mn
+  SMS usage: 0,1€/SMS
+}
+class "Extra National Voice" as ExtraNationalOffering <<ProductOfferingInventoryItem>> {
+  POPrice = "recurring 8€/month starting 4th Nov 2022"
+  status: Active
+  start date: 4th Nov 2022
+}
+class "Extra Data" as ExtraDataOffering <<ProductOfferingInventoryItem>> {
+  POPrice = "recurring 20€/month starting 4th Nov 2022"
+  status: Active
+  start date: 4th Nov 2022
+}
+
+PostpaidMobileLine --> MobileLineOffering
+PostpaidMobileLine --> ExtraNationalOffering
+PostpaidMobileLine --> ExtraDataOffering
+
+class "Mobile Line" as MobileLineSpec <<ProductSpecificationInventoryItem>> {
+  status: Active
+  start date: 4th Nov 2022
+  Number=XXXXXX
+  Roaming Options=Y
+  Barrings Options=Z
+}
+class "Extra National Package" as ExtraNationalSpec <<ProductSpecificationInventoryItem>> {
+  status: Active
+  start date: 4th Nov 2022
+  Volume=2 hours
+  blocked: N
+  recurring: Y
+  validity period: 1 month
+  rollover: N
+}
+class "Extra Data Package" as ExtraDataSpec <<ProductSpecificationInventoryItem>> {
+  status: Active
+  start date: 4th Nov 2022
+  Volume=5 GB
+  blocked: Y
+  recurring: Y
+  validity period: 1 month
+  rollover: N
+}
+
+MobileLineOffering --> MobileLineSpec
+ExtraNationalOffering --> ExtraNationalSpec
+ExtraDataOffering --> ExtraDataSpec
+
+ExtraNationalSpec --> MobileLineSpec : "Applies on"
+ExtraDataSpec --> MobileLineSpec : "Applies on"
+
+@enduml

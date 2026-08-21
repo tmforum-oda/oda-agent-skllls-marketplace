@@ -1,0 +1,116 @@
+[
+    {
+    "id": "CUSTBIRTHDAY",
+    "href": "https:/host:port/tmf-api/promotion/v5/promotion/CUSTBIRTHDAY",
+	"description": "It's your birthday! 50 loyalty points will be added to your account",
+	"lastUpdate": "2000-01-19T00:00:00.000Z",
+	"lifecycleStatus": "retirement",
+	"name": "50 loyalty points just to you",
+	"pattern": [{
+		"@type":"PromotionPattern",
+		"id": "PATTERN_50_LOYALTY POINTS",
+		"action": [{
+			"@type":"PromotionAction",
+			"id": "ACTION_50_LOYALTY POINTS", 
+			"actionType": "10",
+			"actionValue": "50 loyalty points"
+		}],
+		"criteriaGroup": [{
+			"@type":"PromotionCriteriaGroup",
+			"id": "GROUP_50_LOYALTY POINTS",
+			"criteria": [{
+				"@type":"PromotionCriteria",
+				"id": "CRITERIA_50_LOYALTY POINTS",
+				"criteriaOperator": "=",
+				"criteriaParameter": "1.3",
+				"criteriaValue":  "02-09"
+			}]
+		}]
+	}],
+	"promotionType": "Award",
+	"validFor": {
+		"startDateTime": "2020-01-05T12:00:56.982Z",
+		"endDateTime": "9999-12-31T23:59:59.999Z"
+	},
+	"@type":"Promotion"
+},{
+    "id": "RETENTIONNETFLIX3M",
+    "href": "https:/host:port/tmf-api/promotion/v5/promotion/RETENTIONNETFLIX3M",
+	"description": "Retention for more 24 months gives free Netflix for 3months",
+	"lastUpdate": "2021-02-10T00:00:00.000Z",
+	"lifecycleStatus": "draft",
+	"name": "3months of free Netflix when retention for more 24 months",
+	"pattern": [{
+		"@type":"PromotionPattern",
+		"action": [{
+			"@type":"PromotionAction",
+			"actionEntityRef": {
+				"@type": "EntityRef",
+				"id": "POSTPAID_PRODUCT_OFFERING_NETFLIX",
+				"href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOffering/PRODUCT_OFFERING_NETFLIX",
+				"name": "Netflix 3MFree"
+			},
+			"actionType": "9"
+		}],
+		"criteriaGroup": [{
+			"@type":"PromotionCriteriaGroup",
+			"criteria": [{
+				"@type":"PromotionCriteria",
+				"criteriaOperator": "=",
+				"criteriaParameter": "3.2",
+				"criteriaValue": "24"
+			},{
+				"@type":"PromotionCriteria",
+				"criteriaOperator": "=",
+				"criteriaParameter": "3.3",
+				"criteriaValue": "months"
+			}]
+		}]
+	}],
+	"promotionType": "Award",
+	"validFor": {
+		"startDateTime": "2020-01-05T12:00:56.982Z",
+		"endDateTime": "9999-12-31T23:59:59.999Z"
+	},
+	"@type":"Promotion"
+},{
+    "id": "PREPAIDOFFER_5GB",
+    "href": "https:/host:port/tmf-api/promotion/v5/promotion/PREPAIDOFFER_5GB",
+	"description": "Top-up by £20 or more and get 5GB of data for only £5",
+	"lastUpdate": "2021-02-10T00:00:00.000Z",
+	"lifecycleStatus": "release",
+	"name": "More 5GB data when 20euros top-up",
+	"pattern": [{
+		"@type":"PromotionPattern",
+		"id": "PATTERN_PREPAID_PRODUCT_OFFERING_5GB",
+		"action": [{
+			"@type":"PromotionAction",
+			"id": "ACTION_PREPAID_PRODUCT_OFFERING_5GB",
+			"actionEntityId": {
+				"@type": "EntityRef",
+				"id": "PRODUCT_OFFERING_5GB",
+				"href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOffering/PRODUCT_OFFERING_5GB",
+				"name": "5GB data add-on"
+			},
+			"actionType": "3",
+			"actionValue": "5"
+		}],
+		"criteriaGroup": [{
+			"@type":"PromotionCriteriaGroup",
+			"id": "GROUP_PREPAID_PRODUCT_OFFERING_5GB",
+			"criteria": [{
+				"@type":"PromotionCriteria",
+				"id": "CRITERIA_PREPAID_PRODUCT_OFFERING_5GB",
+				"criteriaOperator": ">=",
+				"criteriaParameter": "5.1",
+				"criteriaValue": "£20"
+			}]
+		}]
+	}],
+	"promotionType": "Reduction",
+	"validFor": {
+		"startDateTime": "2020-01-05T12:00:56.982Z",
+		"endDateTime": "9999-12-31T23:59:59.999Z"
+	},
+	"@type":"Promotion"
+}]

@@ -1,0 +1,10 @@
+{
+  "cancellationReason": "Duplicate order",
+  "requestedCancellationDate": "2021-08-30T09:14:46.145Z",
+  "productOrder": {
+    "id": "45f-98f-ss45",
+    "@referredType": "ProductOrder",
+    "@type": "ProductOrderRef"
+  },
+  "@type": "CancelProductOrder"
+}

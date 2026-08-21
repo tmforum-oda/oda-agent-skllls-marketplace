@@ -1,0 +1,33 @@
+{
+    "@type": "PartyRoleSpecificationAttributeValueChangeEvent",
+    "@baseType": "Event",
+    "correlationId": "5e106a05-38fj",
+    "domain": "Commercial",
+    "title": "PartyRoleSpecificationAttributeValueChangeEvent",
+    "description": "PartyRoleSpecificationAttributeValueChangeEvent illustration",
+    "priority": "3",
+    "timeOccurred": "2022-11-24T15:02:22.124Z",
+    "source": {
+        "@type": "ReportingResource",
+        "id": "21",
+        "name": "APP-422",
+        "@referredType": "LogicalResource"
+    },
+    "reportingSystem": {
+        "@type": "ReportingResource",
+        "id": "999",
+        "name": "APP-28",
+        "@referredType": "LogicalResource"
+    },
+    "eventId": "4c52-bf1d-ea5ac506dn78",
+    "eventTime": "2022-11-24T15:02:28.219Z",
+    "eventType": "PartyRoleSpecificationAttributeValueChangeEvent",
+    "event": {
+        "partyRoleSpecification": {
+            "@type": "PartyRoleSpecification",
+            "href": "https:/host:port/tmf-api/partyRoleManagement/v4/partyRoleSpecification/5713",
+            "id": "5713",
+            "name": "Main catalog administration"
+        }
+    }
+}

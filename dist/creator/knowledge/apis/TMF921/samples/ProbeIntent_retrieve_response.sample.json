@@ -1,0 +1,141 @@
+{
+    "id": "20071",
+    "href": "https://mycsp.com:8080//tmf-api/intentManagement/v5/intent/20071",
+    "description": "A probe intent resource",
+    "name": "probeIntentExample",
+    "lifecycleStatus": "Active",
+    "version": "1.0",
+    "expression": {
+        "@type": "JsonLdExpression",
+        "iri": "https://mycsp.com:8080/tmf-api/rdfs/expression-example-1",
+        "expressionValue": {
+            "@context": {
+                "icm": "http://www.models.tmforum.org/tio/v1.0.0/IntentCommonModel#",
+                "cat": "http://www.operator.com/Catalog#",
+                "idan": "http://www.idan-tmforum-catalyst.org/IntentDrivenAutonomousNetworks#",
+                "xsd": "http://www.w3.org/2001/XMLSchema#",
+                "t": "http://www.w3.org/2006/time#",
+                "elb": "http://www.operator.com/Catalog/EventWirelessAccess#",
+                "app": "http://www.operator.com/Catalog/StreamingApplication#",
+                "geo": "https://tmforum.org/2020/07/geographicPoint#"
+            },
+            "idan:EventLiveBroadcast000001": {
+                "@type": "icm:Intent",
+                "icm:intentOwner": "idan:Salesforce",
+                "icm:hasExpectation": {
+                    "idan:Delivery_service": {
+                        "@type": "icm:DeliveryExpectation",
+                        "icm:target": "_:service",
+                        "icm:params": {
+                            "icm:targetDescription": "cat:EventWirelessAccess"
+                        }
+                    },
+                    "idan:Delivery_app": {
+                        "@type": "icm:DeliveryExpectation",
+                        "icm:target": "_:application",
+                        "icm:params": {
+                            "icm:targetDescription": "cat:StreamingApplication"
+                        }
+                    },
+                    "idan:Property_service": {
+                        "@type": "icm:PropertyExpectation",
+                        "icm:target": "_:service",
+                        "icm:params": {
+                            "elb:serviceQuality": [
+                                {
+                                    "icm:value": "4KUHD"
+                                }
+                            ],
+                            "elb:numberOfParticipants": [
+                                {
+                                    "icm:atMost": "200"
+                                }
+                            ],
+                            "elb:areaOfService": [
+                                {
+                                    "geo:geographicPoints": [
+                                        {
+                                            "geo:longitude": 90,
+                                            "geo:latitude": 44,
+                                            "geo:altitude": 84
+                                        },
+                                        {
+                                            "geo:longitude": 84,
+                                            "geo:latitude": -12,
+                                            "geo:altitude": 24
+                                        },
+                                        {
+                                            "geo:longitude": 131,
+                                            "geo:latitude": -36,
+                                            "geo:altitude": 29
+                                        },
+                                        {
+                                            "geo:longitude": 7,
+                                            "geo:latitude": 81,
+                                            "geo:altitude": -42
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "idan:Property_app": {
+                        "@type": "icm:PropertyExpectation",
+                        "icm:target": "_:application",
+                        "icm:params": {
+                            "app:appType": [
+                                {
+                                    "icm:value": "AWS MediaLive"
+                                },
+                                {
+                                    "icm:value": "Facebook Live"
+                                },
+                                {
+                                    "icm:value": "YouTube"
+                                }
+                            ]
+                        }
+                    },
+                    "idan:Reporting": {
+                        "@type": "icm:ReportingExpectation",
+                        "icm:target": "idan:EventLiveBroadcast",
+                        "icm:params": {
+                            "icm:reportingInterval": [
+                                {
+                                    "t:Duration": [
+                                        {
+                                            "t:numbericDuration": 10,
+                                            "t:temporalUnit": "unitMinute"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "icm:reportingEvent": [
+                                "icm:StateComplies",
+                                "icm:StateDegrades"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }, 
+    "validFor": {
+      "endDateTime": "2026-04-30T15:40:47.000Z",
+      "startDateTime": "2024-04-30T15:40:47.000Z"
+    },
+    "isBundle": false,	
+    "priority": "1",
+    "context": "Broadband services",
+    "intentSpecification": {
+        "@type": "IntentSpecificationRef",
+        "id": "EventLiveBroadcast_IntentSpec",
+        "name": "EventLiveBroadcastIntentSpec",
+        "@referredType": "IntentSpecification",
+        "@href": "https://mycsp.com:8080/tmf-api/intent/v5/IntentSpecification/EventLiveBroadcast_IntentSpec"
+    },    	
+    "lastUpdate": "2024-04-30T15:40:47.000Z",
+    "@baseType": "Intent",
+    "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Common/ProbeIntent.schema.json",
+    "@type": "ProbeIntent"
+}

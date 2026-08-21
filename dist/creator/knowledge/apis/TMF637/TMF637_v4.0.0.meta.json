@@ -1,0 +1,16 @@
+{
+  "id": "TMF637",
+  "type": "api",
+  "name": "product-inventory-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "ab24403bf2b9fa6f122acad55042bb3cde0112ca2c84c614d74c6133708feded"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

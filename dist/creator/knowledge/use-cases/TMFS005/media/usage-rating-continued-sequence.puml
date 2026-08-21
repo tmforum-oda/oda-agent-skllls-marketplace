@@ -1,0 +1,44 @@
+@startuml
+title Usage Rating 2/2
+
+participant "Event Management" as Event #grey
+participant "Product Inventory" as PI
+participant "Product Catalog" as PC
+participant "Bill Calculation Management" as BCM
+
+group loop
+
+    Event -> BCM : 18. **TMF688 Event Management:**\npost /listener/ProductUsageStateChangeEvent\n(eventId,ProductUsageId=Id1\nProductUsage.Status="rated"\nUsageProductPrice.price.dutyFreeAmount.Money.value=1\nUsageProductPrice.price.dutyFreeAmount.Money.unit="EUR")
+    BCM --> Event : 19. 200 OK
+
+    BCM -> PI : 20. **TMF637 Product Inventory Management:**\nget /product/(ProductId.Id1)\n?(ProductOfferingId)
+    activate PI
+    PI --> BCM : 21. 200 OK (ProductOfferingId=Id1)
+
+    BCM -> PI : 22. **TMF637 Product Inventory Management:**\nget /product/ (ProductId.Id1, ProductOfferingId.Id1)\n?(BillingAccountId, productSpecificationId)
+    PI --> BCM : 23. 200 OK\n(BillingAccountId=Id7, productSpecificationId=Id1)
+    deactivate PI
+
+    BCM -> PC : 24. **TMF620 Product Catalog Management:**\nget UsageProdOfferPriceCharge\n(ProductUsageSpecId.Id1, productSpecificationId.Id1)\n?(UsageProdOfferPriceChargeId,\nUsageProdOfferPriceChargeValue,TaxProductOfferPriceAlterateration)
+    activate PC
+    PC --> BCM : 25. (UsageProductPriceChargeId1,\nUsageProdOfferPriceCharge.value=0,1euro/min, TaxProductOfferPriceAlterateration=20%)
+    deactivate PC
+
+    BCM -> BCM : 26. **TMF678 Customer Bill Mgt:**\nPost AppliedCustomerBillingProductUsageRate (UsageProdOfferPriceCharge(Value),\nProductId1, BillingAcountId.Id7, BillingPeriod)\n ==> AppliedCustomerBillingProductUsageRateId.Id1
+    note right of BCM
+      The Current version of
+      the TMF678 does not
+      expose the resource
+      AppliedCustomerBillingProductUsageRate
+    end note
+
+    BCM -> BCM : 27. **TMF678 Customer Bill Mgt:**\nPatch /AppliedCustomerBillingProductUsageRate\n/AppliedCustomerBillingProductUsageRateId.Id1 (TaxProductOfferPriceAlterateration(value))
+    note right of BCM
+      (26,27)This operation  will be performed for all
+      UsageProdPriceCharge generated and published through events.
+      In this diagram, we illustrate the example of 'Voice National'.
+    end note
+
+end
+
+@enduml

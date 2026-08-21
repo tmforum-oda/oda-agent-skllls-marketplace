@@ -1,0 +1,39 @@
+{
+  "@type": "SearchTimeSlotAttributeValueChangeEvent",
+  "correlationId": "1da724c6-17bd",
+  "description": "SearchTimeSlotAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4e6a-95cb-0892c2e596b2",
+  "eventTime": "2026-03-26T08:49:14.288Z",
+  "eventType": "SearchTimeSlotAttributeValueChangeEvent",
+  "priority": "5",
+  "title": "SearchTimeSlotAttributeValueChangeEvent",
+  "event": {
+    "searchTimeSlot": {
+      "@type": "SearchTimeSlot",
+      "state": "done",
+      "id": "99",
+      "href": "https://serverRoot/tmf-api/appointment/v5/searchTimeSlot/99",
+      "place": {
+        "id": "9979",
+        "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/9979",
+        "name": "San Francisco Bay Area",
+        "@referredType": "GeographicAddress",
+        "@type": "PlaceRef"
+      }
+    }
+  },
+  "reportingSystem": {
+    "id": "275",
+    "name": "APP-665",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "280",
+    "name": "APP-929",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event"
+}

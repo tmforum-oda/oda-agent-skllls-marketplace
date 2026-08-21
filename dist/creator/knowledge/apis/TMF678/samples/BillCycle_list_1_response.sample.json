@@ -1,0 +1,73 @@
+[
+{
+        "id": "BC-12345",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-12345",
+        "billingDate": "2020-01-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-12346",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-12346",
+        "billingDate": "2020-02-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-12347",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-12347",
+        "billingDate": "2020-03-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-12348",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-12348",
+        "billingDate": "2020-04-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-12349",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-12349",
+        "billingDate": "2020-05-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-1234a",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-1234a",
+        "billingDate": "2020-06-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-1234b",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-1234b",
+        "billingDate": "2020-07-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-1234c",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-1234c",
+        "billingDate": "2020-08-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-1234d",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-1234d",
+        "billingDate": "2020-09-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-1234e",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-1234e",
+        "billingDate": "2020-10-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-1234f",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-1234f",
+        "billingDate": "2020-11-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    },
+    {
+        "id": "BC-12340",
+        "href": "http://server:port/tmf-api/Customer_Bill_Management/v5/billcycle/BC-12340",
+        "billingDate": "2020-12-22T12:00:00.000Z",
+        "@type": "BillCycle"
+    }]

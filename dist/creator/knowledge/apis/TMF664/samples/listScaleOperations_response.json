@@ -1,0 +1,40 @@
+[
+  {
+    "@type": "Scale",
+    "id": "scale-001",
+    "href": "/resourceFunctionActivation/v5/scale/scale-001",
+    "name": "Increase CPU for Analytics Service",
+    "resourceFunction": {
+      "@type": "ResourceFunctionRef",
+      "@referredType": "ResourceFunction",
+      "id": "rf-006",
+      "href": "/resourceFunctionActivation/v5/resourceFunction/rf-006"
+    },
+    "scaleType": "scaleUp",
+    "aspectId": "CPU_Cores",
+    "numberOfSteps": {
+      "amount": 4,
+      "units": "core"
+    },
+    "state": "done"
+  },
+  {
+    "@type": "Scale",
+    "id": "scale-002",
+    "href": "/resourceFunctionActivation/v5/scale/scale-002",
+    "name": "Add instances to Load Balancer",
+    "resourceFunction": {
+      "@type": "ResourceFunctionRef",
+      "@referredType": "ResourceFunction",
+      "id": "rf-007",
+      "href": "/resourceFunctionActivation/v5/resourceFunction/rf-007"
+    },
+    "scaleType": "scaleOut",
+    "aspectId": "Instances",
+    "numberOfSteps": {
+      "amount": 2,
+      "units": "instance"
+    },
+    "state": "inProgress"
+  }
+]

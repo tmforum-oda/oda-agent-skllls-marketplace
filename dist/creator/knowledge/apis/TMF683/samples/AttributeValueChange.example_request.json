@@ -1,0 +1,36 @@
+{
+    "correlationId": "8b161265-fc15",
+    "description": "PartyInteractionAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4dff-81c5-b308c95373fa",
+    "eventTime": "2022-11-28T13:28:06.795Z",
+    "eventType": "PartyInteractionAttributeValueChangeEvent",
+    "priority": "4",
+    "timeOcurred": "2022-11-28T13:27:57.646Z",
+    "title": "PartyInteractionAttributeValueChangeEvent",
+    "event": {
+        "partyInteraction": {
+            "href": "http://servername/partyInteraction/123",
+            "id": "123",
+            "@type": "PartyInteraction",
+            "interactionDate": {
+                "startDateTime": "2019-10-02T11:36:18.758Z",
+                "endDateTime": "2019-10-02T11:53:21.789Z"
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "661",
+        "name": "APP-835",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "616",
+        "name": "APP-817",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PartyInteractionAttributeValueChangeEvent"
+}

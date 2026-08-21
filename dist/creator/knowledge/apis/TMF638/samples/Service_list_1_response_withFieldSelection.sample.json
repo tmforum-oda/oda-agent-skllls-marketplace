@@ -1,0 +1,14 @@
+[
+    {
+        "id": "5351",
+        "name": "vCPE serial 1355615",
+        "state": "active",
+        "@type": "Service"
+    },
+    {
+        "id": "5352",
+        "name": "vDPI serial 1355445",
+        "state": "active",
+        "@type": "Service"
+    }
+]

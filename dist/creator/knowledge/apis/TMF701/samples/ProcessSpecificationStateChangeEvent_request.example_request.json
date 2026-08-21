@@ -1,0 +1,34 @@
+{
+  "id": "evt-128",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-128",
+  "eventId": "00052",
+  "eventType": "ProcessSpecificationStateChangeEvent",
+  "correlationId": "g56Iht-po54",
+  "eventTime": "2024-04-18T16:42:26-04:00",
+  "description": "ProcessSpecificationStateChangeEvent illustration",
+  "timeOccurred": "2024-04-18T16:42:25-04:00",
+  "title": "ProcessSpecificationStateChangeEvent",
+  "event": {
+    "processSpecification": {
+      "id": "OC54",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/processSpecification/OC54",
+      "@type": "ProcessSpecification",
+      "lifecycleStatus": "active"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProcessSpecificationStateChangeEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

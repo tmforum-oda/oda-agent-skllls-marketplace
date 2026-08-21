@@ -1,0 +1,30 @@
+[
+  {
+      "id": "10c5f5b5-e47177",
+      "name": "Main Credit Card",
+      "@baseType": "PaymentMethod",
+      "@type": "BankCard",
+      "brand": "Visa",
+      "cardType": "Credit",
+      "cardNumber": "0000-0000-0000-0000",
+      "expirationDate":"2025-11-20T10:19:46.000Z",
+      "nameOnCard": "Abiodun Oyeniran",
+      "bank": "Barclays Bank Inc.",
+      "status": "Active",
+      "statusDate": "2020-07-17T10:12:26.000Z"
+  },
+  {
+    "id": "10c5f5b5-e47175733",
+    "name": "Secondary Credit Card",
+    "@baseType": "PaymentMethod",
+    "@type": "BankCard",
+    "brand": "MasterCard",
+    "cardType": "Credit",
+    "cardNumber": "0000-0000-0010-0000",
+    "expirationDate":"2025-11-20T10:19:46.000Z",
+    "nameOnCard": "Dominc Oyeniran",
+    "bank": "UBA Bank.",
+    "status": "Active",
+    "statusDate": "2020-07-17T10:12:26.000Z"
+  }
+]

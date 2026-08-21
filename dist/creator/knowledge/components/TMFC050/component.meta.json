@@ -1,0 +1,17 @@
+{
+  "id": "TMFC050",
+  "type": "component",
+  "name": "ProductRecommendationManagement",
+  "version": "1.0.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC050-ProductRecommendation/Specification/TMFC050-ProductRecommendation.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "eecc9220d11e3b45752d38a2283244bfde2142668879ac510cf426e524a557dc"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

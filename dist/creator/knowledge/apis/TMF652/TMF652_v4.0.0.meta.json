@@ -1,0 +1,16 @@
+{
+  "id": "TMF652",
+  "type": "api",
+  "name": "resource-order-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF652_Resource_Order/4.0.0/swagger/TMF652_Resource_Order_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "61b8c7894209515436f7b1b63d377fb86add18bdc57ac7e566bb14c605a1df44"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

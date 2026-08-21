@@ -1,0 +1,6 @@
+[
+    {   "op":   "replace",
+        "path": "/attachment/url?attachment.name=File_XYZ_002",
+        "value": "https://serverlocation/files/2A"
+    }
+]

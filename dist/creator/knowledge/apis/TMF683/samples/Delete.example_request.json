@@ -1,0 +1,32 @@
+{
+    "correlationId": "0be43a9f-6b43",
+    "description": "PartyInteractionDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4aa5-a8ce-d1162247afaf",
+    "eventTime": "2022-11-28T13:28:06.805Z",
+    "eventType": "PartyInteractionDeleteEvent",
+    "priority": "3",
+    "timeOcurred": "2022-11-28T13:28:01.622Z",
+    "title": "PartyInteractionDeleteEvent",
+    "event": {
+        "partyInteraction": {
+            "id": "123",
+            "href": "http://servername/partyInteraction/123",
+            "@type": "PartyInteraction"
+        }
+    },
+    "reportingSystem": {
+        "id": "661",
+        "name": "APP-835",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "616",
+        "name": "APP-817",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PartyInteractionDeleteEvent"
+}

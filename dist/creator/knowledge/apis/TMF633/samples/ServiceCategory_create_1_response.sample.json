@@ -1,0 +1,19 @@
+{
+    "id": "1708", 
+    "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v4/serviceCategory/1708", 
+    "name": "Cloud Services", 
+    "description": "A category to hold all available cloud service offers", 
+    "version": "1.0", 
+    "validFor": {
+        "startDateTime": "2020-08-25T00:00:00.000Z", 
+        "endDateTime": "2023-03-25T00:00:00.000Z"
+    }, 
+    "lifecycleStatus": "Active", 
+    "lastUpdate": "2020-08-25T00:00:00.000Z", 
+    "isRoot": true, 
+    "serviceCandidate": [], 
+    "category": [], 
+    "@type": "ServiceCategory", 
+    "@schemalLocation": "https://mycsp.com:8080/tmf-api/schema/Service/ServiceCategory.schema.json", 
+    "@baseType": "Category" 
+}

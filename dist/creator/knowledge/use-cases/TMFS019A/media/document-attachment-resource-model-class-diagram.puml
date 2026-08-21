@@ -1,0 +1,165 @@
+@startuml
+title Figure 2 - Document (TMF651 Agreement Management API v5)
+
+class Document {
+  creationDate : DateTime
+  description : String
+  documentType : String
+  href : String
+  id : String
+  lastUpdate : DateTime
+  lifecycleState : String
+  name : String (1)
+  version : String
+  @baseType : String
+  @schemaLocation : String
+  @type = Document
+}
+
+class CategoryRef {
+  href : String
+  id : String (1)
+  name : String
+  version : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Document "0..*" -- CategoryRef : category
+
+class DocumentRef {
+  href : String
+  id : String (1)
+  name : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type = DocumentRef
+}
+Document "0..*" -- DocumentRef : documentRelationship
+
+class DocumentSpecification {
+  URL : String
+  id : String (1)
+  name : String
+  version : String
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Document "0..1" -- DocumentSpecification : documentSpecification
+
+class RelatedEntity {
+  role : String (1)
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Document "0..1" -- RelatedEntity : relatedEntity
+
+class EntityRef {
+  href : String
+  id : String (1)
+  name : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+RelatedEntity "1" -- EntityRef : entity
+
+class Characteristic {
+  id : String
+  name : String (1)
+  valueType : String
+  @baseType : String
+  @schemaLocation : String
+  @type : String
+  discriminator: FloatCharacteristic, BooleanArrayCharacteristic, Characteristic,\nObjectArrayCharacteristic, MapAnyCharacteristicValue, FloatArrayCharacteristic,\nStringCharacteristic, ObjectCharacteristic, NumberCharacteristic,\nBooleanCharacteristic, NumberArrayCharacteristic, IntegerCharacteristic,\nStringArrayCharacteristic, IntegerArrayCharacteristic
+}
+Document "0..*" -- Characteristic : characteristic
+
+class CharacteristicRelationship {
+  id : String (1)
+  relationshipType : String (1)
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Characteristic "0..*" -- CharacteristicRelationship : characteristicRelationship
+
+class RelatedPartyRefOrPartyRoleRef {
+  role : String (1)
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Document "0..*" -- RelatedPartyRefOrPartyRoleRef : relatedParty
+
+class PartyRefOrPartyRoleRef {
+  discriminator: PartyRef, PartyRoleRef
+}
+RelatedPartyRefOrPartyRoleRef "0..1" -- PartyRefOrPartyRoleRef : partyOrPartyRole
+
+class PartyRoleRef {
+  href : String
+  id : String (1)
+  name : String
+  partyId : String
+  partyName : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type = PartyRoleRef
+}
+class PartyRef {
+  href : String
+  id : String (1)
+  name : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type = PartyRef
+}
+PartyRefOrPartyRoleRef ..> PartyRoleRef
+PartyRefOrPartyRoleRef ..> PartyRef
+
+class AttachmentRefOrValue {
+  discriminator: Attachment, AttachmentRef
+}
+Document "0..*" -- AttachmentRefOrValue : attachment
+
+class Attachment {
+  attachmentType : String (1)
+  content : Base64
+  description : String
+  href : String
+  id : String
+  mimeType : String (1)
+  name : String
+  size : Quantity
+  url : String
+  validFor : TimePeriod
+  @baseType : String
+  @schemaLocation : String
+  @type = Attachment
+}
+class AttachmentRef {
+  description : String
+  href : String
+  id : String (1)
+  name : String
+  url : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type = AttachmentRef
+}
+AttachmentRefOrValue ..> Attachment
+AttachmentRefOrValue ..> AttachmentRef
+
+note bottom
+  (1) : Mandatory property
+end note
+@enduml

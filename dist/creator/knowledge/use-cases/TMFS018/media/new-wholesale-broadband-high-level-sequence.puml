@@ -1,0 +1,91 @@
+@startuml
+title new Wholesale Broadband - High Level View
+
+box "Wholebuyer" #E0E0E0
+  participant "BuyerGW" as BuyerGW
+end box
+box "Wholeseller" #E0E0E0
+  participant "SellerGW" as SellerGW
+  participant "Location Management\nTMFC014" as LocationMgt #E5DCF0
+  participant "Product Configurator\nTMFC027" as ProductConfigurator #E5DCF0
+  participant "Appointment Management" as AppointmentMgt
+  participant "Product Order Capture & Validation\nTMFC002" as POCV #E5DCF0
+end box
+
+== Address Validation ==
+
+note over BuyerGW, SellerGW : The address with (partial) textual fields\nmust be mapped to an identifiable address\nin the Seller address repository
+
+BuyerGW -> SellerGW : 1 Search for address - TMF673 AddressValidation
+SellerGW -> LocationMgt : 2 POST /geographicAddressValidation (textual fields)
+LocationMgt --> SellerGW : 3 200 OK (normalized address, site & geo refs)
+SellerGW --> BuyerGW : 4 Address response\n(need to consider site and geographic locations)
+
+== New WBAccess Product Offering Qualification ==
+
+note over BuyerGW, SellerGW : Qualification based on address
+
+BuyerGW -> SellerGW : 5 Find products - TMF 679 ProductQualification
+SellerGW -> ProductConfigurator : 6 POST /productOfferingQualification
+ProductConfigurator --> SellerGW : 7 201 Created (eligible product offerings + reasons)
+SellerGW --> BuyerGW : 8 Product availability response
+
+== Technician Appointment (optional) ==
+
+note over BuyerGW, SellerGW
+  Appointments are required when installation
+  work in the customer premise is required.
+  The qualification result should provide this info.
+end note
+
+BuyerGW -> SellerGW : 9 Search for timeslots - TMF 646 Appointment\n(consider Journey, skills and hazards filters)
+SellerGW -> AppointmentMgt : 10 GET /appointment/timeSlot?filters=journey,skills,hazards
+AppointmentMgt --> SellerGW : 11 200 OK (available timeslots)
+SellerGW --> BuyerGW : 12 Available timeslots
+
+BuyerGW -> SellerGW : 13 Reserve appointment - TMF 646 Appointment
+SellerGW -> AppointmentMgt : 14 POST /appointment/reservation
+AppointmentMgt --> SellerGW : 15 201 Created (appointment reserved)
+SellerGW --> BuyerGW : 16 Appointment reserved
+
+== WBAccess Order ==
+
+note over BuyerGW, SellerGW : Order can be placed with\nall required products
+
+BuyerGW -> SellerGW : 17 Place order - TMF 622 Product Order
+activate SellerGW
+
+note over SellerGW : Syntax validation, id generation, timestamp
+
+alt Decomposed Product Model (explicit actions)
+
+    SellerGW -> POCV : 18 Create Product Order with orderItems:\n- FTTH WSBB Access (new product) ............ action="add"\n- G500 - WSBB Bitstream Profile (new product)  action="add"\n- Local - WSBB Bitstream Transport (new) ..... action="add"
+    POCV --> SellerGW : 19 201 Created (state="acknowledged")
+
+else Combined Product Model
+
+    SellerGW -> POCV : 20 Create Product Order with orderItems:\n- FTTH WSBB Bitstream Combined (new product) .. action="add"
+    POCV --> SellerGW : 21 201 Created (state="acknowledged")
+
+end
+
+POCV -> SellerGW : 22 POST ProductOrderCreateEvent(acknowledged)
+SellerGW --> BuyerGW : 23 Order Created Event "acknowledged"
+
+POCV -> SellerGW : 24 POST ProductOrderStateChangeEvent(accepted)
+SellerGW --> BuyerGW : 25 Order State Update Event "accepted"
+
+POCV -> SellerGW : 26 POST ProductOrderStateChangeEvent(inProgress)
+SellerGW --> BuyerGW : 27 Order State Update Event "inProgress"
+
+POCV -> SellerGW : 28 POST ProductOrderMilestoneEvent(committed)
+SellerGW --> BuyerGW : 29 Order Milestone Event "committed"
+
+POCV -> SellerGW : 30 POST ProductOrderStateChangeEvent(serviceActivated)
+SellerGW --> BuyerGW : 31 Order State Update Event "Service Activation"
+
+POCV -> SellerGW : 32 POST ProductOrderStateChangeEvent(completed)
+SellerGW --> BuyerGW : 33 Order State Update Event "complete"
+deactivate SellerGW
+
+@enduml

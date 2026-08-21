@@ -1,0 +1,170 @@
+[
+    {
+        "id": "1747",
+        "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOfferingPrice/1747",
+        "name": "Recurring Charge for Business Firewall",
+        "description": "This pricing describes the recurring charge for a firewall service that can be deployed in business customer premise.",
+        "version": "2.0",
+        "validFor": {
+            "startDateTime": "2020-09-22T00:00:00Z",
+            "endDateTime": "2021-09-22T00:00:00Z"
+        },
+        "priceType": "recurring",
+        "recurringChargePeriodType": "monthly",
+        "recurringChargePeriodLength": 1,
+        "lastUpdate": "2020-09-23T00:00:00Z",
+        "isBundle": false,
+        "lifecycleStatus": "Active",
+        "unitOfMeasure": {
+            "amount": 1,
+            "units": "Month"
+        },
+        "price": {
+            "unit": "EUR",
+            "value": 50
+        },
+        "percentage": 0.0,
+        "productOfferingTerm": [
+            {
+                "name": "12 Month",
+                "description": "12 month contract",
+                "duration": {
+                    "amount": 12,
+                    "units": "Month"
+                },
+                "validFor": {
+                    "startDateTime": "2020-09-22T16:42:23Z",
+                    "endDateTime": "2021-09-22T00:00:00Z"
+                },
+                "@type":  "ProductOfferingTerm"
+            }
+        ],
+        "place": [
+            {
+                "id": "2707", 
+                "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/2707", 
+                "name": "San Francisco Bay Area", 
+                "@referredType": "GeographicAddress",
+                "@type": "PlaceRef"
+            }
+        ],
+        "policy": [
+            {
+                "@referredType": "Policy",
+                "name": "PriceRuleNo1",
+                "id": "2503",
+                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/policy/2503",
+                "@type": "PolicyRef"
+            }
+        ],
+        "pricingLogicAlgorithm": [
+            {
+            "id": "2777",
+            "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/PricingLogicAlgorithm/2777",
+            "name": "RecurringRatingPLA",
+            "description": "Algorithm that rates Recurring event",
+            "plaSpecId": "2801",
+            "validFor": {
+                "startDateTime": "2020-09-22T16:42:23Z",
+                "endDateTime": "2021-09-22T00:00:00Z"
+            },
+            "@type": "PricingLogicAlgorithm"
+            }
+        ],
+        "tax": [
+            {
+                "taxAmount": {
+                    "unit": "EUR",
+                    "value": 10
+                },
+                "taxCategory": "VAT",
+                "taxRate": 20.0,
+                "@type": "TaxItem"
+            }
+        ],
+        "popRelationship": [
+            {
+                "id": "1741", 
+                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOfferingPrice/1741", 
+                "relationshipType": "discountedBy",
+                "validFor": {
+                    "startDateTime": "2020-09-23T16:42:23Z",
+                    "endDateTime": "2021-09-22T00:00:00Z"
+                },
+                "role": "A-Charge",
+                "@referredType": "ProductOfferingPriceAlteration",
+                "@type":  "ProductOfferingPriceRelationship"
+            }
+        ],
+        "@type": "ProductOfferingPrice"
+    },
+    {
+        "id": "1741",
+        "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOfferingPrice/1741",
+        "name": "discount for Business Firewall",
+        "description": "This pricing describes the discount for a firewall service that can be deployed in business customer premise.",
+        "version": "1.0",
+        "validFor": {
+            "startDateTime": "2020-09-22T00:00:00Z",
+            "endDateTime": "2021-09-22T00:00:00Z"
+        },
+        "priceType": "discount",
+        "recurringChargePeriodType": "monthly",
+        "recurringChargePeriodLength": 1,
+        "lastUpdate": "2020-11-24T00:00:00Z",
+        "isBundle": false,
+        "lifecycleStatus": "Active",
+        "unitOfMeasure": {
+            "amount": 1,
+            "units": "Month"
+        },
+        "applicationDuration": {
+            "amount": 12,
+            "units": "Month"
+        },
+        "price": {
+        },
+        "percentage": 10.0,
+        "priority": 1,
+        "productOfferingTerm": [
+        ],
+        "place": [
+            {
+                "id": "2707", 
+                "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/2707", 
+                "name": "San Francisco Bay Area", 
+                "@referredType": "GeographicAddress",
+                "@type": "PlaceRef"
+            }
+        ],
+        "policy": [
+            {
+                "@referredType": "Policy",
+                "name": "PriceRuleNo1",
+                "id": "2503",
+                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/policy/2503",
+                "@type": "PolicyRef"
+            }
+        ],
+        "pricingLogicAlgorithm": [
+        ],
+        "tax": [
+        ],
+        "popRelationship": [
+            {
+                "id": "2027", 
+                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOfferingPrice/2027", 
+                "relationshipType": "relyOn",
+                "validFor": {
+                    "startDateTime": "2020-09-23T16:42:23Z",
+                    "endDateTime": "2021-09-22T00:00:00Z"
+                },
+                "role": "discountInstance",
+                "@referredType": "ProductOfferingPriceAlterationTemplate",
+                "@type":  "ProductOfferingPriceRelationship"
+            }
+        ],
+        "@type": "ProductOfferingPriceAlteration"
+    }
+
+]

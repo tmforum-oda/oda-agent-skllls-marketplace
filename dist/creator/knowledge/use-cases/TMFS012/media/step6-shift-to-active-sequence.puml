@@ -1,0 +1,59 @@
+@startuml
+title Product Catalog Management - Step 6 - Product specification & Offering shift to active
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+actor Marketer
+actor CatalogAdministrator
+participant "EngagementManagement" as EM #purple
+participant "ProductCatalogManagement" as PCM <<blackbox>>
+participant "EventManager" as EventMgr #grey
+
+== Product Specification ==
+
+CatalogAdministrator -> EM : 130 admin is connecting to catalog app
+EM -> PCM : 131 **TMF701 Process Flow** POST /processFlow\n(WelcomeCatalog, CatalogAdministrator)
+activate PCM
+PCM --> EM : 132 **TMF701** 201 Created\n(List of available actions CreateProductSpec,\nManageProductSpec, RetrieveNotification)
+
+group Product Specification valid
+
+    CatalogAdministrator -> EM : 133 Let's validate the Product Specification
+    EM -> PCM : 134 **TMF701 Process Flow** POST /processFlow\n(ManageProductSpec, ProductSpecification#56, state active)
+
+    PCM -> PCM : 135 **TMF620 Product Catalog Management**\nPATCH /productSpecification/id56\n(state active)
+
+    PCM --> EM : 136 **TMF701** 201 Created\nProductSpecification #56 shifts to active
+
+    PCM -> EventMgr : 137 **TMF688 Event Management**\nPOST /productSpecificationStateChangeEvent\n(ProductSpecification #56, state = active)
+
+end
+deactivate PCM
+
+== Product Offering ==
+
+Marketer -> EM : 138 marketer is connecting to catalog app
+EM -> PCM : 139 **TMF701 Process Flow** POST /processFlow\n(WelcomeCatalog, marketer)
+activate PCM
+PCM --> EM : 140 **TMF701** 201 Created\n(List of available actions: Create ProductOffering,\nManage ProductOffering, Retrieve Notification,\nCreate POP, Manage POP, Test PO, Launch PO)
+
+group Product offering valid !
+
+    Marketer -> EM : 141 Let's validate the Product Offering
+    EM -> PCM : 142 **TMF701 Process Flow** POST /processFlow\n(UpdateProductOffering, PO#569, state active)
+
+    PCM -> PCM : 143 Check state change consistency for PO/PS/POP
+
+    PCM -> PCM : 144 **TMF620 Product Catalog Management**\nPATCH /productOffering.id569\n(state active)
+
+    PCM --> EM : 145 **TMF701** 201 Created\nProductOffering #569 shifts to active
+
+    PCM -> EventMgr : 146 **TMF688 Event Management**\nPOST /productOfferingStateChangeEvent\n(PO #569, state = active)
+
+end
+deactivate PCM
+
+@enduml

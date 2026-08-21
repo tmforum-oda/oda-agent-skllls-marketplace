@@ -1,0 +1,76 @@
+{
+    "@type": "QueryProductConfiguration",
+    "instantSync": true,
+    "channel": {
+        "id": "4407", 
+        "href": "https://host:port/tmf-api/salesChannelManagement/v5/channel/4407", 
+        "name": "Assisted Channel",
+        "@referredType": "SalesChannel",
+        "@type":  "ChannelRef"
+    },
+    "relatedParty": [
+        {
+            "role": "prospect",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "@type": "PartyRef",
+                "id": "456",
+                "href": "https://host:port/partyManagement/v5/party/456",
+                "name": "Ross",
+                "@referredType": "Individual"
+            }
+        }
+    ],
+    "contextEntity": { 
+        "id": "3472",
+        "href": "https://host:port/quoteManagement/v5/quote/3472",
+        "name": "March 2019 Order",
+        "@type": "EntityRef",
+        "@referredType": "Quote"
+    },
+    "contextCharacteristic": [
+        {
+            "name": "salesModel",
+            "valueType": "string",
+            "value": "B2C",
+            "@type": "StringCharacteristic"
+        }
+    ],
+    "requestProductConfigurationItem": [
+        {
+            "@type":  "QueryProductConfigurationItem",
+            "id": "01",
+            "contextItem": {
+                "name": "Quote item 01",
+                "itemId": "01",
+                "entityId": "3472",
+                "entityHref": "https://host:port/quoteManagement/v5/quote/3472",
+                "@type": "ItemRef",
+                "@referredType": "QuoteItem"
+
+            },
+            "productConfiguration": {
+                "@type":  "ProductConfiguration",
+                "product": {
+                    "@type":  "ProductRef",
+                    "@referredType": "Product",
+                    "id": "pr1"
+                },
+                "configurationAction": [
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "terminate",
+                        "description": "Terminate product",
+                        "isSelected": false
+                    },
+                    {
+                        "@type":  "ConfigurationAction",
+                        "action": "Change bandwith",
+                        "description": "Change bandwith",
+                        "isSelected": true
+                    }
+                ]
+            }
+        }
+    ]
+}

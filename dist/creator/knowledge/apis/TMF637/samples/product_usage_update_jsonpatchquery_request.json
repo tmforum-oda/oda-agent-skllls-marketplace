@@ -1,0 +1,7 @@
+[
+    {
+        "op": "replace",
+        "path": "/usageCharacteristic/value?name=duration",
+        "value": "22"
+    }
+]

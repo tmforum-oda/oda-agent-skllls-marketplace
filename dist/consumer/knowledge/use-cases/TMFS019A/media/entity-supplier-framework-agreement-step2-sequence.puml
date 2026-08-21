@@ -1,0 +1,13 @@
+@startuml
+title TMFS019 Overview Step 2
+
+box "Entity\nCommunication Service Provider (CSP)"
+participant "Entity IT System\n(Solution)" as Entity
+end box
+box "Supplier"
+participant "Supplier IT System\n(Solution)" as Supplier
+end box
+
+== 2. Entity / Supplier Framework Agreement Management (TMFS019-2 and TMFS019-3) ==
+Entity <-> Supplier : Definition of ad hoc ProductOffering proposition (bundle)\nincluding definition of Business Model, Contractual Model,\nFinancial Model, Operational Model...
+@enduml

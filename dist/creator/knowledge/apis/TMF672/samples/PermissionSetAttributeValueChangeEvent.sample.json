@@ -1,0 +1,36 @@
+{
+    "correlationId": "333-fd6",
+    "description": "PermissionSetAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "569",
+    "eventTime": "2021-09-27T07:43:59.059Z",
+    "eventType": "PermissionSetAttributeValueChangeEvent",
+    "priority": "1",
+    "timeOccurred": "2021-09-27T07:43:59.059Z",
+    "title": "PermissionSetAttributeValueChangeEvent",
+    "event": {
+        "permissionSet": {
+            "@type": "PermissionSet",
+            "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSet/Prms-31d5b770",
+            "id": "Prms-31d5b770",
+            "validFor": {
+                "startDateTime": "2020-10-01T00:00:00.000Z",
+                "endDateTime": "2020-10-31T23:59:59.000Z"
+            }
+        }
+    },
+    "reportingSystem": {
+        "id": "123",
+        "name": "CRM app",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "123",
+        "name": "CRM app",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "PermissionSetAttributeValueChangeEvent"
+}

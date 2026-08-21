@@ -1,0 +1,16 @@
+{
+  "id": "TMF622",
+  "type": "api",
+  "name": "product-ordering-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "c4272dcf9ee9e405e1049f2a0b69a0a3149e7328fb172b7f69b77f7f197950ef"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

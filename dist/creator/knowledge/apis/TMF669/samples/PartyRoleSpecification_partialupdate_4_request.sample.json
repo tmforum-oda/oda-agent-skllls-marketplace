@@ -1,0 +1,19 @@
+[
+    {
+        "op": "replace",
+        "path": "/specCharacteristic?id=1", 
+        "value": {
+                "@type": "CharacteristicSpecification",
+                "id": "1",
+                "name": "CatalogDomain",
+                "valueType": "string",
+                "characteristicValueSpecification": [
+                    {
+                        "@type": "StringCharacteristicValueSpecification",
+                        "value": "mobile catalog",
+                        "valueType": "string"
+                    }
+                ]
+        }
+    }
+]

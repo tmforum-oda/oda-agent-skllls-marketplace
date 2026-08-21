@@ -1,0 +1,100 @@
+@startuml
+title Product & Service levels Inventories
+
+package "TMFC005 Product Inventory" #E2F0D9 {
+  class "Mobile Line" as PS_MobileLine {
+    status: Active
+    start date: 4th Nov 2022
+    Number=XXXXXX
+    Roaming Options=Y
+    Barring Options=Z
+  }
+  class "Extra National Package" as PS_ExtraNational {
+    status: Active
+    start date: 4th Nov 2022
+    Volume=2 hours
+    blocked: N
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+  class "Extra Data Package" as PS_ExtraData {
+    status: Active
+    start date: 4th Nov 2022
+    Volume= 5 GB
+    blocked: Y
+    recurring: Y
+    validity period: 1 month
+    rollover: N
+  }
+}
+
+package "TMFC008 Service Inventory" #FFE0B2 {
+  class "[Network Service CFS]\nMobile Line" as CFS_MobileLine {
+    status: Active
+    start date: 4th Nov 2022
+    msisdn=XXXXXX
+    usageLimit
+    nVoiceMinutes
+    iVoiceMinutes
+    smsUnits
+    mmsUnits
+    dataVolume
+  }
+  class "[Network Service CFS]\nExtra National Package" as CFS_ExtraNational {
+    status: Active
+    start date: 4th Nov 2022
+    Volume=2 hours
+    blocked: N
+    recurring:Y
+    validity period: 1 month
+    rollover: N
+  }
+  class "[Network Service CFS]\nData Package" as CFS_ExtraData {
+    status: Active
+    start date: 4th Nov 2022
+    Volume=5 GB
+    blocked:Y
+    recurring:Y
+    validity period: 1 month
+    rollover: N
+  }
+
+  class "[Network Service RFS]\n4G Mobile Line" as RFS_4GMobileLine {
+    profile
+  }
+  class "[Network Service RFS]\nUnified Package" as RFS_UnifiedPackage
+
+  CFS_MobileLine --> RFS_4GMobileLine : "is realized by"
+  CFS_ExtraNational --> RFS_UnifiedPackage : "is realized by"
+  CFS_ExtraData --> RFS_UnifiedPackage : "is realized by"
+}
+
+PS_MobileLine --> CFS_MobileLine : "corresponds to"
+PS_ExtraNational --> CFS_ExtraNational : "corresponds to"
+PS_ExtraData --> CFS_ExtraData : "corresponds to"
+
+PS_ExtraNational --> PS_MobileLine : "applies on"
+PS_ExtraData --> PS_MobileLine : "applies on"
+CFS_ExtraNational --> CFS_MobileLine : "applies on"
+CFS_ExtraData --> CFS_MobileLine : "applies on"
+
+package "TMFC013 Service Balance" #E5DCF0 {
+  class "National Voice Balance 1" as NationalVoiceBalance {
+    Startdate=4th Nov 2022
+    Enddate=3th Dec 2022
+    Remaining Value=120 mn
+    Blocked=N
+  }
+  class "Data Balance 1" as DataBalance {
+    Startdate=4th Nov 2022
+    Enddate=3th Dec 2022
+    Remaining Value=5GB
+    Blocked=Y
+  }
+}
+
+RFS_UnifiedPackage --> NationalVoiceBalance : "is realized by"
+RFS_UnifiedPackage --> DataBalance : "is realized by"
+
+@enduml

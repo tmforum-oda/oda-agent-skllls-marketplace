@@ -1,0 +1,41 @@
+{
+  "correlationId": "SOM-20011",
+  "description": "ServiceOrderAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "10037",
+  "eventTime": "2021-12-27T01:06:59.059Z",
+  "eventType": "ServiceOrderAttributeValueChangeEvent",
+  "priority": "1",
+  "timeOcurred": "2021-12-27T01:06:59.059Z",
+  "title": "ServiceOrderAttributeValueChangeEvent",
+  "event": {
+    "serviceOrder": {
+        "id": "5351", 
+        "href": "https://host:port/serviceOrdering/v5/serviceOrder/5351",
+        "expectedCompletionDate": "2022-02-27T01:06:59.059Z",
+        "@type": "ServiceOrder"
+    }
+  },
+  "relatedParty": [
+    {
+      "id": "56d",
+      "role": "Issuer",
+      "@type": "RelatedParty",
+      "@referredType": "Organization"
+    }
+  ],
+  "reportingSystem": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "20011",
+    "name": "Service Order Management Component",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ServiceOrderAttributeValueChangeEvent"
+}

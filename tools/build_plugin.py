@@ -1,24 +1,27 @@
 """Reads: skills/**, knowledge/**.
-Writes: dist/skills/** (SKILL.md files with knowledge/ path references
-rewritten to ${CLAUDE_PLUGIN_ROOT}/knowledge/...), dist/knowledge/**
-(verbatim copy), dist/.claude-plugin/plugin.json.
+Writes: dist/consumer/** and dist/creator/** (each a self-contained Claude
+Code plugin: skills/ subset with knowledge/ path references rewritten to
+${CLAUDE_PLUGIN_ROOT}/knowledge/..., a full verbatim copy of knowledge/, and
+.claude-plugin/plugin.json).
 Track: n/a -- packaging step, not part of either refresh track. Run after
-any change to skills/ or knowledge/ to regenerate the distributable
-plugin bundle in dist/.
+any change to skills/ or knowledge/ to regenerate both distributable plugin
+bundles in dist/.
 
-tools/build_plugin.py -- package skills/ + knowledge/ as a Claude Code
-plugin in dist/, installable via .claude-plugin/marketplace.json at the
-repo root. CONSUMING.md's sparse clone is the lighter-weight alternative
-for a consumer who'd rather not accept a full plugin install; this is the
-other end of that tradeoff, deliberately -- the user explicitly chose to
-bundle knowledge/ inside the plugin, accepting that it breaks the norm
-that plugins should be small/fast.
+tools/build_plugin.py -- package skills/ + knowledge/ as two separate
+Claude Code plugins in dist/consumer/ and dist/creator/, installable via
+.claude-plugin/marketplace.json at the repo root. CONSUMING.md's sparse
+clone is the lighter-weight alternative for a consumer who'd rather not
+accept a full plugin install; this is the other end of that tradeoff,
+deliberately -- the user explicitly chose to bundle knowledge/ inside each
+plugin, accepting that it breaks the norm that plugins should be small/fast
+(and that knowledge/ is duplicated a third time, once per plugin, on top of
+the repo's own top-level copy).
 
-dist/ is committed to git, not gitignored, for the same reason knowledge/
-itself is (spec.md principle 3/§10): a plugin is installed by Claude Code
-fetching directory contents directly from this repo's git history --
-consumers don't run this script themselves, so the artefact it produces
-has to already be there when they install.
+Two plugins, not one, because the skill set has two distinct audiences that
+rarely overlap in a single install: consumers building a product using ODA
+don't want the drafting/correction skills cluttering their skill list, and
+vice versa for people extending ODA itself. Splitting them keeps each
+plugin's skill list focused on what that audience actually invokes.
 
 The one non-mechanical step this script exists to do: skills/*/SKILL.md
 are authored with plain relative paths (knowledge/use-cases/...) so they
@@ -32,13 +35,19 @@ into the canonical skills/*/SKILL.md would make it inert (literal,
 unsubstituted text) for the direct-clone/sparse-clone case. Resolved by
 keeping one canonical source (plain paths) and mechanically rewriting
 `knowledge/` -> `${CLAUDE_PLUGIN_ROOT}/knowledge/` only in the copies
-under dist/ -- the same "generate the packaged form, never hand-maintain
+under dist/, the same "generate the packaged form, never hand-maintain
 two versions" pattern this repo already uses for knowledge/ itself
 (generated from references/).
 
 Must be idempotent (spec.md principle 7): dist/ is deleted and rebuilt
 from scratch every run, so two consecutive runs with no source changes
 produce an identical file set and identical file content.
+
+Every skill directory under skills/ must appear in exactly one of
+CONSUMER_SKILLS, CREATOR_SKILLS, or INTERNAL_ONLY_SKILLS below -- main()
+fails loudly if a skill is unclassified (new skill added, not sorted into
+a bucket yet) or double-classified, rather than silently dropping it from
+both plugins or shipping it in both.
 
 Usage:
     python build_plugin.py
@@ -52,20 +61,53 @@ SKILLS_SRC = os.path.join(REPO_ROOT, "skills")
 KNOWLEDGE_SRC = os.path.join(REPO_ROOT, "knowledge")
 DIST_DIR = os.path.join(REPO_ROOT, "dist")
 
-# Repo-maintenance skills that write to knowledge/ (spec.md 12) -- a different
-# category from every other skill here, which only ever reads knowledge/. Not for
-# external distribution: a consumer installing the plugin to build against this
-# corpus has no use for a skill that edits it, and shipping one invites someone
-# running it against a knowledge/ they don't actually maintain (e.g. a sparse
-# clone with no way to push changes back). Stays in skills/ -- and in this repo's
-# own git history -- just never copied into dist/.
+# Builds a product using ODA -- reads knowledge/, never writes it.
+CONSUMER_SKILLS = {
+    "check-usecase-maturity",
+    "recommend-oda-components-for-requirement",
+    "capture-requirements-from-usecase",
+    "generate-test-cases-from-usecase",
+    "generate-api-mocks-from-usecase",
+    "draft-architecture-diagram-from-usecase",
+    "validate-design-against-oda",
+    "assess-change-impact",
+    "audit-implementation-against-usecase",
+}
+
+# Extends/corrects ODA itself -- drafts new use cases, components, API
+# extensions, and matrix corrections for submission back to TM Forum.
+CREATOR_SKILLS = {
+    "harvest-gaps-from-lessons-learned",
+    "propose-matrix-correction",
+    "draft-new-usecase-from-scenario",
+    "propose-component-or-api-extension",
+    "lint-usecase-draft",
+}
+
+# Repo-maintenance skill that writes to this repo's own knowledge/ (spec.md
+# 12) -- not for external distribution in either plugin: a consumer or
+# creator installing a plugin to build against/extend this corpus has no
+# use for a skill that edits it in place, and shipping it invites someone
+# running it against a knowledge/ they don't actually maintain (e.g. a
+# sparse clone with no way to push changes back). Stays in skills/ -- and
+# in this repo's own git history -- just never copied into dist/.
 INTERNAL_ONLY_SKILLS = {"process-usecase-media"}
 
-PLUGIN_MANIFEST = {
-    "name": "tm-forum-oda",
-    "version": "1.0.0",
-    "description": "TM Forum ODA use cases, components, and Open APIs as a provenance-tracked knowledge base, queryable via Agent Skills.",
-    "author": {"name": "Lester Thomas"},
+PLUGINS = {
+    "consumer": {
+        "name": "tm-forum-oda-consumer",
+        "version": "1.0.0",
+        "description": "TM Forum ODA use cases, components, and Open APIs as a provenance-tracked knowledge base, queryable via Agent Skills -- for building a product against ODA.",
+        "author": {"name": "Lester Thomas"},
+        "skills": CONSUMER_SKILLS,
+    },
+    "creator": {
+        "name": "tm-forum-oda-creator",
+        "version": "1.0.0",
+        "description": "TM Forum ODA use cases, components, and Open APIs as a provenance-tracked knowledge base, queryable via Agent Skills -- for drafting and extending ODA itself.",
+        "author": {"name": "Lester Thomas"},
+        "skills": CREATOR_SKILLS,
+    },
 }
 
 
@@ -73,10 +115,26 @@ def rewrite_knowledge_paths(text):
     return text.replace("knowledge/", "${CLAUDE_PLUGIN_ROOT}/knowledge/")
 
 
-def copy_skills():
-    dst = os.path.join(DIST_DIR, "skills")
-    shutil.copytree(SKILLS_SRC, dst, ignore=lambda _dir, names: INTERNAL_ONLY_SKILLS & set(names))
+def check_classification():
+    all_skills = {name for name in os.listdir(SKILLS_SRC) if os.path.isdir(os.path.join(SKILLS_SRC, name))}
+    classified = CONSUMER_SKILLS | CREATOR_SKILLS | INTERNAL_ONLY_SKILLS
+    unclassified = all_skills - classified
+    unknown = classified - all_skills
+    overlap = (CONSUMER_SKILLS & CREATOR_SKILLS) | (CONSUMER_SKILLS & INTERNAL_ONLY_SKILLS) | (CREATOR_SKILLS & INTERNAL_ONLY_SKILLS)
+    if unclassified:
+        raise SystemExit(f"build_plugin.py: unclassified skill(s), add to CONSUMER_SKILLS/CREATOR_SKILLS/INTERNAL_ONLY_SKILLS: {sorted(unclassified)}")
+    if unknown:
+        raise SystemExit(f"build_plugin.py: classified skill(s) no longer exist under skills/: {sorted(unknown)}")
+    if overlap:
+        raise SystemExit(f"build_plugin.py: skill(s) classified in more than one bucket: {sorted(overlap)}")
+
+
+def copy_skills(plugin_dir, skill_names):
+    dst = os.path.join(plugin_dir, "skills")
+    os.makedirs(dst, exist_ok=True)
     rewritten = 0
+    for name in sorted(skill_names):
+        shutil.copytree(os.path.join(SKILLS_SRC, name), os.path.join(dst, name))
     for root, _, files in os.walk(dst):
         for name in files:
             if name != "SKILL.md":
@@ -91,31 +149,42 @@ def copy_skills():
     return rewritten
 
 
-def copy_knowledge():
-    shutil.copytree(KNOWLEDGE_SRC, os.path.join(DIST_DIR, "knowledge"))
+def copy_knowledge(plugin_dir):
+    shutil.copytree(KNOWLEDGE_SRC, os.path.join(plugin_dir, "knowledge"))
 
 
-def write_manifest():
-    manifest_dir = os.path.join(DIST_DIR, ".claude-plugin")
+def write_manifest(plugin_dir, manifest):
+    manifest_dir = os.path.join(plugin_dir, ".claude-plugin")
     os.makedirs(manifest_dir, exist_ok=True)
     with open(os.path.join(manifest_dir, "plugin.json"), "w", encoding="utf-8") as f:
-        json.dump(PLUGIN_MANIFEST, f, indent=2)
+        json.dump(manifest, f, indent=2)
         f.write("\n")
 
 
 def main():
+    check_classification()
+
     if os.path.exists(DIST_DIR):
         shutil.rmtree(DIST_DIR)
     os.makedirs(DIST_DIR)
 
-    rewritten = copy_skills()
-    copy_knowledge()
-    write_manifest()
+    for key, spec in PLUGINS.items():
+        plugin_dir = os.path.join(DIST_DIR, key)
+        os.makedirs(plugin_dir)
 
-    skill_count = sum(1 for _, _, fs in os.walk(os.path.join(DIST_DIR, "skills")) for f in fs if f == "SKILL.md")
-    print(f"dist/skills/: {skill_count} skill(s), {rewritten} knowledge/ path reference(s) rewritten to ${{CLAUDE_PLUGIN_ROOT}}")
-    print(f"dist/knowledge/: copied from {KNOWLEDGE_SRC}")
-    print("dist/.claude-plugin/plugin.json: written")
+        rewritten = copy_skills(plugin_dir, spec["skills"])
+        copy_knowledge(plugin_dir)
+        write_manifest(plugin_dir, {
+            "name": spec["name"],
+            "version": spec["version"],
+            "description": spec["description"],
+            "author": spec["author"],
+        })
+
+        skill_count = len(spec["skills"])
+        print(f"dist/{key}/skills/: {skill_count} skill(s), {rewritten} knowledge/ path reference(s) rewritten to ${{CLAUDE_PLUGIN_ROOT}}")
+        print(f"dist/{key}/knowledge/: copied from {KNOWLEDGE_SRC}")
+        print(f"dist/{key}/.claude-plugin/plugin.json: written ({spec['name']})")
 
 
 if __name__ == "__main__":

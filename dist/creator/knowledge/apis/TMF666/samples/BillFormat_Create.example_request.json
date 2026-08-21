@@ -1,0 +1,34 @@
+{
+    "correlationId": "0510f131-c102",
+    "description": "BillFormatCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "46a2-b923-aa337ca92912",
+    "eventTime": "2022-08-25T12:23:44.181Z",
+    "eventType": "BillFormatCreateEvent",
+    "priority": "5",
+    "timeOcurred": "2022-08-25T12:23:37.884Z",
+    "title": "billFormatCreateEvent",
+    "event": {
+        "billFormat": {
+            "@type": "BillFormat",
+            "description": "This  bill format ...", 
+            "href": "https://host:port/tmf-api/accountManagement/v5/billFormat/8718", 
+            "id": "8718", 
+            "name": "Detailed invoice"
+        }
+    },
+    "reportingSystem": {
+        "id": "855",
+        "name": "APP-400",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "92",
+        "name": "APP-105",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "BillFormatCreateEvent"
+}

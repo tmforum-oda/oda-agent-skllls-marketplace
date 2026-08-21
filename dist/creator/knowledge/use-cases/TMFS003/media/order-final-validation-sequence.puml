@@ -1,0 +1,54 @@
+@startuml
+title Step 6 - Order confirmation and completion (final validation)
+
+actor person
+participant "EngagementManagement" as EM
+participant "ProductOrderCapture\n& Validation" as POCV
+participant "ProductInventory" as PI
+participant "SupplyChainMgt" as SCM
+participant "EventMgt" as Event
+
+activate EM
+activate POCV
+
+== Order final validation ==
+
+POCV --> EM : 120 **TMF701** 200 OK\n(SessionId, ProcessId4, available actions:\nTaskId10 require order confirmation)
+
+EM -> EM : 121 display final order completion form\nand request confirmation
+person -> EM : 122 click on confirm
+EM -> POCV : 123 **TMF701 Process Flow** PATCH /processFlow/4/taskFlow/10\nSessionId, Confirmed
+
+alt Product inventory updated (if product previously created)
+    POCV -> PI : 124 **TMF637 Product Inventory Mgt** PATCH /product/123
+    activate PI
+    PI --> POCV : 125 **TMF637** 200\nProduct representation
+    deactivate PI
+else Product inventory creation (if product not yet created)
+    POCV -> PI : 126 **TMF637 Product Inventory Mgt** POST /product
+    activate PI
+    PI --> POCV : 127 **TMF637** 201 Created\nProduct representation
+    deactivate PI
+end
+
+POCV -> POCV : 128 **TMF622 Product Order Mgt** PATCH /productOrder/7\nto change the status of the productOrder to 'acknowledged'
+
+note over POCV, EM : Order capture triggers a welcome process to continue the interaction flow with EngagementManagement
+
+POCV -> POCV : 129 Check productOrder validity
+POCV -> POCV : 130 **TMF622 Product Order Mgt** PATCH /productOrder/7\nto change to state inProgress.accepted
+
+opt Management of reservation
+    POCV -> SCM : 131 **TMF687 Stock Mgt** POST /reserveProductStock\n(Box Maxi Strawberry Red, geoSite23)
+    activate SCM
+    SCM --> POCV : 132 **TMF687** 201 Created\nProduct reserved
+    deactivate SCM
+end
+
+POCV -> Event : 133 **TMF688 Event Mgt** POST /processFlowStateChangeEvent\nProcessFlow OrderCapture Completed
+POCV -> Event : 134 **TMF688 Event Mgt** POST /productOrderStateChangeEvent\nA new order in accepted state
+
+deactivate POCV
+deactivate EM
+
+@enduml

@@ -1,0 +1,49 @@
+{
+    "@type": "ProductUsage",
+    "status": "billed",
+    "usageType": "VOICE",
+    "usageCharacteristic": [
+        {
+            "name": "originatingCountryCode",
+            "valueType": "string",
+            "value": "43"
+        },
+        {
+            "name": "destinationCountryCode",
+            "valueType": "string",
+            "value": "49"
+        },
+        {
+            "name": "destinationNumber",
+            "valueType": "string",
+            "value": "170123456789"
+        },
+        {
+            "name": "duration",
+            "valueType": "string",
+            "value": "20"
+        }
+    ],
+    "relatedParty": [
+        {
+            "@type": "RelatedPartyOrPartyRole",
+            "role": "Individual",
+            "partyOrPartyRole": {
+                "@type": "Party",
+                "href": "http://api.csp.com/tmf-api/partyManagement/individual/8a41-d6451fe98963",
+                "id": "8a41-d6451fe98963"
+            }
+        }
+    ],
+    "product": {
+        "@type": "Product",
+        "href": "https://api.csp.com/tmf-api//product/qerr-475",
+        "id": "qerr-475"
+    },
+    "usageSpecification": {
+        "@type": "ProductUsageSpecificationRef",
+        "href": "https://api.csp.com/tmf-api/productUsageManagement/v5/productUsageSpecification/af59-b504c742900e",
+        "id": "af59-b504c742900e",
+        "name": "VoiceCall"
+    }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "TMF633",
+  "type": "api",
+  "name": "service-catalog-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "b3cfdcb277b3adfa08b4a00f8ca3050a7e7529a54fe2ce2f062b945e5a5484f3"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "correlationId": "be58c421-12cf",
+  "description": "Category CreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4a0a-9a52-86f728494b4e",
+  "eventTime": "2022-08-25T12:17:59.603Z",
+  "eventType": "CategoryCreateEvent",
+  "priority": "3",
+  "timeOcurred": "2022-08-25T12:17:52.237Z",
+  "title": "CategoryCreateEvent",
+  "event": {
+    "Category": {
+      "id": "9881",
+      "href": "http://servername/Category/9881",
+      "name": "Cloud Services",
+      "description": "A category to hold all available cloud service offers.",
+      "lastUpdate": "2020-09-23T16:42:23.0Z",
+      "lifecycleStatus": "Active",
+      "isRoot": true,
+      "version": "2.0",
+      "validFor": {
+        "startDateTime": "2020-09-23T16:42:23.0Z"
+      },
+      "subCategory": [
+        {
+          "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/category/6086",
+          "id": "6086",
+          "description": "A category to hold all available cloud service offers.",
+          "name": "Cloud Storage",
+          "version": "1.0",
+          "@referredType": "Category",
+          "@type": "CategoryRef"
+        }
+      ],
+      "productOffering": [
+        {
+          "id": "7655",
+          "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOffering/7655",
+          "name": "Hosted Basic Firewall for business",
+          "@referredType": "ProductOffering",
+          "@type": "ProductOfferingRef"
+        }
+      ]
+    }
+  },
+  "@baseType": "Event",
+  "@type": "CategoryCreateEvent"
+}

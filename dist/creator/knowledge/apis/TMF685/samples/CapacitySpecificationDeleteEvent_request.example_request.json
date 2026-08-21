@@ -1,0 +1,32 @@
+{
+    "@type": "CapacitySpecificationDeleteEvent",
+    "@baseType": "Event",
+    "correlationId": "5b2ca6b7-d69f-4ee7-b36e-5a4b442b14c2",
+    "description": "CapacitySpecificationDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4dfa961e-9dc4-4cea-8e5a-2d392f8076f1",
+    "eventTime": "2024-09-19T13:55:06.910Z",
+    "eventType": "CapacitySpecificationDeleteEvent",
+    "priority": "3",
+    "timeOccurred": "2024-09-19T13:55:03.868Z",
+    "title": "CapacitySpecificationDeleteEvent",
+    "event": {
+        "capacitySpecification": {
+            "@type": "CapacitySpecification",
+            "id": "3d01344d-4409-4b15-8fcb-b8802314ff9c", 
+            "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/capacitySpecification/3d01344d-4409-4b15-8fcb-b8802314ff9c"
+        }
+    },
+    "reportingSystem": {
+        "id": "109",
+        "name": "APP-804",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "8",
+        "name": "APP-307",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    }
+}

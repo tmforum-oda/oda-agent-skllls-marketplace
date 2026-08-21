@@ -1,0 +1,154 @@
+{
+  "id": "12dd-78hg",
+  "href": "https://host:port/quoteManagement/v5/quote/12dd-78hg",
+  "category": "BSBS Quote",
+  "description": "Quote illustration",
+  "expectedFulfillmentStartDate": "2021-05-16T12:45:12.028Z",
+  "expectedQuoteCompletionDate": "2021-05-14T12:45:12.028Z",
+  "externalId": [
+    {
+      "@type": "ExternalIdentifier",
+      "owner": "TMF",
+      "externalIdentifierType": "Quotenumber",
+      "id": "AK1"
+    }
+  ],
+  "instantSyncQuote": false,
+  "creationDate": "2021-05-06T12:45:12.028Z",
+  "requestedQuoteCompletionDate": "2021-05-14T12:45:12.028Z",
+  "version": "1",
+  "agreement": [
+    {
+      "id": "7778-jj56",
+      "href": "https://host:port/agreementManagement/v5/agreement/7778-jj56",
+      "name": "Global Agrrement",
+      "@type": "AgreementRef",
+      "@referredType": "Agreement"
+    }
+  ],
+  "contactMedium": [
+    {
+      "@type": "EmailContactMedium",
+      "@baseType":"ContactMedium",
+      "id": "11",
+      "preferred": true,
+      "emailAddress": "jean.pontus@PerfectCustomer.com"
+    }
+  ],
+  "note": [
+    {
+      "id": "1",
+      "author": "Jean Pontus",
+      "date": "2021-05-13T12:45:12.031Z",
+      "text": "This is a quote request following today call",
+      "@type": "Note"
+    }
+  ],
+  "productOfferingQualification": [
+    {
+      "id": "22ds-ty55",
+      "@type": "ProductOfferingQualificationRef",
+      "href": "https://host:port/productOfferingQualificationManagement/v5/queryProductOfferingQualification/22ds-ty55",
+      "@referredType": "ProductOfferingQualification"
+    }
+  ],
+  "quoteItem": [
+    {
+      "id": "1",
+      "@type": "QuoteItem",
+      "action": "add",
+      "quantity": 1,
+      "product": {
+        "@type": "Product",
+        "productCharacteristic": [
+          {
+            "@type": "StringCharacteristic",
+            "id": "Char1",
+            "name": "Voice Bundle",
+            "value": "unlimited"
+          },
+          {
+            "@type": "ObjectCharacteristic",
+            "id": "Char5",
+            "name": "Data Bundle",
+            "value": {
+              "volume": 50,
+              "unit": "Gb/month"
+            }
+          }
+        ],
+        "productSpecification": {
+          "id": "ssp7-ty89",
+          "name": "TMF Tariff Plan",
+          "@type": "ProductSpecificationRef",
+          "@referredType": "ProductSpecification"
+        }
+      },
+      "productOffering": {
+        "id": "54gg-zza1",
+        "name": "TMF Tariff Plan 25",
+        "@type": "ProductOfferingRef",
+        "@referredType": "ProductOffering"
+      }
+    },
+    {
+      "id": "2",
+      "@type": "QuoteItem",
+      "action": "add",
+      "quantity": 12,
+      "product": {
+        "@type": "Product",
+        "productSpecification": {
+          "id": "qq45-ytr7",
+          "name": "Handset",
+          "version": "1",
+          "@type": "ProductSpecificationRef",
+          "@referredType": "ProductSpecification"
+        }
+      },
+      "productOffering": {
+        "id": "z789-78ga",
+        "name": "TMF handset T9+",
+        "@type": "ProductOfferingRef",
+        "@referredType": "ProductOffering"
+      }
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "Buyer Contact",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "qsdd-9888",
+        "href": "https://host:port/partyManagement/v5/individual/qsdd-9888",
+        "name": "Jean Pontus",
+        "@referredType": "Individual",
+        "@type": "PartyRef"
+      }
+    },
+    {
+      "role": "Buyer organization",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "55",
+        "href": "https://host:port/partyManagement/v5/organization/55",
+        "name": "PerfectCustomer",
+        "@referredType": "Organization",
+        "@type": "PartyRef"
+      }
+    },
+    {
+      "role": "Seller Contact",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "45gh-gh89",
+        "href": "https://host:port/partyManagement/v5/individual/45gh-gh89",
+        "name": "Joe Doe",
+        "@referredType": "Individual",
+        "@type": "PartyRef"
+      }
+    }
+  ],
+  "state": "inProgress",
+  "@type": "Quote"
+}

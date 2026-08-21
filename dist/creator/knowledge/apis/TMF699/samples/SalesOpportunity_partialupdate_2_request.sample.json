@@ -1,0 +1,110 @@
+{
+    "@type": "SalesOpportunity",
+    "name": "GoBank account",
+    "description": "Opportunity for Gobank Account",
+    "rating": "hot",
+    "status": "inProgress",
+    "revenueEstimate": [{
+         "amount": {
+                    "unit": "EUR",
+                    "value": 1200
+                },
+                "revenueType": "oneTime"
+    }],
+    "validFor": {
+        "startDateTime": "2022-03-30T12:27:59.123Z",
+        "endDateTime": "2022-04-30T12:27:59.123Z"
+    },
+    "relatedParty": [
+        {
+            "role": "marketing team",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "id": "128",
+                "@type": "PartyRef",
+                "href": "https://host:port/partyManagement/v5/organization/127128",
+                "name": "GoBank Account",
+                "@referredType": "Organization"
+            }
+        }
+    ],
+    "salesOpportunityItem": [
+        {
+            "@type": "SalesOpportunityItem",
+            "action": "add",
+            "rating": "hot",
+            "priority": "medium",
+            "relatedParty": [
+                {
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "role": "prospect",
+                    "partyOrPartyRole": {
+                        "id": "94587",
+                        "href": "https://host:port/partyManagement/v5/individual/94587",
+                        "@type": "PartyRef",
+                        "@referredType": "Individual",
+                        "name": "Gustavo Fring"
+                    }
+                },
+                {
+                    "role": "marketing team",
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "partyOrPartyRole": {
+                        "id": "127",
+                        "@type": "PartyRef",
+                        "href": "https://host:port/partyManagement/v5/individual/127",
+                        "name": "Walker White",
+                        "@referredType": "Individual"
+                    }
+                },
+                {
+                    "role": "sales team",
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "partyOrPartyRole": {
+                        "id": "475",
+                        "@type": "PartyRef",
+                        "href": "https://host:port/partyManagement/v5/individual/475",
+                        "name": "Saul Goodman",
+                        "@referredType": "Individual"
+                    }
+                }
+            ],
+            "salesLead": [
+                {
+                    "id": "123",
+                    "href": "https://serverRoot/tmf-api/salesManagement/v5/salesLead/123",
+                    "name": "Campaign 17 salesLead 7852",
+                    "@type": "SalesLeadRef",
+                    "@referredType": "SalesLead"
+                }
+            ],
+            "salesActivity": [
+                {
+                    "id": "7321-0a6f",
+                    "href": "https://serverRoot/tmf-api/salesManagement/v5/salesActivity/7321-0a6f",
+                    "name": "Prospect called by Saul Goodman",
+                    "@type": "SalesActivityRef",
+                    "@referredType": "SalesActivity"
+                },
+                {
+                    "id": "6dc1-41ca",
+                    "href": "https://serverRoot/tmf-api/salesManagement/v5/salesActivity/6dc1-41ca",
+                    "name": "Contract sent to prospect by email",
+                    "@type": "SalesActivityRef",
+                    "@referredType": "SalesActivity"
+                }
+            ],
+            "validFor": {
+                "startDateTime": "2022-03-30T12:27:59.123Z",
+                "endDateTime": "2022-04-30T12:27:59.123Z"
+            },
+            "productOffering": {
+                    "id": "43",
+                    "href": "https://serverRoot/tmf-api/productCatalogManagement/v5/productOffering/43",
+                    "name": "Platinum Credit Card",
+                    "@type": "ProductOfferingRef",
+                    "@referredType": "ProductOffering"
+                }
+        }
+    ]
+}

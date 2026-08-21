@@ -1,0 +1,81 @@
+@startuml
+title Resulting Information View (SID simplified view) — Privacy Profile
+
+package "TMFC035 Party Roles & Permissions Mgt" {
+  class "Portal User" as PortalUserSpec <<PartyRoleSpecification>>
+  class "John Smith Portal User Role" as PartyRole <<PartyRole>>
+}
+
+package "TMFC028 Party Mgt" {
+  class "John Smith" as Party <<Party/Individual>>
+  class "email address\njohn.smith@emailprovider.com" as ContactMethod <<ContactMethod>>
+}
+
+package "TMFC022 Party Privacy Management" {
+  class "Portal User Profile Type" as ProfileType <<PartyPrivacyProfileType>>
+
+  class "emailAddressforMarketing purpose" as CharMarketing <<PartyPrivacyProfileTypeCharacteristic>> {
+    PrivacyUsagePurpose = "Marketing Purpose"
+  }
+  class "emailAddressforInternal purpose" as CharInternal <<PartyPrivacyProfileTypeCharacteristic>> {
+    PrivacyUsagePurpose = "Internal Purpose"
+  }
+
+  class "CharValue (marketing, authorized)" as TypeCharValueMktAuth <<PartyPrivacyProfileTypeCharValue>> {
+    value = authorized
+    IsDefault = False
+    Validation = "2 months"
+  }
+  class "CharValue (marketing, unauthorized)" as TypeCharValueMktUnauth <<PartyPrivacyProfileTypeCharValue>> {
+    value = unauthorized
+    IsDefault = True
+    Validation = always
+  }
+  class "CharValue (internal, authorized)" as TypeCharValueIntAuth <<PartyPrivacyProfileTypeCharValue>> {
+    value = authorized
+    IsDefault = True
+    Validation = always
+  }
+
+  class "John Smith Privacy Profile" as PrivacyProfile <<PartyPrivacyProfile>>
+
+  class "Approval" as Approval <<PartyPrivacyProfileApproval>> {
+    Date = 25/06/2024
+    Hour = "12:45 gmt"
+    Channel = "Lambda Portal"
+  }
+
+  class "ProfileCharValue (marketing)" as ProfileCharValueMkt <<PartyPrivacyProfileCharValue>> {
+    value = Authorized
+    StartDate = 25/06/2024
+    EndDate = 24/08/2024
+  }
+  class "ProfileCharValue (internal)" as ProfileCharValueInt <<PartyPrivacyProfileCharValue>> {
+    value = authorized
+    StartDate = 25/06/2024
+    EndDate = none
+  }
+}
+
+PortalUserSpec --> PartyRole : describes
+ProfileType --> PortalUserSpec : applicable for
+Party --> PartyRole : has
+Party --> ContactMethod : defines
+ProfileType --> PrivacyProfile : describes
+PrivacyProfile --> Party : agreed by
+
+ProfileType --> CharMarketing : described by
+ProfileType --> CharInternal : described by
+
+CharMarketing --> TypeCharValueMktAuth : enumerated by
+CharMarketing --> TypeCharValueMktUnauth : enumerated by
+CharInternal --> TypeCharValueIntAuth : enumerated by
+
+TypeCharValueMktAuth --> ProfileCharValueMkt : instantiates
+TypeCharValueIntAuth --> ProfileCharValueInt : instantiates
+
+PrivacyProfile --> Approval : approved by
+PrivacyProfile --> ProfileCharValueMkt : described by
+PrivacyProfile --> ProfileCharValueInt : described by
+
+@enduml

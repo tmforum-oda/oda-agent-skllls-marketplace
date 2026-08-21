@@ -1,0 +1,36 @@
+{
+  "correlationId": "401decc1-aaab",
+  "description": "SalesLeadStateChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "400c-819d-482968d09307",
+  "eventTime": "2022-08-25T12:27:45.939Z",
+  "eventType": "SalesLeadStateChangeEvent",
+  "priority": "4",
+  "timeOccurred": "2022-08-25T12:27:45.198Z",
+  "title": "SalesLeadStateChangeEvent",
+  "event": {
+    "salesLead": {
+      "href": "https://serverRoot/tmf-api/salesManagement/v5/salesLead/123",
+      "id": "123",
+      "@type": "SalesLead",
+      "status": "accepted",
+      "name": "Campaign 17 salesLead 7852",
+      "statusChangeDate": "2022-08-25T12:27:45.198Z",
+      "statusChangeReason": "SalesLead accepted by marketing team"
+    }
+  },
+  "reportingSystem": {
+    "id": "87",
+    "name": "APP-467",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "175",
+    "name": "APP-488",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "SalesLeadStateChangeEvent"
+}

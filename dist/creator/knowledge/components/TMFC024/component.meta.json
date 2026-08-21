@@ -1,0 +1,17 @@
+{
+  "id": "TMFC024",
+  "type": "component",
+  "name": "BillingAccountManagement",
+  "version": "2.1.1",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC024-BillingAccountManagement/Specification/TMFC024-BillingAccountManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "ced2b05760ae2e85565a9eb8f2b14d644d41b31a40f82d3af4410a155196338a"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

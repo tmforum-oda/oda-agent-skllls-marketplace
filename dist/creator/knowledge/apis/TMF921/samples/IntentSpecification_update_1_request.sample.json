@@ -1,0 +1,9 @@
+{
+    "description": "updated Intent specification description",	
+	"validFor": {
+		"startDateTime": "2023-09-12T08:37:43.59Z",
+		"endDateTime": "2099-09-12T08:37:43.59Z"
+	},
+	"version": "2.0",    
+    "@type": "IntentSpecification"
+}

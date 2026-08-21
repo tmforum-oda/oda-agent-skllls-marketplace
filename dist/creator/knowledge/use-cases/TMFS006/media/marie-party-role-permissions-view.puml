@@ -1,0 +1,84 @@
+@startuml
+title SID representation: "Marie Party Role & Permissions"
+
+package "TMFC028 Party Mgt" #white {
+  class "Bob\n:Party / Individual" as Bob
+  class "Marie\n:Party /Individual" as Marie
+}
+
+package "TMFC035 Party Roles & Permissions Mgt" #white {
+  class "Protected Customer\n:PartyRole" as ProtectedCustomerRole #Magenta {
+    start Date:2021/10/10
+  }
+  class "Marie Is Legal Guardian Of Bob\n:PartyRole" as MarieGuardianRole #Magenta {
+    start Date:2021/10/10
+  }
+  class "Legal Guardian\n:PartyRoleSpec" as LegalGuardianRoleSpec #Magenta {
+    ID:PrSpec_0004
+  }
+  class "Legal Guardian Permissions\n:PermissionSpecSet" as LegalGuardianPermSpecSet #Magenta {
+    ID:PrSpec_004
+  }
+
+  class "Initiate Trouble Ticket\n:ImplicitPermissionSpec" as InitiateTroubleTicketSpec
+  class "Ininitiate Bill Dispute\n:ImplicitPermissionSpec" as InitiateBillDisputeSpec
+  class "Manage Contract\n:ImplicitPermissionSpec" as ManageContractSpec
+  class "Manage Billing Account\n:ImplicitPermissionSpec" as ManageBillingAccountSpec
+
+  class "Initiate Trouble Ticket\n:ImplicitPermission" as InitiateTroubleTicket
+  class "Ininitiate Bill Dispute\n:ImplicitPermission" as InitiateBillDispute
+  class "Manage Contract\n:ImplicitPermission" as ManageContract
+  class "Manage Billing Account\n:ImplicitPermission" as ManageBillingAccount
+
+  class "Marie Legal Guardian Permissions\n:PermissionSet" as MariePermissionSet #Magenta {
+    ID:PrSpec_004
+  }
+
+  Bob --> ProtectedCustomerRole : plays
+  Marie --> MarieGuardianRole : plays
+  MarieGuardianRole --> ProtectedCustomerRole : "/Played towards"
+
+  LegalGuardianRoleSpec --> MarieGuardianRole : describes
+  LegalGuardianRoleSpec --> LegalGuardianPermSpecSet : "managed by"
+
+  LegalGuardianPermSpecSet --> InitiateTroubleTicketSpec : Groups
+  LegalGuardianPermSpecSet --> InitiateBillDisputeSpec : Groups
+  LegalGuardianPermSpecSet --> ManageContractSpec : Groups
+  LegalGuardianPermSpecSet --> ManageBillingAccountSpec : Groups
+
+  InitiateTroubleTicketSpec --> InitiateTroubleTicket : contains
+  InitiateBillDisputeSpec --> InitiateBillDispute : contains
+  ManageContractSpec --> ManageContract : contains
+  ManageBillingAccountSpec --> ManageBillingAccount : contains
+
+  MariePermissionSet --> InitiateTroubleTicket : instantiates
+  MariePermissionSet --> InitiateBillDispute : instantiates
+  MariePermissionSet --> ManageContract : instantiates
+  MariePermissionSet --> ManageBillingAccount : instantiates
+
+  MarieGuardianRole --> MariePermissionSet : GrantsPrivilegesOn
+}
+
+class "Bob Billing Acount\n:CustomerBillingAccount" as BobBillingAccount {
+  CreditLimit :20000 euro
+}
+class "Bob Contract\n:product" as BobContract
+
+BobBillingAccount --> ManageBillingAccount : GrantsPrivilegesOn
+BobBillingAccount --> InitiateBillDispute : GrantsPrivilegesOn
+BobContract --> ManageContract : GrantsPrivilegesOn
+BobContract --> InitiateTroubleTicket : GrantsPrivilegesOn
+
+package "TMFC051 Document Management" #white {
+  class "Marie Legal Guardian Judgement\n:Document" as MarieJudgementDoc {
+    Name:Marie Legal Guardia Judgement
+    Content
+    Type: scanned document
+    CreationDate :2021/10/10
+    Description: "Letter proves that Marie is legal Guardian for Bob"
+  }
+}
+
+MarieJudgementDoc --> MarieGuardianRole : CorrespondsTo
+
+@enduml

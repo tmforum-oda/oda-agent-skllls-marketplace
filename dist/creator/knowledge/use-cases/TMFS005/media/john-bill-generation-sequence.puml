@@ -1,0 +1,43 @@
+@startuml
+title John Bill Generation
+
+participant "Bill Generation Management" as BGM #red
+participant "Billing Account Management" as BAM #red
+participant "Bill Calculation Management" as BCM
+
+BGM -> BGM : 1. CycleEventTimer trigger
+note right of BGM : Internal Timer triggers the Bill generation process on 1st October
+
+group loop [These steps are processed for each execute Timer]
+
+    BGM -> BGM : 2. **TMF666 Account Management:**\nGET /billingCycleSpecification?billigDateShift=1&billingPeriod=Monthly&chargeDateOffset=0\n-->billingCycleSpecificationId= 12,15,16...
+    note right of BGM
+      We will retrieve all the IDs of the billing cycle specifications where:
+      -- The billing date is equal to the start of the month,
+      -- The billing cycle type is monthly,
+      -- There is no offset (in days) for the date at which the charges received by the billing system will appear on the invoice.
+    end note
+
+    BGM -> BAM : 4. **TMF666 Account Management:**\nGET /billingAccount?(billStructure.cycleSpecification.id=12,15,16)
+    activate BAM
+    BAM --> BGM : 5. 200 OK (BillingAccountId = 7,8,9)
+    deactivate BAM
+    note right of BGM : we illustrate the example of John billing account
+
+    group This operation should be performed for all `billingAccountId` results obtained from flow 5. For illustration purposes, we will use John's billing account (id7) as an example
+
+        BGM -> BGM : 6. **TMF666 Account Management**: GET /billingAccount/billingAccount.id=7 ?(billStructure.format, billStructure.presentationMedia, relatedParty, billSructure.cycleSpecification)
+        BGM --> BGM : 7. 200 OK (billStructure.format, billStructure.cycleSpecification, relatedParty, billStructure.presentationMedia) for BillingAccountId.Id7
+
+        BGM -> BCM : 8. **TMF678 Customer Bill Mgt:**GET /AppliedCustomerBillingProductRate\n?(billingAccount.Id=7 & AppliedCustomerBillingProductRate.Id & AppliedCustomerBillingProductRate.Type & AppliedCustomerBillingProductRate.Value)
+        activate BCM
+        BCM --> BGM : 9. 200 OK\nResponse:\n\nbillingAccountId: 7,AppliedCustomerBillingProductRates:\n[Id: 1, Type: Usage, Value: ...],\n[Id: 2, Type: OneTime, Value: ...],\n[Id: 3, Type: Recurring, Value: ...],\n[Id: 4, Type: Discount, Value: ...],\n[Id: 5, Type: Tax, Value: ...]
+        deactivate BCM
+
+        BGM -> BGM : 10. **TMF678 Customer Bill Mgt:**\nPOST /customerBillManagement/customerBill\n(BillingAcountId.Id7, billDate="2023-10-01T00:00:00.000Z",relatedPartyRole="customer",relatedPartyId (John) paymentDueDate,\nAppliedCustomerBillingProductRates: [Id: 1, Type: Usage, Value: ...],\n[Id: 2, Type: OneTime, Value: ...],\n[Id: 3, Type: Recurring, Value: ...],\n[Id: 4, Type: Discount, Value: ...],\n[Id: 5, Type: Tax, Value: ...]\n,amountDue,Status="New",billFormat="Pdf")=>CustomerBillId
+
+    end
+
+end
+
+@enduml

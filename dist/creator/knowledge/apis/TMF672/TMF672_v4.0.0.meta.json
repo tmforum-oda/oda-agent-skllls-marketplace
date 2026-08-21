@@ -1,0 +1,16 @@
+{
+  "id": "TMF672",
+  "type": "api",
+  "name": "user-role-permission-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "8189c9253bdba9d58e5bf7901c0e8d5080a012105838e28e01bd1e6dab402810"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

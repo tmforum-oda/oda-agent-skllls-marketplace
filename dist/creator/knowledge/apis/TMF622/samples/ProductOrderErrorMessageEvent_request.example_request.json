@@ -1,0 +1,41 @@
+{
+  "correlationId": "8a1d7f00-245b",
+  "description": "ProductOrderErrorMessageEvent illustration",
+  "domain": "Commercial",
+  "eventId": "467c-937d-9afe827e85ee",
+  "eventTime": "2022-09-14T12:14:28.774Z",
+  "eventType": "ProductOrderErrorMessageEvent",
+  "priority": "3",
+  "timeOcurred": "2022-09-14T12:14:23.473Z",
+  "title": "ProductOrderErrorMessageEvent",
+  "event": {
+    "productOrder": {
+      "href": "http://servername/productOrder/30001",
+      "id": "30001",
+      "@type": "ProductOrder",
+      "productOrderErrorMessage": [
+        {
+          "code": "456-dd-df45",
+          "reason": "missing product configuration attribute",
+          "message": "product characteristic information are not consistent",
+          "timestamp": "2022-09-14T12:14:23.473Z",
+          "@type": "ErrorMessage"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "533",
+    "name": "APP-963",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "200",
+    "name": "APP-893",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProductOrderErrorMessageEvent"
+}

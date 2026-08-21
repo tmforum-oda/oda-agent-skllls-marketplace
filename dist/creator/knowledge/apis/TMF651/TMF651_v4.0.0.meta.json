@@ -1,0 +1,16 @@
+{
+  "id": "TMF651",
+  "type": "api",
+  "name": "agreement-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "b55f1514d566c7dee1b08b2a81a3b6e2292f9da079041bc3a3ca12eb2a0fb88a"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

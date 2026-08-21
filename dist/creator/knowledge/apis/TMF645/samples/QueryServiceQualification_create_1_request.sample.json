@@ -1,0 +1,58 @@
+{
+  "description": "Query Service Qualification POST Illustration ",
+  "expectedQualificationDate": "2023-04-13T13:51:41.218Z",
+  "instantSyncQualification": false,
+  "externalIdentifier": [
+    {
+      "id": "CSQ1",
+      "@type": "ExternalIdentifier"
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "Buyer contact",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "id": "456",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+        "name": "Jean Pontus",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "searchCriteria": {
+    "id": "1",
+    "category": {
+      "id": "1",
+      "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/category/1",
+      "name": "Fiber Access",
+      "@type": "ServiceCategoryRef",
+      "@referredType": "ServiceCategory"
+    },
+    "service": {
+      "place": [
+        {
+          "@type": "RelatedPlaceRefOrValue",
+          "role": "Installation place",
+          "place": {
+            "@type": "PlaceRef",
+            "@referredType": "GeographicSite",
+            "id": "11",
+            "href": "http://serverlocation:port/geographicSiteManagement/v5/geographicSite/11",
+            "name": "Jean Pontus home"
+          }
+        }
+      ],
+      "serviceSpecification": {
+        "id": "78",
+        "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/78",
+        "@type": "ServiceSpecificationRef",
+        "@referredType": "ServiceSpecification"
+      },
+      "@type": "Service"
+    },
+    "@type": "ServiceQualificationItem"
+  },
+  "@type": "QueryServiceQualification"
+}

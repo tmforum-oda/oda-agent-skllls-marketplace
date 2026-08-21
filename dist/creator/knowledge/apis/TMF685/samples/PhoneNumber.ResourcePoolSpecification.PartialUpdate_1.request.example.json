@@ -1,0 +1,8 @@
+{
+    "@type": "ResourcePoolSpecification",
+    "validFor":
+    {
+        "startDateTime": "2024-05-13T00:00:00Z", 
+        "endDateTime": "2024-09-20T00:00:00Z"
+    }
+}

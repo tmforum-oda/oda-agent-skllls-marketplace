@@ -1,0 +1,100 @@
+@startuml
+title Order delivery view
+
+package "ProductOrder #7" {
+
+  class "Fiber Contact" as FiberContact <<ProductSpecification>> {
+    POPrice = "Welcome Discount: -5€/month for 10 first months"
+  }
+  class "Create" as CreateFiberContact <<OrderItemAction>>
+  FiberContact -- CreateFiberContact
+
+  class "Box Shipping" as BoxShipping <<ProductSpecification>> {
+    POPrice = "Standard: Free"
+  }
+  class "Create" as CreateBoxShipping <<OrderItemAction>>
+  BoxShipping -- CreateBoxShipping
+
+  class "Shipping" as Shipping <<ProductSpecification>> {
+    Speed = standard
+    location = "12 Paris"
+  }
+  Shipping --> Box1 : Requires
+
+  class "Box 1" as Box1 <<ProductSpecification>> {
+    POPrice = "5€/Month for Maxi storage"
+    Color = strawberry red
+    Storage = Maxi
+  }
+  class "Create" as CreateBox1 <<OrderItemAction>>
+  Box1 -- CreateBox1
+
+  class "Fiber Access" as FiberAccess <<ProductSpecification>> {
+    POPrice = "10€/month"
+    Speed
+    location = "12 Paris"
+  }
+  class "Create" as CreateFiberAccess <<OrderItemAction>>
+  FiberAccess -- CreateFiberAccess
+  FiberAccess <-- Connectivity : Requires
+
+  class "Connectivity" as Connectivity <<ProductSpecification>>
+  class "Create" as CreateConnectivity <<OrderItemAction>>
+  Connectivity -- CreateConnectivity
+  Connectivity <-- TVChannel : Requires
+
+  class "TV Channel" as TVChannel <<ProductSpecification>> {
+    POPrice = "Basic: 5€/month"
+    Value = Basic
+  }
+  class "Create" as CreateTVChannel <<OrderItemAction>>
+  TVChannel -- CreateTVChannel
+
+  FiberContact --> BoxShipping
+  FiberContact --> Box1
+  FiberContact --> FiberAccess
+  FiberContact --> Connectivity
+  FiberContact --> TVChannel
+}
+
+package "ShippingOrder #26" {
+  class "Shipping CFS" as ShippingCFS <<CustomerFacingServiceSpecification>> {
+    Service domain = "Supply Chain"
+  }
+  class "StockItem 3" as StockItem3 <<StockItem>>
+  ShippingCFS --> StockItem3 : Requires
+}
+
+package "ServiceOrder #51" {
+  class "Landline access" as LandlineAccess <<CustomerFacingServiceSpecification>> {
+    Service domain = "Access"
+  }
+}
+
+package "ServiceOrder #52" {
+  class "Landline connectivity" as LandlineConnectivity <<CustomerFacingServiceSpecification>> {
+    Service domain = "Network"
+  }
+}
+
+package "ServiceOrder #53" {
+  class "TV Channels" as TVChannels <<CustomerFacingServiceSpecification>> {
+    Service domain = "Soft Service"
+  }
+}
+
+LandlineConnectivity --> LandlineAccess : Requires
+TVChannels --> LandlineConnectivity : Requires
+
+class "BR512-2" as BR512 <<ResourceSpecification>> {
+  Box 1 = "Red 512"
+}
+BR512 --> LandlineConnectivity : Requires
+
+Box1 --> BR512 : "Applies on"
+Shipping --> ShippingCFS : "Applies on"
+FiberAccess --> LandlineAccess : "Applies on"
+Connectivity --> LandlineConnectivity : "Applies on"
+TVChannel --> TVChannels : "Applies on"
+
+@enduml

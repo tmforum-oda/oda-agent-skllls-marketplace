@@ -1,0 +1,33 @@
+{
+    "correlationId": "d371820b-e3b6",
+    "description": "CommunicationMessageStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "41e9-b9f6-6872721debb7",
+    "eventTime": "2022-08-25T12:26:26.398Z",
+    "eventType": "CommunicationMessageStateChangeEvent",
+    "priority": "4",
+    "timeOcurred": "2022-08-25T12:26:21.665Z",
+    "title": "CommunicationMessageStateChangeEvent",
+    "event": {
+        "communicationMessage": {
+            "@type": "CommunicationMessage",
+            "href": "http://servername/communicationMessage/1708",
+            "id": "1708",
+            "state": "initial"
+        }
+    },
+    "reportingSystem": {
+        "id": "332",
+        "name": "APP-275",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "257",
+        "name": "APP-587",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CommunicationMessageStateChangeEvent"
+}

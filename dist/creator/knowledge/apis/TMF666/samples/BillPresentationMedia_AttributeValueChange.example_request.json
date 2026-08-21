@@ -1,0 +1,33 @@
+{
+    "correlationId": "95731510-e85e",
+    "description": "BillPresentationMediaAttributeValueChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "421f-ba83-b5ed387f1100",
+    "eventTime": "2022-08-25T12:23:44.191Z",
+    "eventType": "BillPresentationMediaAttributeValueChangeEvent",
+    "priority": "2",
+    "timeOcurred": "2022-08-25T12:23:40.440Z",
+    "title": "BillPresentationMediaAttributeValueChangeEvent",
+    "event": {
+        "billPresentationMedia": {
+            "@type": "BillPresentationMedia",
+            "href": "https://host:port/tmf-api/accountManagement/v5/BillPresentationMedia/8718", 
+            "id": "8718", 
+            "name": "Formatted e-paper"
+        }
+    },
+    "reportingSystem": {
+        "id": "855",
+        "name": "APP-400",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "92",
+        "name": "APP-105",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "BillPresentationMediaAttributeValueChangeEvent"
+}

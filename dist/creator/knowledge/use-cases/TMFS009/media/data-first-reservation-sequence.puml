@@ -1,0 +1,52 @@
+@startuml
+title Data Usage - First Reservation
+
+participant "SmartPhone" as Phone #purple
+participant "NetworkFunction" as NF #lightblue
+participant "CCS_ChargingFunction" as CCF #lightblue
+
+box "ServiceBalanceManagement"
+  participant "CCS_AccountBalanceMgmt" as ABMF #blue
+  participant "CCS_RatingFunction" as RF #blue
+end box
+
+box "ServiceUsageManagement"
+  participant "CCS_ChargingDataFunction" as CDF #blue
+end box
+
+Phone -> NF : 1 start data session
+activate NF
+NF -> CCF : 2 authorize data session
+activate CCF
+
+CCF -> CDF : 3 Open CDR
+CDF --> CCF : 4 CDR Opened
+
+CCF -> ABMF : 5 get applicable balances for service
+activate ABMF
+ABMF -> ABMF : 6 balances for service retrieved
+ABMF --> CCF : 7
+deactivate ABMF
+
+CCF -> RF : 8 determine value of the session and pass in balances
+activate RF
+RF -> RF : 9 value determined based on\nparameters and service details
+note right of RF : 1MB increment used as part\nof establishing the value
+RF --> CCF : 10 value established
+deactivate RF
+
+CCF -> CCF : 11 determine reservation amount
+
+CCF -> ABMF : 12 reserve balance
+activate ABMF
+ABMF -> ABMF : 13 balance reservation added
+ABMF --> CCF : 14 balance reservation successful
+deactivate ABMF
+
+CCF --> NF : 15 authorize session
+deactivate CCF
+NF --> Phone : 16 data session started
+deactivate NF
+note left of Phone : User starts to consume data
+
+@enduml

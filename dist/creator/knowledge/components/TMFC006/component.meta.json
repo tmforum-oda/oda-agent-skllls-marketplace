@@ -1,0 +1,17 @@
+{
+  "id": "TMFC006",
+  "type": "component",
+  "name": "ServiceCatalogManagement",
+  "version": "1.2.0",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC006-ServiceCatalogManagement/Specification/TMFC006-ServiceCatalogManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "4fdb6359d29eb7a6e502b218ad836aacaef57d187a82b8cd143a35ed8fb117cd"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

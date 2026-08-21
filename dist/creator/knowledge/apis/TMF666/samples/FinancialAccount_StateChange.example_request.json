@@ -1,0 +1,33 @@
+{
+    "correlationId": "fe01e099-6931",
+    "description": "FinancialAccountStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "463e-90fc-7f2accb4b802",
+    "eventTime": "2022-08-25T12:23:44.202Z",
+    "eventType": "FinancialAccountStateChangeEvent",
+    "priority": "5",
+    "timeOcurred": "2022-08-25T12:23:40.247Z",
+    "title": "FinancialAccountStateChangeEvent",
+    "event": {
+        "financialAccount": {
+            "href": "http://servername/financialAccount/1041",
+            "id": "1041",
+            "@type": "FinancialAccount",
+            "state": "Active"
+        }
+    },
+    "reportingSystem": {
+        "id": "855",
+        "name": "APP-400",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "92",
+        "name": "APP-105",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "FinancialAccountStateChangeEvent"
+}

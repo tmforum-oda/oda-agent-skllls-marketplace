@@ -1,0 +1,34 @@
+{
+  "@type": "HealStateChangeEvent",
+  "id": "evt-heal-003",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-heal-003",
+  "correlationId": "heal-g56Iht",
+  "description": "HealStateChangeEvent illustration",
+  "eventId": "00003",
+  "eventTime": "2024-08-25T13:20:26.121Z",
+  "eventType": "HealStateChangeEvent",
+  "timeOccurred": "2024-08-25T13:20:25.823Z",
+  "title": "HealStateChangeEvent",
+  "event": {
+    "heal": {
+      "id": "c6015b3d-64ad-432d-b7a5-9a9fa3430aa4",
+      "href": "/resourceFunctionActivation/v5/heal/c6015b3d-64ad-432d-b7a5-9a9fa3430aa4",
+      "@type": "Heal",
+      "state": "done"
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

@@ -1,0 +1,89 @@
+@startuml
+title NSSI Provisioning
+
+participant "Service Order\nManagement" as SOM #blue
+participant "Service Catalog\nManagement" as SCM #blue
+participant "Service Inventory" as SI #blue
+participant "Event Mgt" as EventMgt #grey
+participant "Resource Order\nManagement" as ROM #blue
+participant "Resource Order\nManagement (NFMF)" as NFMF #blue
+participant "Resource Catalog\nManagement" as RCM #blue
+participant "Resource Inventory" as RI #blue
+participant "VNFM"
+participant "5G Network Function" as NF5G #lightblue
+
+alt if NSSI constituent is NSSI (child NSSI)
+
+    note over SOM : AllocateNSSI procedure (Step 1 for constituent NSSI)
+
+else if NSSI consitituent is an NF
+
+    SOM -> ROM : 37 **TMF652 Resource Order Management**\nPOST /resourceOrder
+    activate ROM
+    ROM -> ROM : 38 validate resourceOrder
+    ROM --> SOM : 39 **TMF652** 201 resourceOrder (state="acknowledged")
+
+    ROM -> ROM : 40 start execution of resourceOrder
+
+    ROM -> RCM : 41 **TMF634 Resource Catalog Management**\nGET /resourceSpecification (NF Profile << 3GPP MOI>>)
+    activate RCM
+    RCM --> ROM : 42 **TMF634** 200 (resourceSpecifiation)
+    deactivate RCM
+
+    ROM -> RI : 43 **TMF639 Resource Inventory Management** POST /resource\n(NF Profile << 3GPP MOI>>,resourceStatus ="standby" )
+    activate RI
+    RI --> ROM : 44 **TMF639** 200 (NF Profile << 3GPP MOI>>)
+    deactivate RI
+
+end
+
+== NF Provisioning ==
+
+group Conf Option#1 NFMF->VNFM->NF
+
+    ROM -> NFMF : 45 **TMF702 Resource Activation Management**\nPOST /resource (NF Profile << 3GPP MOI>>)
+    activate NFMF
+
+    NFMF -> VNFM : 46 **ETSI SOL002 Ve-Vnfm-em Reference Point**\nPATCH .../configuration (VnfConfigModifications)
+    activate VNFM
+
+    VNFM -> NF5G : 47 **NF API Call**\n(NF Profile << 3GPP MOI>>)
+    activate NF5G
+    NF5G --> VNFM : 48 **NF API** NF Profile << 3GPP MOI>>
+    deactivate NF5G
+
+    VNFM --> NFMF : 49 **ETSI SOL002** 200 OK (VnfConfigModifications)
+    deactivate VNFM
+
+    ROM -> NFMF : 50 **TMF702 Resource Activation Management**\nGET /monitor (monitorRef)
+    deactivate NFMF
+
+end
+
+group Conf Option#2 NFMF->NF
+
+    ROM -> NFMF : 51 **TMF702Resource Activation Management**\nPOST /resource (NF Profile << 3GPP MOI>>)
+    activate NFMF
+
+    NFMF -> NF5G : 52 **NF API Call** (NF Profile << 3GPP MOI>>)
+    activate NF5G
+    NF5G --> NFMF : 53 **NF API** NF Profile << 3GPP MOI>>
+    deactivate NF5G
+
+    ROM -> NFMF : 54 **TMF702Resource Activation Management**\nGET /monitor (monitorRef)
+    deactivate NFMF
+
+end
+
+ROM -> RI : 55 **TMF639 Resource Inventory Management**\nPATCH /resource (VNFInstance)\n(resourceStatus="available")
+activate RI
+RI --> ROM : 56 **TMF639** 204
+deactivate RI
+
+ROM -> EventMgt : 57 **TMF688 Event Management**\nPOST event\nresourceOrderStateChange\n(resourceOrderItemState="completed")
+deactivate ROM
+activate EventMgt
+EventMgt --> SOM : 58 **TMF688 Event Management**\nPOST listener/resourceOrderStateChange\n(resourceOrderItemState="completed")
+deactivate EventMgt
+
+@enduml

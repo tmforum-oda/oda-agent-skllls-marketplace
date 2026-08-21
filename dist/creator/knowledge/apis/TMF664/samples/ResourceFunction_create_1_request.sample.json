@@ -1,0 +1,32 @@
+{
+  "@type": "ResourceFunction",
+  "name": "Medium to Large Enterprise Firewall - Model 134985.3",
+  "description": "This is a type of firewall to be used for our medium to large enterprise customers",
+  "category": "Security",
+  "resourceSpecification": {
+    "@type": "ResourceSpecificationRef",
+    "id": "5fc91de8-88be-4c7c-8b3c-e08ccc53b889",
+    "href": "/resourceCatalog/v5/resourceSpecification/5fc91de8-88be-4c7c-8b3c-e08ccc53b889",
+    "@referredType": "ResourceFunctionSpecification"
+  },
+  "resourceCharacteristic": [
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "name": "OperatingSystem",
+      "value": "Linux"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "name": "keywords",
+      "value": "firewall, security"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "@baseType": "Characteristic",
+      "name": "language",
+      "value": "English"
+    }
+  ]
+}

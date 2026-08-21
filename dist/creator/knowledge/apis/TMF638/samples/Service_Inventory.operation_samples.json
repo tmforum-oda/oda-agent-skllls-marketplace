@@ -1,0 +1,89 @@
+{
+    "Service": {
+        "list": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving multiple services from inventory.",
+                    "filtering": "serviceType=Cloud&state=active", 
+                    "content-type": "application/json", 
+                    "response" : "$_Service_list_1_response"
+                },
+                {
+                    "description": "Here's an example of a request for retrieving multiple services from inventory with field selection.",
+                    "fields": "id,name,state", 
+                    "filtering": "state=active", 
+                    "content-type": "application/json", 
+                    "response" : "$_Service_list_1_response_withFieldSelection"
+                }
+            ]
+        }, 
+        "retrieve": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for retrieving a specific service from inventory.",
+                    "content-type": "application/json",
+                    "objectId": "5351",
+                    "response" : "$_Service_retrieve_1_response"
+        		}
+            ]
+        }, 
+        "create": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for creating a specific service. In this example the request only passes mandatory attributes.",
+                    "content-type": "application/json",
+                    "request" : "$_Service_create_1_request",
+                    "response" : "$_Service_create_1_response"
+        		},
+                {
+                    "description" : "Here's an example of a request for creation of a new Service with intent with POST operation.",
+                    "content-type": "application/json",
+                    "request" : "$_Service_Intent_create_1_request",
+                    "response" : "$_Service_Intent_create_1_response"
+        		}
+            ]
+        },
+        "partialupdate": {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for patching a service using merge-patch+json. In this example, service status is changed to inactive and supporting service is updated.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "5351",
+                    "request" : "$_Service_partialupdate_1_request",
+                    "response" : "$_Service_partialupdate_1_response"
+                },
+                {
+                    "description" : "Here's an example of a request for updating a service using json-patch+json. In this example, service status is changed to inactive.",
+                    "content-type": "application/json-patch+json",
+                    "request" : "$_Service_partialupdate_2_request",
+                    "objectId": "5351",
+                    "response" : "$_Service_partialupdate_2_response"
+                },
+                {
+                    "description" : "Here's an example of a request for updating a service using json-patch-query - In this example, service related party role is updated.",
+                    "content-type": "application/json-patch-query+json",
+                    "request" : "$_Service_partialupdate_3_request",
+                    "objectId": "5351",
+                    "response" : "$_Service_partialupdate_3_response"
+                },
+                {
+                    "description" : "Here's an example of a request for patching a service using application/json. In this example, service status is changed to inactive and supporting service & service relationship is updated.",
+                    "content-type": "application/json",
+                    "request" : "$_Service_partialupdate_4_request",
+                    "objectId": "5351",
+                    "response" : "$_Service_partialupdate_4_response"
+                }
+            ]
+        },
+        "delete":  {
+            "samples" : [
+                {
+                    "description" : "Here's an example of a request for deleting a service.",
+                    "content-type": "application/json",
+                    "objectId": "5351",
+                    "response" : "$_Service_delete_1_response"
+        		}
+            ]
+        }
+    }
+}

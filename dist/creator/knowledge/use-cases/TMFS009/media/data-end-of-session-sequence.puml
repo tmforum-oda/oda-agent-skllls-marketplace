@@ -1,0 +1,43 @@
+@startuml
+title Data Usage - End of session
+
+participant "SmartPhone" as Phone #purple
+participant "NetworkFunction" as NF #lightblue
+participant "CCS_ChargingFunction" as CCF #lightblue
+
+box "ServiceBalanceManagement"
+  participant "CCS_AccountBalanceMgmt" as ABMF #blue
+  participant "CCS_RatingFunction" as RF #blue
+end box
+
+box "ServiceUsageManagement"
+  participant "CCS_ChargingDataFunction" as CDF #blue
+  participant "CCS_ChargingGatewayFunction" as CGF #blue
+end box
+
+Phone -> NF : 1 data session finished
+activate NF
+NF -> CCF : 2 finalize data session
+activate CCF
+
+CCF -> CCF : 3 determine final value
+
+CCF -> ABMF : 4 debit balance
+activate ABMF
+note right of ABMF : debits the balance and\nreleases any unused reservation
+ABMF -> ABMF : 5 balance debited
+ABMF --> CCF : 6 debit balance successful
+deactivate ABMF
+
+CCF --> NF : 7 finalization completed
+deactivate NF
+
+CCF -> CDF : 8 Close CDR
+activate CDF
+CDF -> CGF : 9 Finalized CDR
+note right of CGF : the finalized event is stored and\navailable for further distribution
+CDF --> CCF : 10 CDR Closed
+deactivate CDF
+deactivate CCF
+
+@enduml

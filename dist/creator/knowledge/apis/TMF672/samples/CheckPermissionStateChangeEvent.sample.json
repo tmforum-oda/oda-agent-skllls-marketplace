@@ -1,0 +1,33 @@
+{
+    "correlationId": "0f874cb9-c70d",
+    "description": "CheckPermissionStateChangeEvent illustration",
+    "domain": "Commercial",
+    "eventId": "41cf-ad81-d65ea1c2840c",
+    "eventTime": "2022-08-25T12:18:12.191Z",
+    "eventType": "CheckPermissionStateChangeEvent",
+    "priority": "5",
+    "timeOccurred": "2022-08-25T12:18:08.202Z",
+    "title": "CheckPermissionStateChangeEvent",
+    "event": {
+        "checkPermission": {
+            "id": "32434646753180",
+            "href": "https://serverRoot/rolesAndPermissionsManagement/v5/checkPermission/32434646753180",
+            "@type": "CheckPermission",
+            "state": "done"
+        }
+    },
+    "reportingSystem": {
+        "id": "759",
+        "name": "APP-745",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "705",
+        "name": "APP-317",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "CheckPermissionStateChangeEvent"
+}

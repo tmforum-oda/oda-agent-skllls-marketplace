@@ -1,0 +1,71 @@
+@startuml
+title HSS activation fallout - Order fallout resolution (automatic, successful)
+
+participant "Resource Inventory" as RI #blue
+participant "Resource Order\nManagement" as ROM #blue
+participant "Event\nManagement" as Event #grey
+participant "Fallout\nManagement" as FM #lightgrey
+participant "Resource Activation\nand Configuration" as RAC #blue
+participant "HSS"
+
+note right of FM : continued from\nchapter 5.1.1.3
+
+FM -> FM : 1 Update fallout\n(state='Processing/Resolving')
+
+FM -> Event : 2 **TMF688 Event Management**\nPOST event falloutStateChange (falloutId, state="Processing/Resolving")
+activate Event
+Event --> FM : 3 **TMF688** 201 Created
+deactivate Event
+
+FM -> RAC : 4 **TMF702 Resource Activation Management**\nDELETE /resource (HSS subscriber profile)
+activate RAC
+RAC --> FM : 5 **TMF702** 202 Accepted\n(HSS subscriber profile, monitorRef)
+
+RAC -> HSS : 6 **HSS API**\n"Remove HSS subscriber"
+activate HSS
+HSS --> RAC : 7 Subscriber removed
+deactivate HSS
+
+FM -> RAC : 8 **TMF702 Resource Activation Management**\nGET /monitor (monitorRef)
+RAC --> FM : 9 **TMF702** 200 OK\n(monitorState="Completed")
+deactivate RAC
+
+FM -> FM : 10 Update fallout\n(state="Completed", result="resolved")
+
+FM -> Event : 11 **TMF688 Event Management**\nPOST event falloutStateChange\n(falloutId, state="Completed", result="resolved")
+activate Event
+Event --> FM : 12 **TMF688** 201 Created
+deactivate Event
+
+FM -> ROM : 13 **TMF652 Resource Order Management**\nPATCH resourceOrder\n(resourceOrderId, resourceOrderItemId, falloutResult="resolved")
+activate ROM
+
+ROM -> ROM : 14 update resourceOrderItem\nand resourceOrder (state="InProgress")
+
+ROM -> Event : 15 **TMF688 Event Management**\nPOST event resourceOrderStateChange\n(resourceOrderItemState="InProgress",\nresourceOrderState="InProgress")
+activate Event
+Event --> ROM : 16 **TMF688** 201 Created
+deactivate Event
+
+ROM -> RAC : 17 **TMF702 Resource Activation Management**\nPOST /resource (HSS subscriber profile)
+activate RAC
+RAC --> ROM : 18 **TMF702** 202 Accepted (HSS subscriber profile, monitorRef)
+
+RAC -> HSS : 19 **HSS API** (HSS subscriber profile)
+activate HSS
+HSS --> RAC : 20 Subscribed created
+deactivate HSS
+
+ROM -> RAC : 21 **TMF702 Resource Activation Management**\nGET /monitor (monitorRef)
+RAC --> ROM : 22 **TMF702** 200 OK (monitorState="Completed")
+deactivate RAC
+
+ROM -> ROM : 23 update resourceOrderItem\n(state="Completed")
+
+ROM -> RI : 24 **TMF639 Resource Inventory Management**\nPATCH /resource\n(HSS subscriber profile, resourceStatus="available")
+activate RI
+RI --> ROM : 25 **TMF639** 200 OK (resource)
+deactivate RI
+deactivate ROM
+
+@enduml

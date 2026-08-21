@@ -1,0 +1,23 @@
+@startuml
+title Service order decomposition fallout - Order fallout detection
+
+participant "Event\nManagement" as Event #grey
+participant "Service Order\nManagement" as SOM #blue
+
+SOM -> SOM : 1 //<color:red>Build **resource order items**</color>//\nThe decomposition of the 4G Mobile Line RFSs in Resources fails
+activate SOM
+
+SOM -> SOM : 2 Mobile Line serviceOrderItem and serviceOrder (state="Held")
+
+SOM -> Event : 3 **TMF688 Event Management**\nPOST event serviceOrderStateChange\n(serviceOrderItemState="Held",\nserviceceOrderState="Held")
+activate Event
+Event --> SOM : 4 **TMF688** 201 Created
+deactivate Event
+
+SOM -> Event : 5 **TMF688 Event Management**\nPOST event serviceOrderException
+activate Event
+Event --> SOM : 6 **TMF688** 201 Created
+deactivate Event
+deactivate SOM
+
+@enduml

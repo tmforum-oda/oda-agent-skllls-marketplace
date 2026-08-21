@@ -1,0 +1,32 @@
+{
+  "correlationId": "145d-8hh",
+  "description": "ProductDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "523",
+  "eventTime": "2021-09-27T07:43:59.059Z",
+  "eventType": "ProductDeleteEvent",
+  "priority": "3",
+  "timeOcurred": "2021-09-27T07:43:59.059Z",
+  "title": "ProductDeleteEvent",
+  "event": {
+    "product": {
+      "id": "9693",
+      "href": "https://host:port/productInventory/v5/product/9693",
+      "@type": "ProductRef"
+    }
+  },
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "ProductDeleteEvent"
+}

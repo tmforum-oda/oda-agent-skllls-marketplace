@@ -1,0 +1,12 @@
+{
+    "@type": "AvailabilityCheck",
+    "capacityDemand":
+    {
+        "@type": "Capacity",
+        "capacityAmount":
+        {
+            "amount": 1,
+            "units": "number"
+        }
+    }
+}

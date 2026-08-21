@@ -1,0 +1,83 @@
+{
+  "id": "30002",
+  "href": "https://host:port/productOrderingManagement/v5/productOrder/30002",
+  "category": "B2B product order",
+  "description": "Product Order illustration sample",
+  "expectedCompletionDate": "2019-05-02T08:13:59.506Z",
+  "externalId": [
+    {
+      "@type": "ExternalIdentifier",
+      "owner": "TMF",
+      "externalIdentifierType": "POnumber",
+      "id": "785"
+    }
+  ],
+  "creationDate": "2019-04-30T08:13:59.506Z",
+  "priority": "1",
+  "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+  "requestedStartDate": "2019-05-03T08:13:59.506Z",
+  "productOrderItem": [
+    {
+      "id": "110",
+      "quantity": 1,
+      "action": "add",
+      "product": {
+        "isBundle": false,
+        "@type": "UNI",
+        "productSpecification": {
+          "id": "dfg-56d",
+          "href": "https://api.com/productSpec/dfg-56d",
+          "version": "v2",
+          "name": "UNI specification",
+          "@type": "ProductSpecificationRef"
+        },
+        "productCharacteristic": [
+          {
+            "@type": "ObjectCharacteristic",
+            "id": "UNI_Characteristic",
+            "name": "UNI order configuration",
+            "valueType": "Slice5G JSON descriptor",
+            "value": {
+              "@valueSchemaLocation": "https://github.com/productSpec/UNISpec.json",
+              "@type": "UNI_json_Specification",
+              "physicalLayer": "10BASE-T",
+              "synchronousModeEnabled": true,
+              "numberOfLinks": 1,
+              "tokenShareEnabled": true,
+              "uniResiliency": "NONE",
+              "maxServiceFrameSize": 1256
+            }
+          }
+        ]
+      },
+      "state": "acknowledged",
+      "@type": "ProductOrderItem"
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "Seller",
+      "partyOrPartyRole": {
+        "id": "456-dd-df45",
+        "href": "https://host:port/partyManagement/v5/individual/456-dd-df45",
+        "name": "Joe Doe",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    },
+    {
+      "role": "Customer",
+      "partyOrPartyRole": {
+        "id": "ff55-hjy4",
+        "href": "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+        "name": "Jean Pontus",
+        "@type": "PartyRoleRef",
+        "@referredType": "Customer"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    }    
+  ],
+  "state": "acknowledged",
+  "@type": "ProductOrder"
+}

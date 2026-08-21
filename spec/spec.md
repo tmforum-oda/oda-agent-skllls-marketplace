@@ -403,8 +403,8 @@ opposite: it's a maintenance tool for extending this repo's own
 `media/` enrichment, and it's excluded from `tools/build_plugin.py`'s
 `dist/` build for exactly that reason (a marker set,
 `INTERNAL_ONLY_SKILLS`, in the script itself) — it stays in `skills/`
-and in this repo's own git history, but never ships in the distributable
-plugin.
+and in this repo's own git history, but never ships in either
+distributable plugin (`dist/consumer/`, `dist/creator/`).
 
 ### Per-image process
 

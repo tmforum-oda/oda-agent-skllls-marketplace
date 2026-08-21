@@ -1,0 +1,60 @@
+@startuml
+title PRODUCT CATALOG View
+
+class "B2C Market Segment" as MarketSegment
+class "All Sales Channels" as SalesChannel
+
+class "Fiber Contract Silver" as Silver <<ProductOffering>> {
+  POPrice = "Welcome Discount: -5€/month for 10 first months"
+}
+class "Fiber Contract Gold" as Gold <<ProductOffering>> {
+  POPrice = "Welcome Discount: -7€/month for 10 first months"
+}
+class "Fiber + Mobile Contract" as FiberMobile <<ProductOffering>> {
+  POPrice = "Welcome Discount: -10€/month for 10 first months"
+}
+
+class "other offers (not described)" as OtherOffersSilver <<ProductOffering>>
+class "other offers (not described)" as OtherOffersGold <<ProductOffering>>
+class "other offers (not described)" as OtherOffersFiberMobile <<ProductOffering>>
+
+class "Fiber Access Standard" as FiberStandard <<ProductSpecification>> {
+  POPrice: if speed=basic = "10€/month"
+  POPrice: if speed=high = "15€/month"
+}
+class "Fiber Access High Capacity" as FiberHighCapacity <<ProductSpecification>> {
+  POPrice = "17€/month"
+}
+
+class "Speed" as Speed <<Characteristic>> {
+  values: Basic, High
+}
+
+class "Fiber Access" as FiberAccessResource {
+  linked to: Geo Address
+}
+class "Fiber Access CFS spec" as CFSSpec <<CFSspecification>> {
+  Technical Eligibility Test = Mandatory
+}
+
+MarketSegment --> Silver : ProductOffering targeted to
+MarketSegment --> Gold : ProductOffering targeted to
+MarketSegment --> FiberMobile : ProductOffering targeted to
+
+SalesChannel --> Silver : ProductOffering provided by
+SalesChannel --> Gold : ProductOffering provided by
+SalesChannel --> FiberMobile : ProductOffering provided by
+
+Silver --> OtherOffersSilver : "packages (Min:1,Max:1)"
+Silver --> FiberStandard : "packages (Min:1,Max:1)"
+Gold --> OtherOffersGold : "packages (Min:1,Max:1)"
+Gold --> FiberHighCapacity : "packages (Min:1,Max:1)"
+FiberMobile --> FiberHighCapacity : "packages (Min:1,Max:1)"
+FiberMobile --> OtherOffersFiberMobile : "packages (Min:1,Max:1)"
+
+FiberStandard --> FiberAccessResource : commercializes
+FiberHighCapacity --> FiberAccessResource : commercializes
+FiberAccessResource --> CFSSpec : restricts
+Speed --> FiberAccessResource : determines productspec charvalue
+
+@enduml

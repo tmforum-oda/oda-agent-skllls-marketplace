@@ -1,0 +1,12 @@
+{
+    "name": "Pavilion",
+    "@baseType": "GeographicLocation",
+    "@type": "GeoJsonPoint",
+    "geoJson": {
+        "type": "Point",
+        "coordinates": [
+            -1.3200867176055908,
+            51.41707412265012
+        ]
+    }
+}

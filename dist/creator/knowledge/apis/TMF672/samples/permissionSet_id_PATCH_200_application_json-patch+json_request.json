@@ -1,0 +1,7 @@
+[
+  {
+    "op": "replace",
+    "path": "/validFor/endDateTime",
+    "value": "2021-11-31T23:59:59.000Z"
+  }
+]

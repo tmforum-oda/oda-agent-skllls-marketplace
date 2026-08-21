@@ -1,0 +1,13 @@
+{
+    "name": "SpeedRequirement",
+    "relatedServiceLevelObjective": [
+        {
+            "href": "https://host:port/tmf-api/serviceQualityManagement/v4/serviceLevelObjective/3112", 
+            "id": "3112"
+        }, 
+        {
+            "href": "https://host:port/tmf-api/serviceQualityManagement/v4/serviceLevelObjective/3113",
+            "id": "3113"
+        }
+    ] 
+}

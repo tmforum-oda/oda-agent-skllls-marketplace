@@ -1,0 +1,14 @@
+{
+    "id": "6d8e3c7a-8586", 
+    "href": "https://api.company.com/tmf-api/geographicLocation/v5/geographicLocation/6d8e3c7a-8586",
+    "name": "Babbage House",
+    "@baseType": "GeographicLocation",
+    "@type": "GeoJsonPoint",
+    "geoJson": {
+        "type": "Point",
+        "coordinates": [
+            -1.3200236856937408,
+            51.41484889182162
+        ]
+    }
+}

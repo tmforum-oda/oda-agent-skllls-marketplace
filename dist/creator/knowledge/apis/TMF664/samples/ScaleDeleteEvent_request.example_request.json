@@ -1,0 +1,33 @@
+{
+  "@type": "ScaleDeleteEvent",
+  "id": "evt-scale-004",
+  "href": "https://serverRoot/tmf-api/resourceFunctionActivation/v5/event/evt-scale-004",
+  "correlationId": "scale-90cfc73d",
+  "description": "ScaleDeleteEvent illustration",
+  "eventId": "00004",
+  "eventTime": "2024-08-25T14:30:27.121Z",
+  "eventType": "ScaleDeleteEvent",
+  "timeOccurred": "2024-08-25T14:30:26.823Z",
+  "title": "ScaleDeleteEvent",
+  "event": {
+    "scale": {
+      "id": "4a41a328-1cf3-4674-bdd7-c43129fbfa7c",
+      "href": "/resourceFunctionActivation/v5/scale/4a41a328-1cf3-4674-bdd7-c43129fbfa7c",
+      "@type": "Scale"
+    }
+  },
+  "reportingSystem": {
+    "id": "439",
+    "name": "APP-869",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "455",
+    "name": "APP-84",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https://serverRoot/tmf-api/schemas/event.json"
+}

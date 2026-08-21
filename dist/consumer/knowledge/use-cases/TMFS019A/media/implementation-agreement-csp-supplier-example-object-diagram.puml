@@ -1,0 +1,75 @@
+@startuml
+title Figure A.15 - Illustration 02: ImplementationAgreement between CSP and Supplier
+
+object "Greenfield International\nBusiness : Organization" as GreenfieldOrg {
+  isLegalEntity = true
+}
+object "Cloud Experts :\nOrganization" as CloudExpertsOrg {
+  isLegalEntity = true
+}
+object "Greenfield IB : AgreementRole" as GreenfieldRole
+object "Cloud Experts : AgreementRole" as CloudExpertsRole
+
+GreenfieldOrg --> GreenfieldRole : :/OrganisationPlays
+CloudExpertsOrg --> CloudExpertsRole : :/OrganisationPlays
+
+object "Greenfield IB / Cloud Experts SASE\nImplementation Agreement n°1 : ImplementationAgreement" as ImplAgreement {
+  validFor = From 2025/10/15 to 2026/01/14
+}
+GreenfieldRole --> ImplAgreement : :AgreementInvolves
+CloudExpertsRole --> ImplAgreement : :AgreementInvolves
+
+object "Greenfield IB Purchase\nImplementation Agreement Spec : ImplementationAgreementSpecification" as ImplAgreementSpec
+ImplAgreement --> ImplAgreementSpec : :ImplementationAgreementDescribedBy
+
+object "Greenfield IB / Cloud Experts Framework\nAgreement : FrameworkAgreement" as FrameworkAgreement {
+  validFor = From 2025/09/01 to 2028/08/31
+}
+ImplAgreement --> FrameworkAgreement : :ImplementationAgreementCanReferTo
+
+object "Greenfield IB Product Order\nBPPO1 : BusinessPartnerProductOrder" as ProductOrder
+ImplAgreement --> ProductOrder : :ImplementationAgreementRefersTo
+
+object "Greenfield IB / Cloud Experts\nCE Cloud Hosting Term or\nCondition : AgreementTermOrCondition" as TermOrCondition
+FrameworkAgreement --> TermOrCondition : :FrameworkAgreementGovernedBy
+
+object "Greenfield IB / Cloud Experts Cloud Hosting\nOffer Item : FrameworkAgreementItem" as FrameworkAgreementItem {
+  validFor = From 2025/09/01 to 2026/08/31
+}
+FrameworkAgreement --> FrameworkAgreementItem : :FrameworkAgreementConsistsOf
+FrameworkAgreementItem --> TermOrCondition : :FrameworkAgreementItemGovernedBy
+
+object "Greenfield IB / Cloud Experts\nImplementation Agreement n°1 Cloud Hosting Offer\nItem : ImplementationAgreementItem" as ImplAgreementItem
+ImplAgreement --> ImplAgreementItem : :ImplementationAgreementConsistsOf
+ImplAgreementItem --> FrameworkAgreementItem : :ImplementationAgreementItemCanReferTo
+
+object "Greenfield IB Cloud Hosting Product\nOffering Order Item BPPO1.1 : BusinessPartnerProductOfferingOrderItem" as OrderItem
+ProductOrder --> OrderItem : :BusinessPartnerProductOrderComprisedOf
+ImplAgreementItem --> OrderItem : :ImplementationAgreementItemRefersTo
+
+object "Greenfield IB Prices\nAlteration for Cloud\nHosting : ProdOfferPriceAlteration" as PriceAlteration
+FrameworkAgreementItem --> PriceAlteration : :FrameworkAgreementItemHoldsNegotiated
+
+object "CE Cloud Hosting Offer :\nAtomicProductOfferingSpecification" as CECloudHostingOffer
+FrameworkAgreementItem --> CECloudHostingOffer : :FrameworkAgreementItemConcerns
+
+object "CE Cloud Hosting Offer\nstandard Term or Condition : ProductOfferingTermOrCondition" as ProdOfferingTermOrCondition
+CECloudHostingOffer --> ProdOfferingTermOrCondition : :ProdOfferAgreementRequirementsRepresentedAs
+ProdOfferingTermOrCondition --> TermOrCondition : :ProductTermAppearsAs
+
+object "CE Cloud Hosting\nOffer Price Plan : ProductOfferingPrice" as CECloudHostingPrice
+CECloudHostingOffer --> CECloudHostingPrice : :ProductOfferingSpecificationValuedBy
+PriceAlteration --> CECloudHostingPrice : :ProdOfferPriceImpactedBy
+
+object "Greenfield IB Cloud Hosting\nInstalled Offer : AtomicProductOfferingInstance" as InstalledOffer {
+  validFor = From 2025/10/15
+}
+ImplAgreementItem --> InstalledOffer : :ImplementationAgreementItemCanInvolve
+OrderItem --> InstalledOffer : :BPProductOfferingOrderItemInvolvesProductOfferingInstance
+
+object "Greenfield IB Installed\nTariff Plan : ProductPrice" as InstalledTariff {
+  validFor = From 2025/10/15
+}
+InstalledOffer --> InstalledTariff : :ProductOfferingInstanceValuedByPrice
+CECloudHostingPrice --> InstalledTariff : :ProductPriceRealizesOrSubstitutes
+@enduml

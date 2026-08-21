@@ -1,0 +1,78 @@
+@startuml
+title SID representation: "Bob Party Role & Permissions"
+
+package "TMFC028 Party Mgt" #white {
+  class "Bob\n:Party / Individual" as Bob
+  class "Marie\n:Party /Individual" as Marie
+}
+
+package "TMFC035 Party Roles & Permissions Mgt" #white {
+  class "Customer\n:PartyRole" as CustomerRole {
+    start Date:2021/07/23
+    end date: 2021/10/11
+  }
+  class "Protected Customer\n:PartyRole" as ProtectedCustomerRole #Magenta {
+    start Date:2021/10/10
+  }
+  class "Marie Is Legal Guardian Of Bob\n:PartyRole" as MarieGuardianRole #Magenta {
+    start Date:2021/10/10
+  }
+
+  class "Protected Customer\n:PartyRoleSpec" as ProtectedCustomerRoleSpec {
+    ID:PrSpec_0022
+  }
+  class "Protected Customer Permissions\n:PermissionSpecSet" as ProtectedCustomerPermSpecSet {
+    ID:PrSpec_000222
+  }
+
+  class "Initiate Trouble Ticket\n:ImplicitPermissionSpec" as InitiateTroubleTicketSpec
+  class "Initiate Bill Dispute\n:ImplicitPermissionSpec" as InitiateBillDisputeSpec
+  class "Manage Contract\n:ImplicitPermissionSpec" as ManageContractSpec
+  class "Manage Billing Account\n:ImplicitPermissionSpec" as ManageBillingAccountSpec
+
+  class "Initiate Trouble Ticket\n:ImplicitPermission" as InitiateTroubleTicket
+  class "Ininitiate Bill Dispute\n:ImplicitPermission" as InitiateBillDispute
+  class "Manage Contract\n:ImplicitPermission" as ManageContract
+  class "Manage Billing Account\n:ImplicitPermission" as ManageBillingAccount
+
+  class "Bob Protected Customer  Permissions\n:PermissionSet" as BobPermissionSet {
+    ID:PrSpec_00002222
+  }
+
+  Bob --> CustomerRole : plays
+  Bob --> ProtectedCustomerRole : plays
+  Marie --> MarieGuardianRole : plays
+  MarieGuardianRole --> ProtectedCustomerRole : "/Played towards"
+
+  ProtectedCustomerRoleSpec --> ProtectedCustomerRole : describes
+  ProtectedCustomerRoleSpec --> ProtectedCustomerPermSpecSet : "managed by"
+
+  ProtectedCustomerPermSpecSet --> InitiateTroubleTicketSpec : Groups
+  ProtectedCustomerPermSpecSet --> InitiateBillDisputeSpec : Groups
+  ProtectedCustomerPermSpecSet --> ManageContractSpec : Groups
+  ProtectedCustomerPermSpecSet --> ManageBillingAccountSpec : Groups
+
+  InitiateTroubleTicketSpec --> InitiateTroubleTicket : contains
+  InitiateBillDisputeSpec --> InitiateBillDispute : contains
+  ManageContractSpec --> ManageContract : contains
+  ManageBillingAccountSpec --> ManageBillingAccount : contains
+
+  BobPermissionSet --> InitiateTroubleTicket : instantiates
+  BobPermissionSet --> InitiateBillDispute : instantiates
+  BobPermissionSet --> ManageContract : instantiates
+  BobPermissionSet --> ManageBillingAccount : instantiates
+
+  ProtectedCustomerRole --> BobPermissionSet : GrantsPrivilegesOn
+}
+
+class "Bob Billing Acount\n:CustomerBillingAccount" as BobBillingAccount {
+  CreditLimit :20000 euro
+}
+class "Bob Contract\n:product" as BobContract
+
+BobBillingAccount --> ManageBillingAccount : GrantsPrivilegesOn
+BobBillingAccount --> InitiateBillDispute : GrantsPrivilegesOn
+BobContract --> ManageContract : GrantsPrivilegesOn
+BobContract --> InitiateTroubleTicket : GrantsPrivilegesOn
+
+@enduml

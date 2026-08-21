@@ -1,0 +1,18 @@
+{
+  "@type": "CancelResourceOrder",
+  "href": "/tmf-api/v5/cancelResourceOrder/12345",
+  "id": "12345",
+  "@schemaLocation": "/schema-registry/schema/CancelResourceOrder",
+  "requestedCancellationDate": "2025-01-22T06:41:23Z",
+  "effectiveCancellationDate": "2025-01-22T06:41:23Z",
+  "cancellationReason": "Customer requested to cancel due to a change in requirements.",
+  "state": "acknowledged",
+  "resourceOrder": {
+    "@type": "ResourceOrderRef",
+    "@schemaLocation": "/schema-registry/schema/ResourceOrder",
+    "href": "/tmf-api/v5/resourceOrder/12345",
+    "id": "12345",
+    "name": "Network Infrastructure Upgrade",
+    "@referredType": "OrderReference"
+  }
+}

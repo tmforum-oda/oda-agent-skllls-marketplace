@@ -1,0 +1,33 @@
+{
+  "correlationId": "b46e481e-5f84",
+  "description": "SalesLeadDeleteEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4439-a2a3-6776546e3ba3",
+  "eventTime": "2022-08-25T12:27:45.949Z",
+  "eventType": "SalesLeadDeleteEvent",
+  "priority": "2",
+  "timeOccurred": "2022-08-25T12:27:38.540Z",
+  "title": "SalesLeadDeleteEvent",
+  "event": {
+    "salesLead": {
+      "id": "123",
+      "href": "https://serverRoot/tmf-api/salesManagement/v5/salesLead/123",
+      "name": "Campaign 17 salesLead 7852",
+      "@type": "SalesLead"
+    }
+  },
+  "reportingSystem": {
+    "id": "87",
+    "name": "APP-467",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "175",
+    "name": "APP-488",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "SalesLeadDeleteEvent"
+}

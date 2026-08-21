@@ -1,0 +1,169 @@
+[ 
+ {
+   "id": "ucr0004",
+   "href": "https://serverRoot/tmf-api/usageConsumption/v4/usageConsumptionReport/ucr0004",
+   "name": "Usage consumption report ucr0004",
+   "description": "Usage Consumption Report for user usr2",
+   "effectiveDate": "2018-03-15T:15:44:28",
+   "relatedParty": {
+      "id": "usr2", 
+      "name": "Lea",
+      "role": "user",
+      "@referredType": "individual"
+   },
+   "bucket": [
+     {
+       "id": "bkt007",
+        "name": "Shared data bucket",
+        "usageType": "data",
+        "isShared": true,
+        "bucketBalance": [
+           {
+             "remainingValue": {
+                "amount": 2.0,
+                "units": "Go"
+             },
+             "remainingValueName": "it remains 2.0 Go",
+             "validFor": {
+                "startDateTime": "2018-03-15T:00:00:00",
+                "endDateTime": "2018-03-30T:00:00:00"
+             }
+            }
+          ],  
+          "bucketCounter": [
+            {
+              "counterType":"used",
+              "level":"global",
+              "value": {
+                "amount": 3.0,
+               "units": "Go"
+              },
+              "valueName": "3.0 Go used",
+              "consumptionPeriod": {
+                 "startDateTime": "2018-03-01T:00:00:00",
+                 "endDateTime": "2018-03-15T:00:00:00"
+              }
+            },
+            {
+              "counterType":"used",
+              "level":"detailByProduct",
+              "value": {
+                "amount": 2.0,
+                "units": "Go"
+              },
+              "valueName": "2.0 Go used",
+              "product":{
+                 "publicIdentifier ": "33603030303"
+              }
+            },
+            {
+               "counterType":"used",
+               "level":"detailByProduct",
+               "value": {
+                 "amount": 1.0,
+                 "units": "Go"
+               },
+               "valueName": "1.0 Go used",
+               "product": {
+                   "publicIdentifier": "33602020202"
+               }
+           }
+         ]
+        },
+        {
+          "id": "bkt008",
+          "name": "Main offer - national voice",
+          "usageType": "national voice",
+          "isShared": false,
+          "product": [
+            {
+              "id": "product4", 
+              "name": "Lea smartphone",
+              "publicIdentifier": "33602020202",
+              "user": [
+                {
+                  "id": "usr2", 
+                  "name": "Lea",
+                  "role": "user",
+                  "@referredType": "individual"
+                }
+               ]
+             }
+           ],
+           "bucketBalance": [
+             {
+               "remainingValue": {
+                 "amount": 60.0,
+                 "units": "mins"
+               },
+               "remainingValueName": "it remains 60 minutes",
+               "validFor": {
+                  "startDateTime": "2018-03-15T:00:00:00",
+                  "endDateTime": "2018-03-30T:00:00:00"
+               }
+              }
+           ],  
+           "bucketCounter": [
+             {
+               "counterType":"used",
+               "level":"global",
+               "value": {
+                 "amount": 60.0,
+                 "units": "mins"
+               },
+               "valueName": "60 mins used",
+               "consumptionPeriod": {
+                  "startDateTime": "2018-03-01T:00:00:00",
+                  "endDateTime": "2018-03-15T:00:00:00"
+               }
+             } 
+           ]
+        },
+        {
+          "id": "bkt009",
+          "name": "Main offer - sms",
+           "usageType": "sms",
+           "isShared": false,
+           "product": [
+             {
+               "id": "product4", 
+               "name": "Lea smartphone",
+               "publicIdentifier": "33602020202",
+               "user": [
+                 {
+                    "id": "usr2", 
+                    "name": "Lea",
+                    "role": "user",
+                    "@referredType": "individual"
+                 }
+                ]
+              }
+            ],
+            "bucketBalance": [
+              {
+                "remainingValue": {
+                  "units": "sms"
+                },
+                "remainingValueName": "Unlimited sms"
+              }
+            ],  
+            "bucketCounter": [
+              {
+                 "counterType":"used",
+                 "level":"global",
+                 "value": {
+                   "amount": 123.0,
+                   "units": "sms"
+                 },
+
+                 "valueName": "123 sms used",
+                 "consumptionPeriod": {
+                    "startDateTime": "2018-03-01T:00:00:00",
+                    "endDateTime": "2018-03-15T:00:00:00"
+                 }
+              } 
+            ]
+          }
+      ]
+   }
+] 

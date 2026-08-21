@@ -1,0 +1,16 @@
+{
+  "id": "TMF621",
+  "type": "api",
+  "name": "trouble-ticket-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF621_Trouble_Ticket/4.0.0/swagger/TMF621_Trouble_Ticket_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "84c58dbfb6b9818684509ea1332fb76a0d28108cd56770da69bdb0a72827ffed"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

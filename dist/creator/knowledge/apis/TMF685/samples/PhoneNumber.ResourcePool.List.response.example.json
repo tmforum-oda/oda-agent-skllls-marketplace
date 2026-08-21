@@ -1,0 +1,94 @@
+[
+    {
+        "@type": "ResourcePool",
+        "id": "c3fef858-b864-4fac-971e-795b1195ded9", 
+        "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePool/c3fef858-b864-4fac-971e-795b1195ded9", 
+        "name": "Phone Number block for partner MyPartner",
+        "description": "This Pool collects the PhoneNumber resources assigned to the partner MyPartner.",
+        "pooledResourceSpecification":
+        {
+            "@type": "ResourceSpecificationRef",
+            "@referredType": "ResourceSpecification",
+            "id": "89afac38-32e2-40f8-8be2-7b86dd03c9c9",
+            "href": "https://{server}:{port}/tmf-api/resourceCatalogManagement/v5/resourceSpecification/89afac38-32e2-40f8-8be2-7b86dd03c9c9",
+            "name": "Phone Number"
+        },
+        "resourceCharacteristic":
+        [
+            {
+                "@type": "StringCharacteristic",
+                "@baseType": "Characteristic",
+                "name": "cc",
+                "valueType": "string",
+                "value": "49"
+            },
+            {
+                "@type": "StringCharacteristic",
+                "@baseType": "Characteristic",
+                "name": "ndc",
+                "valueType": "string",
+                "value": "228"
+            }
+        ],
+        "capacity":
+        [
+            {
+                "@type": "Capacity",
+                "id": "cf8d1665-a3cc-470c-97eb-782f226075ce", 
+                "href": "https://{server}:{port}/tmf-api/resourcePool/v5/capacity/cf8d1665-a3cc-470c-97eb-782f226075ce", 
+                "name": "Capacity of Phone Number pool for MyPartner",
+                "capacitySpecification": {
+                    "id": "3d01344d-4409-4b15-8fcb-b8802314ff9c",
+                    "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/capacitySpecification/3d01344d-4409-4b15-8fcb-b8802314ff9c",
+                    "@type": "CapacitySpecificationRef",
+                    "@referredType": "CapacitySpecification"
+                },
+                "capacityStatus": "actual",
+                "capacityAmount":
+                {
+                    "amount": 1000,
+                    "units": "number"
+                },
+                "capacityCharacteristic":
+                [
+                    {
+                        "@type": "StringCharacteristic",
+                        "@baseType": "Characteristic",
+                        "name": "lowerNumber",
+                        "valueType": "string",
+                        "value": "+49-228-181-000"
+                    },
+                    {
+                        "@type": "StringCharacteristic",
+                        "@baseType": "Characteristic",
+                        "name": "upperNumber",
+                        "valueType": "string",
+                        "value": "+49-228-181-999"
+                    }
+                ]
+            }
+        ],
+        "resourceSpecification":
+        {
+            "id": "b0e0827c-5693-4e41-8445-22438abb33cb", 
+            "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePoolSpecification/b0e0827c-5693-4e41-8445-22438abb33cb",
+            "@type": "ResourceSpecificationRef",
+            "@referredType": "ResourcePoolSpecification"
+        },
+        "relatedParty":
+        [
+            {
+                "@type": "RelatedPartyRefOrPartyRoleRef",
+                "role": "Partner",
+                "partyOrPartyRole":
+                {
+                    "@type": "PartyRef",
+                    "@referredType": "Organization",
+                    "id": "47abd723-d3ca-49d8-ba53-76aa62e867e9",
+                    "href": "https://{server}:{port}/tmf-api/partyManagement/v5/organization/47abd723-d3ca-49d8-ba53-76aa62e867e9",
+                    "name": "MyPartner"
+                }
+            }
+        ]
+    }
+]

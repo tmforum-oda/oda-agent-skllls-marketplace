@@ -1,0 +1,16 @@
+{
+  "id": "TMF662",
+  "type": "api",
+  "name": "entity-catalog-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF662_Entity_Catalog/4.0.0/swagger/TMF662_Entity_Catalog_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "b096888c89d6067273de072bc7360bbeb247a29b14729b9d0915f1b6a00bea45"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "evt-001",
+  "href": "https://www.mycsp.com/tmfapis/processManagement/v5/event/evt-001",
+  "correlationId": "p698jf-ph45",
+  "description": "TaskCreateEvent illustration",
+  "timeOccurred": "2024-04-11T16:42:25-04:00",
+  "eventId": "00011",
+  "eventTime": "2024-04-11T16:42:43-04:00",
+  "eventType": "TaskCreateEvent",
+  "title": "TaskCreateEvent",
+  "event": {
+    "task": {
+      "id": "4fd-ty56-gg55-2",
+      "href": "https://www.mycsp.com/tmfapis/processManagement/v5/task/4fd-ty56-gg55-2",
+      "isMandatory": true,
+      "state": "active",
+      "taskSpecification": {
+        "id": "tfs0",
+        "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs0",
+        "name": "Check Offer Eligibility",
+        "@type": "TaskSpecificationRef",
+        "@referredType": "TaskSpecification"
+      },
+      "relatedParty": [
+        {
+          "role": "Customer",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "456-f69",
+            "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/456-f69",
+            "name": "Jean Pontus",
+            "@referredType": "Individual",
+            "@type": "PartyRef"
+          }
+        }
+      ],
+      "taskCharacteristic": [
+        {
+          "modality": "input",
+          "@type": "FlowCharacteristic",
+          "characteristic": {
+            "name": "productOfferingRef",
+            "valueType": "object",
+            "@type": "ObjectCharacteristic",
+            "value": {
+              "name": "productOfferingRef",
+              "id": "TMFMobile20",
+              "href": "https://www.mycsp.com/tmfapis/productCatalog/v5/productOffering/TMFMobile20",
+              "@type": "ProductOfferingRef",
+              "@referredType": "ProductOffering"
+            }
+          }
+        }
+      ],
+      "@type": "Task"
+    }
+  },
+  "reportingSystem": {
+    "id": "759",
+    "name": "APP-745",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "705",
+    "name": "APP-317",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "TaskCreateEvent",
+  "@schemaLocation": "https://www.mycsp.com/tmfapis/schemas/event.json"
+}

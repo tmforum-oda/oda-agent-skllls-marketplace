@@ -1,0 +1,17 @@
+{
+  "id": "TMFC023",
+  "type": "component",
+  "name": "PartyInteractionManagement",
+  "version": "1.1.2",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC023-PartyInteractionManagement/Specification/TMFC023-PartyInteractionManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "fdcfac536fab8ce31f69f2392506da7d9aacb0df38011bff2ed8c4615bfcf01e"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

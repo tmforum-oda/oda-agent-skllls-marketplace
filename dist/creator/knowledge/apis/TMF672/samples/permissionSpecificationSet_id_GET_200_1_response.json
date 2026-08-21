@@ -1,0 +1,20 @@
+{
+  "@type": "PermissionSpecificationSet",
+  "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecificationSet/pss-ebe41def",
+  "id": "pss-ebe41def",
+  "involvementRole": "MyTV familyAdmin Profile",
+  "permissionSpecification": [
+    {
+      "@type": "PermissionSpecificationRef",
+      "@referredType": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-5afe52c5",
+      "id": "pss-5afe52c5"
+    },
+    {
+      "@type": "PermissionSpecificationRef",
+      "@referredType": "PermissionSpecification",
+      "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-769ef409",
+      "id": "pss-769ef409"
+    }
+  ]
+}

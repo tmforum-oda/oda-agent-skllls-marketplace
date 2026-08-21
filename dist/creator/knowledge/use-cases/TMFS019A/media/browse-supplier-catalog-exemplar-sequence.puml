@@ -1,0 +1,31 @@
+@startuml
+title TMFS019AgreementManagement-Browse Catalog-2
+
+box "Entity/Communication Service Provider\nEntity IT Systems (Solution)"
+actor "CSP\nContract\nManager" as CSPManager
+participant "Product Catalog" as CSPCatalog
+end box
+box "Supplier/Partner\nEntity IT Systems(Solution)"
+participant "Engagement\nManagement" as EngMgmt
+participant "Product\nCatalog" as SPCatalog
+participant "Product\nConfigurator" as SPConfig
+end box
+actor "SP1\nContract\nManager" as SPManager
+participant "PMCSP1" as PMCSP1
+
+alt catalog browsing [CSP Initated]
+CSPManager -> EngMgmt : 1 select a category
+note right of EngMgmt : Alternatively TMF620 Product Catalog API\ncould be used directly to SP Product Catalog
+EngMgmt -> SPCatalog : 2 TMF620 Product Catalog Mgt GET /productOffering\n(Category=x&B2b2XChannel=..)
+SPCatalog --> EngMgmt : 3 TMF620 200 OK\nlist of productOffering
+else eligible catalog browsing
+EngMgmt -> SPConfig : 4 TMF679 Product Offering Qualification POST /productOfferingQualification\n(Category=x&commercial criteria)
+SPConfig --> EngMgmt : 5 TMF679 201 Created\nlist of eligible productOffering
+EngMgmt --> CSPManager : 6 TMF620 Product Catalog Mgt GET /productOffering\n(Category=x&SaleChannel=..)
+else catalog Specification Retrieval
+CSPManager -> EngMgmt : 7 Request Product Specification
+EngMgmt -> SPCatalog : 8 Retrieve Product Specification
+SPCatalog --> EngMgmt : 9 Provide Product Specification and examples
+EngMgmt --> CSPManager : 10 Provide Product Specification
+end
+@enduml

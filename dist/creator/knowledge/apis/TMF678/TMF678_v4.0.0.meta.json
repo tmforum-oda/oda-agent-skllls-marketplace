@@ -1,0 +1,16 @@
+{
+  "id": "TMF678",
+  "type": "api",
+  "name": "customer-bill-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/4.0.0/swagger/TMF678_Customer_Bill_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "c1cb4d44c0fd5939a5696f6de5d4358a7b6a054771fea7fe8468029f3b19c364"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

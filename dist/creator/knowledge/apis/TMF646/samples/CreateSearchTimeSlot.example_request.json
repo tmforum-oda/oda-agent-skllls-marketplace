@@ -1,0 +1,80 @@
+{
+  "@type": "SearchTimeSlotCreateEvent",
+  "correlationId": "1da724c6-17bd",
+  "description": "SearchTimeSlotCreateEvent illustration",
+  "domain": "Commercial",
+  "eventId": "4e6a-95cb-0892c2e596b2",
+  "eventTime": "2026-03-26T08:45:14.288Z",
+  "eventType": "SearchTimeSlotCreateEvent",
+  "priority": "5",
+  "title": "SearchTimeSlotCreateEvent",
+  "event": {
+    "searchTimeSlot": {
+      "@type": "SearchTimeSlot",
+      "id": "99",
+      "state": "inProgress",
+      "href": "https://serverRoot/tmf-api/appointment/v5/searchTimeSlot/99",
+      "requestedTimeSlot": [
+        {
+          "@type": "TimeSlot",
+          "timeWindow": {
+            "startDateTime": "2026-03-28T08:00:00.000Z",
+            "endDateTime": "2026-03-28T12:00:00.000Z"
+          }
+        }
+      ],
+      "relatedEntity": [
+        {
+          "@type": "RelatedEntity",
+          "role": "interaction",
+          "entity": {
+            "@type": "EntityRef",
+            "@referredType": "TroubleTicket",
+            "id": "789",
+            "name": "Internet connection problem to solve",
+            "href": "https://mycsp.com:8080/tmfapi/troubleTicket/v5/troubleTicket/789"
+          }
+        }
+      ],
+      "availableTimeSlot": [
+        {
+          "@type": "TimeSlot",
+          "id": "28090168-14b9-42ac-a181-7f002fc07280",
+          "timeWindow": {
+            "startDateTime": "2026-03-28T08:00:00.000Z",
+            "endDateTime": "2026-03-28T12:00:00.000Z"
+          }
+        },
+        {
+          "@type": "TimeSlot",
+          "id": "28090168-14b9-42ac-a181-7f002fc07280",
+          "timeWindow": {
+            "startDateTime": "2026-03-29T08:00:00.000Z",
+            "endDateTime": "2026-03-29T12:00:00.000Z"
+          }
+        },
+        {
+          "@type": "TimeSlot",
+          "id": "28090168-14b9-42ac-a181-7f002fc07280",
+          "timeWindow": {
+            "startDateTime": "2026-03-30T08:00:00.000Z",
+            "endDateTime": "2026-03-30T12:00:00.000Z"
+          }
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "275",
+    "name": "APP-665",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "280",
+    "name": "APP-929",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event"
+}

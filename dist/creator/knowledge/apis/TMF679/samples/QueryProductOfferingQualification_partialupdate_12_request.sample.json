@@ -1,0 +1,46 @@
+{
+  "id": "14",
+  "@type": "QueryProductOfferingQualification",
+  "qualifiedProductOfferingItem": [
+    {
+      "id": "1",
+      "@type": "QueryProductOfferingQualificationItem",
+      "product": {
+        "@type": "Product",
+        "productCharacteristic": [
+          {
+            "@type": "ObjectCharacteristic",
+            "id": "UNI_Characteristic",
+            "name": "UNI order configuration",
+            "valueType": "UNISpec JSON descriptor",
+            "value": {
+              "@valueSchemaLocation": "https://github.com/..UNISpec.json",
+              "@type": "UNIJsonSpecification",
+              "physicalLayer": "100BASE-T",
+              "synchronousModeEnabled": true,
+              "numberOfLinks": 1,
+              "tokenShareEnabled": true,
+              "uniResiliency": "NONE",
+              "maxServiceFrameSize": 1256
+            }
+          }
+        ],
+        "place": [
+          {
+            "role": "INSTALL_LOCATION",
+            "place": {
+              "streetType": "rue",
+              "streetName": "Pellisier",
+              "streetNr": "14",
+              "city": "Paris",
+              "postcode": "75004",
+              "country": "France",
+              "@type": "GeographicAddress"
+            },
+            "@type": "RelatedPlaceRefOrValue"
+          }
+        ]
+      }
+    }
+  ]
+}

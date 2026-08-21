@@ -1,0 +1,173 @@
+@startuml
+title Figure 3.1.1: Catalog view of the 5G Network Slice Management
+
+legend
+  Light green = Product Offering / white with dark green border = Product Specification
+  Orange = Service Specification (CFS/RFS) / light orange = Resource Function Specification
+  Olive = Resource Specification
+end legend
+
+class "Business Slice Contract" as Contract <<ProductOffering>>
+
+class "Slice Selfcare Management" as SliceSelfcareOffering <<ProductOffering>>
+class "Business Slice" as BusinessSliceOffering <<ProductOffering>>
+class "Package" as PackageOffering <<ProductOffering>>
+class "VAS" as VASOffering <<ProductOffering>>
+class "Hosting" as HostingOffering <<ProductOffering>>
+
+Contract --> SliceSelfcareOffering : "Min: 0 Max: 1"
+Contract --> BusinessSliceOffering : "Min: 1 Max: 1"
+Contract --> PackageOffering : "Min: 1 Max: 1"
+Contract --> VASOffering : "Min: 0 Max: 1"
+Contract --> HostingOffering : "Min: 0 Max: 1"
+
+class "Platinum Package" as PlatinumOffering <<ProductOffering>>
+class "Gold Package" as GoldOffering <<ProductOffering>>
+class "Silver Package" as SilverOffering <<ProductOffering>>
+PackageOffering --> PlatinumOffering : "Min: 1 Max: 1"
+PackageOffering --> GoldOffering : "Min: 1 Max: 1"
+PackageOffering --> SilverOffering : "Min: 1 Max: 1"
+
+class "Edge VAS" as EdgeVASOffering <<ProductOffering>>
+class "Cloud Apps" as CloudAppsOffering <<ProductOffering>>
+VASOffering --> EdgeVASOffering : "Min: 0 Max: 2"
+VASOffering --> CloudAppsOffering : "Min: 0 Max: 2"
+
+class "Hosted Edge" as HostedEdgeOffering <<ProductOffering>>
+HostingOffering --> HostedEdgeOffering : "Min: 0 Max: 1"
+
+class "Slice Selfcare Management Specification" as SliceSelfcareSpec <<ProductSpecification>>
+class "Business Slice Specification" as BusinessSliceSpec <<ProductSpecification>>
+class "Platinum Package Specification" as PlatinumSpec <<ProductSpecification>>
+class "Gold Package Specification" as GoldSpec <<ProductSpecification>>
+class "Silver Package Specification" as SilverSpec <<ProductSpecification>>
+class "Edge VAS specification" as EdgeVASSpec <<ProductSpecification>>
+class "Cloud App specification" as CloudAppSpec <<ProductSpecification>>
+class "Hosted Edge specification" as HostedEdgeSpec <<ProductSpecification>>
+
+SliceSelfcareOffering --> SliceSelfcareSpec
+BusinessSliceOffering --> BusinessSliceSpec
+PlatinumOffering --> PlatinumSpec
+GoldOffering --> GoldSpec
+SilverOffering --> SilverSpec
+EdgeVASOffering --> EdgeVASSpec
+CloudAppsOffering --> CloudAppSpec
+HostedEdgeOffering --> HostedEdgeSpec
+
+SliceSelfcareSpec --> BusinessSliceSpec : Requires
+PlatinumSpec --> BusinessSliceSpec : Requires
+GoldSpec --> BusinessSliceSpec : Requires
+SilverSpec --> BusinessSliceSpec : Requires
+EdgeVASSpec --> BusinessSliceSpec : Requires
+CloudAppSpec --> BusinessSliceSpec : Requires
+HostedEdgeSpec --> BusinessSliceSpec : Requires
+
+class "Slice Selfcare\nManagement [CFS]" as SliceSelfcareCFS <<ServiceSpecification>>
+class "Business Slice [CFS]" as BusinessSliceCFS <<ServiceSpecification>> {
+  Service Profile, Customer Profile
+  (IG1194 : Who, Where, When), Slice Type
+}
+class "Service Profile Template [CFS]" as ServiceProfileTemplateCFS <<ServiceSpecification>> {
+  Service Profile (IG1194: What)
+}
+class "Edge VAS [CFS]" as EdgeVASCFS <<ServiceSpecification>>
+class "Cloud App [CFS]" as CloudAppCFS <<ServiceSpecification>>
+class "Edge Infra [CFS]" as EdgeInfraCFS <<ServiceSpecification>>
+
+SliceSelfcareSpec --> SliceSelfcareCFS : Restricts
+BusinessSliceSpec --> BusinessSliceCFS : Restricts
+PlatinumSpec --> ServiceProfileTemplateCFS : Restricts
+GoldSpec --> ServiceProfileTemplateCFS : Restricts
+SilverSpec --> ServiceProfileTemplateCFS : Restricts
+EdgeVASSpec --> EdgeVASCFS : Restricts
+CloudAppSpec --> CloudAppCFS : Restricts
+HostedEdgeSpec --> EdgeInfraCFS : Restricts
+
+ServiceProfileTemplateCFS --> BusinessSliceCFS : Requires
+
+class "Slice Selfcare\nManagement [RFS]" as SliceSelfcareRFS <<ServiceSpecification>>
+class "Slice [RFS]" as SliceRFS <<ServiceSpecification>> {
+  Slice Profile(s)
+}
+class "Slice Profile Template [RFS]" as SliceProfileTemplateRFS <<ServiceSpecification>> {
+  Slice Profile
+}
+class "Edge VAS [RFS]" as EdgeVASRFS <<ServiceSpecification>>
+class "Cloud App [RFS]" as CloudAppRFS <<ServiceSpecification>>
+class "Edge Infra [RFS]" as EdgeInfraRFS <<ServiceSpecification>>
+
+SliceSelfcareCFS --> SliceSelfcareRFS : "is realized by"
+BusinessSliceCFS --> SliceRFS : "is realized by"
+ServiceProfileTemplateCFS --> SliceProfileTemplateRFS : "is realized by"
+EdgeVASCFS --> EdgeVASRFS : "is realized by"
+CloudAppCFS --> CloudAppRFS : "is realized by"
+EdgeInfraCFS --> EdgeInfraRFS : "is realized by"
+
+SliceProfileTemplateRFS --> SliceRFS : Requires
+
+class "Selfcare Management License" as SelfcareLicense
+class "Selfcare Management Endpoint" as SelfcareEndpoint
+SliceSelfcareRFS --> SelfcareLicense : "is realized by"
+SliceSelfcareRFS --> SelfcareEndpoint : "is realized by"
+
+class "Optional : Top Network Slice Subnet" as TopNetworkSliceSubnet
+SliceRFS --> TopNetworkSliceSubnet : "is realized by"
+
+class "RAN Subnet Profile" as RANSubnetProfile
+class "Transport Subnet Profile" as TransportSubnetProfile
+class "Core Subnet Profile" as CoreSubnetProfile
+SliceProfileTemplateRFS --> RANSubnetProfile : "is realized by (Min: 1)"
+SliceProfileTemplateRFS --> TransportSubnetProfile : "is realized by (Min: 1)"
+SliceProfileTemplateRFS --> CoreSubnetProfile : "is realized by (Min: 1)"
+
+class "RAN NS [RFS]" as RANNSRFS {
+  RAN Slice Subnet Profile
+}
+class "Transport NS [RFS]" as TransportNSRFS {
+  Transport Slice Subnet Profile
+}
+class "Core NS [RFS]" as CoreNSRFS {
+  Core Slice Subnet Profile
+}
+TopNetworkSliceSubnet --> RANNSRFS : "Min: 1 (0..*)"
+TopNetworkSliceSubnet --> TransportNSRFS : "Min: 1 (0..*)"
+TopNetworkSliceSubnet --> CoreNSRFS : "Min: 1 (0..*)"
+
+class "RAN VNF" as RANVNF
+class "RAN PNF" as RANPNF
+class "Transport VNF" as TransportVNF
+class "Transport PNF" as TransportPNF
+class "Core VNF" as CoreVNF
+class "Core PNF" as CorePNF
+
+RANNSRFS --> RANVNF : "is realized by (1..n)"
+RANNSRFS --> RANPNF : "is realized by (1..n)"
+TransportNSRFS --> TransportVNF : "is realized by (1..n)"
+TransportNSRFS --> TransportPNF : "is realized by (1..n)"
+CoreNSRFS --> CoreVNF : "is realized by (1..n)"
+CoreNSRFS --> CorePNF : "is realized by (1..n)"
+
+RANSubnetProfile --> RANVNF : uses
+RANSubnetProfile --> RANPNF : uses
+TransportSubnetProfile --> TransportVNF : uses
+TransportSubnetProfile --> TransportPNF : uses
+CoreSubnetProfile --> CoreVNF : uses
+CoreSubnetProfile --> CorePNF : uses
+
+class "Edge Application License" as EdgeAppLicense
+class "Edge Application Profile" as EdgeAppProfile
+EdgeVASRFS --> EdgeAppLicense : "is realized by"
+EdgeVASRFS --> EdgeAppProfile : "is realized by"
+
+class "Cloud Application Profile" as CloudAppProfile
+CloudAppRFS --> CloudAppProfile : "is realized by"
+
+class "Edge Compute" as EdgeCompute
+class "Edge Storage" as EdgeStorage
+class "Edge Network" as EdgeNetwork
+EdgeInfraRFS --> EdgeCompute : "is realized by"
+EdgeInfraRFS --> EdgeStorage : "is realized by"
+EdgeInfraRFS --> EdgeNetwork : "is realized by"
+note bottom of EdgeInfraRFS : Edge infrastructure
+
+@enduml

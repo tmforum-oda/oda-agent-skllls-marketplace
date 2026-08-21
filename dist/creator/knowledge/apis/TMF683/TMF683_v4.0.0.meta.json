@@ -1,0 +1,16 @@
+{
+  "id": "TMF683",
+  "type": "api",
+  "name": "party-interaction-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "05fb70f7bc8808d54704c861ac6c45166e4adce14aeb25b7e8439ef055013aee"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

@@ -1,0 +1,14 @@
+@startuml
+title Figure 21: Completion of the Logical SIM & Number resource order items
+
+participant "Resource Inventory" as RI #blue
+participant "Resource Order\nManagement" as ROM #blue
+
+== Step 3 (Logical SIM & Number resource order items) ==
+
+ROM -> RI : 1 **TMF639 Resource Inventory Management**\nPATCH /resource (Logical SIM card, Number)
+RI --> ROM : 2 **TMF639** 204
+
+ROM -> ROM : 3 update Number, Logical SIM\nresourceOrderItems (state="completed")
+
+@enduml

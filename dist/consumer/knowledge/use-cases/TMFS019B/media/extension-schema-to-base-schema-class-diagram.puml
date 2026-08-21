@@ -1,0 +1,9 @@
+@startuml
+title class Module Resource - Fig 6.2.1 Concept of Extension Schema to base Schema
+
+package "Module Resource" {
+  class BaseSchema
+  class ExtensionSchema
+  ExtensionSchema --|> BaseSchema
+}
+@enduml

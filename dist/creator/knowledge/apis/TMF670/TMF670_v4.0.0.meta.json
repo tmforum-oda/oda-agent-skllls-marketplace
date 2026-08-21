@@ -1,0 +1,16 @@
+{
+  "id": "TMF670",
+  "type": "api",
+  "name": "payment-method-management-api",
+  "version": "v4.0.0",
+  "status": "v4",
+  "source": {
+    "origin": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF670_Payment_Method/4.0.0/swagger/TMF670_Payment_Method_Management_API_v4.0.0_swagger.json",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "5ded812d813c4f1e0cd4dda259722569d7b14d70b2cedd27f2be37fe7fc92ec9"
+  },
+  "links": {
+    "use_cases": []
+  }
+}

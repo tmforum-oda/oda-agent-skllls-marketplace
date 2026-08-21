@@ -1,0 +1,17 @@
+[
+    {
+      "id": "48",
+      "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/queryServiceQualification/48",
+      "effectiveQualificationDate": "2023-04-11T14:23:33.239Z",
+      "expirationDate": "2023-05-11T14:23:33.239Z",
+      "@type": "QueryServiceQualification"
+    },
+    {
+      "id": "44",
+      "href": "https://mycsp.com:8080/tmf-api/serviceQualificationManagement/v5/queryServiceQualification/44",
+      "effectiveQualificationDate": "2023-04-12T14:23:33.239Z",
+      "expirationDate": "2023-05-11T14:23:33.239Z",
+      "@type": "QueryServiceQualification"
+    }
+  ]
+  

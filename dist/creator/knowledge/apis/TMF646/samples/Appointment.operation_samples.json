@@ -1,0 +1,106 @@
+{
+    "Appointment": {
+        "list": {
+            "samples": [
+                {
+                    "description": "This operation list appointment entities. Attribute selection is enabled for all first level attributes. Filtering may be available depending on the compliance level supported by an implementation.",
+                    "fields": "id,category,state,validFor",
+                    "filtering": "relatedParty.id=32&relatedParty.role=customer",
+                    "content-type": "application/json",
+                    "response": "$_Appointment_list_1_response"
+                }
+            ]
+        },
+        "retrieve": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for retrieving a specific appointment.",
+                    "content-type": "application/json",
+                    "objectId": "21",
+                    "response": "$_Appointment_retrieve_1_response"
+                }
+            ]
+        },
+        "create": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for creating a specific appointment.",
+                    "content-type": "application/json",
+                    "request": "$_Appointment_create_1_request",
+                    "response": "$_Appointment_create_1_response"
+                }
+            ]
+        },
+        "partialupdate": {
+            "samples": [
+                {
+                    "description": "Here's an example of a request for patching an appointment.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "21",
+                    "request": "$_Appointment_partialupdate_1_request",
+                    "response": "$_Appointment_partialupdate_1_response"
+                }
+            ]
+        },
+        "delete": {
+            "samples": [
+                {
+                    "description": "This operation deletes an appointment entity.",
+                    "content-type": "application/json",
+                    "objectId": "21"
+                }
+            ]
+        }
+    },
+    "SearchTimeSlot": {
+        "list": {
+            "samples": [
+                {
+                    "fields": "id,state,searchResult,avalaibleTimeSlot",
+                    "filtering": "relatedParty.id=56&relatedParty.role=technician",
+                    "content-type": "application/json",
+                    "response": "$_SearchTimeSlot_list_1_response"
+                }
+            ]
+        },
+        "retrieve": {
+            "samples": [
+                {
+                    "content-type": "application/json",
+                    "objectId": "99",
+                    "response": "$_SearchTimeSlot_retrieve_1_response"
+                }
+            ]
+        },
+        "create": {
+            "samples": [
+                {
+                    "description": "This operation creates a search time slot entity. It is used to retrieve, according to a set of criteria, available time slots used after to book or reschedule an appointment on.",
+                    "content-type": "application/json",
+                    "request": "$_SearchTimeSlot_create_1_request",
+                    "response": "$_SearchTimeSlot_create_1_response"
+                }
+            ]
+        },
+        "partialupdate": {
+            "samples": [
+                {
+                    "description": "This operation allows partial updates of a search time slot entity. Support of json/merge (https: //tools.ietf.org/html/rfc7386) is mandatory, support of json/patch (http://tools.ietf.org/html/rfc5789) is optional.",
+                    "content-type": "application/merge-patch+json",
+                    "objectId": "99",
+                    "request": "$_SearchTimeSlot_partialupdate_1_request",
+                    "response": "$_SearchTimeSlot_partialupdate_1_response"
+                }
+            ]
+        },
+        "delete": {
+            "samples": [
+                {
+                    "description": "This operation deletes a search time slot entity.",
+                    "content-type": "application/json",
+                    "objectId": "99"
+                }
+            ]
+        }
+    }
+}

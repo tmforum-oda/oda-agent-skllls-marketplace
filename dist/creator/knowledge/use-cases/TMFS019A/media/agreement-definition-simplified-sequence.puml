@@ -1,0 +1,37 @@
+@startuml
+title TMFS019 Agreement Definition Agreement Manager
+
+actor "CSP\nContract\nManager" as CSPManager
+box "Communication Service Provider\nEntity IT Systems (Solution)"
+participant "Entity\nIT System\n(Solution)" as CSP_Entity
+end box
+box "Supplier/Partner /n Entity IT Systems(Solution)"
+participant "Entity\nIT System\n(Solution)" as SP_Entity
+end box
+
+CSPManager -> CSP_Entity : 1 intiate Agreement (SP=SP1,CSP ProductSpec,\nList Product Spec SP1,\nAgreeementItems, Credentials )
+CSP_Entity -> SP_Entity : Entity -> EntitySP : TMF651 Creates a Agreement Instance\nPOST /agreement?fields=...
+SP_Entity -> SP_Entity : 2 self call agreement CatalogFunction\nTMF651 Fetch Agreement Specification\nGET /agreementSpecification/{id}?fields=... = Agreement Specification }
+participant "AgreementCatalog" as AgreementCatalog
+SP_Entity -> AgreementCatalog : 3 Fetch
+AgreementCatalog --> SP_Entity : 4 Finish
+destroy AgreementCatalog
+SP_Entity --> SP_Entity : 5 Agreement Specification\nCatalog Entry
+SP_Entity -> SP_Entity : 6 self call Review and validate Agreement against Agreement Specification
+SP_Entity --> SP_Entity : 7 Agreement Validated
+SP_Entity -> SP_Entity : 8 self call\nTMF651 Creates an Agreement\nPOST /agreement?fields=... ( Agreement, lifecycleStatus = Draft)
+participant "Agreement Inventory" as AgreementInventoryDB
+SP_Entity -> AgreementInventoryDB : 9 Create
+AgreementInventoryDB --> SP_Entity : 10 Finish
+destroy AgreementInventoryDB
+SP_Entity --> SP_Entity : 11 Agreement Inventory Entry created
+
+alt Agreement Negotiation
+SP_Entity --> CSP_Entity : 12 TMF651 Create Agreement response (AgreementId, Status = Draft)\nEntity -> EntitySP : TMF651 PATCH /agreement/{agreementId}?fields=...{( Agreement, Status = change request )
+SP_Entity --> CSP_Entity : 13 TMF651 Patch agreement response( AgreementId, Status = Rejected)\nEntity -> EntitySP : TMF651 PATCH /agreement/{agreementId}?fields=...{( Agreement, Status = change request )
+SP_Entity --> CSP_Entity : 14 TMF651 Patch agreement response( AgreementId, Status = Accepted)
+else accepted
+SP_Entity --> CSP_Entity : 15 TMF651 Create response ( AgreementId, lifecycleStatus = Draft)\nEntity -> EntitySP : TMF651 Patch entity catalog PATCH /entityCatalog/{( Agreement, lifecycleStatus = Accepted)id}
+SP_Entity --> CSP_Entity : 16 TMF651 Patch entity catalog response( AgreementId, lifecyleStatus = Accepted)
+end
+@enduml

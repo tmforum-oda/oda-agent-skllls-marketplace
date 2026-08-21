@@ -1,0 +1,34 @@
+@startuml
+title Step 1 - Build the B2C Catalogue start screen
+
+actor person
+participant "EngagementManagement" as EM
+participant "PartyInteractionManagement" as PIM
+participant "ProductCatalogManagement" as PCM
+participant "ProductRecommendationManagement" as PRM
+
+activate EM
+
+EM -> PIM : 1 **TMF701 Process Flow** PATCH /processFlow/1/taskFlow/1\nSessionId, nextAction: Browse B2C Catalogue
+activate PIM
+PIM --> EM : 2 **TMF701** 200 OK\nProcessId1, TaskId1, task information required,\navailable actions: Disconnect, Start Order, Browse B2C Catalogue, Read News
+deactivate PIM
+
+group Retrieve productCategory
+    EM -> PCM : 3 **TMF620 Product Catalog Mgt** GET /productCategory
+    activate PCM
+    PCM --> EM : 4 **TMF620** 200 OK\nlist of productCategory
+    deactivate PCM
+end
+
+group Query Intelligence Management for 'best offers'
+    EM -> PRM : 5 **TMF680 Recommendation Mgt** POST /queryProductRecommendation\n(with filter criteria)
+    activate PRM
+    PRM --> EM : 6 **TMF680** 200 OK\nlist of productCategory/productOffering\nNo resource created
+    deactivate PRM
+end
+
+EM -> EM : 7 display category & 'best offers'
+deactivate EM
+
+@enduml

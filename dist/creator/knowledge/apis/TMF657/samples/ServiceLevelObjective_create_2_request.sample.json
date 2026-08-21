@@ -1,0 +1,49 @@
+{
+    "conformanceComparator": "<", 
+    "conformanceTarget": "20",
+    "conformancePeriod": 
+    {
+        "endDateTime": "2021-03-00T00:00:00+01:00",
+        "startDateTime": "2020-03-00T00:00:00+01:00" 
+    },
+    "graceTimes": "3",
+    "name": "Jitter", 
+    "thresholdTarget": "18", 
+    "toleranceTarget": "15", 
+    "tolerancePeriod": 
+    {
+        "endDateTime": "20:00:00",
+        "startDateTime": "06:00:00" 
+    },
+    "serviceLevelObjectiveParameter": 
+    {
+        "name": "speed",
+        "serviceParmCategory": "technology specific", 
+        "serviceParmPerspective": " single user instance parameter", 
+        "transformationAlgorithmOfKQI": "KeepTheSame",
+        "parameterType": "KPI",
+        "validFor":
+        {
+            "endDateTime": "2021-03-00T00:00:00+01:00",
+            "startDateTime": "2020-03-00T00:00:00+01:00" 
+        },
+        "relatedEntity": [ 
+            {
+                "id": "2988",
+                "href": "https://host:port/ServiceInventory/service/2988", 
+                "name": "GPON",
+                "role": "access",
+                "@referredType": "AccessService" 
+            }
+        ]
+    },
+    "serviceLevelObjectiveConsequence": [ 
+        {
+            "prescribedAction": "https://service.com/jitterAction", 
+            "validFor": {
+                "endDateTime": "2021-03-00T00:00:00+01:00",
+                "startDateTime": "2020-03-00T00:00:00+01:00" 
+            }
+        }
+    ]
+}

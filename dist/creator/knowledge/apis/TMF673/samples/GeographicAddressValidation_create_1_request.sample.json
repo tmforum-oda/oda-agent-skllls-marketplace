@@ -1,0 +1,11 @@
+{
+	"provideAlternative": true,
+	"submittedGeographicAddress": {
+		"streetNr": "151",
+		"streetName": "Landgrabenweg",
+		"city": "Bonn",
+		"country": "Germany",
+		"@type": "GeographicAddress"
+	  },
+	"@type":"GeographicAddressValidation"
+}	

@@ -1,0 +1,41 @@
+@startuml
+title TMFS019 Agreement Definition Agreement Manager
+
+actor "CSP\nContract\nManager" as CSPManager
+box "Communication Service Provider /n Entity IT Systems (Solution)"
+participant "Agreement\nManager\nComponent\nTMFC039" as CSP_AMC
+end box
+participant "Engagement\nManagement" as EngMgmt
+box "Supplier/Partner /n Entity IT Systems(Solution)"
+participant "Agreement\nManager\nComponent\nTMFC039" as SP_AMC
+end box
+participant "Agreement Inventory" as AgreementInventoryDB
+
+CSPManager -> CSP_AMC : 1 intiate Agreement (SP=SP1,CSP ProductSpec,\nList Product Spec SP1,\nAgreement parameters(TMF651), AgreeementItems, Credentials )
+CSP_AMC -> SP_AMC : 2 TMF651 Creates a Agreement Instance\nPOST /agreement?fields=...
+SP_AMC -> SP_AMC : 3 self call agreement CatalogFunction\nTMF651 Fetch Agreement Specification\nGET /agreementSpecification/{id}?fields=... = Agreement Specification }
+participant "AgreementCatalog" as AgreementCatalog
+SP_AMC -> AgreementCatalog : 4 Fetch
+AgreementCatalog --> SP_AMC : 5 Finish
+destroy AgreementCatalog
+SP_AMC --> SP_AMC : 6 Agreement Specification\nCatalog Entry
+SP_AMC -> SP_AMC : 7 self call Review and validate Agreement against Agreement Specification
+SP_AMC --> SP_AMC : 8 Agreement Validated
+SP_AMC -> SP_AMC : 9 self call\nTMF651 Creates an Agreement\nPOST /agreement?fields=... ( Agreement, lifecycleStatus = Draft)
+SP_AMC -> AgreementInventoryDB : 10 Create
+AgreementInventoryDB --> SP_AMC : 11 Finish
+destroy AgreementInventoryDB
+SP_AMC --> SP_AMC : 12 Agreement Inventory Entry created
+
+alt Agreement Negotiation
+SP_AMC --> CSP_AMC : 13 TMF651 Create Agreement response (AgreementId, Status = Draft)
+CSP_AMC -> SP_AMC : 14 TMF651 PATCH /agreement/{agreementId}?fields=...{( Agreement, Status = change request )
+SP_AMC --> CSP_AMC : 15 TMF651 Patch agreement response( AgreementId, Status = Rejected)
+CSP_AMC -> SP_AMC : 16 TMF651 PATCH /agreement/{agreementId}?fields=...{( Agreement, Status = change request )
+SP_AMC --> CSP_AMC : 17 TMF651 Patch agreement response( AgreementId, Status = Accepted)
+else accepted
+SP_AMC --> CSP_AMC : 18 TMF651 Create response ( AgreementId, lifecycleStatus = Draft)
+CSP_AMC -> SP_AMC : 19 TMF651 Patch entity catalog PATCH /entityCatalog/{( Agreement, lifecycleStatus = Accepted)id}
+SP_AMC --> CSP_AMC : 20 TMF651 Patch entity catalog response( AgreementId, lifecyleStatus = Accepted)
+end
+@enduml

@@ -1,0 +1,51 @@
+{
+  "correlationId": "akj-566",
+  "description": "QuoteAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "741",
+  "eventTime": "2021-09-27T07:43:59.059Z",
+  "eventType": "QuoteAttributeValueChangeEvent",
+  "priority": "1",
+  "timeOccurred": "2021-09-27T07:43:59.059Z",
+  "title": "QuoteAttributeValueChangeEvent",
+  "event": {
+    "quote": {
+      "id": "12dd-78hg",
+      "quoteItem": [
+        {
+          "id": "2",
+          "@type": "QuoteItem",
+          "quantity": 12
+        }
+      ],
+      "relatedParty": [
+        {
+          "role": "Buyer Contact",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "qsdd-9888",
+            "href": "https://host:port/partyManagement/v5/party/qsdd-9888",
+            "name": "Jean Pontus",
+            "@referredType": "Individual",
+            "@type": "PartyRef"
+          }
+        }
+      ],
+      "@type": "Quote"
+    }
+  },
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "QuoteAttributeValueChangeEvent"
+}

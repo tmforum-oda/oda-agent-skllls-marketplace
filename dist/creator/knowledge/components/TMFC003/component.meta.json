@@ -1,0 +1,17 @@
+{
+  "id": "TMFC003",
+  "type": "component",
+  "name": "ProductOrderDeliveryOrchestrationAndManagement",
+  "version": "1.1.1",
+  "status": "specified",
+  "source": {
+    "origin": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/v1.0.0/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/Specification/TMFC003-ProductOrderDeliveryOrchestrationAndManagement.yaml",
+    "license": "RAND",
+    "retrieved": "2026-08-19",
+    "sha256": "2cfbf7d0b1e7d0e1e9be9cf449077c30ab441004c9ceed523557e384b569bd38"
+  },
+  "links": {
+    "apis": [],
+    "use_cases": []
+  }
+}

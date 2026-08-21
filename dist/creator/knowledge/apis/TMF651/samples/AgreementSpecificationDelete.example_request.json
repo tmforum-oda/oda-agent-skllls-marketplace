@@ -1,0 +1,32 @@
+{
+    "correlationId": "47db624a-af7a",
+    "description": "AgreementSpecificationDeleteEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4cad-9c02-361e8fed9e8e",
+    "eventTime": "2022-08-25T12:20:58.662Z",
+    "eventType": "AgreementSpecificationDeleteEvent",
+    "priority": "1",
+    "timeOcurred": "2022-08-25T12:20:56.380Z",
+    "title": "AgreementSpecificationDeleteEvent",
+    "event": {
+        "agreementSpecification": {
+            "@type": "AgreementSpecification",
+            "href": "https://mycsp.com:8080/tmf-api/agreementManagement/v5/agreementSpecification/1140",
+            "id": "1140"
+        }
+    },
+    "reportingSystem": {
+        "id": "959",
+        "name": "APP-628",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "281",
+        "name": "APP-436",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "AgreementSpecificationDeleteEvent"
+}

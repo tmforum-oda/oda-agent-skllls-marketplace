@@ -1,0 +1,14 @@
+@startuml
+title TMFS019 Overview Step 3
+
+box "Entity\nCommunication Service Provider (CSP)"
+participant "Entity IT System\n(Solution)" as Entity
+end box
+box "Supplier"
+participant "Supplier IT System\n(Solution)" as Supplier
+end box
+
+== 3. Partner/Suppliers' Stakeholders/Parner On-Boarding (TMFS019-4 and TMFS019-5) ==
+Entity -> Supplier : 3.A Supplier On-board Entity's assets\n(Actors/Organization, Billing Account, ZTP for lifecycle management, ...)
+Supplier -> Entity : 3.B Entity On-board Supplier's assets\n(Actors/Organization, Billing Account, ZTP for lifecycle management, ...)
+@enduml

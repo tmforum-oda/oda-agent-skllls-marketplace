@@ -1,0 +1,111 @@
+{
+    "id": "9881",
+    "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productSpecification/9881",
+    "name": "Cisco Firepower NGFW",
+    "brand": "Cisco",
+    "productNumber": "CSC-340-NGFW",
+    "description": "Powerful product that integrates with a firewall, including intrusion prevention, advanced malware protection, cloud-based sandboxing, URL filtering, endpoint protection, web gateway, email security, network traffic analysis, network access control and CASB.",
+    "isBundle": true,
+    "lastUpdate": "2020-09-23T16:42:23Z",
+    "lifecycleStatus": "Active",
+    "validFor": {
+        "startDateTime": "2020-09-23T00:00:00Z",
+        "endDateTime": "2022-11-24T16:42:23Z"
+    },
+    "version": "1.0",
+    "relatedParty": [
+        {
+            "role": "Owner",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+                "id": "1234",
+                "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/partyRole/1234",
+                "name": "Gustave Flaubert",
+                "@type": "PartyRef",
+                "@referredType": "Individual"
+            }
+        }
+    ],
+    "attachment": [
+        {
+            "id": "22",
+            "href": "https://mycsp.com:8080/tmf-api/documentManagement/v5/attachment/22",
+            "name": "Product Picture",
+            "mimeType": "image/jpeg",
+            "url": "https://mycsp.com:7070/docloader?docnum=774451234",
+            "@referredType": "Attachment",
+            "@type": "AttachmentRef"
+        },
+        {
+            "id": "33",
+            "href": "https://mycsp.com:8080/tmf-api/documentManagement/v5/attachment/22",
+            "name": "Product Manual",
+            "mimeType": "application/pdf",
+            "url": "https://mycsp.com:7070/docloader?docnum=774454321",
+            "@referredType": "Attachment",
+            "@type": "AttachmentRef"
+        }
+    ],
+    "bundledProductSpecification": [
+        {
+            "id": "15",
+            "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productSpecification/15",
+            "name": "URL Filter",
+            "@type": "BundledProductSpecification",
+            "lifecycleStatus": "Active"
+        },
+        {
+            "id": "64",
+            "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productSpecification/64",
+            "name": "Malware Protector",
+            "@type": "BundledProductSpecification",
+            "lifecycleStatus": "Active"
+        }
+    ],
+    "targetProductSchema": {
+        "@type": "Firewall",
+        "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Product/Firewall.schema.json"
+    },
+    "productSpecificationRelationship": [
+        {
+            "id": "23",
+            "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productSpecification/23",
+            "relationshipType": "OptionalFor",
+            "validFor": {
+                "startDateTime": "2020-09-23T16:42:23Z"
+            },
+            "name": "DataPlan",
+            "role": "A-Item",
+            "@referredType": "ProductSpecification",
+            "@type": "ProductSpecificationRelationship"
+        }
+    ],
+    "serviceSpecification": [
+        {
+            "id": "22",
+            "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/22",
+            "name": "Firewall",
+            "version": "1.0",
+            "@referredType": "ServiceSpecification",
+            "@type": "ServiceSpecificationRef"
+        }
+    ],
+    "resourceSpecification": [
+        {
+            "id": "63",
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalogManagement/v5/resourceSpecification/63",
+            "name": "Firewall Port",
+            "version": "1.0",
+            "@referredType": "PhysicalResourceSpecification",
+            "@type": "ResourceSpecificationRef"
+        }
+    ],
+    "intentSpecification": {
+		"@type": "IntentSpecificationRef",
+		"id": "EventLiveBroadcast_IntentSpec",
+		"name": "EventLiveBroadcastIntentSpec",
+		"@referredType": "IntentSpecification",
+		"@href": "/intent/v5/IntentSpecification/EventLiveBroadcast_IntentSpec"
+	},
+    "@type": "ProductSpecification"
+}

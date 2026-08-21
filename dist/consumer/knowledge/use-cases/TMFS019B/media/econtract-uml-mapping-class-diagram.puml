@@ -1,0 +1,78 @@
+@startuml
+title econtract UML mapping
+
+package "[DocumentOntology] eContracts (OASIS / LegalXML)" {
+  class "Attachment" as ecAttachment
+  class "Contract" as Contract <<RDF Class>>
+  class "Party" as ecParty
+  class PersonRecord
+  class Body
+  class ContractFront
+  class Back
+  class Parties
+  class Block
+  class Definition
+  class Item
+  class Term
+
+  Contract "1" *-- "1" Body
+  Contract "1" *-- "0..1" ContractFront
+  Contract "1" *-- "0..1" Back
+  ContractFront "0..1" *-- "1" Parties
+  Body "1" *-- "*" Block
+  Block "*" *-- "*" Definition
+  Block "*" *-- "*" Item
+  Definition "*" *-- "*" Term
+}
+
+class "AgreementItem" as bridgeAgreementItem
+class "AgreementTermOrCondition" as bridgeAgreementTermOrCondition
+Block ..> bridgeAgreementItem : mapsTo
+Item ..> bridgeAgreementItem : mapsTo
+Definition ..> bridgeAgreementTermOrCondition : mapsTo
+Term ..> bridgeAgreementTermOrCondition : mapsTo
+
+package "[OpenAPI] TMF651 Agreement API" {
+  class RelatedParty <<API Resource>>
+  class "Agreement" as TMFAgreement <<API Resource>>
+  class "AgreementItem" as TMFAgreementItem <<API Resource>>
+  class AgreementAttachment <<API Resource>>
+  class "AgreementTermOrCondition" as TMFAgreementTermOrCondition <<API Resource>>
+}
+
+package "[InformationModel] TM Forum SID" {
+  class Organization <<SID Entity>>
+  class Individual <<SID Entity>>
+  class PartyRole <<SID Entity>>
+  class TimePeriod <<SID Value>>
+  class "Agreement" as SIDAgreement <<SID Entity>>
+  class "AgreementItem" as SIDAgreementItem <<SID Entity>>
+  class "AgreementTermOrCondition" as SIDAgreementTermOrCondition <<SID Entity>>
+  class "Party" as SIDParty <<SID Entity>>
+  class "Attachment" as SIDAttachment <<SID Entity>>
+}
+
+class "Attachment" as farAttachment
+
+ecParty "1..*" -- Contract
+Contract ..> TMFAgreement : mapsTo
+TMFAgreement <..> SIDAgreement : semanticEquivalent
+
+bridgeAgreementItem "1..*" ..> TMFAgreementItem : semanticEquivalent
+TMFAgreementItem --> SIDAgreementItem : semanticEquivalent
+
+bridgeAgreementTermOrCondition "0..*" ..> TMFAgreementTermOrCondition : semanticEquivalent
+TMFAgreementTermOrCondition --> SIDAgreementTermOrCondition : semanticEquivalent
+
+ecParty ..> RelatedParty : mapsTo
+RelatedParty ..> SIDParty : semanticEquivalent
+RelatedParty "0..*" ..> PartyRole : semanticEquivalent
+RelatedParty ..> Organization : semanticEquivalent
+RelatedParty ..> Individual : semanticEquivalent
+
+ecAttachment ..> AgreementAttachment : mapsTo
+AgreementAttachment --> SIDAttachment : semanticEquivalent
+
+SIDAgreement "0..1" -- TimePeriod : validFor
+SIDAgreement <..> farAttachment : "0..* semanticEquivalent"
+@enduml

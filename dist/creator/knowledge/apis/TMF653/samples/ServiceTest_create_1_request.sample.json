@@ -1,0 +1,38 @@
+{
+  "@type": "ServiceTest",
+  "name": "fixed broadband service test",
+  "description": "Speed Test for FixedBroadband service",
+  "mode": "PROACTIVE",
+  "startDateTime": "2016-03-02T24:00:00.00Z",
+  "endDateTime": "2016-03-02T24:00:00.30Z",
+  "validFor": {
+    "startDateTime": "2016-03-02T24:00:00.00Z",
+    "endDateTime": "2016-04-02T24:00:00.00Z"
+  },
+  "state": "inProgress",
+  "relatedParty": [
+    {
+      "role": "testSupervisor",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "9866",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/Individual/9866",
+        "name": "Sandy Smith",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "relatedService": {
+    "href": "https://mycsp.com:8080/tmf-api/serviceManagement/v5/service/21",
+    "id": "21",
+    "@referredType": "Service",
+    "@type": "ServiceRef"
+  },
+  "testSpecification": {
+    "href": "https://mycsp.com:8080/tmf-api/serviceTestManagement/v5/serviceTestSpecification/22",
+    "id": "22",
+    "@referredType": "ServiceTestSpecification",
+    "@type": "ServiceTestSpecificationRef"
+  }
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "op": "replace",
+    "path": "/specCharacteristic?id=5",
+    "value": {
+      "configurable": false
+    }
+  }
+]

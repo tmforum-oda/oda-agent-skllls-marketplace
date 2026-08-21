@@ -1,0 +1,21 @@
+@startuml
+title Converged Charging System (CCS) for 5G
+
+package "Converged Charging System (CCS)" #white {
+  class "Charging Function (CHF)" as CHF
+  class "Account Balance Management Function (ABMF)" as ABMF
+  class "Rating Function (RF)" as RF
+  class "Charging Gateway Function (CGF)" as CGF
+
+  CHF --> ABMF
+  CHF --> RF
+  CHF --> CGF
+}
+
+class "Billing Domain (BD)" as BD
+class "Network Function (NF)" as NF
+
+CGF --> BD : Bx
+NF --> CHF : Nchf
+
+@enduml

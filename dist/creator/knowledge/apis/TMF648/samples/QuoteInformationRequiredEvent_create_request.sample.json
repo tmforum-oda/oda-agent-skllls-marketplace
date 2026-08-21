@@ -1,0 +1,54 @@
+{
+  "correlationId": "qs1-k33",
+  "id":"ilmJ44",
+  "href":"https://host:port/quoteManagement/v5/listener/quoteInformationRequiredEvent/ilmJ44",
+  "description": "QuoteInformationRequiredEvent illustration",
+  "domain": "Commercial",
+  "eventId": "966",
+  "eventTime": "2021-09-27T07:43:59.059Z",
+  "eventType": "QuoteInformationRequiredEvent",
+  "priority": "1",
+  "timeOccurred": "2021-09-27T07:43:59.059Z",
+  "title": "QuoteInformationRequiredEvent",
+  "event": {
+    "quote": {
+      "id": "5252",
+      "href": "https://host:port/quoteManagement/v5/quote/5252",
+      "@type": "QuoteRef",
+      "@referredType": "Quote"
+      },
+      "informationRequired": 
+        {
+          "op": "add",
+          "path": "/contactMedium"
+        }
+  },
+  "relatedParty": [
+    {
+      "role": "Issuer",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "56d",
+        "href":"https://host:port/partyManagement/v5/organization/56d",
+        "name":"John",
+        "@referredType": "Organization",
+        "@type": "PartyRef"
+      }
+    }
+  ],
+  "reportingSystem": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "123",
+    "name": "CRM app",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@schemaLocation": "https:/host:port/tmfapi/event.schema.json",
+  "@type": "QuoteInformationRequiredEvent"
+}

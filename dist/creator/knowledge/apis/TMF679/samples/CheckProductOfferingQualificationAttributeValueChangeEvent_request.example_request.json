@@ -1,0 +1,41 @@
+{
+  "correlationId": "azer-55",
+  "description": "CheckProductOfferingQualificationAttributeValueChangeEvent illustration",
+  "domain": "Commercial",
+  "eventId": "467",
+  "eventTime": "2022-09-14T12:14:28.774Z",
+  "eventType": "CheckProductOfferingQualificationAttributeValueChangeEvent",
+  "priority": "3",
+  "timeOcurred": "2022-09-14T12:14:23.473Z",
+  "title": "CheckProductOfferingQualificationAttributeValueChangeEvent",
+  "event": {
+    "checkProductOfferingQualification": {
+      "href": "https://host:port/ProductOfferingQualification/v5/CheckProductOfferingQualification/99",
+      "id": "99",
+      "@type": "CheckProductOfferingQualification",
+      "note": [
+        {
+          "@type": "Note",
+          "author": "Mr. N. Bene",
+          "date": "2020-11-20T08:00:00Z",
+          "id": "1",
+          "text": "Not for a CheckProductOfferingQualification"
+        }
+      ]
+    }
+  },
+  "reportingSystem": {
+    "id": "533",
+    "name": "APP-963",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "source": {
+    "id": "200",
+    "name": "APP-893",
+    "@type": "ReportingResource",
+    "@referredType": "LogicalResource"
+  },
+  "@baseType": "Event",
+  "@type": "CheckProductOfferingQualificationAttributeValueChangeEvent"
+}

@@ -1,0 +1,9 @@
+{
+  "@type": "ExportJob",
+  "completionDate": "2023-10-01T00:00:30Z",
+  "status": "Succeeded",
+  "path": "/productUsage",
+  "query": "status=validated,rated,notRated,superseded&creationDate.gte=2023-09-10T00:00:00Z&creationDate.lt=2023-09-10T04:00:00Z",
+	"contentType": "application/gzip",
+	"url": "sftp://sftp.mycsp.com/productUsageManagement/oijfknkjf9879zzeq.gzip"
+}

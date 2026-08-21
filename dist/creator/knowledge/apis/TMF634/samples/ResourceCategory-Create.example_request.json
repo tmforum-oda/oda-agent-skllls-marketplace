@@ -1,0 +1,41 @@
+{
+    "correlationId": "7dd133ee-6c9a",
+    "description": "ResourceCategoryCreateEvent illustration",
+    "domain": "Commercial",
+    "eventId": "4876-8fbb-4d44dc98fd57",
+    "eventTime": "2022-08-25T12:19:03.452Z",
+    "eventType": "ResourceCategoryCreateEvent",
+    "priority": "4",
+    "timeOcurred": "2022-08-25T12:18:59.969Z",
+    "title": "ResourceCategoryCreateEvent",
+    "event": {
+        "resourceCategory": {
+            "id": "8121", 
+            "href": "https://mycsp.com:8080/tmf-api/resourceCatalog/v5/resourceCategory/8121", 
+            "name": "Network Logical Resources", 
+            "description": "This resource category groups together logical resources that are implemented in the network", 
+            "@type": "ResourceCategory", 
+            "version": "1.0", 
+            "validFor": {
+                "startDateTime": "2017-08-11T00:00:00.000Z", 
+                "endDateTime": "2018-03-07T00:00:00.000Z"
+            }, 
+            "lifecycleStatus": "In study", 
+            "lastUpdate": "2017-08-09T00:00:00.000Z"
+        }
+    },
+    "reportingSystem": {
+        "id": "335",
+        "name": "APP-179",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "source": {
+        "id": "853",
+        "name": "APP-30",
+        "@type": "ReportingResource",
+        "@referredType": "LogicalResource"
+    },
+    "@baseType": "Event",
+    "@type": "ResourceCategoryCreateEvent"
+}

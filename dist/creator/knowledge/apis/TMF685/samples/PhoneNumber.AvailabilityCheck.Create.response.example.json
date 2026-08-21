@@ -1,0 +1,34 @@
+{
+    "@type": "AvailabilityCheck",
+    "id": "8cb645cb-279f-42f4-9d3b-72845bbfafbe",
+    "href": "https://{server}:{port}/tmf-api/resourcePoolManagement/v5/resourcePool/c3fef858-b864-4fac-971e-795b1195ded9/availabilityCheck/8cb645cb-279f-42f4-9d3b-72845bbfafbe",
+    "capacityDemand":
+    {
+        "@type": "Capacity",
+        "capacityAmount":
+        {
+            "amount": 10,
+            "units": "number"
+        }
+    },
+    "capacityOption":
+    [
+        {
+            "@type": "Capacity",
+            "capacityAmount":
+            {
+                "amount": 6,
+                "units": "number"
+            }
+        },
+        {
+            "@type": "Capacity",
+            "capacityAmount":
+            {
+                "amount": 4,
+                "units": "number"
+            }
+        }
+    ],
+    "state": "inProgress"
+}

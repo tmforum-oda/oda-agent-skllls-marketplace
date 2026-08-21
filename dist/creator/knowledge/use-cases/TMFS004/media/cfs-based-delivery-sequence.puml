@@ -1,0 +1,80 @@
+@startuml
+title CFS-based delivery
+
+participant "ProductOrderOrchestration\nManagement" as POOM
+participant "ProductOrderCapture\nValidation" as POCV
+participant "ProductInventory" as PI
+box "Access Service Domain"
+  participant "ServiceOrdering\nManagement" as SOM
+  participant "ServiceInventory\nManagement" as SIM
+  participant "ServiceCatalog\nManagement" as SCM
+  participant "ResourceInventory" as RI
+  participant "ResourceOrdering\nManagement" as ROM
+  participant "ResourceCatalog\nManagement" as RCM
+end box
+
+activate POOM
+
+== CFS-based Delivery - illustration for landline access ==
+
+POOM -> POOM : 20 Determine requested service representation
+
+note right of SOM : Access delivery factory
+
+POOM -> SOM : 21 **TMF641 Service Order** POST /serviceOrder\nto add a landline access at place #
+activate SOM
+SOM --> POOM : 22 **TMF641** 200 OK\nService Order #51 created
+
+note right of PI : Service delivery not performed on the fly
+
+POOM -> PI : 23 **TMF637 Product Inventory Management** PATCH /product/id\n(state update to pendingActive)
+activate PI
+PI --> POOM : 24 **TMF637** 200 OK\nProduct updated
+deactivate PI
+
+POOM -> POCV : 25 **TMF622 Product Ordering** PATCH /productOrder/id1 (state item update to inProgress)
+activate POCV
+POCV --> POOM : 26 **TMF622** 200 OK\nProductOrder updated
+deactivate POCV
+
+group new service creation in the inventory
+    SOM -> SIM : 27 **TMF638 Service Inventory Management** POST /service
+    activate SIM
+    SIM --> SOM : 28 **TMF638** 201 Created\nService created
+    deactivate SIM
+end
+
+group Determination of the RFS Spec for the CFS Spec / Identification of existing resource(s)
+    SOM -> SCM : 29 **TMF633 Service Catalog Management** GET /serviceSpecification\n(filtered for Landline Access)
+    activate SCM
+    SCM --> SOM : 30 **TMF633** 200 OK\nService Specification list for Landline access\nIn particular information related to RFSSpec
+    deactivate SCM
+
+    SOM -> SIM : 31 **TMF638 Service Inventory Management** GET /service\n(filtered for ServiceSpec, etc.)
+    activate SIM
+    SIM --> SOM : 32 **TMF638** 200 OK\nService(s) representation
+    deactivate SIM
+
+    SOM -> SOM : 33 Compute RFSSpec choice &\nidentify supporting resourceSpec
+
+    SOM -> RCM : 34 **TMF639 Resource Inventory Management** GET /resourceSpecification/id
+    activate RCM
+    RCM --> SOM : 35 **TMF639** 200 OK\nResourceSpecification representation
+    deactivate RCM
+
+    SOM -> RI : 36 **TMF639 Resource Inventory Management** GET /resource\n(filtered on ResourceSpec, etc.)
+    activate RI
+    RI --> SOM : 37 **TMF639** 200 OK\nResource representation
+    deactivate RI
+
+    SOM -> SOM : 38 Associate CFSSpec->RFSSpec\n->Resource/ResourceSpec
+
+    SOM -> ROM : 39 **TMF652 Resource Ordering** POST /resourceOrder
+    activate ROM
+    ROM --> SOM : 40 **TMF652** 201 Created\nResourceOrder created
+    deactivate ROM
+end
+deactivate SOM
+deactivate POOM
+
+@enduml

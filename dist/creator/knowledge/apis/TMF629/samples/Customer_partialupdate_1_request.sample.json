@@ -1,0 +1,11 @@
+{
+    "@type": "Customer",
+    "name": "Sun Football Club",
+    "engagedParty": {
+        "@type": "PartyRef",
+        "href": "https://host:port/tmf-api/partyManagement/v5/organization/237",
+        "id": "237",
+        "name": "Another Long Distance Travellers",
+        "@referredType": "Organization"
+    }
+}

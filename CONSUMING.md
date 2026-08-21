@@ -12,7 +12,7 @@ pick based on which cost you'd rather pay:
 | | Option A: sparse clone | Option B: Claude Code plugin |
 |---|---|---|
 | Works with | any agent that can read local files | Claude Code only |
-| Footprint | one clone, ~108MB, wherever you put it | plugin cache, ~64MB, bundled a second time inside `dist/` |
+| Footprint | one clone, ~108MB, wherever you put it | plugin cache, ~64MB per plugin, bundled again inside `dist/consumer/` and/or `dist/creator/` |
 | Discovery | manual — skills only work from that clone's directory | automatic — works from any project, any cwd, once installed |
 | Staying current | `git pull` | reinstall/update the plugin |
 
@@ -77,7 +77,12 @@ a reproducible build), clone as above, then `git checkout <commit-or-tag>`.
 
 ## Option B: install as a Claude Code plugin
 
-[`dist/`](dist/) is a ready-to-install Claude Code plugin — `skills/` and
+There are two plugins, not one — a **consumer** plugin
+([`dist/consumer/`](dist/consumer/)) with the skills for building a
+product against ODA, and a **creator** plugin
+([`dist/creator/`](dist/creator/)) with the skills for drafting and
+extending ODA itself. Install whichever matches what you're doing, or
+both. Each is a ready-to-install Claude Code plugin — its skill subset and
 a full copy of `knowledge/`, bundled together, with every skill's
 `knowledge/...` path reference rewritten to
 `${CLAUDE_PLUGIN_ROOT}/knowledge/...` so it resolves correctly no matter
@@ -86,14 +91,21 @@ when you invoke it. That rewrite, and the reason it's necessary, is
 explained in [`tools/build_plugin.py`](tools/build_plugin.py)'s docstring.
 
 This deliberately breaks the usual norm that a plugin should be small —
-`dist/knowledge/` is a second, full copy of the corpus, on top of the one
-already at the repo's own top level, chosen so the plugin has zero
-dependency on any project-specific clone or directory layout.
+each of `dist/consumer/knowledge/` and `dist/creator/knowledge/` is a full
+copy of the corpus, on top of the one already at the repo's own top level
+(and on top of each other, if you install both plugins), chosen so each
+plugin has zero dependency on any project-specific clone or directory
+layout.
 
 ```
 claude plugin marketplace add https://github.vodafone.com/Innovation-Network/tm-forum-sdlc.git --sparse .claude-plugin dist
-claude plugin install tm-forum-oda@tm-forum-oda-marketplace
+claude plugin install tm-forum-oda-consumer@tm-forum-oda-marketplace
+claude plugin install tm-forum-oda-creator@tm-forum-oda-marketplace
 ```
+
+(Install just one of the two `claude plugin install` lines if you only
+need one audience's skills — the `marketplace add` step above covers both,
+since both plugins live under the same `dist/` directory.)
 
 (`/plugin marketplace add ...` and `/plugin install ...` slash commands
 exist too, for inside an interactive session — the commands above are the
@@ -104,30 +116,35 @@ confirmed below.)
 
 **The `--sparse .claude-plugin dist` matters — don't drop it.** Adding
 the marketplace requires cloning the repository the marketplace lives in
-(to read `.claude-plugin/marketplace.json` and resolve the plugin's
-`source: ./dist` path), and that clone is a *separate* thing from the
-actual installed plugin. Without `--sparse`, that clone pulls the
-**entire repo** — including `references/`, the raw TM Forum member-gated
-DOCX/PDF this repo deliberately never redistributes (spec.md §10), plus
-`tools/` and `spec/` — into `~/.claude/plugins/marketplaces/...` on every
-consumer's machine, even though only `dist/` ever actually gets used.
-`--sparse .claude-plugin dist` limits that clone to just what the
-marketplace needs to read plus the plugin content itself.
+(to read `.claude-plugin/marketplace.json` and resolve each plugin's
+`source: ./dist/consumer` or `./dist/creator` path), and that clone is a
+*separate* thing from the actual installed plugin(s). Without `--sparse`,
+that clone pulls the **entire repo** — including `references/`, the raw
+TM Forum member-gated DOCX/PDF this repo deliberately never redistributes
+(spec.md §10), plus `tools/` and `spec/` — into
+`~/.claude/plugins/marketplaces/...` on every consumer's machine, even
+though only `dist/` ever actually gets used. `--sparse .claude-plugin dist`
+limits that clone to just what the marketplace needs to read plus both
+plugins' content (it covers `dist/` as a whole, so it works whether you
+install one plugin or both).
 
-Skills install namespaced: `/tm-forum-oda:check-usecase-maturity` and
-`/tm-forum-oda:generate-test-cases-from-usecase`.
+Skills install namespaced per plugin: e.g.
+`/tm-forum-oda-consumer:check-usecase-maturity` and
+`/tm-forum-oda-creator:draft-new-usecase-from-scenario`.
 
-**Verified for real** (not just from the docs, both times): first loaded
-`dist/` via `claude --plugin-dir` from a directory with no `knowledge/`
-anywhere nearby and confirmed both skills resolve `${CLAUDE_PLUGIN_ROOT}`
-correctly. Separately — found by actually inspecting
-`~/.claude/plugins/marketplaces/.../` after a real
-`/plugin marketplace add` — confirmed the unscoped command really does
-pull the whole repo, then re-verified `--sparse .claude-plugin dist`
-fixes it (marketplace clone drops to no `references/`/`tools/`/`spec/`
-at all) and that both skills still work correctly through a full
-`marketplace add` → `install` → invoke cycle afterward. See
-`spec/tasks.md` Phase 8.3/8.4 for the full verification record.
+**Verified for real** (not just from the docs): the single-plugin
+predecessor of this setup was verified end-to-end — loaded via
+`claude --plugin-dir` from a directory with no `knowledge/` anywhere
+nearby and confirmed skills resolve `${CLAUDE_PLUGIN_ROOT}` correctly;
+separately confirmed the unscoped `marketplace add` really does pull the
+whole repo, and that `--sparse .claude-plugin dist` fixes it, through a
+full `marketplace add` → `install` → invoke cycle (see `spec/tasks.md`
+Phase 8.3/8.4). The two-plugin split changes `plugin.json`'s location and
+each plugin's skill subset, not that resolution mechanism, but the split
+itself — `dist/consumer/` and `dist/creator/` as two separate installable
+plugins from one marketplace entry each — has not yet been re-verified
+end-to-end; treat this section as accurate to the build script's output
+until that's done.
 
 **Staying up to date**: reinstall or update the plugin through whatever
 mechanism your Claude Code version provides (`/plugin` commands) —

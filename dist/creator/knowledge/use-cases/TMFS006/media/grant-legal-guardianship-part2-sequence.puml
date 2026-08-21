@@ -1,0 +1,61 @@
+@startuml
+title Part 2: Grant Legal Guardianship
+
+actor JohnCustomerAgent as John
+participant "Lambda_Portal" as Portal #purple
+participant "PartyMgt" as PM #red
+participant "PartyRole&PermissionsMgt" as PRPM #red
+participant "DocumentMgt" as DM #red
+
+John -> Portal : 1 chooses "add legal guardian"
+Portal -> Portal : 2 Display serach Form
+
+John -> Portal : 3 Fill-in form & Search
+Portal -> PM : 4 **TMF632 Party Management** (Get /individual?firstName=Marie&\nlastName=Curie&Id-Card=00865345& Id-CardType= passport)
+activate PM
+PM --> Portal : 5 **TMF632** 200 OK party.Id2 + individual informations
+deactivate PM
+
+Portal -> Portal : 6 Display Marie Informations +available actions
+
+John -> Portal : 7 John Validates informations displayed
+Portal -> PM : 8 **TMF701 Process Flow** PATCH /processFlow.id2,taskFlow.id2.3 (sessionId1, partyId2)
+activate PM
+PM --> Portal : 9 **TMF701** (sessionId1, "callback "\n(processFlow.id2,taskFlow.id2.5,"parameters":DocumentId,URL,judgementDate)Provide legal letter
+deactivate PM
+
+John -> Portal : 10 Attaches legal letter &\nfills in Judgement date
+
+Portal -> DM : 11 **TMF667 Document Management** POST /document (name,\nattachement.content, status ,creationdate,\nrelatedParty.Id2, relatedPartyId1)
+activate DM
+DM --> Portal : 12 **TMF667** 200 OK URL, documentId.22
+deactivate DM
+
+John -> Portal : 13 Choose "Grant Guardianship"
+
+Portal -> PM : 14 **TMF701 Process Flow** PATCH /processFlow/id2/taskflow/id2.5\n(sessionId1,taskFlowSpecificationType=manual task,\naction chosen "Grant legal guardianhip",\ndocument .id 22,URL,judgementDate)
+activate PM
+
+PM -> PRPM : 15 **TMF701 Process Flow** POST\n(sessionId1, processFlowSpecification=add legal guardian)\npartyRole.name= 'under-guardianship',PartyId1, activationDate=judgementDate ,\npartyRole.name='legal guardian',PartyId2,URL, Document Id, activationDate=judgementDate,\npartyRoleId1,SuspensionDate=judgementDate)\ncallback when legalGuardian fully created( processFlowId2,taskFlowId2.6) Configure Legal Guardian
+activate PRPM
+PRPM --> PM : 16 **TMF701** 201 OK
+
+PRPM -> PRPM : 17 **TMF669 PartyRole Management** POST /partyRole\n(partyRoleSpecification=LegalGardian,\nengagedParty.id2,\npartyRole.status =active, Url,DocumentId, judgementDate=activationate)\n"new party role for marie " -> partyRole.id2
+
+PRPM -> PRPM : 18 **TMF669 PartyRole Management** PATCH /partyRole\n( engagedParty.id2,\npartyRole.status =suspended )"suspend role customer for Bob "
+
+PRPM -> PRPM : 19 **TMF669 PartyRole Management** POST /partyRole\n( partyRoleSpecification=underguardianship,\nengagedParty.id2,partyRole.status =active judgementDate=activationate ) "new party role for Bob"
+
+PRPM -> PRPM : 20 **TMF672 User Roles and Permissions** POST /permission\n(relatedParty.id2,\npartyRole.id2,\ndefault permissions for legal guardian for Marie)
+
+PRPM -> PRPM : 21 **TMF672 User Roles and Permissions** POST /permission\n(relatedParty.id1,\npartyRole.id1,\ndefault permissions for underGuardianship  for Bob)
+
+PRPM --> PM : 22 **TMF701** PartyRoleId1,PartyRoleId2
+deactivate PRPM
+
+PM --> Portal : 23 **TMF701** 200 OK , Updated informations
+deactivate PM
+
+Portal -> Portal : 24 display informations
+
+@enduml
