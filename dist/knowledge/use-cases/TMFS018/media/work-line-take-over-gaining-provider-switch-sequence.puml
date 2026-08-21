@@ -1,0 +1,69 @@
+@startuml
+title Work Line Take Over - High Level View
+
+box "Gaining Provider" #E0E0E0
+  participant "BuyerGW" as BGW1
+end box
+box "Losing Provider" #E0E0E0
+  participant "BuyerGW" as BGW2
+end box
+box "Wholeseller" #E0E0E0
+  participant "SellerGW" as SellerGW
+  participant "Geographic Location\n(TMF679)" as GeoLocation #E5DCF0
+  participant "Product Offering Qualification\n(TMF679)" as POQ #E5DCF0
+  participant "Appointment Management\n(TMF646)" as Appointment #E5DCF0
+  participant "Product Order Management\n(TMF622)" as ProductOrderMgt #E5DCF0
+end box
+
+== Location Qualification (TMF679) ==
+
+BGW1 -> GeoLocation : 1 GET /geographicAddress\nUsing UPRN to match the address
+GeoLocation --> BGW1 : 2 Response: address/candidateAddress\nSeller validates the address
+BGW1 -> POQ : 3 POST /productOfferingQualification\nQuery available products for location
+POQ --> BGW1 : 4 Response: eligible products\n+ flags whether appointment is required
+
+== Appointment (If Required) ==
+
+alt Appointment Required
+    BGW1 -> Appointment : 5 POST /appointment\nBuyer creates appointment
+    Appointment --> BGW1 : 6 Seller responds with appointment confirmation
+end
+
+note over BGW1, BGW2
+  Buyer must submit the order only after
+  appointment is confirmed OR
+  appointment not required (Seller flag)
+end note
+
+== Switch Order Submission (Gaining Provider) ==
+
+BGW1 -> ProductOrderMgt : 7 POST TMF622 /productOrder\n"Switch" Order
+ProductOrderMgt --> BGW1 : 8 productOrderCreateEvent(acknowledged)\nSeller accepts the order
+
+note over SellerGW, ProductOrderMgt
+  Seller validates the order and the Losing Provider supports switching.
+  Seller validates provided appointment details.
+end note
+
+== Seller Plan & Manage Switch Request ==
+
+ProductOrderMgt -> SellerGW : 9 Seller creates "Cease Order"\non behalf of Losing Provider (BGW2)
+SellerGW -> BGW2 : 10 Cease Request Notification
+BGW2 -> SellerGW : 11 Send Cease "Pending" to Gaining Provider
+BGW2 -> SellerGW : 12 Send Cease "In-Progress" to Gaining Provider
+BGW2 -> SellerGW : 13 Send Cease "Acknowledged" to Gaining Provider
+BGW2 -> SellerGW : 14 Send Cease "Committed" to Gaining Provider
+
+... Wait for Switch Date ...
+
+BGW2 -> SellerGW : 15 Send Cease "Completed" to Gaining Provider
+
+== Service Activation (Gaining Provider) ==
+
+SellerGW -> BGW1 : 16 Service Activated\nProvision Gaining Provider Service
+
+== Completion Notification ==
+
+SellerGW -> BGW1 : 17 productOrderStateChangeEvent(completed)
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+title Address Validation - Common registry
+
+box "Wholebuyer" #E0E0E0
+  participant "Sales" as Sales
+  participant "Location Management\n(TMFC014)" as LocationMgt #E5DCF0
+end box
+
+== Wholebuyer selects address of interest ==
+
+loop until address selected
+
+    Sales -> LocationMgt : 1 GET /geographicAddress?{address fields}=...
+    LocationMgt --> Sales : 2 200 OK
+
+end
+
+== Address Id identified ==
+
+@enduml

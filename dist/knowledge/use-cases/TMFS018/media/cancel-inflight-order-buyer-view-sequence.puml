@@ -1,0 +1,67 @@
+@startuml
+title Cancel Inflight Order - Buyer View
+
+box "Buyer" #E0E0E0
+  participant "Order Management" as OrderMgt
+  participant "Billing / Finance" as BillingFinance
+  participant "Buyer Gateway" as BuyerGW
+end box
+box "Seller" #E0E0E0
+  participant "Seller Gateway" as SellerGW
+end box
+
+== Point of no return (optional) ==
+
+opt Seller supports PONR notification
+    SellerGW -> BuyerGW : 1 TMF622 ProductOrderMilestoneEvent (pointOfNoReturn)
+    BuyerGW -> OrderMgt : 2 Evaluate impact of PONR
+end
+
+== Initiate cancellation ==
+
+OrderMgt -> BuyerGW : 3 CancelProductOrder request
+BuyerGW -> SellerGW : 4 TMF622 CancelProductOrder
+SellerGW --> BuyerGW : 5 TMF622 201 Created (acknowledged)
+BuyerGW -> OrderMgt : 6 Cancellation acknowledged
+
+== Cancellation processing ==
+
+alt Request rejected
+
+    SellerGW -> BuyerGW : 7 TMF622 CancelProductOrderStateChangeEvent (rejected)
+    BuyerGW -> OrderMgt : 8 Mark cancellation rejected
+
+else Request accepted
+
+    SellerGW -> BuyerGW : 9 TMF622 CancelProductOrderStateChangeEvent (inProgress)
+    SellerGW -> BuyerGW : 10 TMF622 ProductOrderStateChangeEvent (assessingCancellation)
+
+end
+
+== Assessment phase ==
+
+BuyerGW -> OrderMgt : 11 Update order status = assessingCancellation
+
+opt Cancellation fee applicable
+    SellerGW -> BuyerGW : 12 TMF622 ProductOrderMilestoneEvent (CancellationFeeApplicable)
+    BuyerGW -> BillingFinance : 13 Record potential cancellation charge (informational only)
+end
+
+alt Cancellation fails
+
+    SellerGW -> BuyerGW : 14 TMF622 ProductOrderStateChangeEvent (restore previous state)
+    SellerGW -> BuyerGW : 15 TMF622 CancelProductOrderStateChangeEvent (terminatedWithError)
+    BuyerGW -> OrderMgt : 16 Mark order cancellation failed
+
+else Cancellation succeeds
+
+    SellerGW -> BuyerGW : 17 TMF622 ProductOrderStateChangeEvent (cancelled)
+    BuyerGW -> OrderMgt : 18 Set order status = cancelled
+
+    SellerGW -> BuyerGW : 19 TMF622 CancelProductOrderStateChangeEvent (done)
+    BuyerGW -> BillingFinance : 20 Trigger billing updates
+    BuyerGW -> OrderMgt : 21 Finalise cancellation
+
+end
+
+@enduml

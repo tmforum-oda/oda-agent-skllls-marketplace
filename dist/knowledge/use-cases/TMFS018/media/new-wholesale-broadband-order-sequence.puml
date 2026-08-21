@@ -1,0 +1,67 @@
+@startuml
+title ProductOrder for New Wholesale Broadband
+
+box "Wholebuyer" #E0E0E0
+  participant "BuyerGW" as BuyerGW
+end box
+box "Wholeseller" #E0E0E0
+  participant "SellerGW" as SellerGW
+  participant "Product Configurator\n(TMFC027)" as ProductConfigurator #E5DCF0
+  participant "Product Order Capture & Validation\nTMFC002" as POCV #E5DCF0
+end box
+
+== New Wholesale Broadband Order - Product Offering Qualification (New Order) ==
+
+note over BuyerGW, SellerGW : Qualify available offerings (eligibility + reasons) for the service/location\nusing POQ — no current productRef is required for a new order.
+
+BuyerGW -> SellerGW : 1 POST /tmf679/v5/productOfferingQualification (location, constraints)
+SellerGW -> ProductConfigurator : 2 POST /productOfferingQualification
+ProductConfigurator --> SellerGW : 3 201 Created (eligible offerings + reasons)
+SellerGW --> BuyerGW : 4 Qualification result (eligible product offerings)
+
+== New Wholesale Broadband - ProductOrder (New Order) ==
+
+BuyerGW -> SellerGW : 5 POST /WholesaleBroadband/Seller/ProductOrder (requestedCompletionDate)
+activate SellerGW
+note over SellerGW : Syntax validation, id generation, timestamp
+SellerGW --> BuyerGW : 6 201 Created (id, orderDate)
+
+alt Step 7: Decomposed Product Model (explicit actions)
+
+    SellerGW -> POCV : 7 Create Product Order with orderItems:\n- FTTH WSBB Access (new product) ............ action="add"\n- G500 - WSBB Bitstream Profile (new product)  action="add"\n- Local - WSBB Bitstream Transport (new) ..... action="add"
+    POCV --> SellerGW : 8 201 Created (state="acknowledged")
+
+else Step 7 (alternative): Combined Product Model
+
+    SellerGW -> POCV : 9 Create Product Order with orderItems:\n- FTTH WSBB Bitstream Combined (new product) .. action="add"
+    POCV --> SellerGW : 10 201 Created (state="acknowledged")
+
+end
+
+note over BuyerGW, SellerGW : Validation successful
+
+POCV -> SellerGW : 11 POST ProductOrderCreateEvent(acknowledged)
+SellerGW --> BuyerGW : 12 POST ProductOrderCreateEvent(acknowledged)
+
+POCV -> SellerGW : 13 POST ProductOrderStateChangeEvent(accepted)
+SellerGW --> BuyerGW : 14 POST ProductOrderStateChangeEvent(accepted)
+
+POCV -> SellerGW : 15 POST ProductOrderAttributeValueChangeEvent\n(expectedCompletionDate,\nproductOrderItems.customerAppointmentNecessary)
+SellerGW --> BuyerGW : 16 POST ProductOrderAttributeValueChangeEvent\n(expectedCompletionDate,\nproductOrderItems.customerAppointmentNecessary)
+
+... waiting for expectedStartDate ...
+
+POCV -> SellerGW : 17 POST ProductOrderStateChangeEvent(inProgress)
+SellerGW --> BuyerGW : 18 POST ProductOrderStateChangeEvent(inProgress)
+
+POCV -> SellerGW : 19 POST ProductOrderMilestoneEvent(serviceActivated)
+SellerGW --> BuyerGW : 20 POST ProductOrderMilestoneEvent(serviceActivated)
+
+POCV -> SellerGW : 21 POST ProductOrderAttributeValueChangeEvent(startDate)
+SellerGW --> BuyerGW : 22 POST ProductOrderAttributeValueChangeEvent(startDate)
+
+POCV -> SellerGW : 23 POST ProductOrderStateChangeEvent(completed)
+SellerGW --> BuyerGW : 24 POST ProductOrderStateChangeEvent(completed)
+deactivate SellerGW
+
+@enduml

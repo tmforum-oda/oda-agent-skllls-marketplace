@@ -1,0 +1,57 @@
+@startuml
+title Cease Order- High Level
+
+participant "BuyerGW" as BuyerGW
+participant "SellerGW" as SellerGW
+participant "Product Inventory\nTMFC005" as ProductInventory #E5DCF0
+participant "Product Configurator\nTMFC027" as ProductConfigurator #E5DCF0
+participant "Product Order Capture & Validation\nTMFC002" as POCV #E5DCF0
+
+== Buyer is Checking Seller's product inventory to get the product Id ==
+
+note over BuyerGW, SellerGW : Check Seller's Product Inventory to get the product Id the customer currently has.
+
+BuyerGW -> SellerGW : 1 Find active product instance(s) - TMF637 Product Inventory
+SellerGW -> ProductInventory : 2 GET /product?relatedParty.id={customer}&status=active&fields=...
+ProductInventory --> SellerGW : 3 200 OK (current product instance(s))
+SellerGW --> BuyerGW : 4 Current product instance(s)
+
+== Upsell/Downsell Product Offering Qualification ==
+
+note over BuyerGW, SellerGW : Qualification based on location (eligible offerings & reasons).
+
+BuyerGW -> SellerGW : 5 Qualify offerings - TMF679 Product Offering Qualification
+SellerGW -> ProductConfigurator : 6 POST /productOfferingQualification
+ProductConfigurator --> SellerGW : 7 201 Created (eligible product offerings + reasons)
+SellerGW --> BuyerGW : 8 Qualification result (eligible offerings)
+
+== Upgrade / Downgrade Order ==
+
+note over BuyerGW, SellerGW : Place a regrade against the existing product with explicit noChange / delete / add items.
+
+alt Step 9: Decomposed Regrade Model (explicit actions)
+
+    BuyerGW -> SellerGW : 9 POST TMF622 /productOrder\n- FTTH WSBB Access product (existing product) ---action="noChange"\n- G500 - WSBB Bitstream Profile (existing product) ---action="delete"\n- Local - WSBB Bitstream Transport (regrade product)--action="delete"\n- G1100 - WSBB Bitstream Profile (regrade product)----action="add"\n- National - WSBB Bitstream Transport ----action="add"
+    SellerGW -> POCV : 10 Create Product Order (orderItems: noChange/delete/add)
+    POCV --> SellerGW : 11 201 Created (state="acknowledged")
+
+else Step 9 (alternative): Combined Product Model
+
+    BuyerGW -> SellerGW : 12 POST TMF622 /productOrder\n- FTTH WSBB Bitstream Combined (regrade product) ---- action="add"
+    SellerGW -> POCV : 13 Create Product Order with orderItems:\n- FTTH WSBB Bitstream Combined (regrade product) ---- action="add"
+    POCV --> SellerGW : 14 201 Created (state="acknowledged")
+
+end
+
+== Event notifications (via /hub subscription, relayed by SellerGW) ==
+
+POCV -> SellerGW : 15 productOrderStateChangeEvent (acknowledged)
+SellerGW --> BuyerGW : 16 productOrderStateChangeEvent (acknowledged)
+
+POCV -> SellerGW : 17 productOrderStateChangeEvent (inProgress)
+SellerGW --> BuyerGW : 18 productOrderStateChangeEvent (inProgress)
+
+POCV -> SellerGW : 19 productOrderStateChangeEvent (completed)
+SellerGW --> BuyerGW : 20 productOrderStateChangeEvent (completed)
+
+@enduml

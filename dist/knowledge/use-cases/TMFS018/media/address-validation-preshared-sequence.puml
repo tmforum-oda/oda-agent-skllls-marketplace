@@ -1,0 +1,57 @@
+@startuml
+title Address Validation - Preshared Addresses
+
+box "Buyer" #E0E0E0
+  participant "Sales" as Sales
+  participant "Location Management\n(TMFC014)" as BuyerLocationMgt #E5DCF0
+  participant "BuyerGW" as BuyerGW
+end box
+box "wholeseller" #E0E0E0
+  participant "SellerGW" as SellerGW
+  participant "Location Management\n(TMFC014)" as SellerLocationMgt #E5DCF0
+  actor "Staff" as Staff
+end box
+
+== Wholeseller Maintains Addresses ==
+
+loop create addresses
+
+    Staff -> SellerLocationMgt : 1 Create Address
+    SellerLocationMgt -> SellerGW : 2 POST GeographicAddressCreatedEvent
+    SellerGW --> SellerLocationMgt : 3 201 Created
+
+end
+
+== Buyer is Onboarded ==
+
+SellerGW -> BuyerGW : 4 POST /hub\n{"//CSP1/callback"}
+BuyerGW --> SellerGW : 5 201 Created
+
+loop addresses
+
+    SellerGW -> BuyerGW : 6 POST //CSP1/callback\n{"eventType": "GeographicAddressCreateEvent"}
+    BuyerGW --> SellerGW : 7 201 Created
+
+    BuyerGW -> BuyerLocationMgt : 8 POST GeographicAddress
+    BuyerLocationMgt --> BuyerGW : 9 201 Created
+
+end
+
+== Buyer performs local search ==
+
+Sales -> BuyerLocationMgt : 10 POST GeographicAddressValidation
+BuyerLocationMgt --> Sales : 11 200 OK
+
+== Wholeseller Updates Addresses ==
+
+Staff -> SellerLocationMgt : 12 Create Address
+SellerLocationMgt -> SellerGW : 13 POST GeographicAddressCreatedEvent
+SellerGW --> SellerLocationMgt : 14 201 Created
+
+SellerGW -> BuyerGW : 15 POST //CSP1/callback\n{"eventType": "**"}
+BuyerGW --> SellerGW : 16 201 Created
+
+BuyerGW -> BuyerLocationMgt : 17 POST GeographicAddress
+BuyerLocationMgt --> BuyerGW : 18 201 Created
+
+@enduml

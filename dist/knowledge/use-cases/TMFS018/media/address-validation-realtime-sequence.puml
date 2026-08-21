@@ -1,0 +1,32 @@
+@startuml
+title Address Validation - Realtime integration
+
+box "Buyer" #E0E0E0
+  participant "Sales" as Sales
+  participant "BuyerGW" as BuyerGW
+end box
+box "Wholeseller" #E0E0E0
+  participant "SellerGW" as SellerGW
+  participant "Location Management\n(TMFC014)" as SellerLocationMgt #E5DCF0
+end box
+
+Sales -> BuyerGW : 1 POST GeographicAddressValidation
+activate BuyerGW
+BuyerGW --> Sales : 2 201 Created
+
+BuyerGW -> SellerGW : 3 POST GeographicAddressValidation
+activate SellerGW
+SellerGW --> BuyerGW : 4 201 Created
+deactivate BuyerGW
+
+SellerGW -> SellerLocationMgt : 5 POST GeographicAddressValidation
+activate SellerLocationMgt
+SellerLocationMgt --> SellerGW : 6 201 Created
+deactivate SellerLocationMgt
+
+SellerLocationMgt -> SellerGW : 7 GeographicAddressValidationStateChangeEvent\n(done)
+SellerGW -> BuyerGW : 8 GeographicAddressValidationStateChangeEvent\n(done)
+deactivate SellerGW
+BuyerGW -> Sales : 9 GeographicAddressValidationStateChangeEvent\n(done)
+
+@enduml

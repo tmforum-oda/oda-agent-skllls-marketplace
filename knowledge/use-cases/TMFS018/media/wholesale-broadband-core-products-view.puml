@@ -1,0 +1,119 @@
+@startuml
+title Wholesale Broadband Core Products
+
+legend
+  Blue = Product Offering / light blue = Product Offering Price
+  Green = Product Specification / light green = Product Specification Characteristic
+  Dashed green = Product Usage Specification
+  Orange = ServiceSpecification / Yellow = ServiceLevelSpecification
+  Magenta = WorkSpecification / Red = ResourceSpecification
+end legend
+
+class "BigNetwork ENNI" as BigNetworkENNI <<ProductOffering>> {
+  recurring rating rule 1
+  one time rating rule 1
+}
+class "WB ENNI" as WBENNI <<ProductSpecification>> {
+  enniType
+}
+BigNetworkENNI --> WBENNI
+
+class "Bignetwork national\ntransport" as BigNetworkNational <<ProductOffering>> {
+  recurring rating rule 3
+}
+class "Bignetwork regional\ntransport" as BigNetworkRegional <<ProductOffering>> {
+  recurring rating rule 3
+}
+class "Bignetwork local\ntransport" as BigNetworkLocal <<ProductOffering>> {
+  recurring rating rule 3
+}
+class "WB Bitstream Transport" as WBTransport <<ProductSpecification>> {
+  ENNI VLAN
+}
+BigNetworkNational --> WBTransport
+BigNetworkRegional --> WBTransport
+BigNetworkLocal --> WBTransport
+
+class "BigNetwork XL" as BigNetworkXL <<ProductOffering>> {
+  recurring rating rule 2
+}
+class "BigNetwork L" as BigNetworkL <<ProductOffering>> {
+  recurring rating rule 2
+}
+class "BigNetwork M" as BigNetworkM <<ProductOffering>> {
+  recurring rating rule 2
+}
+class "BigNetwork S" as BigNetworkS <<ProductOffering>> {
+  recurring rating rule 2
+}
+class "WB Bitstream Profile" as WBProfile <<ProductSpecification>> {
+  Bandwidth
+  UNI VLAN
+}
+BigNetworkXL --> WBProfile
+BigNetworkL --> WBProfile
+BigNetworkM --> WBProfile
+BigNetworkS --> WBProfile
+
+class "Fibre Line" as FibreLine <<ProductOffering>>
+class "VDSL Line" as VDSLLine <<ProductOffering>>
+class "WB Access" as WBAccess <<ProductSpecification>> {
+  Technology
+  Termination
+}
+FibreLine --> WBAccess
+VDSLLine --> WBAccess
+
+class "CPE Installation" as CPEInstallation <<ProductOffering>> {
+  one time rating rule 3
+}
+class "WB AccessInstallation" as WBAccessInstallation <<ProductSpecification>> {
+  appointmentRequired
+  siteRiskAssessmentRequired
+}
+class "Product Usage\nSpecification" as WBAccessInstallUsageSpec <<ProductUsageSpecification>>
+CPEInstallation --> WBAccessInstallation
+WBAccessInstallation --> WBAccessInstallUsageSpec
+
+class "Consumable Pack" as ConsumablePack <<ProductOffering>> {
+  one time rating rule 3
+  usage rating rule 3
+}
+class "WB AdditionalWork" as WBAdditionalWork <<ProductSpecification>> {
+  preapprovedAdditionalWorkThresholdAmount
+}
+ConsumablePack --> WBAdditionalWork
+
+class "Gold Care" as GoldCare <<ProductOffering>>
+class "Silver Care" as SilverCare <<ProductOffering>> {
+  recurring rating rule 4
+}
+class "WB BroadbandCare" as WBBroadbandCare <<ProductSpecification>> {
+  careLevel
+}
+GoldCare --> WBBroadbandCare
+SilverCare --> WBBroadbandCare
+
+WBTransport --> WBENNI : "depends on"
+WBProfile --> WBTransport : "depends on"
+WBAccess --> WBProfile : "depends on"
+WBAccessInstallation --> WBAccess : "depends on"
+WBBroadbandCare --> WBAccess : "depends on"
+
+class "WB ENNI CFS\nSpecification" as WBENNICFS <<ServiceSpecification>>
+class "WB Transport CFS\nSpecification" as WBTransportCFS <<ServiceSpecification>>
+class "WB Access CFS\nSpecification" as WBAccessCFS <<ServiceSpecification>>
+class "AccessLine\nResourceSpecification" as AccessLineResource <<ResourceSpecification>>
+class "Installation\nWorkSpecification" as InstallationWork <<WorkSpecification>>
+class "AddtionalWork\nUsageVolumeSpecification" as AdditionalWorkUsageVolume
+class "Broadband\nServiceLevel\nSpecification" as BroadbandServiceLevel <<ServiceLevelSpecification>>
+
+WBENNI --> WBENNICFS : realisedAs
+WBTransport --> WBTransportCFS : realisedAs
+WBProfile --> WBAccessCFS : realisedAs
+WBAccess --> AccessLineResource : realisedAs
+WBAccessInstallation --> InstallationWork : realisedAs
+WBAdditionalWork --> AdditionalWorkUsageVolume : realisedAs
+WBBroadbandCare --> BroadbandServiceLevel : realisedAs
+
+@enduml

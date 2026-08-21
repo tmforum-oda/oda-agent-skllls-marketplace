@@ -1,0 +1,74 @@
+@startuml
+title Cancel Inflight Order - Seller View
+
+box "Buyer" #E0E0E0
+  participant "Buyer Gateway" as BuyerGW
+end box
+box "Seller" #E0E0E0
+  participant "Seller Gateway" as SellerGW
+  participant "TMFC002 Product Order Capture\nand Validation" as POCV #E5DCF0
+  participant "TMFC005 Product Inventory" as ProductInventory #E5DCF0
+  participant "Billing" as Billing
+end box
+
+== Point of no return ==
+
+opt Seller supports PONR notification
+    SellerGW -> BuyerGW : 1 TMF622 ProductOrderMilestoneEvent (pointOfNoReturn)
+end
+
+== Cancellation request ==
+
+BuyerGW -> SellerGW : 2 TMF622 CancelProductOrder
+SellerGW --> BuyerGW : 3 TMF622 201 Created (acknowledged)
+
+alt Request rejected (e.g. PONR reached)
+
+    SellerGW -> BuyerGW : 4 TMF622 CancelProductOrderStateChangeEvent (rejected)
+
+else Request accepted
+
+    SellerGW -> BuyerGW : 5 TMF622 CancelProductOrderStateChangeEvent (inProgress)
+    SellerGW -> BuyerGW : 6 TMF622 ProductOrderStateChangeEvent (assessingCancellation)
+
+end
+
+== Assessment phase ==
+
+opt Cancellation fee applicable (if supported)
+    note over SellerGW, BuyerGW
+      Optional notification: cancellation fee condition identified.
+      Billing remains authoritative.
+    end note
+    SellerGW -> BuyerGW : 7 TMF622 ProductOrderMilestoneEvent (CancellationFeeApplicable)
+end
+
+alt Cancellation fails during assessment
+
+    SellerGW -> BuyerGW : 8 TMF622 ProductOrderStateChangeEvent (restore previous state)
+    SellerGW -> BuyerGW : 9 TMF622 CancelProductOrderStateChangeEvent (terminatedWithError)
+
+else Cancellation succeeds
+
+    == Product handling ==
+
+    loop for each orderItem
+        POCV -> ProductInventory : 10 TMF637 Update product lifecycle (based on current state)
+    end
+
+    == Subscription handling ==
+
+    POCV -> Billing : 11 Cancel subscription
+    Billing --> POCV : 12 pendingCancellation
+    Billing --> POCV : 13 cancelled
+
+    == Cleanup ==
+
+    POCV -> POCV : 14 Release service address reservation
+
+    SellerGW -> BuyerGW : 15 TMF622 ProductOrderStateChangeEvent (cancelled)
+    SellerGW -> BuyerGW : 16 TMF622 CancelProductOrderStateChangeEvent (done)
+
+end
+
+@enduml

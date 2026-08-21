@@ -1,0 +1,45 @@
+@startuml
+title ProductOfferingQualification - Seller view - Single Call Model
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+box "Wholebuyer" #E0E0E0
+  participant "BuyerGW" as BuyerGW
+end box
+box "Wholeseller" #E0E0E0
+  participant "SellerGW" as SellerGW
+  participant "Product Configurator\nTMFC027" as ProductConfigurator <<blackbox>>
+  participant "LocationManagement\nTMFC014" as LocationMgt #0000AA
+  participant "Product Catalogue\nTMFC001" as ProductCatalog #0000AA
+  participant "Service Qualification\nTMFC009" as ServiceQualification #0000AA
+  participant "Resource Inventory\nTMFC012" as ResourceInventory #0000AA
+end box
+
+== Wholesale Broadband - ProductOfferingQualification - Seller Side ==
+
+BuyerGW -> SellerGW : 1 TMF938 POST\nQueryProductOfferingQualification
+SellerGW -> ProductConfigurator : 2 TMF679 POST\nQueryProductOfferingQualification
+activate ProductConfigurator
+
+ProductConfigurator -> LocationMgt : 3 TMF674 GET\nGeographicAddress?UPRN.id=xxx
+LocationMgt --> ProductConfigurator : 4 TMF674 GET\nGeographicAddress?UPRN.id=xxx
+
+ProductConfigurator -> ProductCatalog : 5 TMF620 GET Eligible Product Offerings per Address id
+ProductCatalog --> ProductConfigurator : 6 TMF620 GET Eligible Product Offerings per Address id
+
+ProductConfigurator -> ResourceInventory : 7 TMF639 GET Supported Resources(ENNIs)
+ResourceInventory --> ProductConfigurator : 8 TMF639 GET Resources(ENNIs)--
+
+ProductConfigurator -> ServiceQualification : 9 TMF645 POST QueryServiceQualification
+activate ServiceQualification
+ServiceQualification --> ProductConfigurator : 10 TMF645 POST QueryServiceQualification
+deactivate ServiceQualification
+
+ProductConfigurator --> SellerGW : 11 TMF679 POST\nQueryProductOfferingQualification
+deactivate ProductConfigurator
+SellerGW --> BuyerGW : 12 TMF938 POST\nQueryProductOfferingQualification
+
+@enduml

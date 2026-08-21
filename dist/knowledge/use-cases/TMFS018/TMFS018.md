@@ -100,7 +100,9 @@ Access networks are often tree or star-topology based, where multiple endpoints 
 
 Contrary to Core Networks and Metro Networks, Access Networks have historically been owned by incumbents that build most of the copper infrastructure when they were still government monopolies. Due to this historic context, regulators have defined country specific business models and APIs for this domain. The context is changing heavily in the sense that many more newer players are building fiber infrastructure. Access infrastructures are often subsidized. To avoid over-construction in some (urban) areas and under-construction in other (rural) areas, regulators are now more interested in regulating open access to this subsidized infrastructure. There are two major business models for providing open access. Most regulators seem to focus on the relationship between Wholesale CSP and Retail CSP.
 
-![](media/image01.png)
+![](media/business-model-layers-diagram.png)
+
+*([text description](media/business-model-layers-diagram.text-description.md))*
 
 The workgroup wholesale broadband aims to provide standardization for this use case using TM Forum ODA assets.
 
@@ -282,7 +284,9 @@ This comprehensive and standardized journey ensures a consistent, automated, and
 
 Standardizing the FTTH value chain within wholesale broadband requires looking at the network diagram and then identifying the equipment, components, products and services affected. A typical wholesale broadband network for FTTH, along with equipment and responsibilities can be seen in the diagram below. Also illustrated are the key Wholesale Broadband product elements.
 
-![](media/image02.png)
+![](media/wholesale-broadband-network-topology-diagram.png)
+
+*([text description](media/wholesale-broadband-network-topology-diagram.text-description.md))*
 
 Figure 1: High Level Design for Level 2 Bitstream Products
 
@@ -349,7 +353,9 @@ These WB product components establish a robust, adaptable product model aligni
 
 These WB product elements establish a robust, adaptable product model aligning with technical requirements and business goals, facilitating seamless service delivery and operational efficiency.
 
-![](media/image03.png)
+![](media/wholesale-broadband-core-products-view.png)
+
+*([PlantUML source](media/wholesale-broadband-core-products-view.puml))*
 
 Figure 2: WholeSale Broadband Core Products 
 
@@ -363,7 +369,9 @@ The Wholesale Broadband Access Line is an InfrastructureProductSpec. It is real
 
 Properties
 
-![](media/image04.png)
+![](media/wb-access-properties-title.png)
+
+*([text description](media/wb-access-properties-title.text-description.md))*
 
  Key Fields of the Wholesale Broadband Access
 
@@ -405,7 +413,9 @@ This profile plays a crucial role in configuring and managing broadband services
 
  Properties
 
-![](media/image05.png)
+![](media/wb-bitstream-profile-properties-title.png)
+
+*([text description](media/wb-bitstream-profile-properties-title.text-description.md))*
 
  Key Fields of the Wholesale Broadband Bitstream Profile
 
@@ -425,7 +435,9 @@ The Wholesale Broadband Transport is a product required only when the Broadban
 
 Properties
 
-![](media/image06.png)
+![](media/wb-transport-properties-title.png)
+
+*([text description](media/wb-transport-properties-title.text-description.md))*
 
 Key Fields of Wholesale Broadband Bitstream Transport
 
@@ -463,7 +475,9 @@ To achieve the high bandwidth requirements the Wholesale Broadband ENNI uses 
 
  Properties
 
-![](media/image07.png)
+![](media/wb-enni-properties-title.png)
+
+*([text description](media/wb-enni-properties-title.text-description.md))*
 
  Key Fields of the Wholesale Broadband ENNI Product:
 
@@ -503,7 +517,9 @@ Before placing orders for Wholesale Broadband, the Seller’s and Buyer’s netw
 
 The documentation also includes GeographicSites categorized as AccessNode. Each AccessNode is reachable via one or more WholesaleBroadbandInterconnectionPoint sites. Transport pricing may vary based on bandwidth and the distance between an AccessNode and the corresponding WholesaleBroadbandInterconnectionPoint.
 
-![](media/image08.png)
+![](media/access-network-documentation-view.png)
+
+*([PlantUML source](media/access-network-documentation-view.puml))*
 
 ###  Interconnection Orders
 
@@ -529,7 +545,9 @@ In this context where an ENNI (External Network-to-Network Interface) interconn
 
 **Please note:** *Broadband** ENNI is a product spec according to our product model that can be ordered directly by the buyer. However, there is an alternative use case where the buyer may instead choose to select the supported resources (ENNIs) for the Broadband Transport product.*
 
-![](media/image09.png)
+![](media/enni-ordering-high-level-sequence.png)
+
+*([PlantUML source](media/enni-ordering-high-level-sequence.puml))*
 
 ### Broadband Transport Order Use Cases 
 
@@ -537,7 +555,9 @@ Pre-Provisioned ENNI in Product Qualification
 
 In this particular use case, the External Network-to-Network Interface (ENNI) that the buyer intends to use has already been provisioned and made available to them in advance. Rather than requesting a new ENNI as part of the ordering process, the buyer includes the details of this pre-existing ENNI in the Product Qualification Request. This approach allows the system to evaluate the feasibility of the service based on the provided ENNI. As a result, the Product Offering Qualification (POQ) process responds with a list of Access Nodes that are reachable from the specified ENNI, enabling the buyer to make informed decisions about service deployment and connectivity options.
 
-![](media/image10.png)
+![](media/transport-order-preprovisioned-enni-sequence.png)
+
+*([PlantUML source](media/transport-order-preprovisioned-enni-sequence.puml))*
 
 Buyer-Selected ENNIs for Broadband Transport Ordering 
 
@@ -547,11 +567,15 @@ Once the selection is made, the chosen ENNI details are included as part of the 
 
 **For reference**, an example of the POQ (Product Offering Qualification) response that supports this use case can be found in section **4.4.3.1.1 POQ Request**. This example illustrates how the system returns a list of supported ENNIs and reachable Access Nodes, enabling the buyer to make informed selections during the ordering process.
 
-![](media/image11.png)
+![](media/transport-order-buyer-selected-enni-sequence.png)
+
+*([PlantUML source](media/transport-order-buyer-selected-enni-sequence.puml))*
 
 ## Operational Stage: Product Ordering Journey
 
-![](media/image12.png)
+![](media/buyer-seller-order-journey-diagram.png)
+
+*([text description](media/buyer-seller-order-journey-diagram.text-description.md))*
 
 Figure 3: Buyer/Seller - Journey (order new product)
 
@@ -607,7 +631,9 @@ This type of order ensures that all customer-specific configurations are impleme
 
 ### High Level View
 
-![](media/image13.png)
+![](media/new-wholesale-broadband-high-level-sequence.png)
+
+*([PlantUML source](media/new-wholesale-broadband-high-level-sequence.puml))*
 
 ### Address Validation and Selection
 
@@ -627,19 +653,25 @@ The presharing of Addresses and even of Network relevant sites with their status
 
 The presharing of Addresses can be implemented using CQRS pattern where Notifications are used to keep the local copy of the Addresses of the Buyer in sync with the database of the Seller.
 
-![](media/image14.png)
+![](media/address-validation-preshared-sequence.png)
+
+*([PlantUML source](media/address-validation-preshared-sequence.puml))*
 
 Real-time Integration
 
 In this scenario the Wholebuyer uses the address database of Wholeseller directly.
 
-![](media/image15.png)
+![](media/address-validation-realtime-sequence.png)
+
+*([PlantUML source](media/address-validation-realtime-sequence.puml))*
 
 Common registry
 
 In this scenario a common registry of addresses provides unique identifiers for all addresses in the country. This registry can be provided by authorities or by 3rd parties.
 
-![](media/image16.png)
+![](media/address-validation-common-registry-sequence.png)
+
+*([PlantUML source](media/address-validation-common-registry-sequence.puml))*
 
 ### ProductOfferingQualification for Initial Provide
 
@@ -647,13 +679,17 @@ Common
 
 The below flow uses the task flow with notifications.
 
-![](media/image17.png)
+![](media/product-offering-qualification-common-sequence.png)
+
+*([PlantUML source](media/product-offering-qualification-common-sequence.puml))*
 
 POQ Request
 
 To maximize effectiveness in a domain-specific context, we must define message semantic requirements that may extend beyond the capabilities of a generic OpenAPI specification. For instance, if a Buyer seeks to query, "Provide Product Offerings for Products available at service address X," the Product Offering Qualification (POQ) API must precisely articulate this request, ensuring alignment with TM Forum’s domain-specific standards and semantics.
 
-![](media/image18.png)
+![](media/poq-request-structure-diagram.png)
+
+*([text description](media/poq-request-structure-diagram.text-description.md))*
 
 The category is Optional.
 
@@ -689,9 +725,13 @@ For example, a natural language response might be:
 
 This response can be translated into a structured message as follows.
 
-![](media/image19.png)
+![](media/poq-response-profile-first-structure-diagram.png)
 
-![](media/image20.png)
+*([text description](media/poq-response-profile-first-structure-diagram.text-description.md))*
+
+![](media/poq-response-access-first-structure-diagram.png)
+
+*([text description](media/poq-response-access-first-structure-diagram.text-description.md))*
 
 The response should include dependencies that are not obviuous to the buyer. Examples:
 
@@ -709,7 +749,9 @@ The response specifically does not include other dependencies that are common kn
 
 The response should also include information about specific ENNI resources that the Seller can present as selectable options to the Buyer—enabling the Buyer to choose from the available ENNIs applicable to the given WB Bitstream Transport Profile.
 
-![](media/image21.png)
+![](media/poq-response-access-profiles-transports-structure-diagram.png)
+
+*([text description](media/poq-response-access-profiles-transports-structure-diagram.text-description.md))*
 
 Seller view
 
@@ -719,7 +761,9 @@ A preferred solution is to provide Buyers with a Product Offering Qualification 
 
 **In the single-call mode**l, the Seller provides comprehensive metadata about available Product Offerings, including associated service capabilities  and their Supported Resources and constraints. For example, in the context of Wholesale Broadband (WB) Transport Exposure, the Seller may expose a list of supported Resources - ENNIs as selectable (but non-purchasable) resources. This enables the Buyer to tailor their request based on available interconnect options.
 
-![](media/image22.png)
+![](media/poq-seller-single-call-sequence.png)
+
+*([PlantUML source](media/poq-seller-single-call-sequence.puml))*
 
 **In the two-phase model:**
 
@@ -727,25 +771,33 @@ A preferred solution is to provide Buyers with a Product Offering Qualification 
 
 - **Phase 2** performs a commercial eligibility check, typically by validating the technically feasible offerings against those permitted under the Buyer’s Framework Agreement. Only Product Offerings that satisfy both technical and commercial criteria are returned to the Buyer.
 
-![](media/image23.png)
+![](media/poq-seller-two-phase-sequence.png)
+
+*([PlantUML source](media/poq-seller-two-phase-sequence.puml))*
 
 Buyer View
 
 The buyer wants a ServiceQualification that prefers generating feasible services using their own network if that exists. If no own network exists the ServiceQualification should interogate one of more Buyers for available PartnerProductOfferings that can be used to realise the service. Once the Partners have provided answers the most suitable productOffering can be selected.
 
-![](media/image24.png)
+![](media/poq-buyer-side-sequence.png)
+
+*([PlantUML source](media/poq-buyer-side-sequence.puml))*
 
 ## Operational Stage: New Wholesale Broandband Product Order
 
 ### High Level View
 
-![](media/image25.png)
+![](media/new-wholesale-broadband-order-sequence.png)
+
+*([PlantUML source](media/new-wholesale-broadband-order-sequence.puml))*
 
 ## Operational Stage: Upgrade/Downgrade
 
 ### High Level View
 
-![](media/image26.png)
+![](media/upgrade-downgrade-high-level-sequence.png)
+
+*([PlantUML source](media/upgrade-downgrade-high-level-sequence.puml))*
 
 ### ProductOfferingQualification for Upgrade/Downgrade
 
@@ -757,7 +809,9 @@ POQ Request
 
 A ProductRef for the existing product is provided so the the qualification can return what alternatives can be offered.
 
-![](media/image27.png)
+![](media/poq-request-upgrade-downgrade-structure-diagram.png)
+
+*([text description](media/poq-request-upgrade-downgrade-structure-diagram.text-description.md))*
 
 ### ProductOrder for Upgrade/Downgrade
 
@@ -767,19 +821,27 @@ The difference is only the type and number of ProductOrderItems:
 
 Modify WB Profile
 
-![](media/image28.png)
+![](media/modify-wb-profile-structure-diagram.png)
+
+*([text description](media/modify-wb-profile-structure-diagram.text-description.md))*
 
 Modify Access Technology (with installation)
 
-![](media/image29.png)
+![](media/replace-wb-access-structure-diagram.png)
 
-![](media/image30.png)
+*([text description](media/replace-wb-access-structure-diagram.text-description.md))*
+
+![](media/replace-wb-access-order-sequence.png)
+
+*([PlantUML source](media/replace-wb-access-order-sequence.puml))*
 
 ## Operational Stage: Cease Order (Cancel existing Products and Stop Service )
 
 ### High Level View 
 
-![](media/image31.png)
+![](media/cease-order-high-level-sequence.png)
+
+*([PlantUML source](media/cease-order-high-level-sequence.puml))*
 
 ## Operational Stage: Cancel Inflight Order (cancellation by buyer) 
 
@@ -799,7 +861,9 @@ This diagram illustrates the high-level interaction between a Buyer Gateway and 
 
 ### High Level View
 
-![](media/image32.png)
+![](media/cancel-inflight-order-high-level-sequence.png)
+
+*([PlantUML source](media/cancel-inflight-order-high-level-sequence.puml))*
 
 The table below describes each of the steps of the sequence diagram above.
 
@@ -834,7 +898,9 @@ The table below describes how the lifecycle of the ProductOrder entity and the C
 
 This diagram illustrates the buyer-side handling of a TMF product order cancellation, focusing on how the BuyerGW and internal systems interact with seller events. It shows how the buyer initiates cancellation, processes state change notifications, and updates order, billing, and fulfilment systems in response to seller-driven lifecycle events.
 
-![](media/image33.png)
+![](media/cancel-inflight-order-buyer-view-sequence.png)
+
+*([PlantUML source](media/cancel-inflight-order-buyer-view-sequence.puml))*
 
 The table below describes each of the steps in the sequence diagram above.
 
@@ -868,7 +934,9 @@ This sequence diagram describes the Seller-side processing of a product order ca
 
 This sequence diagram shows a seller-side implementation for processing TMF622 product order cancellation in a wholesale fibre access context. The internal seller-side flows (order capture, inventory, billing, and fulfilment steps) are informative guidance only and are not part of the standard.
 
-![](media/image34.png)
+![](media/cancel-inflight-order-seller-view-sequence.png)
+
+*([PlantUML source](media/cancel-inflight-order-seller-view-sequence.puml))*
 
 The table below describes each of the steps in the sequence diagram above.
 
@@ -894,13 +962,17 @@ The table below describes each of the steps in the sequence diagram above.
 
 ### High Level View
 
-![](media/image35.png)
+![](media/work-line-take-over-high-level-view.png)
+
+*([text description](media/work-line-take-over-high-level-view.text-description.md))*
 
 ## Operational Stage: Work Line Take Over ( Gaining Provider Led Switch Order)
 
 ### High Level View
 
-![](media/image36.png)
+![](media/work-line-take-over-gaining-provider-switch-sequence.png)
+
+*([PlantUML source](media/work-line-take-over-gaining-provider-switch-sequence.puml))*
 
 ### ProductOfferingQualification for ISP Migration
 

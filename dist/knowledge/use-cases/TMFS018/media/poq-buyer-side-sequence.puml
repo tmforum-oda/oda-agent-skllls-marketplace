@@ -1,0 +1,64 @@
+@startuml
+title ProductOfferingQualification - Buyer Side
+
+skinparam sequence {
+  ParticipantBackgroundColor<<blackbox>> Black
+  ParticipantFontColor<<blackbox>> White
+}
+
+box "Wholebuyer" #E0E0E0
+  participant "Product Order Capture & Validation\nTMFC002" as POCV <<blackbox>>
+  participant "Service Qualification\nTMFC009" as ServiceQualification #0000AA
+  participant "LocationManagement\nTMFC014" as LocationMgt #0000AA
+  participant "BuyerGW" as BuyerGW
+end box
+box "Wholeseller" #E0E0E0
+  participant "SellerGW" as SellerGW
+end box
+
+== Wholesale Broadband - ProductOfferingQualification - Buyer Side ==
+
+alt Buyer has own network
+
+    POCV -> ServiceQualification : 1 TMF645 POST\nServiceQualification
+    activate ServiceQualification
+    note right of ServiceQualification : Check own network
+
+    ServiceQualification -> LocationMgt : 2 TMF674 GET\nGeographicSite?place.id=xxx
+
+    alt no solution in own network
+
+        note right of ServiceQualification : Select potential Sellers
+
+        loop query all Sellers
+
+            ServiceQualification -> BuyerGW : 3 TMF679 POST\nQueryProductOfferingQualification
+            BuyerGW -> SellerGW : 4 TMF938 POST\nQueryProductOfferingQualification
+            SellerGW --> BuyerGW : 5 TMF938 POST\nQueryProductOfferingQualificationStateChangeEvent
+            BuyerGW --> ServiceQualification : 6 TMF679 POST\nQueryProductOfferingQualificationStateChangeEvent
+
+        end
+
+        note right of ServiceQualification : Select suitable ProductOfferings
+
+    end
+
+    note right of ServiceQualification : Assemble feasibility response
+
+    ServiceQualification --> POCV : 7 TMF645 POST\nServiceQualificationStateChange
+    deactivate ServiceQualification
+
+else Buyer has no network
+
+    loop query all Sellers
+
+        POCV -> BuyerGW : 8 TMF679 POST\nQueryProductOfferingQualification
+        BuyerGW -> SellerGW : 9 TMF938 POST\nQueryProductOfferingQualification
+        SellerGW --> BuyerGW : 10 TMF938 POST\nQueryProductOfferingQualificationStateChangeEvent
+        BuyerGW --> POCV : 11 TMF679 POST\nQueryProductOfferingQualificationStateChangeEvent
+
+    end
+
+end
+
+@enduml

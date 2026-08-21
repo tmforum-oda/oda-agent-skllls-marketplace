@@ -1,0 +1,28 @@
+@startuml
+title Transport Order- High Level View
+
+box "Wholebuyer" #E0E0E0
+  participant "BuyerGW" as BuyerGW
+end box
+box "Wholeseller" #E0E0E0
+  participant "SellerGW" as SellerGW
+end box
+
+== Transport Product Offering Qualification ==
+
+note over BuyerGW, SellerGW : Qualification for eligible products
+
+BuyerGW -> SellerGW : 1 Find products - TMF 679 Product Qualification
+SellerGW --> BuyerGW : 2 List of eligible product specs with their Supporting Resources (Transport + ENNIs)
+
+== Transport Order ==
+
+note over BuyerGW, SellerGW : Order can be placed
+
+BuyerGW -> SellerGW : 3 Place order - TMF 622 Product Order adding under Transport the Supporting Resource (ENNI)
+SellerGW --> BuyerGW : 4 Order Created Event "acknowledged"
+SellerGW --> BuyerGW : 5 Order State Update Event "accepted"
+SellerGW --> BuyerGW : 6 Order State Update Event "inProgress"
+SellerGW --> BuyerGW : 7 Order State Update Event "complete"
+
+@enduml

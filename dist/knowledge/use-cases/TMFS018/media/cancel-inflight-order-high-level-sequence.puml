@@ -1,0 +1,54 @@
+@startuml
+title Cancel Inflight Order - High Level View
+
+box "Buyer" #E0E0E0
+  participant "Buyer Gateway" as BuyerGW
+end box
+box "Seller" #E0E0E0
+  participant "Seller Gateway" as SellerGW
+end box
+
+opt Seller supports communication of PONR
+    SellerGW -> BuyerGW : 1 POST ProductOrderMilestoneEvent (pointOfNoReturn)
+end
+
+BuyerGW -> SellerGW : 2 POST CancelProductOrder
+SellerGW --> BuyerGW : 3 201 Created (acknowledged)
+
+alt Cancellation request is rejected, e.g. because a PONR has been reached
+
+    SellerGW -> BuyerGW : 4 TMF622 POST CancelProductOrderStateChangeEvent (rejected)
+
+else Request is processed and the product order is cancelled
+
+    SellerGW -> BuyerGW : 5 POST CancelProductOrderStateChangeEvent (inProgress)
+    SellerGW -> BuyerGW : 6 POST ProductOrderStateChangeEvent (assessingCancellation)
+
+    alt Cancel request fails after state change to assessingCancellation
+
+        SellerGW -> BuyerGW : 7 POST ProductOrderStateChangeEvent (inProgress, ...)
+        note over SellerGW, BuyerGW
+          The ProductOrder is set to the state it had before the assessment started.
+          Can be accepted or pending as well.
+        end note
+        SellerGW -> BuyerGW : 8 POST CancelProductOrderStateChangeEvent (terminatedWithError)
+
+    else Cancel request completes successfully
+
+        opt Seller supports cancellation fee notifications
+            note over SellerGW, BuyerGW
+              Some sellers inform the buyer when a cancellation fee may apply.
+              This notification is optional and not supported by all sellers.
+              Billing remains the authoritative source for any charges.
+            end note
+            SellerGW -> BuyerGW : 9 POST ProductOrderMilestoneEvent (CancellationFeeApplicable)
+        end
+
+        SellerGW -> BuyerGW : 10 POST ProductOrderStateChangeEvent (cancelled)
+        SellerGW -> BuyerGW : 11 POST CancelProductOrderStateChangeEvent (done)
+
+    end
+
+end
+
+@enduml
