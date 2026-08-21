@@ -1,0 +1,23 @@
+@startuml
+title Figure 3.3 Illustration for information view for Entity (the CSP) and the SDWAN Vendor (step 1)
+
+package "CSP" {
+  class "Product Catalog (TMFC001)" as CSPCatalog
+  class "Agreement (TMFC039)" as CSPAgreement
+}
+
+package "SDWAN Vendor" {
+  class "Product Catalog (TMFC001)" as VendorCatalog
+  class "SDWAN" as SDWAN
+  VendorCatalog *-- SDWAN
+
+  class "Agreement (TMFC039)" as VendorAgreement
+  class "ImplemAgreementSpec for Cust." as ImplAgreementSpec
+  class "Framework Agreement Spec for cust" as FrameworkAgreementSpec
+  VendorAgreement *-- ImplAgreementSpec
+  VendorAgreement *-- FrameworkAgreementSpec
+  FrameworkAgreementSpec --> ImplAgreementSpec
+}
+
+SDWAN --> ImplAgreementSpec : involves
+@enduml

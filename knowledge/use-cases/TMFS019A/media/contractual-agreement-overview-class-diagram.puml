@@ -1,0 +1,34 @@
+@startuml
+title Figure A.06b - ContractualAgreement Overview
+
+class Agreement <<Entity>> {
+  + documentNumber : String
+  + statementOfIntent : String
+  + status : String
+  + type : String
+  «required»
+  + validFor : TimePeriod
+}
+class AgreementItem <<Entity>> {
+  + validFor : TimePeriod
+}
+Agreement "1" <--> "0..*" AgreementItem : /AgreementConsistsOf
+
+class ContractualAgreement
+class ContractualAgreementItem
+ContractualAgreement --|> Agreement
+ContractualAgreementItem --|> AgreementItem
+ContractualAgreement "1" <--> "0..*" ContractualAgreementItem : ContractualAgreementConsistsOf
+
+class AgreementTermOrCondition <<Entity>> {
+  + validFor : TimePeriod
+  «required»
+  + description : String
+  + number : String
+}
+ContractualAgreement "1" <--> "0..*" AgreementTermOrCondition : ContractualAgreementGovernedBy
+ContractualAgreementItem "0..*" --> AgreementTermOrCondition : ContractualAgreementItemGovernedBy
+
+class AgreementTermOrConditionSpecification <<EntitySpecification>>
+AgreementTermOrCondition "0..*" <--> "0..1" AgreementTermOrConditionSpecification : AgreementTermOrConditionDescribedBy
+@enduml

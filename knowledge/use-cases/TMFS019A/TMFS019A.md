@@ -82,7 +82,8 @@ There are additional related use cases arising from joint work with GSMA on Open
 
 For Partnering and Agreement management, several configurations are proposed: 
 
-![](media/image01.png)
+![](media/b2b2x-stakeholder-relationships-overview.png)
+*([text description](media/b2b2x-stakeholder-relationships-overview.text-description.md))*
 
 ***Fig 1-1 Overview of Partnering Models between B2B2X SupplierRole, Intermediary (EntityRole) and CustomerRole***
 
@@ -120,7 +121,8 @@ This is the primary focus of this use case scenario.
 
 To illustrate Partner On-Boarding with Agreement Management, we propose to use the following configuration for a SASE Service delivered by the Entity(CSP) : 
 
-![](media/image02.png)
+![](media/sase-entity-supplier-relationships-focus.png)
+*([text description](media/sase-entity-supplier-relationships-focus.text-description.md))*
 
 **Figure 1.2 Focus on Entity (CSP) Supplier relationships for SASE Product Offering**
 
@@ -209,7 +211,8 @@ Note The remaining IG1317 B2B2X Process Requirements are covered in subsequent U
 
 The following figure provides an overview of the main steps that are involved in Partner FrameworkAgreement definition:
 
-![](media/image03.png)
+![](media/tmfs019-three-step-overview-sequence.png)
+*([PlantUML source](media/tmfs019-three-step-overview-sequence.puml))*
 
 **Figure  2.1 Overview of main stages in Partner Onboarding and Agreement management - with reference to SubScenarios**
 
@@ -302,7 +305,8 @@ The information focused in this step is Product Offerings.
 
 During the 1st step, the Entity will access to Supplier's Product catalog (1.1) or will be proposed an ad hoc ProductOffering pattern regarding its intent.
 
-![](media/image04.png)
+![](media/browse-supplier-catalog-intent-management-sequence.png)
+*([PlantUML source](media/browse-supplier-catalog-intent-management-sequence.puml))*
 
 **Figure 3.1  Browse Supplier Catalog / Entity's Intent Management**
 
@@ -310,7 +314,8 @@ Whatever, this catalog or this ProductOffering can be Atomic (an only Product) o
 
 At Supplier level, below is the illustration of SDWAN Solution (aka Composed ProductOffering) that could be proposed to the Customer.
 
-![](media/image05.png)
+![](media/sdwan-solution-product-offering-decomposition.png)
+*([PlantUML source](media/sdwan-solution-product-offering-decomposition.puml))*
 
 **Figure 3.2 Illustration of Supplier ProductOffering**
 
@@ -325,7 +330,8 @@ Specific instantiation of Product / Product Offering can be described by the Sup
 
 As an overview we could propose the following simplified representation
 
-![](media/image06.png)
+![](media/csp-sdwan-vendor-catalog-agreement-view.png)
+*([PlantUML source](media/csp-sdwan-vendor-catalog-agreement-view.puml))*
 
 **Figure 3.3 Illustration for information view for Entity (the CSP) and the SDWAN Vendor (step 1)**
 
@@ -335,7 +341,8 @@ The information focus in this step is Agreements FrameworkAgreement(type= LegalC
 
 During Step 2, Entity (the CSP) and the Supplier (here SSE Provider) define the scope and their modus operandi: 
 
-![](media/image07.png)
+![](media/entity-supplier-framework-agreement-step2-sequence.png)
+*([PlantUML source](media/entity-supplier-framework-agreement-step2-sequence.puml))*
 
 **Figure 3.4 Entity Supplier FrameworkAgreement**
 
@@ -350,7 +357,8 @@ The simplified illustration proposed here shows that: 
 
 While  FrameworkAgreement(type= LegalContract) will be signed between the CSP and its Suppliers, this catalog modeling will be implemented in the CSP's IT, regarding agreement conditions
 
-![](media/image08.png)
+![](media/csp-sse-provider-catalog-agreement-view.png)
+*([PlantUML source](media/csp-sse-provider-catalog-agreement-view.puml))*
 
 **Figure 3.5 Illustration for information view for Entity (the CSP) and the SSE Provider (step 2)**
 
@@ -364,7 +372,8 @@ Once all commercials and technical aspects are addressed and systems & process b
 
 During this step, each Partner/Supplers will be on-boarded into the Entity's Partner ecosystem.
 
-![](media/image09.png)
+![](media/partner-supplier-onboarding-step3-sequence.png)
+*([PlantUML source](media/partner-supplier-onboarding-step3-sequence.puml))*
 
 **Figure 3.6 Partner Supplier Onboarding**
 
@@ -386,7 +395,8 @@ This activity diagram addresses the following sub processes for TMFS019 defined 
 
 ***For Further Study:  ***Activities below are the internal view of the Entity driving the Partner Onboarding and Agreement Management process and production of associated FrameworkAgreements. The precise location of the API interactions (Step 1, 2 and 3 ) between Entity(CSP) and Suppliers needs review and validation when the information content of Framework Agreements has been established  (TMFS019B Part 2).
 
-![](media/image10.png)
+![](media/framework-agreement-legal-contract-activity-flow-part1.png)
+*([text description](media/framework-agreement-legal-contract-activity-flow-part1.text-description.md))*
 
 **Figure 4.1 Framework Agreement / Legal Contract Activity Flow**
 
@@ -408,7 +418,8 @@ There are some variations to the processes: 
 
 The key point is the exit criteria is always a signed FrameworkAgreement(type= LegalContract) with supporting parts including: Framework Agreements, AgreementItems, Documents and Attachments.
 
-![](media/image11.png)
+![](media/framework-agreement-signing-and-management-activity-flow-part2.png)
+*([text description](media/framework-agreement-signing-and-management-activity-flow-part2.text-description.md))*
 
 **Figure 4.2 Activity diagram for TMFS019A Sub Scenario processes Step 3 focus**
 
@@ -416,7 +427,8 @@ The key point is the exit criteria is always a signed FrameworkAgreement(type= L
 
 ## Step 1 Browse Catalog exemplar TMFS019-1
 
-![](media/image12.png)
+![](media/browse-supplier-catalog-exemplar-sequence.png)
+*([PlantUML source](media/browse-supplier-catalog-exemplar-sequence.puml))*
 
 ***Fig 4.2.1   Browse Supplier Catalog sequence example***
 
@@ -446,9 +458,11 @@ The aim here is to describe process between Partner/ Suppliers (stakeholders) (t
 
 Detailed agreement formation and definition definition process exemplar:
 
-![](media/image13.png)
+![](media/agreement-definition-component-level-sequence.png)
+*([PlantUML source](media/agreement-definition-component-level-sequence.puml))*
 
-![](media/image14.png)
+![](media/agreement-definition-simplified-sequence.png)
+*([PlantUML source](media/agreement-definition-simplified-sequence.puml))*
 
 **Fig 4.2.2  TMFS019 Agreement Definition Exemplar**
 
@@ -543,7 +557,8 @@ This section provides a summary of the main features of the SID Agreement models
 
 Based on current SID team discussion the relevant models for Agreement and Agreement Specifications are: 
 
-![](media/image15.png)
+![](media/agreement-main-specializations-class-diagram.png)
+*([PlantUML source](media/agreement-main-specializations-class-diagram.puml))*
 
 **Figure 6.1 Agreement - Main Specializations**
 
@@ -561,7 +576,8 @@ This shows
 
 **Non-Contractual Agreement**
 
-![](media/image16.png)
+![](media/non-contractual-agreement-specializations-class-diagram.png)
+*([PlantUML source](media/non-contractual-agreement-specializations-class-diagram.puml))*
 
 **Figure 6.2 Non-Contractual Agreement Specializations**
 
@@ -575,7 +591,8 @@ An InternalAgreement is a specific type of NonContractual-Agreement that can occ
 
 Key Contractual Agreement concept are shown in the following diagram 
 
-![](media/image17.png)
+![](media/contractual-agreement-overview-class-diagram.png)
+*([PlantUML source](media/contractual-agreement-overview-class-diagram.puml))*
 
 **Figure 6.3 Contractual Agreement Overview **
 
@@ -587,7 +604,8 @@ In OASIS eContract some of these entities Terms and Conditions, Agreement Items 
 
 **Contractual Agreement Types**
 
-![](media/image18.png)
+![](media/contractual-agreement-specialization-class-diagram.png)
+*([PlantUML source](media/contractual-agreement-specialization-class-diagram.puml))*
 
 **Figure 6.4 Contractual Agreement specialization**
 
@@ -603,7 +621,8 @@ In OASIS eContract some of these entities Terms and Conditions, Agreement Items 
 
 **Framework Agreement**
 
-![](media/image19.png)
+![](media/framework-agreement-class-diagram.png)
+*([PlantUML source](media/framework-agreement-class-diagram.puml))*
 
 **Figure 6.5 Framework Agreement **
 
@@ -623,7 +642,8 @@ Optionally but not used in this use case::
 
 **Framework Agreement example - CSP ( entity) Catalog**
 
-![](media/image20.png)
+![](media/framework-agreement-csp-catalog-example-object-diagram.png)
+*([PlantUML source](media/framework-agreement-csp-catalog-example-object-diagram.puml))*
 
 **Figure 6.6 Framework Agreement example - CSP Catalog**
 
@@ -647,7 +667,8 @@ This example shows the catalog that will be used for the illustration of Framewo
 
 **Framework Agreement CSP Catalog to Supplier Offer example**
 
-![](media/image21.png)
+![](media/framework-agreement-csp-catalog-supplier-offer-example-object-diagram.png)
+*([PlantUML source](media/framework-agreement-csp-catalog-supplier-offer-example-object-diagram.puml))*
 
 **Figure 6.7 Framework Agreement CSP Catalog to Supplier offer example **
 
@@ -677,7 +698,8 @@ This example shows  the catalog that will be used to  illustrate Framework-Agr
 
 **Implementation Agreement**
 
-![](media/image22.png)
+![](media/implementation-agreement-overview-class-diagram.png)
+*([PlantUML source](media/implementation-agreement-overview-class-diagram.puml))*
 
 **Figure 6.8 Implementation Agreement Overview**
 
@@ -687,7 +709,8 @@ An ImplementationAgreement can be related to a Framework-Agreement. In this Case
 
 **Implementation Agreement Details**
 
-![](media/image23.png)
+![](media/implementation-agreement-detail-class-diagram.png)
+*([PlantUML source](media/implementation-agreement-detail-class-diagram.puml))*
 
 **Figure 6.9 Implementation Agreement Detail**
 
@@ -703,7 +726,8 @@ An ImplementationAgreement can be related to a Framework-Agreement. In this Case
 
 **Implementation Agreement Example - Implementation Agreement between CSP (Entity) and Supplier **
 
-![](media/image24.png)
+![](media/implementation-agreement-csp-supplier-example-object-diagram.png)
+*([PlantUML source](media/implementation-agreement-csp-supplier-example-object-diagram.puml))*
 
 **Figure 6.10 Implementation Agreement example - Implementation Agreement between CSP (Entity) and Supplier **
 
@@ -754,7 +778,8 @@ These are the key entities defined and used during the processes within the part
 
 The use cases in this API that underpins the Agreement formation processes refer to use cases in TMF668 Partnership Agreement API 
 
-![](media/image25.png)
+![](media/core-agreement-api-resource-model-class-diagram.png)
+*([PlantUML source](media/core-agreement-api-resource-model-class-diagram.puml))*
 
 **Figure 6.11  Core Agreement API Resource Model**
 
@@ -770,7 +795,8 @@ The key entities are:
 
 - Attachment
 
-![](media/image26.png)
+![](media/document-attachment-resource-model-class-diagram.png)
+*([PlantUML source](media/document-attachment-resource-model-class-diagram.puml))*
 
 **Figure 6.12 Document/ Attachment Resource Model**
 
@@ -790,7 +816,8 @@ This API needs to be reviewed and integrated, or updated, to align with this Use
 
 - [Agreement Management API TMF651-v4.0](https://www.tmforum.org/oda/open-apis/directory/agreement-management-api-TMF651/v4.0) and v5
 
-![](media/image27.png)
+![](media/tmf668-option1-partner-onboarding-sequence.png)
+*([PlantUML source](media/tmf668-option1-partner-onboarding-sequence.puml))*
 
 # Terms & Abbreviations Used within this Document
 

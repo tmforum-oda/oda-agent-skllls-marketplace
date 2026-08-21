@@ -1,0 +1,80 @@
+@startuml
+title Figure A.14 - Framework Agreement
+
+class Agreement <<Entity>> {
+  + documentNumber : String
+  + statementOfIntent : String
+  + status : String
+  + type : String
+  «required»
+  + validFor : TimePeriod
+}
+class AgreementItem <<Entity>> {
+  + validFor : TimePeriod
+}
+Agreement "1" <--> "0..*" AgreementItem : /AgreementConsistsOf
+AgreementItem "*" --> "*" AgreementItem : /AgreementItemRelatedTo
+
+class ContractualAgreement <<abstract>>
+class ContractualAgreementItem <<abstract>>
+ContractualAgreement --|> Agreement
+ContractualAgreementItem --|> AgreementItem
+ContractualAgreement "1" <--> "0..*" ContractualAgreementItem : ContractualAgreementConsistsOf
+
+class AgreementTermOrCondition <<Entity>> {
+  + validFor : TimePeriod
+  «required»
+  + description : String
+  + number : String
+}
+ContractualAgreement "1" <-- "0..*" AgreementTermOrCondition : ContractualAgreementGovernedBy
+ContractualAgreementItem "0..*" <-- "0..*" AgreementTermOrCondition : ContractualAgreementItemGovernedBy
+
+class FrameworkAgreement
+class FrameworkAgreementItem
+FrameworkAgreement --|> ContractualAgreement
+FrameworkAgreementItem --|> ContractualAgreementItem
+FrameworkAgreement "1" <--> "0..*" FrameworkAgreementItem : /FrameworkAgreementConsistsOf
+FrameworkAgreement "1" <-- "0..*" AgreementTermOrCondition : /FrameworkAgreementGovernedBy
+FrameworkAgreementItem "1" <-- "0..*" AgreementTermOrCondition : FrameworkAgreementItemGovernedBy
+
+class "ComponentProdOfferPrice" as ComponentProdOfferPrice <<ProdOfferPriceAlteration>> {
+  + applicationDuration : Duration
+  + percentage
+}
+FrameworkAgreementItem "0..*" --> "0..*" ComponentProdOfferPrice : FrameworkAgreementItemHoldsNegotiated
+
+class AllowedProductAction <<Entity>> {
+  + validFor : TimePeriod
+}
+FrameworkAgreementItem "0..*" --> "0..*" AllowedProductAction : FrameworkAgreementItemRestrictsPossibleAllowedProductAction
+
+class "ConfigurationSpecification" as ConfigurationSpecification <<ProductConfigSpec>>
+FrameworkAgreementItem "0..*" --> "0..*" ConfigurationSpecification : FrameworkAgreementItemRestrictsPossibleProductConfigurationSpec
+
+class "ProductOfferingSpecification" as ProductOfferingSpecification <<EntitySpecification>> {
+  + isPromotion : Boolean
+  + isSellableStandAlone : Boolean
+}
+FrameworkAgreementItem "0..1" --> "0..*" ProductOfferingSpecification : FrameworkAgreementItemConcerns
+ConfigurationSpecification "0..*" --> "1" ProductOfferingSpecification : ProductConfigSpecDefinedFor
+
+class "ProductSpecification" as ProductSpecification <<EntitySpecification>> {
+  + brand : String
+}
+ProductOfferingSpecification "1..*" --> "1" ProductSpecification : /ProdSpecMadeAvailableAs
+
+class ProductOfferingPrice {
+  «required»
+  + ID : String
+  + name : String
+  + description : String
+  + validFor : TimePeriod
+}
+ProductOfferingSpecification "0..*" --> "0..*" ProductOfferingPrice : ProductOfferingSpecificationValuedBy
+ComponentProdOfferPrice "0..*" --> "1..*" ProductOfferingPrice : ProdOfferPriceImpactedBy
+
+class ProductOfferingTermOrCondition
+ProductOfferingSpecification "0..*" --> "0..*" ProductOfferingTermOrCondition : ProdOfferAgreementRequirementsRepresentedAs
+ProductOfferingTermOrCondition "0..*" --> "0..*" AgreementTermOrCondition : ProductTermAppearsAs
+@enduml

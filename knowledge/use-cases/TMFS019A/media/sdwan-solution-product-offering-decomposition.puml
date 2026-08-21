@@ -1,0 +1,53 @@
+@startuml
+title Figure 3.2 Illustration of Supplier ProductOffering
+
+class "SDWAN Solution" as SDWANSolution <<ProductOfferingSpecification>> {
+  POPrice : SDWANVendor's Price
+}
+class "SDWAN Network" as SDWANNetwork <<ProductOfferingSpecification>>
+class "SDWAN Site(s)" as SDWANSite <<ProductOfferingSpecification>>
+class "SDWAN Device(s)" as SDWANDevice <<ProductOfferingSpecification>>
+class "SDWAN Professional Services" as SDWANProfServices <<ProductOfferingSpecification>>
+class "SDWAN Tools" as SDWANTools <<ProductOfferingSpecification>>
+
+SDWANSolution --> SDWANNetwork : "1..n"
+SDWANSolution --> SDWANSite : "1..n"
+SDWANSolution --> SDWANDevice : "0..n"
+SDWANSolution --> SDWANProfServices : "0..n"
+SDWANSolution --> SDWANTools : "0..n"
+
+class "SDWAN Network Product" as SDWANNetworkProduct <<ProductSpecification>>
+class "SDWAN Site Product" as SDWANSiteProduct <<ProductSpecification>> {
+  Charac. : ...
+  Charac. Value : ...
+}
+class "SDWAN Device Product" as SDWANDeviceProduct <<ProductSpecification>> {
+  Charac. : Physical/Virtual
+  Charac. Value : ...
+}
+class "SDWAN Prof. Services Product" as SDWANProfServicesProduct <<ProductSpecification>> {
+  Charac. : ...
+  Charac. Value : ...
+}
+class "SDWAN Tools Product" as SDWANToolsProduct <<ProductSpecification>> {
+  Charac. : TroubleTicketing\nReporting Console/EMS
+  Charac. Value : ...
+}
+
+SDWANNetwork --> SDWANNetworkProduct
+SDWANSite --> SDWANSiteProduct
+SDWANDevice --> SDWANDeviceProduct
+SDWANProfServices --> SDWANProfServicesProduct
+SDWANTools --> SDWANToolsProduct
+
+SDWANDeviceProduct ..> SDWANNetwork : also available for
+SDWANProfServicesProduct ..> SDWANNetwork : also available for
+SDWANDeviceProduct ..> SDWANSite : also available for
+SDWANProfServicesProduct ..> SDWANSite : also available for
+SDWANToolsProduct ..> SDWANSite : also available for
+
+note bottom of SDWANSolution
+  Legend: <<ProductOfferingSpecification>> boxes carry a nested POPrice;
+  <<ProductSpecification>> boxes carry nested Charac. / Charac. Value pairs.
+end note
+@enduml

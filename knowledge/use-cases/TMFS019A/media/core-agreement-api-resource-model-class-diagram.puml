@@ -1,0 +1,235 @@
+@startuml
+title Figure 1 - Agreement (TMF651 Agreement Management API v5)
+
+enum AgreementStatusExampleType <<enumeration>> {
+  approved
+  inProgress
+  validated
+  rejected
+  initialized
+}
+
+class Agreement {
+  agreementPeriod : TimePeriod
+  agreementType : String
+  completionDate : TimePeriod
+  description : String
+  href : String
+  id : String (1)
+  initialDate : DateTime
+  name : String (1)
+  statementOfIntent : String
+  status : String
+  version : String
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+
+class ExternalIdentifier {
+  externalIdentifierType : String
+  id : String (1)
+  owner : String
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Agreement "0..*" -- ExternalIdentifier : externalIdentifier
+
+class AgreementRelationship {
+  href : String
+  id : String (1)
+  name : String
+  relationshipType : String
+  validFor : TimePeriod
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Agreement "0..*" -- AgreementRelationship : agreementRelationship
+
+class AgreementSpecificationRef {
+  description : String
+  href : String
+  id : String (1)
+  name : String
+  version : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Agreement "0..1" -- AgreementSpecificationRef : agreementSpecification
+
+class AgreementItem {
+  id : String (1)
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+  discriminator: AgreementItem, ProductAgreementItem
+}
+Agreement "1..*" -- AgreementItem : agreementItem
+
+class RelatedPartyRefOrPartyRoleRef {
+  role : String (1)
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Agreement "0..*" -- RelatedPartyRefOrPartyRoleRef : relatedParty
+Agreement "0..*" -- RelatedPartyRefOrPartyRoleRef : partyOrPartyRole
+
+class PartyRefOrPartyRoleRef {
+  discriminator: PartyRef, PartyRoleRef
+}
+RelatedPartyRefOrPartyRoleRef "0..1" -- PartyRefOrPartyRoleRef : party
+
+class AgreementAuthorization {
+  date : DateTime
+  id : String
+  signatureRepresentation : String
+  state : String
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Agreement "0..*" -- AgreementAuthorization : agreementAuthorization
+AgreementAuthorization "0..1" -- PartyRefOrPartyRoleRef : engagedParty
+
+class Characteristic {
+  id : String
+  name : String (1)
+  valueType : String
+  @baseType : String
+  @schemaLocation : String
+  @type : String
+  discriminator: FloatCharacteristic, BooleanArrayCharacteristic, Characteristic,\nObjectArrayCharacteristic, MapAnyCharacteristicValue, FloatArrayCharacteristic,\nStringCharacteristic, ObjectCharacteristic, NumberCharacteristic,\nBooleanCharacteristic, NumberArrayCharacteristic, IntegerCharacteristic,\nStringArrayCharacteristic, IntegerArrayCharacteristic
+}
+Agreement "0..*" -- Characteristic : characteristic
+
+class CharacteristicRelationship {
+  id : String (1)
+  relationshipType : String (1)
+  @baseType : String
+  @schemaLocation : String
+  @type : String
+}
+Characteristic "0..*" -- CharacteristicRelationship : characteristicRelationship
+
+class AttachmentRefOrValue {
+  discriminator: Attachment, AttachmentRef
+}
+AgreementAuthorization "0..*" -- AttachmentRefOrValue : signature
+
+class RelatedDocumentRefOrValue {
+  role : String (1)
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Agreement "0..*" -- RelatedDocumentRefOrValue : relatedDocument
+
+class DocumentRefOrValue {
+  discriminator: DocumentRef, Document
+}
+RelatedDocumentRefOrValue "0..*" -- DocumentRefOrValue : document
+
+class AgreementTermOrCondition {
+  description : String
+  id : String
+  validFor : TimePeriod
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Agreement "0..*" -- AgreementTermOrCondition : termOrCondition
+
+class PartyRoleRef {
+  href : String
+  id : String (1)
+  name : String
+  partyId : String
+  partyName : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type = PartyRoleRef
+}
+class PartyRef {
+  href : String
+  id : String (1)
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type = PartyRef
+}
+PartyRefOrPartyRoleRef ..> PartyRoleRef
+PartyRefOrPartyRoleRef ..> PartyRef
+
+class Attachment {
+  attachmentType : String (1)
+  content : Base64
+  description : String
+  href : String
+  id : String
+  mimeType : String (1)
+  name : String
+  size : Quantity
+  url : String
+  validFor : TimePeriod
+  @baseType : String
+  @schemaLocation : String
+  @type = Attachment
+}
+class AttachmentRef {
+  description : String
+  href : String
+  id : String (1)
+  name : String
+  url : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type = AttachmentRef
+}
+AttachmentRefOrValue ..> Attachment
+AttachmentRefOrValue ..> AttachmentRef
+
+class DocumentRef {
+  href : String
+  id : String (1)
+  name : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type = DocumentRef
+}
+class Document {
+  attachment : AttachmentRefOrValue [0..*]
+  category : CategoryRef [0..*]
+  characteristic : Characteristic [0..*]
+  creationDate : DateTime
+  description : String
+  documentRelationship : DocumentRef [0..*]
+  documentSpecification : DocumentSpecification
+  documentType : String
+  href : String
+  id : String
+  lastUpdate : DateTime
+  lifecycleState : String
+  name : String
+  relatedEntity : RelatedEntity
+  relatedParty : RelatedPartyRefOrPartyRoleRef [0..*]
+  version : String
+  @baseType : String
+  @schemaLocation : String
+  @type = Document
+}
+DocumentRefOrValue ..> DocumentRef
+DocumentRefOrValue ..> Document
+
+note bottom
+  (1) : Mandatory property
+end note
+@enduml
