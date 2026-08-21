@@ -1,0 +1,110 @@
+@startuml scenario1-contract-catalog-sync-notification-sequence
+skinparam sequenceMessageAlign center
+actor AdminUI
+
+box "Channel Partner" #LightBlue
+participant "System Of Engagement\nUI-Catalog" as SOE
+participant "TMFC001\nCommercial||Provider Catalog" as CPCat
+participant "Agreement Management\nTMFC039" as CPAgr
+end box
+
+box "CSP France" #LightYellow
+participant "Agreement Management\nTMFC039" as FRAgr
+participant "Catalog\nTMFC001" as FRCat
+end box
+
+box "CSP Belgium" #Lavender
+participant "Agreement Management\nTMFC039" as BEAgr
+participant "Catalog\nTMFC001" as BECat
+end box
+
+== Contract signed ==
+
+note over CPAgr, FRAgr : Contract - Aggregator CSP-France <-> Channel Partner
+CPAgr -> FRAgr : 1: TMF651 Event: AgreementCreateEvent\n(agreementId=agrFR-001, type="service API",\nengagedParty=CSP-France, relatedParty=ChannelPartner-12345,\nperiod=2Y)
+FRAgr --> CPAgr : 2: 200 OK
+
+FRCat -> FRCat : 3: TMF620: POST /productOffering\n(name="Location Verification", category="Camara",\ntype="service API", relatedAgreement=agrFR-001)\n--> 201Created (productOfferingId=poFR-LocVerif-001)
+note right of FRCat
+  This step could be manual or automatic:
+  After signing an Agreement with a Channel Partner, a CSP does not
+  automatically create a new Product Offering.
+  CSP may link the Agreement to an existing offering and, if needed,
+  adjust specific configuration or pricing conditions. In such cases,
+  the update can be done with a TMF620 PATCH on the ProductOffering.
+end note
+
+note over CPAgr, BEAgr : Contract - Aggregator CSP-Belgium <-> Channel Partner
+CPAgr -> BEAgr : 4: TMF651 Event: AgreementCreateEvent\n(agreementId=agrBE-001, engagedParty=CSP-Belgium,\nrelatedParty=ChannelPartner-12345, period=2Y)
+BEAgr --> CPAgr : 5: 200 OK
+
+BECat -> BECat : 6: TMF620: POST /productOffering\n(name="Location Verification", category="Camara",\nrelatedAgreement=agrBE-001)\n--> 201Created (productOfferingId=poBE-LocVerif-001)
+note right of BECat
+  This step could be manual or automatic:
+  After signing an Agreement with a Channel Partner, a CSP does not
+  automatically create a new Product Offering.
+  CSP may link the Agreement to an existing offering and, if needed,
+  adjust specific configuration or pricing conditions. In such cases,
+  the update can be done with a TMF620 PATCH on the ProductOffering.
+end note
+
+group This part of the diagram is hypothetical and could also be done manually using an admin UI catalog to be developed in a later version
+
+note over CPAgr, FRAgr : Contract - Aggregator Channel Partner <-> CSP-France
+FRAgr -> CPAgr : 7: TMF651 Event: AgreementCreateEvent\n(agreementId=agrFR-001, type="service API",\nengagedParty=ChannelPartner-12345, relatedParty=CSP-France,\nperiod=2Y)
+CPAgr --> FRAgr : 8: 200 OK
+note over CPAgr, FRAgr
+  We assume that this AgreementCreateEvent contains the necessary information
+  (agreementId, partnerId, type, parties involved). It is also hypothesized that
+  it acts as the trigger for the Channel Partner's Catalog to subscribe to the
+  events published by the CSP-France Catalog.
+end note
+
+note over CPAgr, BEAgr : Contract - Aggregator Channel Partner <-> CSP-Belgium
+BEAgr -> CPAgr : 9: TMF651 Event: AgreementCreateEvent\n(agreementId=agrBE-001, engagedParty=ChannelPartner-12345,\nrelatedParty=CSP-Belgium, period=2Y)
+CPAgr --> BEAgr : 10: 200 OK
+note over CPAgr, BEAgr
+  We assume that this AgreementCreateEvent contains the necessary information
+  (agreementId, partnerId, type, parties involved). It is also hypothesized that
+  it acts as the trigger for the Channel Partner's Catalog to subscribe to the
+  events published by the CSP-Belgium Catalog.
+end note
+
+end
+
+== New Offer Catalog Notification ==
+
+note over CPCat, BECat
+  Once a new product offering is created, CSPs notify the subscribed
+  Channel Partners of the creation of the new offering.
+end note
+
+FRCat -> CPCat : 11: TMF936 Event: ProductOfferingCreateEvent\n(productOfferingId=poFR-LocVerif-001,\nname="Location Verification", category="Camara")
+CPCat --> FRCat : 12: 200 OK
+BECat -> CPCat : 13: TMF936 Event: ProductOfferingCreateEvent\n(productOfferingId=poBE-LocVerif-001,\nname="Location Verification", category="Camara")
+CPCat --> BECat : 14: 200 OK
+
+== CSP Offer Retrieval ==
+
+note over CPCat
+  The channel partners inquire for more details of the offerings
+  using the IDs received in the events.
+end note
+
+CPCat -> FRCat : 15: TMF936: GET /productOffering/poFR-LocVerif-001
+FRCat --> CPCat : 16: ...ProductOffering_FR (Location Verification)...
+CPCat -> FRCat : 17: TMF936: GET /productSpecification/poFR-LocVerif-001
+FRCat --> CPCat : 18: (retrieve ProductSpecification for Location Verification_FR)
+CPCat -> CPCat : 19: Create poFR-LocVerif-001
+CPCat -> BECat : 20: TMF936: GET /productOffering/poBE-LocVerif-001
+BECat --> CPCat : 21: ...ProductOffering_BE (Location Verification)...
+CPCat -> BECat : 22: TMF936: GET /productSpecification/poBE-LocVerif-001
+BECat --> CPCat : 23: (retrieve ProductSpecification for Location Verification_BE)
+CPCat -> CPCat : 24: Create poBE-LocVerif-001
+CPCat -> SOE : 25: Push a notification to the UI inbox to\ninform that a new camera offer has been created.
+
+== Manual Creation of a Packaged Offer ==
+
+AdminUI -> SOE : 26: Creation Bundle Offer (via UI)
+
+@enduml

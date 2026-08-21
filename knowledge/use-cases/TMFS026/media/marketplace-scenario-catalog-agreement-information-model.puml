@@ -1,0 +1,83 @@
+@startuml marketplace-scenario-catalog-agreement-information-model
+hide circle
+hide empty members
+
+title Marketplace model scenario
+
+package "Channel Partner :Globy Catalog / TMFC001 Product Catalog Mgt / Marketplace Aggregator" {
+  package "Commercial Catalog view" {
+    class "Brazil Location Verification v1 Camara API Standalone\n<<Product Offering>>" as CommOffer
+    class "One Time 10e\n<<Product Offering Price>>" as CommPrice1
+    class "Usage Verify Location 0.4e / API call\n<<Product Offering Price>>" as CommPrice2
+    class "Location Verification v1 Camara API\n<<Product Specification>>" as CommSpec
+    class "purpose dpv: Marketing\nApiCoverage:Brazil\n<<Product Specification Characteristic>>" as CommSpecChar
+    class "Verify Location\n<<Product Usage Specification>>" as CommUsageSpec
+
+    CommOffer -- CommPrice1
+    CommOffer -- CommPrice2
+    CommOffer --> CommSpec
+    CommSpec -- CommSpecChar
+    CommSpec --> CommUsageSpec
+  }
+
+  package "Provider Catalog view" {
+    class "Brazil Location Verification v1 Camara API Standalone\n<<Product Offering>>" as ProvOffer
+    class "One Time 10e\n<<Product Offering Price>>" as ProvPrice1
+    class "Usage Verify Location 0.4e / API call\n<<Product Offering Price>>" as ProvPrice2
+    class "Location Verification v1 Camara API\n<<Product Specification>>" as ProvSpec
+    class "purpose dpv: Marketing\nApiCoverage:Brazil\n<<Product Specification Characteristic>>" as ProvSpecChar
+    class "Verify Location\n<<Product Usage Specification>>" as ProvUsageSpec
+
+    ProvOffer -- ProvPrice1
+    ProvOffer -- ProvPrice2
+    ProvOffer --> ProvSpec
+    ProvSpec -- ProvSpecChar
+    ProvSpec --> ProvUsageSpec
+  }
+
+  CommSpec ..> ProvSpec : corresponds
+}
+
+package "Op-Brazil :Catalog / TMFC001 Product Catalog Mgt" {
+  class "Brazil Location Verification v1 Camara API Standalone\n<<Product Offering>>" as CspOffer
+  class "One Time 10e\n<<Product Offering Price>>" as CspPrice1
+  class "Usage Verify Location 0.4e / API call\n<<Product Offering Price>>" as CspPrice2
+  class "Location Verification v1 Camara API\n<<Product Specification>>" as CspSpec
+  class "purpose dpv: Marketing\nApiCoverage:Brazil\n<<Product Specification Characteristic>>" as CspSpecChar
+  class "Verify Location\n<<Product Usage Specification>>" as CspUsageSpec
+  class "ProductOfferingTermOrCondition" as CspTerm
+
+  CspOffer -- CspPrice1
+  CspOffer -- CspPrice2
+  CspOffer --> CspSpec
+  CspSpec -- CspSpecChar
+  CspSpec --> CspUsageSpec
+  CspTerm ..> CspOffer : representedAs
+  CspTerm ..> CspPrice2 : influences
+}
+
+ProvOffer ..> CspOffer : corresponds
+
+package "TMFC 039 Agreement Mgt" {
+  class "FrameworkAgreement" as FA {
+    Type=MarketPlaceAgreement
+    FrameworkAgreementId=3
+    StartDate=01-01-2025
+    Location=Brazil
+  }
+  class "Agreement Item\nAPI Listing Rights: Globy is authorized to publish and commercialize Op-Brazil's API on its marketplace\nEnd-User Pricing: One-time fee: 10e\nUsage-based fee: 0.40e/API call (set by Op-Brazil)\nCommission on Order: Globy earns 1e commission per order\nCommission per Invoice: Globy earns 0.50e commission per invoice\nSeasonal Discounts: 10% discount during summer (applied by Op-Brazil)\nCustomer Relationship Ownership: Op-Brazil manages the relationship with the end customer\nInvoicing Model: Globy invoices monthly on behalf of Op-Brazil\nRevenue Settlement: Monthly settlement; Globy keeps commission and pays remaining revenue to Op-Brazil" as AgreementItem
+  class "AgreementTermsOrConditions" as Terms {
+    Id=3
+    Duration: 2years
+    Format: Pdf
+  }
+
+  FA --> AgreementItem : consists of
+  FA --> Terms : governed by
+  Terms ..> CspTerm : appearsAs
+}
+
+CommOffer ..> AgreementItem : results in
+CspOffer ..> AgreementItem : involves
+
+@enduml
