@@ -1,0 +1,178 @@
+@startuml
+title Fig 6.4.4 Intent Model in TMF921
+
+class IntentExpression {
+  iri : String
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+  discriminator: IntentExpression, TurtleExpression, JsonLdExpression
+}
+
+class JsonLdExpression {
+  @type = JsonLdExpression
+}
+class TurtleExpression {
+  expressionValue : String
+  @type = TurtleExpression
+}
+JsonLdExpression --|> IntentExpression
+TurtleExpression --|> IntentExpression
+
+class Characteristic {
+  characteristicRelationship : CharacteristicRelationship [0..*]
+  id : String
+  name : String
+  valueType : String
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+  discriminator: ObjectCharacteristic, NumberCharacteristic, BooleanArrayCharacteristic,\nCharacteristic, BooleanCharacteristic, NumberArrayCharacteristic,\nIntegerCharacteristic, ObjectArrayCharacteristic, StringArrayCharacteristic,\nIntegerArrayCharacteristic, StringCharacteristic
+}
+
+class JsonLdExpressionValue
+Characteristic "0..1" --> JsonLdExpressionValue : expressionValue
+
+class common {
+  @base : Uri
+  @container : ENUM String\n  @language\n  @list\n  @index\n  @set
+  @id : Uri
+  @language : String
+  @list : { }
+  @reverse : String
+  @set : { }
+  @type : String
+  @value : String
+  @vocab : Uri
+}
+class context {
+  @context : object
+}
+class graph
+common --|> JsonLdExpressionValue
+context --|> JsonLdExpressionValue
+graph --|> JsonLdExpressionValue
+common "0..*" o-- graph : "@graph"
+
+class Intent {
+  context : String
+  creationDate : DateTime
+  description : String
+  href : String
+  id : String
+  isBundle : Boolean
+  lastUpdate : DateTime
+  lifecycleStatus : String
+  name : String
+  priority : String
+  statusChangeDate : DateTime
+  validFor : TimePeriod
+  version : String
+  @baseType : String
+  @schemaLocation : String
+  @type = Intent
+  discriminator: Intent, ProbeIntent
+}
+Intent "0..*" --> Characteristic : characteristic
+
+class ProbeIntent {
+  attachment : AttachmentRefOrValue [0..*]
+  characteristic : Characteristic [0..*]
+  context : String
+  creationDate : DateTime
+  description : String
+  expression : IntentExpression
+  href : String
+  id : String
+  intentRelationship : EntityRelationship [0..*]
+  intentSpecification : EntityRef
+  isBundle : Boolean
+  lastUpdate : DateTime
+  lifecycleStatus : String
+  name : String
+  priority : String
+  relatedParty : RelatedPartyRefOrPartyRoleRef [0..*]
+  statusChangeDate : DateTime
+  validFor : TimePeriod
+  version : String
+  @baseType : String
+  @schemaLocation : String
+  @type = ProbeIntent
+}
+ProbeIntent --|> Intent
+ProbeIntent "0..1" --> IntentExpression : expression
+
+class EntityRef {
+  href : String
+  id : String
+  name : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+Intent "0..1" --> EntityRef : intentSpecification
+
+class EntityRelationship {
+  href : String
+  id : String
+  name : String
+  relationshipType : String
+  role : String
+  validFor : TimePeriod
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type : String
+}
+Intent "0..*" --> EntityRelationship : intentRelationship
+EntityRelationship "0..1" --> EntityRef : associationSpec
+ProbeIntent "0..*" --> EntityRelationship : intentRelationship
+
+class RelatedPartyRefOrPartyRoleRef {
+  role : String
+  @baseType : String
+  @schemaLocation : String
+  @type : String (1)
+}
+ProbeIntent "0..*" --> RelatedPartyRefOrPartyRoleRef : relatedParty
+
+class PartyRefOrPartyRoleRef {
+  discriminator: PartyRef, PartyRoleRef
+}
+RelatedPartyRefOrPartyRoleRef "0..1" --> PartyRefOrPartyRoleRef : partyOrPartyRole
+
+class AttachmentRefOrValue {
+  discriminator: Attachment, AttachmentRef
+}
+ProbeIntent "0..*" --> AttachmentRefOrValue : attachment
+
+class Attachment {
+  attachmentType : String
+  content : Base64
+  description : String
+  href : String
+  id : String
+  mimeType : String
+  name : String
+  size : Quantity
+  url : String
+  validFor : TimePeriod
+  @baseType : String
+  @schemaLocation : String
+  @type = Attachment
+}
+class AttachmentRef {
+  description : String
+  href : String
+  id : String
+  name : String
+  url : String
+  @baseType : String
+  @referredType : String
+  @schemaLocation : String
+  @type = AttachmentRef
+}
+AttachmentRefOrValue ..> Attachment
+AttachmentRefOrValue ..> AttachmentRef
+@enduml

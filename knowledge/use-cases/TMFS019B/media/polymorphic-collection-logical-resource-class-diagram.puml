@@ -1,0 +1,10 @@
+@startuml
+title Fig 6.1.2 Concept of Polymorphic Collection (from TMF630 Part 2)
+
+abstract class LogicalResource
+class TPE
+class Link
+
+TPE --|> LogicalResource
+Link --|> LogicalResource
+@enduml

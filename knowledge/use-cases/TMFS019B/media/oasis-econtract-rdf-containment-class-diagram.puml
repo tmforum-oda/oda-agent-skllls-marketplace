@@ -1,0 +1,99 @@
+@startuml
+title Fig 8.3.1 Containment relationships for concepts/entities in the RDF representation of OASIS eContract (normative version in XML schema)
+
+class Contract
+class Metadata
+class Title
+class Subtitle
+class ContractFront
+class Body
+class Back
+class Attachments
+class Inclusion
+class Text
+class Phrase
+class Reference
+
+Contract --> Metadata : hasMetadata
+Contract --> Title : hasTitle
+Contract --> Subtitle : hasSubtitle
+Contract --> ContractFront : hasFront
+Contract --> Body : hasBody
+Contract --> Back : hasBack
+Contract --> Attachments : hasAttachments
+Text --> Reference : hasReference
+
+class Parties
+class DateBlock
+class Background
+class Block
+class PartySignature
+class Attachment
+class Object
+
+ContractFront --> Parties : hasParties
+ContractFront --> DateBlock : hasDateBlock
+ContractFront --> Background : hasBackground
+Body --> Block : hasBlock
+Back --> PartySignature : hasPartySignature
+Attachments --> Attachment : hasAttachment
+Reference --> Object : hasObject
+
+class Party
+class Item
+class Definition
+class Table
+class SignatoryGroup
+class Data
+class Fallback
+
+Parties --> Party : hasParty
+Background --> Item : hasItem
+Background --> Definition : hasDefinition
+Block --> Table : hasTable
+Block --> Block : hasBlock
+PartySignature --> SignatoryGroup : hasSignatoryGroup
+Object --> Data : hasData
+Object --> Fallback : hasFallback
+
+class PersonRecord
+class Terms
+class TGroup
+class SignatoryRecord
+
+Party --> PersonRecord : hasPersonRecord
+Definition --> Terms : hasTerms
+Table --> TGroup : hasTGroup
+SignatoryGroup --> SignatoryRecord : hasSignatoryRecord
+
+class Name
+class Address
+class Field
+class Term
+class ColSpec
+class THead
+class TBody
+class Signatory
+class Witness
+
+PersonRecord --> Name : hasName
+PersonRecord --> Address : hasAddress
+PersonRecord --> Field : hasField
+Terms --> Term : definesTerm
+TGroup --> ColSpec : hasColSpec
+TGroup --> THead : hasTHead
+TGroup --> TBody : hasTBody
+SignatoryRecord --> Signatory : hasSignatory
+SignatoryRecord --> Witness : hasWitness
+
+class Row
+class SignatureLine
+
+THead --> Row : hasRow
+TBody --> Row : hasRow
+Signatory --> SignatureLine : hasSignatureLine
+Witness --> SignatureLine : hasSignatureLine
+
+class Entry
+Row --> Entry : hasEntry
+@enduml

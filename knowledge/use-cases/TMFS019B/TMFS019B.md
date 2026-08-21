@@ -791,7 +791,8 @@ For this document we propose to solely consider schemas extensions as indivual a
 
 This example is taken from TMF630 Part 2
 
-![](media/image01.png)
+![](media/polymorphic-collection-logical-resource-class-diagram.png)
+*([PlantUML source](media/polymorphic-collection-logical-resource-class-diagram.puml))*
 
 **Fig 6.1.2 Concept of Polymorphic Collection **
 
@@ -831,7 +832,8 @@ Various extension mechanisms are supported:
 
 Use of extensions with opaque name value pairs is not recommended 
 
-![](media/image02.png)
+![](media/extension-schema-to-base-schema-class-diagram.png)
+*([PlantUML source](media/extension-schema-to-base-schema-class-diagram.puml))*
 
 **Fig 6.2.1 Concept of Extension Schema to base Schema**
 
@@ -935,7 +937,8 @@ Ed Note: Electronic Business XML  ebXML had a similar requirement for caching t
 
 This is an extract of the implementation method for supporting formal rdf bsed ontologies used in the [Intent Management API TMF921-v5.0](https://www.tmforum.org/open-digital-architecture/open-apis/intent-management-api-TMF921/v5.0)
 
-![](media/image03.png)
+![](media/tmf921-intent-model-class-diagram.png)
+*([PlantUML source](media/tmf921-intent-model-class-diagram.puml))*
 
 **Fig 6.4.4 Intent Model in TMF921**
 
@@ -1048,7 +1051,8 @@ The following diagram shows the high-level activity of creating a partnership Le
 
  
 
-![](media/image04.png)
+![](media/agreement-activity-legal-vocabulary-flow.png)
+*([text description](media/agreement-activity-legal-vocabulary-flow.text-description.md))*
 
 **Fig 8.1.1 Agreement Activity**
 
@@ -1091,7 +1095,8 @@ Example include ( further research needed)
 
  
 
-![](media/image05.png)
+![](media/model-mapping-challenges-overview.png)
+*([text description](media/model-mapping-challenges-overview.text-description.md))*
 
 **Fig 8.1.2  Model Mapping challenges**
 
@@ -1107,7 +1112,8 @@ For Open World use, an RDF representation of the XML schema is useful for placin
 
 This diagram shows the principal containment relationships in the  RDF representation. 
 
-![](media/image06.png)
+![](media/oasis-econtract-rdf-containment-class-diagram.png)
+*([PlantUML source](media/oasis-econtract-rdf-containment-class-diagram.puml))*
 
 **Fig 8.3.1  Containment relationships for concepts entities es in the RDF representation of OASIS eContract ( normative version in XML schema)**
 
@@ -1115,13 +1121,15 @@ This diagram shows the principal containment relationships in the  RDF represen
 
 The question arises as the mapping of this view to SID and Agreement API view Issue is Agreement is Abstract as is Contractual Agreement so need to edit int Frameworx agreemtn
 
-![](media/image07.png)
+![](media/oasis-econtract-sid-agreement-mapping-diagram.png)
+*([PlantUML source](media/oasis-econtract-sid-agreement-mapping-diagram.puml))*
 
 ** Fig 8.3.2  Containment relationships**
 
 ### eContract  UML mapping
 
-![](media/image08.png)
+![](media/econtract-uml-mapping-class-diagram.png)
+*([PlantUML source](media/econtract-uml-mapping-class-diagram.puml))*
 
 **Fig 8.3.2  OASIS eContract represented in UML**
 
