@@ -1,0 +1,7 @@
+Physical/conceptual network diagram illustrating the SD-WAN Service Provider Network, immediately following Figure 3.1.1 (the SD-WAN Service Model derived from MEF 70.1) and cross-referenced by the "Key for MEF SD-WAN Service Model MEF 70.1" legend (`mef-sdwan-service-model-key-legend.png`).
+
+A large dotted circle labelled **"SD-WAN Service Provider Network"** contains, on the left, a purple building icon **"Subscriber Network Site A"** connected via a lettered **A (SD-WAN UNI)** line to an **SWVC EP** device icon, itself lettered **B (SD-WAN Edge)** and **F**. From there, two parallel connections lettered **D (UCS #1)** and **D (UCS #2)**, together forming the **C (SD-WAN Virtual Connection / SWVC)**, fan out through the dotted circle — one path (orange, lettered **G, TVCs**) running through the middle "Internet" cloud icon, and both converging on two destination SWVC EP device icons (each lettered **E (UCS UNI)** and **F**): one connecting up-right to a blue cloud icon **"Private or Virtual Private Cloud"**, and one connecting down-right to a purple building icon **"Subscriber Network Site B"**.
+
+At the bottom of the circle, an **"Internet Connected Service"** globe icon connects via a dashed line lettered **H (Internet Beakout)** out to the "Internet" cloud.
+
+The lettered callouts (A–H) match the definitions given in the companion key/legend image, and correspond to the same A–H key used in the later "OSI Layered Service Model" family of diagrams.

@@ -1,0 +1,13 @@
+@startuml
+title example Service resources
+
+participant "Service\nDomain" as Service
+participant "Resource\nDomain" as Resource
+
+Service -> Resource : TMF 664 "POST /resourceFunctionActivation/resourceFunction"
+activate Resource
+
+Resource --> Service : "200 OK\n\n{\n  @type: ResourceFunction\n  ...\n  connectivity: [{\n    name: Flow Graph,\n    connection: [\n      ...\n    ]\n  }]\n}"
+deactivate Resource
+
+@enduml

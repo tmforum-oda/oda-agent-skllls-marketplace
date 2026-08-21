@@ -1,0 +1,69 @@
+@startuml
+title Specifications for CNF Use Case - Resource Catalog view
+
+legend left
+  Dark yellow fill = Resource Specification
+  White/outlined = Resource
+  Light yellow fill = Resource Specification Characteristic or Feature
+endlegend
+
+class "Cloud Native Function" as CNF <<SoftBlackBoxSpecification>> {
+  name = tmfc000
+}
+
+class "Vendor Application" as VendorApp <<SoftwareSpecification>> {
+  vendor = acme
+}
+CNF --> VendorApp : composedOf
+
+class "Vendor Software Package" as VendorSWPackage <<SoftwareSupportPackage>>
+VendorApp --> VendorSWPackage : "references (Min 0, Max 1)"
+
+class "Vendor Hosting Platform Requirement" as VendorHostingReq <<HostingPlatformRequirementSpec>> {
+  platform = k8s
+}
+VendorApp --> VendorHostingReq : requires
+
+class "Vendor Software Package" as VendorSWPackageSpec <<SoftwareSupportPackageSpec>> {
+  registryType = oci
+}
+VendorSWPackageSpec --> VendorSWPackage : specifies
+note on link
+  registry = oci://host:port/charts/cnf
+  version = 1.0.1
+end note
+
+class "Vendor Composite Function" as VendorCompositeFn <<ResourceFunctionSpec>>
+VendorApp --> VendorCompositeFn : "provides (Min 0, Max n)"
+
+class "Vendor Function" as VendorFn <<ResourceFunctionSpec>>
+class "ODA Component Function" as ODACompFn <<ResourceFunctionSpecification>>
+VendorCompositeFn --> VendorFn : "composedOf (Min 0, Max n)"
+VendorCompositeFn --> ODACompFn : "composedOf (Min 0, Max n)"
+
+class "Core Function" as CoreFn <<ResourceFunctionSpec>>
+class "Security Function" as SecurityFn <<ResourceFunctionSpec>> {
+  controllerRole = Admin
+}
+class "Management and Operations Function" as MgmtOpsFn <<ResourceFunctionSpec>> {
+  tmf664 = Boolean
+}
+class "Notification and Reporting Function" as NotifFn <<ResourceFunctionSpec>> {
+  snmp = Boolean
+  prometheus = Boolean
+  tmf642 = Boolean
+}
+ODACompFn --> CoreFn : "composedOf (Min 1, Max 1)"
+ODACompFn --> SecurityFn : "composedOf (Min 0, Max 1)"
+ODACompFn --> MgmtOpsFn : "composedOf (Min 0, Max 1)"
+ODACompFn --> NotifFn : "composedOf (Min 0, Max 1)"
+
+class "TMFxxx / other" as CoreAPI <<APISpecification>>
+class "TMFxxx / other" as SecurityAPI <<APISpecification>>
+class "TMFxxx / other" as MgmtOpsAPI <<APISpecification>>
+class "TMFxxx / other" as NotifAPI <<APISpecification>>
+CoreFn --> CoreAPI : "ioRealizedBy (Min 1, Max n)"
+SecurityFn --> SecurityAPI : "ioRealizedBy (Min 1, Max n)"
+MgmtOpsFn --> MgmtOpsAPI : "ioRealizedBy (Min 1, Max n)"
+NotifFn --> NotifAPI : "ioRealizedBy (Min 1, Max n)"
+@enduml

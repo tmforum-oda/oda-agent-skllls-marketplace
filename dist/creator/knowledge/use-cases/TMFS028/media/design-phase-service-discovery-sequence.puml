@@ -1,0 +1,44 @@
+@startuml
+title Design phase flow
+
+actor "Product Designer" as Designer
+actor "Upstream AI Engine or Agentic Framework(such as TMF780 NaaS API)" as AIEngine
+participant "Intent-Based Service Design API" as IntentAPI
+participant "Service Catalog & Service Spec" as ServiceCatalog
+
+== UC1: Discovery Process Initiation ==
+
+Designer -> AIEngine : 1 Send Natural Language or Documents
+AIEngine -> IntentAPI : 2 Send ResourceFunction (Intent Requirements)
+
+group Pre-condition Check
+IntentAPI -> IntentAPI : 3 Validate Authentication
+IntentAPI -> IntentAPI : 4 Validate ResourceFunction Format
+end
+
+IntentAPI -> ServiceCatalog : 5 Query Service Catalog by ResourceFunction
+ServiceCatalog --> IntentAPI : 6 Catalog Search Result
+
+alt No Catalog Hit
+IntentAPI -> IntentAPI : 7 Log Unmatched ResourceFunction
+else Catalog Hit (Success)
+IntentAPI -> ServiceCatalog : 8 Filter CFSSpec/RFSSpec within Scoped Catalog
+ServiceCatalog --> IntentAPI : 9 Scoped Specifications
+end
+
+== UC2 & UC3: Spec Alignment & Gap Analysis ==
+
+IntentAPI -> ServiceCatalog : 10 Match CFSSpec and RFSSpec (Global/Scoped)
+ServiceCatalog --> IntentAPI : 11 Candidate Specs (ID, Version, Metadata)
+
+alt No Spec Hit (Missing Ability)
+IntentAPI -> IntentAPI : 12 Collect unmatched ResourceFunction & Catalog
+else Spec Hit (Successful Alignment)
+IntentAPI -> IntentAPI : 13 Extract Matched ServiceSpec (CFS/RFS)
+IntentAPI -> IntentAPI : 14 Map to Corresponding Service Catalog
+end
+
+IntentAPI -> IntentAPI : 15 Aggregate Matched + Unmatched lists into Recommendation Result
+IntentAPI --> AIEngine : 16 Return Recommendation (Matched + Unmatched lists)
+AIEngine --> Designer : 17 Return Recommendation Result (According to the API Framework)
+@enduml

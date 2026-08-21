@@ -1,0 +1,77 @@
+@startuml tom-country-tour-product-order-information-model
+hide circle
+hide empty members
+
+package "TMFC002 Product Order Capture and Validation" {
+  class "Open Gateway Device Location bundle offer\n<<CustomerOrderItem (Product Offering level)>>" as BundleOffer {
+    ProductPrice: Subscription One Time Fee: 10e
+  }
+  note right of BundleOffer : Order Item action: Create
+
+  class "Location Verification Camara API Bundled\n<<CustomerOrderItem (Product Offering level)>>" as BundledApi {
+    ProductPrice: Usage Verify Location 0.7e / API call
+    ProductPrice: Discount 10% If 1000+ Api calls/month
+  }
+  note right of BundledApi : Order Item action: Create
+
+  class "SLA\n<<CustomerOrderItem (Product Offering level)>>" as Sla {
+    ProductPrice: One Time Fee: 5e
+  }
+  note right of Sla : Order Item action: Create
+
+  class "Location Verification v1 Camara API\n<<CustomerOrderItem (Product level)>>" as LocVerifProduct {
+    purpose dpv = Marketing
+    ApiCoverage = BelgiumI&France
+  }
+  note right of LocVerifProduct : Order Item action: Create
+
+  class "SLA Service\n<<CustomerOrderItem (Product level)>>" as SlaService {
+    Uptime = 99.9%
+  }
+  note right of SlaService : Order Item action: Create
+
+  BundleOffer --> BundledApi
+  BundleOffer --> Sla
+  BundledApi --> LocVerifProduct
+  Sla --> SlaService
+  SlaService --> LocVerifProduct : Applies on
+}
+
+package "TMFC023 Party Interaction Mgt" {
+  class "Tom Interaction for OrderingApi\n:CommunicationInteraction" as TomInteraction {
+    Date=02-02-2025
+  }
+}
+
+package "TMFC012 Ressource Inventory" {
+  class "Zone Deals\n:LogicalRessource" as ZoneDeals
+}
+
+package "TMFC035 Party Roles & Permissions Mgt" {
+  class "Application Api Consumer\n:LogicalRessourceRole" as AppApiConsumer
+  class "Application Owner\n:PartyRole" as ApplicationOwner
+  class "Legal Entity\n:PartyRole" as LegalEntity
+  class "Channel Partner Customer\n:PartyRole" as ChannelPartnerCustomer
+  class "Channel Partner\n:PartyRole" as ChannelPartner
+  class "Authorized representative\n:PartyRole" as AuthorizedRep
+}
+
+package "TMFC028 Party Mgt" {
+  class "CountryTour\n:Party/organization" as CountryTour
+  class "Globy\n:Party/Organization" as Globy
+  class "Tom\n:Party/Individual" as Tom
+}
+
+BundleOffer ..> TomInteraction : is result of
+BundleOffer ..> CountryTour : ordred by
+LocVerifProduct ..> ZoneDeals : consumed by
+ZoneDeals --> AppApiConsumer : plays
+Tom --> TomInteraction : realizes
+CountryTour --> ApplicationOwner : plays
+CountryTour --> LegalEntity : plays
+Globy --> ChannelPartnerCustomer : plays
+Tom --> AuthorizedRep : plays
+ChannelPartnerCustomer --> ChannelPartner : /played towards
+AuthorizedRep --> LegalEntity : /played towards
+
+@enduml

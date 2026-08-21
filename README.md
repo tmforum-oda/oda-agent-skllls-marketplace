@@ -1,10 +1,17 @@
-# ODA Knowledge Base
+# ODA Agent Skills Marketplace
 
-A machine-readable, provenance-tracked knowledge base built from TM Forum's
+A set of Agent skills for **Consumers** and **Creators** of the TM Forum Open Digital Architecture, backed by an agent-friendly **knowledge** base.
+
+The skills are packaged into two plugins `tm-forum-oda-consumer` and `tm-forum-oda-creator` and made available in a Marketplace. You can view the skills in:
+
+[dist\consumer\skills](dist\consumer\skills)
+
+[dist\creator\skills](dist\creator\skills)
+
+The [knowledge](knowledge) is a machine-readable knowledge base built from TM Forum's
 Open Digital Architecture (ODA) — use cases (`TMFSxxx`), ODA Components
 (`TMFCxxx`), and Open APIs (`TMFxxx`) — organized so that Agent
-Skills can query it directly, without re-parsing DOCX/PDF or guessing
-whether a document is safe to build against.
+Skills can query it directly, without re-parsing DOCX/PDF.
 
 The full design rationale lives in [`spec/spec.md`](spec/spec.md); build
 history and the reasoning behind every real bug/decision found along the
@@ -45,14 +52,14 @@ a network call.
 ## The ID registry — `knowledge/index/`
 
 Every "what exists, and what links to what" question should be answerable
-by reading one of these files, not by scanning the corpus:
+by reading one of these files:
 
 | File | What it answers |
 |---|---|
 | `use-cases.json` / `components.json` / `apis.json` | the full corpus, one row per artefact, with forward and reverse links |
 | `usecase-list.json` | every `TMFSxxx` id IG1228 knows about, including `planned`/`not available` ones with nothing converted yet |
 | `usecase-component-matrix.json` | IG1228's own corpus-level "which use case touches which component" table |
-| `matrix-discrepancies.md` | where a use case's own document disagrees with that matrix, logged rather than silently resolved one way (spec.md §5.4) — read **both** sources for a complete answer; neither alone is |
+| `matrix-discrepancies.md` | where a use case's own document disagrees with that matrix, logged to feedback to the use-case team (spec.md §5.4) — read **both** sources for a complete answer; |
 | `gaps-backlog.md` | capability gaps TM Forum's own authors already flagged in use cases' "Lessons learned" sections — proposed components/APIs that don't exist yet, consolidated across every use case that raises each one (spec.md §11.2, `skills/harvest-gaps-from-lessons-learned/`) |
 | `component-folder-map.json` / `api-samples-folder-map.json` | id → upstream GitHub folder lookups, internal to `tools/fetch_*.py` |
 
@@ -62,7 +69,7 @@ input).
 
 ## Running a refresh
 
-TM Forum republishes on a rolling ~4–8 week cadence. There are two
+TM Forum republishes on a rolling 8 week cadence. There are two
 independent tracks — see [`spec/refresh-runbook.md`](spec/refresh-runbook.md)
 for the full step-by-step, and `spec/spec.md` §6 for why they're split:
 
@@ -83,7 +90,7 @@ finding that a newly-changed use case is very likely pre-GA.
 ## Skills
 
 Built against `knowledge/`, read-only, no network calls needed at
-skill-run time. Two audiences, packaged as two separate Claude Code plugins
+skill-run time. Two audiences, packaged as two separate plugins
 (`tm-forum-oda-consumer` / `tm-forum-oda-creator`, see
 [`tools/build_plugin.py`](tools/build_plugin.py)) so each install's skill
 list stays focused on what that audience actually invokes: **consumers**

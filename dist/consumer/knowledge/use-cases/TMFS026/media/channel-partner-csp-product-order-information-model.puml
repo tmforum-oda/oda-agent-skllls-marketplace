@@ -1,0 +1,70 @@
+@startuml channel-partner-csp-product-order-information-model
+hide circle
+hide empty members
+
+package "TMFC002 Product Order Capture and Validation" {
+  class "Belgium Location Verification v1 Camara API Standalone\n<<CustomerOrderItem (Product Offering level)>>" as BeOffer {
+    ProductPrice: UsagePricePlan 0.4e /Api Call
+  }
+  note right of BeOffer : Order Item action: Create
+
+  class "Location Verification v1 Camara API\n<<CustomerOrderItem (Product level)>>" as BeProduct {
+    dpv = Marketing
+    ApiCoverage = Belgium
+  }
+  note right of BeProduct : Order Item action: Create
+
+  class "France Location Verification v1 Camara API Standalone\n<<CustomerOrderItem (Product Offering level)>>" as FrOffer {
+    ProductPrice: UsagePricePlan 0.4e /Api Call
+  }
+  note right of FrOffer : Order Item action: Create
+
+  class "Location Verification v1 Camara API\n<<CustomerOrderItem (Product level)>>" as FrProduct {
+    dpv = Marketing
+    ApiCoverage = France
+  }
+  note right of FrProduct : Order Item action: Create
+
+  BeOffer --> BeProduct
+  FrOffer --> FrProduct
+}
+
+package "TMFC012 Ressource Inventory" {
+  class "Zone Deals\n:LogicalRessource" as ZoneDeals
+}
+
+package "TMFC028 Party Mgt" {
+  class "Globy\n:Party/Organization" as Globy
+  class "OP-France\n:Party/Organization" as OPFrance
+  class "OP-Belgium\n:Party/Organization" as OPBelgium
+}
+
+package "TMFC035 Party Roles & Permissions Mgt" {
+  class "Application Api Consumer\n:LogicalRessourceRole" as AppApiConsumer
+  class "Channel Partner\n:PartyRole" as ChannelPartner
+  class "Service Provider Customer\n:PartyRole" as SPCustomer
+  class "ServiceProvider\n:PartyRole" as SPBelgiumLeft {
+    Name=OP-Belgium
+    ValidPeriod=3Years
+  }
+  class "ServiceProvider\n:PartyRole" as SPBelgiumRight {
+    Name=OP-Belgium
+    ValidPeriod=3Years
+  }
+}
+
+BeOffer ..> Globy : ordred by
+FrOffer ..> Globy : ordred by
+BeProduct ..> ZoneDeals : consumed by
+FrProduct ..> ZoneDeals : consumed by
+ZoneDeals --> AppApiConsumer : plays
+Globy --> ChannelPartner : plays
+Globy --> SPCustomer : plays
+SPCustomer --> SPBelgiumLeft : /played towards
+SPCustomer --> SPBelgiumRight : /played towards
+OPBelgium --> SPBelgiumLeft : plays
+OPFrance --> SPBelgiumRight : plays
+
+note "A standalone 'Marketing' tag box also appears\nnear the France product item in the source image,\nwith no connecting relationship drawn to it." as N1
+
+@enduml

@@ -1,0 +1,42 @@
+# tm-forum-oda-creator
+
+TM Forum ODA use cases, components, and Open APIs as a provenance-tracked knowledge base, queryable via Agent Skills -- for drafting and extending ODA itself.
+
+This plugin bundles 5 Agent Skills. Claude Code invokes one automatically when your request matches what it does -- you don't need to name the skill directly, just describe what you want.
+
+## Skills
+
+### draft-new-usecase-from-scenario
+
+Given a business scenario description, drafts a new TMFSxxx-shaped use-case document matching this corpus's own observed structure, citing real existing component/API ids wherever the scenario matches existing ODA capability and flagging genuine gaps rather than inventing plausible-sounding new ids. Use this when a requirement doesn't match any existing use case or known gap closely enough to just reuse.
+
+**Example:**
+> Draft a new TMFS-shaped use case for satellite-to-ground handover billing -- nothing existing covers it.
+
+### harvest-gaps-from-lessons-learned
+
+Mines every TMFSxxx use case's "Lessons learned"/"Impacts identified" sections for capability gaps TM Forum's own authors have already written down -- proposed new ODA components or Open APIs that don't exist yet -- cross-checks each against the current ${CLAUDE_PLUGIN_ROOT}/knowledge/index/{components,apis}.json to confirm it's still genuinely missing, and consolidates cross-corroborated gaps (the same gap raised independently in multiple use cases) into one backlog entry. Use this to find what ODA is missing without re-reading the whole corpus by hand.
+
+**Example:**
+> What capability gaps has the use-case corpus already identified that nobody's aggregated into one place yet?
+
+### lint-usecase-draft
+
+Checks a draft TM Forum use-case DOCX or Markdown document's structure against document shapes known to convert badly through this repo's own docx2md.py pipeline, and flags anything likely to silently lose content before the document is ever submitted. Use this as a pre-submission QA pass for someone authoring a new or revised use case.
+
+**Example:**
+> Check my draft use-case DOCX for anything that will convert badly before I submit it to TM Forum.
+
+### propose-component-or-api-extension
+
+Given a capability gap (e.g. from ${CLAUDE_PLUGIN_ROOT}/knowledge/index/gaps-backlog.md) and the nearest existing component/API, drafts a proposed extension -- a new component skeleton in IG1242's real shape, or a new field/endpoint on an existing OpenAPI schema -- consistent with the corpus's own conventions and grounded in a real cached spec. Use this to design a fix for a gap, not just identify one.
+
+**Example:**
+> Design a fix for the 'Delegate Component' gap logged in the gaps backlog.
+
+### propose-matrix-correction
+
+Turns ${CLAUDE_PLUGIN_ROOT}/knowledge/index/matrix-discrepancies.md's logged use-case/matrix disagreements into specific, submittable correction proposals for the next IG1228 revision -- e.g. which TMFCxxx rows should be added or removed for a given TMFSxxx use case. Use this to act on a logged discrepancy rather than just read about it.
+
+**Example:**
+> Turn the logged use-case/matrix disagreements into submittable corrections for the next IG1228 revision.

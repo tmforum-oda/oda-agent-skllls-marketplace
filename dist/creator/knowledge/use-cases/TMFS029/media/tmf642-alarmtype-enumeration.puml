@@ -1,0 +1,15 @@
+@startuml
+enum AlarmType <<Enumeration>> {
+  integrityViolation
+  operationalViolation
+  timeDomainViolation
+  environmentalAlarm
+  securityService
+  equipmentAlarm
+  communicationsAlarm
+  mechanismViolation
+  physicalViolation
+  processingErrorAlarm
+  qualityOfServiceAlarm
+}
+@enduml

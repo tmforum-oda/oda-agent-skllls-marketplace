@@ -1,0 +1,63 @@
+@startuml
+title Managed Entities for CNF Use Case - Resource Inventory view
+
+legend left
+  Dark yellow fill = Resource Specification
+  White/outlined = Resource
+  Light yellow fill = Resource Characteristic or Feature
+endlegend
+
+class "Cloud Native Function" as CNF <<SoftBlackBox>> {
+  name = tmfc000
+}
+
+class "Vendor Application" as VendorApp <<InstalledSoftware>> {
+  vendor = acme
+}
+CNF --> VendorApp : composedOf
+
+class "Vendor Software Package" as VendorSWPackage <<SoftwareSupportPackage>> {
+  registry = oci://host:port/charts/cnf
+  version = 1.0.1
+}
+VendorApp --> VendorSWPackage : "references (Min 0, Max 1)"
+
+class "Vendor Hosting Platform Requirement" as VendorHostingReq <<HostingPlatformRequirement>> {
+  platform = k8s
+}
+VendorApp --> VendorHostingReq : requires
+
+class "Vendor Composite Function" as VendorCompositeFn <<ResourceFunction>>
+VendorApp --> VendorCompositeFn : "provides (Min 0, Max n)"
+
+class "Vendor Function" as VendorFn <<ResourceFunction>>
+class "ODA Component Function" as ODACompFn <<ResourceFunction>>
+VendorCompositeFn --> VendorFn : "composedOf (Min 0, Max n)"
+VendorCompositeFn --> ODACompFn : "composedOf (Min 0, Max n)"
+
+class "Core Function" as CoreFn <<ResourceFunction>>
+class "Security Function" as SecurityFn <<ResourceFunction>> {
+  controllerRole = Admin
+}
+class "Management and Operations Function" as MgmtOpsFn <<ResourceFunction>> {
+  tmf664 = true
+}
+class "Notification and Reporting Function" as NotifFn <<ResourceFunction>> {
+  snmp = false
+  prometheus = true
+  tmf642 = false
+}
+ODACompFn --> CoreFn : "composedOf (Min 1, Max 1)"
+ODACompFn --> SecurityFn : "composedOf (Min 0, Max 1)"
+ODACompFn --> MgmtOpsFn : "composedOf (Min 0, Max 1)"
+ODACompFn --> NotifFn : "composedOf (Min 0, Max 1)"
+
+class "TMFxxx / other" as CoreAPI <<API>>
+class "TMFxxx / other" as SecurityAPI <<API>>
+class "TMFxxx / other" as MgmtOpsAPI <<API>>
+class "TMFxxx / other" as NotifAPI <<API>>
+CoreFn --> CoreAPI : "ioRealizedBy (Min 1, Max n)"
+SecurityFn --> SecurityAPI : "ioRealizedBy (Min 1, Max n)"
+MgmtOpsFn --> MgmtOpsAPI : "ioRealizedBy (Min 1, Max n)"
+NotifFn --> NotifAPI : "ioRealizedBy (Min 1, Max n)"
+@enduml

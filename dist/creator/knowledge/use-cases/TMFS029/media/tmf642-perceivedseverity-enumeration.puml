@@ -1,0 +1,10 @@
+@startuml
+enum PerceivedSeverity <<Enumeration>> {
+  critical
+  major
+  minor
+  indeterminate
+  warning
+  cleared
+}
+@enduml

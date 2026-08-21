@@ -1,0 +1,92 @@
+@startuml scenario2-facade-catalog-sync-notification-sequence
+skinparam sequenceMessageAlign center
+actor AdminUI
+
+box "Channel Partner" #LightBlue
+participant "System Of Engagement\nUI-Catalog" as SOE
+participant "TMFC001\n---\nCommercial||Provider Catalog" as CPCat
+participant "Agreement\nManagement\nTMFC039" as CPAgr
+end box
+
+box "CSP France" #LightYellow
+participant "Agreement\nManagement\nTMFC039" as FRAgr
+participant "Opengateway-Facade" as FRFacade
+participant "Catalog\nTMFC001" as FRCat
+end box
+
+box "CSP Belgium" #Lavender
+participant "Agreement\nManagement\nTMFC039" as BEAgr
+participant "Opengateway-Facade" as BEFacade
+participant "Catalog\nTMFC001" as BECat
+end box
+
+== Contract signed ==
+note over CPAgr, BEAgr : same sequence diagram as in scenario 1
+
+group This part of the diagram is hypothetical and could also be done manually using an admin UI catalog to be developed in a later version
+end
+
+== New Offer Catalog Notification ==
+
+note left of CPCat
+  Once a new product offering is created inside the CSP Catalogs,
+  the OpenGateway-Façade translates the internal TMF620 event
+  into a standardized TMF936 event, and notifies the subscribed Channel Partner.
+end note
+
+note over FRCat : CSP France publishes internally\na TMF620 ProductOfferingCreateEvent\nfor "Location Verification"\n(category = Camara).
+FRCat -> FRFacade : 1: TMF620 Event: ProductOfferingCreateEvent\n(productOfferingId=poFR-LocVerif-001,\nname="Location Verification", category="Camara")
+FRFacade -> FRFacade : 2: Mapping (TMF620 -> TMF936)
+FRFacade -> CPCat : 3: TMF936 Event: ProductOfferingCreateEvent\n(productOfferingId=poFR-LocVerif-001,\nname="Location Verification", category="Camara")
+CPCat --> FRFacade : 4: 200 OK
+FRFacade --> FRCat : 5: 200 OK
+
+note over BECat : CSP Belgium publishes internally\na TMF620 ProductOfferingCreateEvent\nfor "Location Verification"\n(category = Camara).
+BECat -> BEFacade : 6: TMF620 Event: ProductOfferingCreateEvent\n(productOfferingId=poBE-LocVerif-001,\nname="Location Verification", category="Camara")
+BEFacade -> BEFacade : 7: Mapping (TMF620 -> TMF936)
+BEFacade -> CPCat : 8: TMF936 Event: ProductOfferingCreateEvent\n(productOfferingId=poBE-LocVerif-001,\nname="Location Verification", category="Camara")
+CPCat --> BEFacade : 9: 200 OK
+BEFacade --> BECat : 10: 200 OK
+
+== CSP Offer Retrieval ==
+
+note left of CPCat
+  The Channel Partner queries for offer details using the IDs received
+  in the ProductOfferingCreateEvent notifications.
+end note
+
+CPCat -> FRFacade : 11: TMF936: GET /productOffering/poFR-LocVerif-001
+FRFacade -> FRFacade : 12: Mapping (TMF936 -> TMF620)
+FRFacade -> FRCat : 13: TMF620: GET /productOffering/poFR-LocVerif-001
+FRCat --> FRFacade : 14: ProductOffering_FR (Location Verification)
+FRFacade -> FRFacade : 15: Mapping (TMF620 -> TMF936)
+FRFacade --> CPCat : 16: ProductOffering_FR (Location Verification)
+CPCat -> FRFacade : 17: TMF936: GET /productSpecification/poFR-LocVerif-001
+FRFacade -> FRFacade : 18: Mapping (TMF936 -> TMF620)
+FRFacade -> FRCat : 19: TMF620: GET /productSpecification/poFR-LocVerif-001
+FRCat --> FRFacade : 20: ProductSpec_FR (Location Verification)
+FRFacade -> FRFacade : 21: Mapping (TMF620 -> TMF936)
+FRFacade --> CPCat : 22: ProductSpec_FR (Location Verification)
+CPCat -> CPCat : 23: Create poFR-LocVerif-001
+
+CPCat -> BEFacade : 24: TMF936: GET /productOffering/poBE-LocVerif-001
+BEFacade -> BEFacade : 25: Mapping (TMF936 -> TMF620)
+BEFacade -> BECat : 26: TMF620: GET /productOffering/poBE-LocVerif-001
+BECat --> BEFacade : 27: ProductOffering_BE (Location Verification)
+BEFacade -> BEFacade : 28: Mapping (TMF620 -> TMF936)
+BEFacade --> CPCat : 29: ProductOffering_BE (Location Verification)
+CPCat -> BEFacade : 30: TMF936: GET /productSpecification/poBE-LocVerif-001
+BEFacade -> BEFacade : 31: Mapping (TMF936 -> TMF620)
+BEFacade -> BECat : 32: TMF620: GET /productSpecification/poBE-LocVerif-001
+BECat --> BEFacade : 33: ProductSpec_BE (Location Verification)
+BEFacade -> BEFacade : 34: Mapping (TMF620 -> TMF936)
+BEFacade --> CPCat : 35: ProductSpec_BE (Location Verification)
+CPCat -> CPCat : 36: Create poBE-LocVerif-001
+
+CPCat -> SOE : 37: Push a notification to the UI inbox\nto inform that a new camera offer has been created.
+
+== Manual Creation of a Packaged Offer ==
+
+AdminUI -> SOE : 38: Creation Bundle Offer (via UI)
+
+@enduml

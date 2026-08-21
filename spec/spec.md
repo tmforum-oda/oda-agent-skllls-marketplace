@@ -24,7 +24,7 @@ This is informed by hands-on work already done in this repo: six TMFSxxx use cas
 - Every standalone **TMFSxxx use case** IG1228 currently references (~32 identifiers at v31.0.0, not all published yet — see §6.3 on status).
 - For every **ODA Component (TMFCxxx)** a use case's References section names: the Component specification, vendored or linked (§5).
 - For every **Open API (TMFxxx)** a component exposes or a use case calls: the OpenAPI/Swagger spec, vendored or linked (§5).
-- A **refresh process** that works with TM Forum's actual publication cadence (IG1228 has released roughly every 4–8 weeks since Oct 2020 — see its own version history).
+- A **refresh process** that works with TM Forum's actual publication cadence (IG1228 has released every 8 weeks since Oct 2020 — see its own version history).
 
 **Out of scope for v1** (future extensions the layout must not preclude — see §7):
 

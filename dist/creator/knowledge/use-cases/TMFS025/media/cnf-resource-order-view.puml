@@ -1,0 +1,17 @@
+@startuml
+title Resource Order for CNF Use Case
+
+legend left
+  White/outlined = Resource Order
+  Light yellow fill = Resource Order Item
+  Purple outline = Action
+  Dark yellow fill = Resource Characteristics
+endlegend
+
+package "Resource Order" {
+  class "add" as AddAction <<Action>>
+  package "ODA Component\n(TMFC000)" <<Resource Order Item>> {
+    class "name=tmfc000" as NameChar <<Resource Characteristics>>
+  }
+}
+@enduml

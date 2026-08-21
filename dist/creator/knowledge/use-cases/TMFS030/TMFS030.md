@@ -107,13 +107,15 @@ In most of the cases MNOs would partner with Satellite Operators who would offer
 
 Currently different service deployment and integration models can be used by each satellite and mobile network operator. Following are three of them.
 
-![](media/image01.png)
+![](media/sno-mno-integration-models.png)
+*([text description](media/sno-mno-integration-models.text-description.md))*
 
 Figure 1.SNO to MNO Integration models
 
 - Same PLMN model or "satellite cell provider" presumes Satellite Operator participates in a bent-pipe architecture (or transparent payload as defined in 3GPP 38.811. In that case terminal and ground station drive the structure of the signal,  while the satellites work transparently as repeaters).  5G NTN integration evolution presumes non-transparent or regenerative mode in which a base station is integrated into the satellite (not depicted). In such a model Satellite Operators would be able to provide its resources as coverage spots on the Earth surface with certain capacity and quality characteristics.
 
-![](media/image02.png)
+![](media/quasi-earth-fixed-ntn-cell-handover.png)
+*([text description](media/quasi-earth-fixed-ntn-cell-handover.text-description.md))*
 
 Figure 2. Quasi Earth Fixed NTN Cell
 
@@ -233,7 +235,8 @@ Pre-conditions:
 
 SNO as a Seller offers Wholesale NTN Cell Capacity that is made available though a number of satellite ground station teleport reference points or links between MNO (as a Buyer) and SNO. MNO and SNO come through pre-order and order processes. High level view looks as follows
 
-![](media/image03.png)
+![](media/wholesale-ntn-cell-capacity-preorder-order-process-overview.png)
+*([text description](media/wholesale-ntn-cell-capacity-preorder-order-process-overview.text-description.md))*
 
 Figure 3. Pre-order and Order Processes for Wholesale NTN Cell Capacity
 
@@ -319,7 +322,8 @@ Once resources are reserved and configurations prepared, SNO confirms the order,
 
 For the sake of easier readability functional and topology architecture explaining the essence of Wholesale NTN Cell Capacity is given below
 
-![](media/image04.png)
+![](media/wholesale-ntn-cell-functional-topology-architecture.png)
+*([text description](media/wholesale-ntn-cell-functional-topology-architecture.text-description.md))*
 
 Figure . Wholesale NTN Cell: Functional and topology architecture
 
@@ -341,7 +345,8 @@ Each *Region* offering is composed of a number of *Cell Pipe* and *Prohibited Ar
 
 Product Structure view
 
-![](media/image05.png)
+![](media/wholesale-ntn-cell-product-structure-view.png)
+*([PlantUML source](media/wholesale-ntn-cell-product-structure-view.puml))*
 
 Figure . Wholesale NTN Cell: Product Structure view
 
@@ -349,17 +354,21 @@ Figure . Wholesale NTN Cell: Product Structure view
 
 ## Step 1: Getting Available Offerings
 
-![](media/image06.png)
+![](media/product-offering-qualification-sequence.png)
+*([PlantUML source](media/product-offering-qualification-sequence.puml))*
 
 ## 2026 Preparation, Technical Qualification and Acceptance of a Quote
 
-![](media/image07.png)
+![](media/quote-preparation-initial-sequence.png)
+*([PlantUML source](media/quote-preparation-initial-sequence.puml))*
 
-![](media/image08.png)
+![](media/quote-preparation-validation-approval-sequence.png)
+*([PlantUML source](media/quote-preparation-validation-approval-sequence.puml))*
 
 ## Ordering
 
-![](media/image09.png)
+![](media/ordering-sequence.png)
+*([PlantUML source](media/ordering-sequence.puml))*
 
 # Conclusion
 
@@ -430,7 +439,8 @@ The proposal is to consider three alternatives.
 
 Assuming current concept of Purchase Management the internal interaction between these proposed components at MNO side could look as follows
 
-![](media/image10.png)
+![](media/wholesale-oda-components-interaction-sequence.png)
+*([PlantUML source](media/wholesale-oda-components-interaction-sequence.puml))*
 
 ### Expand Product Offering Qualification criteria for TMFC027 Product Configurator
 

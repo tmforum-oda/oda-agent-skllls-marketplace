@@ -1,0 +1,146 @@
+@startuml
+title Product Fulfillment and Activation Sequence Diagram
+
+participant "TMFC002 Product Order\nCapture &\nValidation" as OrderCapture
+participant "TMFC003 Product Order\nDelivery Orchestration &\nManagement" as OrderOrch
+participant "TMFC005 Product Inventory" as ProductInventory
+participant "TMFC001 Product Catalog\nManagement" as ProductCatalog
+participant "Event Mgt" as EventMgt
+participant "TMFC009 Service Qualification\nManagement" as ServiceQualification
+participant "TMFC006 Service Catalog\nManagement" as ServiceCatalog
+participant "TMFC008 Service Inventory" as ServiceInventory
+participant "TMFC007 Service Order\nManagement" as ServiceOrder
+participant "TMFC011 Resource Order\nManagement" as ResourceOrder
+participant "TMFC010 Resource Catalog\nManagement" as ResourceCatalog
+participant "TMFC012 Resource Inventory\nManagement" as ResourceInventory
+participant "Resource Qualification" as ResourceQualification
+
+note over OrderCapture, OrderOrch
+  Continuing from the pre-order sequence diagram, the user has already placed the order, and CRM has already submitted the order together with the user-related information.
+end note
+
+== Step After Check Service Or Resource ==
+
+note over OrderCapture
+  Step 1: Customer Order Received
+  Customer Order Processing Started
+end note
+OrderCapture -> OrderCapture : 1 Decompose Customer Order
+
+loop for each productOrderItem
+OrderCapture -> ProductCatalog : 2 TMF 620 Product Catalog Management\nGET /productSpecification
+ProductCatalog --> OrderCapture : 3 TMF 620 200 productSpecification details
+OrderCapture -> OrderCapture : 4 Validate Product Order
+end
+
+OrderCapture -> OrderCapture : 5 Update Product Order Statue
+OrderCapture -> OrderOrch : 6 TMF622 ProductOrdering\nPOST /productOrder
+OrderOrch -> OrderOrch : 7 start execution of productOrderItems
+OrderOrch -> OrderOrch : 8 update productOrderItems\n(state="inProgress")
+OrderOrch -> ProductInventory : 9 TMF637 Product Inventory Management\nPATCH /product\n(product-specification-level order items\nstate="Pending Active")
+ProductInventory -> ProductInventory : 10 Process Product status
+
+alt Can the product be reused?
+ProductInventory --> OrderOrch : 11 Product is ready
+OrderOrch --> OrderOrch : 12 Proceed to the product activation phase
+OrderOrch -> OrderOrch : 13 Unpack the ProductOrder and prepare to proceed to the product activation phase. For details, refer to the next product activation
+end
+
+OrderOrch -> ProductCatalog : 14 TMF620 Product Catalog Management\nGET /productSpecification
+ProductCatalog --> OrderOrch : 15 TMF620 200 productSpecification details, CFSSpecification,\nresourceSpecification, translationRules
+
+== Service Level ==
+
+OrderOrch -> ServiceOrder : 16 TMF641 Service Ordering\nPOST /serviceOrder
+note over ServiceOrder : Service Orchestration Center receives the Service Order
+ServiceOrder -> ServiceOrder : 17 validate Service order\n(state="acknowledged")
+ServiceOrder --> OrderOrch : 18 TMF641 201 serviceOrder (state="acknowledged")
+note over ServiceOrder : Service Orchestration Center starts parsing the CFS/RFS and their Specs
+ServiceOrder -> ServiceOrder : 19 start execution of Service Order
+ServiceOrder -> ServiceOrder : 20 update ServiceOrderItems(state="inProgress")
+note over ServiceOrder : Service Orchestration Center starts analyzing the CFS content to identify all CFSs and RFSs.
+ServiceOrder -> ServiceCatalog : 21 TMF633 Service Catalog Management\nGET /serviceSpecification
+ServiceCatalog --> ServiceOrder : 22 TMF633 200 ServiceSpecification and ResourceSpecification
+ServiceOrder -> ServiceOrder : 23 Organize all ServiceSpecifications and ResourceSpecifications
+
+loop for each ServiceSpecification
+ServiceOrder -> ServiceQualification : 24 TMF645 Service Qualification\nPOST /queryServiceQualification
+ServiceQualification --> ServiceOrder : 25 TMF645 201 queryServiceQualification
+ServiceOrder -> ServiceInventory : 26 TMF638 Service Inventory Management\nPOST /service (state="reserved")
+ServiceInventory --> ServiceOrder : 27 TMF638 201 Service
+end
+
+note over ServiceOrder
+  Service Orchestration Center parses all CFSs/RFSs to identify all Services.
+  TMF633 has already been used above to identify all required ResourceSpecifications.
+end note
+ServiceOrder -> ServiceOrder : 28 Clarify which Services are ready
+ServiceOrder -> ServiceOrder : 29 Clarify which Services depend on Resource Provision
+
+== Resource Level ==
+
+note over ServiceOrder : At the Service Level, identify the required Resources and place them into the Resource Order.
+ServiceOrder -> ResourceOrder : 30 TMF652 Resource Order Management**\nPOST POST /resourceOrder
+ResourceOrder -> ResourceOrder : 31 validate Resource order\n(state="acknowledged")
+ResourceOrder --> ServiceOrder : 32 TMF652 201 resourceOrder (state="acknowledged")
+ResourceOrder -> ResourceOrder : 33 start execution of Resource Order
+ResourceOrder -> ResourceOrder : 34 update ResourceOrderItems(state="inProgress")
+note over ResourceOrder : Start looking up the ResourceSpecifications and the corresponding Resources that need to be ready.
+ResourceOrder -> ResourceCatalog : 35 TMF634 Resource Catalog Management\nGET /resourceCatalog
+ResourceCatalog --> ResourceOrder : 36 TMF634 200 Resource Specification
+
+loop for each ResourceSpecification
+ResourceOrder -> ResourceQualification : 37 TMF761 Resource Qualification\nPOST /queryResourceQualification
+ResourceQualification --> ResourceOrder : 38 TMF761 201 queryResourceQualification
+end
+
+ResourceOrder -> ResourceInventory : 39 TMF639 Resource Inventory Management\nPOST /resource (administrativeState="locked")
+ResourceInventory --> ResourceOrder : 40 TMF639 201 Resource Inventory
+ResourceOrder -> ResourceOrder : 41 All required Resources are ready
+ResourceOrder -> ResourceOrder : 42 update ResourceOrderItems(state="completed")
+
+ResourceOrder -> EventMgt : 43 TMF688 Event Management\nPOST event ResourceOrder\n(state="completed")
+EventMgt -> ServiceOrder : 44 TMF688 Event Management\nPOST listener/resourceOrderStateChange\n(state="completed")
+ServiceOrder -> ServiceOrder : 45 update ServiceOrderItems(state="completed")
+ServiceOrder -> EventMgt : 46 TMF688 Event Management\nPOST event ServiceOrder\n(state="completed")
+EventMgt -> OrderOrch : 47 TMF688 Event Management\nPOST listener/serviceOrderStateChange\n(state="completed")
+OrderOrch -> OrderCapture : 48 Notify the user that the product is ready, and ask if they would like to activate it
+
+note over OrderCapture
+  1. 'completed' is passed back to the order because there is a risk of order cancellation; only after the product order is confirmed will it become 'active'.
+  2. 'active' is equivalent to our archiving process.
+end note
+
+note over OrderCapture : After receiving the user's approval:
+OrderCapture -> OrderOrch : 49 TMF622 Product Order Management\nPATCH /productOrder/{id}?fields=state (state="active")
+OrderOrch -> OrderOrch : 50 update ProductOrderItems(state="active")
+OrderOrch -> ServiceOrder : 51 TMF641 Service Order Management\nPATCH /serviceOrder/{id}?fields=state (state="active")
+ServiceOrder -> ServiceOrder : 52 update ServiceOrderItems(state="active")
+ServiceOrder -> ResourceOrder : 53 TMF652 Resource Order Management\nPOST POST /resourceOrder
+ResourceOrder -> ResourceOrder : 54 update ResourceOrderItems(state="active")
+
+loop Active Resource
+ResourceOrder -> ResourceInventory : 55 TMF639 Resource Inventory Management\nPATCH /resource (administrativeState="active")
+ResourceInventory -> ResourceInventory : 56 update Resource
+ResourceInventory --> ResourceOrder : 57 TMF639 201 Resource Inventory
+end
+
+ResourceOrder --> ServiceOrder : 58 TMF652 201 resourceOrder (state="active")
+
+loop Active Service
+ServiceOrder -> ServiceInventory : 59 TMF638 Service Inventory Management\nPATCH /service (state="active")
+ServiceInventory -> ServiceInventory : 60 update Service
+ServiceInventory --> ServiceOrder : 61 TMF638 201 Service Inventory
+end
+
+ServiceOrder --> OrderOrch : 62 TMF641 201 Service Order
+
+loop Active Product
+OrderOrch -> ProductInventory : 63 TMF637 Product Inventory Management\nPATCH /product (state="active")
+ProductInventory -> ProductInventory : 64 update Product
+ProductInventory --> OrderOrch : 65 TMF637 201 Product Inventory
+end
+
+OrderOrch --> OrderCapture : 66 TMF622 201 Product Order
+note over OrderCapture : 1. Notify the user that the product has been successfully activated and is now ready for use.
+@enduml

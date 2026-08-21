@@ -1,0 +1,95 @@
+@startuml globy-party-agreement-information-model
+skinparam componentStyle uml2
+hide circle
+hide empty members
+
+package "TMFC028 Party Mgt" {
+  class "Tom\n:Party/Individual" as Tom
+  class "CountryTour\n:Party/organization" as CountryTour
+  class "Globy\n:Party/Organization" as Globy
+  class "OP-France\n:Party/Organization" as OPFrance
+  class "OP-Brazil\n:Party/Organization" as OPBrazil
+  class "OP-Belgium\n:Party/Organization" as OPBelgium
+}
+
+package "TMFC035 Party Roles & Permissions Mgt" {
+  class "Developer\n:PartyRole" as Developer
+  class "Authorized representative\n:PartyRole" as AuthorizedRep
+  class "Legal Entity\n:PartyRole" as LegalEntity
+  class "Service Provider Customer\n:PartyRole" as SPCustomerTop
+  class "Application Owner\n:PartyRole" as ApplicationOwner
+  class "Channel Partner Customer\n:PartyRole" as ChannelPartnerCustomer
+  class "Channel Partner\n:PartyRole" as ChannelPartner
+  class "Service Provider Customer\n:PartyRole" as SPCustomerBottom
+  class "ServiceProvider\n:PartyRole" as SPRoleFrance {
+    Name=OP-France
+    ValidPeriod=3Years
+  }
+  class "ServiceProvider\n:PartyRole" as SPRoleBrazil {
+    Name=OP-Brazil
+    ValidPeriod=5Years
+  }
+  class "ServiceProvider\n:PartyRole" as SPRoleBelgium {
+    Name=OP-Belgium
+    ValidPeriod=3Years
+  }
+}
+
+package "TMFC012 Ressource Inventory" {
+  class "Zone Deals\n:LogicalRessource" as ZoneDeals
+}
+
+package "TMFC039 Agreement Mgt" {
+  class ":FrameworkAgreement" as FA1 {
+    Type=AggregatorAgreement
+    FrameworkAgreementId=1
+    duration=2Years
+    StartDate=01-01-2025
+    Location=France
+  }
+  class ":FrameworkAgreement" as FA3 {
+    Type=MarketPlaceAgreement
+    FrameworkAgreementId=3
+    duration=2Years
+    StartDate=01-01-2025
+    Location=Brazil
+  }
+  class ":FrameworkAgreement" as FA2 {
+    Type=AggregatorAgreement
+    FrameworkAgreementId=2
+    duration=2Years
+    StartDate=01-01-2025
+    Location=Belgium
+  }
+}
+
+Tom --> Developer : plays
+Tom --> AuthorizedRep : plays
+CountryTour --> LegalEntity : plays
+CountryTour --> SPCustomerTop : plays
+CountryTour --> ApplicationOwner : plays
+Globy --> ChannelPartnerCustomer : plays
+Globy --> ChannelPartner : plays
+Globy --> SPCustomerBottom : plays
+OPFrance --> SPRoleFrance : plays
+OPBrazil --> SPRoleBrazil : plays
+OPBelgium --> SPRoleBelgium : plays
+
+Developer --> LegalEntity : /played towards
+AuthorizedRep --> LegalEntity : /played towards
+SPCustomerTop --> ChannelPartner : /played towards
+ApplicationOwner --> ChannelPartner : /played towards
+ChannelPartnerCustomer --> ChannelPartner : /played towards
+SPCustomerBottom --> SPRoleFrance : /played towards
+SPCustomerBottom --> SPRoleBelgium : /played towards
+
+ChannelPartner --> ZoneDeals : owns
+
+FA1 --> ChannelPartner : involves
+FA1 --> SPRoleFrance : involves
+FA3 --> ChannelPartner : involves
+FA3 --> SPRoleBrazil : involves
+FA2 --> ChannelPartner : involves
+FA2 --> SPRoleBelgium : involves
+
+@enduml

@@ -1,0 +1,136 @@
+@startuml
+title Quote Preparation. Validation & Approval
+
+box "Mobile Network Operator"
+participant "Product Order Capture & Validation;\nProduct Order Delivery\nOrchestration and Mgmt\n(for Business Partner)" as MNO_POC
+participant "Delegate\nExposure" as MNO_DE
+end box
+
+box "Satellite Network Operator"
+participant "Delegate\nExposure" as SNO_DE
+participant "Product Configurator" as ProdConfig
+participant "Product Order Capture\n& Validation" as SNO_POC
+participant "Product Catalog\nManagement" as ProductCatalogMgmt
+participant "Product Inventory" as ProductInv
+participant "Location\nManagement" as LocationMgmt
+participant "Service Qualification\nManagement" as ServiceQualMgmt
+end box
+
+participant "Resource systems:\nBeam Planning\nTeleport Mgmt\nCapacity Mgmt\nRegulatity DB" as ResourceSystems
+
+note over MNO_POC
+  Based on received Intitial Quote data
+  and "provide additional info" details
+  interacts with other systems and parties
+  to build Quote Update Request
+end note
+
+MNO_POC -> MNO_DE : 35. TMF648 Quote\nPATCH /quote/{id}\nState="In Progress"\n(instantSyncQuote=false\nquoteItem list:\n{quoteItem.id="NTN-Wholesale-001",\nproduct.productCharacteristic (UL/DL Ratio = 0.1)},\n{quoteItem.id="NTN-Cell-12",\nproduct.productCharacteristic (Service Area = SA-234),\nquoteItemRelationship( depends on quoteItem.id="Cell-Pipe-12" )},\n{quoteItem.id="NTN-Teleport-EP-12"\nproduct.productCharacteristic (Preferred Teleport = NTN-TI)\nquoteItemRelationship( depends on quoteItem.id="Cell-Pipe-12")},...)
+MNO_DE -> SNO_DE : 36. TMF648 Quote\nPATCH /quote/{id} (forwarded)
+SNO_DE -> ProdConfig : 37. TMF648 Quote\nPATCH /quote/{id} (forwarded)
+
+note right of ProdConfig
+  TMF648 Quote for items with updated information:
+  QuoteItem[x].State="In Progress"
+end note
+
+ProdConfig -> ProdConfig : 38. TMF760 Product Configuration\nPOST /queryProductConfiguration\n(.,contextEntity = <quote id>,\nrequestProductConfigurationItem list)\n(full Quote including updated and added quote Items)
+
+alt resolve places refs from provided Area location labels
+ProdConfig -> LocationMgmt : 39. TMF673 Geographic Address\nGET /geographicAddress?(...id="SA-234"...)
+LocationMgmt --> ProdConfig : 40. TMF673 Geographic Address\n200 OK (list of places)
+else resolve places refs from Area shape data
+ProdConfig -> LocationMgmt : 41. TMF675 Geographic Location\nGET /geographicLocation?\n(type="polygon",\n"coordinates": [[20,30],[20,35],[20,40],[10,30],[30,10]])
+LocationMgmt --> ProdConfig : 42. TMF675 Geographic Location\n200 OK (list of places)
+end
+
+note over ProdConfig
+  Performs checks and calculation:
+  Validate provided by Buyer Inputs
+  Calculate Aggregate capacity for Tier
+  Check Discounts eligibility
+  If any data yet to be collected from Buyer
+end note
+
+ProdConfig -> ProdConfig : 43. TMF760 Product Configuration\n200 OK\n(State=Done\nList of computedProductConfigurationItem\n(Fully Configured Quote Item))
+note right of ProdConfig : Combined Response for all Quote Items
+
+note over ProdConfig
+  Prepare for
+  Technical Feasibility and
+  Service Qualification:
+  Beam steering feasibility for service area polygon
+  Cell breathing tolerance
+  Capacity headroom per beam
+  Geo-restrictions at cell level
+  SLA deliverability for requested performance tier
+end note
+
+ProdConfig -> ServiceQualMgmt : 44. TMF645 Service Qulification\nPOST /checkServiceQualification
+
+note over ServiceQualMgmt
+  Orchestrate checks:
+  Teleport link allocation
+  Teleport endpoint availability
+  Satellite beam steering feasibility
+  Cell breathing tolerance
+  Capacity headroom
+  SLA deliverability
+  Regulatory/geo feasibility
+end note
+
+ServiceQualMgmt <-> ResourceSystems : 45. Technical Feasibility and\nService Qualification
+
+ServiceQualMgmt --> ProdConfig : 46. TMF645 Service Qulification\n201 Created\n(qualificationResult=qualified)
+
+note right of ProdConfig
+  TMF648 Quote
+  Update Quote with SQ result
+  prepare for final price recalculation
+end note
+
+ProdConfig -> ProdConfig : 47. TMF760 Product Configuration\nPOST /queryProductConfiguration\n(.,contextEntity = <quote id>,\nrequestProductConfigurationItem list)\n(full Quote including updated after SQ quote Items)
+
+note over ProdConfig
+  Performs final calculation
+  Apply aggregate discounts
+end note
+
+ProdConfig -> ProdConfig : 48. TMF760 Product Configuration\n200 OK
+ProdConfig -> ProdConfig : 49. TMF760 Product Configuration\nPOST /checkProductConfiguration (Fully Configured Quote)
+
+note over ProdConfig : Check, Validate, Approve
+
+ProdConfig -> ProdConfig : 50. TMF760 Product Configuration\n200 OK\n([checkProductConfigurationItem(State=Approved)])
+
+note right of ProdConfig
+  TMF648 Quote
+  update Quote (State=Approved)
+  Trigger Buyer Acceptance of Quote
+end note
+
+ProdConfig --> SNO_DE : 51. TMF648 Quote\n200 OK\nState="Approved"\nFully configured Quote
+SNO_DE --> MNO_DE : 52. TMF648 Quote\n200 OK\nState="Approved"\nFully configured Quote
+MNO_DE --> MNO_POC : 53. TMF648 Quote\n200 OK\nState="Approved"\nFully configured Quote
+
+note over MNO_POC
+  Gets final procurement approval,
+  Gets final technical validation,
+  Triggers teleport links prepartaion,
+  Triggers preparation of operational environment
+  and configuration to support the future service
+end note
+
+MNO_POC -> MNO_DE : 54. TMF648 Quote\nPATCH /quote/{id}\nState="Accepted"
+MNO_DE -> SNO_DE : 55. TMF648 Quote\nPATCH /quote/{id}\nState="Accepted"
+SNO_DE -> ProdConfig : 56. TMF648 Quote\nPATCH /quote/{id}\nState="Accepted"
+
+note right of ProdConfig
+  TMF648 Quote
+  update Quote (State=Accepted)
+end note
+
+ProdConfig --> SNO_DE : 57. TMF648 Quote\n200 OK
+SNO_DE --> MNO_DE : 58. TMF648 Quote\n200 OK
+MNO_DE --> MNO_POC : 59. TMF648 Quote\n200 OK
+@enduml

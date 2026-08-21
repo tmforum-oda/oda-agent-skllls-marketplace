@@ -38,7 +38,8 @@ The B2B2x's set of use cases aim is to propose a consistent approach to design, 
 
 Regarding partnering, several configurations can be proposed 
 
-![](media/image01.png)
+![](media/b2b2x-stakeholders-relationships-diagram.png)
+*([text description](media/b2b2x-stakeholders-relationships-diagram.text-description.md))*
 
 The Organization will provide an Offer (ProductOffering) which is based on its own and Suppliers's assets. 
 
@@ -64,7 +65,8 @@ B2B2x use cases will illustrate
 
 To illustrate Multi Party Contract Management for a large enterprise, we propose to use the following configuration: 
 
-![](media/image02.png)
+![](media/sase-solution-stakeholders-simplified-diagram.png)
+*([text description](media/sase-solution-stakeholders-simplified-diagram.text-description.md))*
 
 An Organization (a Communication Service Provider aka CSP) provides to its Customers a SASE Solution based on its own assets and some provided by dedicated Suppliers.
 
@@ -73,7 +75,7 @@ To provide such an offer, the CSP define / enrich
 - Framework Agreement Specification / Implementation Agreement Specification for its Customers
   note: Implementation Agreement Specification can include specific Terms and Conditions linked to Framework Agreement signed with its Suppliers
 
-| <br>![](media/image03.png) | <br>![](media/image04.png) |
+| <br>![](media/csp-offer-catalog-modeling-diagram.png)<br>*([PlantUML source](media/csp-offer-catalog-modeling-diagram.puml))* | <br>![](media/framework-agreement-catalog-illustration.png)<br>*([PlantUML source](media/framework-agreement-catalog-illustration.puml))* |
 | --- | --- |
 | Catalog Modeling illustration | Framework Agreement illustration |
 
@@ -196,13 +198,14 @@ Please note that, depending on the CSP's policies, the Customer ProductOrder may
 
 This figure illustrates CSP's IT System the definition of the Framework Agreement signed with its Customer (referring to its FrameworkAgreementSpec for Cust / ImplementationAgreementSpec for Cust and its Catalog / FrameworkAgreement with its Supplier).
 
-![](media/image05.png)
+![](media/framework-agreement-definition-csp-customer-illustration.png)
+*([PlantUML source](media/framework-agreement-definition-csp-customer-illustration.puml))*
 
 Please see a more detailed illustration (restricted view to CSP's IT System) in SID documentation *(abstract from in progress SID 25.5, available in PROLABORATE Tools)*
 
 *note: this **representation** includes SalesLead and Sales Opportunity not described above*
 
-| <br>![](media/image06.png) | <br>![](media/image07.png) |
+| <br>![](media/framework-agreement-csp-customer-object-diagram.png)<br>*([PlantUML source](media/framework-agreement-csp-customer-object-diagram.puml))* | <br>![](media/framework-agreement-csp-customer-object-diagram-description.png)<br>*([text description](media/framework-agreement-csp-customer-object-diagram-description.text-description.md))* |
 | --- | --- |
 
 ## 3.B Framework Agreement instanciation through Implementation Agreement between CSP and its Customer 
@@ -221,7 +224,8 @@ This figure illustrates Framework Agreement instanciation trough
 
 Please note that, depending on the CSP's policies, the Customer Product Order may be generated before or after the Implementation Agreement approval (signature) by the CSP and the Customer. 
 
-![](media/image08.png)
+![](media/implementation-agreement-instanciation-catalog-order-purchase-illustration.png)
+*([PlantUML source](media/implementation-agreement-instanciation-catalog-order-purchase-illustration.puml))*
 
 In real life, a lot of situations can be encountered: 
  - quote can be done with / without qualification with Suppliers, 
@@ -232,9 +236,9 @@ Please see a more detailed illustration (restricted view to CSP's IT System) in 
 
 | implementationAgreement between CSP and Customer | implementationAgreement between CSP and Customer |
 | --- | --- |
-| <br>![](media/image09.png) | <br>![](media/image10.png) |
+| <br>![](media/implementation-agreement-csp-customer-object-diagram.png)<br>*([PlantUML source](media/implementation-agreement-csp-customer-object-diagram.puml))* | <br>![](media/implementation-agreement-csp-customer-object-diagram-description.png)<br>*([text description](media/implementation-agreement-csp-customer-object-diagram-description.text-description.md))* |
 | implementationAgreement between CSP and Supplier | implementationAgreement between CSP and Supplier |
-| <br>![](media/image11.png) | <br>![](media/image12.png) |
+| <br>![](media/implementation-agreement-csp-supplier-object-diagram.png)<br>*([PlantUML source](media/implementation-agreement-csp-supplier-object-diagram.puml))* | <br>![](media/implementation-agreement-csp-supplier-object-diagram-description.png)<br>*([text description](media/implementation-agreement-csp-supplier-object-diagram-description.text-description.md))* |
 
 # Sequence diagrams
 
@@ -242,7 +246,8 @@ Regarding Customer needs, Customer and CSP will agree on assets that will contri
 
 ## 4.A Step 1 Framework Agreement definition between the CSP and its Customer
 
-![](media/image13.png)
+![](media/framework-agreement-definition-sequence.png)
+*([PlantUML source](media/framework-agreement-definition-sequence.puml))*
 
 Main ODA Components involved in this process
 
@@ -271,17 +276,18 @@ Main ODA Components involved in this process
 
 | Customer Intent Management / SalesLead | Customer Intent Management / SalesLead |
 | --- | --- |
-| <br>![](media/image14.png) | <br>![](media/image15.png) |
+| <br>![](media/customer-intent-management-pattern-sequence.png)<br>*([PlantUML source](media/customer-intent-management-pattern-sequence.puml))* | <br>![](media/customer-intent-management-component-diagram.png)<br>*([text description](media/customer-intent-management-component-diagram.text-description.md))* |
 | Product Offering proposition / SalesOpportunity | Product Offering proposition / SalesOpportunity |
-| <br>![](media/image16.png) | <br>![](media/image17.png) |
+| <br>![](media/product-offering-proposition-sequence.png)<br>*([PlantUML source](media/product-offering-proposition-sequence.puml))* | <br>![](media/product-offering-proposition-component-diagram.png)<br>*([text description](media/product-offering-proposition-component-diagram.text-description.md))* |
 | Definition of Framework Agreement / FrameworkAgreement | Definition of Framework Agreement / FrameworkAgreement |
-| <br>![](media/image18.png) | <br>![](media/image19.png) |
+| <br>![](media/framework-agreement-mgt-detail-sequence.png)<br>*([PlantUML source](media/framework-agreement-mgt-detail-sequence.puml))* | <br>![](media/framework-agreement-mgt-component-diagram.png)<br>*([text description](media/framework-agreement-mgt-component-diagram.text-description.md))* |
 
 ## 4.B Step 2 Framework Agreement instanciation through Implementation Agreement between CSP and its Customer 
 
 *(kept for comment consideration, to be removed) *
 
-![](media/image20.png)
+![](media/framework-agreement-implementation-agreement-sequence.png)
+*([PlantUML source](media/framework-agreement-implementation-agreement-sequence.puml))*
 
 Main ODA Components involved in this process
 
@@ -317,7 +323,7 @@ At this level, ODA Component TMFC033 Purchase Management will be in charge of or
 | --- | --- |
 | Product Offering proposition  → not detailed here, see requirements addressed for TMFS018     see description done for step 1 Framework Agreement definition between the CSP and its Customer regarding step 2.4, how does Commercial and Technical eligibility are done internally at PO/P/S/R level (API, Components) ? (cf TMFS018) regarding step 2.5, how does Commercial and Technical eligibility are done externally at PO/P level (API) ? (cf TMFS018) | Product Offering proposition  → not detailed here, see requirements addressed for TMFS018     see description done for step 1 Framework Agreement definition between the CSP and its Customer regarding step 2.4, how does Commercial and Technical eligibility are done internally at PO/P/S/R level (API, Components) ? (cf TMFS018) regarding step 2.5, how does Commercial and Technical eligibility are done externally at PO/P level (API) ? (cf TMFS018) |
 | instanciation of Implementation Agreement  focus on purchase order from CSP to its Supplier | instanciation of Implementation Agreement  focus on purchase order from CSP to its Supplier |
-| <br>![](media/image21.png) | <br>![](media/image22.png) |
+| <br>![](media/purchase-order-management-sequence.png)<br>*([PlantUML source](media/purchase-order-management-sequence.puml))* | <br>![](media/purchase-order-management-component-diagram.png)<br>*([text description](media/purchase-order-management-component-diagram.text-description.md))* |
 
 # Conclusion
 

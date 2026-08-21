@@ -85,7 +85,8 @@ This is illustrated in the  [IG1373B AN Use Cases: Network Quality Optimization
 
  
 
-![](media/image01.png)
+![](media/overlay-underlay-network-connectivity-layers.png)
+*([text description](media/overlay-underlay-network-connectivity-layers.text-description.md))*
 
 **Fig 1.1 IG1373 Use Case Access Domain section 3.3.8 underlay network **
 
@@ -96,7 +97,8 @@ Similarly, there are further layers of dependency e.g. Fibre Transport layer and
 
 An  example of layering may also emerge when considering the ServCo NetCo/InfraCo split:
 
-![](media/image02.png)
+![](media/servco-netco-infraco-sdwan-layering.png)
+*([text description](media/servco-netco-infraco-sdwan-layering.text-description.md))*
 
 **Fig 1.2 Example of layering between ServCo and NetCo/InfraCo for SD-WAN service**
 
@@ -104,7 +106,8 @@ In the following examples we assume use of a mixture of Mplify LSO API data mod
 
 The positioning of this SD-WAN exemplar to  IG1224 NaaSOperational Domains and TR313C ODA Production Components is: 
 
-![](media/image03.png)
+![](media/oda-production-sdwan-naas-domain-mapping.png)
+*([text description](media/oda-production-sdwan-naas-domain-mapping.text-description.md))*
 
 **Fig 1.3 Mapping of exemplar to IG1224 NaaS Domain model**
 
@@ -146,7 +149,8 @@ The use case in IG1373B created the scenario below which has been enhanced with:
 
 - Addition of the proposed Service Management Intelligent Controller (SMIC) solution that creates a customer facing end to end service management view derived from the collection of technology domains e.g. SD-WAN Controllers, IP /MPLS underlay underpinned by fiber controllers, physical and infrastructure. This concept of e2e Service Management Operational Domain/Manager comes from IG1224 NaaS Operational Domain concept. 
 
-![](media/image04.png)
+![](media/sdwan-self-healing-use-case-packet-flow-overview.png)
+*([text description](media/sdwan-self-healing-use-case-packet-flow-overview.text-description.md))*
 
 **Figure 2.1 IG1373 Self-healing SD-WAN Use Case **
 
@@ -163,7 +167,8 @@ Recent IP Management Solutions are based on Network Management realized as contr
 
 *Ed Note consider putting this following material in an appendix.* 
 
-![](media/image05.png)
+![](media/element-management-vs-network-management-evolution.png)
+*([text description](media/element-management-vs-network-management-evolution.text-description.md))*
 
 **Figure 2.2 Evolution  of IP Management**
 
@@ -171,7 +176,8 @@ The evolution of IP Management has led to the introduction of Service based Inte
 
 Current vendor implementation of IP Networking are adopting Information models based on IETF models and standards. The main elements of these models and standards are summarized below. 
 
-![](media/image06.png)
+![](media/ietf-network-controller-models-standards-stack.png)
+*([text description](media/ietf-network-controller-models-standards-stack.text-description.md))*
 
 **Figure 2.3 IETF Network Controller models and standards for Technology Domain Managers **
 
@@ -181,7 +187,8 @@ This evolution mirrors the ITU evolution of Telecommunication Network Network (T
 
 It also mirrors ITU-T proposal in draft Y.3061 Architecture framework for Autonomous Networks with multiple cooperating controllers/orchestrators:
 
-![](media/image07.png)
+![](media/itu-y3061-autonomous-network-architecture-framework.png)
+*([text description](media/itu-y3061-autonomous-network-architecture-framework.text-description.md))*
 
 **Figure 2.4  Draft Y.3061 Architecture Framework for AN and roles of Controllers**
 
@@ -199,7 +206,8 @@ The implied model in IG1373B is  complex as it:
 
 To illustrate the different aspects of this complex model, this document  has refactored the IG1373 model into an SD-WAN OSI Layered Service Model:
 
-![](media/image08.png)
+![](media/sdwan-osi-layered-service-model-with-underlay-clouds.png)
+*([text description](media/sdwan-osi-layered-service-model-with-underlay-clouds.text-description.md))*
 
 **Figure 2.4 Refactored IG1373 SD-WAN OSI  Layered Service Model:**
 
@@ -242,7 +250,8 @@ Whilst the models that follow cover the logical models for the provision of the 
 
 The core concepts are shown below:
 
-![](media/image09.png)
+![](media/tr255-connectivity-service-domain-flow-connection-elements.png)
+*([text description](media/tr255-connectivity-service-domain-flow-connection-elements.text-description.md))*
 
 **Figure 3.1  Connectivity service model  TR255  GB999 ODA Production Implemtnation Guidelines**
 
@@ -252,17 +261,20 @@ This concept of connections/trails and flows has a long history in ITU G.905 and
 
 For this exemplar  the SD-WAN Service model used is the MEF 70.1 Service Model and Attributes at [MEF 3.0 SD-WAN Service Standards](https://www.mef.net/service-standards/overlay-services/sd-wan/)
 
-![](media/image10.png)
+![](media/sdwan-service-provider-network-lettered-overview.png)
+*([text description](media/sdwan-service-provider-network-lettered-overview.text-description.md))*
 
 **Figure 3.1.1 SD-WAN Service Model (derived from MEF 70.1)**
 
 **Key for MEF SD-WAN Service Model MEF 70.1**
 
-![](media/image11.png)
+![](media/mef-sdwan-service-model-key-legend.png)
+*([text description](media/mef-sdwan-service-model-key-legend.text-description.md))*
 
 The scope of this MEF SD-WAN model and concepts above is shown in the refactored IG1373 SD-WAN Use Case Layered Model:
 
-![](media/image12.png)
+![](media/sdwan-osi-layered-service-model-mef-mapping-view.png)
+*([text description](media/sdwan-osi-layered-service-model-mef-mapping-view.text-description.md))*
 
 **Figure 3.1.2  SD-WAN  service model mapped to refactored IG1373 SD-WAN OSI Layered Service Model**
 
@@ -270,7 +282,8 @@ The scope of this MEF SD-WAN model and concepts above is shown in the refactored
 
 ### Mapping MEF SD-WAN model entities to TM Forum SID/ ONF
 
-![](media/image13.png)
+![](media/mef-sdwan-service-information-model.png)
+*([PlantUML source](media/mef-sdwan-service-information-model.puml))*
 
 **Figure 3.1.3 Information model MEF SD-WAN Service**
 
@@ -347,7 +360,8 @@ Whilst provisioning may be largely done at a network service level, assurance pr
 
 Shown below is an example of the distinction between a *Service* and a *Resource*.  A CFS may declaratively describe an SD-WAN *Flow* while a *Resource Function* may describe a *Flow* as realized in the network:
 
-![](media/image14.png)
+![](media/tmf664-resource-function-activation-sequence.png)
+*([PlantUML source](media/tmf664-resource-function-activation-sequence.puml))*
 
 ** Fig 3.3.1  TMF664 request is declarative while the response/result may include the end-to-end topology as deployed. **
 
@@ -368,7 +382,8 @@ Use of TMF 688 would appear to fit with the thinking about democratizing of Data
 
 Incident Identification service VPN Degradation Example
 
-![](media/image15.png)
+![](media/vpn-degradation-network-incident-identification-ascii.png)
+*([text description](media/vpn-degradation-network-incident-identification-ascii.text-description.md))*
 
 **FIG 3.3.2 Example of Network incident Identification IETF NMOP Network IncidentYANG-03**
 
@@ -378,7 +393,8 @@ In this use case the Service Management Intelligent Controller incorporates the 
 
  
 
-![](media/image16.png)
+![](media/alarm-incident-management-interworking-ascii.png)
+*([text description](media/alarm-incident-management-interworking-ascii.text-description.md))*
 
 **Fig 3.3.3  Interworking with Alarm Management  IETF NMOP Network IncidentYANG-03**
 
@@ -400,7 +416,8 @@ Functionally  equivalent work has been specified by the TM Forum  AI-Closed Lo
 
 The IETF [draft-ietf-nmop-network-anomaly-architecture-02 - A Framework for a Network Anomaly Detection Architecture](https://datatracker.ietf.org/doc/draft-ietf-nmop-network-anomaly-architecture/)  describes a set of co-operating function that together can predict anomalies and incidents
 
-![](media/image17.png)
+![](media/network-anomaly-detection-architecture-framework-ascii.png)
+*([text description](media/network-anomaly-detection-architecture-framework-ascii.text-description.md))*
 
 **Figure 3.3.4 IETF NMP **[Framework for a Network Anomaly Detection Architecture](https://datatracker.ietf.org/doc/draft-ietf-nmop-network-anomaly-architecture/)
 
@@ -429,7 +446,8 @@ Subsequentially these were decided to be features of as single Anomaly Managemen
 
 The architectural model for Anomaly Management is described  in TR 284A 
 
-![](media/image18.png)
+![](media/anomaly-management-closed-loop-functions-tr284a.png)
+*([text description](media/anomaly-management-closed-loop-functions-tr284a.text-description.md))*
 
 **Figure 3.3.5 Anomaly management Closed Loop functions TR284A**
 
@@ -439,7 +457,8 @@ The stages used are based on the Observe Orient Decide Act model which is functi
 
 The architectural model for event processing is documented in TR284D.
 
-![](media/image19.png)
+![](media/anomaly-event-processing-framework-tr284.png)
+*([text description](media/anomaly-event-processing-framework-tr284.text-description.md))*
 
 **Figure 3.3.6   Framework of Anomaly Event processing TR284**
 
@@ -469,14 +488,17 @@ TM Forum Alarm Management TMF642
 
 The Alarm Management API support the current alarm types identified are:
 
-![](media/image20.png)
+![](media/tmf642-alarmtype-enumeration.png)
+*([PlantUML source](media/tmf642-alarmtype-enumeration.puml))*
  wit:h severity
 
-![](media/image21.png)
+![](media/tmf642-perceivedseverity-enumeration.png)
+*([PlantUML source](media/tmf642-perceivedseverity-enumeration.puml))*
 
 The current data model for Alarm is
 
-![](media/image22.png)
+![](media/tmf642-alarm-data-model.png)
+*([PlantUML source](media/tmf642-alarm-data-model.puml))*
 
 This does have a set of attributes that could be enhanced: 
 
@@ -492,7 +514,8 @@ TM Forum Incident Management TMF742
 
 There is a data model for incidents in TMF742.
 
-![](media/image23.png)
+![](media/tmf742-incident-resource-model.png)
+*([PlantUML source](media/tmf742-incident-resource-model.puml))*
 
 This does have 
 
@@ -746,7 +769,8 @@ which has a mapping to 
 
 MEF has the following high-level model for (Subscriber) IP Service 
 
-![](media/image24.png)
+![](media/mef-ip-service-diagram.png)
+*([text description](media/mef-ip-service-diagram.text-description.md))*
 
 **Figure 3.4.1  MEF IP Service Model  MEF 69.1 MEF 61.1**
 
@@ -754,7 +778,8 @@ MEF has the following high-level model for (Subscriber) IP Service 
 
 The high-level Information Model for MEF IP Services is 
 
-![](media/image25.png)
+![](media/mef-ip-service-information-model.png)
+*([PlantUML source](media/mef-ip-service-information-model.puml))*
 
 **Figure 3.4.2 Information model MEF IP Service**
 
@@ -788,19 +813,22 @@ This is valuable when creating JSON Schema extensions to be used with Open APIs 
 
 Fiber access and transport are specified by IEEE and ITU-T. The following tabel shows the initial work of the access and transport infrastructure.
 
-![](media/image26.png)
+![](media/pon-technology-standards-bitrate-table.png)
+*([text description](media/pon-technology-standards-bitrate-table.text-description.md))*
 
 **Figure 3.4.5.1  Transport model sources **
 
 The following diagrams show exemplar Physical Infrastructure Models for Access and Core Transport network used to realize fiber based networks. 
 
-![](media/image27.png)
+![](media/passive-infrastructure-access-ftth-fttr.png)
+*([text description](media/passive-infrastructure-access-ftth-fttr.text-description.md))*
 
 **Figure 3.5.2 Passive Infrastructure Access network **
 
 *Ed Note: UML models to be **added.along** with description of entities  This will be based on an **mTOP** Contribution ( in this working document comments).*
 
-![](media/image28.png)
+![](media/passive-infrastructure-core-transport.png)
+*([text description](media/passive-infrastructure-core-transport.text-description.md))*
 
 **Figure 3.5.3 Exemplar passive Infrastructure - Core transport **
 
@@ -808,7 +836,8 @@ The following diagrams show exemplar Physical Infrastructure Models for Access a
 
 There is a possibility of using [draft-ietf-ivy-network-inventory-topology-01](https://datatracker.ietf.org/doc/html/draft-ietf-ivy-network-inventory-topology-01) as basis of a formal Information Model  in the SID. An example of the current IETF model is shown below: 
 
-![](media/image29.png)
+![](media/ietf-ivy-network-inventory-yang-model-tree.png)
+*([text description](media/ietf-ivy-network-inventory-yang-model-tree.text-description.md))*
 
 **Figure 3.5.4 Draft IETF Network Inventory model in YANG**
 
@@ -840,7 +869,8 @@ Draft specification for this SMIC Controller Solution  including the implementa
 
 Development of this solution as ODA component proposal is on hold whilst ODA works our template requirements for composition components such as Controllers Gateways and other non- 'systems of record' components.
 
-![](media/image30.png)
+![](media/fibre-break-cross-domain-health-restoration-sequence.png)
+*([PlantUML source](media/fibre-break-cross-domain-health-restoration-sequence.puml))*
 
 **Fig 4.1 Exemplar network heath restoration sequence arising from fiber break **
 
@@ -917,7 +947,8 @@ Additional analysis, enhanced coordination and alignment i is needed with the  
 
 updated
 
-![](media/image31.png)
+![](media/sdwan-osi-layered-service-model-canonical-full.png)
+*([text description](media/sdwan-osi-layered-service-model-canonical-full.text-description.md))*
 
 **Figure A 6.1  Refactored layers model derived form IG1373 SD-WAN Use Case **
 
@@ -935,5 +966,5 @@ for the purposes of this use case we use  these terms:
 | --- | --- | --- |
 | Problem | A State regarded as undesirable and that may require remedial action. A Problem cannot necessarily be associated with a Cause. The resolution of a Problem does not necessarily act on the thing that has the Problem. * Note that there is a historic aspect to the concept of a Problem. The current State may be operational, but there could have been a Fault that is unexplained, and the fact of that unexplained recent Fault is a Problem. * Note that while a Problem is unresolved it may continue to require attention. A record of resolved Problems may be maintained in a log. * Note that there may be a State which is considered to be a Problem from several perspectives. For example, consider a "loss of light" State that may cause multiple services to fail. In this example, a new State (the light recovers) may cause the Problem to be resolved from one perspective (the services are operational once more) but may leave the Problem as unresolved (because the loss of light has not been explained). Further, in this example, there could be another development (the reason for the temporary loss of light is traced to a microbend in the fiber that is repaired) resulting in that unresolved Problem now being resolved. But, in this example, this still leaves a further Problem unresolved (a microbend occurred, and that Problem is not resolved until it is understood how it occurred and a remedy is put in place to prevent recurrence). |   |
 | (Resource) State: | A particular Condition that a Resource has (i.e., it is in a State) at a specific time. For example, a router may report the total amount of memory it has, and how much is free. These are the Values of two Characteristics of a Resource. These Values can be interpreted to determine the Condition of the Resource, and that may determine the State of the router, such as shortage of memory. * While a State may be observed at a specific moment in time, it is actually determined by summarizing measurement over time in a process sometimes called State compression. * It may be helpful to qualify this as "Resource State" to make clear the distinction between this and other uses of "state" such as "protocol state". This term may be contrasted with "Operational State" as used in [RFC8342]. For example, the state of a link might be up/down/ degraded, but the operational state of link would include a collection of Values of Characteristics of the link. | For assurance and observability, it is necessary to send Resource State changes with timestamps using telemetry / intent reporting |
-| Incident: | A (Network) Incident is an undesired Occurrence such as an unexpected interruption of a network service, degradation of the quality of a network service, or the below-target performance of a network service. An Incident results from one or more Problems, and a Problem may give rise to or contribute to one or more Incidents. Greater discussion of Network Incident relationships, including Customer Incidents and Incident management, can be found in [I-D.ietf-nmop-network-incident-yang]. | Use this term to describe a network Impairment i.e., reduction in Heath affecting integrity resilience of the network such as a Line Card fault or physical connection failure. This abstracts and encapsulates other concepts which may be used internal to a self-healing domain  see IETF Terminology <br>![](media/image32.png) This scenario assumes incidents are timestamped |
+| Incident: | A (Network) Incident is an undesired Occurrence such as an unexpected interruption of a network service, degradation of the quality of a network service, or the below-target performance of a network service. An Incident results from one or more Problems, and a Problem may give rise to or contribute to one or more Incidents. Greater discussion of Network Incident relationships, including Customer Incidents and Incident management, can be found in [I-D.ietf-nmop-network-incident-yang]. | Use this term to describe a network Impairment i.e., reduction in Heath affecting integrity resilience of the network such as a Line Card fault or physical connection failure. This abstracts and encapsulates other concepts which may be used internal to a self-healing domain  see IETF Terminology <br>![](media/fault-problem-incident-cause-symptom-consolidation-ascii.png)<br>([text description](media/fault-problem-incident-cause-symptom-consolidation-ascii.text-description.md)) This scenario assumes incidents are timestamped |
 

@@ -106,7 +106,8 @@ Since this is an automated process and assumes a happy path scenario there is no
 
 The Service model, using the NAAS framework of abstraction to enable multi domain orchestration when the domains belong to multiple stakeholders (business partners), with the technical specs mapping to the Product Offering bundle for this Use Case is given below.
 
-![](media/image01.png)
+![](media/5g-data-vr-motobike-gaming-product-offering-decomposition.png)
+*([PlantUML source](media/5g-data-vr-motobike-gaming-product-offering-decomposition.puml))*
 
 # Diagrams
 
@@ -114,11 +115,13 @@ The Service model, using the NAAS framework of abstraction to enable multi domai
 
 The sequence flow for the Multi domain orchestration with the dynamic orchestration function is given below.
 
-![](media/image02.png)
+![](media/multi-domain-orchestration-sequence-lowres-duplicate.png)
+*([text description](media/multi-domain-orchestration-sequence-lowres-duplicate.text-description.md))*
 
 Due to technical issues in embedding Lucid chart in Confluence the image of the diagram is being given below:
 
-![](media/image03.png)
+![](media/multi-domain-orchestration-sequence.png)
+*([PlantUML source](media/multi-domain-orchestration-sequence.puml))*
 
 The Sequence flow is described in the table below.
 
@@ -174,11 +177,13 @@ In cases where the progression will only be through Product Orders based on PO a
 
 ## ODA component model
 
-![](media/image04.png)
+![](media/oda-component-model-b2b2x-marketplace-partners.png)
+*([text description](media/oda-component-model-b2b2x-marketplace-partners.text-description.md))*
 
 Due to problems with embedding Lucid Chart in Confluence, the diagram as an image is being reproduced here. 
 
-![](media/image05.png)
+![](media/oda-component-model-lowres-duplicate.png)
+*([text description](media/oda-component-model-lowres-duplicate.text-description.md))*
 
 # Conclusion
 

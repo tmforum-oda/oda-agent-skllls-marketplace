@@ -1,0 +1,58 @@
+@startuml
+title Wholesale ODA components interaction
+
+box "Mobile Network Operator"
+participant "Application on behalf of\nNetwork Planning" as App
+participant "Business Parnter\nProduct Order Capture & Validation" as MNO_POC
+end box
+
+box "Purchase Management"
+participant "Business Partner\nProduct Offering\nQualifiction" as BP_POQ
+participant "Business Partner\nQuote" as BP_Quote
+participant "Business Partner\nProduct Order Delivery\nOrchestration and Mgmt" as BP_OrderOrch
+end box
+
+participant "Satellite Network Operator\n(detailed in other sequence diagrams)" as SNO
+
+App -> App : 1. Infrastructure Demand raised
+App -> MNO_POC : 2. TMFxxx Procurement Request\nIntent: Prepare inputs for procurement order
+MNO_POC -> MNO_POC : 3. translate demand into\npartner purchase intent,\nmaps technical requirements\nto Product Offering criteria
+MNO_POC -> MNO_POC : 4. orchestrates request enrichment with party,\nagreement, location data and other details\nneeded for Suppliers
+MNO_POC -> BP_POQ : 5. query offering qualification
+BP_POQ -> SNO : 6.
+SNO --> BP_POQ : 7.
+BP_POQ --> MNO_POC : 8. result
+
+note over MNO_POC
+  Based on received POQ data
+  interacts with other systems and parties
+  to build Initial Quote Request
+end note
+
+App -> MNO_POC : 9. TMFxxx Procurement Request\nupdate / select eligible offerings
+MNO_POC -> BP_Quote : 10. partner quote request
+BP_Quote -> SNO : 11.
+note over BP_Quote : quote preparation
+SNO --> BP_Quote : 12. approved
+BP_Quote --> MNO_POC : 13.
+
+note over BP_OrderOrch
+  obtains final procurement approval,
+  final technical validation
+end note
+
+MNO_POC -> BP_OrderOrch : 14. accepted
+BP_OrderOrch -> SNO : 15.
+SNO --> MNO_POC : 16.
+
+MNO_POC --> App : 17. TMFxxx Procurement Request\nResult: OK, Prepared inputs for\nprocurement order to a supplier
+App -> MNO_POC : 18. accept
+MNO_POC -> BP_OrderOrch : 19.
+
+note over BP_OrderOrch
+  Prepares a Supplier Order including
+  Quote ID, Product configuration, ...
+end note
+
+BP_OrderOrch -> BP_OrderOrch : 20. TMFxxx Supplier Order\nCreate procurement order
+@enduml

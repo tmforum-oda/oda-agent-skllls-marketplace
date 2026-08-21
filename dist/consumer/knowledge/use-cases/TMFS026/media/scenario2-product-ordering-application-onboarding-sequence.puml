@@ -1,0 +1,138 @@
+@startuml scenario2-product-ordering-application-onboarding-sequence
+skinparam sequenceMessageAlign center
+
+box "Channel Partner" #LightBlue
+participant "Product Order\nCapture &\nValidation\nPOCV TMFC002" as CPPOCV
+participant "TMFC001\n---\nCommercial||Provider Catalog" as CPCat
+participant "Product Order\nOrchestration\nPOOM TMFC003" as POOM
+participant "Party Role &\nPermissions\nTMFC035" as CPRole
+end box
+
+box "CSP France" #LightYellow
+participant "OpenGateway-Facade" as FRFacade
+participant "Party\nManagement\nTMFC028" as FRParty
+participant "Resource\nInventory\nTMFC008" as FRRes
+participant "Party Role &\nPermissions\nTMFC035" as FRRole
+participant "POCV\nTMFC002" as FRPOCV
+end box
+
+box "CSP Belgium" #Lavender
+participant "OpenGateway-Facade" as BEFacade
+participant "Party\nManagement\nTMFC028" as BEParty
+participant "Resource\nInventory\nTMFC008" as BERes
+participant "Party Role &\nPermissions\nTMFC035" as BERole
+participant "POCV\nTMFC002" as BEPOCV
+end box
+
+== Delegation to the POOM ==
+CPPOCV -> POOM : 1: TMF622: POST ProductOrderStateChangeEvent\n(orderId="001", productOrder{...},state ="accepted")
+POOM --> CPPOCV : 2: 200 OK
+note left of CPPOCV : Order placed by Tom has Id=001
+
+== Retrieving Order Details ==
+POOM -> CPPOCV : 3: TMF622: GET /productOrder/001
+CPPOCV --> POOM : 4: 200 OK\n(orderDate, orderStatus,\nproductOffering.id, relatedParty, OrderItem)\n(for FR + BEL)
+
+== Retrieving Product Offering Details ==
+note over POOM : The category "Camara" and commercial attributes are retrieved\nfrom the Channel Partner Catalog.
+POOM -> CPCat : 5: TMF620: GET\n/productOffering/{productOffering.id}
+CPCat --> POOM : 6: ProductOffering (incl. category="Camara")
+
+== Start Delivery Process ==
+POOM -> POOM : 7: Start fulfillment workflow
+
+== Onboarding ApplicationOwner CSP-France ==
+POOM -> FRFacade : 8: TMF931: POST /applicationOwnerOrganization\n(name: CountryTour, contactMedium(...))
+note right of FRFacade
+  The TMF931 specification does not allow for the direct creation of a Party entity.
+  Currently, a Party is instantiated implicitly during the creation of
+  the Party Role 'ApplicationOwner' (Refer to Note:Additionnal Context).
+  We propose an enhancement to the API to enable the independent creation of
+  a Party entity, separate from the Party Role,
+  through the introduction of a dedicated endpoint: /applicationOwnerOrganization.
+end note
+FRFacade -> FRFacade : 9: Mapping TMF931 -> TMF632
+FRFacade -> FRParty : 10: TMF632: POST /organization\n(name: CountryTour, status: active, contactMedium(...))
+FRParty --> FRFacade : 11: 201 Created (id: ownerFR-12345)
+FRFacade --> POOM : 12: 201 Created (id: ownerFR-12345)
+
+== Assign ApplicationOwner Role CSP-France ==
+POOM -> FRFacade : 13: TMF931: POST /applicationOwner\n(role=applicationOwner, partyId=ownerFR-12345, appId=appFR-67890)
+FRFacade -> FRFacade : 14: Mapping (931 -> 669)
+FRFacade -> FRRole : 15: TMF669: POST /partyRole\n(role=applicationOwner, partyId=ownerFR-12345, appId=appFR-67890)
+FRRole --> FRFacade : 16: 201 Created (roleFR-abcde)
+FRFacade --> POOM : 17: 201 Created (roleFR-abcde)
+
+== Onboarding Application CSP-France ==
+POOM -> FRFacade : 18: TMF931: POST /application\n(name: ZoneDeals, relatedParty=ownerFR-12345)
+FRFacade -> FRFacade : 19: Mapping (931 -> 639)
+FRFacade -> FRRes : 20: TMF639: POST /resource\n(name: ZoneDeals, category=application,\nrelatedParty=ownerFR-12345, status=active)
+FRRes --> FRFacade : 21: 201 Created (resourceId=appFR-67890)
+FRFacade --> POOM : 22: 201 Created (appFR-67890)
+
+== Onboarding ApplicationOwner CSP-Belgium ==
+POOM -> BEFacade : 23: TMF931: POST /applicationOwnerOrganization\n(name: CountryTour, contactMedium(...))
+note right of BEFacade
+  The TMF931 specification does not allow for the direct creation of a Party entity.
+  Currently, a Party is instantiated implicitly during the creation of
+  the Party Role 'ApplicationOwner' (Refer to Note:Additionnal Context).
+  We propose an enhancement to the API to enable the independent creation of
+  a Party entity, separate from the Party Role,
+  through the introduction of a dedicated endpoint: /applicationOwnerOrganization.
+end note
+BEFacade -> BEFacade : 24: Mapping (931 -> 632)
+BEFacade -> BEParty : 25: TMF632: POST /organization\n(name: CountryTour, type=organization,\nstatus=active, contactMedium(...))
+BEParty --> BEFacade : 26: 201 Created (ownerBE-12345)
+BEFacade --> POOM : 27: 201 Created (ownerBE-12345)
+
+== Assign ApplicationOwner Role CSP-Belgium ==
+POOM -> BEFacade : 28: TMF931: POST /applicationOwner\n(role=applicationOwner, partyId=ownerBE-12345, appId=appBE-67890)
+BEFacade -> BEFacade : 29: Mapping (931 -> 669)
+BEFacade -> BERole : 30: TMF669: POST /partyRole\n(role=applicationOwner,\npartyId=ownerBE-12345, appId=appBE-67890)
+BERole --> BEFacade : 31: 201 Created (roleBE-abcde)
+BEFacade --> POOM : 32: 201 Created (roleBE-abcde)
+
+== Onboarding Application CSP-Belgium ==
+POOM -> BEFacade : 33: TMF931: POST /application\n(name: ZoneDeals, relatedParty=ownerBE-12345)
+BEFacade -> BEFacade : 34: Mapping (931 -> 639)
+BEFacade -> BERes : 35: TMF639: POST /resource\n(name: ZoneDeals, category=application,\nrelatedParty=ownerBE-12345, status=active)
+BERes --> BEFacade : 36: 201 Created (appBE-67890)
+BEFacade --> POOM : 37: 201 Created (appBE-67890)
+
+== Product Order France ==
+POOM -> FRFacade : 38: TMF931: POST /apiProductOrder\n(externalId=order-001, relatedParty=ownerFR-12345, orderItem(...))
+FRFacade -> FRFacade : 39: Mapping (931 -> 622)
+FRFacade -> FRPOCV : 40: TMF622: POST /productOrder\n(externalId=order-001, relatedParty=ownerFR-12345, orderItem(...))
+FRPOCV --> FRFacade : 41: 201 Created (poFR-0001, status=acknowledged)
+FRFacade -> FRFacade : 42: (622->931)
+FRFacade --> POOM : 43: 201 Created (poFR-0001, status=acknowledged)
+POOM --> FRFacade : 44: 200 OK
+FRFacade --> FRPOCV : 45: 200 OK
+note over FRPOCV : Starting orderdelivery on CSP side
+FRPOCV -> FRFacade : 46: TMF622 Event: productOrderStateChangeEvent\n(poFR-0001, state=completed)
+FRFacade -> FRFacade : 47: Mapping (622 -> 931)
+FRFacade -> POOM : 48: TMF931 Event: productOrderStateChangeEvent\n(poFR-0001, completed)
+POOM --> FRFacade : 49: 200 OK
+FRFacade --> FRPOCV : 50: 200 OK
+
+== Product Order Belgium ==
+POOM -> BEFacade : 51: TMF931: POST /apiProductOrder\n(externalId=order-001, relatedParty=ownerBE-12345, orderItem(...))
+BEFacade -> BEFacade : 52: Mapping (931 -> 622)
+BEFacade -> BEPOCV : 53: TMF622: POST /productOrder\n(externalId=order-001, relatedParty=ownerBE-12345, orderItem(...))
+BEPOCV --> BEFacade : 54: 201 Created (poBE-0001, status=acknowledged)
+BEFacade -> BEFacade : 55: Mapping (622->931)
+BEFacade --> POOM : 56: 201 Created (poBE-0001, status=acknowledged)
+POOM --> BEFacade : 57: 200 OK
+BEFacade --> BEPOCV : 58: 200 OK
+note over BEPOCV : Starting orderdelivery on CSP side
+BEPOCV -> BEFacade : 59: TMF622 Event: productOrderStateChangeEvent\n(poBE-0001, state=completed)
+BEFacade -> BEFacade : 60: Mapping (622->931)
+BEFacade -> POOM : 61: TMF931 Event: productOrderStateChangeEvent\n(poBE-0001, completed)
+POOM --> BEFacade : 62: 200 OK
+BEFacade --> BEPOCV : 63: 200 OK
+
+== Channel Partner Application Role Creation ==
+POOM -> CPRole : 64: TMF669: POST /partyRole\n(role: applicationApiConsumer,\npartyId: ownerCP-12345, applicationId: appCP-67890)
+CPRole --> POOM : 65: 201 Created (id=roleCP-abcde)
+
+@enduml

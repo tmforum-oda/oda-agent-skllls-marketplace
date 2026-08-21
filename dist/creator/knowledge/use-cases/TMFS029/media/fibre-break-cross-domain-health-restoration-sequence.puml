@@ -1,0 +1,87 @@
+@startuml
+title Cross Domain Fibre Break
+
+actor "Operations" as Operations
+
+box "e2eService Management Operational Domain" #LightBlue
+participant "Service\nProblem\\Mngt Solution" as ServiceProblem
+participant "<x-Domain>\nService Management Intent Controller Solution(SMIC)" as SMIC
+end box
+
+box "SDWAN Operational Domain" #LightGrey
+participant "<x-D>\nVendor A\nSD-WAN\nController Solution" as VendorA
+end box
+
+box "IPService Domain" #LightGrey
+participant "<x-Domain>\nVendor B\nODM CoreIP\nService Solution" as VendorB
+end box
+
+box "Customer Operational Domain ODM" #LightGrey
+participant "Vendor C\nProvider\nEdgeRouter" as VendorC
+participant "Vendor D\nProvider\nvirtual EdgeRouter" as VendorD
+end box
+
+box "Physical and Line Plant Technology Domain" #LightBlue
+participant "Vendor E\nFibreManagement\n& Inventory Solution" as VendorE
+participant "Vendor F\nLineplantMngt\n& Inventory Solution" as VendorF
+end box
+
+participant "Work Order\nManagement Solution" as WorkOrder
+actor "BackHoe" as BackHoe
+participant "Event\nManagement" as EventMgmt
+
+BackHoe -> EventMgmt : 1 BackHoe Severs Fibre
+
+activate SMIC
+
+VendorB -> SMIC : 2 reportServiceImpairment {Timestamp=UTC}\n{IP addresssUnreachable} TMF664/TMF688/TMF638
+VendorA -> SMIC : 3 reportServiceImpairment {Timestamp=UTC}\n{latency out of limits} TMF664/TMF688/TMF638
+VendorC -> SMIC : 4 reportResourceImpact {ResourceId= X} {Timestamp=UTC}\nTMF664/TMF688/TMF639
+VendorD -> SMIC : 5 reportResourceImpact {ResourceId=Y} {Timestamp=UTC}\nTMF664/TMF688/TMF639
+
+note left of SMIC
+  For simplicity single events are shown per networking component.
+  In some cases 100's of events might be created.
+  Each related to diffeent service and resources impacts by fibre break
+end note
+
+SMIC -> ServiceProblem : 6 report\nnetwork Health\ndegraded
+
+SMIC -> VendorE : 7 report associations {ResourceId= X} TMF639
+SMIC -> VendorE : 8 report associations {ResourceId= Y} TMF639
+VendorE -> SMIC : 9 Resource =X AssociationList Fibre Links TMF639
+VendorE -> SMIC : 10 Resource =Y AssociationList Fibre Links TMF639
+
+SMIC -> VendorF : 11 report associations TMF639 {AssociationList Fibre Links}
+SMIC -> VendorF : 12 report associations TMF639 {AssociationList Fibre Links}
+VendorF -> SMIC : 13 Resource =X AssociationList FibreLinks->LinePlant Links TMF639
+VendorF -> SMIC : 14 Resource =Y AssociationList FibreLinks->LinePlant Links TMF639
+
+SMIC -> SMIC : 15
+note right of SMIC
+  Algorithm / AI analyses events, resource service topology and timestamps
+  determines underlying issues and required work orders
+end note
+
+SMIC -> Operations : 16 Validate\nWorkOrder Proposals
+Operations -> SMIC : 17 Authorised\nWorkorder
+
+SMIC -> WorkOrder : 18 workOrderMangement\n{Resource Id= Fibre xxxxx  Probable cause+ Fibre cut, Geolocation= WC1 6FB, PlantId} TMF697
+activate WorkOrder
+note right of WorkOrder : Physical investigation Truck Roll and site repair
+WorkOrder -> SMIC : 19 responseWorkOrderMangement\n{Resource Id= Fibre xxxxx  Actual cause Fibre cut, Geolocation= WC1 6FE, PlantId} TMF697
+deactivate WorkOrder
+
+SMIC -> ServiceProblem : 20 report\nnetwork Health\nrestored
+
+deactivate SMIC
+
+legend right
+  NOTE:
+  1. <x-D> Cross Domain
+  2. SMIC Service Management Intent controller
+  3. ODM  Operational Domain Manager
+  4. MTDC Multi-technology Domain Controller
+end legend
+
+@enduml

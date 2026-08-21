@@ -1,0 +1,57 @@
+@startuml
+title Information View: MEF SDWAN Service Viewpoint
+
+skinparam class {
+  BackgroundColor<<ServiceSpec>> Orange
+  BackgroundColor<<ResourceSpec>> Yellow
+}
+
+class "SD-WAN Virtual Connection\n(SWVC)" as SWVC <<ServiceSpec>>
+class "MEF characteristic A (SWVC)" as SWVC_A
+class "MEF characteristicZ (SWVC)" as SWVC_Z
+
+class "SDWAN Edge" as Edge <<ServiceSpec>>
+class "MEF characteristic A (Edge)" as Edge_A
+class "MEF characteristicZ (Edge)" as Edge_Z
+
+class "Tunnel Virtual\nConnection" as TVC <<ServiceSpec>>
+
+class "Underlay Connectivity\nService (UCS)" as UCS <<ServiceSpec>>
+
+class "SDWAN UNI" as UNI <<ResourceSpec>>
+class "MEF characteristic A (UNI)" as UNI_A
+class "MEF characteristicZ (UNI)" as UNI_Z
+
+class "SDWAN VirtualConnection\nEnd Point (SWVC EP)" as SWVC_EP <<ResourceSpec>>
+class "MEF characteristic A (SWVC EP)" as EP_A
+class "MEF characteristicZ (SWVC EP)" as EP_Z
+
+class "UCS User to Network\nInterface (UCS UNI)" as UCS_UNI <<ResourceSpec>>
+
+SWVC -- SWVC_A
+SWVC -- SWVC_Z
+Edge -- Edge_A
+Edge -- Edge_Z
+UNI -- UNI_A
+UNI -- UNI_Z
+SWVC_EP -- EP_A
+SWVC_EP -- EP_Z
+
+SWVC --> Edge : "Min 1, Max n"
+SWVC --> TVC : "Min 1, Max m"
+SWVC --> SWVC_EP
+TVC --> UCS : "Min 1 Max n"
+
+Edge --> UNI : "Min1 Max n"
+Edge --> SWVC_EP : "Min 1 Max 1"
+UNI --> SWVC_EP : "min 1 max n"
+
+UCS --> UCS_UNI : "Min 1, Max n"
+
+note right of SWVC
+  Legend:
+  Orange = SDWAN Service Classes
+  Yellow = Resource Specification
+end note
+
+@enduml

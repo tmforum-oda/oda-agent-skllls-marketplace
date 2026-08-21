@@ -1,0 +1,198 @@
+@startuml
+title Information View: Service Catalog view
+
+legend left
+  Blue border = Product Offering / Product Offering Price Specification
+  Green border = Product Specification / Product Specification Characteristic
+  Dark orange fill = Service Specification
+  Light orange fill = Service Specification Characteristic
+endlegend
+
+class "Contract" as Contract
+class "Cloud-Based VPN\nProductOffering" as ProductOffering
+class "Billing Method" as BillingMethod <<Product Offering Price Specification>>
+Contract --> ProductOffering
+ProductOffering --> BillingMethod
+
+class "Cloud-Based VPN\nSpecification" as ProductSpec <<Product Specification>> {
+  Circuit Maintenance Level
+  Customer Address
+  IP Protocol
+  Site Type
+  Bandwidth
+  Service Type ID
+  DNN
+  Customer Network Identifier
+  Access Method
+  Cloud Provider
+}
+ProductOffering --> ProductSpec
+
+class "Fixed Access CFS\nSpecification" as FixedAccessCFS <<Service Specification>> {
+  Access Method
+  Standard Address ID
+  Customer Network Identifier
+  Circuit Maintenance Level
+  Bandwidth
+  IP Protocol
+}
+class "Cloud Acess CFS\nSpecification" as CloudAccessCFS <<Service Specification>> {
+  Cloud Provider
+  Cloud Account
+  Customer Network Identifier
+  Circuit Maintenance Level
+  Bandwidth
+  IP Protocol
+}
+class "Mobile Access CFS\nSpecification" as MobileAccessCFS <<Service Specification>> {
+  Customer Network Identifier
+  IP Protocol
+  DNN
+  Circuit Maintenance Level
+  Bandwidth
+}
+ProductSpec --> FixedAccessCFS : "Site Type Choice Rule\nrestricts"
+ProductSpec --> CloudAccessCFS : restricts
+ProductSpec --> MobileAccessCFS : restricts
+
+class "IPRAN Service Bundle\nSpecification" as IPRANBundle <<Service Specification>> {
+  Standard Address ID
+  Customer Network Identifier
+  IP Protocol
+  Bandwidth
+  Circuit Maintenance Level
+}
+class "OTN Service Bundle\nSpecification" as OTNBundle <<Service Specification>> {
+  Standard Address ID
+  Customer Network Identifier
+  Bandwidth
+  IP Protocol
+  Circuit Maintenance Level
+}
+class "PON Service Bundle\nSpecification" as PONBundle <<Service Specification>> {
+  Standard Address ID
+  Customer Network Identifier
+  Bandwidth
+  IP Protocol
+  Circuit Maintenance Level
+}
+class "Fiber Service Bundle\nSpecification" as FiberBundle <<Service Specification>> {
+  Standard Address ID
+  Customer Network Identifier
+  Bandwidth
+  IP Protocol
+  Circuit Maintenance Level
+}
+FixedAccessCFS --> IPRANBundle : "Access Method Choice Rule\nis realized by"
+FixedAccessCFS --> OTNBundle : is realized by
+FixedAccessCFS --> PONBundle : is realized by
+FixedAccessCFS --> FiberBundle : is realized by
+
+class "IPRAN PW\nAccess RFS\nSpecification" as IPRANPWAccessRFS <<Service Specification>> {
+  Standard Address ID
+  Bandwidth
+}
+class "IPRAN-CN2\nRFS\nSpecification" as IPRANCN2RFS <<Service Specification>> {
+  Bandwidth
+  Customer Network Identifier
+  Circuit Maintenance Level
+  IP Protocol
+}
+IPRANBundle --> IPRANPWAccessRFS
+IPRANBundle --> IPRANCN2RFS
+IPRANPWAccessRFS <-- IPRANCN2RFS : requires
+
+class "OTN Ethernet\nLink RFS\nSpecification" as OTNEthernetRFS <<Service Specification>> {
+  Standard Address ID
+  Bandwidth
+}
+class "OTN-CN2 RFS\nSpecification" as OTNCN2RFS <<Service Specification>> {
+  Customer Network Identifier
+  Bandwidth
+  Circuit Maintenance Level
+  IP Protocol
+}
+OTNBundle --> OTNEthernetRFS
+OTNBundle --> OTNCN2RFS
+
+class "PON Link RFS\nSpecification" as PONLinkRFS <<Service Specification>> {
+  Standard Address ID
+  Circuit Maintenance Level
+}
+class "MAN RFS\nSpecification" as MANRFS <<Service Specification>> {
+  Standard Address ID
+  Bandwidth
+  Customer Network Identifier
+  Circuit Maintenance Level
+}
+class "MAN-CN2 RFS\nSpecification" as MANCN2RFS <<Service Specification>> {
+  Bandwidth
+  Customer Network Identifier
+  IP Protocol
+}
+class "MAN-Internet\nRFS\nSpecification" as MANInternetRFS <<Service Specification>> {
+  Standard Address ID
+  Bandwidth
+  Circuit Maintenance Level
+  IP Protocol
+}
+PONBundle --> PONLinkRFS
+PONBundle --> MANRFS
+PONBundle --> MANCN2RFS
+PONBundle --> MANInternetRFS
+PONLinkRFS <-- MANRFS : requires
+
+class "Fiber RFS\nSpecification" as FiberRFS <<Service Specification>> {
+  Standard Address ID
+  Circuit Maintenance Level
+}
+class "CN2 RFS\nSpecification" as CN2RFS <<Service Specification>> {
+  Bandwidth
+  Customer Network Identifier
+  Circuit Maintenance Level
+}
+FiberBundle --> FiberRFS
+FiberBundle --> CN2RFS
+
+class "Cloud Access Service\nBundle Specification" as CloudAccessBundle <<Service Specification>> {
+  Cloud Provider
+  Cloud Account
+  Customer Network Identifier
+  Circuit Maintenance Level
+  Bandwidth
+  IP Protocol
+}
+CloudAccessCFS --> CloudAccessBundle : is realized by
+
+class "Cloud-CN2\nRFS\nSpecification" as CloudCN2RFS <<Service Specification>> {
+  Standard Address ID
+  Bandwidth
+  IP Protocol
+}
+CloudAccessBundle --> CloudCN2RFS
+
+class "5G Slice Access Service\nBundle Specification" as SGSliceBundle <<Service Specification>> {
+  Customer Network Identifier
+  IP Protocol
+  DNN
+  Circuit Maintenance Level
+  Bandwidth
+}
+MobileAccessCFS --> SGSliceBundle : is realized by
+
+class "5GC DNN RFS\nSpecification" as GC5DNNRFS <<Service Specification>> {
+  IP Protocol
+  DNN
+}
+class "5GC DNN\nAccess RFS\nSpecification" as GC5DNNAccessRFS <<Service Specification>> {
+  Customer Network Identifier
+  IP Protocol
+}
+class "5GC-CN2 RFS\nSpecification" as GC5CN2RFS <<Service Specification>> {
+  Customer Network Identifier
+  DNN
+}
+SGSliceBundle --> GC5DNNRFS
+SGSliceBundle --> GC5DNNAccessRFS
+SGSliceBundle --> GC5CN2RFS
+@enduml

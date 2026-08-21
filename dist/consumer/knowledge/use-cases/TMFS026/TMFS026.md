@@ -54,7 +54,8 @@ The use case is focused on the implementation of the TMF Operate APIs, especiall
 
 - Create and manage Applications for these Application Owners
 
-![](media/image01.png)
+![](media/ecosystem-actor-chain-architecture.png)
+*([text description](media/ecosystem-actor-chain-architecture.text-description.md))*
 
 The use case illustrates two business models defined by the GSMA Open Gateway initiative:
 
@@ -172,7 +173,8 @@ Aggregator Model with SLA (Belgium and France): In addition to the 'Geolocation 
 
 Marketplace Model (Brazil): "Globy" acts as a Marketplace, where the Brazilian CSP exposes its 'Geolocation API' with its own pricing and conditions. Globy takes a commission on each transaction.
 
-![](media/image02.png)
+![](media/globy-ordering-screen-flow-ui-mockup.png)
+*([text description](media/globy-ordering-screen-flow-ui-mockup.text-description.md))*
 
 # Information View
 
@@ -180,29 +182,34 @@ This information model represents the Globy perspective components.
 
 The use case does not currently cover the agreement's setup, it is considered as a pre-existing input.
 
-![](media/image03.png)
+![](media/globy-party-agreement-information-model.png)
+*([PlantUML source](media/globy-party-agreement-information-model.puml))*
 
 - The below diagrams details the information models for the channel partner and CSP product catalogs. It also depicts the framework agreements established between them. This information is also considered as pre-existing inputs.
 
 The first modeling illustrates how, by following the Aggregator** agreement model**, the **offer and product catalog views** of the **Channel Partner** as well as the **involved CSPs in France and Belgium** are represented.
 
-![](media/image04.png)
+![](media/aggregator-scenario-catalog-agreement-information-model.png)
+*([PlantUML source](media/aggregator-scenario-catalog-agreement-information-model.puml))*
 
 The second modeling illustrates how, by following the **Marketplace agreement model**, the **offer and product catalog views** of the **Channel Partner** and the **involved CSP** are represented.
 
-![](media/image05.png)
+![](media/marketplace-scenario-catalog-agreement-information-model.png)
+*([PlantUML source](media/marketplace-scenario-catalog-agreement-information-model.puml))*
 
 **Note: « AgreementItem » will need to be reconsidered in the evolution of the ABE « Agreement » within the SID.**
 
 - Below is the representation of the Product Order view for the order placed by Tom, on behalf of Country Tour with the Channel Partner Globy. It corresponds to the result of the first version of this use case.
 
-![](media/image06.png)
+![](media/tom-country-tour-product-order-information-model.png)
+*([PlantUML source](media/tom-country-tour-product-order-information-model.puml))*
 
 Below is the representation of the Product Order view for the order placed by Channel Partner Globy with the CSPs in France and Belgium.
 
 This order enables the application ZoneDeals, managed by the ApplicationOwner Country-Tour, to access geolocation services provided by these CSPs. The API product will be consumed by the ZoneDeals application, which is owned by Country-Tour, to deliver location-based experiences to end users for marketing purposes.
 
-![](media/image07.png)
+![](media/channel-partner-csp-product-order-information-model.png)
+*([PlantUML source](media/channel-partner-csp-product-order-information-model.puml))*
 
 # Sequence diagrams:
 
@@ -280,7 +287,8 @@ BUNDLE CREATION:
 
 - Combines CSP France and Belgium offers into a single commercial offering
 
-![](media/image08.png)
+![](media/scenario1-contract-catalog-sync-notification-sequence.png)
+*([PlantUML source](media/scenario1-contract-catalog-sync-notification-sequence.puml))*
 
 ***Tom submits the order on the channel partner's website:***
 
@@ -322,7 +330,8 @@ Note:
 
 We propose enhancing the API to enable the independent creation of a Party entity, separate from the Party Role, through the introduction of a dedicated endpoint: "/applicationOwnerOrganization."
 
-![](media/image09.png)
+![](media/scenario1-product-ordering-application-onboarding-sequence.png)
+*([PlantUML source](media/scenario1-product-ordering-application-onboarding-sequence.puml))*
 
 ##  Scénario 2 :
 
@@ -358,7 +367,8 @@ Note that even with a façade, the internal TMF API will have to understand the 
 
 - *** Contract & Catalog Sync Notification Via Opengateway-Facade:***
 
-![](media/image10.png)
+![](media/scenario2-facade-catalog-sync-notification-sequence.png)
+*([PlantUML source](media/scenario2-facade-catalog-sync-notification-sequence.puml))*
 
 - ***Tom submits the order on the channel partner's website:  ***
 
@@ -382,7 +392,8 @@ Notes:
 
 - ***Product Ordering and Application Onboarding Via Opengateway-Facade:***
 
-![](media/image11.png)
+![](media/scenario2-product-ordering-application-onboarding-sequence.png)
+*([PlantUML source](media/scenario2-product-ordering-application-onboarding-sequence.puml))*
 
 **NOTE :Additional Context – GSMA Approach**
 

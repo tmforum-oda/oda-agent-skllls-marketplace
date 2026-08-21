@@ -1,0 +1,65 @@
+@startuml
+title Product Offering Qualification
+
+box "Mobile Network Operator"
+participant "Product Order Capture & Validation;\nProduct Order Delivery\nOrchestration and Mgmt\n(for Business Partner)" as MNO_POC
+participant "Delegate\nExposure" as MNO_DE
+end box
+
+box "Satellite Network Operator"
+participant "Delegate\nExposure" as SNO_DE
+participant "Product Configurator" as ProdConfig
+participant "Party\nManagement" as PartyMgmt
+participant "Agreement\nManagement" as AgreementMgmt
+participant "Billing Account\nManagement" as BillingMgmt
+participant "Location\nManagement" as LocationMgmt
+participant "Product Catalog\nManagement" as ProductCatalogMgmt
+end box
+
+MNO_POC -> MNO_DE : 1. TMF679 Product Offering Qualification\nPOST /queryProductOfferingQualification\n(instantSyncQualification=true\nplace=[country,locality,id],\nrelatedParty(id,name="MNO A",role="NTN Buyer",\nproductCharacteristic(name="NTNBand",value="n254";\nname="ChannelBandwidth",value="5MHz"))
+MNO_DE -> SNO_DE : 2. TMF679 Product Offering Qualification\nPOST /queryProductOfferingQualification\n((instantSyncQualification=true\nplace=[country,locality,id],\nrelatedParty(id,name="MNO A",role="NTN Buyer",\nproductCharacteristic(name="NTNBand",value="n254";\nname="ChannelBandwidth",value="5MHz"))
+SNO_DE -> ProdConfig : 3. TMF679 Product Offering Qualification\nPOST /queryProductOfferingQualification\n((instantSyncQualification=true\nplace=[country,locality,id],\nrelatedParty(id,name="MNO A",role="NTN Buyer",\nproductCharacteristic(name="NTNBand",value="n254";\nname="ChannelBandwidth",value="5MHz"))
+
+group resolve party
+ProdConfig -> PartyMgmt : 4. TMF632 Party Mgt\nGET /organization/356
+PartyMgmt --> ProdConfig : 5. TMF632 Party Mgt\n200 OK(organization(\nagreement="ag458",\nsettlementAccount="sa1293"))
+end
+
+group resolve agreement
+ProdConfig -> AgreementMgmt : 6. TMF651 Agreement Mgt\nGET /agreement/ag458
+AgreementMgmt --> ProdConfig : 7. TMF651 Agreement Mgt\n200 OK(agreement())
+end
+
+group resolve settlement account
+ProdConfig -> BillingMgmt : 8. TMF666 Account Mgt\nGET /settlementAccount/sa1293
+BillingMgmt --> ProdConfig : 9. TMF666 Account Mgt\n200 OK(settlementAccount())
+end
+
+alt resolve places refs from address data
+ProdConfig -> LocationMgmt : 10. TMF673 Geographic Address\nGET /geographicAddress?\n(country="CountryA",locality="Region1";\ncountry="CountryA",locality="Region2";\nid="Polygon-34FTG1")
+LocationMgmt --> ProdConfig : 11. TMF673 Geographic Address\n200 OK (list of places)
+else resolve places refs from shape data
+ProdConfig -> LocationMgmt : 12. TMF675 Geographic Location\nGET /geographicLocation?\n(type="polygon",\n"coordinates": [[[30,10],[40,40],[20,40],[10,20],[30,10]])
+LocationMgmt --> ProdConfig : 13. TMF675 Geographic Location\n200 OK (list of places)
+end
+
+ProdConfig -> ProductCatalogMgmt : 14. TMF620 Product Catalog Mgt\nGET /productOffering?\nprodSpecCharValueUse=(name="NTNBand",value="n254";\nname="ChannelBandwidth",value="5MHz")
+ProductCatalogMgmt --> ProdConfig : 15. TMF620 Product Catalog Mgt\n200 OK(filtered eligible offerings,\npolicies/rules applied to ProductOfferings, ProductOfferingPrices:\nrestrict the availability of a product offering accordingly,\nproduct offering price as condition dependent price,\nplaces references)
+
+note over ProdConfig
+  Performs filtering:
+  Agreement is valid, has regional restrictions
+  Settlement Account state is eligible
+  Offering is valid for place/location
+  Offering SLA permitted for location
+  Commercial policy and geo restrictions
+  Regulatory constraints (landing rights)
+  One-hop static range
+end note
+
+ProdConfig -> ProdConfig : 16. Build a list of eligible offerings\n(conditional Wholesale NTN Cell Capacity),\nCalculate prices
+
+ProdConfig --> SNO_DE : 17. TMF679 Product Offering Qualification\n200 OK (list of qualifiedProductOfferingItems)\nconditional Wholesale NTN Cell Capacity
+SNO_DE --> MNO_DE : 18. TMF679 Product Offering Qualification\n200 OK (list of qualifiedProductOfferingItems)\nconditional Wholesale NTN Cell Capacity
+MNO_DE --> MNO_POC : 19. TMF679 Product Offering Qualification\n200 OK (list of qualifiedProductOfferingItems)\nconditional Wholesale NTN Cell Capacity
+@enduml

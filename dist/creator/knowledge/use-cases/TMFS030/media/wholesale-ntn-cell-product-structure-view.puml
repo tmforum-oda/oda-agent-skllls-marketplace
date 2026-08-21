@@ -1,0 +1,97 @@
+@startuml
+title Wholesale NTN Cell: Product Structure view
+
+legend left
+  Blue border = Product Offering
+  Light blue fill = Product Offering Characteristic
+  Green border = Product Specification
+  Light green fill = Product Specification Characteristic
+  Orange border = Service Specification
+  Light orange fill = Service Specification Characteristic
+endlegend
+
+package "TMFC001 Product Catalog" {
+  class "Wholesale NTN Cell Capacity" as WholesaleOffer <<Product Offering>> {
+    Number of Cells (RU) to connect:
+    ..cells <=50: Tier 1
+    ..50 < cells <=100: Tier 2
+    ..100 < cells <=200: Tier 3
+    ..200 < cells: Tier 4
+    Number of Aggregate MHz:
+    ..DL/UL ratio - ratio multiplier applied
+    ..MHz <=500: Capacity Tier 1
+    ..500 < MHz <=1000: Capacity Tier 2
+    ..1000 < MHz <=2000: Capacity Tier 3
+    ..2000 < MHz: Capacity Tier 4
+  }
+
+  class "Region" as RegionOffer <<Product Offering>> {
+    Number of Aggregate MHz (per region) -\nregional multiplier applied
+  }
+  WholesaleOffer --> RegionOffer : "Min 1"
+
+  class "NTN Teleport Interface" as TeleportOffer <<Product Offering>>
+  WholesaleOffer --> TeleportOffer : "Min 1"
+
+  class "NTN Cell Pipe" as CellPipeOffer <<Product Offering>>
+  RegionOffer --> CellPipeOffer : "Min 1"
+
+  class "Prohibited Area" as ProhibitedOffer <<Product Offering>> {
+    Service Area
+  }
+  RegionOffer --> ProhibitedOffer : "Min 0"
+
+  class "NTN Teleport Interface EndPoint" as TeleportEndpointOffer <<Product Offering>> {
+    Ingress/Egress Profile
+  }
+  CellPipeOffer --> TeleportEndpointOffer : "Min 1, Max 1"
+
+  class "NTN Cell" as NTNCellOffer <<Product Offering>> {
+    Service Area: <shape location point data>
+    Ch. Bandwidth: 5, 10, 15, 20 MHz
+    Performance: {Standard, Premium}
+  }
+  CellPipeOffer --> NTNCellOffer : "Min 1, Max 1"
+
+  class "NTN Teleport Interface" as TeleportSpec <<Product Specification>>
+  class "NTN Teleport Interface EndPoint" as TeleportEndpointSpec <<Product Specification>> {
+    Ingress/Egress Profile
+  }
+  class "NTN Cell" as NTNCellSpec <<Product Specification>> {
+    NTN band
+    Service Area: <shape location point data>
+    Ch. Bandwidth: 5, 10, 15, 20 MHz
+    Performance: {Standard, Premium}
+  }
+  class "Prohibited Area" as ProhibitedSpec <<Product Specification>> {
+    Service Area
+  }
+  TeleportOffer --> TeleportSpec
+  TeleportEndpointOffer --> TeleportEndpointSpec
+  NTNCellOffer --> NTNCellSpec
+  ProhibitedOffer --> ProhibitedSpec
+  TeleportEndpointSpec ..> TeleportSpec : Requires
+  NTNCellSpec ..> TeleportEndpointSpec : Requires
+}
+
+package "TMFC006 Service Catalog" {
+  class "NTN Teleport Interface" as TeleportSvc <<Service Specification>>
+  class "NTN Teleport Interface EndPoint" as TeleportEndpointSvc <<Service Specification>> {
+    Ingress/Egress Profile
+  }
+  class "NTN Cell" as NTNCellSvc <<Service Specification>> {
+    NTN band
+    Service Area: <shape location point data>
+    Ch. Bandwidth: 5, 10, 15, 20 MHz
+    Performance: {Standard, Premium}
+  }
+  class "Prohibited Area" as ProhibitedSvc <<Service Specification>> {
+    Service Area
+  }
+}
+
+TeleportSpec --> TeleportSvc
+TeleportEndpointSpec --> TeleportEndpointSvc
+NTNCellSpec --> NTNCellSvc
+ProhibitedSpec --> ProhibitedSvc
+@enduml

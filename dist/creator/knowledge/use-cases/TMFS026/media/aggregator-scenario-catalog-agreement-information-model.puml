@@ -1,0 +1,137 @@
+@startuml aggregator-scenario-catalog-agreement-information-model
+hide circle
+hide empty members
+
+title Aggregator Scenario
+
+package "Channel Partner :Globy Catalog / TMFC001 Product Catalog Mgt" {
+  package "Commercial Catalog view" {
+    class "Open Gateway Device Location bundle offer\n<<Product Offering>>" as CommBundleOffer
+    class "Subscription One Time Fee: 10e\n<<Product Offering Price>>" as CommBundlePrice
+    class "France&Belgium Location Verification Camara API Bundled\n<<Product Offering>>" as CommBundledApi
+    class "Usage Verify Location 0.7e / API call\nDiscount 10% if 1000+ Api calls/month\n<<Product Offering Price>>" as CommBundledApiPrice
+    class "SLA\n<<Product Offering>>" as CommSla
+    class "One Time Fee: 5e\n<<Product Offering Price>>" as CommSlaPrice
+    class "Location Verification v1 Camara API\n<<Product Specification>>" as CommSpec
+    class "purpose dpv:Marketing\nApiCoverage:BelgiumI&France\n<<Product Specification Characteristic>>" as CommSpecChar
+    class "Verify Location\n<<Product Usage Specification>>" as CommUsageSpec
+    class "SLA Service\n<<Product Specification>>" as CommSlaSpec
+    class "99.9% Uptime\n<<Product Specification Characteristic>>" as CommSlaSpecChar
+
+    CommBundleOffer -- CommBundlePrice
+    CommBundleOffer --> CommBundledApi
+    CommBundleOffer --> CommSla
+    CommBundledApi -- CommBundledApiPrice
+    CommSla -- CommSlaPrice
+    CommBundledApi --> CommSpec
+    CommSla --> CommSlaSpec
+    CommSpec -- CommSpecChar
+    CommSpec --> CommUsageSpec : Concerns
+    CommSlaSpec -- CommSlaSpecChar
+    CommSlaSpec --> CommSpec : Requires
+  }
+
+  package "Provider Catalog view" {
+    class "Belgium Location Verification v1 Camara API Standalone\n<<Product Offering>>" as ProvBeOffer
+    class "UsagePricePlan 0.4e /Api Call\n<<Product Offering Price>>" as ProvBePrice
+    class "Location Verification v1 Camara API\n<<Product Specification>>" as ProvBeSpec
+    class "purpose dpv:Marketing\nApiCoverage:Belgium\n<<Product Specification Characteristic>>" as ProvBeSpecChar
+    class "Verify Location\n<<Product Usage Specification>>" as ProvBeUsageSpec
+
+    class "France Location Verification v1 Camara API Standalone\n<<Product Offering>>" as ProvFrOffer
+    class "UsagePricePlan 0.4e /Api Call\n<<Product Offering Price>>" as ProvFrPrice
+    class "Location Verification v1 Camara API\n<<Product Specification>>" as ProvFrSpec
+    class "purpose dpv:Marketing\nApiCoverage:France\n<<Product Specification Characteristic>>" as ProvFrSpecChar
+    class "Verify Location\n<<Product Usage Specification>>" as ProvFrUsageSpec
+
+    ProvBeOffer -- ProvBePrice
+    ProvBeOffer --> ProvBeSpec
+    ProvBeSpec -- ProvBeSpecChar
+    ProvBeSpec --> ProvBeUsageSpec
+
+    ProvFrOffer -- ProvFrPrice
+    ProvFrOffer --> ProvFrSpec
+    ProvFrSpec -- ProvFrSpecChar
+    ProvFrSpec --> ProvFrUsageSpec
+  }
+
+  CommSpec ..> ProvBeSpec : corresponds
+  CommSpec ..> ProvFrSpec : corresponds
+}
+
+package "Op-Belgium :Catalog / TMFC001 Product Catalog Mgt" {
+  class "Belgium Location Verification v1 Camara API Standalone\n<<Product Offering>>" as CspBeOffer
+  class "UsagePricePlan 0.4e /Api Call\n<<Product Offering Price>>" as CspBePrice
+  class "Location Verification v1 Camara API\n<<Product Specification>>" as CspBeSpec
+  class "purpose dpv:Marketing\nApiCoverage:Belgium\n<<Product Specification Characteristic>>" as CspBeSpecChar
+  class "Verify Location\n<<Product Usage Specification>>" as CspBeUsageSpec
+  class "ProductOfferingTermOrCondition" as CspBeTerm
+
+  CspBeOffer -- CspBePrice
+  CspBeOffer --> CspBeSpec
+  CspBeSpec -- CspBeSpecChar
+  CspBeSpec --> CspBeUsageSpec
+  CspBeTerm ..> CspBeOffer : representedAs
+  CspBeTerm ..> CspBePrice : influences
+}
+
+package "Op-France :Catalog / TMFC001 Product Catalog Mgt" {
+  class "France Location Verification v1 Camara API Standalone\n<<Product Offering>>" as CspFrOffer
+  class "UsagePricePlan 0.4e /Api Call\n<<Product Offering Price>>" as CspFrPrice
+  class "Location Verification v1 Camara API\n<<Product Specification>>" as CspFrSpec
+  class "purpose dpv:Marketing\nApiCoverage:France\n<<Product Specification Characteristic>>" as CspFrSpecChar
+  class "Verify Location\n<<Product Usage Specification>>" as CspFrUsageSpec
+  class "ProductOfferingTermOrCondition" as CspFrTerm
+
+  CspFrOffer -- CspFrPrice
+  CspFrOffer --> CspFrSpec
+  CspFrSpec -- CspFrSpecChar
+  CspFrSpec --> CspFrUsageSpec
+  CspFrTerm ..> CspFrOffer : representedAs
+  CspFrTerm ..> CspFrPrice : influences
+}
+
+ProvBeOffer ..> CspBeOffer : corresponds
+ProvFrOffer ..> CspFrOffer : corresponds
+
+package "TMFC 039 Agreement Mgt" {
+  class "FrameworkAgreement" as FA1 {
+    Type=AggregatorAgreement
+    FrameworkAgreementId=1
+    StartDate=01-01-2025
+    Location=France
+  }
+  class "Agreement Item (France)\nDistribution Rights: Exclusive right to distribute the Geolocation API from Op-France\nWholesale Pricing: Fixed at 0.40e/API call\nUnified Bundle Inclusion: API included in Globy's unified commercial bundle\nVolume Discount: 10% discount if usage > 1000 API calls/month\nCustomer Relationship Management: Managed entirely by Globy\nInvoicing & Payment Collection: Globy invoices and collects directly from customers\nRevenue Settlement: Monthly settlement on 0.40e/API basis, revenue redistributed to Op-France" as AgreementItemFrance
+  class "AgreementTermsOrConditions" as TermsFrance {
+    Id=1
+    Duration: 2years
+    Format: Pdf
+  }
+
+  class "FrameworkAgreement" as FA2 {
+    Type=AggregatorAgreement
+    FrameworkAgreementId=2
+    StartDate=01-01-2025
+    Location=Belgium
+  }
+  class "Agreement Item (Belgium)\nDistribution Rights: Exclusive right to distribute the Geolocation API from Op-Belgium\nWholesale Pricing: Fixed at 0.40e/API call\nUnified Bundle Inclusion: API included in Globy's unified commercial bundle\nVolume Discount: 10% discount if usage > 1000 API calls/month\nCustomer Relationship Management: Managed entirely by Globy\nInvoicing & Payment Collection: Globy invoices and collects directly from customers\nRevenue Settlement: Monthly settlement on 0.40e/API basis, revenue redistributed to Op-Belgium" as AgreementItemBelgium
+  class "AgreementTermsOrConditions" as TermsBelgium {
+    Id=2
+    Duration: 2years
+    Format: Pdf
+  }
+
+  FA1 --> AgreementItemFrance : consists of
+  FA1 --> TermsFrance : governed by
+  FA2 --> AgreementItemBelgium : consists of
+  FA2 --> TermsBelgium : governed by
+  TermsFrance ..> CspFrTerm : appearsAs
+  TermsBelgium ..> CspBeTerm : appearsAs
+}
+
+CommBundleOffer ..> AgreementItemFrance : results in
+CommBundleOffer ..> AgreementItemBelgium : results in
+CspFrOffer ..> AgreementItemFrance : involves
+CspBeOffer ..> AgreementItemBelgium : involves
+
+@enduml

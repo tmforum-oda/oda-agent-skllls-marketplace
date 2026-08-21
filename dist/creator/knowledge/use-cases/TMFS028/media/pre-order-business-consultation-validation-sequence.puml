@@ -1,0 +1,33 @@
+@startuml
+title Pre-order Business Consultation and Validation Sequence Diagram
+
+actor User
+participant "Customer Service Representative" as CSR
+participant "Resource\nQualification" as ResourceQual
+participant "CRM System" as CRM
+participant "Product Order\nCapture &\nValidation" as OrderCapture
+
+== Pre-Order Business Consultation & Validation ==
+
+note over User
+  Network Requirements:
+  User demand descriptions or feedback.
+  * Bank Manager: "I need a stable and reliable network connection to my private cloud."
+  * Startup: "I need a network connection to a foreign AWS cloud server."
+end note
+
+User -> CSR : 1 Submit network requirements
+CSR -> ResourceQual : 2 Query Resource Qualification
+ResourceQual --> CSR : 3 Return Resource Availability Results
+CSR -> User : 4 Provide feedback on Product status,\nconfirm if willing to wait for fulfillment?
+
+alt Cannot accept the wait or conditions are unsuitable
+User -> User : 5 Leave / Abandon
+end
+
+User -> CSR : 6 Confirm product order activation
+CSR -> CRM : 7 Process in CRM System
+CRM -> OrderCapture : 8 TMF663 Shopping Cart Management API\nPOST /shoppingCart
+CRM --> CSR : 9 Return Status: Accepted, activation in progress
+CSR -> User : 10 Notify user that activation is in progress
+@enduml

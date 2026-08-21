@@ -1,0 +1,65 @@
+@startuml
+title Multi domain orchestration with the dynamic orchestration function
+
+box "Marketplace Owner"
+participant "Product Order\nCapture and\nvalidation" as OrderCapture
+participant "Product Order\nDelivery &\nOrchestration" as OrderOrch
+participant "AI driven Intent\nbased\nOrchestration" as AIOrch
+participant "Party\nManagement" as PartyMgmt
+participant "Service catalog\nManagement" as ServiceCatalog
+participant "Resource Inventory\nManagement" as ResourceInv
+participant "Service Order\nManagement" as ServiceOrder
+participant "Product Inventory" as ProductInv
+end box
+
+box "Business Partner = Gaming vendor"
+participant "Service Order\nManagement" as GamingServiceOrder
+participant "Product Inventory" as GamingProductInv
+end box
+
+box "Business Partner = MEC Provider"
+participant "Service Order\nManagement" as MECServiceOrder
+participant "Product Inventory" as MECProductInv
+end box
+
+OrderCapture -> OrderOrch : TMF 622: Submit\nProduct Order - POST
+OrderOrch -> OrderOrch : Int: Order Ack.\nand start decomp
+OrderOrch -> AIOrch : TMF???: Determine\nBusiness partner\nbased on need
+AIOrch -> AIOrch : Apply criteria to order
+AIOrch -> PartyMgmt : TMF 632: fetch Partner\nmatching the criteria
+PartyMgmt --> AIOrch : Consume partner(s)
+AIOrch -> AIOrch : Select partner
+AIOrch --> OrderOrch : Consume\nBusiness Partner\nID
+OrderOrch -> OrderOrch : Apply Partner ID\nas PS attribute
+OrderOrch -> ServiceCatalog : TMF 633: Get mapping CFSS (and RS)
+ServiceCatalog --> OrderOrch : Consume response (CFSS / RFSS and RS)
+OrderOrch -> OrderOrch : Decompose POLI into Service\nand Resource Order(s)
+OrderOrch -> ResourceInv : TMF 716: POST Reserve / Allocate MSISDN and IMSI / SUPI
+ResourceInv -> ResourceInv : Reserve resources for the\nResource Order
+ResourceInv --> OrderOrch : Consume the Resources
+OrderOrch -> ServiceOrder : TMF 641: POST - Service Order for the allocated MSISDN, IMSI / SUPI and 5G Core Data Service
+ServiceOrder -> ServiceOrder : Trigger 640 for the\nService Activation
+ServiceOrder --> OrderOrch : Activation success
+OrderOrch -> GamingServiceOrder : TMF 641: POST - Service Order for the gaming SW
+GamingServiceOrder -> GamingServiceOrder : Trigger 640 for App Activation
+GamingServiceOrder -> GamingProductInv : TMF 637: POST Create PI Instance for the SW License
+GamingProductInv --> GamingServiceOrder : Success Ack
+GamingServiceOrder --> OrderOrch : Activation success with License Key
+OrderOrch -> ServiceOrder : TMF 641: POST Pair MSISDN / IMSI to SW App license key
+ServiceOrder -> ServiceOrder : Trigger 640 to activate/pair\nlicense key on MSISDN
+ServiceOrder --> OrderOrch : Success Ack
+OrderOrch -> ServiceOrder : TMF 641: POST Activate Service on 5G slices on 5G core
+ServiceOrder -> ServiceOrder : Decompose to n CFSS and\ntrigger 640(s) to activate service on eMBB, MMTC and uRLLC
+ServiceOrder --> OrderOrch : Activation is success
+OrderOrch -> ServiceOrder : TMF 641: POST Activate service on 5G slices on 5G edge
+ServiceOrder -> ServiceOrder : Decompose to n CFSS
+ServiceOrder -> MECServiceOrder : TMF 641: POST Activate service on 5G slices at edge (one each for the 3 5G slices)
+MECServiceOrder -> MECServiceOrder : Decompose and trigger TMF 640 in loop for the\nactivation of the resources on all 3 CFSS, RFSS and RS
+MECServiceOrder -> MECProductInv : (activation loop)
+MECProductInv --> MECServiceOrder : Success Ack
+MECServiceOrder --> ServiceOrder : Activation success for 5G slices
+ServiceOrder --> OrderOrch : Activation success
+OrderOrch -> ProductInv : TMF 637: Post Product Inventory Instance
+ProductInv --> OrderOrch : Success Ack
+OrderOrch --> OrderCapture : TMF 622: POST Update\nOrder status
+@enduml
