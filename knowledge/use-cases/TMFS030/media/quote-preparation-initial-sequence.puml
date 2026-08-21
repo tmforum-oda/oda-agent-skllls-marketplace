@@ -1,0 +1,74 @@
+@startuml
+title Quote Preparation. Initial
+
+box "Mobile Network Operator"
+participant "Product Order Capture & Validation;\nProduct Order Delivery\nOrchestration and Mgmt\n(for Business Partner)" as MNO_POC
+participant "Delegate\nExposure" as MNO_DE
+end box
+
+box "Satellite Network Operator"
+participant "Delegate\nExposure" as SNO_DE
+participant "Product Configurator" as ProdConfig
+participant "Product Order Capture\n& Validation" as SNO_POC
+participant "Product Catalog\nManagement" as ProductCatalogMgmt
+participant "Product Inventory" as ProductInv
+participant "Location\nManagement" as LocationMgmt
+participant "Service Qualification\nManagement" as ServiceQualMgmt
+end box
+
+note over MNO_POC
+  Based on received POQ data
+  interacts with other systems and parties
+  to build Initial Quote Request
+end note
+
+MNO_POC -> MNO_DE : 20. TMF648 Quote\nPOST /quote\n(instantSyncQuote=false\nquoteItem list:\n{product.productOffering.name="Wholesale NTN Cell Capacity",\nproduct.productCharacteristic[3 years, # Cells, # MHz]},\n{product.productOffering.name="Region",\nproduct.productCharacteristic[Northern Europe, # MHz],\nquoteItemRelationship(depends on id of "Wholesale NTN Cell Capacity")},\n{product.productOffering.name="Cell Pipe",\nquoteItemRelationship(depends on id of "Region")},...)
+MNO_DE -> SNO_DE : 21. TMF648 Quote\nPOST /quote (forwarded)
+SNO_DE -> ProdConfig : 22. TMF648 Quote\nPOST /quote (forwarded)
+
+note right of ProdConfig
+  TMF648 Quote
+  Quote Created
+  State="In Progress"
+end note
+
+ProdConfig -> ProdConfig : 23. TMF760 Product Configuration\nPOST /queryProductConfiguration\n(.,contextEntity = <quote id>,\nrequestProductConfigurationItem list)
+note right of ProdConfig : Request for Wholesale NTN Cell Capacity Configuration
+
+group collect information on existing Wholesale NTN Cell Capacity Instances, Regions, Aggregate MHz, Cells
+ProdConfig -> ProductInv : 24. TMF637 Product Inventory\nGET /product?\nrelatedParty(id,name="MNO A",role="NTN Buyer")
+ProductInv --> ProdConfig : 25. TMF637 Product Inventory\n200 OK\n(list of Wholesale NTN Cell Capacity Instances, Regions, Aggregate MHz, Cells)
+end
+
+loop for each offering in the quote
+ProdConfig -> ProductCatalogMgmt : 26. TMF620 Product Catalog Mgt\nGET /productOffering/{id}
+ProductCatalogMgmt --> ProdConfig : 27. TMF620 Product Catalog Mgt\n200 OK\n(productOffering with characteristics and policies)
+opt get missing child offerings
+ProdConfig -> ProdConfig : 28. read relationships
+ProdConfig -> ProductCatalogMgmt : 29. TMF620 Product Catalog Mgt\nGET /productOffering/{id}
+ProductCatalogMgmt --> ProdConfig : 30. TMF620 Product Catalog Mgt\n200 OK\n(productOffering with characteristics and policies)
+end
+end
+
+note over ProdConfig
+  Performs checks and calculation:
+  Validate provided by Buyer Inputs
+  If to Upgrade or Add capacity
+  Calculate Aggregate capacity for Tier
+  Check Discounts eligibility
+  What data yet to be collected from Buyer
+end note
+
+ProdConfig -> ProdConfig : 31. TMF760 Product Configuration\n200 OK\n(State=Done\nList of computedProductConfigurationItem(\n{id="NTN-Wholesale-001", action="provide additional info",\nconfigurationCharacteristic="UL/DL ratio"},\n{id="NTN-Cell-12", action="provide additional info",\nconfigurationCharacteristic="Service Area"},\n{id="NTN-Teleport-EP-12", action="provide additional info",\nconfigurationCharacteristic="Preferred Teleport"},...)
+note right of ProdConfig : Combined Response for all Quote Items
+
+ProdConfig --> SNO_DE : 32. TMF648 Quote\n201 Created\nState="In Progress"\nList of Computed/Configured Quote Items(\n{id="NTN-Wholesale-001", note="provide additional info for\nconfigurationCharacteristic='UL/DL ratio'", state="Pending"},\n{id="NTN-Cell-12", note="provide additional info for\nconfigurationCharacteristic='Service Area'", state="Pending"},\n{id="NTN-Teleport-EP-12", note="provide additional info for\nconfigurationCharacteristic='Preferred Teleport'", state="Pending"},...)
+note right of SNO_DE
+  TMF648 Quote
+  Quote.State="In progress" for items with missing information:
+  QuoteItem[x].State="Pending"
+end note
+
+SNO_DE --> MNO_DE : 33. TMF648 Quote\n201 Created\nState="Pending"\nList of Computed/Configured Quote Items\n(note = "provide additional info for ...)
+MNO_DE --> MNO_POC : 34. TMF648 Quote\n201 Created\nState="Pending"\nList of Computed/Configured Quote Items\n(note = "provide additional info for ...)
+@enduml

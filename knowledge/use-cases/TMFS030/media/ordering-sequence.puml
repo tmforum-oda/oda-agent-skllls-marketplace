@@ -1,0 +1,124 @@
+@startuml
+title Ordering
+
+box "Mobile Network Operator"
+participant "Product Order Capture & Validation;\nProduct Order Delivery\nOrchestration and Mgmt\n(for Business Partner)" as MNO_POC
+participant "Delegate\nExposure" as MNO_DE
+end box
+
+box "Satellite Network Operator"
+participant "Delegate\nExposure" as SNO_DE
+participant "Product Order Capture\n& Validation" as SNO_POC
+participant "Product Order Delivery\nOrchestration and Mgmt" as OrderOrch
+participant "Product Catalog\nManagement" as ProductCatalogMgmt
+participant "Service Qualification\nManagement" as ServiceQualMgmt
+participant "Service Order\nManagement" as ServiceOrderMgmt
+participant "Resource Order\nManagement" as ResourceOrderMgmt
+participant "Resource Allocation\nManagement" as ResourceAllocMgmt
+participant "Resource Inventory" as ResourceInv
+end box
+
+note over MNO_POC
+  Prepares a Product Order including
+  Quote ID, Product configuration,
+  Region definitions,
+  Cell parameters,
+  Service start date
+  and other
+end note
+
+MNO_POC -> MNO_DE : 60. TMF622 Product Ordering\nPOST /productOrder\n(productOrderItem list:\n{id=<01>,action="add"\nproduct.productCharacteristic(.Aggregate MHz......),\nproductOfferingId,quoteItem(Id,ItemId),...},\n{id=02,..},{id=03,..},...)
+MNO_DE -> SNO_DE : 61. TMF622 Product Ordering\nPOST /productOrder (forwarded)
+SNO_DE -> OrderOrch : 62. TMF622 Product Ordering\nPOST /productOrder (forwarded)
+
+note right of OrderOrch
+  Performs basic input validation
+  TMF622 Product Oreder
+  Product Order created
+  State="Acknowledged"
+  Checks Order references
+  the configured quote
+end note
+
+OrderOrch -> SNO_POC : 63. TMF648 Quote\nGET /quote/{id}
+SNO_POC --> OrderOrch : 64. TMF648 Quote\n200 OK (Quote details)
+
+note right of OrderOrch
+  Checks Product configuration
+  matches the approved quote,
+  Required information is complete
+  Checks Order references
+  the completed Service Qualification
+end note
+
+OrderOrch -> ServiceQualMgmt : 65. TMF645 Service Qualification\nGET /checkServiceQualification/{id}
+ServiceQualMgmt --> OrderOrch : 66. TMF645 Service Qualification\n200 OK (Service Qualification details)
+
+note right of OrderOrch
+  Checks obtained Service Qualification
+  Start Order Treatment
+  TMF622 Product Oreder
+  State="In Progress"
+end note
+
+group product decomposition
+loop for all dependent product items
+group resolve product items information
+OrderOrch -> ProductCatalogMgmt : 67. TMF620 Product Catalog Mgt\nGET /productSpecification/{id}
+ProductCatalogMgmt --> OrderOrch : 68. TMF620 Product Catalog Mgt\n200 OK (product specification details)
+end
+end
+end
+
+note over OrderOrch : Builds delivery flow
+
+loop for all refered services
+OrderOrch -> ServiceOrderMgmt : 69. TMF641 Service Ordering\nPOST /serviceOrder
+note right of ServiceOrderMgmt
+  Service Order Creation,
+  service decomposition,
+  technical (RFS->resource) decomposition
+end note
+
+opt if reservaiton is needed
+alt if reservation is implemented with Resource Inventory
+ServiceOrderMgmt -> ResourceInv : 70. TMF716 Resource Reservation\nPOST /resourceReservation\n(reservation and allocation)
+ResourceInv --> ServiceOrderMgmt : 71. TMF716 Resource Reservation\n201 Created\n(reservation result:\nreservation id,\nlist of reservationItems - resources)
+else if reservation is implemented with Resource Order Management
+ServiceOrderMgmt -> ResourceOrderMgmt : 72. TMF716 Resource Reservation\nPOST /resourceReservation\n(reservation and allocation)
+note right of ResourceOrderMgmt : interactions with other resource\nmanagement systems are omitted
+ResourceOrderMgmt --> ServiceOrderMgmt : 73. TMF716 Resource Reservation\n201 Created\n(reservation result:\nreservation id,\nlist of reservationItems - resources)
+else if reservation is implemented with Resource Allocation Management
+ServiceOrderMgmt -> ResourceAllocMgmt : 74. TMF716 Resource Reservation\nPOST /resourceReservation\n(reservation and allocation)
+note right of ResourceAllocMgmt : interactions with other resource\nmanagement systems are omitted
+ResourceAllocMgmt --> ServiceOrderMgmt : 75. TMF716 Resource Reservation\n201 Created\n(reservation result:\nreservation id,\nlist of reservationItems - resources)
+end
+
+note over ResourceOrderMgmt, ResourceAllocMgmt
+  TMF716 is assumed here for the use case. As per ODA components specifications
+  neither Resource Inventory exposes TMF716, nor Resource Order Management exposes TMF716
+  nor Service Order Management consumes TMF716
+end note
+end
+
+note over ServiceOrderMgmt : configuration generation
+
+ServiceOrderMgmt --> OrderOrch : 76. TMF641 Service Ordering\n201 Created (State="In Progress" or "Completed",\nservice configuration, allocated resources)
+end
+
+note over OrderOrch : Updates delivery flow
+
+note right of OrderOrch
+  order confirmation preparation:
+  finalized service configuration,
+  operational parameters,
+  confirmed allocated resources,
+  other details
+  TMF622 Product Order
+  State="In Progress"
+end note
+
+OrderOrch --> SNO_DE : 77. TMF622 Product Ordering\n201 OK\nState="In Progress"
+SNO_DE --> MNO_DE : 78. TMF622 Product Ordering\n201 OK\nState="In Progress"
+MNO_DE --> MNO_POC : 79. TMF622 Product Ordering\n201 OK\nState="In Progress"
+@enduml
