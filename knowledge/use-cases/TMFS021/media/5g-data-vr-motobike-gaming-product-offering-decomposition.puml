@@ -1,0 +1,103 @@
+@startuml
+title Information View - Service model (NAAS abstraction) for 5G Data with Motobike gaming
+
+legend left
+  Blue border = Product Offering Bundle / Product Offering
+  Green border = Product Spec
+  Orange fill = RS / CFSS / RFSS
+  Grey fill = Realized from Partner(s) - Also includes all child entities
+  Dashed arrow = <<Requires relationship>>
+endlegend
+
+class "5G Data with\nMotobike gaming" as Root <<Product Offering Bundle>>
+
+class "5G Data Service" as DataService <<Product Offering>>
+class "VR Motobike\nService" as VRService <<Realized from Partner(s)>>
+Root --> DataService : "1..1"
+Root --> VRService : "1..1"
+
+class "5G Data Spec" as DataSpec <<Product Spec>>
+DataService --> DataSpec : "1..1"
+
+class "SUPI RS" as SUPI_RS
+class "MSISDN RS" as MSISDN_RS
+DataSpec --> SUPI_RS : "1..1"
+DataSpec --> MSISDN_RS : "1..1"
+
+class "5G Composite\nCFSS" as CoreComposite
+class "5G Slice on Core\nComposite Spec" as CoreSliceComposite
+DataSpec --> CoreComposite : "1..1"
+DataSpec --> CoreSliceComposite : "1..1"
+
+class "5G Core UDM\nCFSS" as UDM_CFSS
+class "5G Core UDR\nCFSS" as UDR_CFSS
+class "5G Core NEF\nCFSS" as NEF_CFSS
+CoreComposite --> UDM_CFSS : "1..1"
+CoreComposite --> UDR_CFSS : "1..1"
+CoreComposite --> NEF_CFSS : "1..1"
+
+class "5G Core UDM\nRFSS" as UDM_RFSS
+class "5G Core UDR\nRFSS" as UDR_RFSS
+class "5G Core NEF\nRFSS" as NEF_RFSS
+UDM_CFSS --> UDM_RFSS : "1..1"
+UDR_CFSS --> UDR_RFSS : "1..1"
+NEF_CFSS --> NEF_RFSS : "1..1"
+UDM_RFSS ..> SUPI_RS : "<<Requires relationship>>"
+UDM_RFSS ..> MSISDN_RS : "<<Requires relationship>>"
+UDR_RFSS ..> SUPI_RS : "<<Requires relationship>>"
+UDR_RFSS ..> MSISDN_RS : "<<Requires relationship>>"
+NEF_RFSS ..> SUPI_RS : "<<Requires relationship>>"
+NEF_RFSS ..> MSISDN_RS : "<<Requires relationship>>"
+
+class "eMBB CFSS" as CoreEMBB
+class "uRLLC CFSS" as CoreURLLC
+class "mMTS CFSS" as CoreMMTS
+CoreSliceComposite --> CoreEMBB : "1..1"
+CoreSliceComposite --> CoreURLLC : "1..1"
+CoreSliceComposite --> CoreMMTS : "1..1"
+
+class "eMBB RFSS" as CoreEMBB_RFSS
+class "uRLLC RFSS" as CoreURLLC_RFSS
+class "mMTS RFSS" as CoreMMTS_RFSS
+CoreEMBB --> CoreEMBB_RFSS : "1..1"
+CoreURLLC --> CoreURLLC_RFSS : "1..1"
+CoreMMTS --> CoreMMTS_RFSS : "1..1"
+
+class "Gaming service\nSpec" as GamingSpec <<Product Spec>>
+VRService --> GamingSpec : "1..1"
+
+class "5G Slice Spec" as EdgeSliceSpec <<Product Spec>>
+VRService --> EdgeSliceSpec : "1..1"
+
+class "Gaming SW\nComposite CFSS\nVendor 1" as GamingVendor1
+class "Gaming SW\nComposite CFSS\nVendor 2" as GamingVendor2
+GamingSpec --> GamingVendor1 : "0..1"
+GamingSpec --> GamingVendor2 : "0..1"
+
+class "Gaming SW\nlicense CFSS V1" as GamingLicenseV1
+class "Gaming SW App\nCFSS V1" as GamingAppV1
+GamingVendor1 --> GamingLicenseV1 : "1..1"
+GamingVendor1 --> GamingAppV1 : "1..1"
+
+class "Gaming SW\nlicense CFSS V2" as GamingLicenseV2
+class "Gaming SW App\nCFSS V2" as GamingAppV2
+GamingVendor2 --> GamingLicenseV2 : "1..1"
+GamingVendor2 --> GamingAppV2 : "1..1"
+
+class "5G Slice on Edge\nComposite Spec" as EdgeSliceComposite
+EdgeSliceSpec --> EdgeSliceComposite : "1..1"
+
+class "eMBB CFSS" as EdgeEMBB
+class "uRLLC CFSS" as EdgeURLLC
+class "mMTS CFSS" as EdgeMMTS
+EdgeSliceComposite --> EdgeEMBB : "1..1"
+EdgeSliceComposite --> EdgeURLLC : "1..1"
+EdgeSliceComposite --> EdgeMMTS : "1..1"
+
+class "eMBB RFSS" as EdgeEMBB_RFSS
+class "uRLLC RFSS" as EdgeURLLC_RFSS
+class "mMTS RFSS" as EdgeMMTS_RFSS
+EdgeEMBB --> EdgeEMBB_RFSS : "1..1"
+EdgeURLLC --> EdgeURLLC_RFSS : "1..1"
+EdgeMMTS --> EdgeMMTS_RFSS : "1..1"
+@enduml
