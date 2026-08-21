@@ -1,0 +1,123 @@
+@startuml
+title Resource model
+
+class "EntityRef" as EntityRef {
+  href : Uri
+  id : String (1)
+  name : String
+  baseType : String
+  referredType : String
+  schemaLocation : Uri
+  type : String
+}
+
+class "ExternalIdentifier" as ExternalIdentifier {
+  externalIdentifierType : String
+  href : Uri
+  id : String (1)
+  owner : String
+  baseType : String
+  schemaLocation : Uri
+  type : String
+}
+
+class "Incident" as Incident {
+  ackState : IncidentAckStateType (1)
+  ackTime : DateTime
+  category : String (1)
+  clearTime : DateTime
+  domain : String (1)
+  href : String
+  id : String
+  impact : ImpactType
+  incidentDetail : String
+  incidentResolutionSuggestion : String
+  name : String (1)
+  occurTime : DateTime (1)
+  priority : PriorityType (1)
+  state : IncidentStateType (1)
+  updateTime : String
+  urgency : UrgencyType
+  baseType : String
+  schemaLocation : Uri
+  type : String
+}
+
+class "RootCause" as RootCause {
+  href : Uri
+  id : String
+  location : String (1)
+  baseType : String
+  schemaLocation : String
+  type : String
+}
+
+enum "PriorityType" as PriorityType <<Enumeration>> {
+  critical
+  high
+  medium
+  low
+}
+
+enum "UrgencyType" as UrgencyType <<Enumeration>> {
+  critical
+  high
+  medium
+  low
+}
+
+enum "IncidentAckStateType" as IncidentAckStateType <<Enumeration>> {
+  acknowledged
+  unacknowledged
+}
+
+enum "IncidentStateType" as IncidentStateType <<Enumeration>> {
+  raised
+  updated
+  cleared
+}
+
+enum "ImpactType" as ImpactType <<Enumeration>> {
+  extensive
+  significant
+  moderate
+  minor
+}
+
+class "ResourceEntity" as ResourceEntity {
+  href : String
+  id : String
+  baseType : String
+  schemaLocation : Uri
+  type : String
+}
+
+class "Characteristic" as Characteristic {
+  id : String
+  name : String (1)
+  value : Any (1)
+  valueType : String
+  baseType : String
+  schemaLocation : String
+  type : String
+}
+
+class "CharacteristicRelationship" as CharacteristicRelationship {
+  href : Uri
+  id : String
+  relationshipType : String
+  baseType : String
+  schemaLocation : Uri
+  type : String
+}
+
+Incident "0..*" --> "1" EntityRef : affectedEntity
+Incident "0..*" --> "1" ExternalIdentifier : externalIdentifier
+Incident --> RootCause : rootCause
+Incident "0..*" --> ResourceEntity : eventId
+Incident "0..*" --> ResourceEntity : rootEventId
+Incident "0..*" --> ResourceEntity : sourceObject
+Incident "0..*" --> Characteristic : extensionInfo
+Characteristic "0..*" --> CharacteristicRelationship : characteristicRelationship
+
+@enduml

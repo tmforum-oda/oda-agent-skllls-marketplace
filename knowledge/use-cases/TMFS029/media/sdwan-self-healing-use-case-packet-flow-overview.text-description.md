@@ -1,0 +1,12 @@
+Architecture/block diagram (Figure 2.1, "IG1373 Self-healing SD-WAN Use Case") showing the full SD-WAN self-healing use case topology, its management domains, and the IP packet flow path through it.
+
+Main structure, outer to inner:
+
+- An outer green dashed box labelled **"e2e Service Management Operational Domain"** contains a box **"(e2e) Service Management (Intelligent) Controller - TM Forum Component"**, annotated above with "NaaS API TMF 909, TMF921, Models?". A red dotted arrow from an "IETF Controller APIs and models see detailed diagram Fig xx" label points into this controller.
+- A red text block lists the **TMF APIs** used: TMF634 Resource Catalog Mngt, TMF639 Resource Inventory Mngt, TMF686 Topology Mngt, plus "Other's ?" and "Proprietary Data Base APIs, Others?".
+- Nested inside, a green dashed box **"SDWAN Service & Techology Domain"** contains a red-dashed box **"Technology Domain Controller: SDWAN L2/L3"** with a "North Bound Interfaces" label over an "SD-WAN Network Controller" device icon. An arrow labelled "Controls Overlay Virtual Tunnel Circuit (= TR255 Flows)" points at it.
+- Below/around it are three more green-dashed technology-domain boxes: **"Customer Operational Domain L2/L3"**, **"Physical Technology Domain L0/L1"**, and **"Internet Technology Domain"** (the latter containing a red-dashed "Technology Domain Controller Internet: Service Provider Underlay networks" box with "Internet" and "MPLS" cloud icons and a purple dashed "Overlay Virtual Tunnel Circuit" line between them), plus a separate red-dashed **"Technology Domain Controller Mobile"** box containing a "Cellular" cloud icon.
+- On the left and right edges, customer-network cloud icons connect via "SD-WAN UNI" lines to a **"Physical SD-WAN Edge"** device (left) and a **"Virtual SD-WAN Edge / server"** device (right), each also connected to "Underlay Connectivity UNI" / "SD-WAN Virtual Circuit End Point" labels.
+- At the bottom, a legend of coloured/labelled arrows explains the packet flow: "IP Ingress Packet" → "Application Flow classification and Grouping" → "Policy"; "Packet Forwarding in overlay based upon matching criteria" (purple, labelled "Overlay Packet Ingress"); and "IP Egress Packet" (orange, exiting on the right).
+
+This diagram is the primary self-healing SD-WAN use case topology diagram, distinct from the later "OSI Layered Service Model" family of diagrams (which use a management/control/user/infrastructure plane layout with a lettered A–H key).

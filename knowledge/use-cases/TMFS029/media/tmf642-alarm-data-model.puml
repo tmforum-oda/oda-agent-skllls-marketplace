@@ -1,0 +1,33 @@
+@startuml
+class "Alarm" as Alarm {
+  ackState : ENUM String {unacknowledged, acknowledged}
+  ackSystemId : String
+  ackUserId : String
+  alarmChangedTime : DateTime
+  alarmClearedTime : DateTime
+  alarmDetails : String
+  alarmEscalation : Boolean
+  alarmRaisedTime : DateTime (1)
+  alarmReportingTime : DateTime
+  alarmType : AlarmType (1)
+  alarmedObjectType : String
+  clearSystemId : String
+  clearUserId : String
+  externalAlarmId : String
+  href : String
+  id : String
+  isRootCause : Boolean
+  perceivedSeverity : PerceivedSeverity (1)
+  plannedOutageIndicator : ENUM String {InService, OutOfService}
+  probableCause : String (1)
+  proposedRepairedActions : String
+  reportingSystemId : String
+  serviceAffecting : Boolean
+  sourceSystemId : String (1)
+  specificProblem : String
+  state : ENUM String (1) {raised, updated, cleared}
+  baseType : String
+  schemaLocation : String
+  type = Alarm
+}
+@enduml

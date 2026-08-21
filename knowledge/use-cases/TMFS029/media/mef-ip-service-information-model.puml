@@ -1,0 +1,41 @@
+@startuml
+title Information View: MEF IP Service Viewpoint and connection to SDWAN
+
+skinparam class {
+  BackgroundColor<<ServiceSpec>> Orange
+  BackgroundColor<<ResourceSpec>> Yellow
+}
+
+class "IP Virtual Connection\n(IPVC)" as IPVC <<ServiceSpec>>
+class "MEF characteristic A (IPVC)" as IPVC_A
+class "MEF characteristicZ (IPVC)" as IPVC_Z
+
+class "IPVC endPoint" as EP <<ResourceSpec>>
+class "MEF characteristic A (EP)" as EP_A
+class "MEF characteristicZ (EP)" as EP_Z
+
+class "IPVC Controller" as Controller <<ServiceSpec>>
+class "MEF characteristic A (Controller)" as Ctrl_A
+class "MEF characteristicZ (Controller)" as Ctrl_Z
+
+class "SDWAN Underlay\nConnectivity Service UCS" as UCS <<ServiceSpec>>
+
+IPVC -- IPVC_A
+IPVC -- IPVC_Z
+EP -- EP_A
+EP -- EP_Z
+Controller -- Ctrl_A
+Controller -- Ctrl_Z
+
+IPVC --> EP : "Min 1, Max n"
+IPVC --> Controller : "Min 1, Max 1"
+EP --> Controller : "Min 1 Max n"
+UCS --> IPVC : "Min 1, Max m"
+
+note right of IPVC
+  Legend:
+  Orange = IP Service Classes
+  Yellow = Resource Specification
+end note
+
+@enduml
