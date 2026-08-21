@@ -182,7 +182,8 @@ General assumptions:
 | Ends when | Incident Ticket is created |
 | Post-conditions | Ticket is assigned to the right team for further investigation |
 
-![](media/image01.png)
+![](media/customer-problem-report-ivr-agent-ui-mockup.png)
+*([text description](media/customer-problem-report-ivr-agent-ui-mockup.text-description.md))*
 
 # Views
 
@@ -194,7 +195,8 @@ During the resolution process, the ticket may temporarily move to an â€œOn Holdâ
 
 Lifecycle of a Trouble ticket
 
-![](media/image02.png)
+![](media/trouble-ticket-lifecycle-state-diagram.png)
+*([text description](media/trouble-ticket-lifecycle-state-diagram.text-description.md))*
 
 # Diagrams
 
@@ -204,7 +206,8 @@ This sequence diagram illustrates an end-to-end customer support and incident ha
 
 During the assisted support phase, the customer identity is validated using Party and Party Role Management APIs, after which the detailed issue information is captured and associated with the ongoing interaction. A trouble ticket is subsequently created using Trouble Ticket Management APIs to initiate incident resolution and lifecycle tracking.
 
-![](media/image03.png)
+![](media/customer-support-incident-handling-sequence.png)
+*([PlantUML source](media/customer-support-incident-handling-sequence.puml))*
 
 # Conclusion
 

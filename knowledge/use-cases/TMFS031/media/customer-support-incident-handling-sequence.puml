@@ -1,0 +1,79 @@
+@startuml
+title Customer support and incident handling flow (TM Forum Open APIs / ODA)
+
+actor User
+
+box "Engagement Management"
+participant "IVR\n(Not an ODA component)" as IVR
+actor "Helpdesk Agent" as Agent
+participant "Customer Care Portal\n(Not an ODA component)" as Portal
+end box
+
+box "Core Systems"
+participant "Party Interaction\n(TMFC023)" as PartyInteraction
+participant "Party Role & Permission\n(TMFC035)" as PartyRolePermission
+participant "Party Problem Management\n(TMFC047)" as PartyProblemMgmt
+end box
+
+== Step 1: Customer initiates interaction ==
+User -> IVR : 1. Call IVR
+IVR -> PartyInteraction : 2. POST /partyInteraction (channel=IVR)
+PartyInteraction --> IVR : 3. 201 Created (interaction.id)
+IVR -> PartyInteraction : 4. POST /processFlow (Incident Reporting)
+PartyInteraction --> IVR : 5. 201 Created (processFlow.id,\nstate=started)
+IVR -> User : 6. Present IVR menu options
+User -> IVR : 7. Select "Report Problem"
+
+== Step 2: Capture problem details in IVR ==
+IVR -> IVR : 8. Capture issue category & basic details
+IVR -> PartyInteraction : 9. PATCH /partyInteraction (add IVR inputs)
+PartyInteraction --> IVR : 10. 200 OK
+IVR -> PartyInteraction : 11. PATCH /processFlow\n(state=IVR_Completed,\ncategory=problem)
+PartyInteraction --> IVR : 12. 200 OK
+
+== Step 3: Transfer to Helpdesk Agent ==
+IVR -> Agent : 13. Transfer call with captured context
+Agent -> Portal : 14. Open customer session
+Portal -> PartyInteraction : 15. PATCH /processFlow\n(state=Agent_Handling)
+PartyInteraction --> Portal : 16. 200 OK
+
+== Step 4: Customer identification & validation ==
+group Validate Customer Identity
+Agent -> User : 17. Request customer details
+User -> Agent : 18. Provide details
+Portal -> PartyRolePermission : 19. GET /partyRole
+PartyRolePermission --> Portal : 20. 200 OK (customer profile)
+note right of PartyRolePermission
+  Party Role & Permission may
+  retrieve Party details from
+  Party Management if required.
+end note
+Portal -> Agent : 21. Display customer details
+Agent -> Agent : 22. Validate customer identity
+end
+
+== Step 5: Capture detailed problem ==
+Agent -> Portal : 23. Enter detailed issue description
+Portal -> PartyInteraction : 24. PATCH /partyInteraction (add agent notes)
+PartyInteraction --> Portal : 25. 200 OK
+
+== Step 6: Create Party Problem ==
+Portal -> PartyProblemMgmt : 26. POST /partyProblem
+note right of PartyProblemMgmt
+  severity: Critical
+  relatedParty: Customer
+  channel: IVR + Agent
+  description:
+  Issue details from
+  IVR + Agent
+end note
+PartyProblemMgmt --> Portal : 27. 201 Created (problem.id)
+Portal -> PartyInteraction : 28. PATCH /processFlow\n(state=Problem_Created)
+PartyInteraction --> Portal : 29. 200 OK
+Portal -> PartyInteraction : 30. PATCH /partyInteraction\n(link problem.id)
+PartyInteraction --> Portal : 31. 200 OK
+
+== Step 7: Inform customer ==
+Portal -> Agent : 32. Display problem details
+Agent -> User : 33. Share problem ID and next steps
+@enduml
