@@ -1,0 +1,90 @@
+@startuml
+title CNF deployment - Day 1 and Day 2 message sequence
+
+actor op
+
+participant "Resource Order\nTMFC011" as ResourceOrder
+participant "Resource Configuration and Activation\nTMFC062" as ResourceConfigActivation
+participant "Resource Catalog\nTMFC010" as ResourceCatalog
+participant "Resource Inventory\nTMFC012" as ResourceInventory
+participant "Kubernetes" as K8s
+
+op -> ResourceOrder : 1 TMF652 Resource Order Management\nPOST /resourceOrder (CNF ResourceOrder)\nname=tmfc000
+activate ResourceOrder
+
+loop for each
+ResourceOrder -> ResourceCatalog : 2 TMF634 Resource Catalog Management\nGET /resourceSpecification/{id} (CNF ResourceSpecification)
+activate ResourceCatalog
+ResourceCatalog --> ResourceOrder : 3 200 OK
+deactivate ResourceCatalog
+end
+
+ResourceOrder -> ResourceConfigActivation : 4 TMF702 Resource Activation Management\nPOST /resource (CNF SoftBlackBox)
+activate ResourceConfigActivation
+ResourceConfigActivation --> ResourceOrder : 5 202 Accepted
+ResourceOrder -> ResourceConfigActivation : 6 TMF702 Resource Activation Management\nPOST /hub (callback=/listener)
+ResourceConfigActivation --> ResourceOrder : 7 201 Created
+
+loop for each
+ResourceConfigActivation -> ResourceCatalog : 8 TMF634 Resource Catalog Management\nGET /resourceSpecification/{id} (CNF ResourceSpecification)
+activate ResourceCatalog
+ResourceCatalog --> ResourceConfigActivation : 9 200 OK
+deactivate ResourceCatalog
+end
+
+ResourceConfigActivation -> K8s : 10 helm install\n--set security.controllerRole=Admin\n--set canvasInfo.host=info.canvas.svc.cluster.local\ntmfc000 oci://host:port/charts/cnf --version 1.0.1
+activate K8s
+K8s --> K8s : 11 Cloud Native Function\nCNF
+K8s --> ResourceConfigActivation : 12
+deactivate K8s
+
+ResourceConfigActivation -> K8s : 13 TMF664 Resource Function Activation Management\nGET /resourceFunction (CNF ResourceFunction)
+activate K8s
+K8s --> ResourceConfigActivation : 14 200 OK
+deactivate K8s
+
+loop for each
+ResourceConfigActivation -> ResourceInventory : 15 TMF639 Resource Inventory Management\nPOST /resource (CNF Resource)
+activate ResourceInventory
+ResourceInventory --> ResourceConfigActivation : 16 201 Created
+deactivate ResourceInventory
+end
+
+ResourceConfigActivation -> ResourceOrder : 17 TMF652 Resource Order Management\nPOST /listener (ResourceOrderStateChangeEvent)
+deactivate ResourceConfigActivation
+deactivate ResourceOrder
+
+== Day 2 ==
+
+op -> ResourceOrder : 18 TMF652 Resource Order Management\nPOST /resourceOrder (CNF ResourceFunction)
+activate ResourceOrder
+ResourceOrder -> ResourceCatalog : 19 TMF634 Resource Catalog Management\nGET /resourceSpecification/{id} (CNF ResourceFunctionSpecification)
+activate ResourceCatalog
+ResourceCatalog --> ResourceOrder : 20 200 OK
+deactivate ResourceCatalog
+
+ResourceOrder -> ResourceConfigActivation : 21 TMF664 Resource Function Activation Management\nPOST /resourceFunction (CNF ResourceFunction)
+activate ResourceConfigActivation
+ResourceConfigActivation --> ResourceOrder : 22 202 Accepted
+ResourceOrder -> ResourceConfigActivation : 23 TMF702 Resource Activation Management\nPOST /hub (callback=/listener)
+ResourceConfigActivation --> ResourceOrder : 24 201 Created
+
+ResourceConfigActivation -> ResourceCatalog : 25 TMF634 Resource Catalog Management\nGET /resourceSpecification/{id} (CNF ResourceFunctionSpecification)
+activate ResourceCatalog
+ResourceCatalog --> ResourceConfigActivation : 26 200 OK
+deactivate ResourceCatalog
+
+ResourceConfigActivation -> K8s : 27 TMF664 Resource Function Activation Management\nPOST /resourceFunction (CNF ResourceFunction)
+activate K8s
+K8s --> ResourceConfigActivation : 28 201 Created
+deactivate K8s
+
+ResourceConfigActivation -> ResourceInventory : 29 TMF639 Resource Inventory Management\nPOST /resource (CNF ResourceFunction)
+activate ResourceInventory
+ResourceInventory --> ResourceConfigActivation : 30 201 Created (ResourceFunction)
+deactivate ResourceInventory
+
+ResourceConfigActivation -> ResourceOrder : 31 TMF652 Resource Order Management\nPOST /listener (ResourceOrderStateChangeEvent)
+deactivate ResourceConfigActivation
+deactivate ResourceOrder
+@enduml

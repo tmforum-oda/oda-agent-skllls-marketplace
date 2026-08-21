@@ -72,7 +72,8 @@ The target infrastructure platform is assumed to be *Kubernetes*.
 
 The use case flow begins after a resource order for an *ODA Component* and ends with a newly created instance on an *ODA Canvas*.
 
-![](media/image01.png)
+![](media/resource-order-to-oda-canvas-instance-flow.png)
+*([text description](media/resource-order-to-oda-canvas-instance-flow.text-description.md))*
 
 # Information View
 
@@ -122,7 +123,8 @@ A software application, made available by a *SoftwareSupportPackage*, will have 
 
 The diagram below provides a *Resource Catalog* view of our use case example CNF. 
 
-![](media/image02.png)
+![](media/cnf-resource-catalog-specification-view.png)
+*([PlantUML source](media/cnf-resource-catalog-specification-view.puml))*
 
 ### Cloud Native Function
 
@@ -176,13 +178,15 @@ These *APISpecifications* describe the functions' input/output which. In this ex
 
 The diagram below provides a *Resource Order* view of our use case example CNF. 
 
-![](media/image03.png)
+![](media/cnf-resource-order-view.png)
+*([PlantUML source](media/cnf-resource-order-view.puml))*
 
 ## Managed Entities for CNF Use Case
 
 The diagram below provides a *Resource Inventory* view of our use case example CNF. 
 
-![](media/image04.png)
+![](media/cnf-resource-inventory-managed-entities-view.png)
+*([PlantUML source](media/cnf-resource-inventory-managed-entities-view.puml))*
 
 # Sequence diagrams
 
@@ -256,7 +260,8 @@ The *Resource Configuration and Activation Component* (TMFC062) creates the ins
 
 The *Resource Configuration and Activation Component* (TMFC062) notifies the *Resource Order Component* (TMFC011) of resource order state change.
 
-![](media/image05.png)
+![](media/cnf-deployment-day1-day2-sequence.png)
+*([PlantUML source](media/cnf-deployment-day1-day2-sequence.puml))*
 
 # Conclusion
 
