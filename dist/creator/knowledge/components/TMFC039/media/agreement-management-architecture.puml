@@ -1,0 +1,38 @@
+@startuml
+title TMFC039 : Agreement Management
+
+component "TMFC039 : Agreement Management" as TMFC039 {
+  rectangle "L2 - Party Agreement Management" as eTOM1 #line.dashed
+  rectangle "L2 - Enterprise Governance/L3 - Manage Contract" as eTOM2 #line.dashed
+  database "Agreement ABE" as SID1
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF667 Document Management] as dep1
+[TMF669 Party Role Management] as dep2
+[TMF637 Product Inventory] as dep3
+[TMF620 Product Catalog Management] as dep4
+[TMF632 Party Management] as dep5
+[TMF701 Process Flow] as dep6
+
+dep1 --> TMFC039 : TMF667 Document Management
+dep2 --> TMFC039 : TMF669 Party Role Management
+dep3 --> TMFC039 : TMF637 Product Inventory
+dep4 --> TMFC039 : TMF620 Product Catalog Management
+dep5 --> TMFC039 : TMF632 Party Management
+dep6 --> TMFC039 : TMF701 Process Flow
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF651 Agreement Management" as exp1
+() "TMF701 Process Flow Management" as exp2
+
+TMFC039 --> exp1 : TMF651 Agreement Management
+TMFC039 --> exp2 : TMF701 Process Flow Management
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

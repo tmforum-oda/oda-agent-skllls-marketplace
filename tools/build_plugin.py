@@ -91,7 +91,7 @@ CREATOR_SKILLS = {
 # running it against a knowledge/ they don't actually maintain (e.g. a
 # sparse clone with no way to push changes back). Stays in skills/ -- and
 # in this repo's own git history -- just never copied into dist/.
-INTERNAL_ONLY_SKILLS = {"process-usecase-media"}
+INTERNAL_ONLY_SKILLS = {"process-usecase-media", "process-component-media"}
 
 # One or two realistic example prompts per skill, shown in the generated
 # dist/{consumer,creator}/skills/README.md. Hand-maintained here (not

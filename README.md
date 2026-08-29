@@ -128,7 +128,7 @@ zero manual clone/update management).
 
 **Repo maintenance**
 
-One skill writes to `knowledge/` instead of just reading it, and is
+Two skills write to `knowledge/` instead of just reading it, and are
 deliberately excluded from both `dist/consumer/` and `dist/creator/` — a
 consumer or creator building against this corpus has no use for a skill
 that edits it:
@@ -136,6 +136,7 @@ that edits it:
 | Skill | Given | Produces |
 |---|---|---|
 | [`process-usecase-media`](skills/process-usecase-media/SKILL.md) | a `TMFSxxx` id | renames each of its raw extracted images descriptively, reverse-engineers UML sequence diagrams into PlantUML, and writes a text description for everything else — see spec.md §12 |
+| [`process-component-media`](skills/process-component-media/SKILL.md) | a `TMFCxxx` id | renames each of its raw extracted images descriptively, reverse-engineers the component architecture/eTOM-SID-link/API-structure diagrams into PlantUML, and writes a text description for everything else — see spec-components.md §4.2 |
 
 ## Tools
 

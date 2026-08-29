@@ -1,0 +1,28 @@
+@startuml
+allowmixing
+title TMFC039 : Agreement Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+object TMF651 {
+  id = TMF651
+  name = Agreement Management API
+  resources = (see below)
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  resources = (see below)
+}
+
+publishedEvents --> TMF651
+subscribedEvents --> TMF632
+
+rectangle "agreementCreateEvent\nagreementAttributeValueChangeEvent\nagreementStateChangeEvent\nagreementSpecificationCreateEvent\nagreementSpecificationAttributeValueChangeEvent" as TMF651Events
+rectangle "individualDeleteEvent\norganizationDeleteEvent" as TMF632Events
+
+TMF651 --> TMF651Events
+TMF632 --> TMF632Events
+@enduml

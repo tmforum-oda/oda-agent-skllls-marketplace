@@ -1,0 +1,101 @@
+@startuml
+allowmixing
+title TMFC039 : Agreement Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF637 {
+  id = TMF637
+  name = Product Inventory API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF667 {
+  id = TMF667
+  name = Document Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF632
+dependentAPIs --> TMF669
+dependentAPIs --> TMF620
+dependentAPIs --> TMF637
+dependentAPIs --> TMF667
+dependentAPIs --> TMF701
+
+object individual
+object organization
+object partyRole
+object productOffering
+object productOfferingPrice
+object product
+object document
+object processFlow
+object taskFlow
+
+TMF632 --> individual
+TMF632 --> organization
+TMF669 --> partyRole
+TMF620 --> productOffering
+TMF620 --> productOfferingPrice
+TMF637 --> product
+TMF667 --> document
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET/id" as individualOps
+rectangle "GET\nGET/id" as organizationOps
+rectangle "GET\nGET/id" as partyRoleOps
+rectangle "GET\nGET/id" as productOfferingOps
+rectangle "GET\nGET/id" as productOfferingPriceOps
+rectangle "GET\nGET/id" as productOps
+rectangle "GET\nGET/id" as documentOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+individual --> individualOps
+organization --> organizationOps
+partyRole --> partyRoleOps
+productOffering --> productOfferingOps
+productOfferingPrice --> productOfferingPriceOps
+product --> productOps
+document --> documentOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

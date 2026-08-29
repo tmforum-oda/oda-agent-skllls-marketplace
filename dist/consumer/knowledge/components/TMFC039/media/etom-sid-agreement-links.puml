@@ -1,0 +1,33 @@
+@startuml
+title TMFC039 : Agreement Management -- eTOM/SID ABE Links
+' The source image's own footer literally reads "TMFC020 - Agreement Management"
+' (an apparent mislabel/typo for TMFC039 in the source PDF) -- reproduced as-is,
+' not corrected, since this redraw is of exactly what the image shows.
+
+class "L2 - Party Agreement Management" as L2PartyAgreementManagement <<eTOM Business Activity>>
+class Agreement <<SID Data Entity>>
+class AgreementItem <<SID Data Entity>>
+class AgreementTermOrCondition <<SID Data Entity>>
+
+' eTOM activity <-> SID ABE link. Per the image's own legend, an arrow from the
+' eTOM activity towards the SID ABE means information produced by the activity;
+' the reverse arrow means information consumed by the activity. The image draws
+' this pair as a single double-headed arrow, i.e. both hold simultaneously.
+L2PartyAgreementManagement --> Agreement : produces
+Agreement --> L2PartyAgreementManagement : is consumed by
+
+' SID entity <-> SID entity links. NOTE: the image's legend only defines arrow
+' meaning for eTOM-activity <-> SID-ABE arrows -- it does not define what an
+' arrow directly between two SID entities means. These six arrows are
+' reproduced with exactly the direction drawn in the image (each pair of
+' entities is linked by two separate, adjacent single-headed arrows, one each
+' way), with no "produces"/"is consumed by" semantic invented for them.
+Agreement --> AgreementItem
+AgreementItem --> Agreement
+Agreement --> AgreementTermOrCondition
+AgreementTermOrCondition --> Agreement
+AgreementItem --> AgreementTermOrCondition
+AgreementTermOrCondition --> AgreementItem
+
+footer TMFC020 - Agreement Management (as printed in the source image)
+@enduml

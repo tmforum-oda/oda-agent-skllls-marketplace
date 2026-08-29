@@ -1,0 +1,45 @@
+@startuml
+allowmixing
+title TMFC039 : Agreement Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF651 {
+  id = TMF651
+  name = Agreement Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF651
+exposedAPIs --> TMF701
+
+object agreement
+object agreementSpecification
+object processFlow
+object taskFlow
+
+TMF651 --> agreement
+TMF651 --> agreementSpecification
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET/id\nPOST\nPATCH/id\nDELETE/id" as agreementOps
+rectangle "GET\nGET/id\nPOST\nPATCH/id\nDELETE/id" as agreementSpecificationOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+agreement --> agreementOps
+agreementSpecification --> agreementSpecificationOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml
