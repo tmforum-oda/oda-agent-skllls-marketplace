@@ -1,0 +1,51 @@
+@startuml
+title TMFC001 : Product Catalog Management -- eTOM/SID ABE Links
+
+class "L2 - Product Specification & Offering Development & Retirement\nL2 - Product Specification Management" as L2ProductSpecOffering <<eTOM Business Activity>>
+class "L2 - Business Partner Offering Development & Retirement" as L2BusinessPartnerOffering <<eTOM Business Activity>>
+
+class "Product Offering Specification" as SIDProductOfferingSpec <<SID Data Entity>>
+class "Product Specification" as SIDProductSpec <<SID Data Entity>>
+class "Product Usage*" as SIDProductUsage <<SID Data Entity>>
+class "Party Product Specification & Offering" as SIDPartyProductSpecOffering <<SID Data Entity>>
+class "Product Configuration ****" as SIDProductConfiguration <<SID Data Entity>>
+class "Loyalty ***" as SIDLoyalty <<SID Data Entity>>
+
+' Per the image's own legend: an arrow from an eTOM activity towards a SID ABE
+' means the information is produced by the activity; the reverse arrow means
+' the information is consumed by the activity. Every connection below is drawn
+' in the source as a single double-headed arrow, i.e. both hold simultaneously.
+'
+' The left-hand box (two activity names stacked inside one dashed rectangle,
+' evidently sharing the same set of links) connects to only 5 of the 6 SID
+' entities -- it does NOT connect to "Party Product Specification & Offering".
+' The right-hand box connects to all 6. This asymmetry is reproduced exactly
+' as drawn, confirmed by zooming into the source image's left-hand branch
+' point rather than trusting a full-image read.
+
+L2ProductSpecOffering --> SIDProductOfferingSpec : produces
+SIDProductOfferingSpec --> L2ProductSpecOffering : is consumed by
+L2ProductSpecOffering --> SIDProductSpec : produces
+SIDProductSpec --> L2ProductSpecOffering : is consumed by
+L2ProductSpecOffering --> SIDProductUsage : produces
+SIDProductUsage --> L2ProductSpecOffering : is consumed by
+L2ProductSpecOffering --> SIDProductConfiguration : produces
+SIDProductConfiguration --> L2ProductSpecOffering : is consumed by
+L2ProductSpecOffering --> SIDLoyalty : produces
+SIDLoyalty --> L2ProductSpecOffering : is consumed by
+
+L2BusinessPartnerOffering --> SIDProductOfferingSpec : produces
+SIDProductOfferingSpec --> L2BusinessPartnerOffering : is consumed by
+L2BusinessPartnerOffering --> SIDProductSpec : produces
+SIDProductSpec --> L2BusinessPartnerOffering : is consumed by
+L2BusinessPartnerOffering --> SIDProductUsage : produces
+SIDProductUsage --> L2BusinessPartnerOffering : is consumed by
+L2BusinessPartnerOffering --> SIDPartyProductSpecOffering : produces
+SIDPartyProductSpecOffering --> L2BusinessPartnerOffering : is consumed by
+L2BusinessPartnerOffering --> SIDProductConfiguration : produces
+SIDProductConfiguration --> L2BusinessPartnerOffering : is consumed by
+L2BusinessPartnerOffering --> SIDLoyalty : produces
+SIDLoyalty --> L2BusinessPartnerOffering : is consumed by
+
+footer *for Product Usage Specification   ***for Loyalty Program Specification   ****for Product Configuration Specification (as printed in the source image)
+@enduml

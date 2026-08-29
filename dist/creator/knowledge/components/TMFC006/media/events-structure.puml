@@ -1,0 +1,51 @@
+@startuml
+allowmixing
+
+object publishedSubscribedEvents {
+  publishedEvents
+  subscribedEvents
+}
+
+object "TMF633" as API1 {
+  id = TMF633
+  name = Service Catalog Management API
+}
+rectangle "serviceSpecificationCreateEvent\nserviceSpecificationChangeEvent\nserviceSpecificationDeleteEvent\nserviceCategoryCreateEvent\nserviceCategoryChangeEvent\nserviceCategoryDeleteEvent\nserviceCandidateCreateEvent\nserviceCandidateChangeEvent\nserviceCandidateDeleteEvent\nserviceCatalogCreateEvent\nserviceCatalogChangeEvent\nserviceCatalogDeleteEvent\nserviceCatalogBatchEvent" as EV1
+
+object "TMF657" as API2 {
+  id = TMF657
+  name = Service Quality Management API
+}
+rectangle "serviceLevelObjectiveCreateEvent\nserviceLevelObjectiveChangeEvent\nserviceLevelObjectiveAttributeValueChangeEvent\nserviceLevelSpecificationCreateEvent\nserviceLevelSpecificationDeleteEvent\nserviceLevelSpecificationAttributeValueChangeEvent" as EV2
+
+object "TMF701" as API3 {
+  id = TMF701
+  name = Process Flow Management API
+}
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent" as EV3
+
+object "TMF634" as API4 {
+  id = TMF634
+  name = Resource Catalog Management
+}
+rectangle "resourceSpecificationCreateEvent\nresourceSpecificationChangeEvent\nresourceSpecificationDeleteEvent" as EV4
+
+object "TMF662" as API5 {
+  id = TMF662
+  name = Entity Catalog Management API
+}
+rectangle "entitySpecificationCreateEvent\nentitySpecificationAttributeValueChangeEvent\nentitySpecificationChangeEvent\nentitySpecificationDeleteEvent" as EV5
+
+publishedSubscribedEvents::publishedEvents --> API1
+publishedSubscribedEvents::publishedEvents --> API2
+publishedSubscribedEvents::publishedEvents --> API3
+publishedSubscribedEvents::subscribedEvents --> API4
+publishedSubscribedEvents::subscribedEvents --> API5
+
+API1 --> EV1
+API2 --> EV2
+API3 --> EV3
+API4 --> EV4
+API5 --> EV5
+
+@enduml

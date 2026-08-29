@@ -1,0 +1,69 @@
+@startuml
+allowmixing
+title TMFC001 : Product Catalog Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  resources = (see below)
+}
+
+object TMF671 {
+  id = TMF671
+  name = Promotion Management API
+  resources = (see below)
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  resources = (see below)
+}
+
+object TMF633 {
+  id = TMF633
+  name = Service Catalog Management
+  resources = (see below)
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  resources = (see below)
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  resources = (see below)
+}
+
+publishedEvents --> TMF620
+publishedEvents --> TMF671
+publishedEvents --> TMF701
+subscribedEvents --> TMF633
+subscribedEvents --> TMF669
+subscribedEvents --> TMF632
+
+rectangle "productSpecificationCreate\nproductSpecificationDeleteEvent\ncategoryCreateEvent\ncategoryDeleteEvent\nproductOfferingCreateEvent\nproductOfferingAttributeValueChangeEvent\nproductOfferingStateChangeEvent\nproductOfferingDeleteEvent\nproductOfferingPriceCreateEvent\nproductOfferingPriceAttributeValueChangeEvent\nproductOfferingPriceStateChangeEvent\nproductOfferingPriceDeleteEvent\ncatalogCreateEvent\ncatalogDeleteEvent\ncatalogBatchEvent" as TMF620Events
+
+rectangle "promotionCreateEvent\npromotionDeleteEvent\npromotionAttributeValueChangeEvent\npromotionStateChangeEvent\npromotionInformationRequiredEvent" as TMF671Events
+
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent" as TMF701Events
+
+rectangle "serviceSpecificationStateChange\nserviceSpecificationAttributeValueChangeEvent\nserviceSpecificationCreateEvent\nserviceSpecificationDeleteEvent\nresourceSpecificationCreateEvent\nresourceSpecificationChangeEvent\nresourceSpecificationDeleteEvent" as TMF633Events
+
+rectangle "partyRoleDeleteEvent" as TMF669Events
+
+rectangle "individualDeleteEvent\norganizationDeleteEvent" as TMF632Events
+
+TMF620 --> TMF620Events
+TMF671 --> TMF671Events
+TMF701 --> TMF701Events
+TMF633 --> TMF633Events
+TMF669 --> TMF669Events
+TMF632 --> TMF632Events
+@enduml

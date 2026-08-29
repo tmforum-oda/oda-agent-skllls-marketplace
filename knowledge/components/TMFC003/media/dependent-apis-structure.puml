@@ -1,0 +1,140 @@
+@startuml
+allowmixing
+title TMFC003 : Product Order Delivery Orchestration & Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+object TMF622 {
+  id = TMF622
+  name = Product Ordering Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+object TMF637 {
+  id = TMF637
+  name = Product Inventory Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+object TMF633 {
+  id = TMF633
+  name = Service Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF638 {
+  id = TMF638
+  name = Service Inventory Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF641 {
+  id = TMF641
+  name = Service Ordering Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+object TMF634 {
+  id = TMF634
+  name = Resource Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF639 {
+  id = TMF639
+  name = Resource Inventory Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF652 {
+  id = TMF652
+  name = Resource Ordering Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF620
+dependentAPIs --> TMF622
+dependentAPIs --> TMF637
+dependentAPIs --> TMF633
+dependentAPIs --> TMF638
+dependentAPIs --> TMF641
+dependentAPIs --> TMF634
+dependentAPIs --> TMF639
+dependentAPIs --> TMF652
+dependentAPIs --> TMF701
+
+object productSpecification
+object productOrder
+object product
+object serviceSpecification
+object service
+object serviceOrder
+object cancelServiceOrder
+object resourceSpecification
+object resource
+object resourceOrder
+object processFlow
+object taskFlow
+
+TMF620 --> productSpecification
+TMF622 --> productOrder
+TMF637 --> product
+TMF633 --> serviceSpecification
+TMF638 --> service
+TMF641 --> serviceOrder
+TMF641 --> cancelServiceOrder
+TMF634 --> resourceSpecification
+TMF639 --> resource
+TMF652 --> resourceOrder
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id" as productSpecificationOps
+rectangle "GET /id\nPATCH" as productOrderOps
+rectangle "GET\nGET /id\nPATCH" as productOps
+rectangle "GET\nGET /id" as serviceSpecificationOps
+rectangle "GET / id\nGET" as serviceOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as serviceOrderOps
+rectangle "GET\nGET /id\nPOST" as cancelServiceOrderOps
+rectangle "GET\nGET /id" as resourceSpecificationOps
+rectangle "GET\nGET /id" as resourceOps
+rectangle "GET /id\nPOST" as resourceOrderOps
+rectangle "GET\nGET /id\nPOST\nDELETE /id" as processFlowOps
+rectangle "GET\nGET /id\nPATCH /id" as taskFlowOps
+
+productSpecification --> productSpecificationOps
+productOrder --> productOrderOps
+product --> productOps
+serviceSpecification --> serviceSpecificationOps
+service --> serviceOps
+serviceOrder --> serviceOrderOps
+cancelServiceOrder --> cancelServiceOrderOps
+resourceSpecification --> resourceSpecificationOps
+resource --> resourceOps
+resourceOrder --> resourceOrderOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

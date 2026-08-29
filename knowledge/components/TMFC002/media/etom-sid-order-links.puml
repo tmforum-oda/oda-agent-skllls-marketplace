@@ -1,0 +1,62 @@
+@startuml
+title TMFC002 : Product Order Capture & Validation -- eTOM/SID ABE Links
+
+package "TMFC002 - Product Order Capture & Validation" {
+  class "L2 - Product Order Management" as L2ProductOrderManagement <<eTOM Business Activity>>
+  class "L2 - Customer Order Processing Mgt" as L2CustomerOrderProcessingMgt <<eTOM Business Activity>>
+  class "L2 - Selling" as L2Selling <<eTOM Business Activity>>
+  class CustomerProductOrder <<SID Data Entity>>
+  class ShoppingCart <<SID Data Entity>>
+  class SalesQuote <<SID Data Entity>>
+}
+
+package "TMFC005 - Product Inventory" {
+  class Product <<SID Data Entity>>
+}
+
+' Every link below is an eTOM-activity <-> SID-ABE link. Per the image's own
+' legend, an arrow from the eTOM activity towards the SID ABE means
+' information produced by the activity; the reverse arrow means information
+' consumed by the activity. The image draws each of these pairs with an
+' arrowhead at both ends (either as one double-headed arrow, or as two
+' separate adjacent single-headed arrows -- confirmed by zooming into each
+' arrowhead, since several of these paths run close together or cross),
+' i.e. both directions hold simultaneously for every pair below. Unlike
+' TMFC039's own eTOM-SID diagram, this image has no SID-entity <-> SID-entity
+' arrows, so no undefined-legend case applies here.
+
+L2ProductOrderManagement --> CustomerProductOrder : produces
+CustomerProductOrder --> L2ProductOrderManagement : is consumed by
+
+CustomerProductOrder --> L2CustomerOrderProcessingMgt : is consumed by
+L2CustomerOrderProcessingMgt --> CustomerProductOrder : produces
+
+L2CustomerOrderProcessingMgt --> ShoppingCart : produces
+ShoppingCart --> L2CustomerOrderProcessingMgt : is consumed by
+
+ShoppingCart --> L2Selling : is consumed by
+L2Selling --> ShoppingCart : produces
+
+L2Selling --> SalesQuote : produces
+SalesQuote --> L2Selling : is consumed by
+
+L2CustomerOrderProcessingMgt --> SalesQuote : produces
+SalesQuote --> L2CustomerOrderProcessingMgt : is consumed by
+
+' These two cross into the neighbouring TMFC005 package -- Product is owned
+' and updated by TMFC005, not TMFC002 (see TMFC002.md section 2.2's own
+' footnote), but this diagram still shows both TMFC002 activities reading
+' from / producing into it.
+L2ProductOrderManagement --> Product : produces
+Product --> L2ProductOrderManagement : is consumed by
+
+L2CustomerOrderProcessingMgt --> Product : produces
+Product --> L2CustomerOrderProcessingMgt : is consumed by
+
+legend right
+  eTOM Business Activity = dashed-outline rectangle in source image
+  SID Data Entity = cylinder in source image
+  --> "produces" = eTOM activity to SID ABE arrow
+  --> "is consumed by" = SID ABE to eTOM activity arrow
+endlegend
+@enduml

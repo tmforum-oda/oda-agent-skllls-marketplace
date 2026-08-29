@@ -1,0 +1,59 @@
+@startuml
+title TMFC001 : Product Catalog Management
+
+component "TMFC001 : Product Catalog Management" as TMFC001 {
+  rectangle "L2 - Product Specification & Offering Development & Retirement" as eTOM1
+  rectangle "L2 - Business Partner Offering Development & Retirement" as eTOM2
+  rectangle "L2 - Product Catalog Planning Management" as eTOM3
+  rectangle "L2 - Product Catalog Lifecycle Management" as eTOM4
+  rectangle "L2 - Product Catalog Operational Readiness Management" as eTOM5
+  rectangle "L2 - Product Catalog Content Management" as eTOM6
+  rectangle "L2 - Product Specification Management" as eTOM7
+  database "Product Offering Specification" as SID1
+  database "Product Specification" as SID2
+  database "Party Product Spec. & Offering" as SID3
+  database "Product Usage*" as SID4
+  database "Loyalty ***" as SID5
+  database "Product configuration ****" as SID6
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF632 Party Management] as dep1
+[TMF633 Service Catalog] as dep2
+[TMF634 Resource Catalog] as dep3
+[TMF651 Agreement Management] as dep4
+[TMF669 Party Role] as dep5
+[TMF673 Geographic Address] as dep6
+[TMF674 Geographic Site] as dep7
+[TMF675 Geographic Location] as dep8
+[TMF620 Product Catalog Mgt] as dep9
+[TMF662 Entity Catalog Mgt] as dep10
+
+dep1 --> TMFC001 : TMF632 Party Management
+dep2 --> TMFC001 : TMF633 Service Catalog
+dep3 --> TMFC001 : TMF634 Resource Catalog
+dep4 --> TMFC001 : TMF651 Agreement Management
+dep5 --> TMFC001 : TMF669 Party Role
+dep6 --> TMFC001 : TMF673 Geographic Address
+dep7 --> TMFC001 : TMF674 Geographic Site
+dep8 --> TMFC001 : TMF675 Geographic Location
+dep9 --> TMFC001 : TMF620 Product Catalog Mgt
+dep10 --> TMFC001 : TMF662 Entity Catalog Mgt
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF620 Product Catalog Mgt" as exp1
+() "TMF671 Promotion" as exp2
+() "TMF701 Process Flow" as exp3
+
+TMFC001 --> exp1 : TMF620 Product Catalog Mgt
+TMFC001 --> exp2 : TMF671 Promotion
+TMFC001 --> exp3 : TMF701 Process Flow
+
+legend right
+  eTOM Business Activities = rectangles (drawn with a solid outline in this
+  image, not the dashed outline of the generic notation -- reproduced as shown)
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

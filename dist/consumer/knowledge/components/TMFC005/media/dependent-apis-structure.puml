@@ -1,0 +1,183 @@
+@startuml
+allowmixing
+title TMFC005 : Product Inventory -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF639 {
+  id = TMF639
+  name = Resource Inventory Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF651 {
+  id = TMF651
+  name = Agreement Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF673 {
+  id = TMF673
+  name = Geographic Address Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF674 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF675 {
+  id = TMF675
+  name = Geographic Location Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF666 {
+  id = TMF666
+  name = Account Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF637 {
+  id = TMF637
+  name = Product Inventory Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF638 {
+  id = TMF638
+  name = Service Inventory Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF622 {
+  id = TMF622
+  name = Product Ordering Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF620
+dependentAPIs --> TMF669
+dependentAPIs --> TMF639
+dependentAPIs --> TMF651
+dependentAPIs --> TMF673
+dependentAPIs --> TMF674
+dependentAPIs --> TMF675
+dependentAPIs --> TMF666
+dependentAPIs --> TMF632
+dependentAPIs --> TMF637
+dependentAPIs --> TMF638
+dependentAPIs --> TMF622
+
+object productSpecification
+object productOffering
+object productOfferingPrice
+object PartyRoleManagement
+object resource
+object agreement
+object geographicAddress
+object geographicSubAddress
+object geographicSite
+object geographicLocation
+object billingAccount
+object individual
+object organization
+object product
+object service
+object productOrder
+
+TMF620 --> productSpecification
+TMF620 --> productOffering
+TMF620 --> productOfferingPrice
+TMF669 --> PartyRoleManagement
+TMF639 --> resource
+TMF651 --> agreement
+TMF673 --> geographicAddress
+TMF673 --> geographicSubAddress
+TMF674 --> geographicSite
+TMF675 --> geographicLocation
+TMF666 --> billingAccount
+TMF632 --> individual
+TMF632 --> organization
+TMF637 --> product
+TMF638 --> service
+TMF622 --> productOrder
+
+rectangle "GET\nGET /id" as productSpecificationOps
+rectangle "GET\nGET /id" as productOfferingOps
+rectangle "GET\nGET /id" as productOfferingPriceOps
+rectangle "GET\nGET /id" as PartyRoleManagementOps
+rectangle "GET\nGET /id" as resourceOps
+rectangle "GET\nGET /id" as agreementOps
+rectangle "GET\nGET /id" as geographicAddressOps
+rectangle "GET\nGET /id" as geographicSubAddressOps
+rectangle "GET\nGET /id" as geographicSiteOps
+rectangle "GET\nGET /id" as geographicLocationOps
+rectangle "GET\nGET /id" as billingAccountOps
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as productOps
+rectangle "GET\nGET /id" as serviceOps
+rectangle "GET\nGET /id" as productOrderOps
+
+productSpecification --> productSpecificationOps
+productOffering --> productOfferingOps
+productOfferingPrice --> productOfferingPriceOps
+PartyRoleManagement --> PartyRoleManagementOps
+resource --> resourceOps
+agreement --> agreementOps
+geographicAddress --> geographicAddressOps
+geographicSubAddress --> geographicSubAddressOps
+geographicSite --> geographicSiteOps
+geographicLocation --> geographicLocationOps
+billingAccount --> billingAccountOps
+individual --> individualOps
+organization --> organizationOps
+product --> productOps
+service --> serviceOps
+productOrder --> productOrderOps
+@enduml

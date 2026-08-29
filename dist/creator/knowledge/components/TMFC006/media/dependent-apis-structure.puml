@@ -1,0 +1,62 @@
+@startuml
+allowmixing
+
+object dependentAPIs
+
+object "TMF634" as API1 {
+  id = TMF634
+  name = Resource Catalog Management API
+  required = false
+  version = 4
+}
+object "resourceSpecification" as R1_1
+rectangle "GET\nGET /id" as OPS1_1
+dependentAPIs --> API1
+API1 --> R1_1
+R1_1 --> OPS1_1
+
+object "TMF669" as API2 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  version = 4
+}
+object "partyRole" as R2_1
+rectangle "GET\nGET /id" as OPS2_1
+dependentAPIs --> API2
+API2 --> R2_1
+R2_1 --> OPS2_1
+
+object "TMF632" as API3 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  version = 4
+}
+object "individual" as R3_1
+object "organization" as R3_2
+rectangle "GET\nGET /id" as OPS3_1
+rectangle "GET\nGET /id" as OPS3_2
+dependentAPIs --> API3
+API3 --> R3_1
+API3 --> R3_2
+R3_1 --> OPS3_1
+R3_2 --> OPS3_2
+
+object "TMF662" as API4 {
+  id = TMF662
+  name = Entity Catalog Management API
+  required = false
+  version = 4
+}
+object "entitySpecification" as R4_1
+object "associationSpecification" as R4_2
+rectangle "GET\nGET /id" as OPS4_1
+rectangle "GET\nGET /id" as OPS4_2
+dependentAPIs --> API4
+API4 --> R4_1
+API4 --> R4_2
+R4_1 --> OPS4_1
+R4_2 --> OPS4_2
+
+@enduml

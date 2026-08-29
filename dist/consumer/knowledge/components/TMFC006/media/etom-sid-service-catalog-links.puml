@@ -1,0 +1,42 @@
+@startuml
+hide circle
+hide empty members
+
+class "Service Specification ABE" as SpecABE
+class "Service Usage ABE" as UsageABE
+class "Service Performance ABE" as PerfABE
+class "Service Configuration ABE" as ConfigABE
+
+class "L2 - Service Catalog Lifecycle Management" as Lifecycle
+class "L2 - Service Catalog Operational Readiness Management" as Readiness
+class "L2 - Service Catalog Content Management" as Content
+class "L2 - Service Catalog Planning Management" as Planning
+class "L2 - Service Specification Management" as SpecMgmt
+class "L2 - Service Specification Development & Retirement" as DevRetire
+
+Lifecycle --> SpecABE : produces
+SpecABE --> Lifecycle : is consumed by
+SpecMgmt --> SpecABE : produces
+SpecABE --> SpecMgmt : is consumed by
+SpecABE --> Readiness : is consumed by
+SpecABE --> Planning : is consumed by
+
+Content --> UsageABE : produces
+Content --> PerfABE : produces
+Content --> ConfigABE : produces
+UsageABE --> Content : is consumed by
+PerfABE --> Content : is consumed by
+ConfigABE --> Content : is consumed by
+
+DevRetire --> UsageABE : produces
+DevRetire --> PerfABE : produces
+DevRetire --> ConfigABE : produces
+UsageABE --> DevRetire : is consumed by
+PerfABE --> DevRetire : is consumed by
+ConfigABE --> DevRetire : is consumed by
+
+legend bottom
+an arrow from an eTOM activity towards a SID ABE means the information is produced by the activity;
+the arrow in the other direction means the information is consumed by the activity
+endlegend
+@enduml

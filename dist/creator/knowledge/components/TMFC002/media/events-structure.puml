@@ -1,0 +1,108 @@
+@startuml
+allowmixing
+title TMFC002 : Product Order Capture & Validation -- Events (API / Resource / Event Type)
+
+object publishedEvents
+object subscribedEvents
+
+' -- Published events branch --
+
+object TMF622 {
+  id = TMF622
+  name = Product Order Management API
+  resources = (see below)
+}
+object TMF648 {
+  id = TMF648
+  name = Quote Management API
+  resources = (see below)
+}
+object TMF663 {
+  id = TMF663
+  name = Shopping Cart Management API
+  resources = (see below)
+}
+object TMF701pub {
+  id = TMF701
+  name = Process Flow Management API
+  resources = (see below)
+}
+
+publishedEvents --> TMF622
+publishedEvents --> TMF648
+publishedEvents --> TMF663
+publishedEvents --> TMF701pub
+
+rectangle "productOrderStateChange\nproductOrderCreateEvent\nproductOrderAttributeValueChange\nproductOrderDelete\nproductOrderInformationRequired\ncancelProductOrderCreateEvent\ncancelProductOrderStateChange\ncancelProductOrderInformationRequired" as TMF622Events
+rectangle "quoteStateChange\nquoteCreateEvent\nquoteAttributeValueChange\nquoteDelete\nquoteInformationRequired" as TMF648Events
+rectangle "shoppingCartCreateEvent\nshoppingCartAttributeValueChange\nshoppingCartDelete" as TMF663Events
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent" as TMF701pubEvents
+
+TMF622 --> TMF622Events
+TMF648 --> TMF648Events
+TMF663 --> TMF663Events
+TMF701pub --> TMF701pubEvents
+
+' -- Subscribed events branch --
+
+object TMF679 {
+  id = TMF679
+  name = Product Offering Qualification Management API
+  resources = (see below)
+}
+object TMF645 {
+  id = TMF645
+  name = Service Qualification Management API
+  resources = (see below)
+}
+object TMF673 {
+  id = TMF673
+  name = Geographic Address Management
+  resources = (see below)
+}
+object TMF676asTMF679 {
+  id = TMF679
+  name = Payment Management API
+  resources = (see below)
+}
+object TMF716 {
+  id = TMF716
+  name = ResourceReservation
+  resources = (see below)
+}
+object TMF701sub {
+  id = TMF701
+  name = Process Flow Management
+  resources = (see below)
+}
+
+subscribedEvents --> TMF679
+subscribedEvents --> TMF645
+subscribedEvents --> TMF673
+subscribedEvents --> TMF676asTMF679
+subscribedEvents --> TMF716
+subscribedEvents --> TMF701sub
+
+rectangle "productOfferingQualificationStateChangeEvent" as TMF679Events
+rectangle "checkServiceQualificationStateChangeEvent\nqueryServiceQualificationStateChangeEvent" as TMF645Events
+rectangle "geographicAddressValidationStateChange" as TMF673Events
+rectangle "paymentCreate\npaymentStateChange" as TMF676Events
+rectangle "resourceReservationCreateEvent\nresourceReservationAttributeValueChangeEvent\nresourceReservationDeleteEvent\nresourceReservationStateChangeEvent\nresourceReservationInformationRequiredEvent\ncancelResourceReservationCreateEvent\ncancelResourceReservationStateChangeEvent\ncancelResourceReservationInformationRequiredEvent" as TMF716Events
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent" as TMF701subEvents
+
+TMF679 --> TMF679Events
+TMF645 --> TMF645Events
+TMF673 --> TMF673Events
+TMF676asTMF679 --> TMF676Events
+TMF716 --> TMF716Events
+TMF701sub --> TMF701subEvents
+
+' NOTE ON THE "TMF679" DUPLICATE: the source image itself labels the Payment
+' Management API box "id: TMF679" (identical to the Product Offering
+' Qualification Management API box above it) -- an apparent mislabel in the
+' source PDF, since TMFC002.md's own Dependent APIs table (section 3.2)
+' gives Payment Management API the id TMF676. Reproduced here exactly as
+' printed in the image (object renamed TMF676asTMF679 only to avoid a
+' duplicate PlantUML object name; its `id` field still reads "TMF679" to
+' match the source), not corrected to TMF676.
+@enduml

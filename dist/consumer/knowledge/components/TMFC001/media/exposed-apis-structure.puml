@@ -1,0 +1,78 @@
+@startuml
+allowmixing
+title TMFC001 : Product Catalog Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF671 {
+  id = TMF671
+  name = Promotion Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF620
+exposedAPIs --> TMF671
+exposedAPIs --> TMF701
+
+object catalog
+object category
+object productSpecification
+object productOffering
+object productOfferingPrice
+object exportJob
+object importJob
+object promotion
+object processFlow
+object taskFlow
+
+TMF620 --> catalog
+TMF620 --> category
+TMF620 --> productSpecification
+TMF620 --> productOffering
+TMF620 --> productOfferingPrice
+TMF620 --> exportJob
+TMF620 --> importJob
+TMF671 --> promotion
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as catalogOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as categoryOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as productSpecificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as productOfferingOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as productOfferingPriceOps
+rectangle "POST\nGET\nGET /id\nDELETE" as exportJobOps
+rectangle "POST\nGET\nGET /id\nDELETE" as importJobOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as promotionOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+catalog --> catalogOps
+category --> categoryOps
+productSpecification --> productSpecificationOps
+productOffering --> productOfferingOps
+productOfferingPrice --> productOfferingPriceOps
+exportJob --> exportJobOps
+importJob --> importJobOps
+promotion --> promotionOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

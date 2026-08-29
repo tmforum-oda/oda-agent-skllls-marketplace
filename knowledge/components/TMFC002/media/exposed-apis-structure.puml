@@ -1,0 +1,77 @@
+@startuml
+allowmixing
+title TMFC002 : Product Order Capture & Validation -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF622 {
+  id = TMF622
+  name = Product Ordering Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF648 {
+  id = TMF648
+  name = Quote Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF663 {
+  id = TMF663
+  name = Shopping Cart Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF622
+exposedAPIs --> TMF648
+exposedAPIs --> TMF663
+exposedAPIs --> TMF701
+
+object productOrder
+object cancelProductOrder
+object Quote
+object ShoppingCart
+object processFlow
+object taskFlow
+
+TMF622 --> productOrder
+TMF622 --> cancelProductOrder
+TMF648 --> Quote
+TMF663 --> ShoppingCart
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "POST\nGET\nGET /id\nPATCH\nDELETE" as productOrderOps
+rectangle "POST\nGET\nGET /id" as cancelProductOrderOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as quoteOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as shoppingCartOps
+rectangle "GET\nGET /id\nPOST\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+productOrder --> productOrderOps
+cancelProductOrder --> cancelProductOrderOps
+Quote --> quoteOps
+ShoppingCart --> shoppingCartOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+
+' NOTE: the component's Exposed APIs table (TMFC002.md section 3.1) also
+' lists a fifth API, TMF688 "TMF688 Event" (Optional, no resource listed) --
+' the source image itself omits it, just as TMFC039's own exposed-APIs
+' diagram omitted APIs with no resource to draw. Reproduced faithfully as
+' four APIs, matching the image exactly, not reconciled against the table.
+@enduml

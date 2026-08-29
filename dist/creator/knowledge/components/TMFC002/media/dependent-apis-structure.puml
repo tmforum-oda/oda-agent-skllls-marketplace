@@ -1,0 +1,317 @@
+@startuml
+allowmixing
+title TMFC002 : Product Order Capture & Validation -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+object TMF637 {
+  id = TMF637
+  name = Product Inventory Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+object TMF679a {
+  id = TMF679
+  name = Product Offering Qualification Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF645 {
+  id = TMF645
+  name = Service Qualification Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF646 {
+  id = TMF646
+  name = Appointment Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF673 {
+  id = TMF673
+  name = Geographic Address Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF674 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF716 {
+  id = TMF716
+  name = Resource Reservation API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF687 {
+  id = TMF687
+  name = Stock Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF669 {
+  id = TMF669
+  name = Party Role Management
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF666 {
+  id = TMF666
+  name = Account Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF676 {
+  id = TMF676
+  name = Payment Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF683 {
+  id = TMF683
+  name = Party Interaction Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF638 {
+  id = TMF638
+  name = Service Inventory Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF639 {
+  id = TMF639
+  name = Resource Inventory Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+object TMF760 {
+  id = TMF760
+  name = Product Configuration Management API
+  required = false
+  resources = (see below)
+  version = 5
+}
+object TMF651 {
+  id = TMF651
+  name = Agreement Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF620
+dependentAPIs --> TMF637
+dependentAPIs --> TMF679a
+dependentAPIs --> TMF645
+dependentAPIs --> TMF646
+dependentAPIs --> TMF673
+dependentAPIs --> TMF674
+dependentAPIs --> TMF716
+dependentAPIs --> TMF687
+dependentAPIs --> TMF632
+dependentAPIs --> TMF669
+dependentAPIs --> TMF666
+dependentAPIs --> TMF676
+dependentAPIs --> TMF683
+dependentAPIs --> TMF638
+dependentAPIs --> TMF639
+dependentAPIs --> TMF701
+dependentAPIs --> TMF760
+dependentAPIs --> TMF651
+
+' NOTE: the Dependent APIs table (TMFC002.md section 3.2) also lists TMF629
+' Customer Management, TMF672 User Role Permission, TMF685 Resource Pool
+' Management and TMF688 Event -- all four have no resource listed in the
+' table, and (matching that) the source image itself has no box for any of
+' them. Reproduced faithfully as the 19 APIs the image actually draws.
+
+object productCategory
+object productOffering
+object productOfferingPrice
+object productSpecification
+TMF620 --> productCategory
+TMF620 --> productOffering
+TMF620 --> productOfferingPrice
+TMF620 --> productSpecification
+rectangle "GET\nGET /id" as productCategoryOps
+rectangle "GET\nGET /id" as productOfferingOps
+rectangle "GET\nGET /id" as productOfferingPriceOps
+rectangle "GET\nGET /id" as productSpecificationOps
+productCategory --> productCategoryOps
+productOffering --> productOfferingOps
+productOfferingPrice --> productOfferingPriceOps
+productSpecification --> productSpecificationOps
+
+object product
+TMF637 --> product
+rectangle "GET\nGET /id\nPOST\nPATCH" as productOps
+product --> productOps
+
+object productOfferingQualification
+TMF679a --> productOfferingQualification
+rectangle "GET\nGET /id\nPOST\nPATCH" as productOfferingQualificationOps
+productOfferingQualification --> productOfferingQualificationOps
+
+object checkServiceQualification
+object queryServiceQualification
+TMF645 --> checkServiceQualification
+TMF645 --> queryServiceQualification
+rectangle "GET\nGET /id\nPOST\nPATCH" as checkServiceQualificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH" as queryServiceQualificationOps
+checkServiceQualification --> checkServiceQualificationOps
+queryServiceQualification --> queryServiceQualificationOps
+
+object appointment
+object searchTimeSlot
+TMF646 --> appointment
+TMF646 --> searchTimeSlot
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as appointmentOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as searchTimeSlotOps
+appointment --> appointmentOps
+searchTimeSlot --> searchTimeSlotOps
+
+object geographicAddress
+object geographicSubAddress
+object geographicAddressValidation
+TMF673 --> geographicAddress
+TMF673 --> geographicSubAddress
+TMF673 --> geographicAddressValidation
+rectangle "GET\nGET /id" as geographicAddressOps
+rectangle "GET\nGET /id" as geographicSubAddressOps
+rectangle "GET\nGET /id\nPOST\nPATCH" as geographicAddressValidationOps
+geographicAddress --> geographicAddressOps
+geographicSubAddress --> geographicSubAddressOps
+geographicAddressValidation --> geographicAddressValidationOps
+
+object geographicSite
+TMF674 --> geographicSite
+rectangle "GET\nGET /id" as geographicSiteOps
+geographicSite --> geographicSiteOps
+
+object resourceReservation
+object cancelResourceReservation
+TMF716 --> resourceReservation
+TMF716 --> cancelResourceReservation
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceReservationOps
+rectangle "GET\nGET /id\nPOST" as cancelResourceReservationOps
+resourceReservation --> resourceReservationOps
+cancelResourceReservation --> cancelResourceReservationOps
+
+object checkProductStock
+object queryProductStock
+object reserveProductStock
+object productStock
+TMF687 --> checkProductStock
+TMF687 --> queryProductStock
+TMF687 --> reserveProductStock
+TMF687 --> productStock
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as checkProductStockOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as queryProductStockOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as reserveProductStockOps
+rectangle "GET\nGET /id" as productStockOps
+checkProductStock --> checkProductStockOps
+queryProductStock --> queryProductStockOps
+reserveProductStock --> reserveProductStockOps
+productStock --> productStockOps
+
+object individual
+object organization
+TMF632 --> individual
+TMF632 --> organization
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+individual --> individualOps
+organization --> organizationOps
+
+object partyRole
+TMF669 --> partyRole
+rectangle "GET\nGET /id" as partyRoleOps
+partyRole --> partyRoleOps
+
+object billingAccount
+TMF666 --> billingAccount
+rectangle "GET /id\nGET" as billingAccountOps
+billingAccount --> billingAccountOps
+
+object payment
+TMF676 --> payment
+rectangle "GET /id\nGET" as paymentOps
+payment --> paymentOps
+
+object partyInteraction
+TMF683 --> partyInteraction
+rectangle "GET /id\nGET" as partyInteractionOps
+partyInteraction --> partyInteractionOps
+
+object service
+TMF638 --> service
+rectangle "GET /id\nGET" as serviceOps
+service --> serviceOps
+
+object resource
+TMF639 --> resource
+rectangle "GET /id\nGET" as resourceOps
+resource --> resourceOps
+
+object processFlow
+object taskFlow
+TMF701 --> processFlow
+TMF701 --> taskFlow
+rectangle "POST\nPATCH\nGET\nGET /id" as processFlowOps
+rectangle "POST\nPATCH\nGET\nGET /id" as taskFlowOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+
+object checkProductConfiguration
+object queryProductConfiguration
+TMF760 --> checkProductConfiguration
+TMF760 --> queryProductConfiguration
+rectangle "GET\nGET /id\nPOST" as checkProductConfigurationOps
+rectangle "GET\nGET /id\nPOST" as queryProductConfigurationOps
+checkProductConfiguration --> checkProductConfigurationOps
+queryProductConfiguration --> queryProductConfigurationOps
+
+object agreement
+TMF651 --> agreement
+rectangle "GET\nGET /id" as agreementOps
+agreement --> agreementOps
+@enduml

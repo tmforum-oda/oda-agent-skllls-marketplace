@@ -1,0 +1,41 @@
+@startuml
+allowmixing
+title TMFC005 : Product Inventory -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF637 {
+  id = TMF637
+  name = Product Inventory Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF637
+exposedAPIs --> TMF701
+
+object product
+object processFlow
+object taskFlow
+
+TMF637 --> product
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as productOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+product --> productOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

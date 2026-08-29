@@ -1,0 +1,78 @@
+@startuml
+allowmixing
+
+object exposedAPIs
+
+object "TMF633" as API1 {
+  id = TMF633
+  name = Service Catalog Management API
+  required = true
+  version = 4
+}
+object "catalog" as R1_1
+object "category" as R1_2
+object "serviceSpecification" as R1_3
+object "serviceCandidate" as R1_4
+object "exportJob" as R1_5
+object "importJob" as R1_6
+
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as OPS1_1
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as OPS1_2
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as OPS1_3
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as OPS1_4
+rectangle "POST\nGET\nGET /id\nDELETE" as OPS1_5
+rectangle "POST\nGET\nGET /id\nDELETE" as OPS1_6
+
+exposedAPIs --> API1
+API1 --> R1_1
+API1 --> R1_2
+API1 --> R1_3
+API1 --> R1_4
+API1 --> R1_5
+API1 --> R1_6
+R1_1 --> OPS1_1
+R1_2 --> OPS1_2
+R1_3 --> OPS1_3
+R1_4 --> OPS1_4
+R1_5 --> OPS1_5
+R1_6 --> OPS1_6
+
+object "TMF657" as API2 {
+  id = TMF657
+  name = Service Quality Management API
+  required = true
+  version = 4
+}
+object "serviceLevelSpecification" as R2_1
+object "serviceLevelObjective" as R2_2
+object "serviceLevelSpecParameter" as R2_3
+rectangle "GET\nGET/id\nPOST\nPATCH\nDELETE" as OPS2_1
+rectangle "GET\nGET/id\nPOST\nPATCH\nDELETE" as OPS2_2
+rectangle "GET\nGET/id\nPOST\nPATCH\nDELETE" as OPS2_3
+
+exposedAPIs --> API2
+API2 --> R2_1
+API2 --> R2_2
+API2 --> R2_3
+R2_1 --> OPS2_1
+R2_2 --> OPS2_2
+R2_3 --> OPS2_3
+
+object "TMF701" as API3 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  version = 4
+}
+object "processFlow" as R3_1
+object "taskFlow" as R3_2
+rectangle "POST\nGET\nGET /id\nDELETE" as OPS3_1
+rectangle "PATCH\nGET\nGET /id" as OPS3_2
+
+exposedAPIs --> API3
+API3 --> R3_1
+API3 --> R3_2
+R3_1 --> OPS3_1
+R3_2 --> OPS3_2
+
+@enduml

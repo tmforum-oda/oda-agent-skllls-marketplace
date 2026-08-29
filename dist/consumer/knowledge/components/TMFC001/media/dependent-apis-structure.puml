@@ -1,0 +1,184 @@
+@startuml
+allowmixing
+title TMFC001 : Product Catalog Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF633 {
+  id = TMF633
+  name = Service Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF634 {
+  id = TMF634
+  name = Resource Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4.1
+}
+
+object TMF651 {
+  id = TMF651
+  name = Agreement Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF673 {
+  id = TMF673
+  name = Geographic Address Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF674 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF675 {
+  id = TMF675
+  name = Geographic Location Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF662 {
+  id = TMF662
+  name = Entity Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+' NOTE: this diagram's own 10 dependent APIs do not match the "Dependent APIs"
+' table in the surrounding document body 1:1 -- the table additionally lists
+' TMF688 (Event) and TMF672 (UserRolesPermissions), neither of which appears
+' in this diagram, and the diagram includes TMF662 (Entity Catalog Management),
+' which does not appear in the table at all. Reproduced here as the diagram
+' actually draws it, not reconciled against the table.
+
+dependentAPIs --> TMF633
+dependentAPIs --> TMF669
+dependentAPIs --> TMF632
+dependentAPIs --> TMF634
+dependentAPIs --> TMF651
+dependentAPIs --> TMF673
+dependentAPIs --> TMF674
+dependentAPIs --> TMF675
+dependentAPIs --> TMF662
+dependentAPIs --> TMF620
+
+object serviceSpecification
+object partyRole
+object individual
+object organisation
+object resourceSpecification
+object agreement
+object agreementSpecification
+object geographicAddress
+object geographicSite
+object geographicLocation
+object entitySpecification
+object associationSpecification
+object catalog
+object category
+object productOffering
+object productSpecification
+object productOfferingPrice
+object importJob
+object exportJob
+
+TMF633 --> serviceSpecification
+TMF669 --> partyRole
+TMF632 --> individual
+TMF632 --> organisation
+TMF634 --> resourceSpecification
+TMF651 --> agreement
+TMF651 --> agreementSpecification
+TMF673 --> geographicAddress
+TMF674 --> geographicSite
+TMF675 --> geographicLocation
+TMF662 --> entitySpecification
+TMF662 --> associationSpecification
+TMF620 --> catalog
+TMF620 --> category
+TMF620 --> productOffering
+TMF620 --> productSpecification
+TMF620 --> productOfferingPrice
+TMF620 --> importJob
+TMF620 --> exportJob
+
+rectangle "GET\nGET /id" as serviceSpecificationOps
+rectangle "GET\nGET /id" as partyRoleOps
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organisationOps
+rectangle "GET\nGET /id" as resourceSpecificationOps
+rectangle "GET\nGET /id" as agreementOps
+rectangle "GET\nGET /id" as agreementSpecificationOps
+rectangle "GET\nGET /id" as geographicAddressOps
+rectangle "GET\nGET /id" as geographicSiteOps
+rectangle "GET\nGET /id" as geographicLocationOps
+rectangle "GET\nGET /id" as entitySpecificationOps
+rectangle "GET\nGET /id" as associationSpecificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as catalogOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as categoryOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as productOfferingOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as productSpecificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as productOfferingPriceOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as importJobOps
+rectangle "GET\nGET /id\nPOST\nDELETE" as exportJobOps
+
+serviceSpecification --> serviceSpecificationOps
+partyRole --> partyRoleOps
+individual --> individualOps
+organisation --> organisationOps
+resourceSpecification --> resourceSpecificationOps
+agreement --> agreementOps
+agreementSpecification --> agreementSpecificationOps
+geographicAddress --> geographicAddressOps
+geographicSite --> geographicSiteOps
+geographicLocation --> geographicLocationOps
+entitySpecification --> entitySpecificationOps
+associationSpecification --> associationSpecificationOps
+catalog --> catalogOps
+category --> categoryOps
+productOffering --> productOfferingOps
+productSpecification --> productSpecificationOps
+productOfferingPrice --> productOfferingPriceOps
+importJob --> importJobOps
+exportJob --> exportJobOps
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+title TMFC003 : Product Order Delivery Orchestration & Management -- eTOM/SID ABE Links
+' Unlike TMFC039's single-component version of this diagram, this image spans
+' three component boxes: TMFC003 (the eTOM activities) plus TMFC002 and
+' TMFC005 (each owning one of the linked SID entities). Reproduced as drawn,
+' including the other components' box labels as notes below.
+
+class "L2 - Customer Order Processing / L3 Manage Customer Order Fulfillment\nL2 - Customer Order Processing / L3 Manage Customer Order Delivery" as OrderActivities <<eTOM Business Activity>>
+class CustomerProductOrder <<SID Data Entity>>
+class Product <<SID Data Entity>>
+
+note right of CustomerProductOrder
+  Drawn inside a separate component box
+  labelled "TMFC002 - Product Order
+  Capture & Validation" in the source image.
+end note
+
+note right of Product
+  Drawn inside a separate component box
+  labelled "TMFC005 - Product Inventory"
+  in the source image.
+end note
+
+' Per the image's own legend, an arrow from the eTOM activity towards the SID
+' ABE means information produced by the activity; the reverse arrow means
+' information consumed by the activity. Both connections are drawn as a
+' single line carrying an arrowhead at each end, i.e. both hold
+' simultaneously -- confirmed by zooming into each arrowhead individually.
+OrderActivities --> CustomerProductOrder : produces
+CustomerProductOrder --> OrderActivities : is consumed by
+
+OrderActivities --> Product : produces
+Product --> OrderActivities : is consumed by
+
+@enduml

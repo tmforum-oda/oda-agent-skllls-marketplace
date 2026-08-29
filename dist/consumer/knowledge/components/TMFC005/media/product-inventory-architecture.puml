@@ -1,0 +1,59 @@
+@startuml
+title TMFC005 : Product Inventory
+
+component "TMFC005 : Product Inventory" as TMFC005 {
+  rectangle "L2 -  Product Inventory Management" as eTOM1 #line.dashed
+  rectangle "L2 -  Loyalty Program  Management/ L3 - Loyalty Program Operation*" as eTOM2 #line.dashed
+  database "Product" as SID1
+  database "Loyalty**" as SID2
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image).
+' The source image draws these as two visually separated groups with a gap between
+' them but no legend distinction between the groups -- reproduced in the same order,
+' the gap carries no additional meaning.
+[TMF620 Product Catalog Mgt] as dep1
+[TMF638 Service Inventory Mgt] as dep2
+[TMF639 Resource Inventory Mgt] as dep3
+[TMF622 Product Ordering] as dep4
+[TMF632 Party] as dep5
+[TMF669 Party Role Mgt] as dep6
+[TMF666 Account Mgt] as dep7
+[TMF673 Geographic Address Mgt] as dep8
+[TMF674 Geographic Site Mgt] as dep9
+[TMF675 Geographic Location] as dep10
+[TMF651 Agreement Mgt] as dep11
+[TMF637 Product Inventory Mgt] as dep12
+
+dep1 --> TMFC005 : TMF620 Product Catalog Mgt
+dep2 --> TMFC005 : TMF638 Service Inventory Mgt
+dep3 --> TMFC005 : TMF639 Resource Inventory Mgt
+dep4 --> TMFC005 : TMF622 Product Ordering
+dep5 --> TMFC005 : TMF632 Party
+dep6 --> TMFC005 : TMF669 Party Role Mgt
+dep7 --> TMFC005 : TMF666 Account Mgt
+dep8 --> TMFC005 : TMF673 Geographic Address Mgt
+dep9 --> TMFC005 : TMF674 Geographic Site Mgt
+dep10 --> TMFC005 : TMF675 Geographic Location
+dep11 --> TMFC005 : TMF651 Agreement Mgt
+dep12 --> TMFC005 : TMF637 Product Inventory Mgt
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image).
+' NOTE: "TMF637 Product Inventory Mgt" is listed on BOTH the dependent side (dep12,
+' above) and the exposed side (exp1, below) in the source image itself -- reproduced
+' as drawn, not treated as a transcription error.
+() "TMF637 Product Inventory Mgt" as exp1
+() "TMF701 Process Flow" as exp2
+
+TMFC005 --> exp1 : TMF637 Product Inventory Mgt
+TMFC005 --> exp2 : TMF701 Process Flow
+
+footer * partial ** for Loyalty Program
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

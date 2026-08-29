@@ -1,0 +1,61 @@
+@startuml
+title TMFC006 : Service Catalog Management
+
+skinparam component {
+  BackgroundColor #3b3b3b
+  FontColor white
+}
+skinparam rectangle {
+  BackgroundColor white
+  FontColor black
+}
+skinparam database {
+  BackgroundColor white
+  FontColor black
+}
+
+component "TMFC006 : Service Catalog Management" as TMFC006 {
+  rectangle "L2 - Service Catalog Lifecycle Management" as A1
+  rectangle "L2 - Service Catalog Operational Readiness Management" as A2
+  rectangle "L2 - Service Catalog Content Management" as A3
+  rectangle "L2 - Service Catalog Planning Management" as A4
+  rectangle "L2 - Service Specification Management" as A5
+  rectangle "L2 - Service Specification Development & Retirement" as A6
+
+  database "Service Specification ABE" as SE1
+  database "Service Performance ABE*" as SE2
+  database "Service Usage ABE***" as SE3
+  database "Service Configuration ABE****" as SE4
+}
+
+note bottom of SE2 : * Only Service Level Spec ABE &\nService Performance Specification ABE
+note bottom of SE3 : *** Only ServiceUsageSpec BE
+note bottom of SE4 : **** Only ServiceConfigSpec BE
+
+() "TMF634\nResource Catalog Management" as DEP1
+() "TMF669\nParty Role Management" as DEP2
+() "TMF632\nParty" as DEP3
+() "TMF662\nEntity Catalog Management" as DEP4
+
+() "TMF633\nService Catalog Management" as EXP1
+() "TMF657\nService Quality Management" as EXP2
+() "TMF701\nProcess Flow Management" as EXP3
+
+DEP1 --> TMFC006
+DEP2 --> TMFC006
+DEP3 --> TMFC006
+DEP4 --> TMFC006
+
+TMFC006 --> EXP1
+TMFC006 --> EXP2
+TMFC006 --> EXP3
+
+legend bottom
+  |= Shape |= Meaning |
+  | dashed rectangle | eTOM Business Activity |
+  | cylinder | SID Data Entities |
+  | socket (left) | Dependent APIs |
+  | lollipop (right) | Exposed APIs |
+endlegend
+
+@enduml

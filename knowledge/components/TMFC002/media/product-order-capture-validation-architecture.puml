@@ -1,0 +1,84 @@
+@startuml
+title TMFC002 : Product Order Capture & Validation
+
+component "TMFC002 : Product Order Capture & Validation" as TMFC002 {
+  rectangle "L2 - Selling / L3 - Develop Sales Proposal" as eTOM1 #line.dashed
+  rectangle "L2 - Selling / L3 - Negociate Sales/Contract" as eTOM2 #line.dashed
+  rectangle "L2 - Product Order Management / L3 - Manage Product Order Capture" as eTOM3 #line.dashed
+  rectangle "L2 - Product Order Management / L3 - Manage Product Order Cancellation" as eTOM4 #line.dashed
+  rectangle "L2 - Product Order Management / L3 - Manage Product Order Management Reports" as eTOM5 #line.dashed
+  rectangle "L2 - Customer Order Processing Management / L3 - Manage Customer Order Placement" as eTOM6 #line.dashed
+  rectangle "L2 - Customer Order Processing Management / L3 - Manage Customer Order Completion" as eTOM7 #line.dashed
+  rectangle "L2 - Customer Order Processing Management / L3 - Manage Customer Order Management Report" as eTOM8 #line.dashed
+  rectangle "L2 - Customer Order Processing Management / L3 - Manage Customer Order Closure" as eTOM9 #line.dashed
+  database "SalesQuote" as SID1
+  database "ShoppingCart" as SID2
+  database "CustomerProductOrder" as SID3
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF637 Product Inventory Mgt] as dep1
+[TMF620 Product Catalog Mgt] as dep2
+[TMF679 Product Offering Qualification] as dep3
+[TMF760 Product Configuration] as dep4
+[TMF651 Agreement] as dep5
+[TMF645 Service Qualification] as dep6
+[TMF646 Appointment] as dep7
+[TMF673 Geographic Address Mgt] as dep8
+[TMF674 Geographic Site Mgt] as dep9
+[TMF716 Resource Reservation] as dep10
+[TMF687 Stock Mgt] as dep11
+[TMF701 Process Flow (dependent)] as dep12
+
+dep1 --> TMFC002 : TMF637 Product Inventory Mgt
+dep2 --> TMFC002 : TMF620 Product Catalog Mgt
+dep3 --> TMFC002 : TMF679 Product Offering Qualification
+dep4 --> TMFC002 : TMF760 Product Configuration
+dep5 --> TMFC002 : TMF651 Agreement
+dep6 --> TMFC002 : TMF645 Service Qualification
+dep7 --> TMFC002 : TMF646 Appointment
+dep8 --> TMFC002 : TMF673 Geographic Address Mgt
+dep9 --> TMFC002 : TMF674 Geographic Site Mgt
+dep10 --> TMFC002 : TMF716 Resource Reservation
+dep11 --> TMFC002 : TMF687 Stock Mgt
+dep12 --> TMFC002 : TMF701 Process Flow
+
+' Second group of dependent APIs, drawn entering on the right of the source
+' image using the same cup/socket connector as the left-hand group (not the
+' lollipop connector used by the Exposed APIs group below) -- reproduced here
+' with the same dependency-arrow direction regardless of which side of the
+' component box the source image drew them on.
+[TMF683 Party Interaction Mgt] as dep13
+[TMF632 Party Mgt] as dep14
+[TMF669 PartyRole Mgt] as dep15
+[TMF638 Service Inventory Mgt] as dep16
+[TMF639 Resource Inventory Mgt] as dep17
+[TMF666 Account Mgt] as dep18
+[TMF676 Payment] as dep19
+
+dep13 --> TMFC002 : TMF683 Party Interaction Mgt
+dep14 --> TMFC002 : TMF632 Party Mgt
+dep15 --> TMFC002 : TMF669 PartyRole Mgt
+dep16 --> TMFC002 : TMF638 Service Inventory Mgt
+dep17 --> TMFC002 : TMF639 Resource Inventory Mgt
+dep18 --> TMFC002 : TMF666 Account Mgt
+dep19 --> TMFC002 : TMF676 Payment
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF648 Quote" as exp1
+() "TMF663 Shopping Cart" as exp2
+() "TMF622 Product Ordering" as exp3
+() "TMF701 Process Flow" as exp4
+
+TMFC002 --> exp1 : TMF648 Quote
+TMFC002 --> exp2 : TMF663 Shopping Cart
+TMFC002 --> exp3 : TMF622 Product Ordering
+TMFC002 --> exp4 : TMF701 Process Flow
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors (drawn entering on both left and right of the component box)
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

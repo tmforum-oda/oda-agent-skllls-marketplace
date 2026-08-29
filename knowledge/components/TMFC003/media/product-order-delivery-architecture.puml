@@ -1,0 +1,57 @@
+@startuml
+title TMFC003 : Product Order Delivery Orchestration & Management
+
+component "TMFC003 : Product Order Delivery Orchestration & Management" as TMFC003 {
+  rectangle "L2 - Customer Order Processing Mgt / L3 - Manage Customer Order Fulfillment" as eTOM1 #line.dashed
+  rectangle "L2 - Customer Order Processing Mgt / L3 - Manage Customer Order Delivery" as eTOM2 #line.dashed
+  rectangle "L2 - Product Order Mgt / L3 - Product Order Fulfillment" as eTOM3 #line.dashed
+  rectangle "L2 - Product Order Mgt / L3 - Product Order Delivery" as eTOM4 #line.dashed
+  rectangle "L2 - Service Configuration & Activation / L3 - Issue Service Order *" as eTOM5 #line.dashed
+  rectangle "L2 - Resource Order Mgt / L3 - Manage Resource Order Capture *" as eTOM6 #line.dashed
+  rectangle "L2 - Business Partner Order Mgt / L3 - Issue Business Partner Order" as eTOM7 #line.dashed
+}
+
+' Note: unlike the standard notation's legend (which also depicts SID Data
+' Entities as cylinders), this diagram's component box contains only eTOM
+' Business Activity rectangles -- no SID entity cylinders are actually drawn
+' inside the TMFC003 box in the source image. Redrawn as shown, not forced.
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF620 Product Catalog Mgt] as dep1
+[TMF622 Product Ordering Mgt] as dep2
+[TMF637 Product Inventory Mgt] as dep3
+[TMF633 Service Catalog] as dep4
+[TMF638 Service Inventory] as dep5
+[TMF641 Service Ordering Mgt] as dep6
+[TMF634 Resource Catalog] as dep7
+[TMF639 Resource Inventory] as dep8
+[TMF652 Resource Ordering Mgt] as dep9
+[TMF701 Process Flow] as dep10
+
+dep1 --> TMFC003 : TMF620 Product Catalog Mgt
+dep2 --> TMFC003 : TMF622 Product Ordering Mgt
+dep3 --> TMFC003 : TMF637 Product Inventory Mgt
+dep4 --> TMFC003 : TMF633 Service Catalog
+dep5 --> TMFC003 : TMF638 Service Inventory
+dep6 --> TMFC003 : TMF641 Service Ordering Mgt
+dep7 --> TMFC003 : TMF634 Resource Catalog
+dep8 --> TMFC003 : TMF639 Resource Inventory
+dep9 --> TMFC003 : TMF652 Resource Ordering Mgt
+dep10 --> TMFC003 : TMF701 Process Flow
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+' Note: TMF701 Process Flow appears both as a Dependent API (above) and as the
+' sole Exposed API (below) -- reproduced as drawn, not deduplicated.
+() "TMF701 Process Flow" as exp1
+
+TMFC003 --> exp1 : TMF701 Process Flow
+
+footer * only part of L4 concerned; see details in dedicated paragraph (as printed in the source image)
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders (none present in this component's diagram)
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

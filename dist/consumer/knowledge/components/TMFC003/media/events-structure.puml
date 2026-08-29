@@ -1,0 +1,50 @@
+@startuml
+allowmixing
+title TMFC003 : Product Order Delivery Orchestration & Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  resources = (see below)
+}
+
+object TMF622 {
+  id = TMF622
+  name = Product Ordering Management API
+  resources = (see below)
+}
+
+object TMF641 {
+  id = TMF641
+  name = Service Ordering Management API
+  resources = (see below)
+}
+
+object TMF652 {
+  id = TMF652
+  name = Resource Ordering Management API
+  resources = (see below)
+}
+
+publishedEvents --> TMF701
+
+subscribedEvents --> TMF622
+subscribedEvents --> TMF641
+subscribedEvents --> TMF652
+
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent" as TMF701Events
+
+rectangle "productOrderStateChangeEvent\ncancelProductOrderStateChangeEvent" as TMF622Events
+
+rectangle "serviceOrderStateChangeEvent\nserviceOrderAttributeValueChangeEvent\nserviceOrderInformationRequiredEvent\nserviceOrderMilestoneEvent\nserviceOrderJeopardyEvent\ncancelServiceOrderStateChangeEvent\ncancelServiceOrderInformationRequiredEvent" as TMF641Events
+
+rectangle "resourceOrderStateChange\nresourceOrderAttributeValueChangeEvent\nresourceOrderInformationRequiredEvent\ncancelResourceOrderStateChange\ncancelResourceOrderInformationRequiredEvent" as TMF652Events
+
+TMF701 --> TMF701Events
+TMF622 --> TMF622Events
+TMF641 --> TMF641Events
+TMF652 --> TMF652Events
+@enduml

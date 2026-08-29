@@ -1,0 +1,28 @@
+@startuml
+allowmixing
+title TMFC003 : Product Order Delivery Orchestration & Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF701
+
+object processFlow
+object taskFlow
+
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

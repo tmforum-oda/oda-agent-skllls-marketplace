@@ -1,0 +1,28 @@
+@startuml
+title TMFC005 : Product Inventory -- eTOM/SID ABE Links
+
+class "L2 - Product Inventory Management" as L2ProductInventoryManagement <<eTOM Business Activity>>
+class "L2 - Loyalty Program Management/L3 - Loyalty Program Operation*" as L2LoyaltyProgramManagement <<eTOM Business Activity>>
+class Product <<SID Data Entity>>
+class "Loyalty**" as Loyalty <<SID Data Entity>>
+
+' Per the image's own legend: an arrow from an eTOM activity towards a SID ABE
+' means the information is produced by the activity; the arrow in the other
+' direction means the information is consumed by the activity.
+'
+' Arrow directions below were confirmed by cropping and zooming into the
+' arrowhead region of the source image (see full_box.png / top_junction.png /
+' bottom_junction.png crops) rather than trusting a single full-image read --
+' the Product pair genuinely has both directions drawn (a produced/consumed
+' loop, as in TMFC039's own diagram), but the Loyalty pair does NOT: both of
+' its arrows point INTO an eTOM activity box (both "is consumed by"), with no
+' reverse "produces" arrow drawn from either activity into Loyalty. This
+' asymmetry is real in the source, not an omission in the transcription.
+L2ProductInventoryManagement --> Product : produces
+Product --> L2ProductInventoryManagement : is consumed by
+
+Loyalty --> L2ProductInventoryManagement : is consumed by
+Loyalty --> L2LoyaltyProgramManagement : is consumed by
+
+footer TMFC005 - Product Inventory (* partial ** for Loyalty Program, as printed in the source image)
+@enduml

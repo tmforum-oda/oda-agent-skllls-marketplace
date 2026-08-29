@@ -101,11 +101,19 @@ HEADING_RE = re.compile(r"^\s*(\d+(?:\.\d+)*)\.\s+(\S.*\S|\S)\s*$")
 # textual signal distinguishing it -- drop these lines outright, before heading
 # detection ever sees them, or the *first* "1. Overview" match is the ToC line itself.
 TOC_LEADER_RE = re.compile(r"\.{4,}")
-FOOTER_RE = re.compile(r"^.{0,3}TM Forum \d{4}\.? All Rights Reserved\.?\s*(Page \d+ of \d+)?\s*$", re.IGNORECASE)
+# The optional lone "." before "Page N of M" handles a real rendering artifact
+# (confirmed on TMFC003: "TM Forum 2025. All Rights Reserved. . Page 12 of 27" -- an
+# extra stray period, likely a misplaced copyright-symbol glyph, that an exactly-one-
+# optional-period pattern doesn't account for and would otherwise leak as a stray line).
+FOOTER_RE = re.compile(r"^.{0,3}TM Forum \d{4}\.? All Rights Reserved\.?\s*\.?\s*(Page \d+ of \d+)?\s*$", re.IGNORECASE)
 PAGE_NUM_RE = re.compile(r"^\s*Page \d+ of \d+\s*$", re.IGNORECASE)
 # The running header/footer every page repeats ("TMFC039 Agreement Management v1.1.0"),
 # built from ID/name/version rather than hardcoded so it matches regardless of component.
-ID_FOOTER_RE = re.compile(rf"^{re.escape(ID)}\b.*v{re.escape(VERSION)}\s*$", re.IGNORECASE)
+# Not anchored at the end -- some components append a trailing ticket reference after
+# the version ("TMFC001 Product Catalog Management v2.1.2 (TAC-1172)"), which an
+# end-anchored pattern misses entirely, leaking the whole running header as a stray
+# body paragraph on every single page.
+ID_FOOTER_RE = re.compile(rf"^{re.escape(ID)}\b.*v{re.escape(VERSION)}\b", re.IGNORECASE)
 
 
 # --- images: dedup by content hash -- every page repeats the same header/footer logo,
@@ -175,20 +183,48 @@ def normalize_table(raw_rows):
     of staying in its own column. Distinguished from a real continuation
     fragment ("Function", "Level 1", "(or set of BEs)") by shape: every
     genuine one seen across this whole document is a short label with no
-    sentence-ending punctuation; a leftover wrapped sentence is neither.
+    sentence-ending punctuation or comma; a leftover wrapped sentence or
+    operation-list fragment is neither -- the comma check specifically was
+    added after a second, shorter leftover fragment slipped past the length
+    check alone (`TMFC002`'s Dependent APIs table: a lone `"Patch,\nDelete"`
+    -- the tail of a wrapped Operations cell -- read as short and
+    period-free, and wrongly flagged the *Operation* column as shifted,
+    which then ate every subsequent row's *Resource* column value).
+
+    Text shape alone still isn't enough -- a *third* leftover fragment
+    (`TMFC005`'s Exposed APIs table: a lone `"hub"` / `"POST\nDELETE"` pair,
+    the tail of a wrapped Resource/Operations row) is short and free of
+    both period and comma, so it also passes the shape check. The check
+    that actually catches this one is structural, not textual: every
+    genuine multi-row header continuation seen in this whole document
+    re-extends the *same* set of column positions on every continuation
+    row (e.g. the Functional Framework Functions header's "Aggregate" /
+    "Function" / "Level 1" continuation touches columns {4, 7} on both of
+    its continuation rows) -- a leftover data row instead touches a
+    *different* set of columns unrelated to whichever header cell was
+    actually still incomplete (`hub`/`POST DELETE` touches the Resource/
+    Operations columns, which round out fine from row 0 alone and were
+    never part of any continuation). The first continuation row accepted
+    establishes that column set; every later candidate row must match it
+    exactly or the continuation loop stops there.
     """
     HEADER_FRAGMENT_MAXLEN = 20
 
     def looks_like_header_fragment(c):
-        return len(c) <= HEADER_FRAGMENT_MAXLEN and "." not in c
+        return len(c) <= HEADER_FRAGMENT_MAXLEN and "." not in c and "," not in c
 
     rows = [[(c or "").replace("\n", "<br>").strip() for c in row] for row in raw_rows]
     header = list(rows[0])
     data_start = 1
     shifted_cols = set()
+    continuation_col_set = None
     for row in rows[1:]:
-        non_empty = [c for c in row if c.strip()]
-        if non_empty and not row[0].strip() and all(looks_like_header_fragment(c) for c in non_empty):
+        non_empty_idx = [i for i, c in enumerate(row) if c.strip()]
+        non_empty = [row[i] for i in non_empty_idx]
+        col_set = frozenset(non_empty_idx)
+        matches_pattern = continuation_col_set is None or col_set == continuation_col_set
+        if non_empty and not row[0].strip() and matches_pattern and all(looks_like_header_fragment(c) for c in non_empty):
+            continuation_col_set = col_set
             for i, c in enumerate(row):
                 if c.strip():
                     header[i] = f"{header[i]} {c}".strip() if header[i] else c
@@ -237,6 +273,17 @@ drop_until_level = None
 max_top_seen = 0  # highest top-level (depth-1) section number accepted as a real heading so far
 para_buf = []
 open_table = None  # {"header": tuple, "rows": [...]} -- a table that may still continue on the next page
+pending_heading = None  # (level, number, title, dropped) -- a heading whose title may wrap onto the next line
+# A single bare word, letters/hyphens only, no digits or punctuation -- deliberately
+# narrow. A heading title occasionally wraps onto a second physical line as exactly
+# one more word ("6. Administrative" / "Appendix" -- confirmed on TMFC005/TMFC006's
+# real Administrative Appendix heading, still true even under pdfplumber's extraction,
+# which mostly avoids this but not always). A broader "any short line" version of this
+# check was tried first and rejected: it also matched genuine short *sentences*
+# immediately following a heading (confirmed corrupting TMFC006's "SID ABEs" heading
+# with "SID ABEs this component is responsible for are:"). A bare single word is safe
+# because a real sentence essentially never reduces to exactly one bare word.
+CONTINUATION_WORD_RE = re.compile(r"^[A-Za-z][A-Za-z-]*$")
 
 
 def flush_para():
@@ -257,7 +304,7 @@ def flush_table():
 
 
 def process_prose_line(raw):
-    global seen_first_heading, drop_until_level, max_top_seen
+    global seen_first_heading, drop_until_level, max_top_seen, pending_heading
     stripped = raw.strip()
     m = HEADING_RE.match(raw) if stripped else None
 
@@ -269,6 +316,23 @@ def process_prose_line(raw):
         if m and m.group(2).strip().lower().rstrip(".") == "overview":
             seen_first_heading = True
         else:
+            return
+
+    if pending_heading is not None:
+        level, number, title, dropped = pending_heading
+        pending_heading = None
+        if stripped and not m and CONTINUATION_WORD_RE.match(stripped):
+            title = f"{title} {stripped}"
+            name_key = title.lower().strip(" .")
+            if not dropped and name_key in DROP_HEADINGS:
+                # The drop/keep decision was made on the first line's title alone --
+                # now that the wrap completes it into an actual boilerplate name
+                # ("Administrative" + "Appendix"), reverse that decision: un-emit the
+                # heading already appended and start dropping from here.
+                del out_lines[-2:]
+                drop_until_level = level
+            elif not dropped:
+                out_lines[-2] = f"{'#' * min(level, 6)} {number}. {title}"
             return
 
     if m and m.group(1).count(".") == 0 and int(m.group(1)) <= max_top_seen:
@@ -290,11 +354,13 @@ def process_prose_line(raw):
             drop_until_level = None
         if drop_until_level is None and name_key in DROP_HEADINGS:
             drop_until_level = level
+            pending_heading = (level, m.group(1), title, True)
             return
         if drop_until_level is not None:
             return
         out_lines.append(f"{'#' * min(level, 6)} {m.group(1)}. {title}")
         out_lines.append("")
+        pending_heading = (level, m.group(1), title, False)
         return
 
     if drop_until_level is not None:
@@ -398,10 +464,22 @@ with pdfplumber.open(SRC) as pdf, open(SRC, "rb") as _f:
         # resource dictionary in the same order (confirmed directly against this
         # component's real PDF); pdfplumber supplies the position, pypdf the already-
         # decoded bytes (see the module docstring for why the split).
+        #
+        # Pre-filtered by size here, not just later in save_image() -- a logo image's
+        # bounding box can vertically overlap real heading/body text above or below it
+        # (confirmed on TMFC006 page 4: a 9KB header logo's bbox runs from y=6 to
+        # y=79, overlapping the "2. Overview" heading that starts at y=78). Including
+        # it in the interleaving cursor still advances the cursor past the heading's
+        # own start position even though the image itself is never saved, and
+        # `within_bbox`'s strict containment then silently drops that heading's text
+        # entirely from every subsequent slice -- corrupting the whole document (empty
+        # body, since "seen_first_heading" then never becomes true). A discarded logo
+        # should never affect prose slicing at all, so it's excluded before the sort,
+        # not just before being written to media/.
         images = [
             ("image", im["top"], im["bottom"], pypdf_page.images[i])
             for i, im in enumerate(page.images)
-            if i < len(pypdf_page.images)
+            if i < len(pypdf_page.images) and len(pypdf_page.images[i].data) >= MIN_IMAGE_BYTES
         ]
         items = sorted(tables + images, key=lambda it: it[1])
         bboxes = [it[3].bbox for it in items if it[0] == "table"]

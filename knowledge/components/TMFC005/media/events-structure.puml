@@ -1,0 +1,154 @@
+@startuml
+allowmixing
+title TMFC005 : Product Inventory -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+' Published branch: the two APIs whose own resource lifecycle events this
+' component publishes.
+object TMF637pub as "TMF637" {
+  id = TMF637
+  name = Product Inventory Management AP
+  resources = (see below)
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  resources = (see below)
+}
+
+publishedEvents --> TMF637pub
+publishedEvents --> TMF701
+
+rectangle "productCreateEvent\nproductAttributeValueChangeEvent\nproductStateChangeEvent\nproductDeleteEvent\nproductBatchEvent" as TMF637pubEvents
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent" as TMF701Events
+
+TMF637pub --> TMF637pubEvents
+TMF701 --> TMF701Events
+
+' Subscribed branch: delete events from (most of) the dependent APIs, plus a
+' second, narrower listing of TMF637's own events. NOTE: TMF673 (Geographic
+' Address Management), which does appear in the Dependent APIs diagram, is
+' genuinely absent from this Events diagram -- not an omission in this
+' transcription, the source image simply doesn't include it here.
+object TMF639 {
+  id = TMF639
+  name = Resource Inventory Management API
+  resources = (see below)
+}
+
+object TMF638 {
+  id = TMF638
+  name = Service Inventory Management
+  resources = (see below)
+}
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  resources = (see below)
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  resources = (see below)
+}
+
+' TMF651 and TMF632 carry an extra "port = 80" field in the source image, not
+' present on any other object in this diagram -- reproduced as drawn rather
+' than treated as a transcription error.
+object TMF651 {
+  id = TMF651
+  name = Agreement Management API
+  port = 80
+  resources = (see below)
+}
+
+object TMF666 {
+  id = TMF666
+  name = Account Management API
+  resources = (see below)
+}
+
+object TMF672 {
+  id = TMF672
+  name = User Role Permission Management API
+  resources = (see below)
+}
+
+object TMF674 {
+  id = TMF674
+  name = Geographic Site Management API
+  resources = (see below)
+}
+
+object TMF675 {
+  id = TMF675
+  name = Geographic Location Management API
+  resources = (see below)
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  port = 80
+  resources = (see below)
+}
+
+' The source image's own name field for TMF622 reads exactly this way -- an
+' apparent copy/paste duplication glitch ("ProductProduct ... APIOrderingManagement")
+' in the source PDF, reproduced verbatim rather than corrected.
+object TMF622 {
+  id = TMF622
+  name = ProductProduct Ordering Management APIOrderingManagement
+  resources = (see below)
+}
+
+object TMF637sub as "TMF637" {
+  id = TMF637
+  name = Product Inventory Management API
+  resources = (see below)
+}
+
+subscribedEvents --> TMF639
+subscribedEvents --> TMF638
+subscribedEvents --> TMF620
+subscribedEvents --> TMF669
+subscribedEvents --> TMF651
+subscribedEvents --> TMF666
+subscribedEvents --> TMF672
+subscribedEvents --> TMF674
+subscribedEvents --> TMF675
+subscribedEvents --> TMF632
+subscribedEvents --> TMF622
+subscribedEvents --> TMF637sub
+
+rectangle "resourceDeleteEvent" as TMF639Events
+rectangle "serviceDeleteEvent" as TMF638Events
+rectangle "productSpecificationDeleteEvent\nproductOfferingDeleteEvent\nproductOfferingPriceDeleteEvent" as TMF620Events
+rectangle "partyRoleDeleteEvent" as TMF669Events
+rectangle "agreementDeleteEvent" as TMF651Events
+rectangle "billingAccountDeleteEvent" as TMF666Events
+rectangle "permissionDeleteEvent" as TMF672Events
+rectangle "geographicSiteDeleteEvent" as TMF674Events
+rectangle "geographicLocationDeleteEvent" as TMF675Events
+rectangle "individualDeleteEvent\norganizationDeleteEvent" as TMF632Events
+rectangle "productOrderDeleteEvent" as TMF622Events
+rectangle "productCreateEvent\nproductDeleteEvent\nproductAttributeValueChangeEvent\nproductStateChangeEvent" as TMF637subEvents
+
+TMF639 --> TMF639Events
+TMF638 --> TMF638Events
+TMF620 --> TMF620Events
+TMF669 --> TMF669Events
+TMF651 --> TMF651Events
+TMF666 --> TMF666Events
+TMF672 --> TMF672Events
+TMF674 --> TMF674Events
+TMF675 --> TMF675Events
+TMF632 --> TMF632Events
+TMF622 --> TMF622Events
+TMF637sub --> TMF637subEvents
+@enduml
