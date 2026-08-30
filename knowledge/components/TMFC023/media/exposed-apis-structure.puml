@@ -1,0 +1,58 @@
+@startuml
+allowmixing
+title TMFC023: Party Interaction Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF683 {
+  id = TMF683
+  name = PartyInteractionManagement
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = ProcessFlowManagement
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF688 {
+  id = TMF688
+  name = Event
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF683
+exposedAPIs --> TMF701
+exposedAPIs --> TMF688
+
+object PartyInteraction
+object processFlow
+object taskFlow
+object listener
+object hub
+
+TMF683 --> PartyInteraction
+TMF701 --> processFlow
+TMF701 --> taskFlow
+TMF688 --> listener
+TMF688 --> hub
+
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as PartyInteractionOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+rectangle "POST" as listenerOps
+rectangle "POST\nDELETE" as hubOps
+
+PartyInteraction --> PartyInteractionOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+listener --> listenerOps
+hub --> hubOps
+@enduml

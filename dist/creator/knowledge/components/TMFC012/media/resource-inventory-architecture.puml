@@ -1,0 +1,42 @@
+@startuml
+title TMFC012 : Resource Inventory
+
+component "TMFC012 : Resource Inventory" as TMFC012 {
+  rectangle "L2 - Resource Support Readiness/L3 - Manage Resource Inventory" as eTOM1 #line.dashed
+  database "Resource" as SID1
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF634 Resource Catalog Mgt] as dep1
+[TMF669 Party Role Mgt] as dep2
+[TMF632 Party] as dep3
+[TMF673 Geographic Address Mgt] as dep4
+[TMF674 Geographic Site Mgt] as dep5
+[TMF675 Geographic Location] as dep6
+[TMF639 Resource Inventory Mgt] as dep7
+
+dep1 --> TMFC012 : TMF634 Resource Catalog Mgt
+dep2 --> TMFC012 : TMF669 Party Role Mgt
+dep3 --> TMFC012 : TMF632 Party
+dep4 --> TMFC012 : TMF673 Geographic Address Mgt
+dep5 --> TMFC012 : TMF674 Geographic Site Mgt
+dep6 --> TMFC012 : TMF675 Geographic Location
+dep7 --> TMFC012 : TMF639 Resource Inventory Mgt
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+' NOTE: TMF639 appears on both sides in the source image -- as a dependent API
+' (TMF639 Resource Inventory Mgt) and as an exposed API (also TMF639 Resource
+' Inventory Mgt) -- reproduced as drawn, not de-duplicated.
+() "TMF639 Resource Inventory Mgt" as exp1
+() "TMF701 Process Flow" as exp2
+
+TMFC012 --> exp1 : TMF639 Resource Inventory Mgt
+TMFC012 --> exp2 : TMF701 Process Flow
+
+legend bottom
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

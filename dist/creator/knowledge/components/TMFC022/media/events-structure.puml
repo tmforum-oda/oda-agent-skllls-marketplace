@@ -1,0 +1,46 @@
+@startuml
+allowmixing
+title TMFC022: Party Privacy Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+object TMF644 {
+  id = TMF644
+  name = Privacy Management API
+  resources = (see below)
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  resources = (see below)
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  resources = (see below)
+}
+
+object TMF620 {
+  id = TMF620
+  name = ProductCatalogManagement
+  resources = (see below)
+}
+
+publishedEvents --> TMF644
+subscribedEvents --> TMF669
+subscribedEvents --> TMF632
+subscribedEvents --> TMF620
+
+rectangle "PartyPrivacyProfileCreateEvent\nPartyPrivacyProfileAttributeValueChangeEvent\nPartyPrivacyProfileDeleteEvent\nPartyPrivacyProfileStatusChangeEvent\nPartyPrivacyProfileSpecificationCreateEvent\nPartyPrivacyProfileSpecificationAttributeValueChangeEvent\nPartyPrivacyProfileSpecificationDeleteEvent\nPartyPrivacyProfileSpecificationStatusChangeEvent\nPartyPrivacyAgreementCreateEvent\nPartyPrivacyAgreementAttributeValueChangeEvent\nPartyPrivacyAgreementDeleteEvent\nPartyPrivacyAgreementStatusChangeEvent" as TMF644Events
+rectangle "partyRoleDeleteEvent" as TMF669Events
+rectangle "IndividualDeleteEvent\nOrganizationDeleteEvent" as TMF632Events
+rectangle "ProductOfferingDeleteEvent" as TMF620Events
+
+TMF644 --> TMF644Events
+TMF669 --> TMF669Events
+TMF632 --> TMF632Events
+TMF620 --> TMF620Events
+@enduml

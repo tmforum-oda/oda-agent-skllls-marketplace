@@ -1,0 +1,140 @@
+@startuml
+allowmixing
+title TMFC011 : Resource Order Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF702 {
+  id = TMF702
+  name = Resource Activation Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF634 {
+  id = TMF634
+  name = Resource Catalog Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF639 {
+  id = TMF639
+  name = Resource Inventory Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF664 {
+  id = TMF664
+  name = Resource Function Activation Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF697 {
+  id = TMF697
+  name = Work Order Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF673 {
+  id = TMF673
+  name = Geographic Address Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF674 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF675 {
+  id = TMF675
+  name = Geographic Location Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF702
+dependentAPIs --> TMF634
+dependentAPIs --> TMF639
+dependentAPIs --> TMF664
+dependentAPIs --> TMF632
+dependentAPIs --> TMF697
+dependentAPIs --> TMF673
+dependentAPIs --> TMF674
+dependentAPIs --> TMF675
+
+' TMF702 and TMF639 each connect to their own "resource" node -- the source
+' image draws these as two visually separate boxes that happen to share the
+' same label "resource", not one shared node, so they get distinct aliases
+' here (both displayed as "resource" to match the image).
+object "resource" as resource1
+object monitor
+object resourceSpecification
+object "resource" as resource2
+object resourceFunction
+object individual
+object organization
+object workOrder
+object geographicAddress
+object geographicSite
+object geographicLocation
+
+TMF702 --> resource1
+TMF702 --> monitor
+TMF634 --> resourceSpecification
+TMF639 --> resource2
+TMF664 --> resourceFunction
+TMF632 --> individual
+TMF632 --> organization
+TMF697 --> workOrder
+TMF673 --> geographicAddress
+TMF674 --> geographicSite
+TMF675 --> geographicLocation
+
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resource1Ops
+rectangle "GET\nGET /id" as monitorOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceSpecificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resource2Ops
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceFunctionOps
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id" as workOrderOps
+rectangle "GET\nGET /id" as geographicAddressOps
+rectangle "GET\nGET /id" as geographicSiteOps
+rectangle "GET\nGET /id" as geographicLocationOps
+
+resource1 --> resource1Ops
+monitor --> monitorOps
+resourceSpecification --> resourceSpecificationOps
+resource2 --> resource2Ops
+resourceFunction --> resourceFunctionOps
+individual --> individualOps
+organization --> organizationOps
+workOrder --> workOrderOps
+geographicAddress --> geographicAddressOps
+geographicSite --> geographicSiteOps
+geographicLocation --> geographicLocationOps
+@enduml

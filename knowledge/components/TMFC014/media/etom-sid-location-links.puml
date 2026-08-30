@@ -1,0 +1,27 @@
+@startuml
+title TMFC014 : Location Management -- eTOM/SID ABE Links
+' TMFC014.md section 2.1 states no eTOM business activity is currently
+' assigned to this component. Consistent with that, the source image does
+' not name a real eTOM activity: both boxes are the literal placeholder
+' text "L2 - New eTom Business Process" (reproduced verbatim, including its
+' capitalization, as printed twice in the image -- distinct aliases used
+' here only because PlantUML needs unique identifiers).
+
+class "L2 - New eTom Business Process" as Placeholder1 <<eTOM Business Activity (placeholder)>>
+class "L2 - New eTom Business Process" as Placeholder2 <<eTOM Business Activity (placeholder)>>
+class "Location ABE" as LocationABE <<SID Data Entity>>
+
+' Per the image's own legend: an arrow from an eTOM activity towards a SID
+' ABE means the information is produced by the activity; the arrow in the
+' other direction means the information is consumed by the activity. The
+' image draws each side as a single double-headed arrow (arrowheads at both
+' ends of one curved line), i.e. both hold simultaneously -- reproduced here
+' as a pair of single-headed arrows per side, matching TMFC039's own
+' redraw convention for the same visual pattern.
+Placeholder1 --> LocationABE : produces
+LocationABE --> Placeholder1 : is consumed by
+
+LocationABE --> Placeholder2 : is consumed by
+Placeholder2 --> LocationABE : produces
+
+@enduml

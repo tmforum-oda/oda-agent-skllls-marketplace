@@ -1,0 +1,32 @@
+@startuml
+title TMFC022: Party Privacy Management -- eTOM/SID ABE Links
+
+class "L2 - Customer Privacy Management\nL2 - Business Partner Privacy Management" as eTOMPrivacyActivities <<eTOM Business Activity>>
+class "Party Privacy" as PartyPrivacy <<SID Data Entity>>
+class Party <<SID Data Entity>> #line.dashed
+class "Party Role" as PartyRole <<SID Data Entity>> #line.dashed
+
+note right of Party
+  TMFC028 - Party Management
+end note
+
+note right of PartyRole
+  TMFC035 - Permission Management
+end note
+
+' Party Privacy is the component's own SID ABE: the image draws one path with
+' an arrowhead at each end, i.e. both directions hold simultaneously, per the
+' legend ("produces" from eTOM activity to SID ABE; "is consumed by" the
+' reverse).
+eTOMPrivacyActivities --> PartyPrivacy : produces
+PartyPrivacy --> eTOMPrivacyActivities : is consumed by
+
+' Party and Party Role are external SID entities (owned by other components,
+' TMFC028 and TMFC035 respectively). The image draws only a single arrowhead
+' for each, pointing into the eTOM activities box -- consumed by only, no
+' reverse "produces" arrow back to either external entity.
+Party --> eTOMPrivacyActivities : is consumed by
+PartyRole --> eTOMPrivacyActivities : is consumed by
+
+footer TMFC022 - Party Privacy Management
+@enduml

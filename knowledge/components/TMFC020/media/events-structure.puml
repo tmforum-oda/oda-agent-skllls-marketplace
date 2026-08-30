@@ -1,0 +1,32 @@
+@startuml
+allowmixing
+title TMFC020 : Digital Identity Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+object TMF720 {
+  id = TMF720
+  name = Digital Identity Management API
+  resources = (see below)
+}
+
+' The source image's own id field literally reads "TMF699" (an apparent
+' typo for TMF669 -- Party Role Management, the id used consistently
+' elsewhere in this component's spec) -- reproduced as-is, not corrected,
+' since this redraw is of exactly what the image shows.
+object TMF699 {
+  id = TMF699
+  name = Party Role Management API
+  resources = (see below)
+}
+
+publishedEvents --> TMF720
+subscribedEvents --> TMF699
+
+rectangle "DigitalIdentityCreateEvent\nDigitalIdentityStateChangeEvent\nDigitalIdentityDeleteEvent\nDigitalIdentityAttributeValueChangeEvent" as TMF720Events
+rectangle "UserRoleCreationNotification\nUserRoleChangeNotification" as TMF699Events
+
+TMF720 --> TMF720Events
+TMF699 --> TMF699Events
+@enduml

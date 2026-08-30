@@ -1,0 +1,130 @@
+@startuml
+allowmixing
+title TMFC012 : Resource Inventory -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF634 {
+  id = TMF634
+  name = Resource Catalog Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF673 {
+  id = TMF673
+  name = Geographic Address Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF674 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF675 {
+  id = TMF675
+  name = Geographic Location Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF639 {
+  id = TMF639
+  name = Resource Inventory Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF634
+dependentAPIs --> TMF669
+dependentAPIs --> TMF632
+dependentAPIs --> TMF673
+dependentAPIs --> TMF674
+dependentAPIs --> TMF675
+dependentAPIs --> TMF639
+
+object resourceCatalog
+object resourceCategory
+object resourceSpecification
+object resourceCandidate
+object exportJob
+object importJob
+object partyRole
+object individual
+object organization
+object geographicAddress
+object geographicSubAddress
+object geographicSite
+object geographicLocation
+object resource
+
+TMF634 --> resourceCatalog
+TMF634 --> resourceCategory
+TMF634 --> resourceSpecification
+TMF634 --> resourceCandidate
+TMF634 --> exportJob
+TMF634 --> importJob
+TMF669 --> partyRole
+TMF632 --> individual
+TMF632 --> organization
+TMF673 --> geographicAddress
+TMF673 --> geographicSubAddress
+TMF674 --> geographicSite
+TMF675 --> geographicLocation
+TMF639 --> resource
+
+rectangle "GET\nGET /id" as resourceCatalogOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceCategoryOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceSpecificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceCandidateOps
+rectangle "GET\nPOST\nDELETE" as exportJobOps
+rectangle "GET\nPOST\nDELETE" as importJobOps
+rectangle "GET\nGET /id" as partyRoleOps
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id" as geographicAddressOps
+rectangle "GET\nGET /id" as geographicSubAddressOps
+rectangle "GET\nGET /id" as geographicSiteOps
+rectangle "GET\nGET /id" as geographicLocationOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceOps
+
+resourceCatalog --> resourceCatalogOps
+resourceCategory --> resourceCategoryOps
+resourceSpecification --> resourceSpecificationOps
+resourceCandidate --> resourceCandidateOps
+exportJob --> exportJobOps
+importJob --> importJobOps
+partyRole --> partyRoleOps
+individual --> individualOps
+organization --> organizationOps
+geographicAddress --> geographicAddressOps
+geographicSubAddress --> geographicSubAddressOps
+geographicSite --> geographicSiteOps
+geographicLocation --> geographicLocationOps
+resource --> resourceOps
+@enduml

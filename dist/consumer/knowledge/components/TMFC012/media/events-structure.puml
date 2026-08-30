@@ -1,0 +1,90 @@
+@startuml
+allowmixing
+title TMFC012 : Resource Inventory -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+object TMF639pub {
+  id = TMF639
+  name = Resource Inventory Management API
+  resources = (see below)
+}
+
+object TMF701pub {
+  id = TMF701
+  name = Process Flow Management API
+  resources = (see below)
+}
+
+publishedEvents --> TMF639pub
+publishedEvents --> TMF701pub
+
+rectangle "resourceCreateEvent\nresourceChangeEvent\nresourceDeleteEvent\nresourceAttributeValueChangeEvent" as TMF639pubEvents
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent" as TMF701pubEvents
+
+TMF639pub --> TMF639pubEvents
+TMF701pub --> TMF701pubEvents
+
+object TMF634sub {
+  id = TMF634
+  name = Resource Catalog Management API
+  resources = (see below)
+}
+
+object TMF639sub {
+  id = TMF639
+  name = Resource Inventory Management API
+  resources = (see below)
+}
+
+' The following two objects reproduce the source image's own printed IDs and
+' names verbatim, including apparent typos/truncations ("TMF699" / "Part
+' yRole Management API" for what is elsewhere TMF669 Party Role Management
+' API, and "TMF67" for what is elsewhere TMF674 Geographic Site Management
+' API) -- not corrected, since this redraw is of exactly what the image shows.
+object TMF699sub {
+  id = TMF699
+  name = Part yRole Management API
+  resources = (see below)
+}
+
+object TMF67sub {
+  id = TMF67
+  name = Geographic Site Management API
+  resources = (see below)
+}
+
+object TMF675sub {
+  id = TMF675
+  name = Geographic Location Management
+  resources = (see below)
+}
+
+object TMF632sub {
+  id = TMF632
+  name = Party Management API
+  resources = (see below)
+}
+
+subscribedEvents --> TMF634sub
+subscribedEvents --> TMF639sub
+subscribedEvents --> TMF699sub
+subscribedEvents --> TMF67sub
+subscribedEvents --> TMF675sub
+subscribedEvents --> TMF632sub
+
+rectangle "resourceCatalogCreateEvent\nresourceCatalogChangeEvent\nresourceCatalogDeleteEvent\nresourceCategoryCreateEvent\nresourceCategoryChangeEvent\nresourceCategoryDeleteEvent\nresourceCandidateCreateEvent\nresourceCandidateChangeEvent\nresourceCandidateDeleteEvent\nresourceSpecificationCreateEvent\nresourceSpecificationChangeEvent\nresourceSpecificationDeleteEvent\nimportJobCreateEvent\nexportJobCreateEvent\nexportJobStateChangeEvent" as TMF634subEvents
+rectangle "resourceCreateEvent\nresourceChangeEvent\nresourceDeleteEvent\nresourceAttributeValueChangeEvent" as TMF639subEvents
+rectangle "PartyRoleCreateEvent\nPartyRoleAttributeValueChangeEvent\nPartyRoleStateChangeEvent\nPartyRoleDeleteEvent" as TMF699subEvents
+rectangle "geographicSiteDeleteEvent" as TMF67subEvents
+rectangle "geographicLocationDeleteEvent" as TMF675subEvents
+rectangle "individualDeleteEvent\norganizationDeleteEvent" as TMF632subEvents
+
+TMF634sub --> TMF634subEvents
+TMF639sub --> TMF639subEvents
+TMF699sub --> TMF699subEvents
+TMF67sub --> TMF67subEvents
+TMF675sub --> TMF675subEvents
+TMF632sub --> TMF632subEvents
+@enduml

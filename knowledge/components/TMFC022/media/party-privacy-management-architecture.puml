@@ -1,0 +1,36 @@
+@startuml
+title TMFC022: Party Privacy Management
+
+component "TMFC022: Party Privacy Management" as TMFC022 {
+  rectangle "eTOM L2 - Customer Privacy Management" as eTOM1 #line.dashed
+  rectangle "eTOM L2 - Business Partner Privacy Management" as eTOM2 #line.dashed
+  database "Party Privacy" as SID1
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF620 Product Catalog Mgt] as dep1
+[TMF632 Party Mgt] as dep2
+[TMF669 Party Role Mgt] as dep3
+[TMF667 Document] as dep4
+[TMF701 Process Flow Mgmt] as dep5
+
+dep1 --> TMFC022 : TMF620 Product Catalog Mgt
+dep2 --> TMFC022 : TMF632 Party Mgt
+dep3 --> TMFC022 : TMF669 Party Role Mgt
+dep4 --> TMFC022 : TMF667 Document
+dep5 --> TMFC022 : TMF701 Process Flow Mgmt
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF644 Privacy Management" as exp1
+() "TMF701 Process Flow Mgmt" as exp2
+
+TMFC022 --> exp1 : TMF644 Privacy Management
+TMFC022 --> exp2 : TMF701 Process Flow Mgmt
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

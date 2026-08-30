@@ -1,0 +1,254 @@
+@startuml
+allowmixing
+
+object dependentAPIs
+
+object "TMF632" as API1 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  version = 4
+}
+object "individual" as R1_1
+object "organization" as R1_2
+rectangle "GET\nGET /id" as OPS1_1
+rectangle "GET\nGET /id" as OPS1_2
+dependentAPIs --> API1
+API1 --> R1_1
+API1 --> R1_2
+R1_1 --> OPS1_1
+R1_2 --> OPS1_2
+
+object "TMF633" as API2 {
+  id = TMF633
+  name = Service Catalog Management API
+  required = true
+  version = 4
+}
+object "serviceSpecification" as R2_1
+rectangle "GET\nGET /id" as OPS2_1
+dependentAPIs --> API2
+API2 --> R2_1
+R2_1 --> OPS2_1
+
+object "TMF634" as API3 {
+  id = TMF634
+  name = Resource Catalog Management API
+  required = false
+  version = 4
+}
+object "resourceSpecification" as R3_1
+rectangle "GET\nGET /id" as OPS3_1
+dependentAPIs --> API3
+API3 --> R3_1
+R3_1 --> OPS3_1
+
+object "TMF638" as API4 {
+  id = TMF638
+  name = Service Inventory Management API
+  required = true
+  version = 4
+}
+object "service" as R4_1
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as OPS4_1
+dependentAPIs --> API4
+API4 --> R4_1
+R4_1 --> OPS4_1
+
+object "TMF639" as API5 {
+  id = TMF639
+  name = Resource Inventory Management API
+  required = false
+  version = 4
+}
+object "resource" as R5_1
+rectangle "GET\nGET /id" as OPS5_1
+dependentAPIs --> API5
+API5 --> R5_1
+R5_1 --> OPS5_1
+
+object "TMF640" as API6 {
+  id = TMF640
+  name = Service Activation and Configuration API
+  required = false
+  version = 4
+}
+object "monitor" as R6_1
+rectangle "GET\nGET /id" as OPS6_1
+dependentAPIs --> API6
+API6 --> R6_1
+R6_1 --> OPS6_1
+
+object "TMF641" as API7 {
+  id = TMF641
+  name = Service Ordering Management API
+  required = false
+  version = 4
+}
+object "serviceOrder" as R7_1
+object "cancelServiceOrder" as R7_2
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as OPS7_1
+rectangle "GET\nGET /id\nPOST" as OPS7_2
+dependentAPIs --> API7
+API7 --> R7_1
+API7 --> R7_2
+R7_1 --> OPS7_1
+R7_2 --> OPS7_2
+
+object "TMF645" as API8 {
+  id = TMF645
+  name = Service Qualification Management API
+  required = false
+  version = 4
+}
+object "checkServiceQualification" as R8_1
+object "queryServiceQualification" as R8_2
+rectangle "GET\nGET /id\nPOST\nPATCH" as OPS8_1
+rectangle "GET\nGET /id\nPOST\nPATCH" as OPS8_2
+dependentAPIs --> API8
+API8 --> R8_1
+API8 --> R8_2
+R8_1 --> OPS8_1
+R8_2 --> OPS8_2
+
+object "TMF646" as API9 {
+  id = TMF646
+  name = Appointment Management API
+  required = false
+  version = 4
+}
+object "appointment" as R9_1
+object "searchTimeSlot" as R9_2
+rectangle "GET\nGET /id\nPOST\nPATCH" as OPS9_1
+rectangle "GET\nGET /id\nPOST\nPATCH" as OPS9_2
+dependentAPIs --> API9
+API9 --> R9_1
+API9 --> R9_2
+R9_1 --> OPS9_1
+R9_2 --> OPS9_2
+
+object "TMF652" as API10 {
+  id = TMF652
+  name = Resource Ordering Management API
+  required = false
+  version = 4
+}
+object "resourceOrder" as R10_1
+object "cancelResourceOrder" as R10_2
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as OPS10_1
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as OPS10_2
+dependentAPIs --> API10
+API10 --> R10_1
+API10 --> R10_2
+R10_1 --> OPS10_1
+R10_2 --> OPS10_2
+
+object "TMF653" as API11 {
+  id = TMF653
+  name = Service Test Management API
+  required = false
+  version = 4
+}
+object "serviceTest" as R11_1
+object "serviceTestSpecification" as R11_2
+rectangle "GET\nGET /id" as OPS11_1
+rectangle "GET\nGET /id" as OPS11_2
+dependentAPIs --> API11
+API11 --> R11_1
+API11 --> R11_2
+R11_1 --> OPS11_1
+R11_2 --> OPS11_2
+
+object "TMF669" as API12 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  version = 4
+}
+object "PartyRole" as R12_1
+rectangle "GET\nGET /id" as OPS12_1
+dependentAPIs --> API12
+API12 --> R12_1
+R12_1 --> OPS12_1
+
+object "TMF673" as API13 {
+  id = TMF673
+  name = Geographic Address Management API
+  required = false
+  version = 4
+}
+object "geographicAddress" as R13_1
+object "geographicSubAddress" as R13_2
+object "geographicAddressValidation" as R13_3
+rectangle "GET\nGET /id" as OPS13_1
+rectangle "GET\nGET /id" as OPS13_2
+rectangle "GET\nGET /id\nPOST" as OPS13_3
+dependentAPIs --> API13
+API13 --> R13_1
+API13 --> R13_2
+API13 --> R13_3
+R13_1 --> OPS13_1
+R13_2 --> OPS13_2
+R13_3 --> OPS13_3
+
+object "TMF674" as API14 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  version = 4
+}
+object "geographicLocation" as R14_1
+rectangle "GET\nGET /id" as OPS14_1
+dependentAPIs --> API14
+API14 --> R14_1
+R14_1 --> OPS14_1
+
+object "TMF675" as API15 {
+  id = TMF675
+  name = Geographic Location Management API
+  required = false
+  version = 4
+}
+object "geographicSite" as R15_1
+rectangle "GET\nGET /id" as OPS15_1
+dependentAPIs --> API15
+API15 --> R15_1
+R15_1 --> OPS15_1
+
+object "TMF681" as API16 {
+  id = TMF681
+  name = Communication Management API
+  required = false
+  version = 4
+}
+object "communicationMessage" as R16_1
+rectangle "GET\nGET /id" as OPS16_1
+dependentAPIs --> API16
+API16 --> R16_1
+R16_1 --> OPS16_1
+
+object "TMF697" as API17 {
+  id = TMF697
+  name = Work Order Management API
+  required = false
+  version = 4
+}
+object "workOrder" as R17_1
+rectangle "GET\nGET /id" as OPS17_1
+dependentAPIs --> API17
+API17 --> R17_1
+R17_1 --> OPS17_1
+
+object "TMF701" as API18 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  version = 4
+}
+object "processFlow" as R18_1
+rectangle "POST\nGET\nGET /id\nPATCH" as OPS18_1
+dependentAPIs --> API18
+API18 --> R18_1
+R18_1 --> OPS18_1
+
+@enduml

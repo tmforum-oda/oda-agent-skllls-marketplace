@@ -1,0 +1,58 @@
+@startuml
+allowmixing
+title TMFC020 : Digital Identity Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF632
+dependentAPIs --> TMF669
+dependentAPIs --> TMF701
+
+object individual
+object organization
+object partyRole
+object processFlow
+object taskFlow
+
+TMF632 --> individual
+TMF632 --> organization
+TMF669 --> partyRole
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET/id" as individualOps
+rectangle "GET\nGET/id" as organizationOps
+rectangle "POST" as partyRoleOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+individual --> individualOps
+organization --> organizationOps
+partyRole --> partyRoleOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

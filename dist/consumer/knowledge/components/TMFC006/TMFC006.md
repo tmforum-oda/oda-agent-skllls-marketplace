@@ -47,14 +47,15 @@ eTOM business activities this ODA Component is responsible for:
 
 SID ABEs this ODA Component is responsible for:
 
-*: if SID ABE Level 2 is not specified this means that all the L2 business entities must be implemented, else the L2 SID ABE Level is specified.
-
 | SID ABE Level 1 | SID ABE Level 2 (or set of BEs)* |
 | --- | --- |
+| Service Specification ABE |   |
 | Service Performance ABE | Service Level Spec ABE |
 | Service Performance ABE | Service Performance Specification ABE |
 | Service Usage ABE | ServiceUsageSpec BE |
 | Service Configuration ABE | ServiceConfigSpec BE |
+
+*: if SID ABE Level 2 is not specified this means that all the L2 business entities must be implemented, else the L2 SID ABE Level is specified.
 
 ## 3.3. eTOM L2 - SID ABEs links
 

@@ -1,0 +1,44 @@
+@startuml
+title TMFC023: Party Interaction Management
+
+component "TMFC023: Party Interaction Management" as TMFC023 {
+  rectangle "L2 - Customer Interaction Management\nL3 - Create Customer Interaction\nL3 - Update Customer Interaction\nL3 - Close Customer Interaction\nL3 - Log Customer Interaction\nL3 - Track and Manage Customer Interaction\nL3 - Report Customer Interaction" as eTOM1 #line.dashed
+  rectangle "L2 - Business Partner Interaction Management\nL3 - Log Business Partner Interaction\nL3 - Track and Manage Business Partner Interaction\nL3 - Analyze & Report Business Partner Interactions" as eTOM2 #line.dashed
+  database "Communication Interaction" as SID1
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF632 Party Mgmt.] as dep1
+[TMF669 Party Role Mgmt.] as dep2
+[TMF672 Users Roles & Permissions] as dep3
+[TMF662 Entity Catalog Mgmt.] as dep4
+[TMF667 Document Mgmt.] as dep5
+[TMF681 Communication] as dep6
+[TMF688 Event] as dep7
+[TMF701 Process Flow Management] as dep8
+
+dep1 --> TMFC023 : TMF632 Party Mgmt.
+dep2 --> TMFC023 : TMF669 Party Role Mgmt.
+dep3 --> TMFC023 : TMF672 Users Roles & Permissions
+dep4 --> TMFC023 : TMF662 Entity Catalog Mgmt.
+dep5 --> TMFC023 : TMF667 Document Mgmt.
+dep6 --> TMFC023 : TMF681 Communication
+dep7 --> TMFC023 : TMF688 Event
+dep8 --> TMFC023 : TMF701 Process Flow Management
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF683 Party Interaction Mgmt." as exp1
+() "TMF701 Process Flow Management" as exp2
+() "TMF688 Event" as exp3
+
+TMFC023 --> exp1 : TMF683 Party Interaction Mgmt.
+TMFC023 --> exp2 : TMF701 Process Flow Management
+TMFC023 --> exp3 : TMF688 Event
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

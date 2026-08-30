@@ -1,0 +1,57 @@
+@startuml
+title TMFC008 : Service Inventory
+
+skinparam component {
+  BackgroundColor #3b3b3b
+  FontColor white
+}
+skinparam rectangle {
+  BackgroundColor white
+  FontColor black
+}
+skinparam database {
+  BackgroundColor white
+  FontColor black
+}
+
+component "TMFC008 : Service Inventory" as TMFC008 {
+  rectangle "L2 - Service Support Readiness / L3 - Manage Service Inventory" as A1
+
+  database "Service" as SE1
+}
+
+() "TMF633\nService Catalog Mgt" as DEP1
+() "TMF669\nParty Role Mgt" as DEP2
+() "TMF632\nParty" as DEP3
+() "TMF673\nGeographic Address Mgt" as DEP4
+() "TMF674\nGeographic Site Mgt" as DEP5
+() "TMF675\nGeographic Location" as DEP6
+() "TMF639\nResource Inventory Mgt" as DEP7
+() "TMF641\nService Ordering" as DEP8
+() "TMF638\nService Inventory Mgt" as DEP9
+
+() "TMF638\nService Inventory Mgt" as EXP1
+() "TMF701\nProcess Flow" as EXP2
+
+DEP1 --> TMFC008
+DEP2 --> TMFC008
+DEP3 --> TMFC008
+DEP4 --> TMFC008
+DEP5 --> TMFC008
+DEP6 --> TMFC008
+DEP7 --> TMFC008
+DEP8 --> TMFC008
+DEP9 --> TMFC008
+
+TMFC008 --> EXP1
+TMFC008 --> EXP2
+
+legend bottom
+  |= Shape |= Meaning |
+  | dashed rectangle | eTOM Business Activity |
+  | cylinder | SID Data Entities |
+  | socket (left) | Dependent APIs |
+  | lollipop (right) | Exposed APIs |
+endlegend
+
+@enduml

@@ -1,0 +1,67 @@
+@startuml
+title TMFC010 : Resource Catalog Management -- eTOM/SID ABE Links
+
+class "L2 - Resource Catalog Lifecycle Management" as L2Lifecycle <<eTOM Business Activity>>
+class "L2 - Resource Catalog Operational Readiness Management" as L2OperReadiness <<eTOM Business Activity>>
+class "L2 - Resource Catalog Content Management" as L2Content <<eTOM Business Activity>>
+class "L2 - Resource Catalog Planning Management" as L2Planning <<eTOM Business Activity>>
+class "L2 - Resource Specification Management" as L2SpecMgmt <<eTOM Business Activity>>
+class "L2 - Resource Specification Development & Retirement" as L2DevRetirement <<eTOM Business Activity>>
+
+class "Resource Specification ABE" as SIDSpec <<SID Data Entity>>
+class "Resource Usage ABE" as SIDUsage <<SID Data Entity>>
+class "Resource Performance ABE" as SIDPerformance <<SID Data Entity>>
+class "Resource Configuration ABE" as SIDConfiguration <<SID Data Entity>>
+
+' Per the image's own legend: a (black) arrow from an eTOM activity towards a
+' SID ABE means the information is produced by the activity; the reverse
+' arrow means the information is consumed by the activity. The source image
+' also draws some of these same eTOM<->SID connections in red and cyan
+' instead of black -- the legend does not assign the colors any separate
+' meaning, so they are treated here purely as a visual grouping style and
+' the produces/consumed-by labeling still follows arrow direction alone.
+
+' Resource Specification ABE has four direct eTOM connections, each drawn
+' individually (not through the shared trunk described below):
+L2Lifecycle --> SIDSpec : produces
+SIDSpec --> L2Lifecycle : is consumed by
+
+' Only a single arrow is drawn between Resource Specification ABE and
+' Operational Readiness Management (ABE -> activity) -- reproduced as a
+' single direction exactly as drawn, with no reverse arrow invented.
+SIDSpec --> L2OperReadiness : is consumed by
+
+L2SpecMgmt --> SIDSpec : produces
+SIDSpec --> L2SpecMgmt : is consumed by
+
+' Likewise only a single arrow is drawn between Resource Specification ABE
+' and Planning Management (ABE -> activity).
+SIDSpec --> L2Planning : is consumed by
+
+' Resource Catalog Content Management and Resource Specification Development
+' & Retirement each connect to all four SID ABEs via a single shared vertical
+' "bus" line in the source image: one arrowhead branches off toward each of
+' the four ABEs (produces), while the reverse, consumed-by direction is drawn
+' as a single merged arrowhead back into the activity box rather than as four
+' separate arrowheads. The relationship is reproduced here as fully
+' bidirectional for each of the four ABEs, per the legend's direction-based
+' meaning, with this shared-bus economy noted for transparency.
+L2Content --> SIDSpec : produces
+SIDSpec --> L2Content : is consumed by
+L2Content --> SIDUsage : produces
+SIDUsage --> L2Content : is consumed by
+L2Content --> SIDPerformance : produces
+SIDPerformance --> L2Content : is consumed by
+L2Content --> SIDConfiguration : produces
+SIDConfiguration --> L2Content : is consumed by
+
+L2DevRetirement --> SIDSpec : produces
+SIDSpec --> L2DevRetirement : is consumed by
+L2DevRetirement --> SIDUsage : produces
+SIDUsage --> L2DevRetirement : is consumed by
+L2DevRetirement --> SIDPerformance : produces
+SIDPerformance --> L2DevRetirement : is consumed by
+L2DevRetirement --> SIDConfiguration : produces
+SIDConfiguration --> L2DevRetirement : is consumed by
+
+@enduml

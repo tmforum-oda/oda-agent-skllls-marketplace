@@ -1,0 +1,131 @@
+@startuml
+allowmixing
+
+object dependentAPIs
+
+object "TMF633" as API1 {
+  id = TMF633
+  name = Service Catalog Management API
+  required = true
+  version = 4
+}
+object "serviceSpecification" as R1_1
+rectangle "GET\nGET /id" as OPS1_1
+
+dependentAPIs --> API1
+API1 --> R1_1
+R1_1 --> OPS1_1
+
+object "TMF669" as API2 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  version = 4
+}
+object "PartyRole" as R2_1
+rectangle "GET\nGET /id" as OPS2_1
+
+dependentAPIs --> API2
+API2 --> R2_1
+R2_1 --> OPS2_1
+
+object "TMF639" as API3 {
+  id = TMF639
+  name = Resource Inventory Management API
+  required = false
+  version = 4
+}
+object "resource" as R3_1
+rectangle "GET\nGET /id" as OPS3_1
+
+dependentAPIs --> API3
+API3 --> R3_1
+R3_1 --> OPS3_1
+
+object "TMF638" as API4 {
+  id = TMF638
+  name = Service Inventory Management API
+  required = false
+  version = 4
+}
+object "service" as R4_1
+rectangle "GET\nGET /id" as OPS4_1
+
+dependentAPIs --> API4
+API4 --> R4_1
+R4_1 --> OPS4_1
+
+object "TMF673" as API5 {
+  id = TMF673
+  name = Geographic Address Management API
+  required = false
+  version = 4
+}
+object "geographicAddress" as R5_1
+object "geographicSubAddress" as R5_2
+rectangle "GET\nGET /id" as OPS5_1
+rectangle "GET\nGET /id" as OPS5_2
+
+dependentAPIs --> API5
+API5 --> R5_1
+API5 --> R5_2
+R5_1 --> OPS5_1
+R5_2 --> OPS5_2
+
+object "TMF674" as API6 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  version = 4
+}
+object "geographicSite" as R6_1
+rectangle "GET\nGET /id" as OPS6_1
+
+dependentAPIs --> API6
+API6 --> R6_1
+R6_1 --> OPS6_1
+
+object "TMF675" as API7 {
+  id = TMF675
+  name = Geographic Location Management API
+  required = false
+  version = 4
+}
+object "geographicLocation" as R7_1
+rectangle "GET\nGET /id" as OPS7_1
+
+dependentAPIs --> API7
+API7 --> R7_1
+R7_1 --> OPS7_1
+
+object "TMF641" as API8 {
+  id = TMF641
+  name = Service Ordering Management API
+  required = false
+  version = 4
+}
+object "serviceOrder" as R8_1
+rectangle "GET\nGET /id" as OPS8_1
+
+dependentAPIs --> API8
+API8 --> R8_1
+R8_1 --> OPS8_1
+
+object "TMF632" as API9 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  version = 4
+}
+object "individual" as R9_1
+object "organization" as R9_2
+rectangle "GET\nGET /id" as OPS9_1
+rectangle "GET\nGET /id" as OPS9_2
+
+dependentAPIs --> API9
+API9 --> R9_1
+API9 --> R9_2
+R9_1 --> OPS9_1
+R9_2 --> OPS9_2
+
+@enduml

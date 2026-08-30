@@ -1,0 +1,30 @@
+@startuml
+title TMFC009 : Service Qualification -- eTOM/SID ABE Links
+
+' This diagram is genuinely a blank template in the source PDF, not a
+' transcription gap: TMFC009.md section 2.2 (SID ABEs) has no data rows at
+' all, only a note that a new Service Qualification SID BE still needs to be
+' created. Both the eTOM activity and the SID entity are literally labelled
+' "to be determined" in the source image -- reproduced verbatim rather than
+' invented.
+class "to be determined" as eTOMTBD <<eTOM Business Activity>>
+class "to be determined" as SIDTBD <<SID Data Entity>>
+
+' The source image draws a single squiggly connector between the two
+' placeholder boxes with an arrowhead at BOTH ends (confirmed by zooming into
+' the arrowhead region) -- unlike TMFC039/TMFC005's diagrams, which draw the
+' "produces" and "is consumed by" relationships as two separate arrows. Since
+' the entities themselves are unfilled placeholders, this is read as the
+' template showing both of the legend's arrow meanings on the one connector,
+' not as asserted real-world semantics.
+eTOMTBD <--> SIDTBD
+
+footer TMFC009 - Service Qualification (SID ABE not yet defined -- see section 2.2 note)
+
+legend right
+  an arrow from an eTOM activity towards a SID ABE means
+  the information is produced by the activity;
+  the arrow in the other direction means that the
+  information is consumed by the activity
+endlegend
+@enduml

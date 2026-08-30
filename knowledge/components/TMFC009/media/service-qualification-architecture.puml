@@ -1,0 +1,41 @@
+@startuml
+title TMFC009 : Service Qualification
+
+component "TMFC009 : Service Qualification" as TMFC009 {
+  rectangle "L2 - Service Configuration & Activation / L3 - ?" as eTOM1 #line.dashed
+  rectangle "L2 - Resource Provisioning / L3 - Allocate & Install Resource / L4 - Determine Resource Availability" as eTOM2 #line.dashed
+  database "?" as SID1
+}
+
+[TMF633 Service Catalog Mgt] as dep1
+[TMF638 Service Inventory Mgt] as dep2
+[TMF634 Resource Catalog Mgt] as dep3
+[TMF639 Resource Inventory Mgt] as dep4
+[TMF669 Party Role Mgt] as dep5
+[TMF632 Party] as dep6
+[TMF673 Geographic Address Mgt] as dep7
+[TMF674 Geographic Site Mgt] as dep8
+[TMF675 Geographic Location] as dep9
+
+dep1 --> TMFC009 : TMF633 Service Catalog Mgt
+dep2 --> TMFC009 : TMF638 Service Inventory Mgt
+dep3 --> TMFC009 : TMF634 Resource Catalog Mgt
+dep4 --> TMFC009 : TMF639 Resource Inventory Mgt
+dep5 --> TMFC009 : TMF669 Party Role Mgt
+dep6 --> TMFC009 : TMF632 Party
+dep7 --> TMFC009 : TMF673 Geographic Address Mgt
+dep8 --> TMFC009 : TMF674 Geographic Site Mgt
+dep9 --> TMFC009 : TMF675 Geographic Location
+
+' Exposed API leaves the component on the right (lollipop connector in the source image).
+() "TMF645 Service Qualification" as exp1
+
+TMFC009 --> exp1 : TMF645 Service Qualification
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

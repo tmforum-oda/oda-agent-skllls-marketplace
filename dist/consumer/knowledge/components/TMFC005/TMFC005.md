@@ -45,9 +45,10 @@ eTOM business activities this ODA Component is responsible for:
 
 SID ABEs this ODA Component is responsible for:
 
-|   | SID ABE Level 1 |   | SID ABE Level 2 (or set of BEs) |
-| --- | --- | --- | --- |
-| Loyalty |   | Loyalty Program |   |
+| SID ABE Level 1 | SID ABE Level 2 (or set of BEs) |
+| --- | --- |
+| Product |   |
+| Loyalty | Loyalty Program |
 
 ## 2.3. eTOM L2 - SID ABEs links
 

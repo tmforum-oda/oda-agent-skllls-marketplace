@@ -86,13 +86,13 @@ Following diagram illustrates API/Resource/Operation:
 ![](media/exposed-apis-structure.png)
 *([PlantUML source](media/exposed-apis-structure.puml))*
 
-NOTE: "Resources Model coverage" element has been added to the table
-
 | API ID | API Name | Mandatory / Optional | Operations |
 | --- | --- | --- | --- |
 | TMF651 | Agreement<br>Management API | Mandatory | agreement:<br>- GET<br>- GET/id<br>- POST<br>- PATCH/id<br>- DELETE/id<br>agreementSpecification:<br>- GET<br>- GET/id<br>- POST<br>- PATCH/id<br>- DELETE/id |
 | TMF669 | Process Flow<br>Management API | Optional | processFlow:<br>- POST<br>- GET<br>- GET /id<br>- DELETE<br>taskFlow:<br>- PATCH<br>- GET<br>- GET /id |
 | TMF688 | Event | Optional | n/a |
+
+NOTE: "Resources Model coverage" element has been added to the table
 
 ## 3.2. Dependent APIs
 

@@ -1,0 +1,18 @@
+@startuml
+title TMFC023: Party Interaction Management -- eTOM/SID ABE Links
+
+class "Customer Interaction Mgmt." as CustomerInteractionMgmt <<eTOM Business Activity>>
+class "Business Partner Interaction Mgmt." as BusinessPartnerInteractionMgmt <<eTOM Business Activity>>
+class "Communication Interaction ABE" as CommunicationInteractionABE <<SID Data Entity>>
+
+' eTOM activity <-> SID ABE links. Per the image's own legend, an arrow from the
+' eTOM activity towards the SID ABE means information produced by the activity;
+' the reverse arrow means information consumed by the activity. Each pair here is
+' drawn in the image as two separate curved arrows, one each way, so both hold
+' simultaneously for both activities.
+CustomerInteractionMgmt --> CommunicationInteractionABE : produces
+CommunicationInteractionABE --> CustomerInteractionMgmt : is consumed by
+
+BusinessPartnerInteractionMgmt --> CommunicationInteractionABE : produces
+CommunicationInteractionABE --> BusinessPartnerInteractionMgmt : is consumed by
+@enduml

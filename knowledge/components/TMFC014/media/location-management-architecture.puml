@@ -1,0 +1,43 @@
+@startuml
+title TMFC014 : Location Management
+
+component "TMFC014 : Location Management" as TMFC014 {
+  ' The source image draws a solid-border (not dashed-outline) rectangle
+  ' containing only "?" where an eTOM Business Activity box would normally
+  ' sit. This matches TMFC014.md section 2.1: "no eTOM business activity is
+  ' currently responsible for Location Management" -- reproduced as the
+  ' literal placeholder the image shows, not a real named activity.
+  rectangle "?" as eTOM1
+  database "Location ABE" as SID1
+  database "Geographic Place ABE" as SID2
+  database "Geographic Address ABE" as SID3
+  database "Geographic Location OpenGisSFS ABE" as SID4
+  database "Geographic Site ABE" as SID5
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF632 Party Management] as dep1
+[TMF674 Geographic Site] as dep2
+
+dep1 --> TMFC014 : TMF632 Party Management
+dep2 --> TMFC014 : TMF674 Geographic Site
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF673 Geographic Address Mgt" as exp1
+() "TMF674 Geographic Site Mgt" as exp2
+() "TMF675 Geographic Location" as exp3
+() "TMF701 Process Flow Mgt" as exp4
+
+TMFC014 --> exp1 : TMF673 Geographic Address Mgt
+TMFC014 --> exp2 : TMF674 Geographic Site Mgt
+TMFC014 --> exp3 : TMF675 Geographic Location
+TMFC014 --> exp4 : TMF701 Process Flow Mgt
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+  ("?" box above = placeholder in the source image; no eTOM activity is assigned)
+endlegend
+@enduml

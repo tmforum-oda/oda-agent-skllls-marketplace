@@ -1,0 +1,45 @@
+@startuml
+allowmixing
+title TMFC011 : Resource Order Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF652 {
+  id = TMF652
+  name = Resource Order Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF652
+exposedAPIs --> TMF701
+
+object resourceOrder
+object cancelResourceOrder
+object processFlow
+object taskFlow
+
+TMF652 --> resourceOrder
+TMF652 --> cancelResourceOrder
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceOrderOps
+rectangle "GET\nGET /id\nPOST" as cancelResourceOrderOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+resourceOrder --> resourceOrderOps
+cancelResourceOrder --> cancelResourceOrderOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

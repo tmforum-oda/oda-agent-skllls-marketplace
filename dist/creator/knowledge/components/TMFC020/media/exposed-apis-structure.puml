@@ -1,0 +1,45 @@
+@startuml
+allowmixing
+title TMFC020 : Digital Identity Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF720 {
+  id = TMF720
+  name = Digital Identity Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF720
+exposedAPIs --> TMF701
+
+object digitalIdentity
+object roles
+object processFlow
+object taskFlow
+
+TMF720 --> digitalIdentity
+TMF720 --> roles
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET/id\nPOST\nPATCH/id\nDELETE/id" as digitalIdentityOps
+rectangle "GET\nGET/id\nPOST\nPATCH/id\nDELETE/id" as rolesOps
+rectangle "GET\nGET/id\nPOST\nDELETE/id" as processFlowOps
+rectangle "GET\nGET/id\nPATCH/id" as taskFlowOps
+
+digitalIdentity --> digitalIdentityOps
+roles --> rolesOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

@@ -1,0 +1,51 @@
+@startuml
+title TMFC010 : Resource Catalog Management
+
+component "TMFC010 : Resource Catalog Management" as TMFC010 {
+  rectangle "L2 - Resource Catalog Lifecycle Management" as eTOM1
+  rectangle "L2 - Resource Catalog Operational Readiness Management" as eTOM2
+  rectangle "L2 - Resource Catalog Content Management" as eTOM3
+  rectangle "L2 - Resource Catalog Planning Management" as eTOM4
+  rectangle "L2 - Resource Specification Management" as eTOM5
+  rectangle "L2 - Resource Specification Development & Retirement" as eTOM6
+  database "Resource Specification ABE" as SID1
+  database "Resource Performance ABE*" as SID2
+  database "Resource Usage ABE***" as SID3
+  database "Resource Configuration ABE****" as SID4
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF634 Resource Catalog Management] as dep1
+[TMF669 Party Role Management] as dep2
+[TMF632 Party] as dep3
+[TMF662 Entity Catalog Management] as dep4
+
+dep1 --> TMFC010 : TMF634 Resource Catalog Management
+dep2 --> TMFC010 : TMF669 Party Role Management
+dep3 --> TMFC010 : TMF632 Party
+dep4 --> TMFC010 : TMF662 Entity Catalog Management
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF634 Resource Catalog Management" as exp1
+() "TMF701 Process Flow Management" as exp2
+
+TMFC010 --> exp1 : TMF634 Resource Catalog Management
+TMFC010 --> exp2 : TMF701 Process Flow Management
+
+' The source image draws a third exposed-API lollipop connector below the
+' first two, with no label and no line connecting it to the component --
+' reproduced as shown rather than invented or dropped.
+() "(unlabeled)" as exp3
+
+footer * Only Resource Level Spec ABE & Resource Performance Specification ABE   *** Only ResourceUsageSpec BE   **** Only ResourceConfigSpec BE (as printed in the source image)
+
+legend right
+  eTOM Business Activities = rectangles (drawn with a dashed outline in the
+  source image; PlantUML's rectangle notation is used here as the closest
+  equivalent)
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right (including one
+  unlabeled, unconnected lollipop reproduced as drawn)
+endlegend
+@enduml

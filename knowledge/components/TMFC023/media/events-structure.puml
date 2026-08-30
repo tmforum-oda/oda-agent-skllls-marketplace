@@ -1,0 +1,35 @@
+@startuml
+allowmixing
+title TMFC023: Party Interaction Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+object partyInteractionManagement
+object ProcessFlowManagementA as "ProcessFlowManagement"
+object PartyManagement
+object PartyRoleManagement
+object documentManagement
+object ProcessFlowManagementB as "ProcessFlowManagement"
+
+publishedEvents --> partyInteractionManagement
+publishedEvents --> ProcessFlowManagementA
+subscribedEvents --> PartyManagement
+subscribedEvents --> PartyRoleManagement
+subscribedEvents --> documentManagement
+subscribedEvents --> ProcessFlowManagementB
+
+rectangle "partyInteractionCreateEvent\npartyInteractionAttributeValueChangeEvent\npartyInteractionDeleteEvent\npartyInteractionStatusChangeEvent" as partyInteractionManagementEvents
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent" as ProcessFlowManagementAEvents
+rectangle "IndividualCreateEvent\nIndividualAttributeValueChangeEvent\nIndividualStateChangeEvent\nIndividualDeleteEvent\nOrganizationCreateEvent\nOrganizationAttributeValueChangeEvent\nOrganizationStateChangeEvent\nOrganizationDeleteEvent" as PartyManagementEvents
+rectangle "PartyRoleCreateEvent" as PartyRoleManagementEvents
+rectangle "documentChangeEvent\ndocumentSpecificationAttributeValueChangeEvent" as documentManagementEvents
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent" as ProcessFlowManagementBEvents
+
+partyInteractionManagement --> partyInteractionManagementEvents
+ProcessFlowManagementA --> ProcessFlowManagementAEvents
+PartyManagement --> PartyManagementEvents
+PartyRoleManagement --> PartyRoleManagementEvents
+documentManagement --> documentManagementEvents
+ProcessFlowManagementB --> ProcessFlowManagementBEvents
+@enduml

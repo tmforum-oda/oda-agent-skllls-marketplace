@@ -1,0 +1,59 @@
+@startuml
+allowmixing
+
+object publishedSubscribedEvents {
+  publishedEvents
+  subscribedEvents
+}
+
+object "TMF641" as API1 {
+  id = TMF641
+  name = Service Ordering Management API
+}
+rectangle "serviceOrderCreateEvent\nserviceOrderStateChangeEvent\nserviceOrderDeleteEvent\nserviceOrderAttributeValueChangeEvent\nserviceOrderInformationRequiredEvent\nserviceOrderMilestoneEvent\nserviceOrderJeopardyEvent\ncancelServiceOrderCreateEvent\ncancelServiceOrderStateChangeEvent\ncancelServiceOrderInformationRequiredEvent" as EV1
+
+object "TMF701" as API2 {
+  id = TMF701
+  name = ProcessFlowManagement
+}
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent" as EV2
+
+object "TMF652" as API3 {
+  id = TMF652
+  name = Resource Order Management API
+}
+rectangle "resourceOrderStateChange\nresourceOrderAttributeValueChangeEvent\nresourceOrderInformationRequiredEvent\ncancelResourceOrderStateChange\ncancelResourceOrderInformationRequiredEvent" as EV3
+
+object "ServiceQualification" as API4 {
+  apitype = openapi
+  name = ServiceQualification
+}
+rectangle "checkServiceQualificationStateChangeEvent\nqueryServiceQualificationStateChangeEvent" as EV4
+
+object "TMF681" as API5 {
+  id = TMF681
+  name = Communication Management API
+}
+rectangle "communicationMessageStateChangeEvent" as EV5
+
+object "TMF697" as API6 {
+  id = TMF697
+  name = Work Order Management API
+}
+rectangle "workOrderStateChange" as EV6
+
+publishedSubscribedEvents::publishedEvents --> API1
+publishedSubscribedEvents::publishedEvents --> API2
+publishedSubscribedEvents::subscribedEvents --> API3
+publishedSubscribedEvents::subscribedEvents --> API4
+publishedSubscribedEvents::subscribedEvents --> API5
+publishedSubscribedEvents::subscribedEvents --> API6
+
+API1 --> EV1
+API2 --> EV2
+API3 --> EV3
+API4 --> EV4
+API5 --> EV5
+API6 --> EV6
+
+@enduml

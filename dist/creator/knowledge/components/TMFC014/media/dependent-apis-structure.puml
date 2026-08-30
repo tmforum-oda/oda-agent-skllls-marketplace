@@ -1,0 +1,41 @@
+@startuml
+allowmixing
+title TMFC014 : Location Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF674 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF632
+dependentAPIs --> TMF674
+
+object individual
+object organization
+object geographicSite
+
+TMF632 --> individual
+TMF632 --> organization
+TMF674 --> geographicSite
+
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id" as geographicSiteOps
+
+individual --> individualOps
+organization --> organizationOps
+geographicSite --> geographicSiteOps
+@enduml

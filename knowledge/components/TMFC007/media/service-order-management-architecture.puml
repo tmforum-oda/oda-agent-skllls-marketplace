@@ -1,0 +1,83 @@
+@startuml
+title TMFC007 : Service Order Management
+
+skinparam component {
+  BackgroundColor #3b3b3b
+  FontColor white
+}
+skinparam rectangle {
+  BackgroundColor white
+  FontColor black
+}
+skinparam database {
+  BackgroundColor white
+  FontColor black
+}
+
+component "TMFC007 : Service Order Management" as TMFC007 {
+  rectangle "L2 - Service Configuration & Activation / L3 - Design Solution" as A1
+  rectangle "L2 - Service Configuration & Activation / L3 - Allocate Specific Service Parameters to Services" as A2
+  rectangle "L2 - Service Configuration & Activation / L3 - Track & Manage Service Provisioning" as A3
+  rectangle "L2 - Service Configuration & Activation / L3 - Implement, Configure & Activate Service" as A4
+  rectangle "L2 - Service Configuration & Activation / L3 - Issue Service Order" as A5
+  rectangle "L2 - Service Configuration & Activation / L3 - Report Service Provisioning" as A6
+  rectangle "L2 - Service Configuration & Activation / L3 - Close Service Order" as A7
+  rectangle "L2 - Resource Order Mgt / L3 - Manage Resource Order Capture / L4 - Initiate Resource Order Capture" as A8
+  rectangle "L2 - Resource Order Mgt / L3 - Manage Resource Work Order / L4 - Initiate Resource Work Order" as A9
+
+  database "Service Order" as SE1
+}
+
+() "TMF633\nService Catalog" as DEP1
+() "TMF638\nService Inventory" as DEP2
+() "TMF645\nService Qualification" as DEP3
+() "TMF640\nService Activation &\nConfiguration" as DEP4
+() "TMF653\nService Test Mgt" as DEP5
+() "TMF634\nResource Catalog" as DEP6
+() "TMF639\nResource Inventory" as DEP7
+() "TMF652\nResource Ordering Mgt" as DEP8
+() "TMF646\nAppointment Mgt" as DEP9
+() "TMF697\nWork Order Mgt" as DEP10
+() "TMF641\nService Ordering Mgt" as DEP11
+() "TMF632\nParty Mgt" as DEP12
+() "TMF669\nParty Role Mgt" as DEP13
+() "TMF673\nGeographic Address" as DEP14
+() "TMF674\nGeographic Site" as DEP15
+() "TMF675\nGeographic Location" as DEP16
+() "TMF681\nCommunication Mgt" as DEP17
+() "TMF701\nProcess Flow" as DEP18
+
+() "TMF641\nService Ordering Mgt" as EXP1
+() "TMF701\nProcess Flow" as EXP2
+
+DEP1 --> TMFC007
+DEP2 --> TMFC007
+DEP3 --> TMFC007
+DEP4 --> TMFC007
+DEP5 --> TMFC007
+DEP6 --> TMFC007
+DEP7 --> TMFC007
+DEP8 --> TMFC007
+DEP9 --> TMFC007
+DEP10 --> TMFC007
+DEP11 --> TMFC007
+DEP12 --> TMFC007
+DEP13 --> TMFC007
+DEP14 --> TMFC007
+DEP15 --> TMFC007
+DEP16 --> TMFC007
+DEP17 --> TMFC007
+DEP18 --> TMFC007
+
+TMFC007 --> EXP1
+TMFC007 --> EXP2
+
+legend bottom
+  |= Shape |= Meaning |
+  | dashed rectangle | eTOM Business Activity |
+  | cylinder | SID Data Entities |
+  | socket (left) | Dependent APIs |
+  | lollipop (right) | Exposed APIs |
+endlegend
+
+@enduml

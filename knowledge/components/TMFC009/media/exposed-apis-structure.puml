@@ -1,0 +1,28 @@
+@startuml
+allowmixing
+title TMFC009 : Service Qualification -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF645 {
+  id = TMF645
+  name = Service Qualification Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF645
+
+object checkServiceQualification
+object queryServiceQualification
+
+TMF645 --> checkServiceQualification
+TMF645 --> queryServiceQualification
+
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as checkServiceQualificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as queryServiceQualificationOps
+
+checkServiceQualification --> checkServiceQualificationOps
+queryServiceQualification --> queryServiceQualificationOps
+@enduml

@@ -1,0 +1,80 @@
+@startuml
+allowmixing
+title TMFC022: Party Privacy Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF667 {
+  id = TMF667
+  name = Document Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF632
+dependentAPIs --> TMF669
+dependentAPIs --> TMF701
+dependentAPIs --> TMF667
+dependentAPIs --> TMF620
+
+object individual
+object organization
+object partyRole
+object processFlow
+object document
+object productOffering
+
+TMF632 --> individual
+TMF632 --> organization
+TMF669 --> partyRole
+TMF701 --> processFlow
+TMF667 --> document
+TMF620 --> productOffering
+
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id" as partyRoleOps
+rectangle "POST\nGET\nGET /id\nPATCH" as processFlowOps
+rectangle "GET\nGET /id\nPOST" as documentOps
+rectangle "GET\nGET /id" as productOfferingOps
+
+individual --> individualOps
+organization --> organizationOps
+partyRole --> partyRoleOps
+processFlow --> processFlowOps
+document --> documentOps
+productOffering --> productOfferingOps
+@enduml

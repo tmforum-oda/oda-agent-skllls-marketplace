@@ -1,0 +1,92 @@
+@startuml
+allowmixing
+
+object publishedSubscribedEvents {
+  publishedEvents
+  subscribedEvents
+}
+
+object "TMF638" as API1 {
+  id = TMF638
+  name = Service Inventory Management API
+}
+rectangle "serviceCreateEvent\nserviceAttributeValueChangeEvent\nserviceStateChangeEvent\nserviceDeleteEvent" as EV1
+
+object "TMF701" as API2 {
+  id = TMF701
+  name = Process Flow Management API
+}
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent" as EV2
+
+object "TMF639" as API3 {
+  id = TMF639
+  name = Resource Inventory Management API
+}
+rectangle "resourceDeleteEvent" as EV3
+
+object "TMF638 " as API4 {
+  id = TMF638
+  name = Service Inventory Management API
+}
+rectangle "serviceCreateEvent\nserviceAttributeValueChangeEvent\nserviceStateChangeEvent\nserviceDeleteEvent" as EV4
+
+object "TMF633" as API5 {
+  id = TMF633
+  name = Service Catalog Management API
+}
+rectangle "serviceSpecificationDeleteEvent" as EV5
+
+object "TMF669" as API6 {
+  id = TMF669
+  name = Party Role Management
+}
+rectangle "partyRoleDeleteEvent" as EV6
+
+object "TMF674" as API7 {
+  id = TMF674
+  name = Geographic Site Management API
+}
+rectangle "geographicSiteDeleteEvent" as EV7
+
+object "TMF675" as API8 {
+  id = TMF675
+  name = Geographic Location Management API
+}
+rectangle "geographicLocationDeleteEvent" as EV8
+
+object "TMF632" as API9 {
+  id = TMF632
+  name = Party Management API
+}
+rectangle "individualDeleteEvent\norganizationDeleteEvent" as EV9
+
+object "TMF641" as API10 {
+  id = TMF641
+  name = Service Ordering Management API
+}
+rectangle "serviceOrderDeleteEvent" as EV10
+
+publishedSubscribedEvents::publishedEvents --> API1
+publishedSubscribedEvents::publishedEvents --> API2
+
+publishedSubscribedEvents::subscribedEvents --> API3
+publishedSubscribedEvents::subscribedEvents --> API4
+publishedSubscribedEvents::subscribedEvents --> API5
+publishedSubscribedEvents::subscribedEvents --> API6
+publishedSubscribedEvents::subscribedEvents --> API7
+publishedSubscribedEvents::subscribedEvents --> API8
+publishedSubscribedEvents::subscribedEvents --> API9
+publishedSubscribedEvents::subscribedEvents --> API10
+
+API1 --> EV1
+API2 --> EV2
+API3 --> EV3
+API4 --> EV4
+API5 --> EV5
+API6 --> EV6
+API7 --> EV7
+API8 --> EV8
+API9 --> EV9
+API10 --> EV10
+
+@enduml

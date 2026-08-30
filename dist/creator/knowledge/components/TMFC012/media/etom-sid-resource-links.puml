@@ -1,0 +1,16 @@
+@startuml
+title TMFC012 : Resource Inventory -- eTOM/SID ABE Links
+
+class "L2 - Resource Support Readiness/L3 - Manage Resource Inventory" as L2ResourceSupportReadiness <<eTOM Business Activity>>
+class Resource <<SID Data Entity>>
+
+' eTOM activity <-> SID ABE link. Per the image's own legend, an arrow from the
+' eTOM activity towards the SID ABE means information produced by the activity;
+' the reverse arrow means information consumed by the activity. The image draws
+' this pair as a single squiggly line with an arrowhead at each end, i.e. both
+' hold simultaneously.
+L2ResourceSupportReadiness --> Resource : produces
+Resource --> L2ResourceSupportReadiness : is consumed by
+
+footer TMFC012 - Resource Inventory (as printed in the source image)
+@enduml

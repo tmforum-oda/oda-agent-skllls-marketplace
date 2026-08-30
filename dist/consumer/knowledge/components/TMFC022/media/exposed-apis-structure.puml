@@ -1,0 +1,49 @@
+@startuml
+allowmixing
+title TMFC022: Party Privacy Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF644 {
+  id = TMF644
+  name = Privacy Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF644
+exposedAPIs --> TMF701
+
+object partyPrivacyProfileSpecification
+object partyPrivacyProfile
+object partyPrivacyAgreement
+object processFlow
+object taskFlow
+
+TMF644 --> partyPrivacyProfileSpecification
+TMF644 --> partyPrivacyProfile
+TMF644 --> partyPrivacyAgreement
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id\nPOST\nPATCH /id\nDELETE" as partyPrivacyProfileSpecificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH /id\nDELETE" as partyPrivacyProfileOps
+rectangle "GET\nGET /id\nPOST\nPATCH /id\nDELETE" as partyPrivacyAgreementOps
+rectangle "GET\nGET /id\nPOST\nDELETE /id" as processFlowOps
+rectangle "GET\nGET /id\nPATCH" as taskFlowOps
+
+partyPrivacyProfileSpecification --> partyPrivacyProfileSpecificationOps
+partyPrivacyProfile --> partyPrivacyProfileOps
+partyPrivacyAgreement --> partyPrivacyAgreementOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

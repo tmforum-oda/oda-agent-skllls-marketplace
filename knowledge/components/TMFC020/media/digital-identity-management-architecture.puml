@@ -1,0 +1,41 @@
+@startuml
+title TMFC020 : Digital Identity Management
+
+component "TMFC020 : Digital Identity Management" as TMFC020 {
+  rectangle "n/a" as eTOM1 #line.dashed
+  rectangle "n/a" as eTOM2 #line.dashed
+  rectangle "n/a" as eTOM3 #line.dashed
+  rectangle "n/a" as eTOM4 #line.dashed
+  database "Digital Identity" as SID1
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF669 Party Role Mgmt.] as dep1
+[TMF632 Party Mgmt.] as dep2
+[TMF701 Process Flow Mgmt.] as dep3
+
+dep1 --> TMFC020 : TMF669 Party Role Mgmt.
+dep2 --> TMFC020 : TMF632 Party Mgmt.
+dep3 --> TMFC020 : TMF701 Process Flow Mgmt.
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF720 Digital Identity Mgmt." as exp1
+() "TMF701 Process Flow" as exp2
+
+TMFC020 --> exp1 : TMF720 Digital Identity Mgmt.
+TMFC020 --> exp2 : TMF701 Process Flow
+
+note bottom of TMFC020
+  The source image shows four eTOM Business Activity boxes, all printed "n/a".
+  This matches the component's own spec (section 2.1): no eTOM business
+  activity is assigned to this component, with a note that a JIRA issue
+  needs to be raised with the eTOM team.
+end note
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

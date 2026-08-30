@@ -1,0 +1,43 @@
+@startuml
+title TMFC011 : Resource Order Management
+
+component "TMFC011 : Resource Order Management" as TMFC011 {
+  rectangle "L2 Resource Order > Resource Order Management" as eTOM1 #line.dashed
+  database "Resource Order ABE" as SID1
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF702 Resource Activation Mgmt.] as dep1
+[TMF634 Resource Catalog Mgmt.] as dep2
+[TMF664 Resource Function Activation] as dep3
+[TMF639 Resource Inventory Mgmt.] as dep4
+[TMF632 Party Mgmt] as dep5
+[TMF697 Work Order Mgmt] as dep6
+[TMF673 Geographic Address Mgmt] as dep7
+[TMF674 Geographic Site Mgmt] as dep8
+[TMF675 Geographic Location Mgmt] as dep9
+
+dep1 --> TMFC011 : TMF702 Resource Activation Mgmt.
+dep2 --> TMFC011 : TMF634 Resource Catalog Mgmt.
+dep3 --> TMFC011 : TMF664 Resource Function Activation
+dep4 --> TMFC011 : TMF639 Resource Inventory Mgmt.
+dep5 --> TMFC011 : TMF632 Party Mgmt
+dep6 --> TMFC011 : TMF697 Work Order Mgmt
+dep7 --> TMFC011 : TMF673 Geographic Address Mgmt
+dep8 --> TMFC011 : TMF674 Geographic Site Mgmt
+dep9 --> TMFC011 : TMF675 Geographic Location Mgmt
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF652 Resource Order Mgmt." as exp1
+() "TMF701 Process Flow Mgmt." as exp2
+
+TMFC011 --> exp1 : TMF652 Resource Order Mgmt.
+TMFC011 --> exp2 : TMF701 Process Flow Mgmt.
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

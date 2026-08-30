@@ -235,10 +235,42 @@ def normalize_table(raw_rows):
     data_rows = rows[data_start:]
     # A leftover wrapped-continuation-line row that failed the header-fragment check
     # above (see the docstring) still ends up here as a "data" row with only one real
-    # cell and nothing else -- a genuine data row in every table seen in this document
-    # always populates at least two columns (an id/name plus something else), so this
-    # is a safe, general way to drop it rather than emitting a near-blank junk row.
-    data_rows = [row for row in data_rows if sum(1 for c in row if c.strip()) >= 2]
+    # cell and nothing else -- in every *wide* table seen in this document (3+ real
+    # columns) a genuine data row always populates at least two of them (an id/name
+    # plus something else), so requiring >=2 populated cells is a safe way to drop it
+    # rather than emitting a near-blank junk row. But a genuinely narrow table (<=2
+    # real columns, e.g. TMFC008's SID ABEs table: just "SID ABE Level 1" / "SID ABE
+    # Level 2 (or set of BEs)") can have a perfectly legitimate data row that only
+    # populates one of its two columns ("Service ABE" with no Level 2 entry) -- the
+    # >=2 rule wrongly discarded that single real row down to zero, which silently
+    # dropped the whole table (flush_table only emits a table with >=1 data row).
+    # Scale the threshold to the header's own real (non-blank) column count instead
+    # of hardcoding 2, so this only fires on tables wide enough for it to mean
+    # anything.
+    min_populated = 1 if sum(1 for c in header if c.strip()) <= 2 else 2
+    data_rows = [row for row in data_rows if sum(1 for c in row if c.strip()) >= min_populated]
+    # A single-row header (no continuation row at all, so `shifted_cols` above never
+    # fires) can still have its own text split across grid columns that don't line up
+    # with where pdfplumber puts the data below it -- confirmed on TMFC008's SID ABEs
+    # table: header row is `['', 'SID ABE Level 1', '', '', 'SID ABE Level 2 ...', '']`
+    # (real labels at columns 1 and 4), but its one data row is `['Service ABE', None,
+    # None, '', None, None]` (value at column 0, one column left of the label it
+    # belongs under). Detected generally: if a data row's populated columns share
+    # nothing with the header's populated columns, but shifting every one of them
+    # right by one column lines them up exactly with populated header columns, apply
+    # that shift -- the same "one column left" pattern already established for
+    # header-continuation rows above, just triggered by column-set mismatch instead
+    # of by the continuation-merge bookkeeping (which only exists when the header
+    # itself spans more than one grid row).
+    header_populated = frozenset(i for i, c in enumerate(header) if c.strip())
+    for row in data_rows:
+        row_populated = frozenset(i for i, c in enumerate(row) if c.strip())
+        if row_populated and not (row_populated & header_populated):
+            shifted = frozenset(i + 1 for i in row_populated)
+            if shifted <= header_populated:
+                for i in sorted(row_populated, reverse=True):
+                    row[i + 1] = row[i]
+                    row[i] = ""
     for row in data_rows:
         for i in sorted(shifted_cols):
             if i == 0 or i >= len(row):
@@ -285,11 +317,33 @@ pending_heading = None  # (level, number, title, dropped) -- a heading whose tit
 # because a real sentence essentially never reduces to exactly one bare word.
 CONTINUATION_WORD_RE = re.compile(r"^[A-Za-z][A-Za-z-]*$")
 
+# A wrapped Operations-cell tail (e.g. "resourceSpecification\n- GET\n- GET/id") can
+# land entirely outside its own table's detected bbox when it's the very last row of
+# a table that closes at the bottom of a page -- confirmed on TMFC009's Dependent
+# APIs table: `find_tables()`'s bbox for the table's last page stops above this
+# fragment, so it's never part of the table grid at all (unlike the leftover-header-
+# row variant of this same underlying issue, which *is* caught by
+# `normalize_table`'s continuation-column-set guard because it's still inside the
+# table's own grid). Because it lands in the *prose* stream instead, and the table
+# it belongs to is still "open" (accumulating rows across pages, not flushed until
+# the next heading/table/image), it also surfaces in the wrong place in `out_lines`
+# -- `flush_para()` always runs before `flush_table()` at a heading boundary, so
+# this trailing fragment prints *before* the table it trails, not after. Fixing the
+# ordering would need buffering table flushes relative to interleaved prose, which
+# is a bigger change for no real benefit: the fragment is never legitimate prose in
+# either position, only ever the tail of an Operations list. Recognized structurally
+# (a "paragraph" that reduces to nothing but bullet + HTTP-verb tokens) and dropped
+# outright, the same way a header-continuation fragment is recognized by shape
+# elsewhere in this file -- a real sentence never reduces to just this.
+OPERATION_FRAGMENT_RE = re.compile(
+    r"^(?:[•\-*]?\s*(?:GET|POST|PATCH|PUT|DELETE)(?:\s*/\s*id)?\s*)+$", re.IGNORECASE
+)
+
 
 def flush_para():
     if para_buf:
         joined = " ".join(x for x in para_buf if x)
-        if joined:
+        if joined and not OPERATION_FRAGMENT_RE.match(joined):
             out_lines.append(joined)
             out_lines.append("")
         para_buf.clear()
@@ -343,8 +397,20 @@ def process_prose_line(raw):
         m = None
 
     if m:
+        # Table first, then paragraph -- not the other way round. A still-"open" table
+        # (accumulating rows across pages, not yet written to out_lines because no
+        # incompatible table/image has closed it) can have genuine trailing prose
+        # positioned *after* its last row but *before* this heading (confirmed on
+        # TMFC003's SID ABEs section: a "Note:" paragraph sits below the SID ABEs
+        # table, both on the same page, well before "2.3 eTOM L2 - SID ABEs links";
+        # also on TMFC009's Dependent APIs table, where the trailing prose is itself
+        # a leftover Operations-cell fragment). That prose is already sitting in
+        # `para_buf` by the time this heading is reached, while the table it trails is
+        # still waiting in `open_table` -- flushing para before table would print the
+        # trailing prose *before* the table it structurally follows, inverting real
+        # reading order. Flushing the table first restores it.
+        flush_table()
         flush_para()
-        flush_table()  # a table never spans a heading boundary
         level = m.group(1).count(".") + 1
         if level == 1:
             max_top_seen = int(m.group(1))

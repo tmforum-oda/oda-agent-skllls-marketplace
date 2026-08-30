@@ -1,0 +1,134 @@
+@startuml
+allowmixing
+title TMFC023: Party Interaction Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF672 {
+  id = TMF672
+  name = User Role Permission Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF662 {
+  id = TMF662
+  name = Entity Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+' The source diagram draws TMF681 (Communication Management API) as two
+' separate, identical boxes -- each with its own resources/GET-id fan-out --
+' rather than a single deduplicated box. Reproduced as two distinct objects.
+object TMF681a as "TMF681" {
+  id = TMF681
+  name = Communication Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF681b as "TMF681" {
+  id = TMF681
+  name = Communication Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF688 {
+  id = TMF688
+  name = Event Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF632
+dependentAPIs --> TMF669
+dependentAPIs --> TMF672
+dependentAPIs --> TMF662
+dependentAPIs --> TMF681a
+dependentAPIs --> TMF681b
+dependentAPIs --> TMF701
+dependentAPIs --> TMF688
+
+object individual
+object organization
+object PartyRoleManagement
+object permission
+object entitySpecification
+object entityCategory
+object entityCatalog
+object entityCatalogItem
+object communicationMessageA as "communicationMessage"
+object communicationMessageB as "communicationMessage"
+object processFlow
+object event
+
+TMF632 --> individual
+TMF632 --> organization
+TMF669 --> PartyRoleManagement
+TMF672 --> permission
+TMF662 --> entitySpecification
+TMF662 --> entityCategory
+TMF662 --> entityCatalog
+TMF662 --> entityCatalogItem
+TMF681a --> communicationMessageA
+TMF681b --> communicationMessageB
+TMF701 --> processFlow
+TMF688 --> event
+
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id" as PartyRoleManagementOps
+rectangle "GET\nGET /id" as permissionOps
+rectangle "GET\nGET /id" as entitySpecificationOps
+rectangle "GET\nGET /id" as entityCategoryOps
+rectangle "GET\nGET /id" as entityCatalogOps
+rectangle "GET\nGET /id" as entityCatalogItemOps
+rectangle "GET\nGET /id" as communicationMessageAOps
+rectangle "GET\nGET /id" as communicationMessageBOps
+rectangle "POST\nGET\nGET /id\nPATCH" as processFlowOps
+rectangle "GET\nGET /id" as eventOps
+
+individual --> individualOps
+organization --> organizationOps
+PartyRoleManagement --> PartyRoleManagementOps
+permission --> permissionOps
+entitySpecification --> entitySpecificationOps
+entityCategory --> entityCategoryOps
+entityCatalog --> entityCatalogOps
+entityCatalogItem --> entityCatalogItemOps
+communicationMessageA --> communicationMessageAOps
+communicationMessageB --> communicationMessageBOps
+processFlow --> processFlowOps
+event --> eventOps
+@enduml

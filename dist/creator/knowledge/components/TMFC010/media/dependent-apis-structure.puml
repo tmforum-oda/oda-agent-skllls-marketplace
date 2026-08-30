@@ -1,0 +1,91 @@
+@startuml
+allowmixing
+title TMFC010 : Resource Catalog Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF634 {
+  id = TMF634
+  name = Resource Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF662 {
+  id = TMF662
+  name = Entity Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF634
+dependentAPIs --> TMF669
+dependentAPIs --> TMF632
+dependentAPIs --> TMF662
+
+object resourceCatalog
+object resourceCategory
+object resourceSpecification
+object resourceCandidate
+object exportJob
+object importJob
+object partyRole
+object individual
+object organization
+object entitySpecification
+object associationSpecification
+
+TMF634 --> resourceCatalog
+TMF634 --> resourceCategory
+TMF634 --> resourceSpecification
+TMF634 --> resourceCandidate
+TMF634 --> exportJob
+TMF634 --> importJob
+TMF669 --> partyRole
+TMF632 --> individual
+TMF632 --> organization
+TMF662 --> entitySpecification
+TMF662 --> associationSpecification
+
+rectangle "GET\nGET /id" as resourceCatalogOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceCategoryOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceSpecificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceCandidateOps
+rectangle "GET\nPOST\nDELETE" as exportJobOps
+rectangle "GET\nPOST\nDELETE" as importJobOps
+rectangle "GET\nGET /id" as partyRoleOps
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id" as entitySpecificationOps
+rectangle "GET\nGET /id" as associationSpecificationOps
+
+resourceCatalog --> resourceCatalogOps
+resourceCategory --> resourceCategoryOps
+resourceSpecification --> resourceSpecificationOps
+resourceCandidate --> resourceCandidateOps
+exportJob --> exportJobOps
+importJob --> importJobOps
+partyRole --> partyRoleOps
+individual --> individualOps
+organization --> organizationOps
+entitySpecification --> entitySpecificationOps
+associationSpecification --> associationSpecificationOps
+@enduml

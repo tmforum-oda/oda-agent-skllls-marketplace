@@ -1,0 +1,148 @@
+@startuml
+allowmixing
+title TMFC009 : Service Qualification -- Dependent APIs (API / Resource / Operation)
+
+' The source image's own name fields carry inconsistent spacing before
+' "API" (no space for TMF633/TMF638, a double space for several others,
+' multiple spaces for TMF639) -- reproduced verbatim rather than normalised.
+' NOTE: TMF672 (User Roles And Permissions) and TMF688 (Event Management),
+' both present in the body's Dependent APIs table (section 3.2), are
+' genuinely absent from this diagram -- not an omission in this
+' transcription, the source image simply doesn't include them here.
+
+object dependentAPIs
+
+object TMF633 {
+  id = TMF633
+  name = Service Catalog ManagementAPI
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF638 {
+  id = TMF638
+  name = Service Inventory ManagementAPI
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF634 {
+  id = TMF634
+  name = Resource Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF639 {
+  id = TMF639
+  name = Resource Inventory Management   API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management  API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management  API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF673 {
+  id = TMF673
+  name = Geographic Address Management  API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF674 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF675 {
+  id = TMF675
+  name = Geographic Location Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF633
+dependentAPIs --> TMF638
+dependentAPIs --> TMF634
+dependentAPIs --> TMF639
+dependentAPIs --> TMF632
+dependentAPIs --> TMF669
+dependentAPIs --> TMF673
+dependentAPIs --> TMF674
+dependentAPIs --> TMF675
+
+object serviceSpecification
+object serviceCategory
+object service
+object resourceSpecification
+object resource
+object individual
+object organization
+object partyRole
+object geographicAddress
+object geographicSubAddress
+object geographicSite
+object geographicLocation
+
+TMF633 --> serviceSpecification
+TMF633 --> serviceCategory
+TMF638 --> service
+TMF634 --> resourceSpecification
+TMF639 --> resource
+TMF632 --> individual
+TMF632 --> organization
+TMF669 --> partyRole
+TMF673 --> geographicAddress
+TMF673 --> geographicSubAddress
+TMF674 --> geographicSite
+TMF675 --> geographicLocation
+
+rectangle "GET\nGET /id" as serviceSpecificationOps
+rectangle "GET\nGET /id" as serviceCategoryOps
+rectangle "GET\nGET /id" as serviceOps
+rectangle "GET\nGET /id" as resourceSpecificationOps
+rectangle "GET\nGET /id" as resourceOps
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id" as partyRoleOps
+rectangle "GET\nGET /id" as geographicAddressOps
+rectangle "GET\nGET /id" as geographicSubAddressOps
+rectangle "GET\nGET /id" as geographicSiteOps
+rectangle "GET\nGET /id" as geographicLocationOps
+
+serviceSpecification --> serviceSpecificationOps
+serviceCategory --> serviceCategoryOps
+service --> serviceOps
+resourceSpecification --> resourceSpecificationOps
+resource --> resourceOps
+individual --> individualOps
+organization --> organizationOps
+partyRole --> partyRoleOps
+geographicAddress --> geographicAddressOps
+geographicSubAddress --> geographicSubAddressOps
+geographicSite --> geographicSiteOps
+geographicLocation --> geographicLocationOps
+@enduml

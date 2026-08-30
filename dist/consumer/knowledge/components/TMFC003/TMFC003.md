@@ -60,6 +60,10 @@ eTOM business activities this ODA Component is responsible for:
 
 SID ABEs this ODA Component is responsible for:
 
+| SID ABE Level 1 | SID ABE Level 2 (or set of BEs) |
+| --- | --- |
+| none |   |
+
 Note: SID doesn't currently describe Orchestration Plan and delivery process to manage at Product Order level. This could be added at least as specialization from Project ABE or Workflow ABE. Refer to JIRA paragraph at the end of the document.
 
 ## 2.3. eTOM L2 - SID ABEs links
@@ -105,11 +109,11 @@ The following diagram illustrates API/Resource/Operation:
 ![](media/exposed-apis-structure.png)
 *([PlantUML source](media/exposed-apis-structure.puml))*
 
-|   | API ID |   | API Name |   | Mandatory / Optional |   | Resource |   | Operations |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| TMF701 |   | Process Flow |   | Optional |   | processFlow |   | GET<br>GET /id<br>POST<br>DELETE /id |   |
-|   |   |   |   |   |   | taskFlow |   | GET<br>GET /id<br>PATCH /id |   |
-| TMF688 |   | Event |   | Optional |   |   |   |   |   |
+| API ID | API Name | Mandatory / Optional | Resource | Operations |
+| --- | --- | --- | --- | --- |
+| TMF701 | Process Flow | Optional | processFlow | GET<br>GET /id<br>POST<br>DELETE /id |
+|   |   |   | taskFlow | GET<br>GET /id<br>PATCH /id |
+| TMF688 | Event | Optional |   |   |
 
 ## 3.2. Dependent APIs
 

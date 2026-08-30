@@ -1,0 +1,40 @@
+@startuml
+allowmixing
+
+object exposedAPIs
+
+object "TMF641" as API1 {
+  id = TMF641
+  name = Service Order Management API
+  required = true
+  version = 4
+}
+object "serviceOrder" as R1_1
+object "cancelServiceOrder" as R1_2
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as OPS1_1
+rectangle "GET\nGET /id\nPOST" as OPS1_2
+
+exposedAPIs --> API1
+API1 --> R1_1
+API1 --> R1_2
+R1_1 --> OPS1_1
+R1_2 --> OPS1_2
+
+object "TMF701" as API2 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  version = 4
+}
+object "processFlow" as R2_1
+object "taskFlow" as R2_2
+rectangle "GET\nGET /id\nPOST\nDELETE /id" as OPS2_1
+rectangle "GET\nGET /id\nPATCH /id" as OPS2_2
+
+exposedAPIs --> API2
+API2 --> R2_1
+API2 --> R2_2
+R2_1 --> OPS2_1
+R2_2 --> OPS2_2
+
+@enduml

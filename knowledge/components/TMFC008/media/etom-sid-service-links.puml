@@ -1,0 +1,16 @@
+@startuml
+hide circle
+hide empty members
+
+class "Service" as ServiceABE
+
+class "L2 - Service Support Readiness / L3 - Manage Service Inventory" as Readiness
+
+Readiness --> ServiceABE : produces
+ServiceABE --> Readiness : is consumed by
+
+legend bottom
+an arrow from an eTOM activity towards a SID ABE means the information is produced by the activity;
+the arrow in the other direction means the information is consumed by the activity
+endlegend
+@enduml

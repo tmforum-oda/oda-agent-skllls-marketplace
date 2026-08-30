@@ -1,0 +1,25 @@
+@startuml
+allowmixing
+title TMFC009 : Service Qualification -- Events (API / Resource / Event)
+
+object publishedEvents
+
+' subscribedEvents is drawn as a literal empty list ("[]") in the source
+' image, with no outgoing connector -- reproduced as an empty object rather
+' than invented subscribed events.
+object subscribedEvents {
+  [] = (empty)
+}
+
+object TMF645 {
+  id = TMF645
+  name = ServiceQualification
+  resources = (see below)
+}
+
+publishedEvents --> TMF645
+
+rectangle "checkServiceQualificationCreateEvent\ncheckServiceQualificationStateChangeEvent\ncheckServiceQualificationInformationRequiredEvent\ncheckServiceQualificationAttributeValueChangeEvent\ncheckServiceQualificationDeleteEvent\nqueryServiceQualificationStateChangeEvent\nqueryServiceQualificationCreateEvent\nqueryServiceQualificationDeleteEvent" as TMF645Events
+
+TMF645 --> TMF645Events
+@enduml

@@ -60,11 +60,11 @@ eTOM business activities this ODA Component is responsible for are:
 
 SID ABEs this ODA Component is responsible for are:
 
-*: if SID ABE Level 2 is not specified this means that all the L2 business entities must be implemented, else the L2 SID ABE Level is specified. Note: The Product Order Capture & Validation component will also trigger creation and update of Product but this information is managed by a dedicated component TMFC005 - Product Inventory.
-
 | SID ABE Level 1 | SID ABE L1 Definition | SID ABE Level 2 (or set of BEs) | SID ABE L2 Definition |
 | --- | --- | --- | --- |
 | Customer<br>Product<br>Order | Handles single customer orders<br>and the various types thereof, such<br>as regulated and non-regulated<br>orders. | SalesQuote |   |
+
+*: if SID ABE Level 2 is not specified this means that all the L2 business entities must be implemented, else the L2 SID ABE Level is specified. Note: The Product Order Capture & Validation component will also trigger creation and update of Product but this information is managed by a dedicated component TMFC005 - Product Inventory.
 
 ## 2.3. eTOM L2 - SID ABEs links
 
@@ -162,8 +162,6 @@ Following diagram illustrates API/Resource/Operation:
 
 The APIs called by this component and provided by other components are:
 
-NOTE: Geographic Location Management API (TMF675) is available in preview version. As soon as the interface will be published it will be added to the table. NOTE: new API TMF716 Resource Reservation v4 taken into account to replace TMF685 Resource Pool Management.
-
 | API ID | API Name | API Version | Mandatory / Optional | Resource | Operation | Rationales |
 | --- | --- | --- | --- | --- | --- | --- |
 | TMF620 | Product<br>Catalog<br>Management | v4 | Mandatory | productCategory | Get, Get<br>/id | minimum<br>consistenc<br>y check |
@@ -203,6 +201,8 @@ NOTE: Geographic Location Management API (TMF675) is available in preview versio
 |   |   |   |   | cancelResourceReser<br>vation | Get, Get<br>/id, Post |   |
 | TMF760 | Product<br>Configuration<br>Management | v5 | Optional | checkProductConfigur<br>ation | Get, Get<br>/id, Post |   |
 |   |   |   |   | queryProductConfigur<br>ation | Get, Get<br>/id, Post |   |
+
+NOTE: Geographic Location Management API (TMF675) is available in preview version. As soon as the interface will be published it will be added to the table. NOTE: new API TMF716 Resource Reservation v4 taken into account to replace TMF685 Resource Pool Management.
 
 ## 3.3. Events
 

@@ -1,0 +1,53 @@
+@startuml
+title TMFC011 : Resource Order Management -- eTOM/SID ABE Links
+
+package "TMFC011 - Resource Order Management" {
+  class "L2 Resource Order > Resource Order Management" as L2ResourceOrderManagement <<eTOM Business Activity>>
+  class "Resource Order ABE" as ResourceOrderABE_TMFC011 <<SID Data Entity>>
+}
+
+package "TMFC012 - Resource Inventory" {
+  class "Resource Order ABE" as ResourceOrderABE_TMFC012 <<SID Data Entity>>
+}
+
+package "TMFC010 - Resource Catalog" {
+  class "Resource Specification ABE" as ResourceSpecificationABE <<SID Data Entity>>
+}
+
+package "TMFC068 - Resource Configuration & Activation" {
+  class "Resource Configuration ABE" as ResourceConfigurationABE <<SID Data Entity>>
+}
+
+' Every link below is an eTOM-activity <-> SID-ABE link. Per the image's own
+' legend, an arrow from the eTOM activity towards the SID ABE means
+' information produced by the activity; the reverse arrow means information
+' consumed by the activity. The image draws each of these pairs with an
+' arrowhead at both ends (confirmed by zooming into both ends of each path --
+' the internal link is one double-headed vertical arrow, the three links to
+' the neighbouring components share a common vertical trunk out of
+' "L2 Resource Order > Resource Order Management" that fans out into three
+' branches, each ending in its own arrowhead at the destination ABE), i.e.
+' both directions hold simultaneously for every pair below.
+
+L2ResourceOrderManagement --> ResourceOrderABE_TMFC011 : produces
+ResourceOrderABE_TMFC011 --> L2ResourceOrderManagement : is consumed by
+
+' This link crosses into the neighbouring TMFC012 package -- Resource Order
+' ABE here is TMFC012's own copy of the entity (distinct node from TMFC011's
+' internal one above), per the image's own grouping boxes.
+L2ResourceOrderManagement --> ResourceOrderABE_TMFC012 : produces
+ResourceOrderABE_TMFC012 --> L2ResourceOrderManagement : is consumed by
+
+L2ResourceOrderManagement --> ResourceSpecificationABE : produces
+ResourceSpecificationABE --> L2ResourceOrderManagement : is consumed by
+
+L2ResourceOrderManagement --> ResourceConfigurationABE : produces
+ResourceConfigurationABE --> L2ResourceOrderManagement : is consumed by
+
+legend right
+  eTOM Business Activity = dashed-outline rectangle in source image
+  SID Data Entity = cylinder in source image
+  --> "produces" = eTOM activity to SID ABE arrow
+  --> "is consumed by" = SID ABE to eTOM activity arrow
+endlegend
+@enduml

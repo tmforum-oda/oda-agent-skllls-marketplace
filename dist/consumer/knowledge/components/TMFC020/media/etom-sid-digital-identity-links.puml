@@ -1,0 +1,20 @@
+@startuml
+title TMFC020 : Digital Identity Management -- eTOM/SID ABE Links
+' Per the component's own spec (section 2.1), no eTOM business activity is
+' assigned to this component -- the source image's eTOM Business Activity
+' box is itself printed "n/a" (with a note elsewhere in the spec that a
+' JIRA issue needs to be raised with the eTOM team). Reproduced as-is.
+
+class "n/a" as NA <<eTOM Business Activity>>
+class "Digital Identity" as DigitalIdentity <<SID Data Entity>>
+
+' eTOM activity <-> SID ABE link. Per the image's own legend, an arrow from
+' the eTOM activity towards the SID ABE means information produced by the
+' activity; the reverse arrow means information consumed by the activity.
+' The image draws this as two separate arrows sharing a routed corner, i.e.
+' both hold simultaneously.
+NA --> DigitalIdentity : produces
+DigitalIdentity --> NA : is consumed by
+
+footer TMFC020 - Digital Identity Management (as printed in the source image)
+@enduml

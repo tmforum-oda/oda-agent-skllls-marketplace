@@ -1,0 +1,61 @@
+@startuml
+allowmixing
+title TMFC010 : Resource Catalog Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF634 {
+  id = TMF634
+  name = Resource Catalog Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF634
+exposedAPIs --> TMF701
+
+object resourceCatalog
+object resourceCategory
+object resourceSpecification
+object resourceCandidate
+object exportJob
+object importJob
+object processFlow
+object taskFlow
+
+TMF634 --> resourceCatalog
+TMF634 --> resourceCategory
+TMF634 --> resourceSpecification
+TMF634 --> resourceCandidate
+TMF634 --> exportJob
+TMF634 --> importJob
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceCatalogOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceCategoryOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceSpecificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as resourceCandidateOps
+rectangle "GET\nGET /id\nPOST\nDELETE" as exportJobOps
+rectangle "GET\nGET /id\nPOST\nDELETE" as importJobOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+resourceCatalog --> resourceCatalogOps
+resourceCategory --> resourceCategoryOps
+resourceSpecification --> resourceSpecificationOps
+resourceCandidate --> resourceCandidateOps
+exportJob --> exportJobOps
+importJob --> importJobOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

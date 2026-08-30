@@ -1,0 +1,56 @@
+@startuml
+allowmixing
+title TMFC011 : Resource Order Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+' Text reproduced verbatim from the source image, including its own
+' inconsistencies against the component's Exposed/Dependent API tables
+' elsewhere in this document ("Resource Orderin Management API" typo,
+' "apitype" field used instead of "id" for TMF701, and TMF664/TMF702 given
+' different name text here than in the Dependent APIs diagram) -- this is a
+' redraw of exactly what the image shows, not a corrected transcription.
+
+object TMF652 {
+  id = TMF652
+  name = Resource Orderin Management API
+  resources = (see below)
+}
+
+object TMF701 {
+  apitype = TMF701
+  name = Process Flow Management API
+  resources = (see below)
+}
+
+object TMF664 {
+  id = TMF664
+  name = Resource Function Activation Configuration
+  resources = (see below)
+}
+
+object TMF702 {
+  id = TMF702
+  name = Resource Activation And Configuration API
+  resources = (see below)
+}
+
+publishedEvents --> TMF652
+publishedEvents --> TMF701
+subscribedEvents --> TMF664
+subscribedEvents --> TMF702
+
+rectangle "CancelResourceOrderInformationRequiredEvent\nCancelResourceOrderInformationRequiredEventPayload\nCancelResourceOrderStateChangeEvent\nCancelResourceOrderStateChangeEventPayload\nResourceOrderAttributeValueChangeEvent\nResourceOrderAttributeValueChangeEventPayload\nResourceOrderCreateEvent\nResourceOrderCreateEventPayload\nResourceOrderDeleteEvent\nResourceOrderDeleteEventPayload\nResourceOrderInformationRequiredEvent\nResourceOrderInformationRequiredEventPayload\nResourceOrderStateChangeEvent\nResourceOrderStateChangeEventPayload" as TMF652Events
+
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent" as TMF701Events
+
+rectangle "resourceFunctionCreateEvent\nresourceFunctionChangeEvent\nmonitorStatechangeEvent\nhealStatechangeEvent\nscaleStatechangeEvent\nmigrateStatechangeEvent" as TMF664Events
+
+rectangle "resourceChangeEvent\nmonitorCreateEvent\nmonitorStatechangeEvent" as TMF702Events
+
+TMF652 --> TMF652Events
+TMF701 --> TMF701Events
+TMF664 --> TMF664Events
+TMF702 --> TMF702Events
+@enduml

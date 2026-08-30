@@ -1,0 +1,24 @@
+@startuml
+hide circle
+hide empty members
+
+package "TMFC007 - Service Order Management" {
+  class "Service Order" as ServiceOrder
+  class "L2 - Service Configuration & Activation" as SvcConfigActivation
+  class "L2 - Resource Order Management" as ResourceOrderMgmt
+}
+
+package "TMFC008 - Service Inventory" {
+  class "Service" as Service
+}
+
+ServiceOrder --> SvcConfigActivation : is consumed by
+ServiceOrder --> ResourceOrderMgmt : is consumed by
+SvcConfigActivation --> Service : produces
+Service --> SvcConfigActivation : is consumed by
+
+legend bottom
+an arrow from an eTOM activity towards a SID ABE means the information is produced by the activity;
+the arrow in the other direction means the information is consumed by the activity
+endlegend
+@enduml
