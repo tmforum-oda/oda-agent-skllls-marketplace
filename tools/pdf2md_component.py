@@ -1,9 +1,14 @@
 """Reads: references/components/{ID}/{ID}_{Name}_v{version}.pdf.
 Writes: knowledge/components/{ID}/{ID}.md, knowledge/components/{ID}/media/*.
-Track: the download URL itself has to be resolved from the TM Forum ODA
-directory page first (spec/spec-components.md 3) -- that step isn't
-mechanical and isn't done by this script. This script only does the
-PDF -> Markdown half, once a URL and the raw PDF are already in hand.
+Track: automated (spec/spec-components.md 7) -- no login gate, but heavier
+than fetch_component.py's tag-pinned discovery: the download URL has to be
+resolved from a real TM Forum ODA directory page load per component first
+(spec/spec-components.md 3), not assembled from a URL pattern. That
+discovery+download step isn't done by this script, and as of
+spec/tasks-components.md Phase 8 isn't yet its own checked-in tools/*.py
+script either -- done per-component via a driven browser through Phases
+1-6. This script only does the PDF -> Markdown half, once a URL and the
+raw PDF are already in hand.
 
 tools/pdf2md_component.py -- TM Forum Component Specification PDF ->
 knowledge/components/<ID>/<ID>.md

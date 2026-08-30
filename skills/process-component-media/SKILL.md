@@ -45,8 +45,9 @@ in `{ID}.md` for context — search for the image's current filename
 it's in, and what the prose around it says it depicts.
 
 Component specification PDFs use a small, consistent set of diagram
-notations (confirmed across TMFC039's own five images, all in this
-document's real corpus — not a set assumed in advance):
+notations — every image across every component processed so far (120
+images, 25 components) has landed cleanly in one of the first three
+categories below, with zero exceptions:
 
 - **Component architecture diagram** — one per component, in the
   Overview section. A single dark box representing the component itself,
@@ -71,11 +72,10 @@ document's real corpus — not a set assumed in advance):
   don't force a diagram into one of the three categories above if it
   doesn't actually match.
 
-If a different component's PDF shows a diagram that doesn't fit any of
-these four buckets, classify it on its own merits (the categories above
-describe what's been seen so far, not an exhaustive fixed list) —
-treat it the same way the "Other" bucket already is: describe what it
-actually is (Step 5).
+If a newly-published or not-yet-seen component's PDF shows a diagram that
+doesn't fit any of these three shapes, classify it on its own merits
+rather than forcing it into the nearest category — treat it the same way
+the "Other" bucket already is: describe what it actually is (Step 5).
 
 ## Step 3 — Rename descriptively and update every reference
 
@@ -189,4 +189,4 @@ link doesn't need to say which.
 - Does not touch an already-processed image (Step 1) — safe to re-run, not a full reprocessing pass every time.
 - Does not treat a `.puml` file as verified just because it rendered without a syntax error — Step 4's visual comparison against the source is required, not optional.
 - Does not render verification output into `media/` using the source diagram's own base name — that's the one mistake with real, hard-to-notice consequences (a silently overwritten original), and Step 4 exists specifically to prevent it.
-- Does not force an image into one of Step 2's three structured categories if it genuinely doesn't match — the "Other" bucket (Step 5) exists for exactly that case, and the categories themselves are drawn from one component's real media, not assumed to be exhaustive across all 25.
+- Does not force an image into one of Step 2's three structured categories if it genuinely doesn't match — the "Other" bucket (Step 5) exists for exactly that case. The three categories cover every image across every component processed so far, but treat that as strong precedent, not a guarantee for a component not yet seen.

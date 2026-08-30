@@ -15,7 +15,10 @@ Skills can query it directly, without re-parsing DOCX/PDF.
 
 The full design rationale lives in [`spec/spec.md`](spec/spec.md); build
 history and the reasoning behind every real bug/decision found along the
-way is in [`spec/tasks.md`](spec/tasks.md). 
+way is in [`spec/tasks.md`](spec/tasks.md). The human-readable Component
+Specification PDF narrative alongside each `component.yaml` (see below)
+has its own companion pair, [`spec/spec-components.md`](spec/spec-components.md)
+and [`spec/tasks-components.md`](spec/tasks-components.md). 
 
 ## Layout
 
@@ -38,7 +41,7 @@ Within `knowledge/`:
 
 ```
 knowledge/use-cases/{TMFSxxx}/{TMFSxxx}.md   one Markdown file per use case, YAML frontmatter + body
-knowledge/components/{TMFCxxx}/               component.yaml + component.meta.json
+knowledge/components/{TMFCxxx}/               component.yaml + component.meta.json + {TMFCxxx}.md (narrative, from the PDF spec -- 25 of 31 components have one, spec-components.md §3.1/§6)
 knowledge/apis/{TMFxxx}/                      {TMFxxx}_v{version}.json + .meta.json (multiple versions coexist)
 knowledge/index/                              the ID registry -- see below
 ```
@@ -79,7 +82,13 @@ for the full step-by-step, and `spec/spec.md` §6 for why they're split:
 - **Automated** (`python tools/fetch_component.py --all-referenced && python tools/fetch_api.py`) —
   ODA Component specs and Open API schemas. Fully public, unauthenticated,
   safe to run on a schedule; only rewrites files whose content actually
-  changed.
+  changed. The human-readable Component Specification PDFs (`{TMFCxxx}.md`,
+  `tools/pdf2md_component.py`) belong to this same track — no login gate
+  either — but are heavier: each component's PDF link has to be resolved
+  from a real directory-page load first (spec-components.md §3), not a
+  tag-listing lookup, and that discovery+download half isn't yet its own
+  checked-in script (done per-component via a driven browser so far,
+  spec-components.md §7, spec/tasks-components.md Phase 8.4).
 
 Either way, finish with `python tools/build_index.py` then
 `python tools/refresh_report.py` to regenerate the index and append a
