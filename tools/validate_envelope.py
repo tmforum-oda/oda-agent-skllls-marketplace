@@ -66,11 +66,17 @@ def main():
     # use case's own media/ folder, not standalone artefacts -- they describe one image, not a
     # thing with its own id/type/version/status. Excluded by suffix, not by directory, since
     # media/ is a normal subdirectory of a real artefact folder, not a category to blanket-skip.
+    # AGENTS.md/CLAUDE.md/README.md (knowledge/ and every immediate subfolder) are orientation
+    # docs for humans/agents browsing the tree, not artefacts -- same "not a thing with its own
+    # id/type/version/status" reasoning, excluded by exact basename everywhere under root.
+    DOC_BASENAMES = {"AGENTS.md", "CLAUDE.md", "README.md"}
     paths = [
         p
         for p in sorted(glob.glob(os.path.join(root, "**", "*.md"), recursive=True))
         + sorted(glob.glob(os.path.join(root, "**", "*.meta.json"), recursive=True))
-        if not os.path.normpath(p).startswith(index_dir + os.sep) and not p.endswith(".text-description.md")
+        if not os.path.normpath(p).startswith(index_dir + os.sep)
+        and not p.endswith(".text-description.md")
+        and os.path.basename(p) not in DOC_BASENAMES
     ]
 
     hard_failures = 0
