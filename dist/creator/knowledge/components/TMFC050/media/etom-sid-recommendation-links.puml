@@ -1,0 +1,16 @@
+@startuml
+title TMFC050 : Product Recommendation Management -- eTOM/SID ABE Links
+
+class "L3 - Recommend Appropriate Product Offering(s)" as L3RecommendApropriateProductOfferings <<eTOM Business Activity>>
+class "To be created" as ToBeCreated <<SID Data Entity>>
+
+' eTOM activity <-> SID ABE link. Per the image's own legend, a solid arrow from
+' the eTOM activity towards the SID ABE means information produced by the
+' activity; a hollow-headed arrow in the reverse direction means information
+' consumed by the activity. The image draws this pair as a single connector
+' with a solid arrowhead at the SID entity end and a hollow arrowhead at the
+' eTOM activity end, i.e. both hold simultaneously.
+L3RecommendApropriateProductOfferings --> ToBeCreated : produces
+ToBeCreated --> L3RecommendApropriateProductOfferings : is consumed by
+
+@enduml

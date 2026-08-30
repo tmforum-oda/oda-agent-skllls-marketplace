@@ -1,0 +1,52 @@
+@startuml
+title TMFC030 : Bill Generation Management
+
+component "TMFC030 : Bill Generation Management" as TMFC030 {
+  rectangle "L3 - Create Customer Bill Invoice" as eTOM1 #line.dashed
+  rectangle "L3 - Produce & Distribute Customer Bill" as eTOM2 #line.dashed
+  rectangle "L3 - BP Bill/Invoice Control" as eTOM3 #line.dashed
+  rectangle "L4 - Create BP Bill/Invoice" as eTOM4 #line.dashed
+  rectangle "L4 - Distribute BP Bill/Invoice" as eTOM5 #line.dashed
+  rectangle "L4 - Manage BP Bill/Invoice Archive" as eTOM6 #line.dashed
+  rectangle "L4 - Administer Commercial Arrangement for BP Bill/Invoice Creation Capability" as eTOM7 #line.dashed
+  database "Party Bill" as SID1
+  database "Customer Bill" as SID2
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF666 Account Mgmt.] as dep1
+[TMF632 Party Mgmt.] as dep2
+[TMF676 Payment Mgmt.] as dep3
+[TMF667 Document Mgmt.] as dep4
+[TMF637 Product Inventory Mgmt.] as dep5
+[TMF669 Party Role Mgmt.] as dep6
+[TMF678 Customer Bill Mgmt.] as dep7
+[TMF7101 Process Flow Mgmt.] as dep8
+
+dep1 --> TMFC030 : TMF666 Account Mgmt.
+dep2 --> TMFC030 : TMF632 Party Mgmt.
+dep3 --> TMFC030 : TMF676 Payment Mgmt.
+dep4 --> TMFC030 : TMF667 Document Mgmt.
+dep5 --> TMFC030 : TMF637 Product Inventory Mgmt.
+dep6 --> TMFC030 : TMF669 Party Role Mgmt.
+dep7 --> TMFC030 : TMF678 Customer Bill Mgmt.
+dep8 --> TMFC030 : TMF7101 Process Flow Mgmt.
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF678 Customer Bill Mgmt." as exp1
+() "TMF701 Process Flow Mgmt." as exp2
+
+TMFC030 --> exp1 : TMF678 Customer Bill Mgmt.
+TMFC030 --> exp2 : TMF701 Process Flow Mgmt.
+
+note bottom of TMFC030
+  *insert there any notes if needed
+end note
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

@@ -1,0 +1,118 @@
+@startuml
+allowmixing
+title TMFC036 : Lead and Opportunity Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF651 {
+  id = TMF651
+  name = Agreement Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF648 {
+  id = TMF648
+  name = Quote Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF622 {
+  id = TMF622
+  name = Product Order Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF632
+dependentAPIs --> TMF669
+dependentAPIs --> TMF620
+dependentAPIs --> TMF651
+dependentAPIs --> TMF648
+dependentAPIs --> TMF622
+dependentAPIs --> TMF701
+
+object individual
+object organization
+object partyRole
+object productOffering
+object productOfferingPrice
+object agreement
+object agreementSpecification
+object quote
+object productOrder
+object processFlow
+object taskFlow
+
+TMF632 --> individual
+TMF632 --> organization
+TMF669 --> partyRole
+TMF620 --> productOffering
+TMF620 --> productOfferingPrice
+TMF651 --> agreement
+TMF651 --> agreementSpecification
+TMF648 --> quote
+TMF622 --> productOrder
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET/id" as individualOps
+rectangle "GET\nGET/id" as organizationOps
+rectangle "GET\nGET/id" as partyRoleOps
+rectangle "GET\nGET/id" as productOfferingOps
+rectangle "GET\nGET/id" as productOfferingPriceOps
+rectangle "GET\nGET/id" as agreementOps
+rectangle "GET\nGET/id" as agreementSpecificationOps
+rectangle "GET\nGET /id" as quoteOps
+rectangle "GET\nGET /id" as productOrderOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+individual --> individualOps
+organization --> organizationOps
+partyRole --> partyRoleOps
+productOffering --> productOfferingOps
+productOfferingPrice --> productOfferingPriceOps
+agreement --> agreementOps
+agreementSpecification --> agreementSpecificationOps
+quote --> quoteOps
+productOrder --> productOrderOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

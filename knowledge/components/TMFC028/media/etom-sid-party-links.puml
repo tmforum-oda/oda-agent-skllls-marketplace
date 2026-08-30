@@ -1,0 +1,21 @@
+@startuml
+title TMFC028 : Party Management -- eTOM/SID ABE Links
+
+class "L2 - Customer Inventory Management\nL2 - Customer Information Management\nL2 - Customer Relationship Management\nL2 - Party Relationship Development & Retirement\nL2 - Party Inventory Management\nL2 - Human Resources Management" as eTOMActivities <<eTOM Business Activity>>
+class Party <<SID Data Entity>>
+
+' eTOM activity <-> SID ABE link. Per the image's own legend, an arrow from the
+' eTOM activity towards the SID ABE means information produced by the activity;
+' the reverse arrow means information consumed by the activity. The image draws
+' this pair as a single bent connector with an arrowhead at each end, i.e. both
+' hold simultaneously.
+eTOMActivities --> Party : produces
+Party --> eTOMActivities : is consumed by
+
+note bottom of Party
+  * partial ** for Loyalty Program
+  (footnote printed in the source image)
+end note
+
+footer TMFC028 - Party Management
+@enduml

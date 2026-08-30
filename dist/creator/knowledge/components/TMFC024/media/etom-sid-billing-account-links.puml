@@ -1,0 +1,17 @@
+@startuml
+title TMFC024: Billing Account Management -- eTOM/SID ABE Links
+
+class "L2 - Customer Bill Payments & Receivables Management\nL3 - Manage Customer Billing Account" as eTOMBillingActivity <<eTOM Business Activity>>
+class "Customer Billing Account" as CustomerBillingAccount <<SID Data Entity>>
+
+' Per the image's own legend, an arrow from the eTOM activity towards the
+' SID ABE means information produced by the activity; the reverse arrow
+' means information consumed by the activity. The image draws this as a
+' single path with an arrowhead at each end, i.e. both directions hold
+' simultaneously (same pattern as TMFC020's and TMFC022's single-pair
+' diagrams).
+eTOMBillingActivity --> CustomerBillingAccount : produces
+CustomerBillingAccount --> eTOMBillingActivity : is consumed by
+
+footer TMFC024 - Billing Account Management
+@enduml

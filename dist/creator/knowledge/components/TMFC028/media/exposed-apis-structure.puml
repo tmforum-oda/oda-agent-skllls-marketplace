@@ -1,0 +1,45 @@
+@startuml
+allowmixing
+title TMFC028 : Party Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF632 {
+  id = TMF632
+  name = Party Management
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF632
+exposedAPIs --> TMF701
+
+object individual
+object organization
+object processFlow
+object taskFlow
+
+TMF632 --> individual
+TMF632 --> organization
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET/id\nPOST\nPATCH/id\nDELETE/id" as individualOps
+rectangle "GET\nGET/id\nPOST\nPATCH/id\nDELETE/id" as organizationOps
+rectangle "GET\nGET/id\nPOST\nDELETE/id" as processFlowOps
+rectangle "GET\nGET/id\nPATCH/id" as taskFlowOps
+
+individual --> individualOps
+organization --> organizationOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

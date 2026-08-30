@@ -1,0 +1,59 @@
+@startuml
+title TMFC027 : Product Configurator
+
+component "TMFC027 : Product Configurator" as TMFC027 {
+  rectangle "eTOM L2 - Product Configuration Management" as eTOM1 #line.dashed
+  rectangle "eTOM L3 - Manage Product Configuration" as eTOM2 #line.dashed
+  database "Product Configuration*" as SID1
+}
+
+note bottom of SID1
+  *only Product Configuration BEs (not Product Configuration Spec)
+end note
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF620 Product Catalog Mgmt] as dep1
+[TMF622 Product Ordering] as dep2
+[TMF632 Party Mgmt] as dep3
+[TMF637 Product Inventory Mgmt] as dep4
+[TMF662 Entity Catalog Mgmt] as dep5
+[TMF666 Account Mgmt] as dep6
+[TMF669 Party Role Mgmt] as dep7
+[TMF673 Geographic Address Mgmt] as dep8
+[TMF674 Geographic Site Mgmt] as dep9
+[TMF921 Intent Mgmt] as dep10
+[TMF701 Process Flow Mgmt] as dep11
+
+dep1 --> TMFC027 : TMF620 Product Catalog Mgmt
+dep2 --> TMFC027 : TMF622 Product Ordering
+dep3 --> TMFC027 : TMF632 Party Mgmt
+dep4 --> TMFC027 : TMF637 Product Inventory Mgmt
+dep5 --> TMFC027 : TMF662 Entity Catalog Mgmt
+dep6 --> TMFC027 : TMF666 Account Mgmt
+dep7 --> TMFC027 : TMF669 Party Role Mgmt
+dep8 --> TMFC027 : TMF673 Geographic Address Mgmt
+dep9 --> TMFC027 : TMF674 Geographic Site Mgmt
+dep10 --> TMFC027 : TMF921 Intent Mgmt
+dep11 --> TMFC027 : TMF701 Process Flow Mgmt
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+' NOTE: the component's Exposed APIs table (TMFC027.md section 3.1) also lists a
+' fourth API, TMF688 "Event" (Optional) -- the source image itself omits it,
+' the same way TMFC039's/TMFC002's own exposed-APIs diagrams omitted APIs absent
+' from the drawing. Reproduced faithfully as three APIs, matching the image
+' exactly, not reconciled against the table.
+() "TMF679 Product Offering Qualification" as exp1
+() "TMF760 Product Configuration" as exp2
+() "TMF701 Process Flow Mgmt" as exp3
+
+TMFC027 --> exp1 : TMF679 Product Offering Qualification
+TMFC027 --> exp2 : TMF760 Product Configuration
+TMFC027 --> exp3 : TMF701 Process Flow Mgmt
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

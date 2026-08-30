@@ -1,0 +1,56 @@
+@startuml
+title TMFC050 : Product Recommendation Management
+
+component "TMFC050 : Product Recommendation Management" as TMFC050 {
+  rectangle "eTOM L2 - Cross/Upsell" as eTOM1 #line.dashed
+  rectangle "eTOM L3 - Recommend Appropriate Product Offering(s)" as eTOM2 #line.dashed
+  database "To be created" as SID1
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF620 Product Catalog Management] as dep1
+[TMF679 Product Offering Qualification] as dep2
+[TMF622 Product Ordering Management] as dep3
+[TMF663 Shopping Cart Management] as dep4
+[TMF637 Product Inventory Management] as dep5
+[TMF671 Promotion Management] as dep6
+[TMF666 Account Management] as dep7
+[TMF673 Geographic Address Management] as dep8
+[TMF675 Geographic Location Management] as dep9
+[TMF632 Party Management] as dep10
+[TMF669 Party Role Management] as dep11
+[TMF678 Customer Bill Management] as dep12
+[TMF621 Trouble Ticket] as dep13
+[TMF635 Usage Management] as dep14
+[TMF645 Service Qualification Management] as dep15
+
+dep1 --> TMFC050 : TMF620 Product Catalog Management
+dep2 --> TMFC050 : TMF679 Product Offering Qualification
+dep3 --> TMFC050 : TMF622 Product Ordering Management
+dep4 --> TMFC050 : TMF663 Shopping Cart Management
+dep5 --> TMFC050 : TMF637 Product Inventory Management
+dep6 --> TMFC050 : TMF671 Promotion Management
+dep7 --> TMFC050 : TMF666 Account Management
+dep8 --> TMFC050 : TMF673 Geographic Address Management
+dep9 --> TMFC050 : TMF675 Geographic Location Management
+dep10 --> TMFC050 : TMF632 Party Management
+dep11 --> TMFC050 : TMF669 Party Role Management
+dep12 --> TMFC050 : TMF678 Customer Bill Management
+dep13 --> TMFC050 : TMF621 Trouble Ticket
+dep14 --> TMFC050 : TMF635 Usage Management
+dep15 --> TMFC050 : TMF645 Service Qualification Management
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF680 Recommendation Management" as exp1
+() "TMF701 Process Flow" as exp2
+
+TMFC050 --> exp1 : TMF680 Recommendation Management
+TMFC050 --> exp2 : TMF701 Process Flow
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

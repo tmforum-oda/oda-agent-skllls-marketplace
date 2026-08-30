@@ -1,0 +1,46 @@
+@startuml
+title TMFC024: Billing Account Management
+
+component "TMFC024: Billing Account Management" as TMFC024 {
+  rectangle "L2 - Customer Bill Payments & Receivables Management / L3 - Manage Customer Billing Account" as eTOM1 #line.dashed
+  database "Customer Billing Account" as SID1
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF669 Party Role Management] as dep1
+[TMF632 Party Management] as dep2
+[TMF677 Usage Consumption Management] as dep3
+[TMF678 Customer Bill Management] as dep4
+[TMF670 Payment Method Management] as dep5
+[TMF676 Payment Management] as dep6
+[TMF654 Prepay Balance Management] as dep7
+[TMF622 Product Ordering Management] as dep8
+[TMF671 Process Flow Management] as dep9
+
+dep1 --> TMFC024 : TMF669 Party Role Management
+dep2 --> TMFC024 : TMF632 Party Management
+dep3 --> TMFC024 : TMF677 Usage Consumption Management
+dep4 --> TMFC024 : TMF678 Customer Bill Management
+dep5 --> TMFC024 : TMF670 Payment Method Management
+dep6 --> TMFC024 : TMF676 Payment Management
+dep7 --> TMFC024 : TMF654 Prepay Balance Management
+dep8 --> TMFC024 : TMF622 Product Ordering Management
+dep9 --> TMFC024 : TMF671 Process Flow Management
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+' Note: the source image's exposed side lists only TMF666 and TMF701, even
+' though section 3.1's Exposed APIs table also lists TMF688 (Event
+' Management) -- reproduced as drawn, not reconciled with the table.
+() "TMF666 Account Management" as exp1
+() "TMF701 Process Flow" as exp2
+
+TMFC024 --> exp1 : TMF666 Account Management
+TMFC024 --> exp2 : TMF701 Process Flow
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

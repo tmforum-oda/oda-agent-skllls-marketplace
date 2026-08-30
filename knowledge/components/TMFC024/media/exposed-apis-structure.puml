@@ -1,0 +1,60 @@
+@startuml
+allowmixing
+title TMFC024: Billing Account Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF666 {
+  id = TMF666
+  name = Account Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+' Note: the source image's second exposed-API box is labelled TMF701
+' "Process Flow Management API" but carries the processFlow/taskFlow
+' resources -- per section 3.1's own table, those resources belong to
+' TMF688 Event Management, while TMF701 Process Flow Management's table
+' resources are listener/hub. This id/resource-list swap is a confirmed
+' mix-up already present in the source PDF (also visible in the table),
+' and is reproduced here exactly as drawn, not corrected.
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF666
+exposedAPIs --> TMF701
+
+object billingAccount
+object billingCycleSpecification
+object billFormat
+object billPresentationMedia
+object processFlow
+object taskFlow
+
+TMF666 --> billingAccount
+TMF666 --> billingCycleSpecification
+TMF666 --> billFormat
+TMF666 --> billPresentationMedia
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id\nPOST\nPATCH /id\nDELETE /id" as billingAccountOps
+rectangle "GET\nGET /id\nPOST\nPATCH /id\nDELETE /id" as billingCycleSpecificationOps
+rectangle "GET\nGET /id\nPOST\nPATCH /id\nDELETE /id" as billFormatOps
+rectangle "GET\nGET /id\nPOST\nPATCH /id\nDELETE /id" as billPresentationMediaOps
+rectangle "GET\nGET /id\nPOST\nDELETE /id" as processFlowOps
+rectangle "GET\nGET /id\nPATCH /id" as taskFlowOps
+
+billingAccount --> billingAccountOps
+billingCycleSpecification --> billingCycleSpecificationOps
+billFormat --> billFormatOps
+billPresentationMedia --> billPresentationMediaOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+allowmixing
+title TMFC030 : Bill Generation Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+note right of publishedEvents
+  [] -- empty in the source image: no published events shown
+end note
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  resources = (see below)
+}
+
+subscribedEvents --> TMF669
+
+rectangle "partyRoleCreateEvent\npartyRoleAttributeValueChangeEvent\npartyRoleStateChangeEvent\npartyRoleDeleteEvent" as TMF669Events
+
+TMF669 --> TMF669Events
+@enduml

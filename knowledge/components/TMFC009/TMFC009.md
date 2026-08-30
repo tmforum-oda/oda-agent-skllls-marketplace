@@ -96,7 +96,7 @@ The following diagram illustrates API/Resource/Operation:
 | TMF675 | Geographic Location | 4 | Optional | geographicLocation<br>• GET<br>• GET/id |
 | TMF633 | Service Catalog<br>Management | 4 | Mandatory | serviceSpec<br>• GET<br>• GET/id |
 | TMF633 | Service Catalog<br>Management | 4 | Mandatory | serviceCategory<br>• GET<br>• GET/id |
-| TMF638 | Service Inventory<br>Management | 4 | Optional | service<br>• GET |
+| TMF638 | Service Inventory<br>Management | 4 | Optional | service<br>• GET<br>• GET/id |
 | TMF688 | Event Management | 4 | Optional | event<br>• GET<br>• GET/id |
 | TMF634 | Resource Catalog<br>management | 4 | Optional | resourceSpecification<br>• GET<br>• GET/id |
 

@@ -57,11 +57,11 @@ SID ABEs this ODA Component is responsible for:
 | --- | --- | --- | --- | --- |
 | 576 | Service Data<br>Retrieval | Service Data Retrieval<br>provides retrieval of<br>appropriate inventory<br>data for example in the<br>context of service end to<br>end testing. | Service<br>Management | Service Repository<br>Management |
 | 593 | ServiceInventory<br>Repository<br>Updating | ServiceInventory<br>Repository Updating<br>updates information in the<br>service inventory<br>according to the<br>configuration of specific<br>services | Service<br>Management | ServiceInventory<br>Repository<br>Management |
-| 628 | Service to<br>Resource<br>Relationship<br>Management | Service to Resource<br>Relationship Management<br>provides Creation, Update<br>and Deletion of the<br>relations of stand-alone<br>physical or logical<br>resources whose<br>assignment is critical to<br>service's fulfillment, and | Service<br>Management | ServiceInventory<br>Repository<br>Management |
+| 628 | Service to<br>Resource<br>Relationship<br>Management | Service to Resource<br>Relationship Management<br>provides Creation, Update<br>and Deletion of the<br>relations of stand-alone<br>physical or logical<br>resources whose<br>assignment is critical to<br>service's fulfillment, and<br>whose tracking is critical<br>to service operations,<br>assurance, and billing, as<br>well as, resources, which<br>represent a larger<br>resource structure<br>supporting the service,<br>often referred to as an<br>Access Point. | Service<br>Management | ServiceInventory<br>Repository<br>Management |
 | 629 | Service to<br>Resource<br>Relationship<br>Synchronization | Service to Resource<br>Relationship<br>Synchronization function<br>entails reconciliation of<br>the data in a Service<br>Inventory Management<br>system with inventory<br>discovered from other<br>sources and synchronizes<br>mismatched service<br>inventory records. | Service<br>Management | ServiceInventory<br>Repository<br>Management |
 | 630 | Service-<br>Resource<br>Relationship<br>Management<br>Notifications | Service-Resource<br>Relationship Management<br>Notifications; Notification<br>of Service-Resource<br>Relationship Management<br>actions to relevant<br>stakeholders | Service<br>Management | Service Reporting<br>Service Repository<br>Management |
 | 964 | Onboarded<br>Service<br>Integration<br>Configuration | Onboarded Service<br>Integration Configuration<br>function will configure<br>the on boarded service<br>and the relevant systems<br>to establish integration<br>automatically, when<br>requested. There are<br>several system services<br>in the infrastructure that<br>needs to be aware and<br>integrated with the new<br>service. | Service<br>Management | Service Repository<br>Management |
-| 965 | Service Instance<br>Lifecycle<br>Management | Service Instance Lifecycle<br>Management function will<br>control the starting of new<br>instances and closing of<br>instances of a service as | Service<br>Management | ServiceInventory<br>Repository<br>Management |
+| 965 | Service Instance<br>Lifecycle<br>Management | Service Instance Lifecycle<br>Management function will<br>control the starting of new<br>instances and closing of<br>instances of a service as<br>well as other activity<br>states of the service<br>instances.<br>Software based Services’<br>performance and<br>availability may be<br>controlled by managing<br>multiple instances of the<br>service with multiple<br>states of activity. | Service<br>Management | ServiceInventory<br>Repository<br>Management |
 | 1344 | Service<br>Topology<br>Discovery | Service Topology<br>Discovery function<br>provides the required<br>capability to discover<br>how resources (e.g.<br>network) are related to<br>each other in providing a<br>service. | Service<br>Management | Service Repository<br>Management |
 
 # 3. TMF OPEN APIs & Events
@@ -78,7 +78,7 @@ The following diagram illustrates API/Resource/Operation:
 | API ID | API Name | API Version | Mandatory / Optional | Resource | Operations |
 | --- | --- | --- | --- | --- | --- |
 | TMF638 | Service Inventory<br>Management | 4 | Mandatory | service | Get<br>Get /ID<br>POST<br>PATCH<br>DELETE |
-| TMF701 | Process Flow | 4 | Optional | processFlow | Get<br>Get /ID |
+| TMF701 | Process Flow | 4 | Optional | processFlow | Get<br>Get /ID<br>POST<br>DELETE |
 |   |   |   |   | taskFlow | Get<br>Get /ID<br>PATCH |
 | TMF688 | Event | 4 | Optional | listener | POST |
 |   |   | 4 |   | hub | POST<br>DELETE |

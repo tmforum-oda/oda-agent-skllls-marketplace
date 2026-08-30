@@ -1,0 +1,42 @@
+@startuml
+title TMFC036 : Lead and Opportunity Management
+
+component "TMFC036 : Lead and Opportunity Management" as TMFC036 {
+  rectangle "L2 - Contact/Lead/Prospect Management" as eTOM1 #line.dashed
+  rectangle "L2 - Selling" as eTOM2 #line.dashed
+  rectangle "L2 - Market Sales Support & Readiness" as eTOM3 #line.dashed
+  database "Sales Lead" as SID1
+  database "Sales Opportunity" as SID2
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF632 Party Mgmt.] as dep1
+[TMF620 Product Catalog Mgmt.] as dep2
+[TMF651 Agreement Mgmt.] as dep3
+[TMF648 Quote Mgmt.] as dep4
+[TMF669 Party Role Mgmt.] as dep5
+[TMF701 Process Flow Mgmt.] as dep6
+[TMF622 Product Order Mgmt.] as dep7
+
+dep1 --> TMFC036 : TMF632 Party Mgmt.
+dep2 --> TMFC036 : TMF620 Product Catalog Mgmt.
+dep3 --> TMFC036 : TMF651 Agreement Mgmt.
+dep4 --> TMFC036 : TMF648 Quote Mgmt.
+dep5 --> TMFC036 : TMF669 Party Role Mgmt.
+dep6 --> TMFC036 : TMF701 Process Flow Mgmt.
+dep7 --> TMFC036 : TMF622 Product Order Mgmt.
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF699 Sales Mgmt." as exp1
+() "TMF701 Process Flow Mgmt." as exp2
+
+TMFC036 --> exp1 : TMF699 Sales Mgmt.
+TMFC036 --> exp2 : TMF701 Process Flow Mgmt.
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

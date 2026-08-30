@@ -1,0 +1,69 @@
+@startuml
+title TMFC035 : Party Roles & Permissions Management -- eTOM/SID ABE Links
+
+' Unlike every other component's diagram of this type, this image contains NO
+' eTOM Business Activity box at all -- consistent with the document body's
+' section 2.1 ("eTOM business activities"), which has a header-only table
+' with zero data rows: this component genuinely has no eTOM activity
+' assigned. The diagram is, correspondingly, a pure SID-entity relationship
+' view across three components, with no eTOM<->SID "produces"/"is consumed
+' by" arrows anywhere in it. Reproduced as drawn, not forced to include an
+' eTOM activity the source doesn't show.
+
+package "TMFC035 - Party Roles & Permissions Management" {
+  class "PermissionSet" as SIDPermissionSetA <<SID Data Entity>>
+  class "PermissionSet" as SIDPermissionSetB <<SID Data Entity>>
+  class PermissionSpecSet <<SID Data Entity>>
+  class PartyRoleSpecification <<SID Data Entity>>
+  class PartyRole <<SID Data Entity>>
+}
+
+package "TMFC028 - Party Management" {
+  class Party <<SID Data Entity>>
+}
+
+package "TMFC020 - Digital Identity Management" {
+  class DigitalIdentity <<SID Data Entity>>
+}
+
+' The source draws two separate cylinders both literally labelled
+' "PermissionSet" side by side inside the TMFC035 box, linked to each other --
+' reproduced exactly as two distinct entities with the same printed name, not
+' merged into one (this may be a labelling artifact in the source PDF, but
+' this redraw is of exactly what the image shows).
+
+' All four links below are plain double-headed arrows (no legend-defined
+' "produces"/"is consumed by" semantics -- that pairing is only defined for
+' eTOM-activity<->SID-ABE arrows, and there is no eTOM activity in this
+' diagram at all). Reproduced with plain, unlabeled double-headed arrows.
+SIDPermissionSetA <--> SIDPermissionSetB
+SIDPermissionSetA <--> PermissionSpecSet
+PermissionSpecSet <--> PartyRoleSpecification
+PartyRoleSpecification <--> PartyRole
+SIDPermissionSetA <--> PartyRoleSpecification
+
+' Cross-component links, each single-headed, direction as drawn:
+' - PartyRole -> Party is drawn with a hollow/open triangle arrowhead (UML
+'   generalization style), visually distinct from every other arrowhead in
+'   this image, which are all solid/filled. That distinction is preserved
+'   here rather than normalized away, though the source legend does not
+'   define what the hollow style means.
+PartyRole --|> Party
+' - PartyRole -> DigitalIdentity and Party -> DigitalIdentity are both drawn
+'   with ordinary solid, filled, single-headed arrows.
+PartyRole --> DigitalIdentity
+Party --> DigitalIdentity
+
+legend right
+  eTOM Business Activity = dashed rectangle (none appear in this diagram)
+  SID Data Entities = cylinders (drawn here as classes for PlantUML)
+  An arrow from an eTOM activity towards a SID ABE would mean the
+  information is produced by the activity; the reverse would mean it is
+  consumed by the activity -- not applicable here, as no eTOM activity
+  appears in this diagram.
+  The legend does not define meaning for arrows directly between SID
+  entities or for the hollow-arrowhead link into Party; both are
+  reproduced as plain, unlabeled connections with their drawn direction
+  and arrowhead style preserved.
+endlegend
+@enduml

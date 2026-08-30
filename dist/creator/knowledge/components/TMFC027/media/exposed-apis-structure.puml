@@ -1,0 +1,71 @@
+@startuml
+allowmixing
+title TMFC027 : Product Configurator -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+' NOTE: the source image's own "name" field for TMF679 literally reads
+' "Produc tOffering Qualification API" -- a misplaced-space artifact in the
+' source PDF diagram itself (the component's Exposed APIs table gives the
+' clean name "Product Offering Qualification"). Reproduced here exactly as
+' drawn, not corrected.
+object TMF679 {
+  id = TMF679
+  name = Produc tOffering Qualification API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF760 {
+  id = TMF760
+  name = Product Configuration Management API
+  required = true
+  resources = (see below)
+  version = 5
+}
+
+object TMF701 {
+  id = TMF701
+  required = false
+  name = Process Flow Management API
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF679
+exposedAPIs --> TMF760
+exposedAPIs --> TMF701
+
+object productOfferingQualification
+object checkProductConfiguration
+object queryProductConfiguration
+object processFlow
+object taskFlow
+
+TMF679 --> productOfferingQualification
+TMF760 --> checkProductConfiguration
+TMF760 --> queryProductConfiguration
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET/id\nPOST\nPATCH/id\nDELETE" as productOfferingQualificationOps
+rectangle "GET\nGET/id\nPOST" as checkProductConfigurationOps
+rectangle "GET\nGET/id\nPOST" as queryProductConfigurationOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "GET\nget /id\nPATCH" as taskFlowOps
+
+productOfferingQualification --> productOfferingQualificationOps
+checkProductConfiguration --> checkProductConfigurationOps
+queryProductConfiguration --> queryProductConfigurationOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+
+' NOTE: the component's Exposed APIs table (TMFC027.md section 3.1) also lists
+' a fourth API, TMF688 "Event" (Optional, whose ID cell in the source PDF table
+' is itself corrupted: "TMF688https://raw.githubusercontent.com/tmforum-apis/
+' TMF688-Event/master/TMF688-Event-v4.0.0.swagger.json") -- the source diagram
+' image omits it entirely, just as TMFC039's/TMFC002's own exposed-APIs
+' diagrams omitted APIs absent from the drawing. Reproduced faithfully as three
+' APIs, matching the image exactly, not reconciled against the table.
+@enduml

@@ -1,0 +1,80 @@
+@startuml
+allowmixing
+title TMFC028 : Party Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF673 {
+  id = TMF673
+  name = Geographic Address Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF674 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF675 {
+  id = TMF675
+  name = Geographic Location Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF669
+dependentAPIs --> TMF673
+dependentAPIs --> TMF674
+dependentAPIs --> TMF675
+dependentAPIs --> TMF701
+
+object partyRole
+object geographicAddress
+object geographicSite
+object geographicLocation
+object processFlow
+object taskFlow
+
+TMF669 --> partyRole
+TMF673 --> geographicAddress
+TMF674 --> geographicSite
+TMF675 --> geographicLocation
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET/id" as partyRoleOps
+rectangle "GET\nGET/id" as geographicAddressOps
+rectangle "GET\nGET/id" as geographicSiteOps
+rectangle "GET\nGET/id" as geographicLocationOps
+rectangle "POST\nGET\nGET/id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET/id" as taskFlowOps
+
+partyRole --> partyRoleOps
+geographicAddress --> geographicAddressOps
+geographicSite --> geographicSiteOps
+geographicLocation --> geographicLocationOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

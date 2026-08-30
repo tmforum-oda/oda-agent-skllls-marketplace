@@ -1,0 +1,80 @@
+@startuml
+allowmixing
+title TMFC024: Billing Account Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF670 {
+  id = TMF670
+  name = Payment Method Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF676 {
+  id = TMF676
+  name = Payment Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF632
+dependentAPIs --> TMF669
+dependentAPIs --> TMF670
+dependentAPIs --> TMF676
+dependentAPIs --> TMF701
+
+object individual
+object organization
+object PartyRole
+object paymentMethod
+object payment
+object processFlow
+
+TMF632 --> individual
+TMF632 --> organization
+TMF669 --> PartyRole
+TMF670 --> paymentMethod
+TMF676 --> payment
+TMF701 --> processFlow
+
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id" as PartyRoleOps
+rectangle "GET\nGET /id" as paymentMethodOps
+rectangle "GET\nGET /id" as paymentOps
+rectangle "POST\nGET\nGET /id\nPATCH" as processFlowOps
+
+individual --> individualOps
+organization --> organizationOps
+PartyRole --> PartyRoleOps
+paymentMethod --> paymentMethodOps
+payment --> paymentOps
+processFlow --> processFlowOps
+@enduml

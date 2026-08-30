@@ -1,0 +1,113 @@
+@startuml
+allowmixing
+title TMFC031 : Bill Calculation -- Dependent APIs (API / Resource / Operation)
+' The source image shows six dependent APIs. Note this diagram does not include
+' TMF669 (Party Role Management), which the body's 3.2 Dependent APIs table and
+' the architecture diagram (bill-calculation-architecture.png) both do list --
+' reproduced here exactly as the image draws it, not supplemented from the table.
+
+object dependentAPIs
+
+object TMF666 {
+  id = TMF666
+  name = Bill Account Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF637 {
+  id = TMF637
+  name = Product Inventory API
+  required = true
+  resources = (see below)
+  version = 4.0
+}
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4.0
+}
+
+object TMF635 {
+  id = TMF635
+  name = Usage Management API
+  required = false
+  resources = (see below)
+  version = 4.0
+}
+
+dependentAPIs --> TMF666
+dependentAPIs --> TMF632
+dependentAPIs --> TMF637
+dependentAPIs --> TMF620
+dependentAPIs --> TMF701
+dependentAPIs --> TMF635
+
+object BillingAccount
+object BillingCycleSpecification
+object individual
+object organization
+object product
+object productOffering
+object productOfferingPrice
+object productSpecification
+object processFlow
+object usage
+object usageSpecification
+
+TMF666 --> BillingAccount
+TMF666 --> BillingCycleSpecification
+TMF632 --> individual
+TMF632 --> organization
+TMF637 --> product
+TMF620 --> productOffering
+TMF620 --> productOfferingPrice
+TMF620 --> productSpecification
+TMF701 --> processFlow
+TMF635 --> usage
+TMF635 --> usageSpecification
+
+rectangle "GET\nGET /id" as BillingAccountOps
+rectangle "GET\nGET /id" as BillingCycleSpecificationOps
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id" as productOps
+rectangle "GET\nGET /id" as productOfferingOps
+rectangle "GET\nGET /id" as productOfferingPriceOps
+rectangle "GET\nGET /id" as productSpecificationOps
+rectangle "POST\nGET\nGET /id\nPATCH" as processFlowOps
+rectangle "GET\nGET /id" as usageOps
+rectangle "GET\nGET /id" as usageSpecificationOps
+
+BillingAccount --> BillingAccountOps
+BillingCycleSpecification --> BillingCycleSpecificationOps
+individual --> individualOps
+organization --> organizationOps
+product --> productOps
+productOffering --> productOfferingOps
+productOfferingPrice --> productOfferingPriceOps
+productSpecification --> productSpecificationOps
+processFlow --> processFlowOps
+usage --> usageOps
+usageSpecification --> usageSpecificationOps
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+title TMFC027 : Product Configurator -- eTOM/SID ABE Links
+
+package "TMFC027 - Product Configurator" {
+  class "L2 - Product Configuration Management" as L2ProductConfigurationManagement <<eTOM Business Activity>>
+  class "Product Configuration*" as ProductConfiguration_TMFC027 <<SID Data Entity>>
+}
+
+package "TMFC001 - Product Catalog" {
+  class "Product Offering" as ProductOffering_TMFC001 <<SID Data Entity>>
+  class "Party Product Spec. & Offering" as PartyProductSpecOffering_TMFC001 <<SID Data Entity>>
+  class "Product Specification" as ProductSpecification_TMFC001 <<SID Data Entity>>
+  class "Product Configuration**" as ProductConfiguration_TMFC001 <<SID Data Entity>>
+}
+
+package "TMFC005 - Product Inventory" {
+  class "Product" as Product_TMFC005 <<SID Data Entity>>
+}
+
+note bottom
+  *only Product Configuration BEs
+  **only Product Configuration Spec
+end note
+
+' Per the image's own legend: an arrow from the eTOM activity towards a SID ABE
+' means the information is produced by the activity; the arrow in the other
+' direction means the information is consumed by the activity. Only the three
+' arrows the source image actually draws are reproduced here -- "Product
+' Offering" and "Party Product Spec. & Offering" (both in the TMFC001 box) and
+' "Product Configuration**" are shown in the image but are NOT connected by any
+' arrow; only "Product Specification" (TMFC001) and "Product" (TMFC005) link to
+' the activity.
+L2ProductConfigurationManagement --> ProductConfiguration_TMFC027 : produces
+ProductSpecification_TMFC001 --> L2ProductConfigurationManagement : is consumed by
+Product_TMFC005 --> L2ProductConfigurationManagement : is consumed by
+
+@enduml

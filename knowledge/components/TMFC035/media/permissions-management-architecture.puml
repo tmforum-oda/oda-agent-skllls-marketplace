@@ -1,0 +1,42 @@
+@startuml
+title TMFC035 : Party Roles & Permissions Management
+
+component "TMFC035 : Party Roles & Permissions Management" as TMFC035 {
+  ' The source image's eTOM Business Activities placeholder box is present but
+  ' entirely blank -- no activity name is printed inside it. This matches the
+  ' document body's section 2.1 ("eTOM business activities"), which has a
+  ' header-only table with zero data rows: this component genuinely has no
+  ' eTOM business activity assigned. Reproduced as an empty rectangle, not
+  ' invented text.
+  rectangle "" as eTOM1
+  database "Permission ABE" as SID1
+  database "PermissionSpecSet BE" as SID2
+  database "PermissionSet BE" as SID3
+  database "PartyRole BE" as SID4
+  database "PartyRolesSpecification BE" as SID5
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF632 Party Management] as dep1
+[TMF701 Process Flow] as dep2
+
+dep1 --> TMFC035 : TMF632 Party Management
+dep2 --> TMFC035 : TMF701 Process Flow
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF669 Party Role Management" as exp1
+() "TMF672 User Role Permission Management" as exp2
+() "TMF701 Process Flow" as exp3
+
+TMFC035 --> exp1 : TMF669 Party Role Management
+TMFC035 --> exp2 : TMF672 User Role Permission Management
+TMFC035 --> exp3 : TMF701 Process Flow
+
+legend right
+  eTOM Business Activities = rectangles (blank in this image -- this
+  component has no eTOM business activity assigned)
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

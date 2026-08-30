@@ -1,0 +1,41 @@
+@startuml
+title TMFC031 : Bill Calculation
+
+component "TMFC031 : Bill Calculation" as TMFC031 {
+  rectangle "L3 - Produce & Distribute Customer Bill" as eTOM1 #line.dashed
+  rectangle "L3 - Pricing, Discounting, Adjustments & Rebates Application" as eTOM2 #line.dashed
+  database "Applied Customer Billing Rate" as SID1
+  database "Applied Party Billed Rate" as SID2
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF666 Account Mgmt.] as dep1
+[TMF632 Party Mgmt.] as dep2
+[TMF637 Product Inventory] as dep3
+[TMF620 Product Catalog] as dep4
+[TMF669 Party Role Mgmt.] as dep5
+[TMF635 Usage Mgmt.] as dep6
+[TMF701 Process Flow Mgmt.] as dep7
+
+dep1 --> TMFC031 : TMF666 Account Mgmt.
+dep2 --> TMFC031 : TMF632 Party Mgmt.
+dep3 --> TMFC031 : TMF637 Product Inventory
+dep4 --> TMFC031 : TMF620 Product Catalog
+dep5 --> TMFC031 : TMF669 Party Role Mgmt.
+dep6 --> TMFC031 : TMF635 Usage Mgmt.
+dep7 --> TMFC031 : TMF701 Process Flow Mgmt.
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF678 Customer Bill Mgmt." as exp1
+() "TMF701 Process Flow Mgmt." as exp2
+
+TMFC031 --> exp1 : TMF678 Customer Bill Mgmt.
+TMFC031 --> exp2 : TMF701 Process Flow Mgmt.
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

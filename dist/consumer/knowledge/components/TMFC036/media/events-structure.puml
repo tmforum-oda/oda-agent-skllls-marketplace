@@ -1,0 +1,94 @@
+@startuml
+allowmixing
+title TMFC036 : Lead and Opportunity Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+object TMF699pub {
+  id = TMF699
+  name = Sales Management API
+  resources = (see below)
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  resources = (see below)
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  resources = (see below)
+}
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  resources = (see below)
+}
+
+object TMF622 {
+  id = TMF622
+  name = Product Order Management API
+  resources = (see below)
+}
+
+object TMF651 {
+  id = TMF651
+  name = AgreementManagement
+  resources = (see below)
+}
+
+object TMF648 {
+  id = TMF648
+  name = Quote Management
+  resources = (see below)
+}
+
+' The source image itself labels this last subscribed-events entry with id
+' "TMF699" and name "Party Role Management" -- an apparent mislabel/typo for
+' TMF669 (the id used for Party Role Management everywhere else in this
+' document, including the Dependent APIs diagram), reproduced as-is since this
+' redraw is of exactly what the image shows, not a corrected version of it.
+object TMF699sub {
+  id = TMF699
+  name = Party Role Management
+  resources = (see below)
+}
+
+publishedEvents --> TMF699pub
+publishedEvents --> TMF701
+subscribedEvents --> TMF632
+subscribedEvents --> TMF620
+subscribedEvents --> TMF622
+subscribedEvents --> TMF651
+subscribedEvents --> TMF648
+subscribedEvents --> TMF699sub
+
+rectangle "SalesLeadCreateEvent\nSalesLeadAttributeValueChangeEvent\nSalesLeadStateChangeEvent\nSalesLeadDeleteEvent\nSalesOpportunityCreateEvent\nSalesOpportunityAttributeValueChangeEvent\nSalesOpportunityStateChangeEvent\nSalesOpportunityDeleteEvent" as TMF699pubEvents
+
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\nprocessFlowStateDeleteEvent\nprocessFlowStateAttributeValueChangeEvent\nprocessFlowSpecificationAttributeValueChangeEvent\nprocessFlowSpecificationCreateEvent\nprocessFlowSpecificationDeleteEvent\nprocessFlowSpecificationStateChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent\ntaskFlowDeleteEvent\ntaskFlowAttributeValueChangeEvent\ntaskFlowInformationRequiredEvent\ntaskFlowSpecificationAttributeValueChangeEvent\ntaskFlowSpecificationCreateEvent\ntaskFlowSpecificationDeleteEvent\ntaskFlowSpecificationStateChangeEvent" as TMF701Events
+
+rectangle "IndividualCreateEvent\nIndividualAttributeValueChangeEvent\nIndividualStateChangeEvent\nIndividualDeleteEvent\nOrganizationCreateEvent\nOrganizationAttributeValueChangeEvent\nOrganizationStateChangeEvent\nOrganizationDeleteEvent" as TMF632Events
+
+rectangle "ProductOfferingCreateEvent\nProductOfferingAttributeValueChangeEvent\nProductOfferingStateChangeEvent\nProductOfferingDeleteEvent\nProductSpecificationCreateEvent\nProductSpecificationAttributeValueChangeEvent\nProductSpecificationStateChangeEvent\nProductSpecificationDeleteEvent\nProductOfferingPriceCreateEvent\nProductOfferingPriceAttributeValueChangeEvent\nProductOfferingPriceStateChangeEvent\nProductOfferingPriceDeleteEvent" as TMF620Events
+
+rectangle "ProductOrderCreateEvent\nProductOrderAttributeValueChangeEvent\nProductOrderDeleteEvent\nProductOrderStateChangeEvent\nProductOrderInformationRequiredEvent" as TMF622Events
+
+rectangle "AgreementCreateEvent\nAgreementAttributeValueChangeEvent\nAgreementStateChangeEvent\nAgreementDeleteEvent\nAgreementSpecificationCreateEvent\nAgreementSpecificationAttributeValueChangeEvent\nAgreementSpecificationStateChangeEvent\nAgreementSpecificationDeleteEvent" as TMF651Events
+
+rectangle "QuoteCreateEvent\nQuoteStateChangeEvent\nQuoteDeleteEvent\nQuoteInformationRequiredEvent\nQuoteAttributeValueChangeEvent" as TMF648Events
+
+rectangle "PartyRoleCreateEvent\nPartyRoleAttributeValueChangeEvent\nPartyRoleStateChangeEvent\nPartyRoleDeleteEvent" as TMF699subEvents
+
+TMF699pub --> TMF699pubEvents
+TMF701 --> TMF701Events
+TMF632 --> TMF632Events
+TMF620 --> TMF620Events
+TMF622 --> TMF622Events
+TMF651 --> TMF651Events
+TMF648 --> TMF648Events
+TMF699sub --> TMF699subEvents
+@enduml

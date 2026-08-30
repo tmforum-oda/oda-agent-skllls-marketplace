@@ -1,0 +1,24 @@
+@startuml
+allowmixing
+title TMFC028 : Party Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  resources = (see below)
+}
+
+' The source image draws subscribedEvents connecting to an empty, unlabeled
+' node with no further branches -- no subscribed events are actually depicted.
+rectangle "(none shown)" as noSubscribedEvents
+
+publishedEvents --> TMF632
+subscribedEvents --> noSubscribedEvents
+
+rectangle "IndividualCreateEvent\nIndividualAttributeValueChangeEvent\nIndividualStateChangeEvent\nIndividualDeleteEvent\nOrganizationCreateEvent\nOrganizationAttributeValueChangeEvent\nOrganizationStateChangeEvent\nOrganizationDeleteEvent" as TMF632Events
+
+TMF632 --> TMF632Events
+@enduml

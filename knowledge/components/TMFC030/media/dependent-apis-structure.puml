@@ -1,0 +1,139 @@
+@startuml
+allowmixing
+title TMFC030 : Bill Generation Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF666 {
+  id = TMF666
+  name = Account Management API
+  required = true
+  resources = (see below)
+  version = 4.0
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = true
+  resources = (see below)
+  version = 4.0
+}
+
+object TMF676 {
+  id = TMF676
+  name = Payment Management API
+  required = false
+  resources = (see below)
+  version = 4.0
+}
+
+object TMF667 {
+  id = TMF667
+  name = Document Management API
+  required = false
+  resources = (see below)
+  version = 4.0
+}
+
+object TMF637 {
+  id = TMF637
+  name = Product Inventory Management API
+  required = false
+  resources = (see below)
+  version = 4.0
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management
+  required = true
+  resources = (see below)
+  version = 4.0
+}
+
+object TMF678 {
+  id = TMF678
+  name = Customer Bill Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4.0
+}
+
+dependentAPIs --> TMF666
+dependentAPIs --> TMF632
+dependentAPIs --> TMF676
+dependentAPIs --> TMF667
+dependentAPIs --> TMF637
+dependentAPIs --> TMF669
+dependentAPIs --> TMF678
+dependentAPIs --> TMF701
+
+object billingAccount
+object billingCycleSpecification
+object billFormat
+object billPresentationMedia
+object individual
+object organization
+object payment
+object refund
+object document
+object product
+object PartyRole
+object appliedCustomerBillingRate
+object processFlow
+object taskFlow
+
+TMF666 --> billingAccount
+TMF666 --> billingCycleSpecification
+TMF666 --> billFormat
+TMF666 --> billPresentationMedia
+TMF632 --> individual
+TMF632 --> organization
+TMF676 --> payment
+TMF676 --> refund
+TMF667 --> document
+TMF637 --> product
+TMF669 --> PartyRole
+TMF678 --> appliedCustomerBillingRate
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id" as billingAccountOps
+rectangle "GET\nGET /id" as billingCycleSpecificationOps
+rectangle "GET\nGET /id" as billFormatOps
+rectangle "GET\nGET /id" as billPresentationMediaOps
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id\nPOST" as paymentOps
+rectangle "GET\nGET /id\nPOST" as refundOps
+rectangle "GET\nGET /id\nPOST" as documentOps
+rectangle "GET\nGET /id" as productOps
+rectangle "GET\nGET /id" as PartyRoleOps
+rectangle "GET\nGET /id" as appliedCustomerBillingRateOps
+rectangle "POST\nGET\nGET /id\nPATCH" as processFlowOps
+rectangle "GET\nGET /id\nPOST\nPATCH" as taskFlowOps
+
+billingAccount --> billingAccountOps
+billingCycleSpecification --> billingCycleSpecificationOps
+billFormat --> billFormatOps
+billPresentationMedia --> billPresentationMediaOps
+individual --> individualOps
+organization --> organizationOps
+payment --> paymentOps
+refund --> refundOps
+document --> documentOps
+product --> productOps
+PartyRole --> PartyRoleOps
+appliedCustomerBillingRate --> appliedCustomerBillingRateOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

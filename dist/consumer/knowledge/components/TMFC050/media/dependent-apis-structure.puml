@@ -1,0 +1,226 @@
+@startuml
+allowmixing
+title TMFC050 : Product Recommendation Management -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPI
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF637 {
+  id = TMF637
+  name = Product Inventory Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF622 {
+  id = TMF622
+  name = Product Ordering Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF679 {
+  id = TMF679
+  name = Product offering Qualification
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF666 {
+  id = TMF666
+  name = Account Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF663 {
+  id = TMF663
+  name = Shopping Cart Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF671 {
+  id = TMF671
+  name = Promotion Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF673 {
+  id = TMF673
+  name = Geographic Address Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF675 {
+  id = TMF675
+  name = Geographic Location Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF678 {
+  id = TMF678
+  name = Customer Bill Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF621 {
+  id = TMF621
+  name = Trouble Ticket
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF635 {
+  id = TMF635
+  name = Usage Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+object TMF645 {
+  id = TMF645
+  name = Service Qualification Management
+  required = false
+  resource = (see below)
+  version = 4.0
+}
+
+dependentAPI --> TMF620
+dependentAPI --> TMF637
+dependentAPI --> TMF622
+dependentAPI --> TMF679
+dependentAPI --> TMF666
+dependentAPI --> TMF663
+dependentAPI --> TMF671
+dependentAPI --> TMF673
+dependentAPI --> TMF675
+dependentAPI --> TMF632
+dependentAPI --> TMF669
+dependentAPI --> TMF678
+dependentAPI --> TMF621
+dependentAPI --> TMF635
+dependentAPI --> TMF645
+
+object catalog
+object category
+object productSpecification
+object productOffering
+object product
+object productOrder
+object productOfferingQualification
+object billingAccount
+object shoppingCart
+object promotion
+object geographicAddress
+object geographicLocation
+object individual
+object organization
+object partyRole
+object customerBill
+object troubleTicket
+object usage
+object checkServiceQualification
+object queryServiceQualification
+
+TMF620 --> catalog
+TMF620 --> category
+TMF620 --> productSpecification
+TMF620 --> productOffering
+TMF637 --> product
+TMF622 --> productOrder
+TMF679 --> productOfferingQualification
+TMF666 --> billingAccount
+TMF663 --> shoppingCart
+TMF671 --> promotion
+TMF673 --> geographicAddress
+TMF675 --> geographicLocation
+TMF632 --> individual
+TMF632 --> organization
+TMF669 --> partyRole
+TMF678 --> customerBill
+TMF621 --> troubleTicket
+TMF635 --> usage
+TMF645 --> checkServiceQualification
+TMF645 --> queryServiceQualification
+
+rectangle "GET\nGET/id" as catalogOps
+rectangle "GET\nGET/id" as categoryOps
+rectangle "GET\nGET/id" as productSpecificationOps
+rectangle "GET\nGET/id" as productOfferingOps
+rectangle "GET\nGET/id" as productOps
+rectangle "GET\nGET/id" as productOrderOps
+rectangle "POST" as productOfferingQualificationOps
+rectangle "GET\nGET/id" as billingAccountOps
+rectangle "GET\nGET/id" as shoppingCartOps
+rectangle "GET\nGET/id" as promotionOps
+rectangle "GET\nGET/id" as geographicAddressOps
+rectangle "GET\nGET/id" as geographicLocationOps
+rectangle "GET\nGET/id" as individualOps
+rectangle "GET\nGET/id" as organizationOps
+rectangle "GET\nGET/id" as partyRoleOps
+rectangle "GET\nGET/id" as customerBillOps
+rectangle "GET\nGET/id" as troubleTicketOps
+rectangle "GET\nGET/id" as usageOps
+rectangle "GET\nGET/id\nPOST\nPATCH" as checkServiceQualificationOps
+rectangle "GET\nGET/id\nPOST\nPATCH" as queryServiceQualificationOps
+
+catalog --> catalogOps
+category --> categoryOps
+productSpecification --> productSpecificationOps
+productOffering --> productOfferingOps
+product --> productOps
+productOrder --> productOrderOps
+productOfferingQualification --> productOfferingQualificationOps
+billingAccount --> billingAccountOps
+shoppingCart --> shoppingCartOps
+promotion --> promotionOps
+geographicAddress --> geographicAddressOps
+geographicLocation --> geographicLocationOps
+individual --> individualOps
+organization --> organizationOps
+partyRole --> partyRoleOps
+customerBill --> customerBillOps
+troubleTicket --> troubleTicketOps
+usage --> usageOps
+checkServiceQualification --> checkServiceQualificationOps
+queryServiceQualification --> queryServiceQualificationOps
+@enduml

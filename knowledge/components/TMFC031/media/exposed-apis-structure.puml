@@ -1,0 +1,40 @@
+@startuml
+allowmixing
+title TMFC031 : Bill Calculation -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF678 {
+  id = TMF678
+  name = Customer Bill Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+}
+
+exposedAPIs --> TMF678
+exposedAPIs --> TMF701
+
+object appliedCustomerBillingRate
+object processFlow
+object taskFlow
+
+TMF678 --> appliedCustomerBillingRate
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id" as appliedCustomerBillingRateOps
+rectangle "GET\nGET /id\nPOST\nDELETE /id" as processFlowOps
+rectangle "GET\nGET /id\nPATCH /id" as taskFlowOps
+
+appliedCustomerBillingRate --> appliedCustomerBillingRateOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+allowmixing
+title TMFC050 : Product Recommendation Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF680 {
+  id = TMF680
+  name = Recommendation Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF680
+exposedAPIs --> TMF701
+
+object queryProductRecommendation
+object processFlow
+object taskFlow
+
+TMF680 --> queryProductRecommendation
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id\nPOST" as queryProductRecommendationOps
+rectangle "GET\nGET /id\nPOST\nDELETE /id" as processFlowOps
+rectangle "GET\nGET /id\nPATCH /id" as taskFlowOps
+
+queryProductRecommendation --> queryProductRecommendationOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+allowmixing
+title TMFC030 : Bill Generation Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF678 {
+  id = TMF678
+  name = Customer Bill Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF678
+exposedAPIs --> TMF701
+
+object customerBillOnDemand
+object customerBill
+object processFlow
+object taskFlow
+
+TMF678 --> customerBillOnDemand
+TMF678 --> customerBill
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nPOST\nGET /id" as customerBillOnDemandOps
+rectangle "GET\nGET /id\nPOST\nPATCH /id" as customerBillOps
+rectangle "GET\nGET /id\nPOST\nDELETE /id" as processFlowOps
+rectangle "GET\nGET /id\nPATCH /id" as taskFlowOps
+
+customerBillOnDemand --> customerBillOnDemandOps
+customerBill --> customerBillOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

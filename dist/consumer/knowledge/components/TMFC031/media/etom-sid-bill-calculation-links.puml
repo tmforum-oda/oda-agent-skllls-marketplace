@@ -1,0 +1,22 @@
+@startuml
+title TMFC031 : Bill Calculation -- eTOM/SID ABE Links
+
+class "Pricing, Discounting, Adjustments & Rebates Application L3" as L3PricingDiscountingAdjustmentsRebates <<eTOM Business Activity>>
+class "Applied Customer Billing Rate" as AppliedCustomerBillingRate <<SID Data Entity>>
+class "Applied Party Billing Rate" as AppliedPartyBillingRate <<SID Data Entity>>
+
+' eTOM activity <-> SID ABE links. Per the image's own legend, an arrow from the
+' eTOM activity towards the SID ABE means information produced by the activity;
+' the reverse arrow means information consumed by the activity.
+'
+' Applied Customer Billing Rate: the image draws this pair as a single
+' double-headed arrow, i.e. both directions hold simultaneously.
+L3PricingDiscountingAdjustmentsRebates --> AppliedCustomerBillingRate : produces
+AppliedCustomerBillingRate --> L3PricingDiscountingAdjustmentsRebates : is consumed by
+
+' Applied Party Billing Rate: the image draws only a single arrowhead, from the
+' activity into the entity -- no reverse arrowhead is drawn, so only "produces"
+' is reproduced here, not invented as bidirectional.
+L3PricingDiscountingAdjustmentsRebates --> AppliedPartyBillingRate : produces
+
+@enduml

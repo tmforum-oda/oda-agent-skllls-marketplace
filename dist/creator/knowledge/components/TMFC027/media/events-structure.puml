@@ -1,0 +1,48 @@
+@startuml
+allowmixing
+title TMFC027 : Product Configurator -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+' NOTE: the source image itself labels BOTH of the publishedEvents boxes below
+' with the identical id "TMF679" and identical name "Product Configuration
+' Management API" -- a genuine mislabeling in the source PDF diagram (per the
+' component's own Exposed APIs table, TMF679 is actually "Product Offering
+' Qualification" and the check/query-ProductConfiguration events below belong
+' to TMF760 "Product Configuration"). Reproduced exactly as drawn, not
+' corrected; the two objects are given distinct PlantUML aliases only because
+' the notation requires unique identifiers, not because the image
+' distinguishes them.
+object "TMF679" as TMF679_a {
+  id = TMF679
+  name = Product Configuration Management API
+  resources = (see below)
+}
+
+object "TMF679" as TMF679_b {
+  id = TMF679
+  name = Product Configuration Management API
+  resources = (see below)
+}
+
+object TMF622 {
+  id = TMF622
+  name = Product Catalog Management API
+  resources = (see below)
+}
+
+publishedEvents --> TMF679_a
+publishedEvents --> TMF679_b
+subscribedEvents --> TMF622
+
+rectangle "checkProductConfigurationAttributeValueChangeEvent\ncheckProductConfigurationCreateEvent\ncheckProductConfigurationDeleteEvent\ncheckProductConfigurationStateChangeEvent\nqueryProductConfigurationAttributeValueChangeEvent\nqueryProductConfigurationCreateEvent\nqueryProductConfigurationDeleteEvent\nqueryProductConfigurationStateChangeEvent" as TMF679_a_Events
+
+rectangle "ProductOfferingQualificationCreateEvent\nProductOfferingQualificationAttributeValueChangeEvent\nProductOfferingQualificationStateChangeEvent\nProductOfferingQualificationDeleteEvent\nProductOfferingQualificationInformationRequiredEvent" as TMF679_b_Events
+
+rectangle "CatalogCreateEvent\nCatalogAttributeValueChangeEvent\nCatalogStateChangeEvent\nProductOfferingCreateEvent\nProductOfferingAttributeValueChangeEvent\nProductOfferingStateChangeEvent\nProductOfferingDeleteEvent\nProductOfferingPriceCreateEvent\nProductOfferingPriceAttributeValueChangeEvent\nProductOfferingPriceStateChangeEvent\nProductOfferingPriceDeleteEvent\nProductSpecificationCreateEvent\nProductSpecificationAttributeValueChangeEvent\nProductSpecificationStateChangeEvent\nProductSpecificationDeleteEvent" as TMF622Events
+
+TMF679_a --> TMF679_a_Events
+TMF679_b --> TMF679_b_Events
+TMF622 --> TMF622Events
+@enduml

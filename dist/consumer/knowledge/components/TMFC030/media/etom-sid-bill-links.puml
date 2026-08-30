@@ -1,0 +1,48 @@
+@startuml
+title TMFC030 : Bill Generation Management -- eTOM/SID ABE Links
+
+class "Create Customer Bill Invoice L3" as CreateCustomerBillInvoice <<eTOM Business Activity>>
+class "Produce & Distribute Customer Bill L3" as ProduceDistributeCustomerBill <<eTOM Business Activity>>
+class "BP Bill/Invoice Control L3" as BPBillInvoiceControl <<eTOM Business Activity>>
+class "BP Bill/Invoice Lifecycle Management L3" as BPBillInvoiceLifecycleManagement <<eTOM Business Activity>>
+class "Customer Bill" as CustomerBill <<SID Data Entity>>
+class "Party Bill" as PartyBill <<SID Data Entity>>
+
+' Each of these four pairs is drawn in the image as a single double-headed
+' arrow between an eTOM activity and a SID ABE. Per the image's own legend,
+' an arrow from the eTOM activity towards the SID ABE means information
+' produced by the activity; the reverse arrow means information consumed by
+' the activity -- both hold simultaneously for a double-headed arrow.
+CreateCustomerBillInvoice --> CustomerBill : produces
+CustomerBill --> CreateCustomerBillInvoice : is consumed by
+
+ProduceDistributeCustomerBill --> CustomerBill : produces
+CustomerBill --> ProduceDistributeCustomerBill : is consumed by
+
+BPBillInvoiceControl --> PartyBill : produces
+PartyBill --> BPBillInvoiceControl : is consumed by
+
+BPBillInvoiceLifecycleManagement --> PartyBill : produces
+PartyBill --> BPBillInvoiceLifecycleManagement : is consumed by
+
+' Cross-link: a single-headed curved arrow, distinct from the four pairs
+' above, running from the Party Bill<->BP Bill/Invoice Control line up to a
+' second, separate arrowhead on "Create Customer Bill Invoice L3" (confirmed
+' by cropping and zooming into the arrowhead region at 4-6x -- the curve
+' carries its own thin arrowhead into the activity box, and only branches,
+' without an arrowhead, off the Party Bill line). This is still an
+' eTOM-activity <-> SID-ABE arrow, so the legend's meaning applies: an arrow
+' into the activity means the information is consumed by it.
+PartyBill --> CreateCustomerBillInvoice : is consumed by
+
+note bottom of CustomerBill
+  *insert notes if needed
+end note
+
+legend right
+  eTOM Business Activity = dashed-outline rectangle (source image)
+  SID Data Entities = cylinders
+  arrow eTOM -> SID = information produced by the activity
+  arrow SID -> eTOM = information consumed by the activity
+endlegend
+@enduml

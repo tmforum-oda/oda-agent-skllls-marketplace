@@ -1,0 +1,39 @@
+@startuml
+title TMFC040: Product Usage Management
+
+component "TMFC040: Product Usage Management" as TMFC040 {
+  rectangle "Product Usage Management" as eTOM1 #line.dashed
+  rectangle "Product Rating & Rate Assignment" as eTOM2 #line.dashed
+  database "Product Usage ABE" as SID1
+  database "Product Price ABE" as SID2
+}
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF632 Party Mgmt.] as dep1
+[TMF669 Party Role Mgmt.] as dep2
+[TMF637 Product Inventory] as dep3
+[TMF701 Process Flow Mgmt.] as dep4
+[TMF620 Product Catalog Mgmt.] as dep5
+
+dep1 --> TMFC040 : TMF632 Party Mgmt.
+dep2 --> TMFC040 : TMF669 Party Role Mgmt.
+dep3 --> TMFC040 : TMF637 Product Inventory
+dep4 --> TMFC040 : TMF701 Process Flow Mgmt.
+dep5 --> TMFC040 : TMF620 Product Catalog Mgmt.
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF635 Usage Management" as exp1
+() "TMF677 Usage Consumption Mgmt." as exp2
+() "TMF701 Process Flow Mgmt." as exp3
+
+TMFC040 --> exp1 : TMF635 Usage Management
+TMFC040 --> exp2 : TMF677 Usage Consumption Mgmt.
+TMFC040 --> exp3 : TMF701 Process Flow Mgmt.
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+title TMFC036 : Lead and Opportunity Management -- eTOM/SID ABE Links
+
+class "L2 - Contact/Lead/Prospect Management" as ContactLeadProspectManagement <<eTOM Business Activity>>
+class "L2 - Selling" as Selling <<eTOM Business Activity>>
+class "L2 - Market Sales Support & Readiness" as MarketSalesSupportReadiness <<eTOM Business Activity>>
+class "Sales Lead" as SalesLead <<SID Data Entity>>
+class "Sales Opportunity" as SalesOpportunity <<SID Data Entity>>
+
+' eTOM activity <-> SID ABE links. Per the image's own legend, an arrow from the
+' eTOM activity towards the SID ABE means information produced by the activity;
+' the reverse arrow means information consumed by the activity. The image draws
+' each of these four pairs as a single double-headed arrow, i.e. both hold
+' simultaneously.
+ContactLeadProspectManagement --> SalesLead : produces
+SalesLead --> ContactLeadProspectManagement : is consumed by
+
+MarketSalesSupportReadiness --> SalesOpportunity : produces
+SalesOpportunity --> MarketSalesSupportReadiness : is consumed by
+
+Selling --> SalesLead : produces
+SalesLead --> Selling : is consumed by
+
+Selling --> SalesOpportunity : produces
+SalesOpportunity --> Selling : is consumed by
+
+@enduml

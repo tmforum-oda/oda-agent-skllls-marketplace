@@ -1,0 +1,21 @@
+@startuml
+allowmixing
+title TMFC031 : Bill Calculation -- Events (API / Resource / Event)
+
+object publishedEvents {
+  []
+}
+object subscribedEvents
+
+object TMF635 {
+  id = TMF635
+  name = Usage Management API
+  resources = (see below)
+}
+
+subscribedEvents --> TMF635
+
+rectangle "UsageCreateEvent\nUsageAttributeValueChangeEvent\nUsageDeleteEvent\nUsageStateChangeEvent\nUsageSpecificationCreateEvent\nUsageSpecificationAttributeValueChangeEvent\nUsageSpecificationDeleteEvent" as TMF635Events
+
+TMF635 --> TMF635Events
+@enduml

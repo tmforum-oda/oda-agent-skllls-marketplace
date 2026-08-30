@@ -1,0 +1,54 @@
+@startuml
+allowmixing
+title TMFC040: Product Usage Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF635 {
+  id = TMF635
+  name = Usage Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF677 {
+  id = TMF677
+  name = Usage Consumption Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF635
+exposedAPIs --> TMF677
+exposedAPIs --> TMF701
+
+object usage
+object queryUsageConsumption
+object processFlow
+object taskFlow
+
+TMF635 --> usage
+TMF677 --> queryUsageConsumption
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET/id\nPOST\nPATCH/id" as usageOps
+rectangle "GET\nGET/id\nPOST" as queryUsageConsumptionOps
+rectangle "GET\nGET /id\nPOST\nDELETE /id" as processFlowOps
+rectangle "GET\nGET /id\nPATCH /id" as taskFlowOps
+
+usage --> usageOps
+queryUsageConsumption --> queryUsageConsumptionOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

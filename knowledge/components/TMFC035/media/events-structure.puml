@@ -1,0 +1,55 @@
+@startuml
+allowmixing
+title TMFC035 : Party Roles & Permissions Management -- Events (API / Resource / Event)
+
+object publishedEvents
+object subscribedEvents
+
+object TMF672 {
+  id = TMF672
+  name = User Role Permission Management API
+  resources = (see below)
+}
+
+' Note: the source image prints this API's id as "TMF699", but the document
+' body's own Exposed APIs table (section 3.1) lists "Party Role Management"
+' under id TMF669 -- reproduced here exactly as printed in the image, not
+' corrected against the table.
+object TMF699 {
+  id = TMF699
+  name = Party Role Management API
+  resources = (see below)
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  resources = (see below)
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  resources = (see below)
+}
+
+publishedEvents --> TMF672
+publishedEvents --> TMF699
+subscribedEvents --> TMF632
+subscribedEvents --> TMF701
+
+rectangle "permissionCreateEvent\npermissionAttributeValueChangeEvent\npermissionStateChangeEvent\npermissionDeleteEvent\nuserRoleCreateEvent\nuserRoleAttributeValueChangeEvent\nuserRoleStateChangeEvent\nuserRoleDeleteEvent" as TMF672Events
+
+rectangle "PartyRoleCreateEvent\nPartyRoleAttributeValueChangeEvent\nPartyRoleStateChangeEvent\nPartyRoleDeleteEvent" as TMF699Events
+
+' Note: "organizationCreateEvenet" is printed exactly this way in the source
+' image (a typo for "organizationCreateEvent") -- reproduced as-is.
+rectangle "individualCreateEvent\nindividualAttributeValueChangeEvent\nindividualStateChangeEvent\norganizationCreateEvenet\norganizationAttributeValueChangeEvent\norganizationStateChangeEvent" as TMF632Events
+
+rectangle "processFlowCreateEvent\nprocessFlowStateChangeEvent\ntaskFlowCreateEvent\ntaskFlowStateChangeEvent" as TMF701Events
+
+TMF672 --> TMF672Events
+TMF699 --> TMF699Events
+TMF632 --> TMF632Events
+TMF701 --> TMF701Events
+@enduml

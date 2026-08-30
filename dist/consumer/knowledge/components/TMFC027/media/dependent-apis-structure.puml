@@ -1,0 +1,188 @@
+@startuml
+allowmixing
+title TMFC027 : Product Configurator -- Dependent APIs (API / Resource / Operation)
+
+object dependentAPIs
+
+object TMF637 {
+  id = TMF637
+  name = Product Inventory Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF620 {
+  id = TMF620
+  name = Product Catalog Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF622 {
+  id = TMF622
+  name = Product Ordering Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF632 {
+  id = TMF632
+  name = Party Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF666 {
+  id = TMF666
+  name = Account Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF673 {
+  id = TMF673
+  name = Geographic Address Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF674 {
+  id = TMF674
+  name = Geographic Site Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF662 {
+  id = TMF662
+  name = Entity Catalog Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+object TMF921 {
+  id = TMF921
+  name = Intent Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+dependentAPIs --> TMF637
+dependentAPIs --> TMF620
+dependentAPIs --> TMF622
+dependentAPIs --> TMF632
+dependentAPIs --> TMF666
+dependentAPIs --> TMF669
+dependentAPIs --> TMF673
+dependentAPIs --> TMF674
+dependentAPIs --> TMF701
+dependentAPIs --> TMF662
+dependentAPIs --> TMF921
+
+object product
+object catalog
+object category
+object productOffering
+object productOfferingPrice
+object productSpecification
+object productOrder
+object individual
+object organization
+object billingAccount
+object partyRole
+object geographicAddress
+object geographicSubAddress
+object GeographicSite
+object processFlow
+object taskFlow
+object entityCatalog
+object intent
+
+TMF637 --> product
+TMF620 --> catalog
+TMF620 --> category
+TMF620 --> productOffering
+TMF620 --> productOfferingPrice
+TMF620 --> productSpecification
+TMF622 --> productOrder
+TMF632 --> individual
+TMF632 --> organization
+TMF666 --> billingAccount
+TMF669 --> partyRole
+TMF673 --> geographicAddress
+TMF673 --> geographicSubAddress
+TMF674 --> GeographicSite
+TMF701 --> processFlow
+TMF701 --> taskFlow
+TMF662 --> entityCatalog
+TMF921 --> intent
+
+rectangle "GET\nGET /id" as productOps
+rectangle "GET\nGET /id" as catalogOps
+rectangle "GET\nGET /id" as categoryOps
+rectangle "GET\nGET /id" as productOfferingOps
+rectangle "GET\nGET /id" as productOfferingPriceOps
+rectangle "GET\nGET /id" as productSpecificationOps
+rectangle "GET\nGET /id" as productOrderOps
+rectangle "GET\nGET /id" as individualOps
+rectangle "GET\nGET /id" as organizationOps
+rectangle "GET\nGET /id" as billingAccountOps
+rectangle "GET\nGET /id" as partyRoleOps
+rectangle "GET\nGET /id" as geographicAddressOps
+rectangle "GET\nGET /id" as geographicSubAddressOps
+rectangle "GET\nGET /id" as GeographicSiteOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+rectangle "GET\nGET /id" as entityCatalogOps
+rectangle "GET\nGET /id" as intentOps
+
+product --> productOps
+catalog --> catalogOps
+category --> categoryOps
+productOffering --> productOfferingOps
+productOfferingPrice --> productOfferingPriceOps
+productSpecification --> productSpecificationOps
+productOrder --> productOrderOps
+individual --> individualOps
+organization --> organizationOps
+billingAccount --> billingAccountOps
+partyRole --> partyRoleOps
+geographicAddress --> geographicAddressOps
+geographicSubAddress --> geographicSubAddressOps
+GeographicSite --> GeographicSiteOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+entityCatalog --> entityCatalogOps
+intent --> intentOps
+
+' NOTE: the component's Dependent APIs table (TMFC027.md section 3.2) also
+' lists a twelfth API, TMF688 "Event" (Optional, resource "event") -- the
+' source diagram image omits it entirely, the same way it omits nothing else
+' from the table except this one entry. Reproduced faithfully as eleven APIs,
+' matching the image exactly, not reconciled against the table.
+@enduml

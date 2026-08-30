@@ -59,7 +59,7 @@ SID ABEs this ODA Component is responsible for:
 | 899 | Single Sign-<br>On Access<br>Control | Single Sign-On Access<br>Control grant access in<br>cooperation with central<br>Authentication and<br>Authorization functions to<br>secure the most updated<br>security. | Identification<br>and<br>Permission<br>Management<br>Identification<br>and<br>Authentication | Identification<br>and<br>Authentication<br>Identification<br>and<br>Permissions |
 | 897 | Building<br>Access<br>Control | Building Access Control<br>checks, stops or allow<br>physical access to facilities<br>according to access roles<br>and rules. | Identification<br>and<br>Authentication | Permission<br>Control |
 | 898 | Application<br>Security<br>Management | Application Security<br>Management administrates<br>the roles and rules that<br>applies to getting the right to<br>use an application. | Identification<br>and<br>Authentication | Permission<br>Definition |
-| 1240 | Identity<br>Verification | Identity Verification (aka<br>authentication) establishes<br>that an actor (i.e., a person<br>or a resource) is who they<br>purport to be using one or<br>several credentials.<br>According to the reliability of<br>the credentials used the<br>authentication has a level of<br>authentication such as a<br>biometric credential (i.e.,<br>facial recognition or | Identification<br>and<br>Permission<br>Management | Identification<br>and<br>Authentication |
+| 1240 | Identity<br>Verification | Identity Verification (aka<br>authentication) establishes<br>that an actor (i.e., a person<br>or a resource) is who they<br>purport to be using one or<br>several credentials.<br>According to the reliability of<br>the credentials used the<br>authentication has a level of<br>authentication such as a<br>biometric credential (i.e.,<br>facial recognition or<br>fingerprint) or multi-factor<br>credential with a high level<br>of authentication or a<br>network credential with a<br>low level of authentication.<br>Note: each permission<br>specifies the minimum level<br>of authentication required. | Identification<br>and<br>Permission<br>Management | Identification<br>and<br>Authentication |
 | 1247 | Credentials<br>Establishment | Credentials Establishment<br>creates and/or modifies<br>credentials and associates<br>them with the Digital Identity<br>that will be using them.<br>Credentials can include<br>username/passcode<br>combinations, biometrics,<br>and physical and/or logical<br>passkeys.<br>Note: A Digital Identity aims<br>to enable identifying Party,<br>Party Roles or Resource<br>Roles. | Identification<br>and<br>Permission<br>Management | Digital Identity<br>Management |
 | 1248 | Credentials<br>Query | Credentials Query provides<br>the ability to retrieve non-<br>protected information about<br>the Digital Identity of<br>credentials or about the<br>credentials themselves<br>(e.g.name, photo, badge<br>number, token ID,<br>credentials valid dates, etc.). | Identification<br>and<br>Permission<br>Management | Digital Identity<br>Management |
 
@@ -78,7 +78,7 @@ The following diagram illustrates API/Resource/Operation:
 | --- | --- | --- | --- |
 | TMF720 | Digital Identity | Mandatory | • GET<br>• GET/Id<br>• POST<br>• PATCH/id<br>• DELETE/id |
 | TMF688 | Event Management | Optional | event<br>• GET<br>• GET/id |
-| TMF701 | Process Flow Management | Optional | processFlow<br>• GET |
+| TMF701 | Process Flow Management | Optional | processFlow<br>• GET<br>• GET/id<br>• POST<br>• DELETE/id<br>taskFlow:<br>• GET<br>• GET/id<br>• PATCH/id |
 
 ## 3.2. Dependent APIs
 

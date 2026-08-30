@@ -1,0 +1,45 @@
+@startuml
+allowmixing
+title TMFC036 : Lead and Opportunity Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF699 {
+  id = TMF699
+  name = Sales Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF701 {
+  id = TMF701
+  name = Process Flow Management API
+  required = false
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF699
+exposedAPIs --> TMF701
+
+object salesLead
+object salesOpportunity
+object processFlow
+object taskFlow
+
+TMF699 --> salesLead
+TMF699 --> salesOpportunity
+TMF701 --> processFlow
+TMF701 --> taskFlow
+
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as salesLeadOps
+rectangle "GET\nGET /id\nPOST\nPATCH\nDELETE" as salesOpportunityOps
+rectangle "POST\nGET\nGET /id\nDELETE" as processFlowOps
+rectangle "PATCH\nGET\nGET /id" as taskFlowOps
+
+salesLead --> salesLeadOps
+salesOpportunity --> salesOpportunityOps
+processFlow --> processFlowOps
+taskFlow --> taskFlowOps
+@enduml

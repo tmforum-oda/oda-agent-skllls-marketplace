@@ -1,0 +1,20 @@
+@startuml
+title TMFC040: Product Usage Management -- eTOM/SID ABE Links
+
+class "Product Usage Management" as ProductUsageManagement <<eTOM Business Activity>>
+class "Product Usage ABE" as ProductUsageABE <<SID Data Entity>>
+class "Product Price ABE" as ProductPriceABE <<SID Data Entity>>
+
+' eTOM activity <-> SID ABE links. Per the image's own legend, an arrow from the
+' eTOM activity towards the SID ABE means information produced by the activity;
+' the reverse arrow means information consumed by the activity.
+' Product Usage ABE: the image draws a single double-headed arrow, i.e. both
+' "produces" and "is consumed by" hold simultaneously.
+ProductUsageManagement --> ProductUsageABE : produces
+ProductUsageABE --> ProductUsageManagement : is consumed by
+
+' Product Price ABE: the image draws a single, single-headed arrow pointing
+' only towards the SID ABE -- "produces" only, with no return arrow drawn.
+ProductUsageManagement --> ProductPriceABE : produces
+
+@enduml

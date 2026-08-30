@@ -1,0 +1,41 @@
+@startuml
+title TMFC028 : Party Management
+
+component "TMFC028 : Party Management" as TMFC028 {
+  rectangle "L2 -  Customer Inventory Management" as eTOM1 #line.dashed
+  rectangle "L2 -  Customer Information Management" as eTOM2 #line.dashed
+  rectangle "L2 -  Customer Relationship Management / L3 - Establish/Re-establish/Terminate Customer Relationship" as eTOM3 #line.dashed
+  rectangle "L2 -  Party Inventory Management" as eTOM4 #line.dashed
+  rectangle "L2 -  Human Resources Management / L3 - Develop the Workforce" as eTOM5 #line.dashed
+  database "Party *" as SID1
+}
+
+note bottom of TMFC028 : * partial (without Party Role)
+
+' Dependent APIs enter the component on the left (socket connectors in the source image)
+[TMF669 Party Role Management] as dep1
+[TMF701 Process Flow Mgmt.] as dep2
+[TMF673 Geographic Address] as dep3
+[TMF674 Geographic Site] as dep4
+[TMF675 Geographic Location] as dep5
+
+dep1 --> TMFC028 : TMF669 Party Role Management
+dep2 --> TMFC028 : TMF701 Process Flow Mgmt.
+dep3 --> TMFC028 : TMF673 Geographic Address
+dep4 --> TMFC028 : TMF674 Geographic Site
+dep5 --> TMFC028 : TMF675 Geographic Location
+
+' Exposed APIs leave the component on the right (lollipop connectors in the source image)
+() "TMF632 Party Mgmt." as exp1
+() "TMF701 Process Flow" as exp2
+
+TMFC028 --> exp1 : TMF632 Party Mgmt.
+TMFC028 --> exp2 : TMF701 Process Flow
+
+legend right
+  eTOM Business Activities = dashed-outline rectangles
+  SID Data Entities = cylinders
+  Dependent APIs = socket connectors entering on the left
+  Exposed APIs = lollipop connectors leaving on the right
+endlegend
+@enduml

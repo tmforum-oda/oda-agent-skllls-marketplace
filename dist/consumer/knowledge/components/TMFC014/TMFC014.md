@@ -87,7 +87,7 @@ Following diagram illustrates API/Resource/Operation:
 | TMF675 | TMF675<br>Geographic<br>Location | 4 | Mandatory | geographicLocation<br>• GET<br>• GET /ID<br>• POST<br>• PATCH<br>• DELETE |
 | TMF688 | TMF688 Event | 4 | Optional | listener<br>• POST |
 | TMF688 | TMF688 Event | 4 | Optional | hub<br>• POST<br>• DELETE |
-| TMF701 | TMF701<br>Process Flow<br>Management | 4 | Optional | processFlow<br>• GET<br>• GET /ID<br>• POST |
+| TMF701 | TMF701<br>Process Flow<br>Management | 4 | Optional | processFlow<br>• GET<br>• GET /ID<br>• POST<br>• DELETE |
 | TMF701 | TMF701<br>Process Flow<br>Management | 4 | Optional | taskFlow<br>• GET /ID<br>• PATCH |
 
 ## 3.2. Dependent APIs

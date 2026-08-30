@@ -1,0 +1,46 @@
+@startuml
+allowmixing
+title TMFC035 : Party Roles & Permissions Management -- Exposed APIs (API / Resource / Operation)
+
+object exposedAPIs
+
+object TMF672 {
+  id = TMF672
+  name = User Role Permission Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+object TMF669 {
+  id = TMF669
+  name = Party Role Management API
+  required = true
+  resources = (see below)
+  version = 4
+}
+
+exposedAPIs --> TMF672
+exposedAPIs --> TMF669
+
+object permission
+object userRole
+object partyRole
+
+TMF672 --> permission
+TMF672 --> userRole
+TMF669 --> partyRole
+
+rectangle "GET\nGET/id\nPOST\nPATCH/id\nDELETE/id" as permissionOps
+rectangle "GET\nGET/id\nPOST\nPATCH/id\nDELETE/id" as userRoleOps
+rectangle "GET\nGET/id\nPOST\nPATCH/id\nDELETE/id" as partyRoleOps
+
+permission --> permissionOps
+userRole --> userRoleOps
+partyRole --> partyRoleOps
+
+' Note: the document body's own Exposed APIs table (section 3.1) additionally
+' lists TMF701 (Process Flow, optional, operations n/a), which this diagram
+' does not include at all -- reproduced here as the diagram actually draws
+' it, not reconciled against the table.
+@enduml

@@ -105,8 +105,15 @@ TOC_LEADER_RE = re.compile(r"\.{4,}")
 # (confirmed on TMFC003: "TM Forum 2025. All Rights Reserved. . Page 12 of 27" -- an
 # extra stray period, likely a misplaced copyright-symbol glyph, that an exactly-one-
 # optional-period pattern doesn't account for and would otherwise leak as a stray line).
-FOOTER_RE = re.compile(r"^.{0,3}TM Forum \d{4}\.? All Rights Reserved\.?\s*\.?\s*(Page \d+ of \d+)?\s*$", re.IGNORECASE)
-PAGE_NUM_RE = re.compile(r"^\s*Page \d+ of \d+\s*$", re.IGNORECASE)
+# Both "All Rights Reserved" and the "of M" page-total are themselves optional -- some
+# components use an older, shorter footer template with neither (confirmed on TMFC050,
+# every single page: "TM Forum 2021. Page 3", no "All Rights Reserved" at all and no
+# page total) which the previous, stricter pattern didn't match at all, leaking the
+# whole footer as a stray paragraph on every page of that document.
+FOOTER_RE = re.compile(
+    r"^.{0,3}TM Forum \d{4}\.?(?: All Rights Reserved\.?)?\s*\.?\s*(Page \d+(?: of \d+)?)?\s*$", re.IGNORECASE
+)
+PAGE_NUM_RE = re.compile(r"^\s*Page \d+(?: of \d+)?\s*$", re.IGNORECASE)
 # The running header/footer every page repeats ("TMFC039 Agreement Management v1.1.0"),
 # built from ID/name/version rather than hardcoded so it matches regardless of component.
 # Not anchored at the end -- some components append a trailing ticket reference after
@@ -143,7 +150,11 @@ def save_image(data, ext):
 
 
 def normalize_table(raw_rows):
-    """(header_tuple, data_rows) from a pdfplumber extract_tables() grid.
+    """(header_tuple, data_rows, leading_leftover) from a pdfplumber extract_tables()
+    grid. `leading_leftover` is None, or a single row (already through the same
+    column corrections as data_rows) that the caller should append onto the
+    still-open table's own last row rather than treat as a new row of this table --
+    see the comment where it's produced, below.
 
     Leading rows whose first cell is empty are header continuation fragments
     (a merged/split header cell rendered as extra rows, e.g. "Mandatory /"
@@ -248,6 +259,22 @@ def normalize_table(raw_rows):
     # of hardcoding 2, so this only fires on tables wide enough for it to mean
     # anything.
     min_populated = 1 if sum(1 for c in header if c.strip()) <= 2 else 2
+    # The *first* candidate data row on a page is a special case: if it fails the
+    # threshold above, it isn't just noise to discard -- it's the tail of the
+    # *previous* page's last row, wrapped across the page break, and dropping it
+    # silently loses real content instead of merely a junk fragment. Confirmed on
+    # TMFC039's own Functional Framework Functions table (the pilot document,
+    # already committed): page 7's last row ends "...anomalies for single
+    # products", page 8 opens with the leftover `['', '', 'or group of products of
+    # the partner.', ...]` -- concatenated, that's the complete, correct sentence.
+    # The caller re-attaches this to the still-open table's own last row rather
+    # than losing it (see process_table). Only the *first* row gets this
+    # treatment: a row failing the threshold deeper in the table is judged as
+    # ordinary sparse data instead (the already-established rule right above).
+    leading_leftover = None
+    if data_rows and 0 < sum(1 for c in data_rows[0] if c.strip()) < min_populated:
+        leading_leftover = data_rows[0]
+        data_rows = data_rows[1:]
     data_rows = [row for row in data_rows if sum(1 for c in row if c.strip()) >= min_populated]
     # A single-row header (no continuation row at all, so `shifted_cols` above never
     # fires) can still have its own text split across grid columns that don't line up
@@ -262,8 +289,12 @@ def normalize_table(raw_rows):
     # header-continuation rows above, just triggered by column-set mismatch instead
     # of by the continuation-merge bookkeeping (which only exists when the header
     # itself spans more than one grid row).
+    # leading_leftover goes through the same column corrections as any other data
+    # row (it's a real row, just returned separately) -- processed alongside
+    # data_rows here so both end up in the same final column layout.
+    shift_rows = data_rows + ([leading_leftover] if leading_leftover is not None else [])
     header_populated = frozenset(i for i, c in enumerate(header) if c.strip())
-    for row in data_rows:
+    for row in shift_rows:
         row_populated = frozenset(i for i, c in enumerate(row) if c.strip())
         if row_populated and not (row_populated & header_populated):
             shifted = frozenset(i + 1 for i in row_populated)
@@ -271,19 +302,21 @@ def normalize_table(raw_rows):
                 for i in sorted(row_populated, reverse=True):
                     row[i + 1] = row[i]
                     row[i] = ""
-    for row in data_rows:
+    for row in shift_rows:
         for i in sorted(shifted_cols):
             if i == 0 or i >= len(row):
                 continue
             if row[i - 1].strip():
                 row[i] = f"{row[i]} {row[i - 1]}".strip() if row[i] else row[i - 1]
                 row[i - 1] = ""
-    all_rows = [header] + data_rows
+    all_rows = [header] + shift_rows
     ncols = len(header)
     keep_cols = [i for i in range(ncols) if any((r[i] if i < len(r) else "").strip() for r in all_rows)]
     header = tuple(header[i] for i in keep_cols)
     data_rows = [[r[i] if i < len(r) else "" for i in keep_cols] for r in data_rows]
-    return header, data_rows
+    if leading_leftover is not None:
+        leading_leftover = [leading_leftover[i] if i < len(leading_leftover) else "" for i in keep_cols]
+    return header, data_rows, leading_leftover
 
 
 def table_to_markdown(header, data_rows):
@@ -485,7 +518,7 @@ def process_table(t):
     # needs the same two gates applied explicitly.
     if not seen_first_heading or drop_until_level is not None:
         return
-    header, data_rows = normalize_table(t.extract())
+    header, data_rows, leading_leftover = normalize_table(t.extract())
     if len(header) < 2:
         # A degenerate single-column "table" -- pdfplumber's find_tables() occasionally
         # detects a stray fragment of wrapped cell text as its own tiny table (confirmed
@@ -496,10 +529,21 @@ def process_table(t):
         # table's cross-page continuity every single page.
         return
     if open_table is not None and headers_compatible(open_table["header"], header):
+        if leading_leftover is not None and open_table["rows"]:
+            # The wrapped tail of the still-open table's own last row, carried
+            # across this page break -- append onto that row's cells rather than
+            # start a new one (see normalize_table's docstring for why).
+            last = open_table["rows"][-1]
+            for i, val in enumerate(leading_leftover):
+                if val.strip() and i < len(last):
+                    last[i] = f"{last[i]}<br>{val}" if last[i] else val
         open_table["rows"].extend(data_rows)  # keep the first (clean) header, not this one
     else:
         flush_table()
         open_table = {"header": header, "rows": data_rows}
+        # leading_leftover with no still-open compatible table to attach to is a
+        # genuinely orphaned fragment (e.g. the very first table in the document) --
+        # nothing to recover it into, so it's dropped, same as before this fix.
 
 
 def process_image(data, ext):
