@@ -71,6 +71,7 @@ CONSUMER_SKILLS = {
     "generate-api-conformance-tests",
     "generate-api-mocks-from-usecase",
     "generate-implementation-scaffold-from-usecase",
+    "implement-oda-component",
     "draft-architecture-diagram-from-usecase",
     "draft-event-design-for-component",
     "validate-design-against-oda",
@@ -78,6 +79,7 @@ CONSUMER_SKILLS = {
     "assess-change-impact",
     "audit-implementation-against-usecase",
     "audit-implementation-against-component",
+    "deliver-oda-requirement",
 }
 
 # Extends/corrects ODA itself -- drafts new use cases, components, API
@@ -129,6 +131,9 @@ SKILL_EXAMPLES = {
     "generate-implementation-scaffold-from-usecase": [
         "Generate Python/FastAPI typed models and route stubs for TMFS020's linked API (TMF679) -- scaffolding only, no business logic.",
     ],
+    "implement-oda-component": [
+        "Build a complete TMFC009 Service Qualification Management implementation -- Node.js source and a Helm chart, following TM Forum's own reference stack.",
+    ],
     "draft-architecture-diagram-from-usecase": [
         "Draw a sequence diagram for TMFS028's design phase service discovery. Save it as a .puml file",
     ],
@@ -149,6 +154,9 @@ SKILL_EXAMPLES = {
     ],
     "audit-implementation-against-component": [
         "Does our TMFC012 implementation actually conform to its Core Function and Supporting Function contract, not just the flow one specific use case exercises?",
+    ],
+    "deliver-oda-requirement": [
+        "We want customers to browse our product catalogue online and check whether fiber service is technically available at their address before they order -- take this all the way from requirement to a validated implementation.",
     ],
     "harvest-gaps-from-lessons-learned": [
         "What capability gaps has the use-case corpus already identified that nobody's aggregated into one place yet?",
