@@ -15,12 +15,14 @@ export.
 
 Cross-checked against `knowledge/index/components.json`/`apis.json` as of
 this run (24 use cases, 31 components, 51 API versions, same corpus as
-`spec/tasks.md` Phase 4): **none of the five gaps below have been
-resolved since the citing use cases were written.** Re-run this
-cross-check on every future refresh cycle — a gap here can go stale the
-same way TMFS030 itself already reports one of its own smaller
-observations did (a Product Configurator gap resolved by TMFC027 v2.2.0,
-noted directly in that document's own text).
+`spec/tasks.md` Phase 4). **Updated during a `decompose-requirement-against-oda`
+pilot run (`spec/tasks-skills-consumer.md` Phase 1) that re-checked gap 3
+directly against the live cached corpus**: gap 3 has since been resolved
+(`TMFC012` now exposes `TMF716`) — the other four remain open as of this
+update. Re-run this cross-check on every future refresh cycle — a gap here
+can go stale exactly this way, the same lesson TMFS030 itself already
+draws for one of its own smaller observations (a Product Configurator gap
+resolved by TMFC027 v2.2.0, noted directly in that document's own text).
 
 ## 1. API exposure / gateway component for B2B boundary translation
 
@@ -59,16 +61,25 @@ brand-new components, not as something already resolving the gap.
 
 ## 3. Dedicated Resource Reservation component
 
-**Status: still open. No id assigned.**
+**Status: resolved.** `TMFC012` Resource Inventory's cached `component.yaml`
+(`spec.coreFunction.exposedAPIs`, retrieved 2026-08-19) now exposes `TMF716`
+Resource Reservation directly — a real, non-placeholder entry with both
+`resourceReservation` and `cancelResourceReservation` resources and their
+full CRUD operation sets, `required: false` (optional, not yet mandatory).
+Confirmed by reading the live cached YAML directly, not inferred from an
+index file. This is exactly the "extending `TMFC012` Resource Inventory"
+option this gap's own text already discussed as a candidate — resolved
+that way, per the same pattern gap 1's own text notes for a Product
+Configurator gap resolved by `TMFC027` v2.2.0.
 
-Raised only by TMFS030: "Currently, there are no ODA components exposing
-the TMF716 Resource Reservation API" (the API itself *is* cached in
-`knowledge/apis/TMF716/` — this is a gap in component coverage, not API
-coverage). Candidates discussed: extending `TMFC012` Resource Inventory
-or `TMFC011` Resource Order Management, or introducing a new dedicated
-component. Tracked: `TAC-1389` "Create and Publish: TMFCxxx New ODA
-Component for Resource Reservation and Allocation," "backlog" as of
-writing.
+Originally raised only by TMFS030: "Currently, there are no ODA components
+exposing the TMF716 Resource Reservation API" (the API itself has been
+cached in `knowledge/apis/TMF716/` all along — this was a gap in component
+coverage, not API coverage). `TAC-1389` ("Create and Publish: TMFCxxx New
+ODA Component for Resource Reservation and Allocation") may still be open
+as an administrative ticket even though the underlying capability gap this
+backlog tracks is closed — ticket status not independently re-verified as
+part of this correction.
 
 ## 4. Fallout / exception-handling component (order & process orchestration)
 

@@ -65,10 +65,12 @@ DIST_DIR = os.path.join(REPO_ROOT, "dist")
 CONSUMER_SKILLS = {
     "check-usecase-maturity",
     "recommend-oda-components-for-requirement",
+    "decompose-requirement-against-oda",
     "capture-requirements-from-usecase",
     "generate-test-cases-from-usecase",
     "generate-api-mocks-from-usecase",
     "draft-architecture-diagram-from-usecase",
+    "draft-event-design-for-component",
     "validate-design-against-oda",
     "assess-change-impact",
     "audit-implementation-against-usecase",
@@ -105,6 +107,9 @@ SKILL_EXAMPLES = {
     "recommend-oda-components-for-requirement": [
         "We need to let customers manage their own SIM swaps online -- what ODA components and APIs should this be built on?",
     ],
+    "decompose-requirement-against-oda": [
+        "We need to let customers reserve specific network resources in advance so they're guaranteed available before the service order is placed -- nothing in the use-case corpus matches this closely, break it down against ODA anyway.",
+    ],
     "capture-requirements-from-usecase": [
         "Turn TMFS030 into user stories and acceptance criteria for the delivery team.",
     ],
@@ -116,6 +121,9 @@ SKILL_EXAMPLES = {
     ],
     "draft-architecture-diagram-from-usecase": [
         "Draw a sequence diagram for TMFS028's design phase service discovery. Save it as a .puml file",
+    ],
+    "draft-event-design-for-component": [
+        "TMFC012 Resource Inventory now exposes TMF716 Resource Reservation but has no published event for it yet -- draft the eventNotification entry it needs.",
     ],
     "validate-design-against-oda": [
         "Check whether our design's assumption that Party Management (TMF632) exposes a loyaltyPoints field actually holds.",
