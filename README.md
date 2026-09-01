@@ -124,7 +124,10 @@ why `skills/` itself stays flat).
 | [`generate-api-mocks-from-usecase`](skills/generate-api-mocks-from-usecase/SKILL.md) | Build (enabling) | a `TMFSxxx` id | mock/fixture payloads for its linked APIs, from cached schemas and real sample payloads |
 | [`generate-implementation-scaffold-from-usecase`](skills/generate-implementation-scaffold-from-usecase/SKILL.md) | Build | a `TMFSxxx` id + a target language | typed models and route/handler stubs from the linked APIs' cached schemas, `TODO`-marked, no business logic |
 | [`generate-test-cases-from-usecase`](skills/generate-test-cases-from-usecase/SKILL.md) | Test (authoring) | a `TMFSxxx` id | BDD/Gherkin test scenarios grounded in the use case's real linked components/APIs and cached schemas |
+| [`generate-api-conformance-tests`](skills/generate-api-conformance-tests/SKILL.md) | Test | a `TMFxxx` id + version | conformance test assertions (required fields, enums, operations, status codes) from the cached schema, pass/fail if an implementation is supplied |
 | [`audit-implementation-against-usecase`](skills/audit-implementation-against-usecase/SKILL.md) | Run (post-build) | a `TMFSxxx` id + an existing implementation | a drift report against what the use case actually specifies |
+| [`audit-implementation-against-component`](skills/audit-implementation-against-component/SKILL.md) | Run (post-build) | a `TMFCxxx` id + an existing implementation | Core Function and Supporting Function conformance, reported as two separate dimensions |
+| [`review-architecture-against-oda`](skills/review-architecture-against-oda/SKILL.md) | Run (also usable pre-build) | a proposed or existing multi-component architecture | duplicated-ownership, point-to-point coupling, and boundary-bypass findings against the real cached corpus |
 | [`assess-change-impact`](skills/assess-change-impact/SKILL.md) | Run (change management) | a `TMFCxxx`/`TMFxxx` id + proposed change | every use case that depends on it (index reverse links) and a maturity-weighted migration risk report |
 
 **Creators** (`tm-forum-oda-creator`)

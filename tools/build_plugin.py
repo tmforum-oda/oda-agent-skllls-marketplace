@@ -68,13 +68,16 @@ CONSUMER_SKILLS = {
     "decompose-requirement-against-oda",
     "capture-requirements-from-usecase",
     "generate-test-cases-from-usecase",
+    "generate-api-conformance-tests",
     "generate-api-mocks-from-usecase",
     "generate-implementation-scaffold-from-usecase",
     "draft-architecture-diagram-from-usecase",
     "draft-event-design-for-component",
     "validate-design-against-oda",
+    "review-architecture-against-oda",
     "assess-change-impact",
     "audit-implementation-against-usecase",
+    "audit-implementation-against-component",
 }
 
 # Extends/corrects ODA itself -- drafts new use cases, components, API
@@ -117,6 +120,9 @@ SKILL_EXAMPLES = {
     "generate-test-cases-from-usecase": [
         "Generate Gherkin/BDD test scenarios for TMFS003.",
     ],
+    "generate-api-conformance-tests": [
+        "Generate conformance tests for TMF620 v4.0.0's Category resource -- required fields, declared operations, and status codes.",
+    ],
     "generate-api-mocks-from-usecase": [
         "Scaffold mock API responses for TMFS003's dependencies so we can start integration testing before the real backend exists.",
     ],
@@ -132,11 +138,17 @@ SKILL_EXAMPLES = {
     "validate-design-against-oda": [
         "Check whether our design's assumption that Party Management (TMF632) exposes a loyaltyPoints field actually holds.",
     ],
+    "review-architecture-against-oda": [
+        "We're planning a new InventoryTracker service that owns resource inventory records, a BillingBridge that reads its database directly, and a ReservationManager that calls it with a custom reservation endpoint -- review this against ODA before we build it.",
+    ],
     "assess-change-impact": [
         "We're deprecating TMF632 v4.0.0 - which use cases break, and how badly?",
     ],
     "audit-implementation-against-usecase": [
         "Does our current order-capture service actually implement TMFS030 the way the use case describes?",
+    ],
+    "audit-implementation-against-component": [
+        "Does our TMFC012 implementation actually conform to its Core Function and Supporting Function contract, not just the flow one specific use case exercises?",
     ],
     "harvest-gaps-from-lessons-learned": [
         "What capability gaps has the use-case corpus already identified that nobody's aggregated into one place yet?",
