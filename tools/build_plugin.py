@@ -69,6 +69,7 @@ CONSUMER_SKILLS = {
     "capture-requirements-from-usecase",
     "generate-test-cases-from-usecase",
     "generate-api-mocks-from-usecase",
+    "generate-implementation-scaffold-from-usecase",
     "draft-architecture-diagram-from-usecase",
     "draft-event-design-for-component",
     "validate-design-against-oda",
@@ -118,6 +119,9 @@ SKILL_EXAMPLES = {
     ],
     "generate-api-mocks-from-usecase": [
         "Scaffold mock API responses for TMFS003's dependencies so we can start integration testing before the real backend exists.",
+    ],
+    "generate-implementation-scaffold-from-usecase": [
+        "Generate Python/FastAPI typed models and route stubs for TMFS020's linked API (TMF679) -- scaffolding only, no business logic.",
     ],
     "draft-architecture-diagram-from-usecase": [
         "Draw a sequence diagram for TMFS028's design phase service discovery. Save it as a .puml file",
