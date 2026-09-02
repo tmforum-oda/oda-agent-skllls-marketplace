@@ -19,17 +19,20 @@ If you're an AI agent, read [`AGENTS.md`](AGENTS.md) here first.
 | `component-pdf-coverage.md` | which ODA Components have no narrative PDF, and why (two different, legitimate reasons) |
 | `id-registry.md` | the ID prefix glossary (`TMFSxxx`/`TMFCxxx`/`TMFxxx`/`GBxxx`/`IGxxxx`) |
 | `component-folder-map.json` / `api-samples-folder-map.json` | id → upstream GitHub folder lookups, internal to `tools/fetch_*.py` |
+| `ontology.ttl` | the same cross-reference graph as `use-cases.json`/`components.json`/`apis.json`, re-expressed as an OWL ontology + RDF instance data (Turtle) — a derived, secondary export for anyone who specifically wants an RDF/OWL view (e.g. Protégé, a graph tool). No skill reads this; see `spec/spec-ontology.md`. |
 
 ## Generated vs. static
 
-`use-cases.json`, `components.json`, and `apis.json` are fully generated
-— regenerate with `python tools/build_index.py` (idempotent, safe to
-re-run any time). Everything else in this folder is either static and
-hand-maintained (`id-registry.md`, `gaps-backlog.md`,
-`matrix-discrepancies.md`, `component-pdf-coverage.md` — never touched by
-an automated refresh) or produced by a one-off extraction from IG1228
-that's re-run only when IG1228 itself is republished
-(`usecase-list.json`, `usecase-component-matrix.json`).
+`use-cases.json`, `components.json`, `apis.json`, and `ontology.ttl` are
+fully generated — regenerate the first three with `python
+tools/build_index.py`, then `ontology.ttl` with `python
+tools/build_ontology.py` (both idempotent, safe to re-run any time).
+Everything else in this folder is either static and hand-maintained
+(`id-registry.md`, `gaps-backlog.md`, `matrix-discrepancies.md`,
+`component-pdf-coverage.md` — never touched by an automated refresh) or
+produced by a one-off extraction from IG1228 that's re-run only when
+IG1228 itself is republished (`usecase-list.json`,
+`usecase-component-matrix.json`).
 
 See [`spec/spec.md`](../../spec/spec.md) §5.4 for the full design
 rationale behind the index layer.

@@ -18,7 +18,13 @@ history and the reasoning behind every real bug/decision found along the
 way is in [`spec/tasks.md`](spec/tasks.md). The human-readable Component
 Specification PDF narrative alongside each `component.yaml` (see below)
 has its own companion pair, [`spec/spec-components.md`](spec/spec-components.md)
-and [`spec/tasks-components.md`](spec/tasks-components.md). 
+and [`spec/tasks-components.md`](spec/tasks-components.md). The
+cross-reference layer's use-case/component disagreement is reconciled
+directly in `components.json` (not left for every skill to re-derive), and a
+derived OWL/RDF export of the same graph is generated at
+`knowledge/index/ontology.ttl` — both covered in
+[`spec/spec-ontology.md`](spec/spec-ontology.md), including why the JSON
+stays the primary, skill-facing lookup path either way.
 
 ## Using the marketplace 
 

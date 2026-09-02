@@ -13,12 +13,21 @@ knowledge/apis/** -- per the "one envelope, shared by every artefact type"
 principle (spec.md 5.0/§3 principle 9). No type-specific parsing needed here
 beyond which reader function opens the file.
 
-Reverse links (links.use_cases on a component/API's index row) are computed
-ONLY from each use case's own forward links.components/links.apis -- never
-merged with usecase-component-matrix.json's independently-sourced data, which
-stays a separate file precisely because the two sources don't always agree
-(knowledge/index/matrix-discrepancies.md, task 3.3). Blending them here would
-quietly erase that signal.
+components.json's used_by is RECONCILED against usecase-component-matrix.json
+(IG1228 ch.2's independently-sourced use-case/component table) -- the union of
+each use case's own forward links.components (frontmatter) and the matrix's
+own reverse index, with every entry tagged "confirmed" / "frontmatter_only" /
+"matrix_only" so the disagreement signal survives the merge instead of being
+silently erased by it (spec/spec-ontology.md §2/§8, knowledge/index/
+matrix-discrepancies.md). This used to be deliberately left unmerged -- the
+reconciliation now happens once, here, instead of being re-derived by every
+skill that needs it.
+
+apis.json's used_by stays plain frontmatter-only (a sorted TMFSxxx id list, no
+per-entry source tag): the matrix is IG1228 ch.2's use-case/COMPONENT table,
+it has no API-level data to reconcile against at all, so there is nothing to
+merge for an API id -- this is a real, structural asymmetry between the two
+artefact types, not an oversight (see spec.md 5.4).
 
 Must be idempotent (spec.md principle 7, success criterion in §9): run twice
 with no input changes, byte-identical output. That's why every dict below is
@@ -94,7 +103,9 @@ def load_meta_rows(subdir):
 
 
 def add_reverse_links(rows, use_cases, link_key):
-    """rows: components.json or apis.json rows, keyed by id. link_key: 'components' or 'apis'."""
+    """rows: apis.json rows, keyed by id. link_key: 'apis'. Plain frontmatter-only
+    reverse index -- see module docstring for why apis.json doesn't get the
+    matrix reconciliation components.json gets."""
     used_by = {}
     for uc in use_cases:
         for ref_id in uc[link_key]:
@@ -104,9 +115,49 @@ def add_reverse_links(rows, use_cases, link_key):
     return rows
 
 
+def load_matrix_component_used_by():
+    """TMFCxxx -> sorted TMFSxxx ids IG1228 ch.2 credits with using this
+    component -- usecase-component-matrix.json's own components[id].used_by,
+    already a precomputed reverse index, not re-derived from the use_cases
+    side of that same file."""
+    path = os.path.join(INDEX_DIR, "usecase-component-matrix.json")
+    with open(path, encoding="utf-8") as f:
+        matrix = json.load(f)
+    return {cid: sorted(row.get("used_by", [])) for cid, row in matrix.get("components", {}).items()}
+
+
+def add_reconciled_component_used_by(rows, use_cases):
+    """rows: components.json rows. Replaces the old frontmatter-only used_by
+    with the union of each use case's own forward links.components and the
+    matrix's independently-sourced used_by, every entry tagged with which
+    source(s) actually support it -- see module docstring."""
+    frontmatter_used_by = {}
+    for uc in use_cases:
+        for cid in uc["components"]:
+            frontmatter_used_by.setdefault(cid, set()).add(uc["id"])
+
+    matrix_used_by = load_matrix_component_used_by()
+
+    for row in rows:
+        cid = row["id"]
+        fm = frontmatter_used_by.get(cid, set())
+        mx = set(matrix_used_by.get(cid, []))
+        entries = []
+        for uc_id in sorted(fm | mx):
+            if uc_id in fm and uc_id in mx:
+                source = "confirmed"
+            elif uc_id in fm:
+                source = "frontmatter_only"
+            else:
+                source = "matrix_only"
+            entries.append({"use_case": uc_id, "source": source})
+        row["used_by"] = entries
+    return rows
+
+
 def main():
     use_cases = load_use_cases()
-    components = add_reverse_links(load_meta_rows("components"), use_cases, "components")
+    components = add_reconciled_component_used_by(load_meta_rows("components"), use_cases)
     apis = add_reverse_links(load_meta_rows("apis"), use_cases, "apis")
 
     os.makedirs(INDEX_DIR, exist_ok=True)
