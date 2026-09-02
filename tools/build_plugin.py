@@ -8,14 +8,13 @@ any change to skills/ or knowledge/ to regenerate both distributable plugin
 bundles in dist/.
 
 tools/build_plugin.py -- package skills/ + knowledge/ as two separate
-Claude Code plugins in dist/consumer/ and dist/creator/, installable via
-.claude-plugin/marketplace.json at the repo root. CONSUMING.md's sparse
-clone is the lighter-weight alternative for a consumer who'd rather not
-accept a full plugin install; this is the other end of that tradeoff,
-deliberately -- the user explicitly chose to bundle knowledge/ inside each
-plugin, accepting that it breaks the norm that plugins should be small/fast
-(and that knowledge/ is duplicated a third time, once per plugin, on top of
-the repo's own top-level copy).
+Claude Code plugins in dist/consumer/ and dist/creator/, published through
+the oda-agent-skills-marketplace repo. The user explicitly chose to bundle
+knowledge/ inside each plugin, accepting that it breaks the norm that
+plugins should be small/fast (and that knowledge/ is duplicated a third
+time, once per plugin, on top of the repo's own top-level copy), so each
+plugin has zero dependency on any project-specific clone or directory
+layout.
 
 Two plugins, not one, because the skill set has two distinct audiences that
 rarely overlap in a single install: consumers building a product using ODA
@@ -25,14 +24,14 @@ plugin's skill list focused on what that audience actually invokes.
 
 The one non-mechanical step this script exists to do: skills/*/SKILL.md
 are authored with plain relative paths (knowledge/use-cases/...) so they
-work unmodified for a direct clone or CONSUMING.md's sparse clone, where
-the agent's cwd contains knowledge/ as a sibling. A plugin installs to
+work unmodified for a direct clone, where the agent's cwd contains
+knowledge/ as a sibling. A plugin installs to
 ~/.claude/plugins/cache/... instead -- NOT the user's project cwd -- so a
 bare relative path would silently resolve against the wrong directory
 there. Claude Code substitutes ${CLAUDE_PLUGIN_ROOT} to the plugin's real
 install directory, but ONLY inside plugin skills, so baking that syntax
 into the canonical skills/*/SKILL.md would make it inert (literal,
-unsubstituted text) for the direct-clone/sparse-clone case. Resolved by
+unsubstituted text) for the direct-clone case. Resolved by
 keeping one canonical source (plain paths) and mechanically rewriting
 `knowledge/` -> `${CLAUDE_PLUGIN_ROOT}/knowledge/` only in the copies
 under dist/, the same "generate the packaged form, never hand-maintain

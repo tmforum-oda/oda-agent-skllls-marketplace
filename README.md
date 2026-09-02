@@ -20,7 +20,75 @@ Specification PDF narrative alongside each `component.yaml` (see below)
 has its own companion pair, [`spec/spec-components.md`](spec/spec-components.md)
 and [`spec/tasks-components.md`](spec/tasks-components.md). 
 
-## Layout
+## Using the marketplace 
+
+The two plugins are published as a plugin marketplace at
+[`tmforum-oda/oda-agent-skills-marketplace`](https://github.com/tmforum-oda/oda-agent-skills-marketplace). The instructions below show how to install in Claude code (the skills will also work with most popular AI Coding Agents).
+
+Each step below works either as a plain-English prompt (just type it into
+Claude Code) or as a `/plugin` slash command / `claude plugin` CLI call in
+an interactive session.
+
+### Add the marketplace
+
+| | |
+|---|---|
+| Prompt | `Add https://github.com/tmforum-oda/oda-agent-skills-marketplace as a plugin marketplace` |
+| Slash command | `/plugin marketplace add https://github.com/tmforum-oda/oda-agent-skills-marketplace` |
+| CLI | `claude plugin marketplace add https://github.com/tmforum-oda/oda-agent-skills-marketplace` |
+
+![Adding the marketplace from a prompt](images/Add%20Marketplace.png)
+
+### List the configured marketplaces
+
+| | |
+|---|---|
+| Prompt | `list the plugin marketplaces` |
+| CLI | `claude plugin marketplace list` |
+
+Shows every marketplace Claude Code knows about — e.g. `claude-plugins-official`
+and `tm-forum-oda-marketplace`.
+
+![Listing marketplaces](images/list%20marketplaces.png)
+
+### List the plugins in a marketplace
+
+| | |
+|---|---|
+| Prompt | `list the plugins in tm-forum-oda-marketplace` |
+
+The marketplace offers two plugins: **`tm-forum-oda-consumer`** (build software
+against ODA) and **`tm-forum-oda-creator`** (extend and contribute to ODA itself).
+
+![Listing plugins in the marketplace](images/list%20plugins.png)
+
+### Install a plugin
+
+| | |
+|---|---|
+| Prompt | `install tm-forum-oda-consumer` &nbsp;(or `install tm-forum-oda-creator`) |
+| Slash command | `/plugin install tm-forum-oda-consumer@tm-forum-oda-marketplace` |
+| CLI | `claude plugin install tm-forum-oda-consumer@tm-forum-oda-marketplace` |
+
+Installs at user scope; restart Claude Code so it picks up the new skills.
+
+![Installing a plugin](images/install%20plugin.png)
+
+### Execute a skill
+
+Skills are namespaced by plugin. Type `/` followed by the plugin name to browse
+them — `/tm-forum-oda-consumer:` lists every consumer skill with its description.
+
+| | |
+|---|---|
+| Browse | `/tm-forum-oda-consumer:` &nbsp;then pick a skill (e.g. `check-usecase-maturity`) |
+| List from a prompt | `list the skills in tm-forum-oda-creator` |
+| Run explicitly | `/tm-forum-oda-consumer:check-usecase-maturity TMFS030` |
+| Run implicitly | just describe the task — `Is TMFS030 safe to build against?` — and Claude picks the skill |
+
+![Executing a skill](images/execute%20skill.png)
+
+## Repository Layout
 
 ```
 references/   raw downloaded input -- DOCX/PDF, unmodified, for provenance and re-conversion
@@ -142,11 +210,12 @@ why `skills/` itself stays flat).
 | [`propose-component-or-api-extension`](skills/propose-component-or-api-extension/SKILL.md) | a capability gap | a draft component skeleton (real IG1242 shape) or API schema extension |
 | [`lint-usecase-draft`](skills/lint-usecase-draft/SKILL.md) | a draft use-case document | a pre-submission check against known conversion-breaking document shapes |
 
-Using these skills from another repository? See [`CONSUMING.md`](CONSUMING.md) —
-covers both a sparse clone (lighter, git-native) and installing
-[`dist/consumer/`](dist/consumer/) or [`dist/creator/`](dist/creator/) as a
-Claude Code plugin (heavier — bundles `knowledge/` inside the plugin — but
-zero manual clone/update management).
+Using these skills from another repository? Install
+[`tm-forum-oda-consumer`](dist/consumer/) and/or
+[`tm-forum-oda-creator`](dist/creator/) as Claude Code plugins from the
+marketplace — see [Using the marketplace in Claude Code](#using-the-marketplace-in-claude-code)
+above. Each plugin bundles its own copy of `knowledge/`, so it works from
+any project with zero manual clone/update management.
 
 **Repo maintenance**
 

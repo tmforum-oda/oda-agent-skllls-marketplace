@@ -57,4 +57,5 @@ follow the separate, human-assisted track documented in
 Query it through the Agent Skills built against it — see the root
 [`README.md`](../README.md#skills) for the full catalog (what each skill
 takes as input and produces). Using this corpus from another repository?
-See [`CONSUMING.md`](../CONSUMING.md).
+Install the plugins from the marketplace — see
+[`README.md`](../README.md#using-the-marketplace-in-claude-code).
