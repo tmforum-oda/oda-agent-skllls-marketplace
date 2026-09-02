@@ -1,5 +1,5 @@
 ---
-name: propose-matrix-correction
+name: feedback-propose-matrix-correction
 description: Turns knowledge/index/matrix-discrepancies.md's logged use-case/matrix disagreements into specific, submittable correction proposals for the next IG1228 revision -- e.g. which TMFCxxx rows should be added or removed for a given TMFSxxx use case. Use this to act on a logged discrepancy rather than just read about it.
 ---
 
@@ -43,6 +43,19 @@ matrix is simply wrong — a component named in body prose but missed by
 `docx2md.py`'s References-section-only extraction isn't a matrix error at
 all, it's a frontmatter extraction gap, and the correction should say
 that distinction explicitly rather than blaming the matrix.
+
+`matrix-discrepancies.md` itself is hand-maintained and isn't rebuilt by
+any refresh script the way `components.json`/`apis.json` are — it
+reflects the corpus as of whenever it was last regenerated, not
+necessarily its current state. Reading the live use case document for
+this step also catches document-side drift: if its own References
+section no longer contains the id the table logged as own-only, that id
+has since been removed from the document itself, and the table entry is
+stale — say so explicitly rather than drafting a correction to add an id
+the document no longer even claims. This check only covers the
+document's side, not the matrix's — `usecase-component-matrix.json` is
+extracted from IG1228 separately and isn't re-derived by this skill, so
+a matrix-side change since the table was built wouldn't be caught here.
 
 ## Step 3 — Flag both-direction cases as needing human judgment, not an automatic pick
 

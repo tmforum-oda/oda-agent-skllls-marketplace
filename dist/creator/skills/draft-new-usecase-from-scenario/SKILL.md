@@ -86,5 +86,5 @@ are gaps the draft depends on that don't exist yet.
 ## What this skill does NOT do
 
 - Does not assign a real `TMFSxxx`/`TMFCxxx`/`TMFxxx` id to anything — id assignment is TM Forum's own process, not this skill's to simulate.
-- Does not submit the draft anywhere — this is a starting document for a human contributor to take into TM Forum's own review process, the same posture `propose-matrix-correction` and `propose-component-or-api-extension` take toward their own outputs.
+- Does not submit the draft anywhere — this is a starting document for a human contributor to take into TM Forum's own review process, the same posture `feedback-propose-matrix-correction` and `propose-component-or-api-extension` take toward their own outputs.
 - Does not skip checking `recommend-oda-components-for-requirement` and `gaps-backlog.md` first — drafting a redundant new use case when a close match or known gap already exists wastes the reviewer's time.

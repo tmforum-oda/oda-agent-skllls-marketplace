@@ -47,7 +47,7 @@ If the requirement is genuinely underspecified in a way that changes which compo
 
 ## Step 6 — Check for a genuine capability gap before finishing
 
-If Step 3 or Step 4 comes back with a real candidate list that's empty or clearly doesn't cover the requirement (not just imperfect), check `${CLAUDE_PLUGIN_ROOT}/knowledge/index/gaps-backlog.md` for a matching already-identified gap before concluding ODA simply has nothing here. If it matches a logged gap, say so and cite it. If it doesn't match anything logged either, say that too — this is exactly the situation `harvest-gaps-from-lessons-learned` and `propose-component-or-api-extension` exist for; this skill identifies the gap, it doesn't propose the fix.
+If Step 3 or Step 4 comes back with a real candidate list that's empty or clearly doesn't cover the requirement (not just imperfect), check `${CLAUDE_PLUGIN_ROOT}/knowledge/index/gaps-backlog.md` for a matching already-identified gap before concluding ODA simply has nothing here. If it matches a logged gap, say so and cite it. If it doesn't match anything logged either, say that too — this is exactly the situation `feedback-harvest-gaps-from-lessons-learned` and `propose-component-or-api-extension` exist for; this skill identifies the gap, it doesn't propose the fix.
 
 ## Output format
 

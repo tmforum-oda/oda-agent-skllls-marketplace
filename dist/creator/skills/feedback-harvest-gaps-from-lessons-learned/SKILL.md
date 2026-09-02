@@ -1,5 +1,5 @@
 ---
-name: harvest-gaps-from-lessons-learned
+name: feedback-harvest-gaps-from-lessons-learned
 description: Mines every TMFSxxx use case's "Lessons learned"/"Impacts identified" sections for capability gaps TM Forum's own authors have already written down -- proposed new ODA components or Open APIs that don't exist yet -- cross-checks each against the current ${CLAUDE_PLUGIN_ROOT}/knowledge/index/{components,apis}.json to confirm it's still genuinely missing, and consolidates cross-corroborated gaps (the same gap raised independently in multiple use cases) into one backlog entry. Use this to find what ODA is missing without re-reading the whole corpus by hand.
 ---
 
@@ -39,6 +39,10 @@ For each gap that survives Step 2/3, check `${CLAUDE_PLUGIN_ROOT}/knowledge/inde
 
 Also distinguish two different kinds of "missing" — don't conflate them in the backlog: a component id that's already assigned but `status: "not_yet_specified"` in `components.json` (TM Forum has reserved the id, e.g. `TMFC033` "Purchase Management" per TMFS020's own frontmatter, just hasn't published the spec) is a **different, more advanced** stage than a gap with no id assigned at all yet (the literal `TMFCxxx` placeholder cases from Step 2). Label each backlog entry with which stage it's at.
 
+## Step 5 — On a re-run, reconcile with the existing backlog rather than overwrite it blind
+
+`${CLAUDE_PLUGIN_ROOT}/knowledge/index/gaps-backlog.md` is a persistent, hand-maintained file, not a disposable report — check whether it already exists before writing. If it does, read every entry already logged there and re-run Step 4's cross-check on each one exactly as you would a freshly-found gap: a gap open when it was last logged can resolve between runs (this has already happened once in this corpus — a reservation-component gap was later found to be resolved by a component that started exposing the needed API, and the file was corrected in place rather than left stale). Merge newly-harvested gaps in alongside what's already there; don't regenerate the file from scratch and silently drop a correction someone already made to an existing entry unless your own Step 4 check finds something that actually supersedes it.
+
 ## Output format
 
 A consolidated backlog, one entry per genuinely distinct gap (post-corroboration), each with: a short name, every use case that raises it (not just the first one found), any JIRA/TAC ticket ids cited, its current status per the Step 4 cross-check, and which corpus stage it's at (no id assigned / id assigned but not_yet_specified). Write this to `${CLAUDE_PLUGIN_ROOT}/knowledge/index/gaps-backlog.md`, in the same spirit as `${CLAUDE_PLUGIN_ROOT}/knowledge/index/matrix-discrepancies.md` — a logged, dated finding, not a one-off answer to a single query, since the value here is in the corpus-wide aggregation surviving past this one run.
@@ -48,3 +52,4 @@ A consolidated backlog, one entry per genuinely distinct gap (post-corroboration
 - Does not draft the proposed component/API itself — that's `propose-component-or-api-extension`'s job. This skill only finds and consolidates the gap, it doesn't design the fix.
 - Does not treat every JIRA-ticketed item as a gap for this backlog — Step 2's filter is required, not optional; a linter-style "count every ticket" run would drown the genuine new-asset gaps in enhancement-request noise.
 - Does not report a gap as open without actually checking Step 4 against the current `${CLAUDE_PLUGIN_ROOT}/knowledge/index/*.json` — "the use case says it's missing" is a starting point, not the final answer.
+- Does not overwrite `gaps-backlog.md` wholesale on a re-run without first reading and re-checking what's already logged there — Step 5's reconciliation is required, not optional, since the file is meant to accumulate and self-correct across runs, not reset each time.

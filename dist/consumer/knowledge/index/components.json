@@ -9,17 +9,74 @@
     "path": "knowledge/components/TMFC001/component.yaml",
     "meta_path": "knowledge/components/TMFC001/component.meta.json",
     "used_by": [
-      "TMFS002",
-      "TMFS003",
-      "TMFS004",
-      "TMFS005",
-      "TMFS008",
-      "TMFS009",
-      "TMFS012",
-      "TMFS016",
-      "TMFS018",
-      "TMFS028",
-      "TMFS030"
+      {
+        "use_case": "TMFS002",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS003",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS005",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS009",
+        "source": "frontmatter_only"
+      },
+      {
+        "use_case": "TMFS010",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS012",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS018",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS019",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS020",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS026",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -32,15 +89,58 @@
     "path": "knowledge/components/TMFC002/component.yaml",
     "meta_path": "knowledge/components/TMFC002/component.meta.json",
     "used_by": [
-      "TMFS003",
-      "TMFS004",
-      "TMFS008",
-      "TMFS009",
-      "TMFS012",
-      "TMFS016",
-      "TMFS018",
-      "TMFS028",
-      "TMFS030"
+      {
+        "use_case": "TMFS003",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS009",
+        "source": "frontmatter_only"
+      },
+      {
+        "use_case": "TMFS012",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS018",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS021",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS026",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -53,12 +153,50 @@
     "path": "knowledge/components/TMFC003/component.yaml",
     "meta_path": "knowledge/components/TMFC003/component.meta.json",
     "used_by": [
-      "TMFS004",
-      "TMFS008",
-      "TMFS012",
-      "TMFS016",
-      "TMFS028",
-      "TMFS030"
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS010",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS012",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "frontmatter_only"
+      },
+      {
+        "use_case": "TMFS021",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS026",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -71,15 +209,58 @@
     "path": "knowledge/components/TMFC005/component.yaml",
     "meta_path": "knowledge/components/TMFC005/component.meta.json",
     "used_by": [
-      "TMFS003",
-      "TMFS004",
-      "TMFS005",
-      "TMFS008",
-      "TMFS009",
-      "TMFS016",
-      "TMFS018",
-      "TMFS028",
-      "TMFS030"
+      {
+        "use_case": "TMFS003",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS005",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS009",
+        "source": "frontmatter_only"
+      },
+      {
+        "use_case": "TMFS011",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS018",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS021",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -92,11 +273,42 @@
     "path": "knowledge/components/TMFC006/component.yaml",
     "meta_path": "knowledge/components/TMFC006/component.meta.json",
     "used_by": [
-      "TMFS004",
-      "TMFS008",
-      "TMFS012",
-      "TMFS028",
-      "TMFS030"
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS010",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS012",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS021",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "frontmatter_only"
+      }
     ]
   },
   {
@@ -109,11 +321,46 @@
     "path": "knowledge/components/TMFC007/component.yaml",
     "meta_path": "knowledge/components/TMFC007/component.meta.json",
     "used_by": [
-      "TMFS004",
-      "TMFS008",
-      "TMFS012",
-      "TMFS028",
-      "TMFS030"
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS010",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS011",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS012",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS021",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -126,10 +373,38 @@
     "path": "knowledge/components/TMFC008/component.yaml",
     "meta_path": "knowledge/components/TMFC008/component.meta.json",
     "used_by": [
-      "TMFS004",
-      "TMFS008",
-      "TMFS009",
-      "TMFS028"
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS009",
+        "source": "frontmatter_only"
+      },
+      {
+        "use_case": "TMFS011",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS026",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -142,13 +417,50 @@
     "path": "knowledge/components/TMFC009/component.yaml",
     "meta_path": "knowledge/components/TMFC009/component.meta.json",
     "used_by": [
-      "TMFS002",
-      "TMFS003",
-      "TMFS004",
-      "TMFS008",
-      "TMFS018",
-      "TMFS028",
-      "TMFS030"
+      {
+        "use_case": "TMFS002",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS003",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS004",
+        "source": "frontmatter_only"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS010",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS018",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -161,9 +473,30 @@
     "path": "knowledge/components/TMFC010/component.yaml",
     "meta_path": "knowledge/components/TMFC010/component.meta.json",
     "used_by": [
-      "TMFS004",
-      "TMFS008",
-      "TMFS028"
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS011",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS025",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -176,10 +509,38 @@
     "path": "knowledge/components/TMFC011/component.yaml",
     "meta_path": "knowledge/components/TMFC011/component.meta.json",
     "used_by": [
-      "TMFS004",
-      "TMFS008",
-      "TMFS028",
-      "TMFS030"
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS011",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS025",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -192,10 +553,38 @@
     "path": "knowledge/components/TMFC012/component.yaml",
     "meta_path": "knowledge/components/TMFC012/component.meta.json",
     "used_by": [
-      "TMFS004",
-      "TMFS008",
-      "TMFS028",
-      "TMFS030"
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS011",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS014",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS018",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS025",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS028",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -208,7 +597,10 @@
     "path": null,
     "meta_path": "knowledge/components/TMFC013/component.meta.json",
     "used_by": [
-      "TMFS009"
+      {
+        "use_case": "TMFS009",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -221,11 +613,30 @@
     "path": "knowledge/components/TMFC014/component.yaml",
     "meta_path": "knowledge/components/TMFC014/component.meta.json",
     "used_by": [
-      "TMFS003",
-      "TMFS012",
-      "TMFS016",
-      "TMFS018",
-      "TMFS030"
+      {
+        "use_case": "TMFS003",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS012",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS018",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -238,8 +649,14 @@
     "path": null,
     "meta_path": "knowledge/components/TMFC015/component.meta.json",
     "used_by": [
-      "TMFS005",
-      "TMFS009"
+      {
+        "use_case": "TMFS005",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS009",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -252,8 +669,22 @@
     "path": "knowledge/components/TMFC020/component.yaml",
     "meta_path": "knowledge/components/TMFC020/component.meta.json",
     "used_by": [
-      "TMFS001",
-      "TMFS016"
+      {
+        "use_case": "TMFS001",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS020",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS021",
+        "source": "matrix_only"
+      }
     ]
   },
   {
@@ -266,7 +697,10 @@
     "path": "knowledge/components/TMFC022/component.yaml",
     "meta_path": "knowledge/components/TMFC022/component.meta.json",
     "used_by": [
-      "TMFS001"
+      {
+        "use_case": "TMFS001",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -279,13 +713,38 @@
     "path": "knowledge/components/TMFC023/component.yaml",
     "meta_path": "knowledge/components/TMFC023/component.meta.json",
     "used_by": [
-      "TMFS001",
-      "TMFS002",
-      "TMFS003",
-      "TMFS004",
-      "TMFS006",
-      "TMFS016",
-      "TMFS031"
+      {
+        "use_case": "TMFS001",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS002",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS003",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS006",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS020",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS031",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -298,9 +757,18 @@
     "path": "knowledge/components/TMFC024/component.yaml",
     "meta_path": "knowledge/components/TMFC024/component.meta.json",
     "used_by": [
-      "TMFS003",
-      "TMFS005",
-      "TMFS030"
+      {
+        "use_case": "TMFS003",
+        "source": "frontmatter_only"
+      },
+      {
+        "use_case": "TMFS005",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -313,11 +781,38 @@
     "path": "knowledge/components/TMFC027/component.yaml",
     "meta_path": "knowledge/components/TMFC027/component.meta.json",
     "used_by": [
-      "TMFS002",
-      "TMFS003",
-      "TMFS016",
-      "TMFS018",
-      "TMFS030"
+      {
+        "use_case": "TMFS002",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS003",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS010",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS018",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS019",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -330,14 +825,46 @@
     "path": "knowledge/components/TMFC028/component.yaml",
     "meta_path": "knowledge/components/TMFC028/component.meta.json",
     "used_by": [
-      "TMFS001",
-      "TMFS003",
-      "TMFS004",
-      "TMFS005",
-      "TMFS006",
-      "TMFS016",
-      "TMFS030",
-      "TMFS031"
+      {
+        "use_case": "TMFS001",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS003",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS005",
+        "source": "frontmatter_only"
+      },
+      {
+        "use_case": "TMFS006",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS020",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS026",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS031",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -350,7 +877,10 @@
     "path": "knowledge/components/TMFC030/component.yaml",
     "meta_path": "knowledge/components/TMFC030/component.meta.json",
     "used_by": [
-      "TMFS005"
+      {
+        "use_case": "TMFS005",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -363,7 +893,10 @@
     "path": "knowledge/components/TMFC031/component.yaml",
     "meta_path": "knowledge/components/TMFC031/component.meta.json",
     "used_by": [
-      "TMFS005"
+      {
+        "use_case": "TMFS005",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -376,9 +909,18 @@
     "path": null,
     "meta_path": "knowledge/components/TMFC032/component.meta.json",
     "used_by": [
-      "TMFS003",
-      "TMFS004",
-      "TMFS008"
+      {
+        "use_case": "TMFS003",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS004",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -391,7 +933,14 @@
     "path": null,
     "meta_path": "knowledge/components/TMFC033/component.meta.json",
     "used_by": [
-      "TMFS020"
+      {
+        "use_case": "TMFS007",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS020",
+        "source": "frontmatter_only"
+      }
     ]
   },
   {
@@ -404,11 +953,34 @@
     "path": "knowledge/components/TMFC035/component.yaml",
     "meta_path": "knowledge/components/TMFC035/component.meta.json",
     "used_by": [
-      "TMFS001",
-      "TMFS005",
-      "TMFS006",
-      "TMFS016",
-      "TMFS031"
+      {
+        "use_case": "TMFS001",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS005",
+        "source": "frontmatter_only"
+      },
+      {
+        "use_case": "TMFS006",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS020",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS026",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS031",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -421,7 +993,10 @@
     "path": "knowledge/components/TMFC036/component.yaml",
     "meta_path": "knowledge/components/TMFC036/component.meta.json",
     "used_by": [
-      "TMFS020"
+      {
+        "use_case": "TMFS020",
+        "source": "frontmatter_only"
+      }
     ]
   },
   {
@@ -434,9 +1009,26 @@
     "path": "knowledge/components/TMFC039/component.yaml",
     "meta_path": "knowledge/components/TMFC039/component.meta.json",
     "used_by": [
-      "TMFS019A",
-      "TMFS020",
-      "TMFS030"
+      {
+        "use_case": "TMFS019",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS019A",
+        "source": "frontmatter_only"
+      },
+      {
+        "use_case": "TMFS020",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS026",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS030",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -449,8 +1041,14 @@
     "path": "knowledge/components/TMFC040/component.yaml",
     "meta_path": "knowledge/components/TMFC040/component.meta.json",
     "used_by": [
-      "TMFS005",
-      "TMFS009"
+      {
+        "use_case": "TMFS005",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS009",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -463,9 +1061,18 @@
     "path": "knowledge/components/TMFC050/component.yaml",
     "meta_path": "knowledge/components/TMFC050/component.meta.json",
     "used_by": [
-      "TMFS002",
-      "TMFS016",
-      "TMFS020"
+      {
+        "use_case": "TMFS002",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS016",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS020",
+        "source": "frontmatter_only"
+      }
     ]
   },
   {
@@ -478,7 +1085,10 @@
     "path": null,
     "meta_path": "knowledge/components/TMFC051/component.meta.json",
     "used_by": [
-      "TMFS006"
+      {
+        "use_case": "TMFS006",
+        "source": "confirmed"
+      }
     ]
   },
   {
@@ -491,8 +1101,18 @@
     "path": "knowledge/components/TMFC062/component.yaml",
     "meta_path": "knowledge/components/TMFC062/component.meta.json",
     "used_by": [
-      "TMFS008",
-      "TMFS025"
+      {
+        "use_case": "TMFS008",
+        "source": "confirmed"
+      },
+      {
+        "use_case": "TMFS011",
+        "source": "matrix_only"
+      },
+      {
+        "use_case": "TMFS025",
+        "source": "confirmed"
+      }
     ]
   }
 ]

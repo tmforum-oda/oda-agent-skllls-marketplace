@@ -84,8 +84,8 @@ CONSUMER_SKILLS = {
 # Extends/corrects ODA itself -- drafts new use cases, components, API
 # extensions, and matrix corrections for submission back to TM Forum.
 CREATOR_SKILLS = {
-    "harvest-gaps-from-lessons-learned",
-    "propose-matrix-correction",
+    "feedback-harvest-gaps-from-lessons-learned",
+    "feedback-propose-matrix-correction",
     "draft-new-usecase-from-scenario",
     "propose-component-or-api-extension",
     "lint-usecase-draft",
@@ -157,10 +157,10 @@ SKILL_EXAMPLES = {
     "deliver-oda-requirement": [
         "We want customers to browse our product catalogue online and check whether fiber service is technically available at their address before they order -- take this all the way from requirement to a validated implementation.",
     ],
-    "harvest-gaps-from-lessons-learned": [
+    "feedback-harvest-gaps-from-lessons-learned": [
         "What capability gaps has the use-case corpus already identified that nobody's aggregated into one place yet?",
     ],
-    "propose-matrix-correction": [
+    "feedback-propose-matrix-correction": [
         "Turn the logged use-case/matrix disagreements into submittable corrections for the next IG1228 revision.",
     ],
     "draft-new-usecase-from-scenario": [

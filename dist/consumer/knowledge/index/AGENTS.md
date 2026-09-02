@@ -15,11 +15,13 @@ anywhere outside this folder.
 | `component-pdf-coverage.md` | which of the 6 no-PDF components are genuinely unpublished vs. specified-but-undocumented, and why |
 | `id-registry.md` | the `TMFSxxx`/`TMFCxxx`/`TMFxxx`/`GBxxx`/`IGxxxx` prefix glossary — if you see an id prefix and don't know what it is, start here |
 | `component-folder-map.json` / `api-samples-folder-map.json` | internal id→GitHub-folder lookup caches for `tools/fetch_*.py` — not meant to be read for general queries |
+| `ontology.ttl` | the same graph as `use-cases.json`/`components.json`/`apis.json`, as an OWL ontology + RDF instance data — a derived export for RDF/OWL tooling, not for skills; read `use-cases.json`/`components.json`/`apis.json` directly for any normal query (`spec/spec-ontology.md`) |
 
 ## Which files are generated vs. static
 
 **Generated — never hand-edit, regenerate with `python tools/build_index.py`:**
-`use-cases.json`, `components.json`, `apis.json`.
+`use-cases.json`, `components.json`, `apis.json`. **Then, optionally,**
+`python tools/build_ontology.py` regenerates `ontology.ttl` from those three.
 
 **Static, hand-maintained, never touched by any refresh script** (safe to
 read as durable fact, and the only files in this folder you'd ever
@@ -36,6 +38,13 @@ IG1228 — assisted track, re-run only when IG1228 itself is republished).
 1. A reverse link (e.g. "which use cases reference this component") only
    exists in `{use-cases,components,apis}.json` — never in the artefact's
    own file. Don't expect `component.yaml` to know who depends on it.
+   `components.json`'s `used_by` and `apis.json`'s `used_by` are not the
+   same shape: components are reconciled against
+   `usecase-component-matrix.json` at build time (`{use_case, source}`
+   entries, `source` one of `confirmed`/`frontmatter_only`/`matrix_only`
+   — read the entry, don't assume a bare id list); APIs have no matrix
+   data to reconcile against at all, so `apis.json`'s `used_by` stays a
+   plain `[TMFSxxx, ...]` list. See `spec/spec.md` §5.4.
 2. `gaps-backlog.md` is about *missing* capabilities (no id assigned at
    all) — not a general TODO list. The much larger pool of
    enhancement-request feedback to *existing* APIs lives in each use

@@ -10,7 +10,7 @@ description: Given a capability gap (e.g. from knowledge/index/gaps-backlog.md) 
 A concrete draft — a new component skeleton or an API schema extension —
 for a gap that's already been identified, most often one already logged
 in `knowledge/index/gaps-backlog.md`. This picks up where
-`harvest-gaps-from-lessons-learned` leaves off: that skill finds and
+`feedback-harvest-gaps-from-lessons-learned` leaves off: that skill finds and
 consolidates the gap, this one designs the fix.
 
 ## Step 1 — Ground the gap first

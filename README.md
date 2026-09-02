@@ -137,7 +137,7 @@ by reading one of these files:
 | `usecase-list.json` | every `TMFSxxx` id IG1228 knows about, including `planned`/`not available` ones with nothing converted yet |
 | `usecase-component-matrix.json` | IG1228's own corpus-level "which use case touches which component" table |
 | `matrix-discrepancies.md` | where a use case's own document disagrees with that matrix, logged to feedback to the use-case team (spec.md §5.4) — read **both** sources for a complete answer; |
-| `gaps-backlog.md` | capability gaps TM Forum's own authors already flagged in use cases' "Lessons learned" sections — proposed components/APIs that don't exist yet, consolidated across every use case that raises each one (spec.md §11.2, `skills/harvest-gaps-from-lessons-learned/`) |
+| `gaps-backlog.md` | capability gaps TM Forum's own authors already flagged in use cases' "Lessons learned" sections — proposed components/APIs that don't exist yet, consolidated across every use case that raises each one (spec.md §11.2, `skills/feedback-harvest-gaps-from-lessons-learned/`) |
 | `component-folder-map.json` / `api-samples-folder-map.json` | id → upstream GitHub folder lookups, internal to `tools/fetch_*.py` |
 
 Regenerate all three main index files with `python tools/build_index.py`
@@ -210,8 +210,8 @@ why `skills/` itself stays flat).
 
 | Skill | Given | Produces |
 |---|---|---|
-| [`harvest-gaps-from-lessons-learned`](skills/harvest-gaps-from-lessons-learned/SKILL.md) | the whole corpus | capability gaps TM Forum's own authors already flagged, consolidated in [`knowledge/index/gaps-backlog.md`](knowledge/index/gaps-backlog.md) |
-| [`propose-matrix-correction`](skills/propose-matrix-correction/SKILL.md) | a `matrix-discrepancies.md` entry | a specific, submittable correction for the next IG1228 revision |
+| [`feedback-harvest-gaps-from-lessons-learned`](skills/feedback-harvest-gaps-from-lessons-learned/SKILL.md) | the whole corpus | capability gaps TM Forum's own authors already flagged, consolidated in [`knowledge/index/gaps-backlog.md`](knowledge/index/gaps-backlog.md) |
+| [`feedback-propose-matrix-correction`](skills/feedback-propose-matrix-correction/SKILL.md) | a `matrix-discrepancies.md` entry | a specific, submittable correction for the next IG1228 revision |
 | [`draft-new-usecase-from-scenario`](skills/draft-new-usecase-from-scenario/SKILL.md) | a business scenario | a new use-case document in this corpus's own structure |
 | [`propose-component-or-api-extension`](skills/propose-component-or-api-extension/SKILL.md) | a capability gap | a draft component skeleton (real IG1242 shape) or API schema extension |
 | [`lint-usecase-draft`](skills/lint-usecase-draft/SKILL.md) | a draft use-case document | a pre-submission check against known conversion-breaking document shapes |

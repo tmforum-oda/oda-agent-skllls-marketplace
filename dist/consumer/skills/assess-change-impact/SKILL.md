@@ -41,27 +41,58 @@ directly rather than proceeding as if it had one.
 ## Step 2 — Read `used_by`
 
 Every row in `components.json`/`apis.json` carries a `used_by` field —
-sorted `TMFSxxx` ids of every use case whose own frontmatter links to
-this component/API. This is the starting "which use cases depend on
-this" list.
+this is the starting "which use cases depend on this" list. Its shape
+differs by artefact type, deliberately, and both differences matter to
+what you report:
 
-**One real caveat, worth stating in the output, not just knowing
-privately**: `used_by` is only as complete as the frontmatter it's built
-from, and frontmatter isn't always exhaustive of a use case's real
-dependencies — a use case's References section drives this extraction,
-so a component/API named only in body prose elsewhere in the document
-(like TMFS020's own `TMFC001`/`002`/`023`) won't show up in `used_by` at
-all. Also cross-check `${CLAUDE_PLUGIN_ROOT}/knowledge/index/usecase-component-matrix.json` and
-`${CLAUDE_PLUGIN_ROOT}/knowledge/index/matrix-discrepancies.md` for the same id — if the id is
-one of the matrix-only entries there, the real blast radius is larger
-than `used_by` alone suggests. Say so in the report rather than silently
-presenting `used_by` as the complete picture.
+**`components.json`'s `used_by` is already reconciled** —
+`tools/build_index.py` builds it as the union of each use case's own
+frontmatter (`links.components`) and IG1228's independently-sourced
+`usecase-component-matrix.json`, so it's a list of `{use_case, source}`
+entries rather than a bare id list:
+- `source: "confirmed"` — both the use case's own document and IG1228's
+  matrix agree.
+- `source: "frontmatter_only"` — the use case's own document names this
+  component; IG1228's matrix doesn't credit it.
+- `source: "matrix_only"` — IG1228's matrix credits this use case with
+  the component; the use case's own document doesn't say so. Per
+  `${CLAUDE_PLUGIN_ROOT}/knowledge/index/matrix-discrepancies.md`'s Phase 4 findings this is
+  the *more common* of the two disagreement directions, not the rarer
+  one — report these use cases as real, reportable dependents (noting
+  the source), not as a footnote under the confirmed ones. Overall,
+  `matrix-discrepancies.md`'s corpus-wide check found the two sources
+  disagree for the majority of use cases (14 of 24), so expect
+  `frontmatter_only`/`matrix_only` entries often, not rarely.
+
+No separate matrix lookup is needed for a component id — the
+reconciliation already happened when the index was built. Group the
+report by `source` (§ Output format) rather than treating `used_by` as
+one flat list.
+
+**`apis.json`'s `used_by` is a plain frontmatter-derived id list, with no
+`source` tag** — IG1228 chapter 2's matrix is a use-case↔**component**
+table; it has no API-level data at all, so there's nothing to reconcile
+against for a `TMFxxx` id (confirm the file's `usecase-component-matrix.json`
+carries no `apis` key rather than assume it). State this plainly rather
+than implying an API id got the same two-source reconciliation a
+component id gets — those are genuinely different completeness
+guarantees, and the difference matters to a reviewer deciding how much
+to trust the number.
+
+Separately, a component/API can also be named only in a use case's body
+prose rather than its References section (like TMFS020's own
+`TMFC001`/`002`/`023`) — neither `used_by` nor the matrix catches that,
+since both are References-section-derived. Step 4's own document read is
+what surfaces this category — a third, smaller way `used_by` can
+undercount, worth keeping in mind alongside the matrix gap above.
 
 ## Step 3 — Cross-check each affected use case's own maturity
 
-For every id in `used_by`, look up that row in `${CLAUDE_PLUGIN_ROOT}/knowledge/index/use-cases.json`
-and read its `maturity`/`approval_status`/`release_status` fields (the
-same ones `check-usecase-maturity` reads):
+For every use case in `used_by` (each entry's `use_case` field for a
+component id; each plain id for an API id), look up that row in
+`${CLAUDE_PLUGIN_ROOT}/knowledge/index/use-cases.json` and read its
+`maturity`/`approval_status`/`release_status` fields (the same ones
+`check-usecase-maturity` reads):
 
 - `GA` / `TM Forum Approved` use cases are firm, stable dependents — a
   breaking change here has real consumers relying on the current shape.
@@ -112,16 +143,23 @@ TMF632 v4.0.0":
 >
 > 4 of 6 dependents are GA — a breaking change to TMF632 v4 needs a
 > migration path for those before it ships, starting with TMFS001's
-> create-and-update flow since it's the deepest dependency. `used_by` is
-> frontmatter-derived only; not cross-checked against the matrix for this
-> id in this run.
+> create-and-update flow since it's the deepest dependency. TMF632 is an
+> API id, so `used_by` is `apis.json`'s plain frontmatter-derived list —
+> IG1228's matrix has no API-level data to reconcile against (Step 2).
 
-Always state whether the matrix cross-check (Step 2's caveat) was
-actually done for this particular id, not just that the caveat exists in
-the abstract.
+For a `TMFCxxx` id, the same table gains a **Source** column
+(`confirmed` / `frontmatter_only` / `matrix_only`, straight from
+`components.json`'s own `used_by` entries) instead of that closing
+caveat — e.g. "6 of 9 dependents confirmed by both sources; 3 are
+matrix-only (IG1228 credits them, the use case's own document doesn't)."
+Always state which of the two cases actually applied for this particular
+id — the reconciled component table or the frontmatter-only API list —
+not just that the distinction exists in the abstract.
 
 ## What this skill does NOT do
 
 - Does not modify anything — this is a read-only impact report to inform a human decision, not an automated approval or rejection of the change.
-- Does not assume `used_by` is exhaustive — Step 2's caveat is required output, not optional caution.
+- Does not assume `used_by` is exhaustive even after reconciliation — a component/API named only in a use case's body prose (Step 2's closing note) is still invisible to both sources, and Step 4's document read is required to catch it for the high-risk dependents at least.
+- Does not treat a component id's `matrix_only` dependents as a footnote — they get reported with the same weight as `confirmed` ones, per Step 2.
+- Does not imply an API id got the same two-source reconciliation a component id gets — `apis.json`'s `used_by` has no `source` tag at all, and the report says so rather than staying silent about it.
 - Does not stop at a bare id list — Step 4's per-use-case detail is required for at least the high-risk dependents, not an optional enrichment.

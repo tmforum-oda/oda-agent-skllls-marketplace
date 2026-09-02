@@ -15,12 +15,19 @@ Given a business scenario description, drafts a new TMFSxxx-shaped use-case docu
 **Example:**
 > Draft a new TMFS-shaped use case for satellite-to-ground handover billing -- nothing existing covers it.
 
-### harvest-gaps-from-lessons-learned
+### feedback-harvest-gaps-from-lessons-learned
 
 Mines every TMFSxxx use case's "Lessons learned"/"Impacts identified" sections for capability gaps TM Forum's own authors have already written down -- proposed new ODA components or Open APIs that don't exist yet -- cross-checks each against the current ${CLAUDE_PLUGIN_ROOT}/knowledge/index/{components,apis}.json to confirm it's still genuinely missing, and consolidates cross-corroborated gaps (the same gap raised independently in multiple use cases) into one backlog entry. Use this to find what ODA is missing without re-reading the whole corpus by hand.
 
 **Example:**
 > What capability gaps has the use-case corpus already identified that nobody's aggregated into one place yet?
+
+### feedback-propose-matrix-correction
+
+Turns ${CLAUDE_PLUGIN_ROOT}/knowledge/index/matrix-discrepancies.md's logged use-case/matrix disagreements into specific, submittable correction proposals for the next IG1228 revision -- e.g. which TMFCxxx rows should be added or removed for a given TMFSxxx use case. Use this to act on a logged discrepancy rather than just read about it.
+
+**Example:**
+> Turn the logged use-case/matrix disagreements into submittable corrections for the next IG1228 revision.
 
 ### lint-usecase-draft
 
@@ -35,10 +42,3 @@ Given a capability gap (e.g. from ${CLAUDE_PLUGIN_ROOT}/knowledge/index/gaps-bac
 
 **Example:**
 > Design a fix for the 'Delegate Component' gap logged in the gaps backlog.
-
-### propose-matrix-correction
-
-Turns ${CLAUDE_PLUGIN_ROOT}/knowledge/index/matrix-discrepancies.md's logged use-case/matrix disagreements into specific, submittable correction proposals for the next IG1228 revision -- e.g. which TMFCxxx rows should be added or removed for a given TMFSxxx use case. Use this to act on a logged discrepancy rather than just read about it.
-
-**Example:**
-> Turn the logged use-case/matrix disagreements into submittable corrections for the next IG1228 revision.

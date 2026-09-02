@@ -88,10 +88,20 @@ use case's component list specifically, since neither source is clearly the full
 
 ## What this means for consumers of `knowledge/`
 
-A skill answering "what components does TMFS009 touch" gets a *different, real* answer
-depending on which source it reads — and per the Phase 4 numbers above, that's true for the
-*majority* of use cases in this corpus, not an edge case. Until this is reconciled at the
-source (which isn't this repo's job — it's TM Forum's own chapter 2 vs. individual document
-maintenance process), a skill that needs completeness should read **both**
-`links.components` and the matrix and take the union, not either alone — and should say so if
-it's citing the union, since neither source alone is the full picture for most of this corpus.
+A skill answering "what components does TMFS009 touch" (the **forward** direction — one use
+case, which components) gets a *different, real* answer depending on which source it reads —
+and per the Phase 4 numbers above, that's true for the *majority* of use cases in this corpus,
+not an edge case. This can't be reconciled at the source (that's TM Forum's own chapter 2 vs.
+individual document maintenance process, not this repo's job), so a skill asking the forward
+question still needs to read **both** `links.components` and the matrix and take the union
+itself, not either alone — `generate-test-cases-from-usecase`, `audit-implementation-against-usecase`,
+and `feedback-propose-matrix-correction` all do this per their own `SKILL.md` instructions.
+
+The **reverse** direction (one component, which use cases) doesn't have this problem anymore:
+`knowledge/index/components.json`'s `used_by` is reconciled at `build_index.py` time — every
+entry tagged `confirmed` / `frontmatter_only` / `matrix_only` — so a skill asking "what uses
+TMFC020" reads one field, already merged, instead of redoing this cross-check itself
+(`spec/spec.md` §5.4, `spec/spec-ontology.md` §2/§8; `assess-change-impact` was the skill that
+surfaced the need for this). `apis.json`'s `used_by` has no such reconciliation available — the
+matrix has no API-level data at all, so a plain frontmatter-only list is genuinely the best
+`apis.json` can offer.

@@ -80,7 +80,7 @@ The source conversation doesn't distinguish "building a product using ODA" from 
 |---|---|
 | `oda-component-designer` (author a *new* Component spec) | `propose-component-or-api-extension` |
 | `oda-api-designer`, in the sense of drafting a *new* API extension | `propose-component-or-api-extension` |
-| Part of `oda-business-capability-mapper` (surfacing a capability ODA doesn't have yet) | `harvest-gaps-from-lessons-learned` |
+| Part of `oda-business-capability-mapper` (surfacing a capability ODA doesn't have yet) | `feedback-harvest-gaps-from-lessons-learned` |
 
 What the source conversation calls `oda-api-designer`/`oda-component-designer` in the *selection* sense — "which existing Component/API should this be built on" — is squarely Consumer territory and is what `recommend-oda-components-for-requirement` already does. The dividing line adopted here: **choosing among existing ODA assets is Consumer work; authoring new ones is Creator work.** Every proposal kept in §7 below respects that line; every one dropped for crossing it is noted in §6.
 
@@ -149,7 +149,7 @@ questions: []                 # genuine architectural ambiguity, surfaced explic
                                # silently resolved by guessing
 ```
 
-Absorbs §2.1's `oda-requirements-engineer` and the groundable slice of `oda-business-capability-mapper`/`oda-information-modeler`. Explicitly cross-references `recommend-oda-components-for-requirement` (run that one first; this one is for when it comes up empty) and `harvest-gaps-from-lessons-learned`/`propose-component-or-api-extension` (the Creator-side handoff when `candidate_components`/`candidate_apis` turn up genuinely empty, not just imperfect).
+Absorbs §2.1's `oda-requirements-engineer` and the groundable slice of `oda-business-capability-mapper`/`oda-information-modeler`. Explicitly cross-references `recommend-oda-components-for-requirement` (run that one first; this one is for when it comes up empty) and `feedback-harvest-gaps-from-lessons-learned`/`propose-component-or-api-extension` (the Creator-side handoff when `candidate_components`/`candidate_apis` turn up genuinely empty, not just imperfect).
 
 ### 7.2 `draft-event-design-for-component` *(new — Design)*
 

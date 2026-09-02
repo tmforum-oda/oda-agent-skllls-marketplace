@@ -107,7 +107,7 @@ just reads one field.
 - **Only one skill reads a reverse index at all.** `grep -r used_by
   skills/` returns exactly `assess-change-impact/SKILL.md` — every other
   skill that touches the matrix (`generate-test-cases-from-usecase`,
-  `audit-implementation-against-usecase`, `propose-matrix-correction`) goes
+  `audit-implementation-against-usecase`, `feedback-propose-matrix-correction`) goes
   forward, use case → components, which the matrix's own `use_cases[id]`
   key already answers unambiguously (there's only one place that id can be
   keyed). The reverse direction is structurally the harder one — a

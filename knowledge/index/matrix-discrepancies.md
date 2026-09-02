@@ -95,7 +95,7 @@ not an edge case. This can't be reconciled at the source (that's TM Forum's own 
 individual document maintenance process, not this repo's job), so a skill asking the forward
 question still needs to read **both** `links.components` and the matrix and take the union
 itself, not either alone — `generate-test-cases-from-usecase`, `audit-implementation-against-usecase`,
-and `propose-matrix-correction` all do this per their own `SKILL.md` instructions.
+and `feedback-propose-matrix-correction` all do this per their own `SKILL.md` instructions.
 
 The **reverse** direction (one component, which use cases) doesn't have this problem anymore:
 `knowledge/index/components.json`'s `used_by` is reconciled at `build_index.py` time — every
