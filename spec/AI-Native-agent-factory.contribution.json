@@ -1,0 +1,4050 @@
+{
+  "schemaVersion": "1.0.0",
+  "modelVersion": "0.1.0",
+  "toolVersion": "0.1.0",
+  "title": "AI-Native Agent Factory Reference Architecture Baseline",
+  "authority": {
+    "name": "TM Forum Trustworthy AI & Data Mission",
+    "role": "central_authority"
+  },
+  "createdAt": "2026-07-02T00:00:00+10:00",
+  "updatedAt": "2026-07-02T06:20:00.902Z",
+  "rootNodeId": "node.ai_native_agent_factory_blueprint",
+  "statusPolicy": {
+    "values": [
+      "accepted",
+      "proposed",
+      "needs_review",
+      "rejected",
+      "deprecated",
+      "superseded"
+    ],
+    "acceptedCanOnlyBeSetBy": "central_authority",
+    "contributorDefaultStatus": "proposed"
+  },
+  "nodeKinds": {
+    "root": {
+      "label": "Root",
+      "description": "The single top-level ontology node."
+    },
+    "branch": {
+      "label": "Branch",
+      "description": "A top-level Why, How, or What branch under the root."
+    },
+    "container": {
+      "label": "Container",
+      "description": "A grouping node that organizes child categories."
+    },
+    "layer": {
+      "label": "Layer",
+      "description": "A stack or architectural layer with ordering and dependency semantics."
+    },
+    "category": {
+      "label": "Category",
+      "description": "A classification bucket under a branch or layer."
+    },
+    "component": {
+      "label": "Component",
+      "description": "A specific architecture component, technology, process, control, consumer, or outcome."
+    },
+    "card": {
+      "label": "Contribution Card",
+      "description": "A contribution leaf attached to an ontology node."
+    },
+    "group": {
+      "label": "Group",
+      "description": "A semantic grouping container for layout/categorisation. Transparent to inheritance and relationships."
+    },
+    "node": {
+      "label": "Node",
+      "description": "A leaf node."
+    }
+  },
+  "nodeTypes": {
+    "base_node": {
+      "id": "base_node",
+      "label": "Base Node",
+      "inheritsFrom": null,
+      "description": "Base node type from which all node types inherit.",
+      "allowedParentTypes": [],
+      "allowedChildTypes": [],
+      "fields": [
+        {
+          "id": "label",
+          "label": "Node label",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "shortDefinition",
+          "label": "Short definition",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "description",
+          "label": "Detailed description",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "keywords",
+          "label": "Keywords",
+          "type": "tags",
+          "required": false
+        },
+        {
+          "id": "evidenceRefs",
+          "label": "Evidence references",
+          "type": "evidenceRefs",
+          "required": true
+        }
+      ]
+    },
+    "root_node": {
+      "id": "root_node",
+      "label": "Root Node",
+      "inheritsFrom": "base_node",
+      "description": "The AI Factory Blueprint root node.",
+      "allowedParentTypes": [],
+      "allowedChildTypes": [
+        "branch_node"
+      ],
+      "fields": []
+    },
+    "branch_node": {
+      "id": "branch_node",
+      "label": "Branch Node",
+      "inheritsFrom": "base_node",
+      "description": "A top-level Why, How, or What branch.",
+      "allowedParentTypes": [
+        "root_node"
+      ],
+      "allowedChildTypes": [
+        "technology_layer_node",
+        "lifecycle_process_node",
+        "business_outcome_node",
+        "container_node"
+      ],
+      "fields": [
+        {
+          "id": "branchPurpose",
+          "label": "Branch purpose",
+          "type": "textarea",
+          "required": true
+        }
+      ]
+    },
+    "container_node": {
+      "id": "container_node",
+      "label": "Container Node",
+      "inheritsFrom": "base_node",
+      "description": "A grouping node that organizes child categories.",
+      "allowedParentTypes": [],
+      "allowedChildTypes": [],
+      "fields": []
+    },
+    "business_outcome_node": {
+      "id": "business_outcome_node",
+      "label": "Business / Outcome Node",
+      "inheritsFrom": "base_node",
+      "description": "End-to-end autonomous business or operational outcome/use case.",
+      "allowedParentTypes": [
+        "branch_node",
+        "business_outcome_node"
+      ],
+      "allowedChildTypes": [
+        "business_outcome_node"
+      ],
+      "fields": [
+        {
+          "id": "outcomeStatement",
+          "label": "Outcome statement",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "businessBenefit",
+          "label": "Business benefit",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "capitalInvestment",
+          "label": "Capital investment / cost assumptions",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "operationalImpact",
+          "label": "Operational impact",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "roiHypothesis",
+          "label": "Return on investment hypothesis",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "valueMetrics",
+          "label": "Value metrics",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "stakeholders",
+          "label": "Stakeholders",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "caseStudyRefs",
+          "label": "Case study references",
+          "type": "tags",
+          "required": false
+        }
+      ]
+    },
+    "lifecycle_process_node": {
+      "id": "lifecycle_process_node",
+      "label": "Lifecycle Process Node",
+      "inheritsFrom": "base_node",
+      "description": "Lifecycle process or practice for the agent factory.",
+      "allowedParentTypes": [
+        "branch_node",
+        "lifecycle_process_node"
+      ],
+      "allowedChildTypes": [
+        "lifecycle_process_node"
+      ],
+      "fields": [
+        {
+          "id": "processInput",
+          "label": "Process input",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "processActivity",
+          "label": "Process activity",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "processOutput",
+          "label": "Process output",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "precedes",
+          "label": "Precedes process IDs",
+          "type": "nodeRefs",
+          "required": false
+        },
+        {
+          "id": "follows",
+          "label": "Follows process IDs",
+          "type": "nodeRefs",
+          "required": false
+        },
+        {
+          "id": "rolesInvolved",
+          "label": "Roles involved",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "gates",
+          "label": "Gates / decision points",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "handoffs",
+          "label": "Handoffs",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "evidenceProduced",
+          "label": "Evidence produced",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "technology_layer_node": {
+      "id": "technology_layer_node",
+      "label": "Technology Layer Node",
+      "inheritsFrom": "base_node",
+      "description": "Technology reference architecture layer with stack position and trust metadata.",
+      "allowedParentTypes": [
+        "branch_node"
+      ],
+      "allowedChildTypes": [
+        "resource_category_node",
+        "control_domain_node",
+        "consumption_domain_node",
+        "resource_component_node",
+        "control_component_node",
+        "consumption_component_node"
+      ],
+      "fields": [
+        {
+          "id": "layerRole",
+          "label": "Layer role",
+          "type": "select",
+          "options": [
+            "resources",
+            "controls",
+            "consumption",
+            "cross_layer"
+          ],
+          "required": true
+        },
+        {
+          "id": "stackOrder",
+          "label": "Stack order",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "sitsAbove",
+          "label": "Sits above layer IDs",
+          "type": "nodeRefs",
+          "required": false
+        },
+        {
+          "id": "sitsBelow",
+          "label": "Sits below layer IDs",
+          "type": "nodeRefs",
+          "required": false
+        },
+        {
+          "id": "privilegeLevel",
+          "label": "Privilege level",
+          "type": "select",
+          "options": [
+            "root",
+            "system",
+            "user"
+          ],
+          "required": false
+        },
+        {
+          "id": "trustLevel",
+          "label": "Trust level",
+          "type": "select",
+          "options": [
+            "trusted",
+            "untrusted"
+          ],
+          "required": false
+        },
+        {
+          "id": "interfaces",
+          "label": "Layer interfaces",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "resource_category_node": {
+      "id": "resource_category_node",
+      "label": "Resource Category Node",
+      "inheritsFrom": "base_node",
+      "description": "Category of agent resource capability.",
+      "allowedParentTypes": [
+        "technology_layer_node"
+      ],
+      "allowedChildTypes": [
+        "resource_component_node"
+      ],
+      "fields": [
+        {
+          "id": "resourceKind",
+          "label": "Resource kind",
+          "type": "select",
+          "options": [
+            "Infrastructure",
+            "Data",
+            "Model",
+            "Tools"
+          ],
+          "required": true
+        },
+        {
+          "id": "functionPerformed",
+          "label": "Function performed",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "interfacePattern",
+          "label": "Interface pattern",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "resource_component_node": {
+      "id": "resource_component_node",
+      "label": "Resource Component Node",
+      "inheritsFrom": "resource_category_node",
+      "description": "Specific technology resource component under a resource category.",
+      "allowedParentTypes": [
+        "resource_category_node"
+      ],
+      "allowedChildTypes": [],
+      "fields": [
+        {
+          "id": "componentFunction",
+          "label": "Component function",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "supplierExamples",
+          "label": "Supplier examples",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "deploymentContext",
+          "label": "Deployment context",
+          "type": "select",
+          "options": [
+            "Cloud",
+            "On-premise",
+            "Hybrid",
+            "Edge"
+          ],
+          "required": false
+        },
+        {
+          "id": "interoperability",
+          "label": "Interoperability / standards",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "lifecycleSupport",
+          "label": "Lifecycle stages supported",
+          "type": "tags",
+          "required": false
+        }
+      ]
+    },
+    "control_domain_node": {
+      "id": "control_domain_node",
+      "label": "Control Domain Node",
+      "inheritsFrom": "base_node",
+      "description": "Control function or control domain within the agent control layer.",
+      "allowedParentTypes": [
+        "technology_layer_node"
+      ],
+      "allowedChildTypes": [
+        "control_component_node"
+      ],
+      "fields": [
+        {
+          "id": "controlRole",
+          "label": "Control role",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "frameworkMapping",
+          "label": "Framework mapping",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "controlObjective",
+          "label": "Control objective",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "evidenceSignals",
+          "label": "Evidence / telemetry signals",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "enforcementPoint",
+          "label": "Enforcement point",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "control_component_node": {
+      "id": "control_component_node",
+      "label": "Control Component Node",
+      "inheritsFrom": "control_domain_node",
+      "description": "Specific control capability or mechanism.",
+      "allowedParentTypes": [
+        "control_domain_node"
+      ],
+      "allowedChildTypes": [],
+      "fields": [
+        {
+          "id": "controlType",
+          "label": "Control type",
+          "type": "select",
+          "options": [
+            "preventive",
+            "detective",
+            "corrective",
+            "recovery"
+          ],
+          "required": false
+        },
+        {
+          "id": "policyMapping",
+          "label": "Policy / standard mapping",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "assuranceEvidence",
+          "label": "Assurance evidence",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "consumption_domain_node": {
+      "id": "consumption_domain_node",
+      "label": "Consumption Domain Node",
+      "inheritsFrom": "base_node",
+      "description": "Consumer category for agent capabilities.",
+      "allowedParentTypes": [
+        "technology_layer_node"
+      ],
+      "allowedChildTypes": [
+        "consumption_component_node"
+      ],
+      "fields": [
+        {
+          "id": "consumerType",
+          "label": "Consumer type",
+          "type": "select",
+          "options": [
+            "workload",
+            "human",
+            "embodied_physical",
+            "mixed"
+          ],
+          "required": true
+        },
+        {
+          "id": "workloadType",
+          "label": "Workload type",
+          "type": "select",
+          "required": false,
+          "options": [
+            "app",
+            "agent"
+          ]
+        },
+        {
+          "id": "functionCapability",
+          "label": "Function / capability",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "interactionPattern",
+          "label": "Interaction pattern",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "consumption_component_node": {
+      "id": "consumption_component_node",
+      "label": "Consumption Component Node",
+      "inheritsFrom": "consumption_domain_node",
+      "description": "Specific consumer workload, human role, or embodied system.",
+      "allowedParentTypes": [
+        "consumption_domain_node"
+      ],
+      "allowedChildTypes": [],
+      "fields": [
+        {
+          "id": "capabilityDescription",
+          "label": "Capability description",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "autonomyLevel",
+          "label": "Autonomy level",
+          "type": "select",
+          "options": [
+            "assistive",
+            "supervised",
+            "delegated",
+            "autonomous"
+          ],
+          "required": false
+        },
+        {
+          "id": "riskBoundary",
+          "label": "Risk / safety boundary",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "expectedUsers",
+          "label": "Expected users / consumers",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "contribution_card": {
+      "id": "contribution_card",
+      "label": "Contribution Card",
+      "inheritsFrom": "base_node",
+      "description": "Submitted proposal, evidence package, or reference architecture card attached to a node.",
+      "allowedParentTypes": [],
+      "allowedChildTypes": [],
+      "fields": [
+        {
+          "id": "cardTitle",
+          "label": "Card title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "contributionType",
+          "label": "Contribution type",
+          "type": "select",
+          "options": [
+            "new_node",
+            "node_definition",
+            "technology_component",
+            "process_practice",
+            "business_outcome",
+            "case_study",
+            "relationship",
+            "evidence",
+            "clarification"
+          ],
+          "required": true
+        },
+        {
+          "id": "abstract",
+          "label": "Abstract",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "reasoning",
+          "label": "Reasoning",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "sourceSummary",
+          "label": "Source summary",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "evidenceRefs",
+          "label": "Evidence references",
+          "type": "evidenceRefs",
+          "required": true
+        }
+      ]
+    }
+  },
+  "relationshipTypes": {
+    "contains": {
+      "label": "contains",
+      "description": "Structural parent-child relationship."
+    },
+    "uses": {
+      "label": "uses",
+      "description": "A source node uses a target node."
+    },
+    "precedes": {
+      "label": "precedes",
+      "description": "A process happens before another process."
+    },
+    "follows": {
+      "label": "follows",
+      "description": "A process happens after another process."
+    },
+    "sits_above": {
+      "label": "sits above",
+      "description": "A technology layer sits above another layer in the stack."
+    },
+    "sits_below": {
+      "label": "sits below",
+      "description": "A technology layer sits below another layer in the stack."
+    },
+    "supports": {
+      "label": "supports",
+      "description": "A contribution or evidence item supports a node or definition."
+    },
+    "challenges": {
+      "label": "challenges",
+      "description": "A contribution or evidence item challenges a node or definition."
+    },
+    "maps_to": {
+      "label": "maps to",
+      "description": "A node maps to another framework, taxonomy, control, or standard."
+    },
+    "monitors": {
+      "label": "monitors",
+      "description": "A control monitors a resource, process, agent, or outcome."
+    },
+    "produces_evidence": {
+      "label": "produces evidence",
+      "description": "A process or control produces evidence for assurance."
+    }
+  },
+  "validationRules": {
+    "requiredTopLevelKeys": [
+      "schemaVersion",
+      "modelVersion",
+      "rootNodeId",
+      "nodeKinds",
+      "nodeTypes",
+      "relationshipTypes",
+      "nodes",
+      "relationships",
+      "contributions",
+      "evidenceItems"
+    ],
+    "statusAuthority": {
+      "acceptedCanOnlyBeSetBy": "central_authority",
+      "contributorDefaultStatus": "proposed"
+    },
+    "evidence": {
+      "requiredForProposedNodes": true,
+      "requiredForContributionCards": true,
+      "minimumEvidenceRefs": 1,
+      "documentTitleRequired": true,
+      "exactlyOnePrimary": true,
+      "primaryRequiresPointer": true
+    },
+    "acceptedNodeProtection": {
+      "contributorsCannotDirectlyEditAcceptedNodes": true,
+      "editsMustBeSubmittedAsNodePatchContribution": true
+    }
+  },
+  "nodes": [
+    {
+      "id": "node.ai_native_agent_factory_blueprint",
+      "label": "AI Native Agent Factory Blueprint",
+      "nodeKind": "root",
+      "nodeType": "root_node",
+      "parentId": null,
+      "branch": "root",
+      "path": [
+        "node.ai_native_agent_factory_blueprint"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Root ontology node for the AI-native agent factory reference architecture.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {},
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.technology_references_what",
+      "label": "Technology References (What)",
+      "nodeKind": "branch",
+      "nodeType": "branch_node",
+      "parentId": "node.ai_native_agent_factory_blueprint",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "The WHAT branch. Reference technologies arranged into resource, control, and consumption layers.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "branchQuestion": "What",
+        "branchPurpose": "Reference technologies arranged into resource, control, and consumption layers."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.agent_lifecycle_processes_how",
+      "label": "Agent Life Cycle Processes (How)",
+      "nodeKind": "branch",
+      "nodeType": "branch_node",
+      "parentId": "node.ai_native_agent_factory_blueprint",
+      "branch": "how",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.agent_lifecycle_processes_how"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "The HOW branch. Lifecycle stages and practices that use technologies to create, deploy, operate, and govern agents.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "branchQuestion": "How",
+        "branchPurpose": "Lifecycle stages and practices that use technologies to create, deploy, operate, and govern agents."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "fields": [
+        {
+          "id": "processInput",
+          "label": "Process input",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "processActivity",
+          "label": "Process activity",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "processOutput",
+          "label": "Process output",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "precedes",
+          "label": "Precedes process IDs",
+          "type": "nodeRefs",
+          "required": false
+        },
+        {
+          "id": "follows",
+          "label": "Follows process IDs",
+          "type": "nodeRefs",
+          "required": false
+        },
+        {
+          "id": "rolesInvolved",
+          "label": "Roles involved",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "gates",
+          "label": "Gates / decision points",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "handoffs",
+          "label": "Handoffs",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "evidenceProduced",
+          "label": "Evidence produced",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "kind": "layer"
+    },
+    {
+      "id": "node.agentic_autonomous_flows_why",
+      "label": "Agentic Autonomous Flows (Why)",
+      "nodeKind": "branch",
+      "nodeType": "branch_node",
+      "parentId": "node.ai_native_agent_factory_blueprint",
+      "branch": "why",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.agentic_autonomous_flows_why"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "The WHY branch. Outcome-driven autonomous business or operational flows.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "branchQuestion": "Why",
+        "branchPurpose": "Outcome-driven autonomous business or operational flows."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "fields": [
+        {
+          "id": "outcomeStatement",
+          "label": "Outcome statement",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "businessBenefit",
+          "label": "Business benefit",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "capitalInvestment",
+          "label": "Capital investment / cost assumptions",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "operationalImpact",
+          "label": "Operational impact",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "roiHypothesis",
+          "label": "Return on investment hypothesis",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "valueMetrics",
+          "label": "Value metrics",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "stakeholders",
+          "label": "Stakeholders",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "caseStudyRefs",
+          "label": "Case study references",
+          "type": "tags",
+          "required": false
+        }
+      ],
+      "kind": "layer"
+    },
+    {
+      "id": "node.agent_resources_layer",
+      "label": "Agent Resources Layer",
+      "nodeKind": "layer",
+      "nodeType": "technology_layer_node",
+      "parentId": "node.technology_references_what",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_resources_layer"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Foundational resources that provide technical building blocks for agents.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "layerRole": "resources",
+        "stackOrder": 10,
+        "sitsAbove": [],
+        "sitsBelow": [
+          "node.agent_controls"
+        ]
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "fields": [
+        {
+          "id": "resourceKind",
+          "label": "Resource kind",
+          "type": "select",
+          "options": [
+            "Infrastructure",
+            "Data",
+            "Model",
+            "Tools"
+          ],
+          "required": true
+        },
+        {
+          "id": "functionPerformed",
+          "label": "Function performed",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "interfacePattern",
+          "label": "Interface pattern",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "componentFunction",
+          "label": "Component function",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "supplierExamples",
+          "label": "Supplier examples",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "deploymentContext",
+          "label": "Deployment context",
+          "type": "select",
+          "options": [
+            "Cloud",
+            "On-premise",
+            "Hybrid",
+            "Edge"
+          ],
+          "required": false
+        },
+        {
+          "id": "interoperability",
+          "label": "Interoperability / standards",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "lifecycleSupport",
+          "label": "Lifecycle stages supported",
+          "type": "tags",
+          "required": false
+        }
+      ],
+      "kind": "layer"
+    },
+    {
+      "id": "node.agent_controls",
+      "label": "Agent Controls",
+      "nodeKind": "layer",
+      "nodeType": "technology_layer_node",
+      "parentId": "node.technology_references_what",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_controls"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Control plane layer that enforces trust, safety, security, governance, and continuous assurance controls.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "layerRole": "controls",
+        "stackOrder": 20,
+        "sitsAbove": [
+          "node.agent_resources_layer"
+        ],
+        "sitsBelow": [
+          "node.agent_consumption_users"
+        ]
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "fields": [
+        {
+          "id": "controlRole",
+          "label": "Control role",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "frameworkMapping",
+          "label": "Framework mapping",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "controlObjective",
+          "label": "Control objective",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "evidenceSignals",
+          "label": "Evidence / telemetry signals",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "enforcementPoint",
+          "label": "Enforcement point",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "controlType",
+          "label": "Control type",
+          "type": "select",
+          "options": [
+            "preventive",
+            "detective",
+            "corrective",
+            "recovery"
+          ],
+          "required": false
+        },
+        {
+          "id": "policyMapping",
+          "label": "Policy / standard mapping",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "assuranceEvidence",
+          "label": "Assurance evidence",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "kind": "layer"
+    },
+    {
+      "id": "node.agent_consumption_users",
+      "label": "Agent Consumption / Users",
+      "nodeKind": "layer",
+      "nodeType": "technology_layer_node",
+      "parentId": "node.technology_references_what",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_consumption_users"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Consumption layer where agent capabilities are consumed by workloads, people, and physical/embodied systems.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "layerRole": "consumption",
+        "stackOrder": 30,
+        "sitsAbove": [
+          "node.agent_controls"
+        ],
+        "sitsBelow": []
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "fields": [
+        {
+          "id": "consumerType",
+          "label": "Consumer type",
+          "type": "select",
+          "options": [
+            "workload",
+            "human",
+            "embodied_physical",
+            "mixed"
+          ],
+          "required": true
+        },
+        {
+          "id": "workloadType",
+          "label": "Workload type",
+          "type": "select",
+          "required": false,
+          "options": [
+            "app",
+            "agent"
+          ]
+        },
+        {
+          "id": "functionCapability",
+          "label": "Function / capability",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "interactionPattern",
+          "label": "Interaction pattern",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "capabilityDescription",
+          "label": "Capability description",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "id": "autonomyLevel",
+          "label": "Autonomy level",
+          "type": "select",
+          "options": [
+            "assistive",
+            "supervised",
+            "delegated",
+            "autonomous"
+          ],
+          "required": false
+        },
+        {
+          "id": "riskBoundary",
+          "label": "Risk / safety boundary",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "id": "expectedUsers",
+          "label": "Expected users / consumers",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "kind": "layer"
+    },
+    {
+      "id": "node.infrastructure",
+      "label": "Infrastructure",
+      "nodeKind": "category",
+      "nodeType": "resource_category_node",
+      "parentId": "node.agent_resources_layer",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_resources_layer",
+        "node.infrastructure"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Compute, storage, networking, cloud, platform, accelerator, and runtime environment capabilities.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "resourceKind": "Infrastructure",
+        "functionPerformed": "Provides compute, storage, networking, and runtime environments for agents."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.data",
+      "label": "Data",
+      "nodeKind": "category",
+      "nodeType": "resource_category_node",
+      "parentId": "node.agent_resources_layer",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_resources_layer",
+        "node.data"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Data sources, pipelines, stores, products, metadata, provenance, and knowledge assets used by agents.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "resourceKind": "Data",
+        "functionPerformed": "Provides data sources, pipelines, stores, and knowledge assets for agents."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.model",
+      "label": "Model",
+      "nodeKind": "category",
+      "nodeType": "resource_category_node",
+      "parentId": "node.agent_resources_layer",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_resources_layer",
+        "node.model"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "AI and ML models including LLMs, SLMs, embeddings, classifiers, and model services.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "resourceKind": "Model",
+        "functionPerformed": "Provides AI/ML models and model services for agents."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.tools",
+      "label": "Tools",
+      "nodeKind": "category",
+      "nodeType": "resource_category_node",
+      "parentId": "node.agent_resources_layer",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_resources_layer",
+        "node.tools"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Enabling platforms and utilities such as repositories, CI/CD, orchestration, collaboration tooling, APIs, and portals.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "resourceKind": "Tools",
+        "functionPerformed": "Provides enabling platforms and utilities for building and running agents."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.identify",
+      "label": "Identify",
+      "nodeKind": "category",
+      "nodeType": "control_domain_node",
+      "parentId": "node.agent_controls",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_controls",
+        "node.identify"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Capabilities that identify assets, actors, dependencies, ownership, and risk context.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "controlRole": "Identify assets, actors, dependencies, ownership, and risk context."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.protect",
+      "label": "Protect",
+      "nodeKind": "category",
+      "nodeType": "control_domain_node",
+      "parentId": "node.agent_controls",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_controls",
+        "node.protect"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Safeguards that protect systems, data, models, agents, tools, and identities.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "controlRole": "Safeguard systems, data, models, agents, tools, and identities."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.detect",
+      "label": "Detect",
+      "nodeKind": "category",
+      "nodeType": "control_domain_node",
+      "parentId": "node.agent_controls",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_controls",
+        "node.detect"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Capabilities that detect anomalies, incidents, threats, misbehavior, and policy breaches.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "controlRole": "Detect anomalies, incidents, threats, misbehavior, and policy breaches."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.respond",
+      "label": "Respond",
+      "nodeKind": "category",
+      "nodeType": "control_domain_node",
+      "parentId": "node.agent_controls",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_controls",
+        "node.respond"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Actions that contain, manage, remediate, or escalate issues.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "controlRole": "Contain, manage, remediate, or escalate issues."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.recover",
+      "label": "Recover",
+      "nodeKind": "category",
+      "nodeType": "control_domain_node",
+      "parentId": "node.agent_controls",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_controls",
+        "node.recover"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Capabilities that restore services, resilience, data integrity, and operational confidence after disruption.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "controlRole": "Restore services, resilience, data integrity, and operational confidence after disruption."
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.workloads",
+      "label": "Workloads",
+      "nodeKind": "category",
+      "nodeType": "consumption_domain_node",
+      "parentId": "node.agent_consumption_users",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_consumption_users",
+        "node.workloads"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Applications, software services, jobs, APIs, or digital workloads that consume agent services.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "consumerType": "workload"
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.humans",
+      "label": "Humans",
+      "nodeKind": "category",
+      "nodeType": "consumption_domain_node",
+      "parentId": "node.agent_consumption_users",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_consumption_users",
+        "node.humans"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "End users, developers, operators, reviewers, executives, and decision-makers interacting with agents.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "consumerType": "human"
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.embodied_physical",
+      "label": "Embodied (Physical)",
+      "nodeKind": "category",
+      "nodeType": "consumption_domain_node",
+      "parentId": "node.agent_consumption_users",
+      "branch": "what",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.technology_references_what",
+        "node.agent_consumption_users",
+        "node.embodied_physical"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Physical AI, robotics, devices, vehicles, sensors, edge systems, or embodied systems consuming or hosting agent capabilities.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "consumerType": "embodied_physical"
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "layer"
+    },
+    {
+      "id": "node.design",
+      "label": "Design",
+      "nodeKind": "component",
+      "nodeType": "lifecycle_process_node",
+      "parentId": "node.agent_lifecycle_processes_how",
+      "branch": "how",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.agent_lifecycle_processes_how",
+        "node.design"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Lifecycle stage for architecture, requirements, patterns, policies, agent roles, and solution design.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "processActivity": "Architecture, requirements, patterns, policies, agent roles, and solution design.",
+        "precedes": [
+          "node.develop"
+        ],
+        "follows": []
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "node"
+    },
+    {
+      "id": "node.develop",
+      "label": "Develop",
+      "nodeKind": "component",
+      "nodeType": "lifecycle_process_node",
+      "parentId": "node.agent_lifecycle_processes_how",
+      "branch": "how",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.agent_lifecycle_processes_how",
+        "node.develop"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Lifecycle stage for building, configuring, testing, integrating, and packaging agent factory assets.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "processActivity": "Building, configuring, testing, integrating, and packaging agent factory assets.",
+        "precedes": [
+          "node.deploy"
+        ],
+        "follows": [
+          "node.design"
+        ]
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "node"
+    },
+    {
+      "id": "node.deploy",
+      "label": "Deploy",
+      "nodeKind": "component",
+      "nodeType": "lifecycle_process_node",
+      "parentId": "node.agent_lifecycle_processes_how",
+      "branch": "how",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.agent_lifecycle_processes_how",
+        "node.deploy"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Lifecycle stage for release, staging, promotion, rollout, registration, and production activation.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "processActivity": "Release, staging, promotion, rollout, registration, and production activation.",
+        "precedes": [
+          "node.operate"
+        ],
+        "follows": [
+          "node.develop"
+        ]
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "node"
+    },
+    {
+      "id": "node.operate",
+      "label": "Operate",
+      "nodeKind": "component",
+      "nodeType": "lifecycle_process_node",
+      "parentId": "node.agent_lifecycle_processes_how",
+      "branch": "how",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.agent_lifecycle_processes_how",
+        "node.operate"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Lifecycle stage for running, supporting, observing, maintaining, and improving agent services.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "processActivity": "Running, supporting, observing, maintaining, and improving agent services.",
+        "precedes": [
+          "node.govern"
+        ],
+        "follows": [
+          "node.deploy"
+        ]
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "node"
+    },
+    {
+      "id": "node.govern",
+      "label": "Govern",
+      "nodeKind": "component",
+      "nodeType": "lifecycle_process_node",
+      "parentId": "node.agent_lifecycle_processes_how",
+      "branch": "how",
+      "path": [
+        "node.ai_native_agent_factory_blueprint",
+        "node.agent_lifecycle_processes_how",
+        "node.govern"
+      ],
+      "status": "accepted",
+      "origin": "baseline",
+      "version": "0.1.0",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "updatedAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum Trustworthy AI & Data Mission",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "review": {
+        "reviewStatus": "accepted",
+        "reviewedBy": "",
+        "reviewedAt": "",
+        "reviewNotes": ""
+      },
+      "definition": {
+        "shortDefinition": "Lifecycle stage for oversight, policy, risk, compliance, audit, trust assurance, and accountability.",
+        "description": "",
+        "scopeIn": "",
+        "scopeOut": "",
+        "rationale": "",
+        "aliases": [],
+        "keywords": []
+      },
+      "typeSpecific": {
+        "processActivity": "Oversight, policy, risk, compliance, audit, trust assurance, and accountability.",
+        "precedes": [],
+        "follows": [
+          "node.operate"
+        ]
+      },
+      "evidenceRefs": [],
+      "changeTracking": {
+        "changeType": "baseline",
+        "baseNodeId": null,
+        "isNewInWorkingCopy": false
+      },
+      "kind": "node"
+    },
+    {
+      "id": "node.proposed.design.capture-requirements-from-usecase.1",
+      "kind": "node",
+      "label": "Capture Requirements from Use Case",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Drafts user stories and acceptance criteria for a TM Forum use case, grounded in its own Description/Scope/Objective text.",
+        "description": "Given a TMFSxxx use-case id, reads its Description/Scope/Objective sections and drafts user stories and acceptance criteria, citing the exact component/API ids from its frontmatter for any integration touchpoint rather than inventing them. Turns an existing use case into requirements a delivery team can work from.",
+        "keywords": [
+          "requirements",
+          "user stories",
+          "acceptance criteria",
+          "TMFSxxx",
+          "use case"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFSxxx use-case id.",
+        "processActivity": "Checks the use case's maturity, then reads its Description/Scope/Objective sections and linked component/API frontmatter to draft user stories and acceptance criteria grounded in that real content.",
+        "processOutput": "User stories and acceptance criteria for the use case, citing real component/API ids for every integration touchpoint.",
+        "precedes": [],
+        "follows": [
+          "node.proposed.design.check-usecase-maturity.1"
+        ],
+        "rolesInvolved": "Business analyst / product owner turning a use case into deliverable requirements.",
+        "gates": "Maturity check (check-usecase-maturity) before requirements are drafted.",
+        "handoffs": "Feeds draft-architecture-diagram-from-usecase and generate-test-cases-from-usecase.",
+        "evidenceProduced": "Draft user stories and acceptance criteria document."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-capture-requirements-from-usecase"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.check-usecase-maturity.1",
+      "kind": "node",
+      "label": "Check Use Case Maturity",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Returns a plain-language maturity/trust verdict for an ODA use case before anyone builds against it.",
+        "description": "Given a TM Forum ODA use-case id (TMFSxxx), reads its cached frontmatter and returns a plain-language maturity/trust verdict -- whether it's safe to build against today. Reads only YAML frontmatter, no document-body parsing.",
+        "keywords": [
+          "maturity",
+          "trust verdict",
+          "TMFSxxx",
+          "use case",
+          "frontmatter"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFSxxx use-case id.",
+        "processActivity": "Reads the use case's cached YAML frontmatter only and translates its maturity metadata into a plain-language build-against-today verdict.",
+        "processOutput": "A plain-language maturity/trust verdict for the use case.",
+        "precedes": [
+          "node.proposed.design.capture-requirements-from-usecase.1",
+          "node.proposed.design.draft-architecture-diagram-from-usecase.1"
+        ],
+        "follows": [],
+        "rolesInvolved": "Anyone about to start requirements or test-case work against a use case.",
+        "gates": "Run before starting requirements or test-case work against any TMFSxxx use case.",
+        "handoffs": "Gates capture-requirements-from-usecase, draft-architecture-diagram-from-usecase, and generate-test-cases-from-usecase.",
+        "evidenceProduced": "Maturity verdict statement."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-check-usecase-maturity"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.decompose-requirement-against-oda.1",
+      "kind": "node",
+      "label": "Decompose Requirement Against ODA",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Decomposes a plain-language requirement with no matching use case into a structured ODA-aligned breakdown.",
+        "description": "Given a plain-language requirement that recommend-oda-components-for-requirement couldn't match to an existing use case, produces a structured ODA-aligned decomposition -- business intent, candidate eTOM processes, candidate components/APIs, candidate information entities, and explicit open questions -- instead of leaving the requirement as unstructured prose. ODA-first, not ODA-only: extends only where the cached corpus genuinely has no equivalent.",
+        "keywords": [
+          "requirement decomposition",
+          "eTOM",
+          "ODA-first",
+          "information entities",
+          "gaps-backlog"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A plain-language requirement with no close-matching existing use case.",
+        "processActivity": "Decomposes the requirement into business intent, candidate eTOM processes, candidate components/APIs, and candidate information entities, cross-checked against the cached corpus and the gaps backlog at every step; flags genuine gaps explicitly rather than presenting an extension as already standard.",
+        "processOutput": "A structured ODA-aligned decomposition of the requirement with explicit open questions.",
+        "precedes": [],
+        "follows": [
+          "node.proposed.design.recommend-oda-components-for-requirement.1"
+        ],
+        "rolesInvolved": "Solution architect scoping a requirement that has no existing ODA analog.",
+        "gates": "Only run after recommend-oda-components-for-requirement has confirmed no close match exists.",
+        "handoffs": "Feeds propose-component-or-api-extension where a genuine gap is confirmed, or draft-new-usecase-from-scenario where the decomposition warrants a new use case.",
+        "evidenceProduced": "ODA-aligned requirement decomposition document."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-decompose-requirement-against-oda"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.draft-architecture-diagram-from-usecase.1",
+      "kind": "node",
+      "label": "Draft Architecture Diagram from Use Case",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Emits a Mermaid sequence or architecture diagram for a use case, drawn only from its real sequence-diagram content and component/API links.",
+        "description": "Given a TMFSxxx use-case id, reads its sequence-diagram images and linked component/API frontmatter, and emits a Mermaid sequence or architecture diagram as a design-doc-ready artifact, citing only real component/API ids.",
+        "keywords": [
+          "architecture diagram",
+          "sequence diagram",
+          "Mermaid",
+          "TMFSxxx"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFSxxx use-case id.",
+        "processActivity": "Checks maturity, then redraws a Mermaid sequenceDiagram or component-relationship graph from the use case's own sequence-diagram content and frontmatter links.",
+        "processOutput": "A design-doc-ready Mermaid diagram citing only real component/API ids.",
+        "precedes": [],
+        "follows": [
+          "node.proposed.design.check-usecase-maturity.1"
+        ],
+        "rolesInvolved": "Solution architect documenting a use case's flow or component interactions.",
+        "gates": "Maturity check before diagramming.",
+        "handoffs": "Feeds draft-event-design-for-component and validate-design-against-oda when the diagram informs a new design.",
+        "evidenceProduced": "Mermaid diagram artifact."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-draft-architecture-diagram-from-usecase"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.draft-event-design-for-component.1",
+      "kind": "node",
+      "label": "Draft Event Design for Component",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Drafts published/subscribed event definitions for a component, in the same shape every cached component.yaml's eventNotification block already uses.",
+        "description": "Given a TMFCxxx component id and the APIs it exposes or depends on, drafts published/subscribed event definitions -- resource-level create/attributeValueChange/stateChange/delete events tied to real resource names, never invented event types. A Design-stage skill: drafts an addition consistent with how every other cached component already expresses events.",
+        "keywords": [
+          "event design",
+          "eventNotification",
+          "TMFCxxx",
+          "publish/subscribe"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFCxxx component id and the APIs it exposes or depends on.",
+        "processActivity": "Checks whether the needed event is already covered by an existing eventNotification entry on the component or the component that owns the dependent API; drafts only what's genuinely missing, in the same shape as existing eventNotification blocks.",
+        "processOutput": "Drafted published/subscribed event definitions for the component.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "Component designer extending a component's event model.",
+        "gates": "Confirm the event isn't already covered before drafting a new one.",
+        "handoffs": "Feeds generate-implementation-scaffold-from-usecase or implement-oda-component when the design is built.",
+        "evidenceProduced": "Draft event definition(s) in eventNotification shape."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-draft-event-design-for-component"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.recommend-oda-components-for-requirement.1",
+      "kind": "node",
+      "label": "Recommend ODA Components for Requirement",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Proposes a starting architecture of real ODA components/APIs for a plain-language requirement with no TMFSxxx id yet.",
+        "description": "Given a plain-language business requirement (not yet a TMFSxxx id), finds the closest-matching existing use case(s) by name and component/API overlap, and proposes a starting architecture grounded in real component/API ids -- never invented ones. The greenfield counterpart to validate-design-against-oda.",
+        "keywords": [
+          "requirement matching",
+          "greenfield architecture",
+          "TMFSxxx",
+          "component recommendation"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A plain-language business requirement.",
+        "processActivity": "Finds the closest-matching existing use case(s) by name and component/API overlap and proposes a starting architecture from real ids.",
+        "processOutput": "A proposed starting architecture (component/API list) grounded in real ids, or a clear statement that nothing matches closely.",
+        "precedes": [
+          "node.proposed.design.decompose-requirement-against-oda.1"
+        ],
+        "follows": [],
+        "rolesInvolved": "Solution architect at the start of a design, before a requirement is mapped to a specific use case.",
+        "gates": "Run at the start of a design, before requirements capture.",
+        "handoffs": "Feeds capture-requirements-from-usecase when a match is found, or decompose-requirement-against-oda when nothing matches closely.",
+        "evidenceProduced": "Candidate architecture proposal with cited component/API ids."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-recommend-oda-components-for-requirement"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.review-architecture-against-oda.1",
+      "kind": "node",
+      "label": "Review Architecture Against ODA",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Reviews a whole multi-component architecture for ODA conformance -- duplicated ownership, point-to-point coupling, and component-boundary bypass.",
+        "description": "Given a description of a proposed or existing multi-component architecture, reviews it against the cached ODA corpus for duplicated ownership (a capability assigned to a new/custom component that an existing TMFCxxx already owns), point-to-point coupling (a direct interaction an existing cached Open API already mediates), and component-boundary bypass (an interaction reaching into another component's internals). The only skill that reasons about a whole architecture's ODA conformance at once.",
+        "keywords": [
+          "architecture review",
+          "ODA conformance",
+          "component boundary",
+          "point-to-point coupling"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A description of a proposed or existing multi-component architecture.",
+        "processActivity": "Parses the architecture into components and interactions and checks each against the cached ODA corpus for duplicated ownership, point-to-point coupling, and component-boundary bypass, cross-checking the gaps backlog before flagging a genuine gap as a violation.",
+        "processOutput": "A whole-architecture ODA conformance review with findings on ownership duplication, coupling, and boundary bypass.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "Enterprise/solution architect reviewing a multi-component design.",
+        "gates": "Design-stage architecture review gate before build.",
+        "handoffs": "Findings feed back into recommend-oda-components-for-requirement / decompose-requirement-against-oda, or into propose-component-or-api-extension for genuine gaps.",
+        "evidenceProduced": "Architecture conformance review report."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-review-architecture-against-oda"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.validate-design-against-oda.1",
+      "kind": "node",
+      "label": "Validate Design Against ODA",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Checks a proposed design's claimed dependencies on existing ODA components/APIs against the real cached specs.",
+        "description": "Given a proposed component or API design that claims to extend or depend on existing ODA components/APIs, checks those claims against the real cached specs and flags drift -- fields, operations, or behavior the design assumes exist but don't. A pre-build check, sitting earlier than audit-implementation-against-usecase or propose-component-or-api-extension.",
+        "keywords": [
+          "design validation",
+          "drift detection",
+          "OpenAPI schema",
+          "pre-build check"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A proposed component or API design with claimed dependencies on existing ODA components/APIs.",
+        "processActivity": "Checks each claimed dependency against the real cached component/API specs and flags any field, operation, or behavior the design assumes exists but doesn't.",
+        "processOutput": "A drift report confirming or refuting the design's assumptions about existing ODA capability.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "Designer confirming assumptions before building or extending against them.",
+        "gates": "Run before building against an assumed ODA capability.",
+        "handoffs": "Clears the design for generate-implementation-scaffold-from-usecase or implement-oda-component; flags feed propose-component-or-api-extension.",
+        "evidenceProduced": "Design validation/drift report."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-validate-design-against-oda"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.draft-new-usecase-from-scenario.1",
+      "kind": "node",
+      "label": "Draft New Use Case from Scenario",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Drafts a new TMFSxxx-shaped use-case document from a business scenario that matches no existing use case or known gap.",
+        "description": "Given a business scenario description, drafts a new TMFSxxx-shaped use-case document matching this corpus's own observed structure, citing real existing component/API ids wherever the scenario matches existing ODA capability and flagging genuine gaps rather than inventing plausible-sounding new ids.",
+        "keywords": [
+          "use case authoring",
+          "TMFSxxx",
+          "scenario",
+          "new use case"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A business scenario description that recommend-oda-components-for-requirement and the gaps backlog don't already cover.",
+        "processActivity": "Drafts a new use-case document in the corpus's own observed TMFSxxx structure, citing real component/API ids where the scenario matches existing capability and flagging genuine gaps explicitly.",
+        "processOutput": "A draft TMFSxxx-shaped use-case document.",
+        "precedes": [
+          "node.proposed.design.lint-usecase-draft.1"
+        ],
+        "follows": [],
+        "rolesInvolved": "TM Forum contributor authoring a new use case.",
+        "gates": "Only drafted after recommend-oda-components-for-requirement reports no close match and the gaps backlog also has no matching entry.",
+        "handoffs": "Feeds lint-usecase-draft for pre-submission QA before the document is submitted.",
+        "evidenceProduced": "Draft use-case document."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-draft-new-usecase-from-scenario"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.feedback-harvest-gaps-from-lessons-learned.1",
+      "kind": "node",
+      "label": "Harvest Gaps from Lessons Learned",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Mines every use case's Lessons Learned/Impacts Identified sections for capability gaps, cross-checked against the current index and consolidated into a backlog.",
+        "description": "Mines every TMFSxxx use case's 'Lessons learned'/'Impacts identified' sections for capability gaps TM Forum's own authors have already written down -- proposed new ODA components or Open APIs that don't exist yet -- cross-checks each against the current components/apis index to confirm it's still genuinely missing, and consolidates cross-corroborated gaps into one backlog entry.",
+        "keywords": [
+          "gap analysis",
+          "lessons learned",
+          "gaps-backlog",
+          "backlog consolidation"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "The full corpus of converted TMFSxxx use-case documents.",
+        "processActivity": "Reads the Lessons Learned / Impacts Identified section of every use case, extracts proposed-but-missing components/APIs, cross-checks each against the current components/apis index, and consolidates gaps raised independently in multiple use cases into one backlog entry.",
+        "processOutput": "A consolidated capability-gaps backlog.",
+        "precedes": [
+          "node.proposed.design.propose-component-or-api-extension.1"
+        ],
+        "follows": [],
+        "rolesInvolved": "TM Forum contributor deciding what ODA should build next.",
+        "gates": "None -- a periodic mining pass, not a build gate.",
+        "handoffs": "Feeds propose-component-or-api-extension for each confirmed gap.",
+        "evidenceProduced": "Updated gaps-backlog entries."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-feedback-harvest-gaps-from-lessons-learned"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.feedback-propose-matrix-correction.1",
+      "kind": "node",
+      "label": "Propose Matrix Correction",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Turns logged use-case/matrix disagreements into specific, submittable correction proposals for the next standard revision.",
+        "description": "Turns matrix-discrepancies.md's logged use-case/matrix disagreements into specific, submittable correction proposals for the next IG1228 revision -- e.g. which TMFCxxx rows should be added or removed for a given TMFSxxx use case.",
+        "keywords": [
+          "matrix correction",
+          "IG1228",
+          "discrepancy",
+          "standard revision"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A logged disagreement from matrix-discrepancies.md between a use case's own document and the usecase-component matrix.",
+        "processActivity": "Reads the disagreement and the use case's own document, then drafts a specific, submittable correction (e.g. which component rows to add or remove) for the next IG1228 revision.",
+        "processOutput": "A specific, submittable matrix correction proposal.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "TM Forum contributor preparing standard-revision input.",
+        "gates": "None -- acts on an already-logged discrepancy.",
+        "handoffs": "Submitted to the TM Forum IG1228 revision process.",
+        "evidenceProduced": "Matrix correction proposal document."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-feedback-propose-matrix-correction"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.lint-usecase-draft.1",
+      "kind": "node",
+      "label": "Lint Use Case Draft",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Pre-submission QA pass that flags anything in a draft use-case document likely to silently lose content when converted.",
+        "description": "Checks a draft TM Forum use-case DOCX or Markdown document's structure against document shapes known to convert badly through this repo's own docx2md.py pipeline, and flags anything likely to silently lose content before the document is ever submitted.",
+        "keywords": [
+          "linting",
+          "QA",
+          "docx2md",
+          "document structure",
+          "pre-submission check"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A draft use-case document (DOCX or Markdown).",
+        "processActivity": "Checks the draft's structure against known-bad conversion shapes for the corpus's docx2md.py pipeline and flags anything likely to silently lose content on conversion.",
+        "processOutput": "A pre-submission QA report of structural issues to fix before conversion.",
+        "precedes": [],
+        "follows": [
+          "node.proposed.design.draft-new-usecase-from-scenario.1"
+        ],
+        "rolesInvolved": "Use-case author performing a pre-submission QA pass.",
+        "gates": "Pre-submission QA gate for a new or revised use case.",
+        "handoffs": "Clears the draft for submission once issues are fixed; feeds back into draft-new-usecase-from-scenario for rework.",
+        "evidenceProduced": "QA findings report on the draft document."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-lint-usecase-draft"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.design.propose-component-or-api-extension.1",
+      "kind": "node",
+      "label": "Propose Component or API Extension",
+      "parentId": "node.design",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Drafts a concrete extension -- a new component skeleton or an API schema addition -- for an already-identified capability gap.",
+        "description": "Given a capability gap (e.g. from gaps-backlog.md) and the nearest existing component/API, drafts a proposed extension -- a new component skeleton in IG1242's real shape, or a new field/endpoint on an existing OpenAPI schema -- consistent with the corpus's own conventions and grounded in a real cached spec.",
+        "keywords": [
+          "component extension",
+          "API extension",
+          "IG1242",
+          "gaps-backlog",
+          "OpenAPI schema"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A capability gap (typically from gaps-backlog.md) and the nearest existing component/API.",
+        "processActivity": "Drafts a concrete extension -- a new component skeleton in IG1242 shape, or a new field/endpoint on an existing OpenAPI schema -- consistent with the corpus's own conventions.",
+        "processOutput": "A draft component skeleton or API schema extension addressing the gap.",
+        "precedes": [],
+        "follows": [
+          "node.proposed.design.feedback-harvest-gaps-from-lessons-learned.1"
+        ],
+        "rolesInvolved": "TM Forum contributor designing a fix for an identified gap.",
+        "gates": "Run only after a gap has been identified (typically via feedback-harvest-gaps-from-lessons-learned or decompose-requirement-against-oda).",
+        "handoffs": "Submitted as a proposed extension to the ODA standard; may inform implement-oda-component once accepted.",
+        "evidenceProduced": "Draft component skeleton or API schema extension."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-propose-component-or-api-extension"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.develop.audit-implementation-against-component.1",
+      "kind": "node",
+      "label": "Audit Implementation Against Component",
+      "parentId": "node.develop",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Checks an existing implementation's conformance to a component's full contract, scored separately for Core Function and Supporting Function.",
+        "description": "Given a TMFCxxx component id and a description of an existing implementation, checks conformance at Component-boundary granularity, split the way component.yaml itself is split -- Core Function (does it expose/consume the real exposedAPIs/dependentAPIs) and Supporting Function (does it provide the managementFunction/securityFunction behaviors) -- reported as two separate dimensions, never blended into one score.",
+        "keywords": [
+          "conformance audit",
+          "Core Function",
+          "Supporting Function",
+          "exposedAPIs",
+          "dependentAPIs",
+          "managementFunction",
+          "securityFunction"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFCxxx component id and a description of an existing implementation.",
+        "processActivity": "Establishes the real contract from the component's cached spec, then checks the implementation's Core Function (exposed/dependent APIs) and Supporting Function (management/security behaviors) separately, never blending the two into one score.",
+        "processOutput": "A two-dimensional conformance report: Core Function score and Supporting Function score.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "Implementation owner auditing a built component's full contract, independent of any specific use case.",
+        "gates": "Run to audit conformance independent of any single use case's flow.",
+        "handoffs": "Findings feed a remediation backlog or assess-change-impact if drift implies a breaking gap.",
+        "evidenceProduced": "Component conformance audit report."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-audit-implementation-against-component"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.develop.audit-implementation-against-usecase.1",
+      "kind": "node",
+      "label": "Audit Implementation Against Use Case",
+      "parentId": "node.develop",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Checks whether an existing implementation actually follows a use case's described flow and calls the right real APIs.",
+        "description": "Given a TMFSxxx use-case id and an existing implementation (codebase, API contract, or integration config), checks whether the implementation actually follows the use case's described flow and calls the right real APIs, flagging drift from spec. The reverse of validate-design-against-oda, which checks a proposed design before it's built.",
+        "keywords": [
+          "flow audit",
+          "drift detection",
+          "TMFSxxx",
+          "conformance"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFSxxx use-case id and a description of an existing implementation.",
+        "processActivity": "Checks maturity, then compares the existing implementation's flow and API calls against the use case's described flow, flagging any drift from spec.",
+        "processOutput": "A drift report on flow and API-call fidelity to the use case.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "Implementation owner auditing an existing system against ODA.",
+        "gates": "Maturity check first.",
+        "handoffs": "Findings feed a remediation plan or assess-change-impact if drift reveals a dependency risk.",
+        "evidenceProduced": "Use-case flow-fidelity audit report."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-audit-implementation-against-usecase"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.develop.generate-api-conformance-tests.1",
+      "kind": "node",
+      "label": "Generate API Conformance Tests",
+      "parentId": "node.develop",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Generates conformance test assertions for one TM Forum Open API directly from its cached OpenAPI schema, and scores an implementation against them if one is supplied.",
+        "description": "Given a TMFxxx id and version, generates conformance test assertions directly from its cached OpenAPI schema -- required-field presence, enum-value validity, declared operations per path, and expected status codes -- using real sample payloads as fixtures where they exist. If a real implementation is supplied, also reports pass/fail per assertion; without one, produces a standalone suite ready to run once an implementation exists.",
+        "keywords": [
+          "conformance tests",
+          "OpenAPI schema",
+          "TMFxxx",
+          "test assertions",
+          "pass/fail"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFxxx API id and version, optionally a real implementation (base URL or example request/response pairs).",
+        "processActivity": "Resolves the API's real cached schema and generates conformance assertions from it (required fields, enum validity, declared operations, expected status codes); scores a supplied implementation pass/fail per assertion, or produces a standalone suite otherwise.",
+        "processOutput": "A conformance test suite for the API, optionally with pass/fail results against a supplied implementation.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "API implementer verifying schema conformance for one specific TM Forum Open API.",
+        "gates": "Requires a real fetched schema version -- stops if the API's status shows no real schema exists yet.",
+        "handoffs": "Complements generate-test-cases-from-usecase (use-case-flow level) and feeds audit-implementation-against-component.",
+        "evidenceProduced": "Generated conformance test suite and, where an implementation is supplied, pass/fail results."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-generate-api-conformance-tests"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.develop.generate-api-mocks-from-usecase.1",
+      "kind": "node",
+      "label": "Generate API Mocks from Use Case",
+      "parentId": "node.develop",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Scaffolds a mock server or fixture files for a use case's real dependent APIs, for integration testing before a real backend exists.",
+        "description": "Given a TMFSxxx use-case id, uses its linked APIs' cached OpenAPI schemas and real sample payloads to scaffold a mock server or example request/response fixtures for integration testing before a real backend exists.",
+        "keywords": [
+          "API mocks",
+          "fixtures",
+          "mock server",
+          "integration testing",
+          "TMFSxxx"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFSxxx use-case id.",
+        "processActivity": "Resolves the use case's real API list, then scaffolds a mock server or fixture files from those APIs' cached OpenAPI schemas and real sample payloads.",
+        "processOutput": "Mock server and/or fixture files for the use case's dependent APIs.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "Developer needing integration test fixtures before a real backend exists.",
+        "gates": "None beyond resolving the use case's real API list.",
+        "handoffs": "Used alongside generate-test-cases-from-usecase and generate-implementation-scaffold-from-usecase during build.",
+        "evidenceProduced": "Mock server / fixture files."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-generate-api-mocks-from-usecase"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.develop.generate-implementation-scaffold-from-usecase.1",
+      "kind": "node",
+      "label": "Generate Implementation Scaffold from Use Case",
+      "parentId": "node.develop",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Generates typed request/response models and route/handler stubs from a use case's linked OpenAPI schemas, in the caller's chosen language, with TODOs where real logic belongs.",
+        "description": "Given a TMFSxxx use-case id (or an explicit component/API set), generates typed request/response models and route/handler stubs directly from its linked APIs' cached OpenAPI schemas, in a language of the caller's choosing -- with a TODO marker at every point real domain logic belongs. A Build-stage skill, narrow by design: it scaffolds shape, not business logic. Not to be confused with implement-oda-component, which generates and can deploy TM Forum's own opinionated Node.js/Helm reference stack.",
+        "keywords": [
+          "scaffold",
+          "typed models",
+          "route stubs",
+          "language-agnostic",
+          "Build-stage"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFSxxx use-case id (or explicit component/API set) and a target language.",
+        "processActivity": "Resolves the target APIs and language, then generates typed request/response models and route/handler stubs from the cached OpenAPI schemas, marking every point real domain logic belongs with a TODO.",
+        "processOutput": "Typed models and route/handler scaffolding in the target language, with TODO markers for business logic.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "Developer starting implementation from typed models rather than a blank file.",
+        "gates": "Ask which of this skill or implement-oda-component is wanted if not obvious from context -- never default silently.",
+        "handoffs": "Hands a codebase skeleton to the developer who fills in domain logic; complements generate-api-mocks-from-usecase.",
+        "evidenceProduced": "Generated scaffold codebase."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-generate-implementation-scaffold-from-usecase"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.develop.generate-test-cases-from-usecase.1",
+      "kind": "node",
+      "label": "Generate Test Cases from Use Case",
+      "parentId": "node.develop",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Drafts BDD-style Gherkin test scenarios for a use case's interaction flow, grounded in its real component/API ids and cached OpenAPI schemas.",
+        "description": "Given a TM Forum ODA use-case id (TMFSxxx), reads its sequence-diagram section and linked component/API frontmatter, then drafts BDD-style (Gherkin) test scenarios grounded in the real component/API ids and cached OpenAPI schemas -- never invented ones. Mirrors oda-canvas's write-bdd-feature Gherkin conventions.",
+        "keywords": [
+          "BDD",
+          "Gherkin",
+          "test scenarios",
+          "TMFSxxx",
+          "acceptance tests"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFSxxx use-case id.",
+        "processActivity": "Reads the use case's sequence-diagram section and linked component/API frontmatter, then drafts Gherkin scenarios citing only real, traceable component/API ids.",
+        "processOutput": "BDD-style Gherkin test scenarios for the use case's interaction flow.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "QA engineer / developer drafting acceptance tests for a use case.",
+        "gates": "None beyond the ids in the scenario tracing back to real frontmatter or a cached API schema.",
+        "handoffs": "Feeds generate-api-mocks-from-usecase and generate-api-conformance-tests during build; later checked by audit-implementation-against-usecase.",
+        "evidenceProduced": "Gherkin test scenario document."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-generate-test-cases-from-usecase"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.develop.deliver-oda-requirement.1",
+      "kind": "node",
+      "label": "Deliver ODA Requirement",
+      "parentId": "node.develop",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Orchestrates the full Discover-to-Run chain of existing skills against a plain-language requirement, end to end.",
+        "description": "Given a plain-language requirement, orchestrates the full Discover-to-Run chain of existing skills against it -- finding or decomposing the requirement, capturing it as requirements, drafting architecture/event designs, gating on validate-design-against-oda, generating a Build-stage implementation, generating mocks/tests/conformance checks, and auditing the result. An orchestration skill with no ODA reasoning of its own -- every real decision is made by the skill it invokes at that step.",
+        "keywords": [
+          "orchestration",
+          "Discover-to-Run",
+          "end-to-end delivery",
+          "pipeline"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A plain-language requirement.",
+        "processActivity": "Sequences the existing chain of skills: find/decompose the requirement, capture requirements, draft architecture/event designs, gate on validate-design-against-oda, generate a Build-stage implementation (asking which of the two build options to use), generate mocks/tests/conformance checks, and audit the result.",
+        "processOutput": "A working, audited implementation delivered end to end from a plain-language requirement.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "Delivery lead wanting a requirement taken all the way from ask to audited implementation in one pass.",
+        "gates": "Gates on validate-design-against-oda before generating a Build-stage implementation; asks which build option to use rather than defaulting.",
+        "handoffs": "Invokes recommend-oda-components-for-requirement/decompose-requirement-against-oda, capture-requirements-from-usecase, draft-architecture-diagram-from-usecase, draft-event-design-for-component, validate-design-against-oda, generate-implementation-scaffold-from-usecase/implement-oda-component, generate-api-mocks-from-usecase, generate-test-cases-from-usecase, generate-api-conformance-tests, and audit-implementation-against-usecase, in sequence.",
+        "evidenceProduced": "End-to-end delivery trail: requirements, designs, generated implementation, tests, and audit report."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-deliver-oda-requirement"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.deploy.assess-change-impact.1",
+      "kind": "node",
+      "label": "Assess Change Impact",
+      "parentId": "node.deploy",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Assesses the blast radius of a proposed breaking change to an ODA component or API before it ships.",
+        "description": "Given a TM Forum ODA component (TMFCxxx) or Open API (TMFxxx) id and a proposed change (deprecation, breaking version bump, removal), lists every use case that depends on it, describes exactly how each one uses it, and drafts a maturity-weighted migration/impact report. Used as a release-risk gate before a breaking change, deprecation, or removal goes out.",
+        "keywords": [
+          "change impact",
+          "deprecation",
+          "breaking change",
+          "migration report",
+          "release risk",
+          "TMFCxxx",
+          "TMFxxx",
+          "TMFSxxx"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFCxxx component id or TMFxxx API id, plus the proposed change (deprecation, breaking version bump, or removal).",
+        "processActivity": "Looks up every TMFSxxx use case that depends on the target id, describes precisely how each dependency is used, weights each by the use case's maturity, and drafts a migration/impact report.",
+        "processOutput": "A maturity-weighted migration/impact report listing every affected use case and the specific nature of its dependency.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "Component/API owner deciding whether to ship a breaking change; downstream teams whose use cases depend on the id.",
+        "gates": "Should be run and reviewed before any deprecation, breaking version bump, or removal is released.",
+        "handoffs": "Feeds the release decision for the component/API owner; may trigger propose-component-or-api-extension or a coordinated migration plan for affected teams.",
+        "evidenceProduced": "Impact/migration report enumerating affected use cases and their maturity-weighted risk."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-assess-change-impact"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.deploy.implement-oda-component.1",
+      "kind": "node",
+      "label": "Implement ODA Component",
+      "parentId": "node.deploy",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "Builds and deploys a complete TM Forum ODA Component implementation (Node.js source, Dockerfile, Helm chart) end to end.",
+        "description": "Builds a complete TM Forum ODA Component implementation from scratch -- Node.js microservice source code, Dockerfiles, and Kubernetes Helm charts -- for any standard component (TMFC001-TMFC062). The one skill in this corpus with real side effects: it can build and push Docker images and run `helm install`. Distinct from generate-implementation-scaffold-from-usecase, which produces a language-agnostic, no-side-effect scaffold instead of TM Forum's own opinionated Node.js/Helm reference stack.",
+        "keywords": [
+          "ODA component",
+          "Node.js",
+          "Docker",
+          "Helm",
+          "Kubernetes",
+          "helm install",
+          "docker push",
+          "TMFCxxx",
+          "reference implementation"
+        ]
+      },
+      "typeSpecific": {
+        "processInput": "A TMFCxxx component id (or a plain-language component name to resolve to one).",
+        "processActivity": "Generates Node.js microservice source code, Dockerfiles, and Kubernetes Helm charts following the ODA Component standard; builds and pushes the Docker image; can run `helm install` to activate the component in a cluster.",
+        "processOutput": "A running (or ready-to-run) ODA Component: source repository, container image in a registry, and an installed/installable Helm release.",
+        "precedes": [],
+        "follows": [],
+        "rolesInvolved": "Component implementer/platform engineer standing up a standard ODA component.",
+        "gates": "Real side effects (image push, helm install) -- should only be run once the target component and environment are confirmed.",
+        "handoffs": "Produces the artifact that audit-implementation-against-component later checks for conformance; supersedes a bare scaffold from generate-implementation-scaffold-from-usecase when the reference Node.js/Helm stack is wanted.",
+        "evidenceProduced": "Built container image, Helm release, and generated source repository for the component."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.skill-implement-oda-component"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.humans.consumer.1",
+      "kind": "node",
+      "label": "Consumer",
+      "parentId": "node.humans",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "A human or team building software against the existing ODA standard, using the consumer skill set to discover, design, build, test, and audit against real ODA components, APIs, and use cases.",
+        "description": "Represents the 'build against ODA' role served by the tm-forum-oda-consumer plugin: solution architects, developers, and QA engineers who look up, design against, implement, test, and audit implementations of TM Forum ODA use cases, components, and Open APIs -- never a corpus contributor extending ODA itself.",
+        "keywords": [
+          "consumer",
+          "tm-forum-oda-consumer",
+          "build against ODA",
+          "solution architect",
+          "developer",
+          "QA"
+        ]
+      },
+      "typeSpecific": {
+        "consumerType": "human",
+        "workloadType": "",
+        "functionCapability": "Discovers, designs against, builds, tests, and audits implementations using the ODA knowledge base and consumer skill set.",
+        "interactionPattern": "Invokes consumer skills (e.g. recommend-oda-components-for-requirement, capture-requirements-from-usecase, generate-implementation-scaffold-from-usecase, implement-oda-component, generate-test-cases-from-usecase, audit-implementation-against-usecase) via an AI coding agent.",
+        "capabilityDescription": "Builds a product or system against the existing ODA reference architecture, from requirement discovery through to an audited implementation, without modifying the ODA corpus itself.",
+        "autonomyLevel": "supervised",
+        "riskBoundary": "Cannot alter accepted ODA nodes or the knowledge corpus; consumer skills only read the cached knowledge base and, in the case of implement-oda-component, may build/push images and deploy via Helm into the caller's own environment.",
+        "expectedUsers": "Solution architects, developers, QA engineers, and delivery leads building against TM Forum ODA."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.consumer-plugin-manifest"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.humans.contributor.1",
+      "kind": "node",
+      "label": "Contributor",
+      "parentId": "node.humans",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "A human or team extending and improving the ODA standard itself, using the creator skill set to author use cases, harvest gaps, and propose corrections and extensions.",
+        "description": "Represents the 'extend and contribute to ODA' role served by the tm-forum-oda-creator plugin: TM Forum members and practitioners who draft new use cases, mine lessons-learned sections for capability gaps, propose matrix corrections, lint draft documents, and design component/API extensions -- feeding the central authority's review process rather than building against an already-accepted standard.",
+        "keywords": [
+          "contributor",
+          "tm-forum-oda-creator",
+          "extend ODA",
+          "use case authoring",
+          "gap harvesting",
+          "matrix correction"
+        ]
+      },
+      "typeSpecific": {
+        "consumerType": "human",
+        "workloadType": "",
+        "functionCapability": "Authors new use cases, harvests capability gaps from the existing corpus, proposes matrix corrections, and drafts component/API extensions for the central authority to review.",
+        "interactionPattern": "Invokes creator skills (e.g. draft-new-usecase-from-scenario, feedback-harvest-gaps-from-lessons-learned, feedback-propose-matrix-correction, lint-usecase-draft, propose-component-or-api-extension) via an AI coding agent, producing proposed contributions for TM Forum review.",
+        "capabilityDescription": "Extends and improves the ODA reference architecture itself -- new use cases, gap backlogs, matrix corrections, and component/API extension proposals -- submitted as proposed contributions for the central authority to accept.",
+        "autonomyLevel": "supervised",
+        "riskBoundary": "Can only create status='proposed' contributions; accepted nodes can only be set by the central authority (TM Forum Trustworthy AI & Data Mission), never mutated directly by a contributor.",
+        "expectedUsers": "TM Forum member organizations, ODA standard editors, and practitioners contributing use cases or corrections."
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.creator-plugin-manifest"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.data.oda-as-a-data-product.1",
+      "kind": "node",
+      "label": "ODA as a Data Product",
+      "parentId": "node.data",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "The cached TM Forum ODA corpus (use cases, components, Open APIs, eTOM, SID, and cross-reference indexes) packaged as a provenance-tracked, queryable knowledge base for agent skills.",
+        "description": "The knowledge/ directory bundled with each plugin: use-cases.json, components.json, apis.json, an ID-registry cross-reference layer (usecase-component-matrix.json, gaps-backlog.md, matrix-discrepancies.md, component-pdf-coverage.md, id-registry.md), and a derived OWL/RDF export (ontology.ttl). Generated and refreshed from upstream TM Forum sources (IG1228, component/API specs) via idempotent build scripts, and consumed by every skill as its single source of truth rather than requiring the agent to scan raw documents directly.",
+        "keywords": [
+          "knowledge base",
+          "data product",
+          "use-cases.json",
+          "components.json",
+          "apis.json",
+          "ontology.ttl",
+          "provenance",
+          "IG1228",
+          "cross-reference index"
+        ]
+      },
+      "typeSpecific": {
+        "resourceKind": "Data",
+        "functionPerformed": "Provides a structured, provenance-tracked, queryable representation of the TM Forum ODA standard (use cases, components, Open APIs, eTOM, SID) that every skill reads instead of parsing raw source documents.",
+        "interfacePattern": "Indexed JSON/Markdown files under knowledge/index/ plus per-artefact folders under knowledge/{use-cases,components,apis,etom,sid}/, read directly by skills via file paths; a derived ontology.ttl RDF/OWL export is available for external graph tooling.",
+        "componentFunction": "Acts as the queryable data layer underpinning every skill's answers, keeping generated indexes (use-cases.json, components.json, apis.json, ontology.ttl) in sync with static/hand-maintained cross-reference files (gaps-backlog.md, matrix-discrepancies.md, id-registry.md).",
+        "supplierExamples": "Generated internally via tools/build_index.py and tools/build_ontology.py from upstream TM Forum IG1228/component/API sources; comparable in kind to a data-product / data-mesh pattern implemented with a metadata catalog such as DataHub or Collibra.",
+        "deploymentContext": "On-premise",
+        "interoperability": "OWL/RDF (Turtle) export for external graph/ontology tooling (e.g. Protege); JSON indexes for direct skill consumption.",
+        "lifecycleSupport": [
+          "Design",
+          "Develop"
+        ]
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.knowledge-index-readme"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "node.proposed.tools.oda-skills-marketplace.1",
+      "kind": "node",
+      "label": "ODA Skills Marketplace",
+      "parentId": "node.tools",
+      "status": "proposed",
+      "origin": "contributor",
+      "definition": {
+        "shortDefinition": "A Claude Code plugin marketplace distributing two ODA skill bundles -- consumer (build against ODA) and creator (extend ODA) -- each a catalog of Agent Skills backed by the ODA knowledge base.",
+        "description": "The .claude-plugin/marketplace.json manifest and its two plugins (tm-forum-oda-consumer, tm-forum-oda-creator), each with its own .claude-plugin/plugin.json and skills/ directory of Agent Skill definitions (SKILL.md). Installed into a coding agent (e.g. via Claude Code's plugin marketplace mechanism) to give it every Design/Develop/Deploy lifecycle skill in this corpus, backed by the ODA-as-a-Data-Product knowledge base.",
+        "keywords": [
+          "skills marketplace",
+          "Claude Code plugin",
+          "Agent Skills",
+          "SKILL.md",
+          "tm-forum-oda-consumer",
+          "tm-forum-oda-creator",
+          "plugin.json"
+        ]
+      },
+      "typeSpecific": {
+        "resourceKind": "Tools",
+        "functionPerformed": "Packages and distributes the full set of ODA lifecycle Agent Skills as installable plugins, so a coding agent can discover and invoke them by name.",
+        "interfacePattern": "Claude Code plugin marketplace protocol (.claude-plugin/marketplace.json listing plugins; each plugin's .claude-plugin/plugin.json plus a skills/ directory of SKILL.md-defined Agent Skills, invoked by an agent via natural-language trigger matching on each skill's description).",
+        "componentFunction": "Central catalog and install mechanism for every skill node under Design, Develop, and Deploy in this ontology.",
+        "supplierExamples": "e.g. Claude Code plugin marketplaces generally; comparable in kind to any agent tool/skill registry or catalog (e.g. an MCP server registry).",
+        "deploymentContext": "Cloud",
+        "interoperability": "Claude Code plugin marketplace format (.claude-plugin/marketplace.json, .claude-plugin/plugin.json); Agent Skills format (SKILL.md with YAML frontmatter).",
+        "lifecycleSupport": [
+          "Design",
+          "Develop",
+          "Deploy"
+        ]
+      },
+      "evidenceRefs": [
+        "evidence.innovation-network.marketplace-manifest"
+      ],
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel.contains.root.what",
+      "type": "contains",
+      "from": "node.ai_native_agent_factory_blueprint",
+      "to": "node.technology_references_what",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.contains.root.how",
+      "type": "contains",
+      "from": "node.ai_native_agent_factory_blueprint",
+      "to": "node.agent_lifecycle_processes_how",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.contains.root.why",
+      "type": "contains",
+      "from": "node.ai_native_agent_factory_blueprint",
+      "to": "node.agentic_autonomous_flows_why",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.uses.why.how",
+      "type": "uses",
+      "from": "node.agentic_autonomous_flows_why",
+      "to": "node.agent_lifecycle_processes_how",
+      "label": "Why uses How",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.uses.how.what",
+      "type": "uses",
+      "from": "node.agent_lifecycle_processes_how",
+      "to": "node.technology_references_what",
+      "label": "How uses What",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.sits_above.controls.resources",
+      "type": "sits_above",
+      "from": "node.agent_controls",
+      "to": "node.agent_resources_layer",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.sits_above.consumption.controls",
+      "type": "sits_above",
+      "from": "node.agent_consumption_users",
+      "to": "node.agent_controls",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.sits_below.controls.consumption",
+      "type": "sits_below",
+      "from": "node.agent_controls",
+      "to": "node.agent_consumption_users",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.sits_below.resources.controls",
+      "type": "sits_below",
+      "from": "node.agent_resources_layer",
+      "to": "node.agent_controls",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.precedes.design.develop",
+      "type": "precedes",
+      "from": "node.design",
+      "to": "node.develop",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.precedes.develop.deploy",
+      "type": "precedes",
+      "from": "node.develop",
+      "to": "node.deploy",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.precedes.deploy.operate",
+      "type": "precedes",
+      "from": "node.deploy",
+      "to": "node.operate",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    },
+    {
+      "id": "rel.precedes.operate.govern",
+      "type": "precedes",
+      "from": "node.operate",
+      "to": "node.govern",
+      "label": "",
+      "status": "accepted",
+      "origin": "baseline",
+      "createdAt": "2026-07-02T00:00:00+10:00",
+      "createdBy": {
+        "name": "TM Forum",
+        "organization": "TM Forum",
+        "contact": ""
+      },
+      "evidenceRefs": [],
+      "notes": ""
+    }
+  ],
+  "contributions": [],
+  "evidenceItems": [
+    {
+      "id": "evidence.innovation-network.skill-capture-requirements-from-usecase",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Capture Requirements from Use Case -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/capture-requirements-from-usecase/SKILL.md",
+      "documentId": "",
+      "abstract": "Drafts user stories and acceptance criteria for a TM Forum use case, grounded in its own Description/Scope/Objective text.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-check-usecase-maturity",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Check Use Case Maturity -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/check-usecase-maturity/SKILL.md",
+      "documentId": "",
+      "abstract": "Returns a plain-language maturity/trust verdict for an ODA use case before anyone builds against it.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-decompose-requirement-against-oda",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Decompose Requirement Against ODA -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/decompose-requirement-against-oda/SKILL.md",
+      "documentId": "",
+      "abstract": "Decomposes a plain-language requirement with no matching use case into a structured ODA-aligned breakdown.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-draft-architecture-diagram-from-usecase",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Draft Architecture Diagram from Use Case -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/draft-architecture-diagram-from-usecase/SKILL.md",
+      "documentId": "",
+      "abstract": "Emits a Mermaid sequence or architecture diagram for a use case, drawn only from its real sequence-diagram content and component/API links.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-draft-event-design-for-component",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Draft Event Design for Component -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/draft-event-design-for-component/SKILL.md",
+      "documentId": "",
+      "abstract": "Drafts published/subscribed event definitions for a component, in the same shape every cached component.yaml's eventNotification block already uses.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-recommend-oda-components-for-requirement",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Recommend ODA Components for Requirement -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/recommend-oda-components-for-requirement/SKILL.md",
+      "documentId": "",
+      "abstract": "Proposes a starting architecture of real ODA components/APIs for a plain-language requirement with no TMFSxxx id yet.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-review-architecture-against-oda",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Review Architecture Against ODA -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/review-architecture-against-oda/SKILL.md",
+      "documentId": "",
+      "abstract": "Reviews a whole multi-component architecture for ODA conformance -- duplicated ownership, point-to-point coupling, and component-boundary bypass.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-validate-design-against-oda",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Validate Design Against ODA -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/validate-design-against-oda/SKILL.md",
+      "documentId": "",
+      "abstract": "Checks a proposed design's claimed dependencies on existing ODA components/APIs against the real cached specs.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-draft-new-usecase-from-scenario",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Draft New Use Case from Scenario -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/creator/skills/draft-new-usecase-from-scenario/SKILL.md",
+      "documentId": "",
+      "abstract": "Drafts a new TMFSxxx-shaped use-case document from a business scenario that matches no existing use case or known gap.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-feedback-harvest-gaps-from-lessons-learned",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Harvest Gaps from Lessons Learned -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/creator/skills/feedback-harvest-gaps-from-lessons-learned/SKILL.md",
+      "documentId": "",
+      "abstract": "Mines every use case's Lessons Learned/Impacts Identified sections for capability gaps, cross-checked against the current index and consolidated into a backlog.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-feedback-propose-matrix-correction",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Propose Matrix Correction -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/creator/skills/feedback-propose-matrix-correction/SKILL.md",
+      "documentId": "",
+      "abstract": "Turns logged use-case/matrix disagreements into specific, submittable correction proposals for the next standard revision.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-lint-usecase-draft",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Lint Use Case Draft -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/creator/skills/lint-usecase-draft/SKILL.md",
+      "documentId": "",
+      "abstract": "Pre-submission QA pass that flags anything in a draft use-case document likely to silently lose content when converted.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-propose-component-or-api-extension",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Propose Component or API Extension -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/creator/skills/propose-component-or-api-extension/SKILL.md",
+      "documentId": "",
+      "abstract": "Drafts a concrete extension -- a new component skeleton or an API schema addition -- for an already-identified capability gap.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-audit-implementation-against-component",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Audit Implementation Against Component -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/audit-implementation-against-component/SKILL.md",
+      "documentId": "",
+      "abstract": "Checks an existing implementation's conformance to a component's full contract, scored separately for Core Function and Supporting Function.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-audit-implementation-against-usecase",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Audit Implementation Against Use Case -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/audit-implementation-against-usecase/SKILL.md",
+      "documentId": "",
+      "abstract": "Checks whether an existing implementation actually follows a use case's described flow and calls the right real APIs.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-generate-api-conformance-tests",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Generate API Conformance Tests -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/generate-api-conformance-tests/SKILL.md",
+      "documentId": "",
+      "abstract": "Generates conformance test assertions for one TM Forum Open API directly from its cached OpenAPI schema, and scores an implementation against them if one is supplied.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-generate-api-mocks-from-usecase",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Generate API Mocks from Use Case -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/generate-api-mocks-from-usecase/SKILL.md",
+      "documentId": "",
+      "abstract": "Scaffolds a mock server or fixture files for a use case's real dependent APIs, for integration testing before a real backend exists.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-generate-implementation-scaffold-from-usecase",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Generate Implementation Scaffold from Use Case -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/generate-implementation-scaffold-from-usecase/SKILL.md",
+      "documentId": "",
+      "abstract": "Generates typed request/response models and route/handler stubs from a use case's linked OpenAPI schemas, in the caller's chosen language, with TODOs where real logic belongs.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-generate-test-cases-from-usecase",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Generate Test Cases from Use Case -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/generate-test-cases-from-usecase/SKILL.md",
+      "documentId": "",
+      "abstract": "Drafts BDD-style Gherkin test scenarios for a use case's interaction flow, grounded in its real component/API ids and cached OpenAPI schemas.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-deliver-oda-requirement",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Deliver ODA Requirement -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/deliver-oda-requirement/SKILL.md",
+      "documentId": "",
+      "abstract": "Orchestrates the full Discover-to-Run chain of existing skills against a plain-language requirement, end to end.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-assess-change-impact",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Assess Change Impact -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/assess-change-impact/SKILL.md",
+      "documentId": "",
+      "abstract": "Assesses the blast radius of a proposed breaking change to an ODA component or API before it ships.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.skill-implement-oda-component",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "Implement ODA Component -- SKILL.md",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/skills/implement-oda-component/SKILL.md",
+      "documentId": "",
+      "abstract": "Builds and deploys a complete TM Forum ODA Component implementation (Node.js source, Dockerfile, Helm chart) end to end.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.consumer-plugin-manifest",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "tm-forum-oda-consumer plugin manifest",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/.claude-plugin/plugin.json",
+      "documentId": "",
+      "abstract": "TM Forum ODA use cases, components, and Open APIs as a provenance-tracked knowledge base, queryable via Agent Skills -- for building a product against ODA.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.creator-plugin-manifest",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "tm-forum-oda-creator plugin manifest",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/creator/.claude-plugin/plugin.json",
+      "documentId": "",
+      "abstract": "Agent Skills backed by TM Forum ODA knowledge -- for extending and contributing to ODA itself.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.knowledge-index-readme",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "knowledge/index/ README -- ID registry and cross-reference layer",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": "dist/consumer/knowledge/index/README.md",
+      "documentId": "",
+      "abstract": "Describes the ID registry and cross-reference layer (use-cases.json, components.json, apis.json, matrix-discrepancies.md, gaps-backlog.md, ontology.ttl) that every skill in the corpus reads instead of scanning raw documents.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    },
+    {
+      "id": "evidence.innovation-network.marketplace-manifest",
+      "status": "proposed",
+      "primary": true,
+      "sourceType": "private_doc",
+      "title": "tm-forum-oda-marketplace -- Claude Code plugin marketplace manifest",
+      "publicUrl": "",
+      "odaDocumentNumber": "",
+      "fileName": ".claude-plugin/marketplace.json",
+      "documentId": "",
+      "abstract": "Lists the two installable plugins (tm-forum-oda-consumer, tm-forum-oda-creator) that bundle every Design/Develop/Deploy skill in this corpus as Claude Code Agent Skills.",
+      "createdBy": {
+        "owner": "Lester",
+        "email": "katenewbury@hotmail.co.uk",
+        "organization": "Innovation Network"
+      }
+    }
+  ],
+  "changeLog": [],
+  "evidenceSchema": {
+    "sourceTypes": [
+      {
+        "id": "public_url",
+        "label": "Public URL"
+      },
+      {
+        "id": "oda_document_number",
+        "label": "ODA document number"
+      },
+      {
+        "id": "private_doc",
+        "label": "Private document"
+      }
+    ],
+    "fields": [
+      {
+        "id": "title",
+        "label": "Document title",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "publicUrl",
+        "label": "Public URL",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "odaDocumentNumber",
+        "label": "ODA document number",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "fileName",
+        "label": "Document file name",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "documentId",
+        "label": "Document ID",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "abstract",
+        "label": "Evidence abstract",
+        "type": "textarea",
+        "required": false
+      }
+    ],
+    "pointerBySourceType": {
+      "public_url": [
+        "publicUrl"
+      ],
+      "oda_document_number": [
+        "odaDocumentNumber"
+      ],
+      "private_doc": [
+        "documentId",
+        "fileName"
+      ]
+    }
+  },
+  "contributorSchema": {
+    "fields": [
+      {
+        "id": "owner",
+        "label": "Owner / name",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "email",
+        "label": "Email",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "organization",
+        "label": "Organization",
+        "type": "text",
+        "required": false
+      }
+    ]
+  },
+  "baseFields": [
+    {
+      "id": "label",
+      "label": "Node label",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "shortDefinition",
+      "label": "Short definition",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "description",
+      "label": "Detailed description",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "keywords",
+      "label": "Keywords",
+      "type": "tags",
+      "required": false
+    },
+    {
+      "id": "evidenceRefs",
+      "label": "Evidence references",
+      "type": "evidenceRefs",
+      "required": true
+    }
+  ]
+}
